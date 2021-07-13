@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+
+</head>
+<body onload="load()" >
+    <div id="75b889d7d64a4876a79a87b26c3bdf0e" class="chart-container" style="width:1080px; height:100vh;"></div>
+    <script>
+        var chart_75b889d7d64a4876a79a87b26c3bdf0e = echarts.init(
+            document.getElementById('75b889d7d64a4876a79a87b26c3bdf0e'), 'white', {renderer: 'canvas'});
+        var option_75b889d7d64a4876a79a87b26c3bdf0e = {
+    
+	"formatter": function(params){
+	    var content = params.data.value;
+		if(typeof(content) == "undefined" || content == null)
+			return "";
+	    function creatArr(str,LEN){
+	        var arr = [];//用于保存每次截取后的字符串
+	        var index = 0;
+	        var flag;
+	        while(str.length > LEN){
+	            flag=str.substr(0, LEN).indexOf("\n");
+	            if(flag != -1){
+	            	newStr = str.substr(0, flag);
+	                arr.push(newStr);
+	                str = str.substr(flag+1);
+	            }else{
+	            	newStr = str.substr(0, LEN);
+	                arr.push(newStr);
+	                str = str.substr(LEN);
+	                if(str.length>0){
+	                	if(str.substr(0,1)=='\n'){
+	                		str = str.substr(1);
+	                	}
+	                }
+	            }
+	        }
+	        if(str.length > 0){
+	            arr.push(str);
+	        }
+	        return arr.join("<br>");
+	    }
+	    content = creatArr(content,35);
+	    return content.split("\n").join("<br>");
+	},
+	"animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "tree",
+            "data": [
+                {
+                    "name": "\u8ba1\u7b97\u673a\u7f51\u7edc",
+                    "children": [
+                        {
+                            "makers": [
+                                "c_symbol_exercise",
+                                "symbol-share"
+                            ],
+                            "labels": [
+                                "./\u8ba1\u7b97\u673a\u79d1\u5b66/\u8ba1\u7b97\u673a\u7f51\u7edc/\u8ba1\u7b97\u673a\u7f51\u7edc\u4f53\u7cfb\u7ed3\u6784.xmind"
+                            ],
+                            "link": "file:///Users/kimshan/Public/learn/PKM/KnowledgeMap/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.xmind",
+                            "name": "\u8ba1\u7b97\u673a\u7f51\u7edc\u4f53\u7cfb\u7ed3\u6784",
+                            "children": [
+                                {
+                                    "name": "\u5b9a\u4e49",
+                                    "value": "1. \u5b9a\u4e49: \u8ba1\u7b97\u673a\u7f51\u7edc\u662f\u5c06\u4e00\u4e2a\u5206\u6563\u7684, \u5177\u6709\u72ec\u7acb\u529f\u80fd\u7684\u8ba1\u7b97\u673a\u7cfb\u7edf, \u901a\u8fc7\u901a\u4fe1\u8bbe\u5907\u4e0e\u7ebf\u8def\u8fde\u63a5\u8d77\u6765, \u7531\u529f\u80fd\u5b8c\u5584\u7684\u8f6f\u4ef6\u5b9e\u73b0\u8d44\u6e90\u5171\u4eab\u4e0e\u4fe1\u606f\u4f20\u9012\u7684\u7cfb\u7edf. \u7b80\u800c\u8a00\u4e4b, \u8ba1\u7b97\u673a\u7f51\u7edc\u5c31\u662f\u4e00\u4e9b\u4e92\u8054\u7684\u3001\u81ea\u6cbb\u7684\u8ba1\u7b97\u673a\u7cfb\u7edf\u7684\u96c6\u5408.\n2. \u5e7f\u4e49\u89c2\u70b9, \u8d44\u6e90\u5171\u4eab\u89c2\u70b9, \u7528\u6237\u900f\u660e\u6027\u89c2\u70b9.\n3. \u5999\u8ba1: \u8ba1\u7b97\u673a\u7f51\u7edc = \"[\u5206\u6563\u72ec\u7acb] -(\u901a\u4fe1)> [\u4e92\u8054\u81ea\u6cbb] \"\n\u5206\u6563\u901a\u4fe1\u53d8\u4e92\u8054, \u8fc7\u53bb\u73b0\u5728\u548c\u5c06\u6765.",
+                                    "children": [
+                                        {
+                                            "name": "\u5e7f\u4e49\u89c2\u70b9",
+                                            "value": "1. \u4f4e\u7ea7\u9636\u6bb5.\n2. \u80fd\u5b9e\u73b0\u8fdc\u7a0b\u4fe1\u606f\u5904\u7406\u7684\u7cfb\u7edf\u6216\u80fd\u8fdb\u4e00\u6b65\u8fbe\u5230\u8d44\u6e90\u5171\u4eab\u7684\u7cfb\u7edf."
+                                        },
+                                        {
+                                            "name": "\u8d44\u6e90\u5171\u4eab\u89c2\u70b9",
+                                            "value": "1. \u73b0\u4ee3\u89c2\u70b9\n2. \u8ba1\u7b97\u673a\u7f51\u7edc\u662f\u201c\u4ee5\u80fd\u591f\u4e92\u76f8\u5171\u4eab\u8d44\u6e90\u7684\u65b9\u5f0f\u4e92\u8054\u8d77\u6765\u7684\u81ea\u6cbb\u7684\u8ba1\u7b97\u673a\u7cfb\u7edf\u7684\u96c6\u5408\u201d.\n3. \u76ee\u7684: \u8d44\u6e90\u5171\u4eab.\n4. \u7ec4\u6210\u5355\u5143: \u5206\u5e03\u5728\u4e0d\u540c\u5730\u7406\u4f4d\u7f6e\u7684\u591a\u53f0\u72ec\u7acb\u7684\u201c\u81ea\u6cbb\u8ba1\u7b97\u673a\u201d.\n5. \u7f51\u7edc\u4e2d\u7684\u8ba1\u7b97\u673a\u9075\u5b88\u7684\u89c4\u5219 - \u7f51\u7edc\u534f\u8bae."
+                                        },
+                                        {
+                                            "name": "\u7528\u6237\u900f\u660e\u6027\u89c2\u70b9",
+                                            "value": "1. \u672a\u6765\u76ee\u6807\n2. \u7f51\u7edc\u64e6\u505a\u7cfb\u7edf\u53ef\u4ee5\u81ea\u52a8\u4e3a\u7528\u6237\u7ba1\u7406\u8d44\u6e90, \u7f51\u7edc\u5bf9\u7528\u6237\u662f\u900f\u660e\u7684, \u7528\u6237\u53ef\u4ee5\u60f3\u4f7f\u7528\u4e00\u53f0\u5355\u4e00\u7684\u8d85\u7ea7\u8ba1\u7b97\u673a\u4e00\u6837\u4e00\u6837, \u65e0\u9700\u4e86\u89e3\u7f51\u7edc\u7684\u5b58\u5728\u3001\u8d44\u6e90\u7684\u4f4d\u7f6e\u4fe1\u606f.\n3. \u7528\u6237\u900f\u660e\u6027\u89c2\u70b9\u63cf\u8ff0\u4e86\u4e00\u4e2a\u5145\u5206\u7684\u5206\u5e03\u5f0f\u7cfb\u7edf."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u7ec4\u6210",
+                                    "value": "1. \u6309\u7ec4\u6210\u6210\u5206:\n\u8ba1\u7b97\u673a\u7f51\u7edc=\u786c\u4ef6+\u8f6f\u4ef6+\u534f\u8bae\n2. \u6309\u5de5\u4f5c\u65b9\u5f0f:\n\u8ba1\u7b97\u673a\u7f51\u7edc=\u8fb9\u7f18\u90e8\u5206+\u6838\u5fc3\u90e8\u5206\n3. \u6309\u529f\u80fd\u7ec4\u6210:\n\u8ba1\u7b97\u673a\u7f51\u7edc=\u901a\u4fe1\u5b50\u7f51+\u8d44\u6e90\u5b50\u7f51",
+                                    "children": [
+                                        {
+                                            "name": "\u7ec4\u6210\u6210\u5206",
+                                            "value": "1. \u786c\u4ef6\n[\u4e3b\u673a<-->\u7f51\u5361<-->\u901a\u4fe1\u94fe\u8def<-->\u901a\u4fe1\u5904\u7406\u673a<-->\u901a\u4fe1\u94fe\u8def<-->\u7f51\u5361<-->\u4e3b\u673a]\n(1) \u4e3b\u673a/\u7aef\u7cfb\u7edf\n(2) \u901a\u4fe1\u94fe\u8def(\u5149\u7ea4, \u53cc\u7ede\u7ebf)\n(3) \u4ea4\u6362\u8bbe\u5907(\u8def\u7531\u5668, \u4ea4\u6362\u673a)\n(4) \u901a\u4fe1\u5904\u7406\u673a(\u7f51\u5361)\n2. \u8f6f\u4ef6\n\u5b9e\u73b0\u8d44\u6e90\u5171\u4eab\u7684\u8f6f\u4ef6(\u7f51\u7edc\u64cd\u4f5c\u7cfb\u7edf, \u90ae\u4ef6\u6536\u53d1\u7a0b\u5e8f, FTP, \u804a\u5929\u7a0b\u5e8f\u7b49)\n3. \u534f\u8bae\n\u8ba1\u7b97\u673a\u7f51\u7edc\u7684\u6838\u5fc3",
+                                            "children": [
+                                                {
+                                                    "name": "\u786c\u4ef6",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u4e3b\u673a"
+                                                        },
+                                                        {
+                                                            "name": "\u901a\u4fe1\u94fe\u8def"
+                                                        },
+                                                        {
+                                                            "name": "\u4ea4\u6362\u8bbe\u5907"
+                                                        },
+                                                        {
+                                                            "name": "\u901a\u4fe1\u5904\u7406\u673a"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u8f6f\u4ef6",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u7f51\u7edc\u64cd\u4f5c\u7cfb\u7edf, FTP\u7b49"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u534f\u8bae"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u5de5\u4f5c\u65b9\u5f0f",
+                                            "value": "1. \u8fb9\u7f18\u90e8\u5206\n\u7531\u8fde\u63a5\u5230\u56e0\u7279\u7f51\u4e0a\u4f9b\u7528\u6237\u4f7f\u7528\u7684\u4e3b\u673a\u6784\u6210, \u7528\u6765\u901a\u4fe1(\u6bd4\u5982\u4f20\u97f3\u9891\u89c6\u9891)\u548c\u8d44\u6e90\u5171\u4eab.\n2. \u6838\u5fc3\u90e8\u5206\n\u7531\u7f51\u7edc\u548c\u7f51\u7edc\u7684\u8def\u7531\u5668\u6784\u6210, \u7528\u6765\u4e3a\u8fb9\u7f18\u90e8\u5206\u63d0\u4f9b\u8fde\u901a\u6027\u548c\u4ea4\u6362\u670d\u52a1.",
+                                            "children": [
+                                                {
+                                                    "name": "\u8fb9\u7f18\u90e8\u5206",
+                                                    "children": [
+                                                        {
+                                                            "labels": [
+                                                                "\u6210\u5206"
+                                                            ],
+                                                            "name": "\u4e3b\u673a"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u670d\u52a1\u5bf9\u8c61"
+                                                            ],
+                                                            "name": "\u7528\u6237"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u670d\u52a1\u5185\u5bb9"
+                                                            ],
+                                                            "name": "\u901a\u4fe1\u4e0e\u8d44\u6e90\u5171\u4eab"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u6838\u5fc3\u90e8\u5206",
+                                                    "children": [
+                                                        {
+                                                            "labels": [
+                                                                "\u6210\u5206"
+                                                            ],
+                                                            "name": "\u7f51\u7edc\u4e0e\u8def\u7531\u5668"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u670d\u52a1\u5bf9\u8c61"
+                                                            ],
+                                                            "name": "\u8fb9\u7f18\u90e8\u5206"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u670d\u52a1\u5185\u5bb9"
+                                                            ],
+                                                            "name": "\u8fde\u901a\u6027\u4e0e\u4ea4\u6362\u670d\u52a1"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u529f\u80fd\u7ec4\u6210",
+                                            "value": "1. \u901a\u4fe1\u5b50\u7f51\n\u7531\u4f20\u8f93\u4ecb\u8d28, \u901a\u4fe1\u8bbe\u5907\u548c\u5bf9\u5e94\u7684\u7f51\u7edc\u534f\u8bae\u6784\u6210. \u4ed6\u662f\u7f51\u7edc\u5177\u6709\u4f20\u8f93\u3001\u4ea4\u6362\u3001\u7ba1\u7406\u3001\u50a8\u5b58\u6570\u636e\u7684\u80fd\u529b. \u5b9e\u73b0\u4e86\u8054\u7f51\u8ba1\u7b97\u673a\u4e4b\u95f4\u7684\u6570\u636e\u901a\u4fe1.\n2. \u8d44\u6e90\u5b50\u7f51\n\u662f\u5b9e\u73b0\u8d44\u6e90\u5171\u4eab\u529f\u80fd\u7684\u8bbe\u5907\u4e0e\u8f6f\u4ef6\u7684\u96c6\u5408, \u5411\u7f51\u7edc\u7528\u6237\u63d0\u4f9b\u5171\u4eab\u5176\u4ed6\u8ba1\u7b97\u673a\u4e0a\u7684\u786c\u4ef6\u8d44\u6e90\u3001\u8f6f\u4ef6\u8d44\u6e90\u548c\u6570\u636e\u8d44\u6e90\u7684\u670d\u52a1.",
+                                            "children": [
+                                                {
+                                                    "name": "\u901a\u4fe1\u5b50\u7f51",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u6210\u5206",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u901a\u4fe1\u4ecb\u8d28"
+                                                                },
+                                                                {
+                                                                    "name": "\u901a\u4fe1\u8bbe\u5907"
+                                                                },
+                                                                {
+                                                                    "name": "\u7f51\u7edc\u534f\u8bae"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u76ee\u6807",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u6570\u636e\u7684\u4f20\u8f93\u3001\u4ea4\u6362\u3001\u7ba1\u7406\u3001\u50a8\u5b58\u529f\u80fd"
+                                                                },
+                                                                {
+                                                                    "name": "\u5b9e\u73b0\u8ba1\u7b97\u673a\u4e4b\u95f4\u7684\u901a\u4fe1"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u8d44\u6e90\u5b50\u7f51",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u6210\u5206",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u5b9e\u73b0\u8d44\u6e90\u5171\u4eab\u7684\u8bbe\u5907\u4e0e\u8f6f\u4ef6"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u76ee\u6807",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u5171\u4eab\u5176\u4ed6\u8ba1\u7b97\u673a\u7684\u786c\u4ef6, \u8f6f\u4ef6, \u6570\u636e"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u529f\u80fd",
+                                    "value": "1. \u6570\u636e\u901a\u4fe1 - (\u4fe1\u606f\u4f20\u8f93)\n2. \u8d44\u6e90\u5171\u4eab - (\u8f6f\u4ef6,\u786c\u4ef6\u4e0e\u6570\u636e\u5171\u4eab)\n3. \u5206\u5e03\u5f0f\u5904\u7406 - (\u81ea\u5df1\u5e72\u4e0d\u5b8c, \u522b\u4eba\u5e2e\u5fd9\u5e72)\n4. \u63d0\u9ad8\u53ef\u9760\u6027 - (\u81ea\u5df1\u5e72\u4e0d\u4e86, \u522b\u4eba\u66ff\u6211\u5e72)\n5. \u8d1f\u8f7d\u5747\u8861 - (\u4efb\u52a1\u591a, \u5927\u5bb6\u4e00\u8d77\u5e72)",
+                                    "children": [
+                                        {
+                                            "name": "\u6570\u636e\u901a\u4fe1",
+                                            "value": "1. \u8ba1\u7b97\u673a\u7f51\u7edc\u6700\u57fa\u672c\u6700\u91cd\u8981\u7684\u529f\u80fd.\n2. \u7528\u6765\u5b9e\u73b0\u8ba1\u7b97\u673a\u4e4b\u95f4\u5404\u79cd\u4fe1\u606f\u7684\u4f20\u8f93, \u5e76\u5c06\u5206\u6563\u5728\u4e0d\u540c\u5730\u7406\u4f4d\u7f6e\u7684\u8ba1\u7b97\u673a\u8054\u7cfb\u8d77\u6765, \u8fdb\u884c\u7edf\u4e00\u8c03\u914d\u3001\u63a7\u5236\u548c\u7ba1\u7406."
+                                        },
+                                        {
+                                            "name": "\u8d44\u6e90\u5171\u4eab",
+                                            "value": "1. \u8f6f\u4ef6\u5171\u4eab, \u786c\u4ef6\u5171\u4eab\u548c\u6570\u636e\u5171\u4eab. \n2. \u4f7f\u8ba1\u7b97\u673a\u7f51\u7edc\u4e2d\u7684\u8d44\u6e90\u4e92\u901a\u6709\u65e0\u3001\u5206\u914d\u534f\u4f5c, \u4ece\u800c\u6781\u5927\u5730\u63d0\u9ad8\u786c\u4ef6\u8d44\u6e90\u3001\u8f6f\u4ef6\u8d44\u6e90\u548c\u6570\u636e\u8d44\u6e90\u7684\u5229\u7528\u7387."
+                                        },
+                                        {
+                                            "name": "\u5206\u5e03\u5f0f\u5904\u7406",
+                                            "value": "\u5f53\u8ba1\u7b97\u673a\u7f51\u7edc\u4e2d\u7684\u67d0\u4e2a\u8ba1\u7b97\u673a\u7cfb\u7edf\u8d1f\u62c5\u8fc7\u91cd\u65f6, \u53ef\u4ee5\u8bb2\u67d0\u4e2a\u590d\u6742\u4efb\u52a1\u5206\u914d\u7ed9\u7f51\u7edc\u4e2d\u7684\u5176\u4ed6\u8ba1\u7b97\u673a\u7cfb\u7edf, \u4ece\u800c\u5229\u7528\u7a7a\u95f2\u8ba1\u7b97\u673a\u8d44\u6e90\u4ee5\u63d0\u9ad8\u6574\u4e2a\u7cfb\u7edf\u7684\u5229\u7528\u7387."
+                                        },
+                                        {
+                                            "name": "\u63d0\u9ad8\u53ef\u9760\u6027",
+                                            "value": "\u8ba1\u7b97\u673a\u7f51\u7edc\u4e2d\u7684\u5404\u53f0\u8ba1\u7b97\u673a\u90fd\u53ef\u4ee5\u901a\u8fc7\u7f51\u7edc\u6210\u4e3a\u5f7c\u6b64\u7684\u66ff\u4ee3\u673a."
+                                        },
+                                        {
+                                            "name": "\u8d1f\u8f7d\u5747\u8861",
+                                            "value": "\u5c06\u5de5\u4f5c\u4efb\u52a1\u5747\u8861\u5730\u5206\u914d\u7ed9\u8ba1\u7b97\u673a\u7f51\u7edc\u4e2d\u7684\u5404\u53f0\u8ba1\u7b97\u673a."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u5206\u7c7b",
+                                    "children": [
+                                        {
+                                            "name": "\u5206\u5e03\u8303\u56f4",
+                                            "value": "1. \u5e7f\u57df\u7f51(WAN), \u57ce\u57df\u7f51(MAN), \u5c40\u57df\u7f51(LAN), \u4e2a\u4eba\u533a\u57df\u7f51(PAN).\n2. \u5982\u679c\u4e2d\u592e\u5904\u7406\u5668\u4e4b\u95f4\u7684\u8ddd\u79bb\u5f88\u8fd1, \u6bd4\u5982\u4e00\u7c73\u751a\u81f3\u66f4\u5c0f, \u4e00\u822c\u79f0\u4e3a\u591a\u5904\u7406\u5668\u7cfb\u7edf\u800c\u4e0d\u662f\u8ba1\u7b97\u673a\u7f51\u7edc.\n3. \u5e7f\u57df\u7f51\u4e0e\u5c40\u57df\u7f51\u901a\u8fc7\u8def\u7531\u5668\u8fde\u63a5",
+                                            "children": [
+                                                {
+                                                    "name": "WAN\n\u5e7f\u57df\u7f51",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u8303\u56f4: 50km - 10000km"
+                                                        },
+                                                        {
+                                                            "name": "\u6280\u672f: \u4ea4\u6362\u6280\u672f"
+                                                        },
+                                                        {
+                                                            "name": "\u5730\u4f4d: \u56e0\u7279\u7f51\u7684\u6838\u5fc3"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "MAN\n\u57ce\u57df\u7f51",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u8303\u56f4: 5km - 50km"
+                                                        },
+                                                        {
+                                                            "name": "\u6280\u672f: \u4ee5\u592a\u7f51, \u5e7f\u64ad\u6280\u672f"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "LAN\n\u5c40\u57df\u7f51",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u8303\u56f4: 50m - 5km"
+                                                        },
+                                                        {
+                                                            "name": "\u6280\u672f: \u4ee5\u592a\u7f51, \u5e7f\u64ad\u6280\u672f"
+                                                        },
+                                                        {
+                                                            "name": "\u9762\u5411: \u6570\u636e\u94fe\u8def\u5c42"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "PAN\n\u4e2a\u4eba\u533a\u57df\u7f51",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u8303\u56f4: 10m"
+                                                        },
+                                                        {
+                                                            "name": "\u6280\u672f: \u65e0\u7ebf\u6280\u672f"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u5e7f\u57df\u7f51\u4e0e\u5c40\u57df\u7f51\u901a\u8fc7\u8def\u7531\u5668\u8fde\u63a5"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u4f20\u8f93\u57fa\u7840",
+                                            "value": "1. \u5e7f\u64ad\u5f0f\u7f51\u7edc\n\u6240\u6709\u8054\u7f51\u8ba1\u7b97\u673a\u90fd\u5171\u4eab\u4e00\u4e2a\u516c\u5171\u4fe1\u9053. \u5f53\u4e00\u53f0\u8ba1\u7b97\u673a\u5229\u7528\u5171\u4eab\u901a\u4fe1\u4fe1\u9053\u53d1\u9001\u62a5\u6587\u5206\u7ec4\u65f6, \u6240\u6709\u5176\u4ed6\u7684\u8ba1\u7b97\u673a\u90fd\u4f1a\u201c\u6536\u542c\u201d\u5230\u8fd9\u4e2a\u5206\u7ec4. \u6536\u5230\u00b7\u8be5\u5206\u7ec4\u7684\u8ba1\u7b97\u673a\u901a\u8fc7\u68c0\u67e5\u76ee\u7684\u5730\u5740\u68c0\u67e5\u662f\u5426\u63a5\u53d7\u8be5\u5206\u7ec4.\n2. \u70b9\u5bf9\u70b9\u7f51\u7edc\n\u91c7\u7528\u5206\u7ec4\u8f6c\u53d1\u4e0e\u8def\u7531\u673a\u5236\n\u6bcf\u6761\u7269\u7406\u7ebf\u8def\u8fde\u63a5\u4e00\u5bf9\u8ba1\u7b97\u673a. \u5982\u679c\u6ca1\u6709\u76f4\u63a5\u8fde\u63a5\u7684\u7ebf\u8def, \u5c31\u901a\u8fc7\u4e2d\u95f4\u7ed3\u70b9\u8fdb\u884c\u63a5\u53d7\u50a8\u5b58\u8f6c\u53d1, \u76f4\u81f3\u76ee\u7684\u7ed3\u70b9.",
+                                            "children": [
+                                                {
+                                                    "name": "\u5e7f\u64ad\u5f0f\u7f51\u7edc",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u516c\u5171\u4fe1\u9053"
+                                                        },
+                                                        {
+                                                            "name": "\u5927\u90e8\u5206\u5c40\u57df\u7f51+\u5e7f\u57df\u7f51\u7684\u65e0\u7ebf, \u536b\u661f\u901a\u8baf\u7f51\u7edc"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u70b9\u5bf9\u70b9\u6280\u672f",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u5206\u7ec4\u8f6c\u53d1\u4e0e\u8def\u7531\u673a\u5236"
+                                                        },
+                                                        {
+                                                            "name": "\u5927\u90e8\u5206\u5e7f\u57df\u7f51"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u62d3\u6251\u7ed3\u6784",
+                                            "value": "1. \u603b\u7ebf\u5f62\n\u7528\u5355\u6839\u4f20\u8f93\u7ebf\u628a\u8ba1\u7b97\u673a\u8fde\u63a5\u8d77\u6765.\n\u4f18\u70b9: \u5bb9\u6613\u5efa\u7acb, \u5bb9\u6613\u589e\u51cf\u7ed3\u70b9, \u8282\u7701\u7ebf\u8def.\n\u7f3a\u70b9: \u901a\u8baf\u6548\u7387\u4f4e, \u5bf9\u4e00\u5904\u6545\u969c\u654f\u611f\u5ea6\u9ad8\n2. \u661f\u5f62\n\u6bcf\u4e2a\u7ec8\u7aef\u6216\u8ba1\u7b97\u673a\u90fd\u4e0e\u4e2d\u592e\u8bbe\u5907(\u65e9\u671f\u662f\u8ba1\u7b97\u673a, \u73b0\u5728\u662f\u8def\u7531\u5668\u6216\u8005\u4ea4\u6362\u673a)\u8fde\u63a5.\n\u4f18\u70b9: \u65b9\u4fbf\u96c6\u4e2d\u7ba1\u7406.\n\u7f3a\u70b9: \u6210\u672c\u9ad8, \u4e2d\u5fc3\u8bbe\u5907\u5bf9\u6545\u969c\u654f\u611f.\n3. \u73af\u5f62\n\u6240\u6709\u8ba1\u7b97\u673a\u5fcc\u53e3\u8bbe\u5907\u8fde\u63a5\u5c18\u5c01\u4e00\u4e2a\u73af, \u53ef\u4ee5\u662f\u5355\u73af\u6216\u53cc\u73af, \u73af\u4e2d\u4fe1\u53f7\u5355\u5411\u4f20\u8f93.\n\u4f8b\u5b50: \u4ee4\u724c\u73af\u5c40\u57df\u7f51\n4. \u7f51\u72b6\n\u6bcf\u4e2a\u8282\u70b9\u81f3\u5c11\u6709\u4e24\u6761\u8def\u5f84\u4e0e\u5176\u4ed6\u7ed3\u70b9\u76f8\u8fde. \u591a\u7528\u5728\u5e7f\u57df\u7f51, \u89c4\u5219\u5f62\u4e0e\u975e\u89c4\u5219\u5f62\u4e24\u79cd.\n\u4f18\u70b9: \u53ef\u9760\u6027\u9ad8\n\u7f3a\u70b9: \u63a7\u5236\u590d\u6742, \u7ebf\u8def\u6210\u672c\u9ad8"
+                                        },
+                                        {
+                                            "name": "\u4f7f\u7528\u8005",
+                                            "value": "\u516c\u7528\u7f51(Public Network)\n\u4e00\u822c\u7531\u7535\u4fe1\u516c\u53f8\u5236\u9020, \u7f34\u7eb3\u8d39\u7528\u7684\u4eba\u53ef\u4ee5\u83b7\u5f97\u670d\u52a1.\n\u4e13\u7528\u7f51(Private Network)\n\u67d0\u4e2a\u90e8\u95e8\u6216\u6ee1\u8db3\u7279\u6b8a\u4e1a\u52a1\u9700\u8981\u800c\u5efa\u7acb\u7684\u7f51\u7edc, \u4e0d\u5411\u672c\u5355\u4f4d\u5446\u7684\u4eba\u63d0\u4f9b\u670d\u52a1, \u6bd4\u5982\u94c1\u8def, \u7535\u529b, \u519b\u961f\u7b49\u90e8\u95e8\u7684\u4e13\u7528\u7f51\u7edc."
+                                        },
+                                        {
+                                            "name": "\u4ea4\u6362\u6280\u672f",
+                                            "value": "\u7535\u8def\u4ea4\u6362\u7f51\u7edc\n1. \u5efa\u7acb\u4e13\u7528\u901a\u8def\u8fdb\u884c\u6570\u636e\u8fde\u63a5\n2. \u4f18\u70b9: \u76f4\u63a5\u4f20\u8f93, \u5ef6\u8fdf\u5c0f\n3. \u7f3a\u70b9: \u7ebf\u8def\u5229\u7528\u7387\u4f4e, \u4e0d\u6613\u8fdb\u884c\u5dee\u9519\u63a7\u5236\n\u62a5\u6587\u4ea4\u6362\u7f51\u7edc\n1. \u62a5\u6587\u53d1\u5230\u76f8\u90bb\u7ed3\u70b9, \u67e5\u627e\u8f6c\u53d1\u8868, \u8f6c\u53d1\n2. \u4f18\u70b9: \u5145\u5206\u5229\u7528\u7ebf\u8def\u5bb9\u91cf, \u5b9e\u73b0\u4e0d\u540c\u94fe\u8def\u4e4b\u95f4\u4e0d\u540c\u6570\u636e\u4f20\u8f93\u901f\u5f55\u7684\u8f6c\u6362, \u683c\u5f0f\u8f6c\u6362, \u4e00\u5bf9\u591a\u591a\u5bf9\u4e00, \u5dee\u9519\u63a7\u5236\n3. \u7f3a\u70b9: \u589e\u5927\u5f00\u9500, \u589e\u5927\u65f6\u5ef6, \u7f13\u51b2\u533a\u96be\u4ee5\u7ba1\u7406\n\u5206\u7ec4\u4ea4\u6362\u7f51\u7edc\n4. \u6570\u636e\u5206\u6210\u5b9a\u957f\u6570\u636e\u5757, \u7136\u540e\u6253\u5305\n5. \u4f18\u70b9: \u51cf\u5c11\u65f6\u5ef6, \u7f13\u51b2\u533a\u5bb9\u6613\u7ba1\u7406, \u7f51\u7edc\u5360\u7528\u5e73\u5747\u7f13\u51b2\u533a\u66f4\u5c11, \u66f4\u5bb9\u6613\u6807\u51c6\u5316, +\u62a5\u6587\u4ea4\u6362\u7f51\u7edc\u4f18\u70b9",
+                                            "children": [
+                                                {
+                                                    "name": "\u7535\u8def\u4ea4\u6362\u7f51\u7edc",
+                                                    "children": [
+                                                        {
+                                                            "labels": [
+                                                                "\u7279\u70b9"
+                                                            ],
+                                                            "name": "\u5efa\u7acb\u4e13\u7528\u901a\u8def\u8fdb\u884c\u6570\u636e\u8fde\u63a5"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u4f18\u70b9"
+                                                            ],
+                                                            "name": "\u76f4\u63a5\u4f20\u8f93, \u5ef6\u8fdf\u5c0f"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u7f3a\u70b9"
+                                                            ],
+                                                            "name": "\u7ebf\u8def\u5229\u7528\u7387\u4f4e, \u4e0d\u6613\u8fdb\u884c\u5dee\u9519\u63a7\u5236"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u62a5\u6587\u4ea4\u6362\u7f51\u7edc",
+                                                    "children": [
+                                                        {
+                                                            "labels": [
+                                                                "\u7279\u70b9"
+                                                            ],
+                                                            "name": "\u62a5\u6587\u53d1\u5230\u76f8\u90bb\u7ed3\u70b9, \u67e5\u627e\u8f6c\u53d1\u8868, \u8f6c\u53d1"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u4f18\u70b9"
+                                                            ],
+                                                            "name": "\u5145\u5206\u5229\u7528\u7ebf\u8def\u5bb9\u91cf, \u5b9e\u73b0\u4e0d\u540c\u94fe\u8def\u4e4b\u95f4\u4e0d\u540c\u6570\u636e\u4f20\u8f93\u901f\u5f55\u7684\u8f6c\u6362, \u683c\u5f0f\u8f6c\u6362, \u4e00\u5bf9\u591a\u591a\u5bf9\u4e00, \u5dee\u9519\u63a7\u5236"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u7f3a\u70b9"
+                                                            ],
+                                                            "name": "\u589e\u5927\u5f00\u9500, \u589e\u5927\u65f6\u5ef6, \u7f13\u51b2\u533a\u96be\u4ee5\u7ba1\u7406"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u5206\u7ec4\u4ea4\u6362\u7f51\u7edc",
+                                                    "children": [
+                                                        {
+                                                            "labels": [
+                                                                "\u7279\u70b9"
+                                                            ],
+                                                            "name": "\u6570\u636e\u5206\u6210\u5b9a\u957f\u6570\u636e\u5757, \u7136\u540e\u6253\u5305"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u4f18\u70b9"
+                                                            ],
+                                                            "name": "\u51cf\u5c11\u65f6\u5ef6, \u7f13\u51b2\u533a\u5bb9\u6613\u7ba1\u7406, \u7f51\u7edc\u5360\u7528\u5e73\u5747\u7f13\u51b2\u533a\u66f4\u5c11, \u66f4\u5bb9\u6613\u6807\u51c6\u5316, +\u62a5\u6587\u4ea4\u6362\u7f51\u7edc\u4f18\u70b9"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u7f3a\u70b9"
+                                                            ],
+                                                            "name": "\u65e0"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u4f20\u8f93\u4ecb\u8d28",
+                                            "value": "\u6709\u7ebf\u4e0e\u65e0\u7ebf\n\u4f18\u70b9\u7f51\u7edc\u53c8\u80fd\u5206\u6210\u201c\u53cc\u7ede\u7ebf\u7f51\u7edc\u201d \u201c\u540c\u8f74\u7535\u7f06\u7f51\u7edc\u201d\u7b49. \u65e0\u9650\u7f51\u7edc\u5206\u6210\u84dd\u7259, \u5fae\u535a, \u65e0\u7ebf\u7535\u7b49"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u6807\u51c6\u5316\u4e0e\u7ec4\u7ec7",
+                                    "children": [
+                                        {
+                                            "name": "RFC",
+                                            "value": "\u516d\u79cdRFC:\n1. \u56e0\u7279\u7f51\u8349\u6848(Internet Draft) [Step1]\n2. \u8bd5\u9a8c\u7684RFC\n3. \u63d0\u4f9b\u4fe1\u606f\u7684RFC\n4. \u5efa\u8bae\u6807\u51c6(Proposed Standard) [Step2]\n5. \u8349\u6848\u6807\u51c6(Draft Standard) [Step3]\n6. \u56e0\u7279\u7f51\u6807\u51c6(Internet Standard) [Step4]"
+                                        },
+                                        {
+                                            "name": "\u7ec4\u7ec7",
+                                            "value": "ISO - \u56fd\u9645\u6807\u51c6\u5316\u7ec4\u7ec7\nITU - \u56fd\u9645\u7535\u4fe1\u8054\u76df\nIEEE - \u56fd\u9645\u7535\u6c14\u7535\u5b50\u5de5\u7a0b\u5e08\u534f\u4f1a"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u6027\u80fd\u6307\u6807",
+                                    "children": [
+                                        {
+                                            "name": "\u5e26\u5bbd(Bandwidth)",
+                                            "value": "\u7f51\u7edc\u7684\u901a\u4fe1\u7ebf\u8def\u4f20\u9001\u6570\u636e\u7684\u80fd\u529b. \u6bd4\u7279/\u79d2"
+                                        },
+                                        {
+                                            "makers": [
+                                                "flag-red"
+                                            ],
+                                            "name": "\u65f6\u5ef6(Delay)",
+                                            "value": "1. \u65f6\u5ef6, \u6570\u636e\u4ece\u7f51\u7edc\u7684\u4e00\u7aef\u4f20\u9001\u5230\u53e6\u4e00\u7aef\u6240\u9700\u8981\u7684\u603b\u65f6\u95f4.\n2. \u6392\u961f\u65f6\u5ef6(Queuing Delay)\n3. \u5904\u7406\u65f6\u5ef6(Nodal Precessing Delay)\n4. \u53d1\u9001\u65f6\u5ef6(Transmission Delay)\n\u53d1\u9001\u65f6\u5ef6 = \u5206\u7ec4\u5927\u5c0f / \u4fe1\u9053\u5e26\u5bbd\n5. \u4f20\u64ad\u65f6\u5ef6(Propagation Delay)\n\u4f20\u64ad\u65f6\u5ef6 = \u4fe1\u9053\u957f\u5ea6 / \u7535\u78c1\u6ce2\u901f\u5ea6\n6. \u603b\u65f6\u5ef6 = \u6392\u961f\u65f6\u5ef6+\u5904\u7406\u65f6\u5ef6+\u53d1\u9001\u65f6\u5ef6+\u4f20\u64ad\u65f6\u5ef6\n\n\u8fd9\u91cc\u559c\u6b22\u51fa\u9898: \u5206\u7ec4\u4ea4\u6362, \u628ax bits\u5206\u6210n\u7ec4, \u6bcf\u7ec4b bits(\u4f1a\u5305\u542b\u9644\u52a0bits), \u8fd9n\u7ec4\u901a\u8fc7k\u4e2a\u94fe\u8def, \u53d1\u9001\u901f\u7387p bps. \u6c42\u603b\u65f6\u5ef6: \u7b2c\u4e00\u90e8\u5206: \u4f20\u64ad\u65f6\u5ef6, \u603b\u957f\u5ea6/\u7535\u78c1\u6ce2\u901f\u5ea6. \u6709\u65f6\u4f1a\u5ffd\u7565. \u7b2c\u4e8c\u90e8\u5206: [\u201c\u706b\u8f66\u5934\u8fdb\u5c71\u6d1e\u5230\u706b\u8f66\u5c3e\u8fdb\u5c71\u6d1e\u201d n\u00b7b/p +\u201c\u706b\u8f66\u5c3e\u8fdb\u5c71\u6d1e\u5230\u706b\u8f66\u5c3e\u51fa\u5c71\u6d1e\u201d (k-1)\u00b7b/p], \u7b2c\u4e09\u90e8\u5206: \u6392\u961f\u5ef6\u8fdf\u4e0e\u5904\u7406\u65f6\u5ef6, \u7ecf\u5e38\u4f1a\u5ffd\u7565."
+                                        },
+                                        {
+                                            "name": "\u65f6\u5ef6\u5e26\u5bbd\u79ef",
+                                            "value": "\u65f6\u5ef6\u5e26\u5bbd\u79ef = \u4f20\u64ad\u65f6\u5ef6 * \u94fe\u8def\u5e26\u5bbd\n\u76f8\u5f53\u4e8e\u901a\u4fe1\u94fe\u8def\u4e0a\u53ef\u4ee5\u88c5\u4e0b\u591a\u5c11bit. \u6ce8\u610f\u8fd9\u4e2a\u662f\u7528\u4f20\u64ad\u65f6\u5ef6\u4e58\u7684!"
+                                        },
+                                        {
+                                            "name": "\u5f80\u8fd4\u65f6\u5ef6(Round-Trip Time, RTT)",
+                                            "value": "\u5f80\u8fd4\u65f6\u5ef6\u65f6\u53d1\u9001\u7aef\u53d1\u9001\u6570\u636e\u5f00\u59cb\u5230\u6536\u5230\u63a5\u6536\u7aef\u7684\u786e\u8ba4\u7684\u603b\u65f6\u95f4."
+                                        },
+                                        {
+                                            "name": "\u541e\u5410\u91cf(Throughput)",
+                                            "value": "\u6307\u5355\u4f4d\u65f6\u95f4\u5185\u901a\u8fc7\u7f51\u7edc(\u6216\u4fe1\u9053\u3001\u63a5\u53e3)\u7684\u6570\u636e\u91cf."
+                                        },
+                                        {
+                                            "name": "\u901f\u7387(Speed)"
+                                        },
+                                        {
+                                            "name": "\u4fe1\u9053\u5229\u7528\u7387",
+                                            "value": "\u6709\u6570\u636e\u901a\u8fc7\u7684\u65f6\u95f4 / \u603b\u65f6\u95f4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u5206\u5c42\u7ed3\u6784",
+                                    "children": [
+                                        {
+                                            "name": "\u4e13\u4e1a\u540d\u8bcd",
+                                            "value": "1. \u5bf9\u7b49\u5c42, \u5bf9\u7b49\u5b9e\u4f53\n2. n-PCI + n-SDU = (n-1)PDU\n3. OSI\u4e09\u4e2a\u4e3b\u8981\u6982\u5ff5\u534f\u8bae(\u6a2a\u5411)\u3001\u63a5\u53e3\u3001\u670d\u52a1(\u7eb5\u5411)\n4. \u670d\u52a1\u539f\u8bed(\u8bf7\u6c42, \u6307\u793a, \u54cd\u5e94, \u8bc1\u5b9e)\n5. \u9762\u5411\u8fde\u63a5\u670d\u52a1\u4e0e\u65e0\u8fde\u63a5\u670d\u52a1, \u53ef\u9760\u670d\u52a1\u4e0e\u4e0d\u53ef\u9760\u670d\u52a1, \u6709\u5e94\u7b54\u670d\u52a1\u4e0e\u65e0\u5e94\u7b54\u670d\u52a1",
+                                            "children": [
+                                                {
+                                                    "name": "\u5bf9\u7b49\u5c42, \u5bf9\u7b49\u5b9e\u4f53"
+                                                },
+                                                {
+                                                    "name": "n-PCI + n-SDU = (n-1)PDU",
+                                                    "value": "PDU(Protocol Data Unit) -\u534f\u8bae\u6570\u636e\u5355\u5143(\u62a5\u6587)\nSDU(Serve Data Unit) -\u6570\u636e\u670d\u52a1\u5355\u5143(\u62a5\u6587\u4e2d\u7684\u6570\u636e\u90e8\u5206)\nPCI(Protocol Control Information) -\u534f\u8bae\u63a7\u5236\u4fe1\u606f(\u62a5\u6587\u4e2d\u7684\u63a7\u5236\u4fe1\u606f\u90e8\u5206)"
+                                                },
+                                                {
+                                                    "name": "\u534f\u8bae",
+                                                    "value": "1. \u534f\u8bae\u662f\u4e24\u4e2a\u5bf9\u7b49\u5b9e\u4f53\u4e4b\u95f4\u89c4\u5219\u7684\u96c6\u5408.\n2. \u534f\u8bae\u662f\u6c34\u5e73\u7684, \u4e0d\u5bf9\u7b49\u5b9e\u4f53\u4e4b\u95f4\u6ca1\u6709\u534f\u8bae\n3. \u534f\u8bae\u7531\u8bed\u6cd5(\u89c4\u5b9a\u4e86\u6570\u636e\u4f20\u8f93\u7684\u683c\u5f0f-\u5982\u4f55\u8bb2)\u3001\u8bed\u4e49(\u89c4\u5b9a\u4e86\u8981\u5b8c\u6210\u7684\u529f\u80fd-\u8bb2\u4ec0\u4e48)\u3001\u540c\u6b65(\u89c4\u5b9a\u4e86\u6267\u884c\u5404\u79cd\u64cd\u4f5c\u7684\u6761\u4ef6\u4e0e\u65f6\u5e8f\u5173\u7cfb)\u4e09\u90e8\u5206\u6784\u6210",
+                                                    "children": [
+                                                        {
+                                                            "image": {
+                                                                "src": "xap:resources/e56d64795d878cbc4bd12edefca6623171498a592263f446bf2be407e4a24351.png",
+                                                                "width": 140,
+                                                                "height": 103
+                                                            },
+                                                            "name": "\u8bed\u6cd5\u3001\u8bed\u4e49\u3001\u65f6\u5e8f"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u63a5\u53e3",
+                                                    "value": "1. \u63a5\u53e3\u662f\u540c\u4e00\u7ed3\u70b9\u5185\u76f8\u90bb\u4e24\u5c42\u95f4\u4ea4\u6362\u4fe1\u606f\u7684\u8fde\u63a5\u7ed3\u70b9,  \u662f\u4e00\u4e2a\u7cfb\u7edf\u5185\u90e8\u7684\u89c4\u5b9a. \n2. \u4e0d\u80fd\u8de8\u7ea7\u63d0\u4f9b\u670d\u52a1.\n3. \u901a\u8fc7SAP(server access point)\u4e3a\u4e0a\u5c42\u63d0\u4f9b\u670d\u52a1."
+                                                },
+                                                {
+                                                    "name": "\u670d\u52a1",
+                                                    "value": "1. \u4e0b\u5c42\u4e3a\u4e0a\u5c42\u63d0\u4f9b\u670d\u52a1.\n2.\u56db\u79cd\u670d\u52a1\u539f\u8bed\n\u7528\u6237 ----- \u670d\u52a1\u5668\n    -\u8bf7\u6c42-->\n    <--\u6307\u793a-\n    -\u54cd\u5e94-->\n    <--\u8bc1\u5b9e",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u56db\u4e2a\u670d\u52a1\u539f\u8bed",
+                                                            "value": "\u8bf7\u6c42\n\u670d\u52a1\u7528\u6237\u53d1\u5f80\u670d\u52a1\u63d0\u4f9b\u8005, \u8bf7\u6c42\u5b8c\u6210\u67d0\u9879\u5de5\u4f5c\n\u6307\u793a\n\u670d\u52a1\u63d0\u4f9b\u8005\u53d1\u5411\u670d\u52a1\u7528\u6237, \u6307\u793a\u7528\u6237\u505a\u67d0\u4ef6\u4e8b\u60c5\n\u54cd\u5e94\n\u670d\u52a1\u7528\u6237\u53d1\u5f80\u670d\u52a1\u63d0\u4f9b\u8005, \u4f5c\u4e3a\u5bf9\u6307\u793a\u7684\u76f8\u5e94\n\u8bc1\u5b9e\n\u670d\u52a1\u63d0\u4f9b\u8005\u53d1\u5f80\u670d\u52a1\u7528\u6237, \u4f5c\u4e3a\u5bf9\u8bf7\u6c42\u7684\u8bc1\u5b9e"
+                                                        },
+                                                        {
+                                                            "name": "\u4e09\u79cd\u670d\u52a1\u5206\u7c7b",
+                                                            "value": "1. \u9762\u5411\u8fde\u63a5\u670d\u52a1\u4e0e\u65e0\u8fde\u63a5\u670d\u52a1\n2. \u53ef\u9760\u670d\u52a1\u4e0e\u4e0d\u53ef\u9760\u670d\u52a1\n3. \u6709\u5e94\u7b54\u670d\u52a1\u4e0e\u65e0\u5e94\u7b54\u670d\u52a1\n\u6ce8\u610f\u5728\u4e00\u5c42\u5185\u5b8c\u6210\u7684\u529f\u80fd\u4e0d\u662f\u90fd\u53eb\u505a\u670d\u52a1, \u53ea\u6709\u88ab\u4e0a\u5c42\u770b\u5f97\u5230\u7684\u529f\u80fd\u624d\u53eb\u505a\u670d\u52a1."
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u534f\u8bae\u4e0e\u670d\u52a1\u7684\u5173\u7cfb",
+                                                    "value": "1. \u534f\u8bae\u65f6\u4e24\u4e2a\u5bf9\u7b49\u5b9e\u4f53\u4e4b\u95f4\u901a\u4fe1\u89c4\u5219\u7684\u96c6\u5408. \u5728\u534f\u8bae\u7684\u63a7\u5236\u4e0b, \u4e24\u4e2a\u5bf9\u7b49\u5b9e\u4f53\u95f4\u7684\u901a\u4fe1\u4f7f\u5f97\u672c\u5c42\u80fd\u591f\u5411\u4e0a\u4e00\u5c42\u63d0\u4f9b\u670d\u52a1, \u800c\u8981\u5b9e\u73b0\u672c\u5c42\u534f\u8bae, \u8fd8\u9700\u8981\u4f7f\u7528\u4e0b\u4e00\u5c42\u63d0\u4f9b\u7684\u670d\u52a1.\n2. \u534f\u8bae\u7684\u5b9e\u73b0\u4fdd\u8bc1\u4e86\u80fd\u591f\u5411\u4e0a\u4e00\u5c42\u63d0\u4f9b\u670d\u52a1, \u672c\u5c42\u7684\u670d\u52a1\u7528\u6237\u53ea\u80fd\u770b\u89c1\u670d\u52a1\u800c\u65e0\u6cd5\u770b\u89c1\u4e0b\u9762\u7684\u534f\u8bae. \u5373\u4e0b\u9762\u7684\u534f\u8bae\u5bf9\u4e0a\u8fb9\u7684\u670d\u52a1\u7528\u6237\u662f\u900f\u660e\u7684.\n3. \u534f\u8bae\u662f\u201c\u6c34\u5e73\u7684\u201d, \u662f\u4e24\u4e2a\u5bf9\u7b49\u5b9e\u4f53\u95f4\u901a\u4fe1\u7684\u89c4\u5219. \u670d\u52a1\u662f\u201c\u5782\u76f4\u7684\u201d, \u670d\u52a1\u662f\u6709\u4e0b\u5c42\u901a\u8fc7\u5c42\u95f4\u501f\u53e3\u5411\u4e0a\u5c42\u63d0\u4f9b\u7684."
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "makers": [
+                                                "flag-red"
+                                            ],
+                                            "image": {
+                                                "src": "xap:resources/40177c5fde578de171ce27aafb58edb0b0992263adb22f2b05196c3e6cafb3d7.png",
+                                                "width": 475,
+                                                "height": 177
+                                            },
+                                            "name": "ISO/OSI\u6a21\u578b\u4e0eTCP/IP\u6a21\u578b",
+                                            "value": "1. \u901a\u4fe1\u5b50\u7f51 - (\u7f51\u7edc\u63a5\u53e3\u5c42)=(\u7269\u7406\u5c42+\u6570\u636e\u94fe\u8def\u5c42), \u7f51\u7edc\u5c42\n2. \u627f\u4e0a\u542f\u4e0b - \u4f20\u8f93\u5c42\n3. \u8d44\u6e90\u5b50\u7f51 - (\u5e94\u7528\u5c42)=(\u4f1a\u8bdd\u5c42+\u8868\u793a\u5c42+\u5e94\u7528\u5c42)",
+                                            "children": [
+                                                {
+                                                    "name": "\u5404\u4e2a\u5c42\u5c0f\u7ed3",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u5e94\u7528\u5c42",
+                                                            "children": [
+                                                                {
+                                                                    "labels": [
+                                                                        "\u4f5c\u7528"
+                                                                    ],
+                                                                    "name": "\u7528\u6237\u4e0e\u7f51\u7edc\u7684\u754c\u9762"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7ecf\u5178\u534f\u8bae"
+                                                                    ],
+                                                                    "name": "FTP\u3001SMTP\u3001HTTP"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5355\u4f4d"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u6d41\u91cf\u63a7\u5236"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u505a\u7684\u4e8b\u60c5"
+                                                                    ],
+                                                                    "name": "\u52a0\u5165\u63a7\u5236\u4fe1\u606f"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7269\u7406\u8bbe\u5907"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u670d\u52a1\u8bbf\u95ee\u70b9(SAP)"
+                                                                    ],
+                                                                    "name": "\u7528\u6237\u754c\u9762"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u8868\u793a\u5c42",
+                                                            "children": [
+                                                                {
+                                                                    "labels": [
+                                                                        "\u4f5c\u7528"
+                                                                    ],
+                                                                    "name": "\u4ea4\u6362\u4fe1\u606f\u7684\u8868\u793a\u65b9\u5f0f.\n\u6570\u636e\u538b\u7f29\u3001\u52a0\u5bc6\u89e3\u5bc6"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7ecf\u5178\u534f\u8bae"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5355\u4f4d"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u6d41\u91cf\u63a7\u5236"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u505a\u7684\u4e8b\u60c5"
+                                                                    ],
+                                                                    "name": "(\u52a0\u5165\u5fc5\u8981\u7684\u5934\u6587\u4ef6)"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7269\u7406\u8bbe\u5907"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u670d\u52a1\u8bbf\u95ee\u70b9(SAP)"
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u4f1a\u8bdd\u5c42",
+                                                            "children": [
+                                                                {
+                                                                    "labels": [
+                                                                        "\u4f5c\u7528"
+                                                                    ],
+                                                                    "name": "\u4e0d\u540c\u4e3b\u673a\u5404\u4e2a\u8fdb\u7a0b\u4f1a\u8bdd.\n\u5efa\u7acb\u540c\u6b65(SYN)"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7ecf\u5178\u534f\u8bae"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5355\u4f4d"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u6d41\u91cf\u63a7\u5236"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u505a\u7684\u4e8b\u60c5"
+                                                                    ],
+                                                                    "name": "(\u52a0\u5165\u5fc5\u8981\u7684\u5934\u6587\u4ef6)"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7269\u7406\u8bbe\u5907"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u670d\u52a1\u8bbf\u95ee\u70b9(SAP)"
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u4f20\u8f93\u5c42",
+                                                            "children": [
+                                                                {
+                                                                    "labels": [
+                                                                        "\u4f5c\u7528"
+                                                                    ],
+                                                                    "name": "\u7aef\u5230\u7aef\u7684\u6570\u636e\u4f20\u8f93"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7ecf\u5178\u534f\u8bae"
+                                                                    ],
+                                                                    "name": "TCP\u3001UDP"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5355\u4f4d"
+                                                                    ],
+                                                                    "name": "\u62a5\u6587\u6bb5\\\u6570\u636e\u62a5"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u6d41\u91cf\u63a7\u5236"
+                                                                    ],
+                                                                    "name": "\u221a"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u505a\u7684\u4e8b\u60c5"
+                                                                    ],
+                                                                    "name": "\u5206\u5272\u6210[\u62a5\u6587]"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7269\u7406\u8bbe\u5907"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u670d\u52a1\u8bbf\u95ee\u70b9(SAP)"
+                                                                    ],
+                                                                    "name": "\u7aef\u53e3\u53f7"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u7f51\u7edc\u5c42",
+                                                            "children": [
+                                                                {
+                                                                    "labels": [
+                                                                        "\u4f5c\u7528"
+                                                                    ],
+                                                                    "name": "\u4e24\u4e3b\u673a\u4e4b\u95f4\u7684\u901a\u8fc7\u8def\u7531\u901a\u4fe1"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5355\u4f4d"
+                                                                    ],
+                                                                    "name": "\u6570\u636e\u62a5"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7ecf\u5178\u534f\u8bae"
+                                                                    ],
+                                                                    "name": "IP\u3001IPX\u3001ICMP\u3001IGMP\u3001\nARP\u3001RARP\u3001OSFP"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u6d41\u91cf\u63a7\u5236"
+                                                                    ],
+                                                                    "name": "\u221a"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u505a\u7684\u4e8b\u60c5"
+                                                                    ],
+                                                                    "name": "\u5206\u5272\u6210[\u5206\u7ec4]"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7269\u7406\u8bbe\u5907"
+                                                                    ],
+                                                                    "name": "\u8def\u7531\u5668\nRouter"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u670d\u52a1\u8bbf\u95ee\u70b9(SAP)"
+                                                                    ],
+                                                                    "name": "IP\u5730\u5740"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u6570\u636e\u94fe\u8def\u5c42",
+                                                            "children": [
+                                                                {
+                                                                    "labels": [
+                                                                        "\u4f5c\u7528"
+                                                                    ],
+                                                                    "name": "\u70b9\u5230\u70b9\u7684\u901a\u4fe1/\u8fdb\u7a0b\u95f4\u901a\u4fe1. \b\n\u6210\u5e27\u3001\u5dee\u9519\u63a7\u5236\u3001\u6d41\u91cf\u63a7\u5236\u3001\n\u4f20\u8f93\u7ba1\u7406. (\u65e0\u62e5\u585e\u63a7\u5236)\n\u63d0\u4f9b\u6570\u636e\u53d1\u9001\u4e0e\u63a5\u53d7\u7684\u529f\u80fd"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7ecf\u5178\u534f\u8bae"
+                                                                    ],
+                                                                    "name": "SDLC\u3001HDLC\u3001PPP\u3001STP"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5355\u4f4d"
+                                                                    ],
+                                                                    "name": "\u5e27"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u6d41\u91cf\u63a7\u5236"
+                                                                    ],
+                                                                    "name": "\u221a"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u505a\u7684\u4e8b\u60c5"
+                                                                    ],
+                                                                    "name": "\u4ee5\u5e27\u53d1\u9001"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7269\u7406\u8bbe\u5907"
+                                                                    ],
+                                                                    "name": "\u4ea4\u6362\u673a\nSwitch"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u670d\u52a1\u8bbf\u95ee\u70b9(SAP)"
+                                                                    ],
+                                                                    "name": "Mac\u5730\u5740"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u7269\u7406\u5c42",
+                                                            "children": [
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7ecf\u5178\u534f\u8bae"
+                                                                    ],
+                                                                    "name": "EIA-232C\u3001EIA/TIA RS-449\u3001\nCCITT X.21"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u4f5c\u7528"
+                                                                    ],
+                                                                    "name": "\u6570\u636e\u7ec8\u7aef\u8bbe\u5907(DTE)\n\u4e0e\u6570\u636e\u901a\u4fe1\u8bbe\u5907(DCE)\n\u7684\u7269\u7406\u4e0e\u903b\u8f91\u8fde\u63a5\u65b9\u6cd5"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5355\u4f4d"
+                                                                    ],
+                                                                    "name": "\u6bd4\u7279(\u6d41)"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u6d41\u91cf\u63a7\u5236"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u505a\u7684\u4e8b\u60c5"
+                                                                    ],
+                                                                    "name": "\u4ee5\u6bd4\u7279\u6d41\u53d1\u9001"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u7269\u7406\u8bbe\u5907"
+                                                                    ],
+                                                                    "name": "\u96c6\u7ebf\u5668, \u4e2d\u7ee7\u5668\nHub"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u670d\u52a1\u8bbf\u95ee\u70b9(SAP)"
+                                                                    ],
+                                                                    "name": "\u7f51\u5361\u63a5\u53e3"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "makers": [
+                                "c_symbol_exercise",
+                                "symbol-share"
+                            ],
+                            "labels": [
+                                "./\u8ba1\u7b97\u673a\u79d1\u5b66/\u8ba1\u7b97\u673a\u7f51\u7edc/\u7269\u7406\u5c42.xmind"
+                            ],
+                            "link": "file:///Users/kimshan/Public/learn/PKM/KnowledgeMap/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82.xmind",
+                            "name": "\u7269\u7406\u5c42",
+                            "children": [
+                                {
+                                    "name": "\u901a\u4fe1\u57fa\u7840",
+                                    "children": [
+                                        {
+                                            "name": "\u57fa\u672c\u6982\u5ff5",
+                                            "value": "\u6570\u636e\u3001\u4fe1\u53f7\u4e0e\u7801\u5143\n\u4fe1\u6e90\u3001\u4fe1\u9053\u4e0e\u4fe1\u5bbf\n\u5355\u5411\u901a\u4fe1\u3001\u534a\u53cc\u5de5\u3001\u5168\u53cc\u5de5\n\u901f\u7387\u3001\u6ce2\u7279\u4e0e\u5e26\u5bbd",
+                                            "children": [
+                                                {
+                                                    "name": "\u6570\u636e\u3001\u4fe1\u53f7\u4e0e\u7801\u5143",
+                                                    "value": "1. \u6570\u5b57\u4e0e\u4fe1\u53f7\n\u6570\u636e\u662f\u4f20\u9001\u4fe1\u606f\u7684\u5b9e\u4f53\n\u4fe1\u53f7\u662f\u6570\u636e\u7684\u7535\u6c14\u6216\u7535\u78c1\u8868\u73b0, \u662f\u6570\u636e\u4f20\u8f93\u8fc7\u7a0b\u4e2d\u7684\u5b58\u5728\u5f62\u5f0f.\n\u6a21\u62df\u6570\u636e, \u6570\u5b57\u6570\u636e\n2. \u4e32\u884c\u4f20\u8f93\u4e0e\u5e76\u884c\u4f20\u8f93\n3. \u7801\u5143\u2014\u2014\u56fa\u5b9a\u7684\u6ce2\u5f62\u8868\u793ak\u8fdb\u5236\u6570\u5b57; k\u8fdb\u5236\u7801\u5143; \u7801\u5143\u5bbd\u5ea6"
+                                                },
+                                                {
+                                                    "name": "\u4fe1\u6e90\u3001\u4fe1\u9053\u4e0e\u4fe1\u5bbf",
+                                                    "value": "1. \u4fe1\u6e90\u662f\u4ea7\u751f\u548c\u53d1\u9001\u6570\u636e\u7684\u6e90\u5934\n2. \u4fe1\u5bbf\u662f\u63a5\u53d7\u6570\u636e\u7684\u7ec8\u70b9\n3. \u4fe1\u9053\u662f\u4fe1\u53f7\u7684\u4f20\u8f93\u5a92\u4ecb(\u4e0e\u7535\u8def\u5e76\u4e0d\u7b49\u540c)\n4. \u4fe1\u6e90\u53d1\u9001\u7684\u4fe1\u53f7, \u8981\u7ecf\u8fc7\u53d8\u6362\u5668\u8f6c\u6362\u6210\u9002\u5408\u5728\u4fe1\u9053\u4e0a\u4f20\u8f93\u7684\u4fe1\u53f7, \u63a5\u53d7\u65f6\u518d\u7528\u53cd\u53d8\u6362\u5668\u8f6c\u5316\u4e3a\u539f\u4fe1\u53f7\u53d1\u9001\u7ed9\u4fe1\u5bbf.\n(\u4fe1\u6e90 -> \u53d8\u6362\u5668 -> \u4fe1\u9053+\u566a\u58f0\u6e90 -> \u53cd\u53d8\u6362\u5668 -> \u4fe1\u5bbf)\n5. \u6a21\u62df\u4fe1\u9053\u4e0e\u6570\u5b57\u4fe1\u9053\u3001\u6709\u7ebf\u4fe1\u9053\u4e0e\u65e0\u7ebf\u4fe1\u9053\u3001\u57fa\u5e26\u4fe1\u53f7\u4e0e\u5e26\u5bbd\u4fe1\u9053"
+                                                },
+                                                {
+                                                    "name": "\u5355\u5411\u901a\u4fe1\u3001\u534a\u53cc\u5de5\u3001\u5168\u53cc\u5de5",
+                                                    "value": "1. \u5355\u5411\u901a\u4fe1: \u53ea\u6709\u4e00\u4e2a\u65b9\u5411\u7684\u901a\u4fe1, \u6ca1\u6709\u53cd\u65b9\u5411\u7684\u4ea4\u4e92, \u4ec5\u9700\u8981\u4e00\u6761\u4fe1\u9053. \u4f8b\u5982, \u65e0\u7ebf\u7535\u5e7f\u64ad, \u7535\u89c6\u5e7f\u64ad.\n2. \u534a\u53cc\u5de5\u901a\u4fe1: \u901a\u4fe1\u7684\u53cc\u65b9\u90fd\u53ef\u4ee5\u53d1\u9001\u6216\u63a5\u53d7\u4fe1\u606f, \u4f46\u4efb\u4f55\u4e00\u65b9\u90fd\u4e0d\u80fd\u540c\u65f6\u53d1\u9001\u548c\u63a5\u53d7\u4fe1\u606f, \u9700\u8981\u4e24\u6761\u4fe1\u9053.\n3. \u5168\u53cc\u5de5\u901a\u4fe1: \u901a\u4fe1\u7684\u53cc\u65b9\u90fd\u53ef\u4ee5\u53d1\u9001\u6216\u63a5\u53d7\u4fe1\u606f, \u53ef\u4ee5\u540c\u65f6\u53d1\u9001\u548c\u63a5\u53d7\u4fe1\u606f, \u4e5f\u9700\u8981\u4e24\u6761\u4fe1\u9053."
+                                                },
+                                                {
+                                                    "name": "\u901f\u7387\u3001\u6ce2\u7279\u4e0e\u5e26\u5bbd",
+                                                    "value": "1. \u7801\u5143\u4f20\u8f93\u901f\u7387\u2014\u2014\u6ce2\u7279\u7387: \u6bcf\u79d2\u4f20\u591a\u5c11\u4e2a\u7801\u5143\n2. \u4fe1\u606f\u4f20\u8f93\u901f\u7387\u2014\u2014\u6bd4\u7279\u7387: \u6bcf\u79d2\u4f20\u591a\u5c11\u4e2abit\n3. \u4e00\u4e2a (log_2^n\u8fdb\u5236\u7684) \u7801\u5143\u643a\u5e26n\u6bd4\u7279\u7684\u4fe1\u606f\u91cf. \u5219M\u6ce2\u7279\u7387\u7684\u7801\u5143\u4f20\u8f93\u901f\u7387\u5bf9\u5e94\u7684\u4fe1\u606f\u4f20\u8f93\u901f\u7387\u662fMn bit/s\n4. \u5e26\u5bbd\u662f\u539f\u662f\u4fe1\u53f7\u7684\u9891\u5e26\u5bbd\u5ea6, \u5355\u4f4d\u662fHz"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "makers": [
+                                                "flag-red"
+                                            ],
+                                            "name": "\u5948\u594e\u65af\u7279\u5b9a\u7406\u4e0e\u9999\u519c\u5b9a\u7406",
+                                            "value": "\u5948\u594e\u65af\u7279\u5b9a\u7406: R=2Wlog_2 V - \u8003\u8651\u9891\u7387\u6761\u4ef6\n\u9999\u519c\u5b9a\u5f8b: R=Wlog_2(1+S/N) - \u8003\u8651\u566a\u58f0\u6761\u4ef6",
+                                            "children": [
+                                                {
+                                                    "makers": [
+                                                        "flag-red"
+                                                    ],
+                                                    "image": {
+                                                        "src": "xap:resources/1fa60daa5e4b1bcdf834a48dc51b53b3ab4a4ebb8eeecd32092e24a6327d2c57.png",
+                                                        "width": 244.7421875,
+                                                        "height": 43.1328125,
+                                                        "isMathJaxImage": true
+                                                    },
+                                                    "name": "\u5948\u594e\u65af\u7279\u5b9a\u7406\n(W-\u5e26\u5bbd, V-\u79bb\u6563\u7535\u5e73\u6570)"
+                                                },
+                                                {
+                                                    "makers": [
+                                                        "flag-red"
+                                                    ],
+                                                    "image": {
+                                                        "src": "xap:resources/d5555d9a27bbe9f0c3f9668805a89418e465f207d8bec4cd70135193e17e157a.png",
+                                                        "width": 345.40625,
+                                                        "height": 89.4453125,
+                                                        "isMathJaxImage": true
+                                                    },
+                                                    "name": "\u9999\u519c\u5b9a\u7406\n(W-\u5e26\u5bbd, S-\u4fe1\u53f7\u529f\u7387, N-\u566a\u58f0\u529f\u7387)"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "makers": [
+                                                "flag-red"
+                                            ],
+                                            "name": "\u7f16\u7801\u4e0e\u8c03\u5236",
+                                            "value": "1. \n\u57fa\u5e26\u4fe1\u53f7 -> \u901a\u4fe1\u7ebf\u8def(\u6570\u5b57\u4fe1\u9053) = \u57fa\u5e26\u4f20\u8f93\n\u6570\u5b57\u4fe1\u53f7 -> \u901a\u4fe1\u7ebf\u8def(\u6a21\u62df\u4fe1\u9053) = \u9891\u5e26\u4f20\u8f93\n2. \u5185\u5bb9\u5305\u62ec\n(\u6570\u5b57)\u6570\u636e\u8c03\u5236\u4e3a(\u6a21\u62df)\u4fe1\u53f7\n(\u6570\u5b57)-----------(\u6570\u5b57)----\n(\u6a21\u62df)-----------(\u6a21\u62df)----\n(\u6a21\u62df)-----------(\u6570\u5b57)----",
+                                            "children": [
+                                                {
+                                                    "name": "\u6570\u5b57\u6570\u636e\u8c03\u5236\u4e3a\u6570\u5b57\u4fe1\u53f7",
+                                                    "value": "\u5f52\u96f6\u7801 - RZ\n\u4e0d\u5f52\u96f6\u7801 - NRZ\n\u53cd\u54cd\u4e0d\u5f52\u96f6\u7801 - NRZI\n\u66fc\u5f7b\u65af\u7279\u7801\n\u5dee\u5206\u66fc\u5f7b\u65af\u7279\u7801",
+                                                    "children": [
+                                                        {
+                                                            "image": {
+                                                                "src": "xap:resources/f800dfbe9e87a3f570cde220f658004c3c7296b4efe2678b622db1ae0501d500.png",
+                                                                "width": 492,
+                                                                "height": 234,
+                                                                "opacity": 1,
+                                                                "shadowVisible": true,
+                                                                "lockRatio": true
+                                                            },
+                                                            "name": "\u6570\u5b57\u6570\u636e\u7f16\u7801\u4e3a\u6570\u5b57\u4fe1\u53f7-\u8868\u683c\u4e0e\u56fe",
+                                                            "children": [
+                                                                {
+                                                                    "name": "(\u5355\u6781\u6027)\u5f52\u96f6\u7801\nRZ",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "0"
+                                                                            ],
+                                                                            "name": "0"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "1"
+                                                                            ],
+                                                                            "name": "10"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u7279\u70b9"
+                                                                            ],
+                                                                            "name": "\u6709\u65f6\u949f, \u6548\u7387\u4e0b\u964d"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "(\u5355\u6781\u6027)\u975e\u5f52\u96f6\u7801\nNRZ",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "0"
+                                                                            ],
+                                                                            "name": "0"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "1"
+                                                                            ],
+                                                                            "name": "1"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u7279\u70b9"
+                                                                            ],
+                                                                            "name": "\u65e0\u65f6\u949f, \u81ea\u5df1\u540c\u6b65"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u53cd\u5411\u975e\u5f52\u96f6\u7801\n(\u53cc\u6781\u578b\u975e\u5f52\u96f6\u7801)\nNRZI",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "0"
+                                                                            ],
+                                                                            "name": "-1"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "1"
+                                                                            ],
+                                                                            "name": "1"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u7279\u70b9"
+                                                                            ],
+                                                                            "name": "\u6709\u65f6\u949f, \u6548\u7387\u4e0d\u964d"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u66fc\u5f7b\u65af\u7279\u7f16\u7801",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "0"
+                                                                            ],
+                                                                            "name": "01"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "1"
+                                                                            ],
+                                                                            "name": "10"
+                                                                        },
+                                                                        {
+                                                                            "makers": [
+                                                                                "flag-red"
+                                                                            ],
+                                                                            "labels": [
+                                                                                "\u7279\u70b9"
+                                                                            ],
+                                                                            "name": "\u5e26\u5bbdx2\n\u4ee5\u592a\u7f51\u7528"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u5dee\u5206\u66fc\u5f7b\u65af\u7279\u7f16\u7801",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "0"
+                                                                            ],
+                                                                            "name": "\u4e0d\u53d8"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "1"
+                                                                            ],
+                                                                            "name": "\u53d8"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u7279\u70b9"
+                                                                            ],
+                                                                            "name": "\u6297\u5e72\u6270\u597d, \u81ea\u52a8\u540c\u6b65\n\u5c40\u57df\u7f51\u7528"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "4B/5B\u7f16\u7801",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u7279\u70b9"
+                                                                            ],
+                                                                            "name": "\u5c064bit\u8f6c\u5316\u4e3a5bit\n\u5269\u4e0b\u7684\u4f4d\u7528\u4e8e\u63a7\u5236\u7801"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "0"
+                                                                            ],
+                                                                            "name": "-"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "1"
+                                                                            ],
+                                                                            "name": "-"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u6570\u5b57\u6570\u636e\u8c03\u5236\u4e3a\u6a21\u62df\u4fe1\u53f7",
+                                                    "value": "ASK\nPSK\nFSK\nQAM = PSK+ASK\nR = Blog_2(mn) - m\u4e2a\u76f8\u4f4d, n\u79cd\u632f\u5e45",
+                                                    "children": [
+                                                        {
+                                                            "image": {
+                                                                "src": "xap:resources/c5def73ccb0ac2592d6f2f130edc423d681da41a298dfb0ee983d35ae315cc12.png",
+                                                                "width": 474,
+                                                                "height": 294,
+                                                                "borderWidth": 0,
+                                                                "borderColor": "#000000",
+                                                                "shadowVisible": true
+                                                            },
+                                                            "name": "\u6570\u5b57\u6570\u636e\u8c03\u5236\u4e3a\u6a21\u62df\u4fe1\u53f7-\u8868\u683c\u4e0e\u56fe",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u5e45\u79fb\u952e\u63a7(ASK)",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u6297\u5e72\u6270"
+                                                                            ],
+                                                                            "name": "\u6297\u5e72\u6270\u5dee"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u5b9e\u73b0"
+                                                                            ],
+                                                                            "name": "\u5bb9\u6613\u5b9e\u73b0"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u901f\u7387"
+                                                                            ],
+                                                                            "name": "-"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u9891\u79fb\u952e\u63a7(PSK)",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u6297\u5e72\u6270"
+                                                                            ],
+                                                                            "name": "\u6297\u5e72\u6270\u5f3a"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u5b9e\u73b0"
+                                                                            ],
+                                                                            "name": "\u5bb9\u6613\u5b9e\u73b0"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u901f\u7387"
+                                                                            ],
+                                                                            "name": "-"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u76f8\u79fb\u952e\u63a7(FSK)",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u6297\u5e72\u6270"
+                                                                            ],
+                                                                            "name": "-"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u5b9e\u73b0"
+                                                                            ],
+                                                                            "name": "-"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u901f\u7387"
+                                                                            ],
+                                                                            "name": "-"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u6b63\u4ea4\u632f\u5e45\u8c03\u5236(QAM)",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u6297\u5e72\u6270"
+                                                                            ],
+                                                                            "name": "-"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u5b9e\u73b0"
+                                                                            ],
+                                                                            "name": "-"
+                                                                        },
+                                                                        {
+                                                                            "makers": [
+                                                                                "flag-red"
+                                                                            ],
+                                                                            "labels": [
+                                                                                "\u901f\u7387"
+                                                                            ],
+                                                                            "image": {
+                                                                                "src": "xap:resources/47b92206cb1fa275f74a18e9ff61736da5ade42cc1dabaa008df47183a771cb0.png",
+                                                                                "width": 159,
+                                                                                "height": 40.507174887892376,
+                                                                                "isMathJaxImage": true
+                                                                            },
+                                                                            "name": "B-\u6ce2\u7279\u7387, m\u4e2a\u76f8\u4f4d, n\u79cd\u632f\u5e45",
+                                                                            "value": "\u6ce8\u610f! B\u662f\u6ce2\u7279\u7387! \u4e0d\u662f\u5e26\u5bbd!!"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u6a21\u62df\u6570\u636e\u7f16\u7801\u4e3a\u6570\u5b57\u4fe1\u53f7",
+                                                    "value": "\u91c7\u6837\n\u91cf\u5316\n\u7f16\u7801",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u91c7\u6837"
+                                                        },
+                                                        {
+                                                            "name": "\u91cf\u5316"
+                                                        },
+                                                        {
+                                                            "name": "\u7f16\u7801"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u6a21\u62df\u6570\u636e\u8c03\u5236\u4e3a\u6a21\u62df\u4fe1\u53f7",
+                                                    "value": "FDM - \u6bd4\u5982\u7535\u8bdd\u673a\u4e0e\u672c\u5730\u5c40\u4ea4\u6362\u673a.",
+                                                    "children": [
+                                                        {
+                                                            "name": "FDM",
+                                                            "value": "TDM\u590d\u7528\u65f6, \u6bcf\u6761\u652f\u8def\u901f\u7387\u8981\u76f8\u7b49, \u5982\u679c\u4e0d\u7b49\u9700\u8981\u91c7\u7528\u8109\u51b2\u586b\u5145.\neg.\n\u5c06\u4e00\u8def\u6a21\u62df\u4fe1\u53f7\u5206\u522b\u7f16\u7801\u4e3a\u6570\u5b57\u4fe1\u53f7\u540e, \u4e0e\u53e6\u59167\u8def\u4fe1\u53f7\u91c7\u7528\u540c\u6b65YDM\u65b9\u5f0f\u590d\u7528\u5230\u4e00\u6761\u901a\u4fe1\u7ebf\u8def\u4e0a. 1\u8def\u6a21\u62df\u4fe1\u53f7\u7684\u9891\u7387\u53d8\u5316\u8303\u56f4\u4e3a0-1kHz. \u6bcf\u4e2a\u91c7\u6837\u70b9\u91c7\u7528PCM\u65b9\u5f0f\u7f16\u7801\u4e3a4\u4f4d\u4e8c\u8fdb\u5236\u6570. \u53e6\u5916\u4e03\u8def\u6570\u5b57\u4fe1\u53f7\u6570\u636e\u7387\u4e3a7.2kbit/s. \u590d\u7528\u7ebf\u8def\u9700\u8981\u7684\u6700\u5c0f\u901a\u4fe1\u80fd\u529b?\nsolution:\n2 * 1kHz * 4 = 8kbit/s\n\u6bcf\u6761\u652f\u8def\u901f\u7387\u8981\u76f8\u7b49, \u5982\u679c\u4e0d\u7b49\u9700\u8981\u91c7\u7528\u8109\u51b2\u586b\u5145->7.2\u53d8\u62108\n8*8 = 64kb/s"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "makers": [
+                                                "flag-red"
+                                            ],
+                                            "name": "\u4e09\u79cd\u4ea4\u6362\u65b9\u5f0f",
+                                            "children": [
+                                                {
+                                                    "name": "\u7535\u8def\u4ea4\u6362",
+                                                    "value": "\u7279\u70b9\n\u9700\u8981\u5efa\u7acb\u5355\u72ec\u7684\u6570\u636e\u4f20\u8f93\u901a\u9053\n\u4f18\u70b9\n1. \u901a\u4fe1\u5ef6\u65f6\u5c0f - \u6570\u636e\u76f4\u8fbe, \u5ef6\u8fdf\u5c0f, \u5c24\u5176\u662f\u4f20\u8f93\u91cf\u5f88\u5927\u65f6\u4f18\u70b9\u660e\u663e\n2. \u6709\u5e8f\u4f20\u8f93\n3. \u6ca1\u6709\u51b2\u7a81 - \u6ca1\u6709\u4e89\u7528\u7269\u7406\u4fe1\u9053\u7684\u95ee\u9898\n4. \u9002\u7528\u8303\u56f4\u5e7f - \u6a21\u62df+\u6570\u5b57\n5. \u5b9e\u65f6\u6027\u5f3a - \u4e00\u65e6\u5efa\u7acb, \u968f\u65f6\u901a\u4fe1\n6. \u63a7\u5236\u7b80\u5355 - \u7535\u8def\u4ea4\u6362\u7684\u4ea4\u6362\u8bbe\u5907(\u4ea4\u6362\u673a\u7b49)\u53ca\u63a7\u5236\u5747\u8f83\u7b80\u5355\n\u7f3a\u70b9\n1. \u5efa\u7acb\u8fde\u63a5\u65f6\u95f4\u957f - \u7535\u8def\u4ea4\u6362\u7684\u5e73\u5747\u8fde\u63a5\u5efa\u7acb\u4e8b\u4ef6\u5bf9\u8ba1\u7b97\u673a\u901a\u4fe1\u6765\u8bf4\u592a\u957f\n2. \u7ebf\u8def\u72ec\u5360 - \u4f7f\u7528\u6548\u7387\u4f4e, \u5373\u4f7f\u7ebf\u8def\u7a7a\u95f2\u4e5f\u4e0d\u80fd\u88ab\u5176\u4ed6\u7528\u6237\u4f7f\u7528, \u6240\u4ee5\u4fe1\u9053\u5229\u7528\u7387\u4f4e\n3. \u7075\u6d3b\u6027\u5dee - \u4e00\u65e6\u51fa\u73b0\u4e86\u4e00\u70b9\u6545\u969c, \u6574\u6761\u7ebf\u8def\u9700\u8981\u8fdb\u884c\u91cd\u65b0\u62e8\u53f7\u4e0e\u5efa\u7acb, \u8fd9\u5bf9\u7d27\u6025\u4e14\u91cd\u8981\u7684\u901a\u4fe1\u5341\u5206\u4e0d\u5229\n4. \u96be\u4ee5\u89c4\u5219\u5316 - \u7535\u8def\u4ea4\u6362\u65f6, \u6570\u636e\u76f4\u8fbe, \u4e0d\u540c\u7c7b\u578b\u89c4\u683c\u901f\u7387\u7684\u7ec8\u7aef\u5f88\u96be\u4e92\u76f8\u901a\u4fe1, \u4e5f\u5f88\u96be\u5728\u901a\u4fe1\u8fc7\u7a0b\u4e2d\u8fdb\u884c\u5dee\u9519\u63a7\u5236."
+                                                },
+                                                {
+                                                    "name": "\u62a5\u6587\u4ea4\u6362",
+                                                    "value": "\u7279\u70b9\n\u4ea4\u6362\u7684\u5355\u4f4d\u662f\u62a5\u6587, \u6709\u76ee\u6807\u5730\u5740\u3001\u6e90\u5730\u5740, \u91c7\u7528\u50a8\u5b58\u8f6c\u53d1\u65b9\u5f0f.\n\u4f18\u70b9\n1. \u65e0\u9700\u5efa\u7acb\u8fde\u63a5 - \u4e0d\u5b58\u5728\u5efa\u7acb\u8fde\u63a5\u65f6\u5ef6\n2. \u52a8\u6001\u5206\u914d\u7ebf\u8def - \u4ea4\u6362\u8bbe\u5907\u5148\u50a8\u5b58\u6574\u4e2a\u62a5\u6587, \u7136\u540e\u9009\u62e9\u4e00\u6761\u5408\u9002\u7684\u7ebf\u8def\u53d1\u9001\u51fa\u53bb\n3. \u63d0\u9ad8\u7ebf\u8def\u5229\u7528\u7387 - \u6ca1\u6709\u72ec\u5360\u7ebf\u8def\n4. \u63d0\u4f9b\u591a\u76ee\u6807\u670d\u52a1 - \u4e00\u4e2a\u62a5\u6587\u53ef\u4ee5\u540c\u65f6\u53d1\u9001\u7ed9\u591a\u4e2a\u76ee\u7684\u5730\u5740\n\u7f3a\u70b9\n1. \u8f6c\u53d1\u65f6\u5ef6\n2. \u62a5\u6587\u5927\u5c0f\u6ca1\u6709\u9650\u5236, \u8981\u6c42\u7f51\u7edc\u7ed3\u70b9\u6709\u8f83\u5927\u7f13\u5b58\u7a7a\u95f4"
+                                                },
+                                                {
+                                                    "name": "\u5206\u7ec4\u4ea4\u6362",
+                                                    "value": "\u4ee5\u592a\u7f51\u5e38\u7528\u5206\u7ec4\u4ea4\u6362\u6280\u672f\n\u7279\u70b9\n\u5728\u62a5\u6587\u4ea4\u6362\u7684\u57fa\u7840\u4e0a, \u8bbe\u7f6e\u6570\u636e\u5757\u5927\u5c0f\u4e0a\u9650, \u5c06\u5927\u6570\u636e\u5757\u5206\u6210\u5408\u7406\u7684\u5c0f\u6570\u636e\u5757, \u6784\u6210\u5206\u7ec4(packet).\n\u4f18\u70b9\n1. \u65e0\u9700\u5efa\u7acb\u65f6\u5ef6\n2. \u7ebf\u8def\u5229\u7528\u7387\u9ad8\n3. \u7b80\u5316\u4e86\u50a8\u5b58\u7ba1\u7406(\u76f8\u5bf9\u4e8e\u62a5\u6587\u4ea4\u6362)\n4. \u52a0\u901f\u4f20\u8f93(\u4e0d\u7528\u7b49\u5230\u6240\u6709\u6570\u636e\u5757\u90fd\u5230\u4e86\u5728\u8f6c\u53d1\u5230\u4e0b\u4e00\u4e2a\u7ed3\u70b9)\n5. \u51cf\u5c11\u4e86\u51fa\u9519\u6539\u4e86\u548c\u91cd\u53d1\u6570\u636e\u91cf  - \u5206\u7ec4\u8f83\u77ed, \u9519\u8bef\u7387\u4e0b\u964d, \u91cd\u53d1\u7387\u4e5f\u4e0b\u964d\u4e86, \u63d0\u9ad8\u4e86\u53ef\u9760\u6027, \u51cf\u5c11\u4e86\u4f20\u8f93\u65f6\u5ef6\n\u7f3a\u70b9\n1. \u4f20\u8f93\u65f6\u5ef6 - \u9700\u8981\u7ed3\u70b9\u4ea4\u6362\u673a\u66f4\u5f3a\u7684\u5904\u7406\u80fd\u529b\n2. \u9700\u8981\u4f20\u8f93\u989d\u5916\u7684\u4fe1\u606f\u91cf - \u6bcf\u4e2a\u5c0f\u6570\u636e\u5757\u90fd\u8981\u52a0\u4e0a\u4fe1\u606f\n3. \u91c7\u7528\u6570\u636e\u5305\u670d\u52a1\u65f6, \u4f1a\u51fa\u73b0\u5931\u5e8f\u3001\u4e22\u5931\u6216\u91cd\u590d\u5206\u7ec4, \u5206\u7ec4\u5230\u8fbe\u7ec8\u70b9\u9700\u8981\u8fdb\u884c\u6392\u5e8f. \u5982\u679c\u91c7\u7528\u865a\u7535\u8def, \u65e0\u5931\u5e8f\u95ee\u9898, \u4f46\u6709\u201c\u5efa\u7acb\u201d, \u201c\u6570\u636e\u4f20\u8f93\u201d,\u201c\u865a\u7535\u8def\u91ca\u653e\u201d\u4e09\u4e2a\u95ee\u9898."
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u6570\u5b57\u62a5\u4e0e\u865a\u7535\u8def",
+                                            "children": [
+                                                {
+                                                    "image": {
+                                                        "src": "xap:resources/0fb964a2f5ec9e9cbb10bef6f189dcef43feb06617ab0979c65a7b5dd9701986.png",
+                                                        "width": 392,
+                                                        "height": 170,
+                                                        "shadowVisible": true
+                                                    },
+                                                    "name": "\u6570\u636e\u62a5"
+                                                },
+                                                {
+                                                    "image": {
+                                                        "src": "xap:resources/3fe3598feca3c5003ab248dd46b10d3533caeb8f7fbc2d573d981ddb3b6d8ea3.png",
+                                                        "width": 392,
+                                                        "height": 333,
+                                                        "shadowVisible": true
+                                                    },
+                                                    "name": "\u865a\u7535\u8def",
+                                                    "value": "\u865a\u7535\u8def\u5305\u62ec\u6c38\u4e45\u578b\u865a\u7535\u8def(PVC)\u548c\u4ea4\u6362\u578b\u865a\u7535\u8def(SVC)\nPVC\u6c38\u8fdc\u5b58\u5728, \u53ef\u4ee5\u968f\u65f6\u4f7f\u7528\nSVC\u5728\u901a\u4fe1\u7ed3\u675f\u540e\u53d6\u6d88"
+                                                },
+                                                {
+                                                    "name": "\u865a\u7535\u8def\u4e0e\u6570\u636e\u5305\u603b\u7ed3",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u6570\u636e\u62a5\u670d\u52a1",
+                                                            "children": [
+                                                                {
+                                                                    "labels": [
+                                                                        "\u8fde\u63a5\u7684\u5efa\u7acb"
+                                                                    ],
+                                                                    "name": "\u4e0d\u9700\u8981"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u76ee\u7684\u5730\u5740"
+                                                                    ],
+                                                                    "name": "\u6bcf\u4e2a\u5206\u7ec4\u6709\u5b8c\u6574\u7684\u76ee\u7684\u5730\u5740"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u8def\u7531\u9009\u62e9"
+                                                                    ],
+                                                                    "name": "\u6bcf\u4e2a\u5206\u7ec4\u72ec\u7acb\u5730\u8fdb\u884c\u8def\u7531\u9009\u62e9\u4e0e\u8f6c\u53d1"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5206\u7ec4\u987a\u5e8f"
+                                                                    ],
+                                                                    "name": "\u4e0d\u4fdd\u8bc1\u5206\u7ec4\u6709\u5e8f\u5230\u8fbe"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u53ef\u9760\u6027"
+                                                                    ],
+                                                                    "name": "\u4e0d\u4fdd\u8bc1\u53ef\u9760\u901a\u4fe1"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5bf9\u7f51\u7edc\u6545\u969c\u7684\u9002\u5e94\u6027"
+                                                                    ],
+                                                                    "name": "\u51fa\u6545\u969c\u7684\u7ed3\u70b9\u4e22\u5931\u5206\u7ec4, \u5176\u4ed6\u5206\u7ec4\u8def\u5f84\u9009\u62e9\u53d1\u751f\u53d8\u5316\u65f6\u53ef\u4ee5\u6b63\u5e38\u4f20\u8f93"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5dee\u9519\u5904\u7406\u548c\u6d41\u91cf\u63a7\u5236"
+                                                                    ],
+                                                                    "name": "\u6709\u7528\u6237\u4e3b\u673a\u8fdb\u884c\u6d41\u91cf\u63a7\u5236, \u4e0d\u4fdd\u8bc1\u6570\u636e\u62a5\u53ef\u9760\u6027"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u865a\u7535\u8def\u670d\u52a1",
+                                                            "children": [
+                                                                {
+                                                                    "labels": [
+                                                                        "\u8fde\u63a5\u7684\u5efa\u7acb"
+                                                                    ],
+                                                                    "name": "\u9700\u8981"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u76ee\u7684\u5730\u5740"
+                                                                    ],
+                                                                    "name": "\u5c3d\u5728\u5efa\u7acb\u8fde\u63a5\u9636\u6bb5\u4f7f\u7528, \u4e4b\u540e\u6bcf\u4e2a\u5206\u7ec4\u4f7f\u7528\u957f\u5ea6\u8f83\u77ed\u7684\u865a\u7535\u8def\u53f7"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u8def\u7531\u9009\u62e9"
+                                                                    ],
+                                                                    "name": "\u5c5e\u4e8e\u540c\u4e00\u6761\u865a\u7535\u8def\u7684\u5206\u7ec4\u6309\u7167\u540c\u4e00\u8def\u7531\u8f6c\u53d1"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5206\u7ec4\u987a\u5e8f"
+                                                                    ],
+                                                                    "name": "\u4fdd\u8bc1\u5206\u7ec4\u6709\u5e8f\u5230\u8fbe"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u53ef\u9760\u6027"
+                                                                    ],
+                                                                    "name": "\u53ef\u9760\u6027\u7531\u7f51\u7edc\u4fdd\u8bc1"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5bf9\u7f51\u7edc\u6545\u969c\u7684\u9002\u5e94\u6027"
+                                                                    ],
+                                                                    "name": "\u6240\u6709\u7ecf\u8fc7\u6545\u969c\u7ed3\u70b9\u7684\u865a\u7535\u8def\u5747\u4e0d\u80fd\u6b63\u5e38\u5de5\u4f5c"
+                                                                },
+                                                                {
+                                                                    "labels": [
+                                                                        "\u5dee\u9519\u5904\u7406\u548c\u6d41\u91cf\u63a7\u5236"
+                                                                    ],
+                                                                    "name": "\u53ef\u53c8\u5206\u7ec4\u4ea4\u6362\u7f51\u8d1f\u8d23, \u4e5f\u53ef\u7531\u7528\u6237\u4e3b\u673a\u8d1f\u8d23"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u4f20\u8f93\u4ecb\u8d28",
+                                    "children": [
+                                        {
+                                            "image": {
+                                                "src": "xap:resources/9f2eec4bbe2204fb0390672aeef727c4118c6d82d16f8b2e1b882103a31c15b8.png",
+                                                "width": 306,
+                                                "height": 214
+                                            },
+                                            "name": "\u53cc\u7ede\u7ebf(Twisted Pair)",
+                                            "value": "https://www.sohu.com/a/143835544_470081",
+                                            "children": [
+                                                {
+                                                    "name": "\u7b80\u4ecb",
+                                                    "value": "\u5e38\u7528\u7684\u53e4\u8001\u4f20\u8f93\u4ecb\u8d28, \u4ef7\u683c\u4fbf\u5b9c, \u91c7\u7528\u4e00\u5b9a\u89c4\u5219\u5e76\u6392\u7ede\u5408\u7684\u3001\u4e92\u76f8\u7edd\u7f18\u7684\u94dc\u5bfc\u7ebf\u7ec4\u6210."
+                                                },
+                                                {
+                                                    "name": "\u7ede\u5408\u7684\u4f5c\u7528",
+                                                    "value": "\u7ede\u5408\u53ef\u4ee5\u51cf\u5c11\u76f8\u90bb\u5230\u897f\u5b89\u7684\u7535\u78c1\u5e72\u6270."
+                                                },
+                                                {
+                                                    "name": "\u5206\u7c7b",
+                                                    "value": "\u5c4f\u853d\u53cc\u7ede\u7ebf(STP)\n\u975e\u5c4f\u853d\u53cc\u7ede\u7ebf(UTP)\n\u4e3a\u4e86\u8fdb\u4e00\u6b65\u63d0\u9ad8\u6297\u7535\u78c1\u5e72\u6270\u80fd\u529b, \u5728\u53cc\u7ede\u7ebf\u7684\u5916\u8fb9\u518d\u52a0\u4e00\u5c42\u91d1\u5c5e\u4e1d\u7f16\u7ec7\u6210\u7684\u5c4f\u853d\u5c42\u5c31\u662f\u5c4f\u853d\u53cc\u7ede\u7ebf(STP)."
+                                                },
+                                                {
+                                                    "name": "\u4f5c\u7528\u4e0e\u6548\u679c",
+                                                    "value": "\u5728\u5c40\u57df\u7f51\u548c\u4f20\u7edf\u7535\u8bdd\u7f51\u5e38\u7528\u5230. \u53cc\u7ede\u7ebf\u7684\u5e26\u5bbd\u53d6\u51b3\u4e8e\u94dc\u7ebf\u7684\u7c97\u7ec6\u548c\u4f20\u64ad\u7684\u8ddd\u79bb. \u6a21\u62df\u4f20\u8f93\u4e0e\u6570\u5b57\u4f20\u8f93\u90fd\u53ef\u4ee5\u7528\u53cc\u7ede\u7ebf, \u901a\u4fe1\u8ddd\u79bb\u51e0kn\u5230\u51e0\u5341km."
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "image": {
+                                                "src": "xap:resources/7718aa152b6ca1d65d65cdc881a44e5f989e0e70e5f6307a9eeb84b4e1eab62b.png",
+                                                "width": 279,
+                                                "height": 92
+                                            },
+                                            "name": "\u540c\u8f74\u7535\u7f06(Coaxial Cable)",
+                                            "children": [
+                                                {
+                                                    "name": "\u7b80\u4ecb",
+                                                    "value": "\u7531\u5185\u5bfc\u4f53\u3001\u7edd\u7f18\u5c42\u3001\u7f51\u72b6\u7f16\u7ec7\u5c4f\u853d\u5c42\u3001\u7edd\u7f18\u4fdd\u62a4\u5957\u6784\u6210, \u4ef7\u683c\u6bd4\u53cc\u7ede\u7ebf\u7a0d\u8d35"
+                                                },
+                                                {
+                                                    "name": "\u5206\u7c7b",
+                                                    "value": "\u57fa\u5e26\u540c\u8f74\u7535\u7f06-50\u03a9 - \u5c40\u57df\u7f51\n\u5bbd\u5e26\u540c\u8f74\u7535\u7f06-75\u03a9 - \u6709\u7ebf\u7535\u89c6"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "image": {
+                                                "src": "xap:resources/d6c55b4b557aebdc55ff7e8f46260a6a98e3bef961da7670a3aa6e0548a5f688.png",
+                                                "width": 287,
+                                                "height": 85
+                                            },
+                                            "name": "\u5149\u7ea4",
+                                            "children": [
+                                                {
+                                                    "name": "\u7b80\u4ecb",
+                                                    "value": "1. \u5229\u7528\u5149\u8109\u51b2\u8fdb\u884c\u901a\u4fe1\uff0c\u6709\u5149\u662f1\uff0c \u65e0\u5149\u662f0.\n\uff08\u5982\u679c\u8bf4\u201c\u53d1\u5149\u4e8c\u6781\u7ba1\u6216\u6fc0\u5149\u201d-->\u9519\uff01\uff01\uff09\n2. \u76f4\u5f84\u53ea\u67098-100\u5fae\u7c73\u3002\n3. \u5149\u901a\u8fc7\u5168\u53cd\u5c04\u8fdb\u884c\u4f20\u64ad\uff0c\u4f46\u5982\u679c\u662f\u5355\u6a21\u5149\u7ea4\uff0c\u5c31\u662f\u6ce2\u5bfc\uff01\u76f8\u5f53\u4e8e\u5149\u6cbf\u76f4\u7ebf\u4f20\u64ad\uff01"
+                                                },
+                                                {
+                                                    "name": "\u5206\u7c7b",
+                                                    "value": "\u591a\u6a21\u5149\u7ea4-\u4e0d\u540c\u89d2\u5ea6\u7684\u5165\u5c04\u5149\u4e00\u8d77\u4f20\u64ad\uff0c\u957f\u8ddd\u79bb\u4f1a\u5931\u771f\uff0c \u9002\u5408\u8fd1\u8ddd\u79bb\u4f20\u64ad\u3002\n\u5355\u6a21\u5149\u7ea4-\u5149\u7ea4\u76f4\u5f84\u51cf\u5c11\u5230\u4e00\u4e2a\u5149\u7684\u6ce2\u957f\uff0c\u76f8\u5f53\u4e8e\u6ce2\u5bfc\uff0c\u5149\u6cbf\u76f4\u7ebf\u4f20\u64ad\uff0c\u9020\u4ef7\u9ad8\uff0c\u9002\u5408\u957f\u8ddd\u79bb\u4f20\u8f93\u3002"
+                                                },
+                                                {
+                                                    "name": "\u7279\u70b9",
+                                                    "value": "1. \u4f20\u8f93\u635f\u8017\u5c0f\uff0c\u4e2d\u7ee7\u8ddd\u79bb\u957f\uff0c\u5bf9\u8fdc\u8ddd\u79bb\u4f20\u8f93\u7279\u522b\u7ecf\u6d4e\u3002\n2. \u6297\u96f7\u7535\u548c\u7535\u78c1\u5e72\u6270\u6027\u5f3a\u3002\n3. \u65e0\u4f20\u97f3\u5e72\u6270\uff0c\u4fdd\u5bc6\u6027\u597d\u3002\n4. \u4f53\u79ef\u5c0f\uff0c\u91cd\u91cf\u8f7b\u3002\u8fd9\u5728\u73b0\u6709\u7535\u7f06\u7ba1\u9053\u62e5\u585e\u4e0d\u582a\u7684\u60c5\u51b5\u4e0b\u7279\u522b\u6709\u5229\u3002\n\uf8ff\u6bd4\u53cc\u7ede\u7ebf\u4f20\u8f93\u66f4\u5feb\uff0c\u56e0\u4e3a\u540c\u8f74\u7535\u7f06\u5177\u6709\u66f4\u9ad8\u7684\u9690\u853d\u6027\uff0c\u66f4\u597d\u7684\u6297\u566a\u58f0\u6027\u3002"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u65e0\u7ebf\u4f20\u8f93\u4ecb\u8d28",
+                                            "children": [
+                                                {
+                                                    "name": "\u7b80\u4ecb\u4e0e\u5e94\u7528",
+                                                    "value": "\u5e7f\u6cdb\u5e94\u7528\u4e8e\u79fb\u52a8\u7535\u8bdd\u9886\u57df\uff0c\u6784\u6210\u8702\u7a9d\u5f0f\u65e0\u7ebf\u7535\u8bdd\u7f51\u3002"
+                                                },
+                                                {
+                                                    "name": "\u5206\u7c7b",
+                                                    "value": "\u65e0\u7ebf\u7535\u6ce2 -\u5e94\u7528\u9886\u57df\uff1a \u65e0\u7ebf\u5c40\u57df\u7f51 WLAN\uff0c\u65e0\u7ebf\u624b\u673a\u901a\u4fe1\u3002\n\u5fae\u535a\u3001\u7ea2\u5916\u7ebf\u3001\u6fc0\u5149- \u4e09\u9897\u76f8\u9694120\u5ea6\u7684\u536b\u661f\u53ef\u4ee5\u5b9e\u73b0\u5168\u7403\u901a\u4fe1\uff0c \u7f3a\u70b9\u662f\u4fdd\u5bc6\u6027\u5dee\u3001\u4f20\u64ad\u5ef6\u65f6\u957f"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u7269\u7406\u5c42\u63a5\u53e3\u7684\u7279\u6027",
+                                            "value": "1. \n\u7269\u7406\u5c42\u8003\u8651\u7684\u662f\u3010\u5982\u4f55\u5728\u8fde\u63a5\u5230\u5404\u79cd\u8ba1\u7b97\u673a\u7684\u4f20\u8f93\u5a92\u4f53\u4e0a\u4f20\u8f93\u6bd4\u7279\u6d41\u3011\uff0c\u800c\u4e0d\u662f\u4f20\u8f93\u5177\u4f53\u7684\u5a92\u4f53\u3002\u7269\u7406\u5c42\u5c3d\u91cf\u5c4f\u853d\u786c\u4ef6\u8bbe\u5907\u3001\u4f20\u8f93\u4ecb\u8d28\u7b49\u7684\u5dee\u5f02\uff0c\u8ba9\u6570\u636e\u94fe\u8def\u5c42\u611f\u89c9\u4e0d\u5230\u3002\n2. \u7279\u6027 --- \uff08\u786c\u4ef6\u5c5e\u6027->\u901a\u4e0a\u7535->\u7535\u5e73\u610f\u4e49->\u4e8b\u4ef6\u987a\u5e8f\uff09\n\u30101\u3011\u673a\u68b0\u7279\u6027\uff1a\u6307\u660e\u63a5\u53e3\u6240\u7528\u7684\u63a5\u7ebf\u5668\u7684\u5f62\u72b6\u5c3a\u5bf8\u3001\u5f15\u811a\u6570\u76ee\u548c\u6392\u5217\u3001\u56fa\u5b9a\u548c\u9501\u5b9a\u88c5\u7f6e\u7b49\u3002\n\u30102\u3011\u7535\u6c14\u7279\u6027\uff1a\u6307\u660e\u5728\u63a5\u53e3\u7535\u7f06\u7684\u5404\u6761\u7ebf\u4e0a\u51fa\u73b0\u7684\u7535\u538b\u8303\u56f4\u4e0e\u4f20\u8f93\u8ddd\u79bb\u3002\n\u30103\u3011\u529f\u80fd\u7279\u6027\uff1a\u6307\u660e\u67d0\u6761\u7ebf\u4e0a\u51fa\u73b0\u7684\u67d0\u4e00\u7535\u5e73\u7684\u5177\u4f53\u542b\u4e49\u3002\n\u30104\u3011\u8fc7\u7a0b\u7279\u6027\uff1a\u6307\u660e\u4e0d\u540c\u529f\u80fd\u7684\u5404\u79cd\u53ef\u80fd\u4e8b\u4ef6\u7684\u51fa\u73b0\u987a\u5e8f\u3002",
+                                            "children": [
+                                                {
+                                                    "name": "\u673a\u68b0\u7279\u6027"
+                                                },
+                                                {
+                                                    "name": "\u7535\u6c14\u7279\u6027"
+                                                },
+                                                {
+                                                    "name": "\u529f\u80fd\u7279\u6027"
+                                                },
+                                                {
+                                                    "name": "\u8fc7\u7a0b\u7279\u6027"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u7269\u7406\u5c42\u8bbe\u5907",
+                                    "children": [
+                                        {
+                                            "name": "\u4e2d\u7ee7\u5668/\u8f6c\u53d1\u5668\uff08Repeater\uff09",
+                                            "children": [
+                                                {
+                                                    "name": "\u4f5c\u7528",
+                                                    "value": "\u5c06\u4fe1\u53f7\u6574\u5f62\u5e76\u653e\u5927\u7136\u540e\u518d\u53d1\u51fa\u53bb\uff0c\u4ee5\u6d88\u9664\u4fe1\u53f7\u7ecf\u8fc7\u4e00\u573a\u65ad\u7535\u7f06\u540e\u4ea7\u751f\u7684\u7684\u5931\u771f\u548c\u8870\u51cf"
+                                                },
+                                                {
+                                                    "name": "\u539f\u7406",
+                                                    "value": "\u4fe1\u53f7\u518d\u751f\uff08\u4e0d\u662f\u5355\u7eaf\u7684\u653e\u5927\uff09"
+                                                },
+                                                {
+                                                    "name": "\u7279\u70b9",
+                                                    "value": "\u30101\u3011\u4e2d\u7ee7\u5668\u4e0d\u8fdb\u884c\u4fe1\u53f7\u7684\u9519\u8bef\u5224\u65ad\uff0c\u53ea\u7ba1\u4e2d\u7ee7\u3002\n\u30102\u3011\u4e2d\u7ee7\u5668\u4e24\u7aef\u8fde\u63a5\u7684\u662f\u7f51\u6bb5\u800c\u4e0d\u662f\u5b50\u7f51\uff01\n\u30103\u3011\u4e2d\u7ee7\u5668\u4e24\u7aef\u4ecd\u5728\u4e00\u4e2a\u5c40\u57df\u7f51\u5185\uff0c\u4e2d\u7ee7\u5668\u4e0d\u80fd\u8fde\u63a5\u4e24\u4e2a\u5177\u6709\u4e0d\u540c\u901f\u7387\u7684\u5c40\u57df\u7f51\u3002"
+                                                },
+                                                {
+                                                    "name": "5-4-3\u89c4\u5219",
+                                                    "value": "\u65e0\u9650\u4e2a\u4e2d\u7ee7\u5668\u7684\u4e32\u8054\u4f1a\u5f15\u8d77\u5ef6\u8fdf\uff0c\u6240\u4ee5\u5728\u91c7\u7528\u7c97\u540c\u8f74\u7535\u7f06\u768410BASE5\u89c4\u8303\u4e2d\u89c4\u5b9a\uff1a\u4e92\u76f8\u4e32\u8054\u7684\u4e2d\u7ee7\u5668\u4e0d\u8d85\u8fc74\u4e2a\uff0c\u56db\u4e2a\u4e2d\u7ee7\u5668\u4e32\u8054\u76845\u6bb5\u901a\u4fe1\u4ecb\u8d28\u4e2d\u53ea\u67093\u6bb5\u53ef\u4ee5\u6302\u63a5\u8ba1\u7b97\u673a\u3002\n\uff083/5\u8ba1\u7b97\u673a\uff0c4\u4e2d\u7ee7\u5668\uff0c5\u6bb5\u901a\u4fe1\u4ecb\u8d28\uff09"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u96c6\u7ebf\u5668\uff08Hub\uff09",
+                                            "children": [
+                                                {
+                                                    "name": "\u672c\u8d28",
+                                                    "value": "\u96c6\u7ebf\u5668\uff08Hub\uff09\u662f\u4e00\u4e2a\u591a\u7aef\u53e3\u4e2d\u7ee7\u5668\uff0c\u540c\u65f6\u53ea\u80fd\u63a5\u53d7\u4e00\u4e2a\u6570\u636e\u6d41\u8f93\u5165\uff0c\u6709\u522b\u7684\u6570\u636e\u6d41\u540c\u65f6\u8f93\u5165\u4f1a\u88ab\u5ffd\u7565\u3002\u6570\u636e\u6d41\u7ecf\u8fc7\u518d\u751f\u540e\u53d1\u5411\u6240\u6709\uff08\u9664\u8f93\u5165\u7aef\u53e3\u5916\u7684\uff09\u5904\u4e8e\u5de5\u4f5c\u72b6\u6001\u7684\u7aef\u53e3\u3002"
+                                                },
+                                                {
+                                                    "name": "\u76ee\u7684",
+                                                    "value": "\u6269\u5927\u4fe1\u53f7\u8303\u56f4"
+                                                },
+                                                {
+                                                    "name": "\u96c6\u7ebf\u5668\u8fde\u63a5\u7684\u5de5\u4f5c\u7ad9\u5c5e\u4e8e\u540c\u4e00\u4e2a\u5e7f\u64ad\u57df\u4e0e\u51b2\u7a81\u57df"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "makers": [
+                                "c_symbol_exercise",
+                                "symbol-share"
+                            ],
+                            "labels": [
+                                "./\u8ba1\u7b97\u673a\u79d1\u5b66/\u8ba1\u7b97\u673a\u7f51\u7edc/\u6570\u636e\u94fe\u8def\u5c42.xmind"
+                            ],
+                            "link": "file:///Users/kimshan/Public/learn/PKM/KnowledgeMap/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82.xmind",
+                            "name": "\u6570\u636e\u94fe\u8def\u5c42",
+                            "children": [
+                                {
+                                    "name": "\u5206\u652f\u4e3b\u9898 1"
+                                },
+                                {
+                                    "name": "\u5206\u652f\u4e3b\u9898 2"
+                                },
+                                {
+                                    "name": "\u5206\u652f\u4e3b\u9898 3"
+                                }
+                            ]
+                        },
+                        {
+                            "makers": [
+                                "c_symbol_exercise"
+                            ],
+                            "name": "\u7f51\u7edc\u5c42"
+                        },
+                        {
+                            "makers": [
+                                "c_symbol_exercise"
+                            ],
+                            "name": "\u4f20\u8f93\u5c42"
+                        },
+                        {
+                            "makers": [
+                                "c_symbol_exercise"
+                            ],
+                            "name": "\u5e94\u7528\u5c42"
+                        }
+                    ]
+                }
+            ],
+            "symbol": "emptyCircle",
+            "symbolSize": 11,
+            "edgeShape": "curve",
+            "edgeForkPosition": "50%",
+            "roam": false,
+            "expandAndCollapse": true,
+            "layout": "orthogonal",
+            "orient": "LR",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            },
+            "leaves": {
+                "label": {
+                    "show": true,
+                    "position": "top",
+                    "margin": 8
+                }
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [],
+            "selected": {}
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    }
+};
+        chart_75b889d7d64a4876a79a87b26c3bdf0e.setOption(option_75b889d7d64a4876a79a87b26c3bdf0e);
+   chart_75b889d7d64a4876a79a87b26c3bdf0e.on("click", chart_click);
+	function chart_click(){
+		auto_change_height();
+	}
+	function auto_change_height(parms){
+		var container = document.getElementById('75b889d7d64a4876a79a87b26c3bdf0e');
+	    var allNode=0;
+	    var nodes=chart_75b889d7d64a4876a79a87b26c3bdf0e._chartsViews[0]._data._graphicEls;
+	    for(var i=0,count =nodes.length;i<count;i++){
+	       var node=nodes[i];
+	       if(node===undefined)
+	           continue;
+	       allNode++;
+	    }
+	    var height=window.innerHeight;
+	    var currentHeight=40*allNode;
+	    var newWidth=Math.max(currentHeight,height);
+	    container.style.width = window.innerWidth + 'px';
+	    container.style.height = newWidth + 'px';
+	chart_75b889d7d64a4876a79a87b26c3bdf0e.resize();
+	}
+
+	function load(){
+		auto_change_height(0)
+	}
+	</script>
+</body>
+</html>
