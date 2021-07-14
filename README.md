@@ -1,5 +1,4 @@
-# PKM
- Personal Knowledge Map  
-![image](http://github.com/CharlesShan-hub/PKM/main/resources/title_samll.pdf)
+# PKM - Personal Knowledge Map  
+![image text](./resources/title_small.png)
 ## 目前处于测试阶段  
 ##
