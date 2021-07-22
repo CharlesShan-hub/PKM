@@ -7,11 +7,11 @@
 
 </head>
 <body onload="load()" >
-    <div id="845993cb3c1d44a395951b0993e74c6c" class="chart-container" style="width:1080px; height:100vh;"></div>
+    <div id="21ee9e54f956463c9e5e68eebcc5db99" class="chart-container" style="width:1080px; height:100vh;"></div>
     <script>
-        var chart_845993cb3c1d44a395951b0993e74c6c = echarts.init(
-            document.getElementById('845993cb3c1d44a395951b0993e74c6c'), 'white', {renderer: 'canvas'});
-        var option_845993cb3c1d44a395951b0993e74c6c = {
+        var chart_21ee9e54f956463c9e5e68eebcc5db99 = echarts.init(
+            document.getElementById('21ee9e54f956463c9e5e68eebcc5db99'), 'white', {renderer: 'canvas'});
+        var option_21ee9e54f956463c9e5e68eebcc5db99 = {
     
 	"formatter": function(params){
 	    var content = params.data.value;
@@ -305,10 +305,19 @@
                                                             "name": "\u8303\u56f4: 50km - 10000km"
                                                         },
                                                         {
-                                                            "name": "\u6280\u672f: \u4ea4\u6362\u6280\u672f"
+                                                            "name": "\u6280\u672f: \uff08\u5206\u7ec4\uff09\u4ea4\u6362\u6280\u672f"
                                                         },
                                                         {
                                                             "name": "\u5730\u4f4d: \u56e0\u7279\u7f51\u7684\u6838\u5fc3"
+                                                        },
+                                                        {
+                                                            "name": "\u4f8b\u5b50\uff1a\u56e0\u7279\u7f51\uff08\u6700\u5927\u7684\u5e7f\u57df\u7f51\uff09"
+                                                        },
+                                                        {
+                                                            "name": "\u5f3a\u8c03\u8d44\u6e90\u5171\u4eab"
+                                                        },
+                                                        {
+                                                            "name": "ISO\uff1a\u7269\u7406\u5c42\u3001\u94fe\u8def\u5c42\u3001\u7f51\u7edc\u5c42"
                                                         }
                                                     ]
                                                 },
@@ -325,15 +334,47 @@
                                                 },
                                                 {
                                                     "name": "LAN\n\u5c40\u57df\u7f51",
+                                                    "value": "\u5c40\u57df\u7f51\uff08Local Area Network\uff09\uff1a\u7b80\u79f0LAN\uff0c\u53ea\u5728\u67d0\u4e00\u533a\u57df\u5185\u7531\u591a\u53f0\u8ba1\u7b97\u673a\u4e92\u8054\u6210\u7684\u8ba1\u7b97\u673a\u7ec4\uff0c\u4f7f\u7528\u5e7f\u64ad\u4fe1\u9053\uff01\n\n\u7279\u70b91:\u5730\u7406\u8303\u56f4\u5c0f\uff0c\u76f8\u5bf9\u72ec\u7acb\u7684\u5c45\u4e8e\u8303\u56f4\u5185\u8054\n\u7279\u70b92:\u4f7f\u7528\u4e13\u95e8\u94fa\u8bbe\u7684\u4f20\u8f93\u4ecb\u8d28\uff08\u53cc\u7ede\u7ebf\u3001\u540c\u8f74\u7535\u7f06\uff09\u8fdb\u884c\u8054\u7f51\uff0c\u6570\u636e\u4f20\u8f93\u7387\u9ad8\uff0810Mb/s - 10Gb/s\uff09\n\u7279\u70b93:\u901a\u4fe1\u5ef6\u8fdf\u77ed\uff0c\u8bef\u7801\u7387\u4f4e\uff0c\u53ef\u9760\u6027\u9ad8\n\u7279\u70b94:\u5404\u6808\u4e3a\u5e73\u7b49\u5173\u7cfb\uff0c\u5171\u4eab\u4f20\u8f93\u4fe1\u9053\n\u7279\u70b95:\u91c7\u7528\u5206\u5e03\u5f0f\u63a7\u5236\u548c\u5e7f\u64ad\u5ba4\u901a\u4fe1\uff0c\u80fd\u8fdb\u884c\u5e7f\u64ad\u4e0e\u7ec4\u64ad\n\n-> \u4e3b\u8981\u8981\u7d20\uff1a\u7f51\u7edc\u62d3\u6251\uff0c\u4f20\u8f93\u4ecb\u8d28\uff0c\u4ecb\u8d28\u8bbf\u95ee\u63a7\u5236\u65b9\u6cd5",
                                                     "children": [
                                                         {
                                                             "name": "\u8303\u56f4: 50m - 5km"
                                                         },
                                                         {
-                                                            "name": "\u6280\u672f: \u4ee5\u592a\u7f51, \u5e7f\u64ad\u6280\u672f"
+                                                            "name": "\u6280\u672f: \u5e7f\u64ad\u6280\u672f\uff0c\u591a\u70b9\u63a5\u5165\u6280\u672f"
                                                         },
                                                         {
                                                             "name": "\u9762\u5411: \u6570\u636e\u94fe\u8def\u5c42"
+                                                        },
+                                                        {
+                                                            "name": "\u5206\u7c7b",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u4ee5\u592a\u7f51",
+                                                                    "value": "\u4f7f\u7528CSMA/CD\nIEEE 802.3"
+                                                                },
+                                                                {
+                                                                    "name": "\u4ee4\u724c\u73af\u7f51",
+                                                                    "value": "\u7269\u7406\u4e0a\u91c7\u7528\u661f\u661f\u62d3\u6251\u7ed3\u6784\uff0c\u903b\u8f91\u4e0a\u662f\u73af\u5f62\u62d3\u6251\u7ed3\u6784\uff0c\u6b63\u5728\u88ab\u6dd8\u6c70"
+                                                                },
+                                                                {
+                                                                    "name": "FDDI\u7f51",
+                                                                    "value": "\u7269\u7406\u4e0a\u91c7\u7528\u53cc\u73af\u62d3\u6251\uff0c\u903b\u8f91\u4e0a\u662f\u73af\u5f62\u62d3\u6251"
+                                                                },
+                                                                {
+                                                                    "name": "ATM\u7f51",
+                                                                    "value": "\u8f83\u65b0\u7684\u4f46\u613f\u4ea4\u6362\u6280\u672f\uff0c\u4f7f\u752853\u5b57\u8282\u56fa\u5b9a\u957f\u5ea6\u5355\u5143\u8fdb\u884c\u4ea4\u6362"
+                                                                },
+                                                                {
+                                                                    "name": "\u65e0\u7ebf\u5c40\u57df\u7f51WLAN",
+                                                                    "value": "IEEE 802.11"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u5f3a\u8c03\u6570\u636e\u4f20\u8f93"
+                                                        },
+                                                        {
+                                                            "name": "ISO\uff1a\u7269\u7406\u5c42\u3001\u94fe\u8def\u5c42"
                                                         }
                                                     ]
                                                 },
@@ -383,7 +424,45 @@
                                         },
                                         {
                                             "name": "\u62d3\u6251\u7ed3\u6784",
-                                            "value": "1. \u603b\u7ebf\u5f62\n\u7528\u5355\u6839\u4f20\u8f93\u7ebf\u628a\u8ba1\u7b97\u673a\u8fde\u63a5\u8d77\u6765.\n\u4f18\u70b9: \u5bb9\u6613\u5efa\u7acb, \u5bb9\u6613\u589e\u51cf\u7ed3\u70b9, \u8282\u7701\u7ebf\u8def.\n\u7f3a\u70b9: \u901a\u8baf\u6548\u7387\u4f4e, \u5bf9\u4e00\u5904\u6545\u969c\u654f\u611f\u5ea6\u9ad8\n2. \u661f\u5f62\n\u6bcf\u4e2a\u7ec8\u7aef\u6216\u8ba1\u7b97\u673a\u90fd\u4e0e\u4e2d\u592e\u8bbe\u5907(\u65e9\u671f\u662f\u8ba1\u7b97\u673a, \u73b0\u5728\u662f\u8def\u7531\u5668\u6216\u8005\u4ea4\u6362\u673a)\u8fde\u63a5.\n\u4f18\u70b9: \u65b9\u4fbf\u96c6\u4e2d\u7ba1\u7406.\n\u7f3a\u70b9: \u6210\u672c\u9ad8, \u4e2d\u5fc3\u8bbe\u5907\u5bf9\u6545\u969c\u654f\u611f.\n3. \u73af\u5f62\n\u6240\u6709\u8ba1\u7b97\u673a\u5fcc\u53e3\u8bbe\u5907\u8fde\u63a5\u5c18\u5c01\u4e00\u4e2a\u73af, \u53ef\u4ee5\u662f\u5355\u73af\u6216\u53cc\u73af, \u73af\u4e2d\u4fe1\u53f7\u5355\u5411\u4f20\u8f93.\n\u4f8b\u5b50: \u4ee4\u724c\u73af\u5c40\u57df\u7f51\n4. \u7f51\u72b6\n\u6bcf\u4e2a\u8282\u70b9\u81f3\u5c11\u6709\u4e24\u6761\u8def\u5f84\u4e0e\u5176\u4ed6\u7ed3\u70b9\u76f8\u8fde. \u591a\u7528\u5728\u5e7f\u57df\u7f51, \u89c4\u5219\u5f62\u4e0e\u975e\u89c4\u5219\u5f62\u4e24\u79cd.\n\u4f18\u70b9: \u53ef\u9760\u6027\u9ad8\n\u7f3a\u70b9: \u63a7\u5236\u590d\u6742, \u7ebf\u8def\u6210\u672c\u9ad8"
+                                            "value": "1. \u603b\u7ebf\u5f62\n2. \u661f\u5f62\n3. \u73af\u5f62\n4. \u7f51\u72b6",
+                                            "children": [
+                                                {
+                                                    "image": {
+                                                        "src": "xap:resources/7b6860e362c40143d12202e7db9a5af2500271ae61b36caff79c530947cb4389.png",
+                                                        "width": 107,
+                                                        "height": 78
+                                                    },
+                                                    "name": "\u661f\u578b\u62d3\u6251",
+                                                    "value": "\u6bcf\u4e2a\u7ec8\u7aef\u6216\u8ba1\u7b97\u673a\u90fd\u4e0e\u4e2d\u592e\u8bbe\u5907(\u65e9\u671f\u662f\u8ba1\u7b97\u673a, \u73b0\u5728\u662f\u8def\u7531\u5668\u6216\u8005\u4ea4\u6362\u673a)\u8fde\u63a5. \u4efb\u610f\u4e24\u4e2a\u8282\u70b9\u95f4\u901a\u4fe1\u6700\u591a\u9700\u8981\u4e24\u6b65\u3002\n\u4f18\u70b9: \u65b9\u4fbf\u96c6\u4e2d\u7ba1\u7406.\n\u7f3a\u70b9: \u6210\u672c\u9ad8, \u4e2d\u5fc3\u8bbe\u5907\u5bf9\u6545\u969c\u654f\u611f\uff0c\u7f51\u7edc\u5171\u4eab\u80fd\u529b\u5dee\uff08\u76f8\u5bf9\u4e8e\u603b\u7ebf\u578b\uff09"
+                                                },
+                                                {
+                                                    "image": {
+                                                        "src": "xap:resources/d6d23462778e76736c0708299d6ef28df9da18bdbc200dca32d7c28af6d84e47.png",
+                                                        "width": 103,
+                                                        "height": 79
+                                                    },
+                                                    "name": "\u73af\u5f62\u62d3\u6251",
+                                                    "value": "\u6240\u6709\u8ba1\u7b97\u673a\u5fcc\u53e3\u8bbe\u5907\u8fde\u63a5\u5c18\u5c01\u4e00\u4e2a\u73af, \u53ef\u4ee5\u662f\u5355\u73af\u6216\u53cc\u73af, \u73af\u4e2d\u4fe1\u53f7\u5355\u5411\u4f20\u8f93.\n\u4f8b\u5b50: \u4ee4\u724c\u73af\u5c40\u57df\u7f51"
+                                                },
+                                                {
+                                                    "image": {
+                                                        "src": "xap:resources/5f982bc37b40b8c336333f786701db234f202efe0f32080772e50d0b86e9ff88.png",
+                                                        "width": 95,
+                                                        "height": 79
+                                                    },
+                                                    "name": "\u603b\u7ebf\u578b\u62d3\u6251",
+                                                    "value": "\u7528\u5355\u6839\u4f20\u8f93\u7ebf\u628a\u8ba1\u7b97\u673a\u8fde\u63a5\u8d77\u6765.\n\u4f18\u70b9: \u5bb9\u6613\u5efa\u7acb, \u5bb9\u6613\u589e\u51cf\u7ed3\u70b9, \u8282\u7701\u7ebf\u8def.\n\u7f3a\u70b9: \u901a\u8baf\u6548\u7387\u4f4e, \u5bf9\u4e00\u5904\u6545\u969c\u654f\u611f\u5ea6\u9ad8"
+                                                },
+                                                {
+                                                    "image": {
+                                                        "src": "xap:resources/1cc893dcba79e579aee011a656ddabff5b94857fb4f3a0e967f8f24fca4f4846.png",
+                                                        "width": 103,
+                                                        "height": 89
+                                                    },
+                                                    "name": "\u6811\u578b\u62d3\u6251",
+                                                    "value": "\u6bcf\u4e2a\u8282\u70b9\u81f3\u5c11\u6709\u4e24\u6761\u8def\u5f84\u4e0e\u5176\u4ed6\u7ed3\u70b9\u76f8\u8fde. \u591a\u7528\u5728\u5e7f\u57df\u7f51, \u89c4\u5219\u5f62\u4e0e\u975e\u89c4\u5219\u5f62\u4e24\u79cd.\n\u4f18\u70b9: \u53ef\u9760\u6027\u9ad8\n\u7f3a\u70b9: \u63a7\u5236\u590d\u6742, \u7ebf\u8def\u6210\u672c\u9ad8"
+                                                }
+                                            ]
                                         },
                                         {
                                             "name": "\u4f7f\u7528\u8005",
@@ -480,6 +559,10 @@
                                         {
                                             "name": "\u7ec4\u7ec7",
                                             "value": "ISO - \u56fd\u9645\u6807\u51c6\u5316\u7ec4\u7ec7\nITU - \u56fd\u9645\u7535\u4fe1\u8054\u76df\nIEEE - \u56fd\u9645\u7535\u6c14\u7535\u5b50\u5de5\u7a0b\u5e08\u534f\u4f1a"
+                                        },
+                                        {
+                                            "name": "IEEE802\u6807\u51c6",
+                                            "value": "https://baike.baidu.com/item/IEEE%20802/6808672?fr=aladdin\nIEEE802.3 - \u4ee5\u592a\u7f51\u4ecb\u8d28\u8bbf\u95ee\u63a7\u5236\u534f\u8bae(CSMA/CD)\nIEEE802.5 - \u4ee4\u724c\u73af\u7f51\nIEEE802.8 - \u5149\u7ea4 - FDDI\nIEEE802.11 - \u65e0\u7ebf\u5c40\u57df\u7f51"
                                         }
                                     ]
                                 },
@@ -898,6 +981,67 @@
                                                                     "name": "\u7f51\u5361\u63a5\u53e3"
                                                                 }
                                                             ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u8de8\u5c42\u77e5\u8bc6\u70b9",
+                                    "children": [
+                                        {
+                                            "name": "\u51b2\u7a81\u57df\u4e0e\u5e7f\u64ad\u57df",
+                                            "children": [
+                                                {
+                                                    "name": "\u7269\u7406\u5c42\u8bbe\u5907\uff08\u50bb\u74dc\uff09\n\uff08\u4e2d\u7ee7\u5668\uff0c\u96c6\u7ebf\u5668\uff09",
+                                                    "children": [
+                                                        {
+                                                            "labels": [
+                                                                "\u80fd\u90fd\u9694\u79bb\u51b2\u7a81\u57df"
+                                                            ],
+                                                            "name": "x"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u80fd\u5426\u9694\u79bb\u5e7f\u64ad\u57df"
+                                                            ],
+                                                            "name": "x"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u94fe\u8def\u5c42\u8bbe\u5907\uff08\u8def\u4eba\uff09\n\uff08\u7f51\u6865\u3001\u4ea4\u6362\u673a\uff09",
+                                                    "children": [
+                                                        {
+                                                            "labels": [
+                                                                "\u80fd\u90fd\u9694\u79bb\u51b2\u7a81\u57df"
+                                                            ],
+                                                            "name": "\u221a"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u80fd\u5426\u9694\u79bb\u5e7f\u64ad\u57df"
+                                                            ],
+                                                            "name": "x"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u7f51\u7edc\u5c42\u8bbe\u5907\uff08\u5927\u4f6c\uff09\n\uff08\u8def\u7531\u5668\uff09",
+                                                    "children": [
+                                                        {
+                                                            "labels": [
+                                                                "\u80fd\u90fd\u9694\u79bb\u51b2\u7a81\u57df"
+                                                            ],
+                                                            "name": "\u221a"
+                                                        },
+                                                        {
+                                                            "labels": [
+                                                                "\u80fd\u5426\u9694\u79bb\u5e7f\u64ad\u57df"
+                                                            ],
+                                                            "name": "\u221a"
                                                         }
                                                     ]
                                                 }
@@ -1540,7 +1684,7 @@
                                     ]
                                 },
                                 {
-                                    "name": "\u7269\u7406\u5c42\u8bbe\u5907",
+                                    "name": "\u7269\u7406\u5c42\u8bbe\u5907/\u540d\u8bcd",
                                     "children": [
                                         {
                                             "name": "\u4e2d\u7ee7\u5668/\u8f6c\u53d1\u5668\uff08Repeater\uff09",
@@ -1578,6 +1722,10 @@
                                                     "name": "\u96c6\u7ebf\u5668\u8fde\u63a5\u7684\u5de5\u4f5c\u7ad9\u5c5e\u4e8e\u540c\u4e00\u4e2a\u5e7f\u64ad\u57df\u4e0e\u51b2\u7a81\u57df"
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "name": "\u7f51\u6bb5",
+                                            "value": "\u4e00\u822c\u6307\u7269\u7406\u5c42\u8bbe\u5907\u80fd\u591f\u76f4\u63a5\u901a\u8baf\u7684\u90a3\u4e00\u90e8\u5206"
                                         }
                                     ]
                                 }
@@ -1600,6 +1748,13 @@
                                         {
                                             "name": "\u7ed3\u70b9\u3001\u94fe\u8def\u3001\u6570\u636e\u94fe\u8def\u3001\u5e27",
                                             "value": "\u7ed3\u70b9\uff1a\u4e3b\u673a\u3001\u8def\u7531\u5668\n\u94fe\u8def\uff1a\u7f51\u7edc\u4e2d\u4e24\u4e2a\u7ed3\u70b9\u4e4b\u95f4\u7684\u7269\u7406\u901a\u9053\uff0c\u94fe\u8def\u7684\u4f20\u8f93\u4ecb\u8d28\u6709\u53cc\u7ede\u7ebf\u3001\u5149\u7ea4\u3001\u5fae\u6ce2\u3002\u5206\u4e3a\u6709\u7ebf\u94fe\u8def\u4e0e\u65e0\u7ebf\u94fe\u8def\u3002\n\u6570\u636e\u94fe\u8def\uff1a\u7f51\u7edc\u4e2d\u4e24\u4e2a\u7ed3\u70b9\u4e4b\u95f4\u7684\u903b\u8f91\u901a\u9053\u3002\u63a7\u5236\u6570\u636e\u4f20\u8f93\u534f\u8bae\u7684\u786c\u4ef6\u4e0e\u8f6f\u4ef6 + \u94fe\u8def = \u6570\u636e\u94fe\u8def\u3002\n\u5e27\uff1a\u94fe\u8def\u5c42\u7684\u534f\u8bae\u6570\u636e\u5355\u5143\uff0c\u5c01\u88c5\u7f51\u7edc\u5c42\u6570\u636e\u62a5\u3002"
+                                        },
+                                        {
+                                            "name": "IEEE802"
+                                        },
+                                        {
+                                            "name": "MAC\u5b50\u5c42\u4e0eLLC\u5b50\u5c42",
+                                            "value": "1. LLC\u5b50\u5c42\u8d1f\u8d23\u8bc6\u522b\u7f51\u7edc\u534f\u8bae\uff0c\u7136\u540e\u5bf9\u4ed6\u4eec\u8fdb\u884c\u5c01\u88c5\u3002LLC\u62a5\u5934\u544a\u8bc9\u94fe\u8def\u5c42\uff0c\u5e94\u5f53\u5982\u4f55\u5904\u7406\u6570\u636e\u5305\u3002\n\u4e3a\u7f51\u7edc\u5c42\u63d0\u4f9b\u670d\u52a1\uff1a\u65e0\u786e\u8ba4\u65e0\u8fde\u63a5\u3001\u9762\u5411\u8fde\u63a5\u3001\u5e26\u786e\u8ba4\u8fde\u63a5\u3001\u9ad8\u901f\u4f20\u8f93\n\n2. MAC\u5b50\u5c42\u4e3b\u8981\u529f\u80fd\u5305\u62ec\uff1a\u5e27\u7684\u5c01\u88c5\u5378\u88c5\uff0c\u5e27\u7684\u5bfb\u5740\u4e0e\u8bc6\u522b\uff0c\u5e27\u7684\u63a5\u53d7\u4e0e\u53d1\u9001\uff0c\u94fe\u8def\u7ba1\u7406\uff0c\u5e27\u7684\u5dee\u9519\u63a7\u5236\u3002MAC\u5b50\u5c42\u7684\u5b58\u5728\u5c4f\u853d\u4e86\u4e0d\u540c\u7269\u7406\u94fe\u8def\u79cd\u7c7b\u7684\u5dee\u5f02\u6027\u3002"
                                         }
                                     ]
                                 },
@@ -1609,7 +1764,7 @@
                                     "children": [
                                         {
                                             "name": "\u4e3a\u7f51\u7edc\u5c42\u63d0\u4f9b\u4e09\u79cd\u670d\u52a1 - \uff08\u6709\u8fde\u63a5\u4e00\u5b9a\u8981\u786e\u8ba4\uff09",
-                                            "value": "\u65e0\u786e\u8ba4\u65e0\u8fde\u63a5\u670d\u52a1\n----\u65e0\u9700\u94fe\u8def\u8fde\u63a5\n----\u65e0\u9700\u786e\u8ba4\uff0c\u4e22\u5931\u5e27\u4e0d\u7ba1\n----\u5b9e\u65f6\u901a\u4fe1\uff0c\u8bef\u7801\u7387\u4f4e\u7684\u4fe1\u9053\n----\u4ee5\u592a\u7f51\n\u6709\u786e\u8ba4\u65e0\u8fde\u63a5\u670d\u52a1\n----\u65e0\u9700\u94fe\u8def\u8fde\u63a5\n----\u65e0\u9700\u786e\u8ba4\uff0c\u4e22\u5931\u5e27\u91cd\u53d1\n----\u8bef\u7801\u7387\u9ad8\u7684\u4fe1\u9053\n----\u65e0\u7ebf\u901a\u4fe1\n\u6709\u786e\u8ba4\u6709\u8fde\u63a5\u670d\u52a1\n----\u9700\u8981\u94fe\u8def\u8fde\u63a5\n----\u9700\u8981\u786e\u8ba4\uff0c\u4e22\u5931\u5e27\u91cd\u53d1\n----\u901a\u4fe1\u8981\u6c42\uff08\u53ef\u9760\u6027\uff0c\u5b9e\u65f6\u6027\uff09\u9ad8",
+                                            "value": "\u65e0\u786e\u8ba4\u65e0\u8fde\u63a5\u670d\u52a1\n----\u65e0\u9700\u94fe\u8def\u8fde\u63a5\n----\u65e0\u9700\u786e\u8ba4\uff0c\u4e22\u5931\u5e27\u4e0d\u7ba1\n----\u5b9e\u65f6\u901a\u4fe1\uff0c\u8bef\u7801\u7387\u4f4e\u7684\u4fe1\u9053\n----\u4ee5\u592a\u7f51\n\u6709\u786e\u8ba4\u65e0\u8fde\u63a5\u670d\u52a1\n----\u65e0\u9700\u94fe\u8def\u8fde\u63a5\n----\u65e0\u9700\u786e\u8ba4\uff0c\u4e22\u5931\u5e27\u91cd\u53d1\n----\u8bef\u7801\u7387\u9ad8\u7684\u4fe1\u9053\n----\u65e0\u7ebf\u901a\u4fe1\n\u6709\u786e\u8ba4\u6709\u8fde\u63a5\u670d\u52a1\n----\u9700\u8981\u94fe\u8def\u8fde\u63a5\n----\u9700\u8981\u786e\u8ba4\uff0c\u4e22\u5931\u5e27\u91cd\u53d1\n----\u901a\u4fe1\u8981\u6c42\uff08\u53ef\u9760\u6027\uff0c\u5b9e\u65f6\u6027\uff09\u9ad8\u573a\u5408",
                                             "children": [
                                                 {
                                                     "name": "\u65e0\u786e\u8ba4\u65e0\u8fde\u63a5\u670d\u52a1",
@@ -1706,7 +1861,7 @@
                                             "value": "1. \u6982\u8ff0\n\u636e\u94fe\u8def\u5c42\u8fde\u63a5\u7684\u5efa\u7acb\u3001\u7ef4\u6301\u548c\u91ca\u653e\u8fc7\u7a0b\u6210\u4e3a\u94fe\u8def\u7ba1\u7406\uff0c\u5b83\u4e3b\u8981\u7528\u6237\u9762\u5411\u8fde\u63a5\u7684\u670d\u52a1\u3002\n2. \u5b9e\u73b0\u8fc7\u7a0b\n\u9996\u5148\u786e\u8ba4\u5bf9\u65b9\u5df2\u5904\u4e8e\u5c31\u7eea\u72b6\u6001\n\u4ea4\u6362\u4e00\u4e9b\u5fc5\u8981\u7684\u4fe1\u606f\u4ee5\u5bf9\u5e27\u5e8f\u53f7\u521d\u59cb\u5316\n\u5efa\u7acb\u8fde\u63a5\uff0c\u5728\u4f20\u8f93\u8fc7\u7a0b\u4e2d\u5219\u8981\u80fd\u7ef4\u6301\u8fde\u63a5\uff0c\u800c\u5728\u4f20\u8f93\u5b8c\u6bd5\u540e\u8981\u91ca\u653e\u8be5\u8fde\u63a5\u3002"
                                         },
                                         {
-                                            "name": "\u7ec4\u5e27\uff08\u5c01\u88c5\u6210\u5e27\uff09",
+                                            "name": "\u7ec4\u5e27/\u5c01\u88c5\u6210\u5e27",
                                             "children": [
                                                 {
                                                     "image": {
@@ -1718,7 +1873,10 @@
                                                     "value": "\u5c01\u88c5\u6210\u5e27\u5c31\u662f\u5728\u4e00\u6bb5\u6570\u636e\u7684\u524d\u540e\u90e8\u5206\u6dfb\u52a0\u9996\u90e8\u548c\u5c3e\u90e8\uff0c\u7ed3\u6784\u6210\u5e27\u3002\u63a5\u6536\u7aef\u5728\u6536\u5230\u7269\u7406\u5c42\u4e0a\u4ea4\u7684\u6bd4\u7279\u6d41\u540e\uff0c\u5c31\u80fd\u67d1\u6a58\u9996\u90e8\u548c\u5c3e\u90e8\u7684\u6807\u8bb0\uff0c\u4ece\u6536\u5230\u7684\u6bd4\u7279\u6d41\u4e2d\u8bc6\u522b\u5e27\u7684\u5f00\u59cb\u548c\u7ed3\u675f\u3002"
                                                 },
                                                 {
-                                                    "name": "\u9996\u5c3e\u63a7\u5236\u4fe1\u606f\u4f5c\u7528 - \u5e27\u5b9a\u754c"
+                                                    "name": "MTU - \u6700\u5927\u5e27\u957f"
+                                                },
+                                                {
+                                                    "name": "\u5e27\u5b9a\u754c\uff08\u9996\u5c3e\u63a7\u5236\u4fe1\u606f\u4f5c\u7528\uff09 "
                                                 },
                                                 {
                                                     "name": "\u5e27\u540c\u6b65",
@@ -1732,7 +1890,8 @@
                                                     "makers": [
                                                         "flag-red"
                                                     ],
-                                                    "name": "\u7ec4\u5e27\u7684\u65b9\u6cd5",
+                                                    "name": "\u7ec4\u5e27",
+                                                    "value": "\u6ce8\u610f\uff0c\u7ec4\u5e27\u7684\u65f6\u5019\u65e2\u8981\u52a0\u9996\u90e8\u53c8\u8981\u52a0\u5c3e\u90e8\u3002\u9700\u8981\u901a\u8fc7\u9996\u5c3e\u6807\u8bc6\u5e27\u7684\u8d77\u59cb\uff0c\u4f46\u662f\u6570\u636e\u5305\u4ec5\u4ec5\u662f\u5e27\u7684\u6570\u636e\u90e8\u5206\uff0c\u6240\u4ee5\u4e0d\u7528\u52a0\u5c3e\u5b9a\u754c\u7b26",
                                                     "children": [
                                                         {
                                                             "image": {
@@ -1778,12 +1937,13 @@
                                                                 "shadowVisible": true
                                                             },
                                                             "name": "\u96f6\u6bd4\u7279\u586b\u5145\u6cd5",
+                                                            "value": "\u9047\u5230\u4e94\u4e2a1\u5c31\u52a0\u4e00\u4e2a0\n\u4f46\u662f\u9996\u5c3e\u6807\u5fd7\u4e0d\u8981\u52a00",
                                                             "children": [
                                                                 {
                                                                     "labels": [
                                                                         "\u5b9e\u7528\u6027"
                                                                     ],
-                                                                    "name": "\u5e38\u7528"
+                                                                    "name": "\u5e38\u7528\uff0c\u5bb9\u6613\u7531\u786c\u4ef6\u5b9e\u73b0"
                                                                 }
                                                             ]
                                                         },
@@ -1811,6 +1971,7 @@
                                         },
                                         {
                                             "name": "\u5dee\u9519\u63a7\u5236",
+                                            "value": "1. \u5dee\u9519\u63a7\u5236\u5206\u4e3a\u4f4d\u9519\u4e0e\u5e27\u9519\n2. \u5dee\u9519\u7684\u6765\u6e90\u662f\u566a\u58f0",
                                             "children": [
                                                 {
                                                     "name": "\u5dee\u9519\u7531\u6765-\u566a\u58f0",
@@ -1830,7 +1991,7 @@
                                                     "value": "\u4ec0\u4e48\u662f\u4f4d\u9519\uff1a\n0\u53d81\uff0c1\u53d80",
                                                     "children": [
                                                         {
-                                                            "name": "\u68c0\u9519\u7f16\u7801+\u91cd\u4f20\u5e27",
+                                                            "name": "\u81ea\u52a8\u91cd\u4f20\u8bf7\u6c42(ARQ)",
                                                             "value": "1. \u5947\u5076\u6821\u9a8c\u7801\n2. \u5faa\u73af\u5197\u4f59\u7801\uff08CRC\uff09",
                                                             "children": [
                                                                 {
@@ -1847,26 +2008,35 @@
                                                                     "image": {
                                                                         "src": "xap:resources/b9074c3f15bf95c5bef92b62758a01aa20727c2475bd17c3c1a474114f39eae3.png"
                                                                     },
-                                                                    "name": "\u5faa\u73af\u5197\u4f59\u7801(CRC)",
+                                                                    "name": "\u5faa\u73af\u5197\u4f59\u7801/\u591a\u9879\u5f0f\u7f16\u7801(CRC)",
                                                                     "children": [
                                                                         {
+                                                                            "image": {
+                                                                                "src": "xap:resources/3b253d7ea76fed4f313dec96db5460c83023ce03bb5bac72321979c1a3be03cc.png",
+                                                                                "width": 245,
+                                                                                "height": 34.60920626349892,
+                                                                                "isMathJaxImage": true
+                                                                            },
                                                                             "name": "\u751f\u6210\u591a\u9879\u5f0f",
                                                                             "value": "\u662f\u56fd\u9645\u4e0a\u89c4\u5b9a\u7684\u5e8f\u5217\uff0c\u6709\u4e24\u79cd\u5f62\u5f0f\n\u4f8b\u5982\nx^4+x+1 = 10011\n\u751f\u6210\u591a\u9879\u5f0f\u7684\u6700\u9ad8\u4f4d\u548c\u6700\u4f4e\u4f4d\u5fc5\u987b\u662f1"
                                                                         },
                                                                         {
-                                                                            "name": "FCS(\u5e27\u68c0\u9a8c\u5e8f\u5217)",
-                                                                            "value": "\u4f8b\u5b50\uff1a\u53d1\u9001\u6570\u636e1101011011, \u91c7\u7528CRC\u6821\u9a8c\uff0c\u751f\u6210\u591a\u9879\u5f0f10011, \u95ee\u6700\u7ec8\u53d1\u9001\u7684\u6570\u636e\uff1f\n1101011011 0000 / 10011 = xxx .. 1110\n\u6ce8\u610f\uff01\u76f8\u9664\u65f6\u7528\u7684\u662f\u5f02\u6216\uff01\u540c0\u5f021\n\u53d1\u9001\u6570\u636e\u662f \u539f\u6570\u636e+FCS: 11010110111110"
+                                                                            "name": "\u5e27\u68c0\u9a8c\u5e8f\u5217(FCS)",
+                                                                            "value": "\u4f8b\u5b50\uff1a\u53d1\u9001\u6570\u636e1101011011, \u91c7\u7528CRC\u6821\u9a8c\uff0c\u751f\u6210\u591a\u9879\u5f0f10011, \u95ee\u6700\u7ec8\u53d1\u9001\u7684\u6570\u636e\uff1f\n\u6b65\u9aa4\uff1a\u52a00\uff0c\u6469\u4e8c\u9664\uff1a\n1101011011 0000 / 10011 = xxx .. 1110\n\u6ce8\u610f\uff01\u76f8\u9664\u65f6\u7528\u7684\u662f\u5f02\u6216\uff01\u540c0\u5f021\n\u53d1\u9001\u6570\u636e\u662f \u539f\u6570\u636e+FCS: 11010110111110"
                                                                         },
                                                                         {
                                                                             "name": "\u9a8c\u8bc1\u9519\u8bef",
                                                                             "value": "\u6bd4\u5982\u539f\u6570\u636e\u662f1101011011\uff0c\u6821\u9a8c\u7801\u662f1110\u3002\n\u6536\u5230\u7684\u6570\u636e\u662f11010110111110\u3002\u76f4\u63a5\u7528\u6536\u5230\u7684\u6570\u636e\u9664\u751f\u6210\u591a\u9879\u5f0f10011\uff0c\u5373\u53ef\u5f97\u5230\u539f\u6570\u636e\uff1a1101011011\uff0c\u8fd9\u79cd\u60c5\u51b5\u4e0b\u4f59\u6570\u4e3a0\uff0c\u5982\u679c\u4f59\u6570\u4e0d\u4e3a\u96f6\u5219\u4f20\u8f93\u51fa\u9519\u3002"
+                                                                        },
+                                                                        {
+                                                                            "name": "\u68c0\u6d4b\u4f4d\u6570 \u2264 \u6821\u9a8c\u4f4d"
                                                                         }
                                                                     ]
                                                                 }
                                                             ]
                                                         },
                                                         {
-                                                            "name": "\u7ea0\u9519\u7f16\u7801",
+                                                            "name": "\u5411\u524d\u7ea0\u9519(FEC)",
                                                             "value": "\u6d77\u660e\u7f16\u7801",
                                                             "children": [
                                                                 {
@@ -1938,7 +2108,7 @@
                                                     "value": "\u4ec0\u4e48\u662f\u5e27\u9519\uff1a\n\u4e22\u5931(\u89e3\u51b3\uff1a\u8d85\u65f6\u91cd\u53d1)\u3001\u91cd\u590d\u3001\u5931\u5e8f",
                                                     "children": [
                                                         {
-                                                            "name": "\u5b9a\u65f6\u5668\u3001\u7f16\u53f7\u673a\u5236"
+                                                            "name": "\u5b9a\u65f6\u5668\u4e0e\u7f16\u53f7\u673a\u5236"
                                                         }
                                                     ]
                                                 }
@@ -2184,7 +2354,7 @@
                                                                                     "image": {
                                                                                         "src": "xap:resources/d24b86c04c5c75d92162e243a94d54a404d6a5e898a2668b41a430dcef8a452b.png"
                                                                                     },
-                                                                                    "name": "\u4ee4\u724c\u4f20\u9012\u534f\u8bae",
+                                                                                    "name": "\u4ee4\u724c\u4f20\u9012\u534f\u8bae\uff08\u4ee4\u724c\u73af\uff09",
                                                                                     "value": "\u7f3a\u70b9\uff1a\n1. \u4ee4\u724c\u5f00\u9500\n2. \u7b49\u5f85\u5ef6\u8fdf\n3. \u5355\u70b9\u6545\u969c",
                                                                                     "children": [
                                                                                         {
@@ -2200,6 +2370,10 @@
                                                                                             "value": "\u5e38\u7528\u4e8e\u8d1f\u8f7d\u8f83\u91cd\uff0c\u901a\u4fe1\u91cf\u8f83\u5927\u7684\u7f51\u7edc"
                                                                                         }
                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "\u4ee4\u724c\u603b\u7ebf",
+                                                                                    "value": "\u9002\u7528\u4e8e\u603b\u7ebf\u578b\u6811\u578b\u7f51\u7edc\n\u4ed6\u662f\u628a\u603b\u7ebf\u578b\u6216\u6811\u578b\u7f51\u7edc\u4e2d\u7684\u5404\u4e2a\u5de5\u4f5c\u7ad9\u6309\u4e00\u5b9a\u987a\u5e8f\u6309\u63a5\u5165\u53e3\u5730\u5740\u5927\u5c0f\u6392\u5217\u5f62\u6210\u4e00\u4e2a\u903b\u8f91\u73af\u3002\u53ea\u6709\u4ee4\u724c\u6301\u6709\u8005\u624d\u80fd\u63a7\u5236\u603b\u7ebf\uff0c\u624d\u6709\u53d1\u9001\u4fe1\u606f\u7684\u6743\u5229\u3002"
                                                                                 }
                                                                             ]
                                                                         },
@@ -2337,17 +2511,401 @@
                                                                     ]
                                                                 }
                                                             ]
+                                                        },
+                                                        {
+                                                            "name": "\u4ee5\u592a\u7f51",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u6982\u8ff0",
+                                                                    "value": "Ethernet\uff0c\u57fa\u5e26\u603b\u7ebf\u5c40\u57df\u7f51\u89c4\u8303\uff0c\u662f\u65b9\u5dfe\u5c40\u57df\u7f51\u91c7\u7528\u7684\u6700\u901a\u7528\u7684\u901a\u4fe1\u534f\u8bae\u6807\u51c6\uff0c\u4ee5\u592a\u7f51\u7528CSMA/CD\u6280\u672f"
+                                                                },
+                                                                {
+                                                                    "name": "\u7edf\u6cbb\u6027\u5730\u4f4d\u539f\u56e0",
+                                                                    "value": "1. \u4fbf\u5b9c\uff0c\u6bcf\u4e2a\u4ee5\u592a\u7f51\u5361\u4e0d\u5230100\u5143\n2. \u6280\u672f\u5e94\u7528\u5e7f\u6cdb\n3. \u6bd4\u4ee4\u724c\u73af\u7f51\u3001ATM\u7f51\u7b80\u5355\uff0c\u4fbf\u5b9c\n4. \u6ee1\u8db3\u7f51\u7edc\u8981\u6c42 - 10Mb/s - 10Gb/s"
+                                                                },
+                                                                {
+                                                                    "name": "\u4e24\u4e2a\u6807\u51c6",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "DIX Ethernet V2"
+                                                                        },
+                                                                        {
+                                                                            "name": "IEEE802.3"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u65e0\u8fde\u63a5\u4e0d\u53ef\u9760\u670d\u52a1"
+                                                                },
+                                                                {
+                                                                    "name": "\u62d3\u6251\u7ed3\u6784",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "\u4f20\u7edf",
+                                                                            "children": [
+                                                                                {
+                                                                                    "labels": [
+                                                                                        "\u7269\u7406\u4e0a"
+                                                                                    ],
+                                                                                    "name": "\u603b\u7ebf\u578b"
+                                                                                },
+                                                                                {
+                                                                                    "labels": [
+                                                                                        "\u903b\u8f91\u4e0a"
+                                                                                    ],
+                                                                                    "name": "\u603b\u7ebf\u578b"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "\u73b0\u4ee3",
+                                                                            "children": [
+                                                                                {
+                                                                                    "labels": [
+                                                                                        "\u7269\u7406\u4e0a"
+                                                                                    ],
+                                                                                    "name": "\u661f\u578b(\u96c6\u7ebf\u5668)"
+                                                                                },
+                                                                                {
+                                                                                    "labels": [
+                                                                                        "\u903b\u8f91\u4e0a"
+                                                                                    ],
+                                                                                    "name": "\u603b\u7ebf\u578b"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "makers": [
+                                                                        "flag-red"
+                                                                    ],
+                                                                    "name": "10BASE-T",
+                                                                    "value": "1. 10BASE-T\u4f20\u9001\u57fa\u5e26\u4fe1\u53f7\uff0c\u53cc\u7ede\u7ebf\u4ee5\u592a\u7f51\uff0cT\u8868\u793a\u53cc\u7ede\u7ebf\uff0c10BASE-T\u91c7\u7528\u65e0\u5c4f\u853d\u53cc\u7ede\u7ebf\uff08UTP\uff09\uff0c\u4f20\u8f93\u901f\u738710Mb/s\n2. \u7269\u7406\u4e0a\u91c7\u7528\u661f\u578b\u62d3\u6251\uff0c\u903b\u8f91\u4e0a\u662f\u603b\u7ebf\u578b\u62d3\u6251\uff0c\u6bcf\u6bb5\u53cc\u7ede\u7ebf\u6700\u957f\u4e3a100m\u3002\n3. \u91c7\u7528\u66fc\u5f7b\u65af\u7279\u7f16\u7801\n4. \u91c7\u7528CSMA/C",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "\u9002\u914d\u5668\u4e0eMAC\u5730\u5740"
+                                                                        },
+                                                                        {
+                                                                            "image": {
+                                                                                "src": "xap:resources/f5deb1d7d457cf7b1e8709c139207d2a2987c584d3272f136f6b55df1098a5bc.png",
+                                                                                "width": 277,
+                                                                                "height": 119
+                                                                            },
+                                                                            "name": "\u4ee5\u592a\u7f51MAC\u5e27",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "\u4e3a\u4ec0\u4e48\u4e0d\u9700\u8981\u7ed3\u675f\u5b9a\u754c\u7b26\uff1f",
+                                                                                    "value": "\u56e0\u4e3a\u66fc\u5f7b\u65af\u7279\u7f16\u7801\u662f01\u621610\uff0c\u5982\u679c\u6ca1\u6709\u6570\u636e\u5c31\u662f00\uff0c\u4f1a\u81ea\u52a8\u68c0\u6d4b\u51fa\u6ca1\u6709\u6570\u636e\u5728\u4f20\u8f93"
+                                                                                },
+                                                                                {
+                                                                                    "name": "\u4e0eIEEE802.3\u533a\u522b",
+                                                                                    "value": "1. \u7b2c\u4e09\u4e2a\u5b57\u7aef\u662f\u957f\u5ea6/\u7c7b\u578b\n2. \u5f53\u957f\u5ea6/\u7c7b\u578b\u5b57\u6bb5\u503c\u5c0f\u4e8e0x0600\u65f6\uff0c\u6570\u636e\u5b57\u7aef\u5fc5\u987b\u88c5\u5165LLC\u5b50\u5c42"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u9ad8\u901f\u4ee5\u592a\u7f51\n\u2265100Mb/s",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "100BASE-T",
+                                                                            "value": "\u5728\u53cc\u7ede\u7ebf\u4e0a\u4f20\u9001100Mb/s\u57fa\u5e26\u4fe1\u53f7\u7684\u661f\u661f\u62d3\u6251\u4ee5\u592a\u7f51\nIEEE802.3\uff0cCSMA/CD\n\u652f\u6301\u5168\u53cc\u5de5\u548c\u534a\u53cc\u5de5"
+                                                                        },
+                                                                        {
+                                                                            "name": "\u5409\u6bd4\u7279\u4ee5\u592a\u7f51",
+                                                                            "value": "\u5728\u5149\u7ebf\u6216\u53cc\u7ede\u7ebf\u4e0a\u4f20\u90011Gb/s\u4fe1\u53f7\n\u652f\u6301\u5168\u53cc\u5de5\u534a\u53cc\u5de5"
+                                                                        },
+                                                                        {
+                                                                            "name": "10\u5409\u4ee5\u592a\u7f51",
+                                                                            "value": "\u5149\u7ea4\uff0c10Gb//s\u4fe1\u53f7\n\u5168\u53cc\u5de5"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u65e0\u7ebf\u5c40\u57df\u7f51\nIEEE802.11",
+                                                            "children": [
+                                                                {
+                                                                    "image": {
+                                                                        "src": "xap:resources/2d576299e9820511c169b654ea047300146453628a8ab822e9437df79635a608.png",
+                                                                        "width": 367,
+                                                                        "height": 128
+                                                                    },
+                                                                    "name": "\u4ee5\u592a\u7f51MAC\u5e27\uff08\u5934\uff09\uff08\u8003\u8fc7\uff09",
+                                                                    "value": "\u6bd4\u5982A\u8bbe\u5907\u901a\u8fc7AP1\u57fa\u7ad9\uff0c\u53d1\u9001\u7ed9AP2\u57fa\u7ad9\u4ee3\u7406\u7684B\u8bbe\u5907\u3002\nRA: mac(AP2)\nTA: mac(AP1)\nDA: mac(B)\nSA: mac(A)"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "\u65e0\u7ebf\u5c40\u57df\u7f51\u7684\u5206\u7c7b",
+                                                            "children": [
+                                                                {
+                                                                    "image": {
+                                                                        "src": "xap:resources/caa33ce5dde0a14f037f609b4d42da79ff2deec6a2b70a4c603c5ad5a4e7f608.png",
+                                                                        "width": 319,
+                                                                        "height": 130
+                                                                    },
+                                                                    "name": "\u6709\u56fa\u5b9a\u57fa\u7840\u8bbe\u65bd\u65e0\u7ebf\u5c40\u57df\u7f51",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "\u57fa\u672c\u670d\u52a1\u96c6BSS"
+                                                                        },
+                                                                        {
+                                                                            "name": "\u6269\u5c55\u670d\u52a1\u96c6ESS"
+                                                                        },
+                                                                        {
+                                                                            "name": "\u670d\u52a1\u96c6\u6807\u8bc6\u7b26(wifi\u7684\u540d\u5b57)"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "image": {
+                                                                        "src": "xap:resources/a837af8c7410bccab6b2904fb5ddcbb492c790cdaf8d243d62b24b01bd6cfb87.png",
+                                                                        "width": 299,
+                                                                        "height": 120
+                                                                    },
+                                                                    "name": "\u65e0\u56fa\u5b9a\u57fa\u7840\u8bbe\u65bd\u65e0\u7ebf\u5c40\u57df\u7f51\u7684\u81ea\u7ec4\u7ec7\u7f51\u7edc\uff08\u57fa\u672c\u4e0d\u8003\uff09"
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 },
                                                 {
                                                     "name": "\u70b9\u5bf9\u70b9\uff08\u5e7f\u57df\u7f51\uff09",
-                                                    "value": "\u4e24\u4e2a\u76f8\u90bb\u7ed3\u70b9\u901a\u8fc7\u4e00\u4e2a\u94fe\u8def\u8fdb\u884c\u76f8\u8fde\uff0c\u6ca1\u6709\u7b2c\u4e09\u8005\u3002\n\u5e94\u7528\uff1aPPP\u534f\u8bae\uff0c\u5e38\u7528\u8bed\u5e7f\u57df\u7f51"
+                                                    "value": "\u4e24\u4e2a\u76f8\u90bb\u7ed3\u70b9\u901a\u8fc7\u4e00\u4e2a\u94fe\u8def\u8fdb\u884c\u76f8\u8fde\uff0c\u6ca1\u6709\u7b2c\u4e09\u8005\u3002\n\u5e94\u7528\uff1aPPP\u534f\u8bae\uff0c\u5e38\u7528\u8bed\u5e7f\u57df\u7f51",
+                                                    "children": [
+                                                        {
+                                                            "name": "PPP\u534f\u8bae",
+                                                            "value": "\u70b9\u5bf9\u70b9\u4f20\u8f93",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u9700\u8981\u6ee1\u8db3\u7684\u8981\u6c42",
+                                                                    "value": "1. \u7b80\u5355\n\u5bf9\u4e8e\u94fe\u8def\u5c42\u7684\u5e27\uff0c\u65e0\u9700\u7ea0\u9519\uff0c\u65e0\u9700\u5e8f\u53f7\uff0c\u65e0\u9700\u6d41\u91cf\u63a7\u5236\n2. \u5c01\u88c5\u6210\u5e27\n\u5e27\u5b9a\u754c\u7b26\n3. \u900f\u660e\u4f20\u8f93\n\u4e0e\u5e27\u5b9a\u754c\u7b26\u4e00\u6837\u6bd4\u7279\u7ec4\u5408\u7684\u6570\u636e\u5e94\u8be5\u5982\u4f55\u5904\u7406\uff1a\u5f02\u6b65\u7ebf\u8def\uff08\u9010\u4e2a\u5b57\u8282\u6216\u5b57\u7b26\u53d1\u9001\u7684\uff09\u7528\u6bd4\u7279\u586b\u5145\uff0c\u540c\u6b65\u7ebf\u8def\uff08\u4e00\u4e2a\u4e00\u4e2a\u6bd4\u7279\u53d1\u9001\uff09\u7528\u5b57\u8282\u586b\u5145\n4. \u591a\u79cd\u7f51\u7edc\u5c42\u534f\u8bae\n\u5c01\u88c5\u7684IP\u6570\u636e\u5305\u53ef\u4ee5\u91c7\u7528\u591a\u79cd\u534f\u8bae\n5. \u591a\u79cd\u7c7b\u578b\u94fe\u8def\n\u4e32\\\u5e76\uff0c\u540c\u6b65\\\u5f02\u6b65\uff0c\u7535\\\u5149\n6. \u5dee\u9519\u68c0\u6d4b - CRC\uff0c\u7528FCS\u5b57\u7aef\u68c0\u6d4b\u662f\u5426\u6709\u9519\uff0c\u6709\u9519\u5c31\u4e22\u6389\n7. \u68c0\u6d4b\u8fde\u63a5\u72b6\u6001 - \u94fe\u8def\u662f\u5426\u6b63\u5e38\u5de5\u4f5c\n8. \u6700\u5927\u4f20\u8f93\u5355\u5143 - MTU\uff08max=1500\u5b57\u8282\uff09\n9. \u7f51\u7edc\u5c42\u5730\u5740\u534f\u5546 - \u77e5\u9053\u901a\u4fe1\u53cc\u65b9\u7684\u7f51\u7edc\u5c42\u5730\u5740\n10. \u6570\u636e\u538b\u7f29\u534f\u5546"
+                                                                },
+                                                                {
+                                                                    "name": "\u65e0\u9700\u6ee1\u8db3\u7684\u8981\u6c42",
+                                                                    "value": "1. \u7ea0\u9519\n2. \u6d41\u91cf\u63a7\u5236\n3. \u5e8f\u53f7\n4. \u4e0d\u9700\u8981\u6ee1\u8db3\u591a\u70b9\u7ebf\u8def - PPP\u53ea\u7528\u6ee1\u8db3\u70b9\u5bf9\u70b9\u5c31\u884c\u4e86"
+                                                                },
+                                                                {
+                                                                    "name": "\u4e09\u4e2a\u529f\u80fd",
+                                                                    "value": "1. \u4e00\u4e2a\u5c06IP\u6570\u636e\u5305\u5c01\u88c5\u5230\u4e32\u884c\u94fe\u8def(\u540c\u6b65\u6216\u5f02\u6b65)\u7684\u65b9\u6cd5\n2. \u94fe\u8def\u63a7\u5236\u534f\u8baeLCP\uff1a\u5efa\u7acb\u5e76\u7ef4\u62a4\u6570\u636e\u94fe\u8def\u8fde\u63a5 - \u8eab\u4efd\u9a8c\u8bc1\n3. \u7f51\u7edc\u63a7\u5236\u534f\u8baeNCP\uff1aPPP\u53ef\u4ee5\u652f\u6301\u591a\u79cd\u7f51\u7edc\u5c42\u534f\u8bae\uff0c\u6bcf\u4e00\u79cd\u7f51\u7edc\u5c42\u534f\u8bae\u90fd\u9700\u8981\u5bf9\u5e94\u7684NCP\u8fdb\u884c\u914d\u7f6e\u3002"
+                                                                },
+                                                                {
+                                                                    "image": {
+                                                                        "src": "xap:resources/62004f6b534488dc45dbbb1d6ea6958be8673c288e95a297b0d2319c97417845.png",
+                                                                        "width": 264,
+                                                                        "height": 76
+                                                                    },
+                                                                    "name": "PPP\u5e27\u683c\u5f0f - \u9762\u5411\u5b57\u8282"
+                                                                },
+                                                                {
+                                                                    "image": {
+                                                                        "src": "xap:resources/748ad402332a351744687260cea70e48e99cd27165f997c8735af10f4fa3084d.png",
+                                                                        "width": 249,
+                                                                        "height": 167
+                                                                    },
+                                                                    "name": "PPP\u72b6\u6001\u56fe"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "HDLC\u534f\u8bae",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u5b9a\u4e49",
+                                                                    "value": "\u9ad8\u7ea7\u6570\u636e\u94fe\u8def\u63a7\u5236\uff08HDLC\uff09\uff0c\u662f\u4e00\u4e2a\u5728\u540c\u6b65\u7f51\u4e0a\u4f20\u8f93\u6570\u636e\uff0c\u9762\u5411\u6bd4\u7279\u7684\u6570\u636e\u94fe\u8def\u5c42\u534f\u8bae\uff0c\u53c8ISO\u6839\u636eSDLC\u6269\u5c55\u800c\u6210\u3002"
+                                                                },
+                                                                {
+                                                                    "name": "\u7279\u70b9",
+                                                                    "value": "\u9762\u5411\u6bd4\u7279\n\u5168\u53cc\u5de5\u901a\u4fe1\nCRC\u68c0\u9a8c\n0\u6bd4\u7279\u63d2\u5165\u6cd5"
+                                                                },
+                                                                {
+                                                                    "name": "HDLC\u7ad9",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "\u4e3b\u7ad9"
+                                                                        },
+                                                                        {
+                                                                            "name": "\u4ece\u7ad9"
+                                                                        },
+                                                                        {
+                                                                            "name": "\u590d\u5408\u7ad9"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u4e09\u79cd\u6570\u636e\u64cd\u4f5c\u65b9\u5f0f",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "\u6b63\u5e38\u54cd\u5e94\u65b9\u5f0f",
+                                                                            "value": "\u662f\u4e00\u79cd\u975e\u5e73\u8861\u7ed3\u6784\u64cd\u4f5c\u65b9\u5f0f\uff0c\u5373\u4e3b\u7ad9\u5411\u4ece\u7ad9\u4f20\u8f93\u6570\u636e\uff0c\u4ece\u7ad9\u54cd\u5e94\u4f20\u8f93\uff0c\u4f46\u4ece\u7ad9\u53ea\u6709\u5728\u6536\u5230\u4e3b\u7ad9\u7684\u8bb8\u53ef\u540e\uff0c\u624d\u53ef\u8fdb\u884c\u54cd\u5e94"
+                                                                        },
+                                                                        {
+                                                                            "name": "\u5f02\u6b65\u5e73\u8861\u65b9\u5f0f",
+                                                                            "value": "\u5e73\u8861\u7ed3\u6784\u64cd\u4f5c\u65b9\u5f0f\uff0c\u6bcf\u4e2a\u590d\u5408\u7ad9\u90fd\u53ef\u4ee5\u8fdb\u884c\u5bf9\u53e6\u4e00\u7ad9\u7684\u6570\u636e\u4f20\u8f93"
+                                                                        },
+                                                                        {
+                                                                            "name": "\u5f02\u6b65\u54cd\u5e94\u65b9\u5f0f",
+                                                                            "value": "\u975e\u5e73\u8861\u54cd\u5e94\u51e1\u4e8b\u65b9\u5f0f\uff0c\u4ece\u7ad9\u672a\u6536\u5230\u4e3b\u7ad9\u5141\u8bb8\uff0c\u4e5f\u53ef\u8fdb\u884c\u4f20\u8f93"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "image": {
+                                                                        "src": "xap:resources/321c1f8f0f8a7c8dd735e3cc03ae92d01797dc2cf72393c3ccdef3f40a585977.png",
+                                                                        "width": 335,
+                                                                        "height": 72
+                                                                    },
+                                                                    "name": "HDLC\u5e27\u683c\u5f0f - \u9762\u5411\u6bd4\u7279",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "F",
+                                                                            "value": "\u6807\u5fd7\u5b57\u6bb5\uff1a01111110"
+                                                                        },
+                                                                        {
+                                                                            "name": "\u4fe1\u606fInfo",
+                                                                            "value": "\u96f6\u6bd4\u7279\u586b\u5145\u6cd5"
+                                                                        },
+                                                                        {
+                                                                            "name": "A",
+                                                                            "value": "\u6b63\u5e38\u54cd\u5e94\u65b9\u5f0f\u6216\u5f02\u6b65\u54cd\u5e94\u65b9\u5f0f\uff1a\u586b\u5145\u4ece\u7ad9\u5730\u5740\n\u5f02\u6b65\u5e73\u8861\u65b9\u5f0f\uff1a\u586b\u5145\u5bf9\u65b9\uff08\u5e94\u7b54\u7ad9\uff09\u5730\u5740"
+                                                                        },
+                                                                        {
+                                                                            "name": " C- \u5de7\u8ba1\u201c\u65e0\u5978\u7ec6\u201d",
+                                                                            "value": "1. \u4fe1\u606f\u5e27 \u7b2c\u4e00\u4f4d\u662f0\n\u7528\u6765\u4f20\u8f93\u6570\u636e\u4fe1\u606f\uff0c\u6216\u4f7f\u7528\u634e\u5e26\u6280\u672f\u5bf9\u6570\u636e\u8fdb\u884c\u786e\u8ba4\n2. \u76d1\u7763\u5e27 10\n\u7528\u4e8e\u6d41\u91cf\u63a7\u5236\u548c\u5dee\u9519\u63a7\u5236\uff0c\u6267\u884c\u5bf9\u4fe1\u606f\u5e27\u7684\u786e\u8ba4\u3001\u8bf7\u6c42\u91cd\u53d1\u548c\u8bf7\u6c42\u6682\u505c\u53d1\u9001\u7b49\u529f\u80fd\n3. \u65e0\u7f16\u53f7\u5e27 11\n\u7528\u4e8e\u63d0\u4f9b\u5bf9\u94fe\u8def\u7684\u5efa\u7acb\u3001\u62c6\u9664\u7b49\u591a\u79cd\u63a7\u5236\u529f\u80fd"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         },
                                         {
-                                            "name": "\u94fe\u8def\u5c42\u8bbe\u5907"
+                                            "name": "\u94fe\u8def\u5c42\u8bbe\u5907",
+                                            "children": [
+                                                {
+                                                    "name": "\u7f51\u6865",
+                                                    "value": "\u7f51\u6865\u6839\u636eMAC\u5e27\u76ee\u7684\u5730\u5740\u5bf9\u9635\u8fdb\u884c\u4e86\u8f6c\u53d1\u548c\u8fc7\u6ee4\u3002\u5f53\u738b\u4e54\u6536\u5230\u4e00\u4e2a\u5e27\u65f6\uff0c\u5e76\u4e0d\u5411\u6240\u6709\u501f\u53e3\u8f6c\u53d1\u6b64\u5e27\uff0c\u800c\u662f\u5148\u68c0\u67e5\u6b64\u5e27\u7684\u76ee\u7684MAC\u5730\u5740\uff0c\u7136\u540e\u963b\u788d\u786e\u8ba4\u5c06\u8be5\u5e27\u8f6c\u5230\u54ea\u4e2a\u63a5\u53e3\u6216\u4e22\u5f03\u3002\n\n\u7f51\u6865\u7684\u4e24\u7aef\u662f\u4e24\u4e2a\u7f51\u6bb5\n\n-> \u96c6\u7ebf\u5668\u662f1\u8f6c\u5168\u90e8\uff0c\u7f51\u6865\u60f3\u60f3\u8f6c\u5230\u54ea",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u4f18\u70b9",
+                                                            "value": "1.  \u8fc7\u6ee4\u901a\u4fe1\u91cf\uff0c\u589e\u5927\u541e\u5410\u91cf\n\u6bd4\u5982\u4e00\u4e2a\u51b2\u7a81\u57df\u901f\u5ea6\u662f10Mb/s\uff0c\u5982\u679c\u4e09\u4e2a\u51b2\u7a81\u57df\u7528\u7269\u7406\u5c42\u7684\u96c6\u7ebf\u5668\u8fde\u8d77\u6765\uff0c\u901f\u5ea6\u8fd8\u662f10Mb/s\uff0c\u5982\u679c\u7528\u94fe\u8def\u5c42\u7684\u7f51\u6865\u8fde\u8d77\u6765\uff0c\u5c31\u53ef\u4ee5\u8fbe\u523030Mb/s\n2. \u6269\u5927\u4e86\u7269\u7406\u7684\u4f20\u8f93\u8303\u56f4\n3. \u63d0\u9ad8\u53ef\u9760\u6027\n4. \u4e92\u8054\u4e0d\u540c\u7269\u7406\u5c42\u3001\u4e0d\u540cMAC\u5c42\u548c\u4e0d\u7528\u901f\u7387\u7684\u4ee5\u592a\u7f51"
+                                                        },
+                                                        {
+                                                            "name": "\u5206\u7c7b",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u900f\u660e\u7f51\u6865",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u5b9a\u4e49"
+                                                                            ],
+                                                                            "name": "\u201c\u900f\u660e\u201d\u6307\u4ee5\u592a\u7f51\u7684\u7ad9\u70b9\u5e76\u4e0d\u77e5\u9053\u53d1\u9001\u7684\u5e27\u7ecf\u8fc7\u54ea\u51e0\u4e2a\u7f51\u6865\uff0c\u662f\u4e00\u79cd\u5373\u63d2\u5373\u7528\u8bbe\u5907 -- \u81ea\u5b66\u4e60"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u65b9\u6cd5"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u539f\u8def\u7531\u7f51\u6865",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u5b9a\u4e49"
+                                                                            ],
+                                                                            "name": "\u518d\u53d1\u9001\u5e27\u65f6\uff0c\u628a\u6700\u8be6\u7ec6\u7684\u6700\u4f73\u8def\u7531\u4fe1\u606f\uff08\u8def\u7531\u6700\u5c11/\u65f6\u95f4\u6700\u77ed\uff09\u653e\u5728\u5e27\u7684\u9996\u90e8\u4e2d"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u65b9\u6cd5"
+                                                                            ],
+                                                                            "name": "\u6e90\u7ad9\u4e0e\u5e7f\u64ad\u65b9\u5f0f\u5411\u6b32\u901a\u4fe1\u7684\u76ee\u7684\u7ad9\u53d1\u9001\u4e00\u4e2a\u53d1\u73b0\u5e27"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "image": {
+                                                                "src": "xap:resources/61ce42b511ea79c30b94dee3bb1b353fbfb599ea905069f585d38faf65108ece.png",
+                                                                "width": 436,
+                                                                "height": 157
+                                                            },
+                                                            "name": "\u81ea\u5b66\u4e60"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "image": {
+                                                        "src": "xap:resources/2a60fd8173526cfe523dd9db861a22fdaba0496032006bce1043bd2d0e354439.png",
+                                                        "width": 370,
+                                                        "height": 162
+                                                    },
+                                                    "name": "\u4ea4\u6362\u673a - \u72ec\u5360\u4f20\u8f93\u5a92\u4f53\u5e26\u5bbd",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u5206\u7c7b",
+                                                            "children": [
+                                                                {
+                                                                    "name": "\u76f4\u901a\u5f0f\u4ea4\u6362\u673a",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u505a\u6cd5"
+                                                                            ],
+                                                                            "name": "\u67e5\u5b8c\u76ee\u7684\u5730\u5740\u5c31\u7acb\u523b\u8f6c\u53d1"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u7279\u70b9"
+                                                                            ],
+                                                                            "name": "\u5ef6\u8fdf\u5c0f\uff0c\u53ef\u9760\u6027\u4f4e\uff0c\u65e0\u6cd5\u652f\u6301\u5177\u6709\u4e0d\u7528\u901f\u7387\u7684\u7aef\u53e3\u7684\u4ea4\u6362"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u4f7f\u7528"
+                                                                            ],
+                                                                            "name": "\u7528\u5f97\u5c11"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "\u50a8\u5b58\u8f6c\u53d1\u8bd5\u4ea4\u6362\u673a",
+                                                                    "children": [
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u505a\u6cd5"
+                                                                            ],
+                                                                            "name": "\u5c06\u5e27\u653e\u5165\u9ad8\u901f\u7f13\u5b58\uff0c\u5e76\u68c0\u67e5\u662f\u5426\u6b63\u786e\uff0c\u6b63\u786e\u5219\u8f6c\u53d1\uff0c\u9519\u8bef\u5219\u4e22\u5f03"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u7279\u70b9"
+                                                                            ],
+                                                                            "name": "\u5ef6\u8fdf\u5927\uff0c\u53ef\u9760\u6027\u9ad8\uff0c\u53ef\u4ee5\u652f\u6301\u5177\u6709\u4e0d\u540c\u901f\u7387\u7684\u7aef\u53e3\u7684\u4ea4\u6362"
+                                                                        },
+                                                                        {
+                                                                            "labels": [
+                                                                                "\u4f7f\u7528"
+                                                                            ],
+                                                                            "name": "\u7528\u5f97\u591a"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
@@ -2355,9 +2913,151 @@
                         },
                         {
                             "makers": [
-                                "c_symbol_exercise"
+                                "c_symbol_exercise",
+                                "symbol-share"
                             ],
-                            "name": "\u7f51\u7edc\u5c42"
+                            "labels": [
+                                "./\u8ba1\u7b97\u673a\u79d1\u5b66/\u8ba1\u7b97\u673a\u7f51\u7edc/\u7f51\u7edc\u5c42.xmind"
+                            ],
+                            "link": "file:///Users/kimshan/Public/learn/PKM/KnowledgeMap/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82.xmind",
+                            "name": "\u7f51\u7edc\u5c42",
+                            "children": [
+                                {
+                                    "name": "\u6982\u8ff0\u548c\u529f\u80fd",
+                                    "children": [
+                                        {
+                                            "name": "\u5b9a\u4e49",
+                                            "value": "\u4e3b\u8981\u4efb\u52a1\u662f\u628a\u5206\u7ec4\u4ece\u6e90\u7aef\u4f20\u5230\u76ee\u7684\u7aef\uff0c\u4e3a\u5206\u7ec4\u4ea4\u6362\u7f51\u4e0a\u7684\u4e0d\u540c\u4e3b\u673a\u63d0\u4f9b\u901a\u4fe1\u670d\u52a1\u3002\u7f51\u7edc\u5c42\u4f20\u8f93\u5355\u4f4d\u662f-\u6570\u636e\u62a5"
+                                        },
+                                        {
+                                            "name": "\u529f\u80fd\u4e00\uff1a\u8def\u7531\u9009\u62e9\u4e0e\u5206\u7ec4\u8f6c\u53d1\uff08\u6700\u4f73\u8def\u5f84\uff09"
+                                        },
+                                        {
+                                            "name": "\u529f\u80fd\u4e8c\uff1a\u5f02\u6784\u7f51\u7edc\u4e92\u8054"
+                                        },
+                                        {
+                                            "name": "\u529f\u80fd\u4e09\uff1a\u62e5\u585e\u63a7\u5236",
+                                            "children": [
+                                                {
+                                                    "name": "\u5f00\u73af\u63a7\u5236\uff08\u9759\uff09\u3001\u95ed\u73af\u63a7\u5236\uff08\u52a8\uff09"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u8f6c\u53d1",
+                                    "children": [
+                                        {
+                                            "name": "\u6df1\u5165\u786c\u4ef6\u7ed3\u6784",
+                                            "children": [
+                                                {
+                                                    "name": "\u8def\u7531\u5668",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u8f6c\u53d1\u8868"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u4e86\u89e3\u5404\u79cd\u534f\u8bae",
+                                            "children": [
+                                                {
+                                                    "name": "IP"
+                                                },
+                                                {
+                                                    "name": "ARP"
+                                                },
+                                                {
+                                                    "name": "DHCP"
+                                                },
+                                                {
+                                                    "name": "ICMP"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "IPv4\u5206\u7ec4"
+                                        },
+                                        {
+                                            "name": "\u7f51\u7edc\u5c42\u7f16\u5740",
+                                            "children": [
+                                                {
+                                                    "name": "\u57fa\u672c\u7f16\u5740\u5f62\u5f0f"
+                                                },
+                                                {
+                                                    "name": "\u5b50\u7f51\u5212\u5206\u4e0e\u5b50\u7f51\u63a9\u7801"
+                                                },
+                                                {
+                                                    "name": "CIDR"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u7f51\u7edc\u5730\u5740\u8f6c\u6362NAT"
+                                        },
+                                        {
+                                            "name": "IPv6"
+                                        },
+                                        {
+                                            "name": "\u79fb\u52a8IP"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "\u8def\u7531\u9009\u62e9",
+                                    "children": [
+                                        {
+                                            "name": "\u8def\u7531\u9009\u62e9\u7b97\u6cd5",
+                                            "children": [
+                                                {
+                                                    "name": "\u9759\u6001\u8def\u7531"
+                                                },
+                                                {
+                                                    "name": "\u52a8\u6001\u8def\u7531",
+                                                    "children": [
+                                                        {
+                                                            "name": "\u8ddd\u79bb\u5411\u91cf\u8def\u7531\u7b97\u6cd5"
+                                                        },
+                                                        {
+                                                            "name": "\u94fe\u8def\u72b6\u6001\u8def\u7531\u7b97\u6cd5"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "\u8def\u7531\u9009\u62e9\u534f\u8bae\uff08\u5c42\u6b21\u8def\u7531\uff09",
+                                            "children": [
+                                                {
+                                                    "name": "\u81ea\u6cbb\u7cfb\u7edf\u5185IGP",
+                                                    "children": [
+                                                        {
+                                                            "name": "RIP"
+                                                        },
+                                                        {
+                                                            "name": "OSPF"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "\u81ea\u6cbb\u7cfb\u7edf\u95f4EGP",
+                                                    "children": [
+                                                        {
+                                                            "name": "BGP"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "IP\u7ec4\u64ad"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "makers": [
@@ -2420,15 +3120,15 @@
         "padding": 5
     }
 };
-        chart_845993cb3c1d44a395951b0993e74c6c.setOption(option_845993cb3c1d44a395951b0993e74c6c);
-   chart_845993cb3c1d44a395951b0993e74c6c.on("click", chart_click);
+        chart_21ee9e54f956463c9e5e68eebcc5db99.setOption(option_21ee9e54f956463c9e5e68eebcc5db99);
+   chart_21ee9e54f956463c9e5e68eebcc5db99.on("click", chart_click);
 	function chart_click(){
 		auto_change_height();
 	}
 	function auto_change_height(parms){
-		var container = document.getElementById('845993cb3c1d44a395951b0993e74c6c');
+		var container = document.getElementById('21ee9e54f956463c9e5e68eebcc5db99');
 	    var allNode=0;
-	    var nodes=chart_845993cb3c1d44a395951b0993e74c6c._chartsViews[0]._data._graphicEls;
+	    var nodes=chart_21ee9e54f956463c9e5e68eebcc5db99._chartsViews[0]._data._graphicEls;
 	    for(var i=0,count =nodes.length;i<count;i++){
 	       var node=nodes[i];
 	       if(node===undefined)
@@ -2440,7 +3140,7 @@
 	    var newWidth=Math.max(currentHeight,height);
 	    container.style.width = window.innerWidth + 'px';
 	    container.style.height = newWidth + 'px';
-	chart_845993cb3c1d44a395951b0993e74c6c.resize();
+	chart_21ee9e54f956463c9e5e68eebcc5db99.resize();
 	}
 
 	function load(){
