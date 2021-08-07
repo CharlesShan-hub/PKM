@@ -13,9 +13,17 @@ PKM(Personal Knowledge Map)，个人知识地图致力于在构建知识树的�
 
 ## 项目大小
 思维导图中包含图片, 所以思维导图文件较大, 这里更新每个文件大小, 读者可以按需下载。
-learn.xmind  20MB
-软件工程.xmind  1.4MB
-计算机网络.xmind  74KB
-计算机网络体系结构.xmind  1.1MB
-物理层.xmind  2.7MB
-数据链路层.xmind  15.4MB
+learn.xmind  42.6MB  
+
+软件工程.xmind  1.4MB  
+
+计算机网络.xmind  74KB  
+计算机网络体系结构.xmind  1.1MB  
+物理层.xmind  2.7MB  
+数据链路层.xmind  15.4MB  
+
+计算机组成原理  104KB  
+计算机系统概述  846KB  
+数据的表示和运算  12.8MB  
+存储系统  10.1MB  
+指令系统
