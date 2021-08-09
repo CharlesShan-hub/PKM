@@ -78,7 +78,7 @@ def data_filter(item,kind="Structure"):
 
 def load_dataset(path,auto_join=True):
 	data = mind_IO.load_dataset(join_path(path))
-
+	
 	if "topic" in data:
 		if"topics" in data["topic"]:
 			temp = []
