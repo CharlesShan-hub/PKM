@@ -5,8 +5,9 @@
 ## 资源
 链接: https://pan.baidu.com/s/1yakyIWoCXFwO-HIiEXGK6Q  
 提取码: abya  
-如果资源失效请联系我
+如果资源失效请联系我  
 
+__github习题同步笔记__ : https://github.com/CharlesShan-hub/DataStructureNotes  
 __2022王道计算机组成原理.pdf__ :2022年408考研辅导教材  
 
 ## 版本
