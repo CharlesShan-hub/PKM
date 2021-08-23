@@ -9,6 +9,7 @@
 
 __github习题同步笔记__ : https://github.com/CharlesShan-hub/DataStructureNotes  
 __2022王道数据结构.pdf__ :2022年408考研辅导教材  
+__2022王道数据结构配套视频__ :2022年408考研辅导教材配套视频  
 __算法可视化网站__ :https://www.cs.usfca.edu/~galles/visualization/Algorithms.html  
 
 ## 版本
