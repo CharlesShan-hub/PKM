@@ -9,6 +9,40 @@
 
 __2022王道操作系统.pdf__ :2022年408考研辅导教材  
 __2022王道操作系统配套视频__ :2022年408考研辅导教材配套视频  
+## 外部资源
+* __studytonight__: https://www.studytonight.com/operating-system/
+```
+In this tutorial, we will cover the Operating System along with its various concepts.
+The operating system acts as an intermediary between the user of a computer and the computer hardware. The main purpose of the Operating system is to provide an environment where the user can execute the programs in a convenient and efficient manner.
+We will cover various scheduling algorithms in Operating system.
+We will cover various operations done by the Operation System
+Process Management
+Memory Management
+Virtual Memory Management
+We will cover the concept of deadlocks in detail.
+```
+* __北京大学 Principles of Operating System 操作系统原理 by 陈向群__: https://www.bilibili.com/video/av9555596  
+详细资料: https://www.yuque.com/ob26eq/nshoar/mhvtss
+```
+北京大学的网课，有一些配套资料在第二个链接中
+```
+* __OS Tutorial on OS2ATC2019__: 
+https://github.com/rcore-os/rCore/wiki/os-tutorial-os2atc
+
+* __操作系统的基本原理与简单实现--基于ucore OS + RISC-V__: 
+https://chyyuu.gitbooks.io/simple_os_book/
+
+* __rCore_tutorial V2__: 
+https://rcore-os.github.io/rCore_tutorial_doc/
+
+* __rCore-Tutorial V3（开发中)__: 
+https://rcore-os.github.io/rCore-Tutorial-deploy/
+https://github.com/rcore-os/rCore-Tutorial
+```
+rCore_tutorial V2与rCore_tutorial V3是两个高质量实验教程
+```
+* __操作系统实验：基于 uCore OS__: 
+https://www.shiyanlou.com/courses/221
 
 ## 版本
 ### V1 2021.9.10
