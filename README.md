@@ -1,6 +1,7 @@
 # PKM - Personal Knowledge Map  
 ![image text](./resources/title_small.png)
-## 目前处于测试阶段  
+## PKM - Page
+https://charlesshan-hub.github.io/PKM
 ## 项目介绍  
 PKM(Personal Knowledge Map)，个人知识地图致力于在构建知识树的基础上加入其他要素，使之成为具有可发展性，强关联性的新型知识树。  
 个人知识地图关注于：构建某学科的全面的知识树；将不同学科知识树进行关联与整合；将基于Xmind的知识图提炼出知识数据关系。  
@@ -10,21 +11,3 @@ PKM(Personal Knowledge Map)，个人知识地图致力于在构建知识树的�
 3. 利用PKMViewer中的工具，将思维导图中的数据提炼出来，进行处理，生成HTML展示。
 4. (可以将数据提炼为关系，插入到Neoj4知识图谱中。)
 5. 可以通过Nginx搭建属于自己的知识展示网站
-
-## 项目大小
-思维导图中包含图片, 所以思维导图文件较大, 这里更新每个文件大小, 读者可以按需下载。
-learn.xmind  42.6MB  
-
-软件工程.xmind  1.4MB  
-
-计算机网络.xmind  74KB  
-计算机网络体系结构.xmind  1.1MB  
-物理层.xmind  2.7MB  
-数据链路层.xmind  15.4MB  
-
-计算机组成原理  104KB  
-计算机系统概述  846KB  
-数据的表示和运算  12.8MB  
-存储系统  10.1MB  
-指令系统  3.3MB  
-中央处理器  
