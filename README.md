@@ -29,7 +29,7 @@ PKM(Personal Knowledge Map)，个人知识地图致力于在构建知识树的�
 | [计算机网络](./KnowledgeMap/计算机科学/计算机网络/README.md) |                           (数据库)                           |                                                              |
 |                         (多媒体基础)                         |                      （图像与视频处理）                      |                        （交互式媒体）                        |
 |                         （高级变换）                         |                       （数字信号处理）                       |                          （信息论）                          |
-|                         （软件工程）                         |                                                              |                                                              |
+|                         （软件工程）                         |                           （前端）                           |                           （后端）                           |
 |     [区块链](./KnowledgeMap/计算机科学/区块链/README.md)     |                         （人工智能）                         |                                                              |
 |                          （Julia）                           |                          （Python）                          |                           （Java）                           |
 |                            （C）                             |                          （Matlab）                          |                        （Javascript）                        |
