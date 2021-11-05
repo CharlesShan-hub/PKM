@@ -11,7 +11,16 @@ if __name__ == '__main__':
 
     # Method 2: Load Xmind file(multipul files)
     mind_process.set_base_path("../KnowledgeMap")#"./resources"
-    data = mind_process.load_dataset("./计算机科学/计算机组成原理/计算机组成原理.xmind")
+    path="./数学/高等数学/高等数学.xmind"
+    #path="./计算机科学/计算机组成原理/计算机组成原理.xmind"
+    #path="./计算机科学/操作系统/操作系统.xmind"
+    #path="./计算机科学/计算机网络/计算机网络.xmind"
+    #path="./计算机科学/数据结构/数据结构.xmind"
+    #path="./文史哲/马克思主义原理/马克思主义原理.xmind"
+    #path="./文史哲/近代史纲要/近代史纲要.xmind"
+    #path="./文史哲/思想道德修养/思想道德修养.xmind"
+    #path="./文史哲/毛泽东思想和中国特色社会主义理论体系概论/毛泽东思想和中国特色社会主义理论体系概论.xmind"
+    data = mind_process.load_dataset(path)
     
     # Print Data
     #mind_process.print_json(data)

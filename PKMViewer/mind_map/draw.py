@@ -27,11 +27,23 @@ def make_height_auto_content(html):
 		    chart_f0487771e16b49a4b7f46e2302533471.resize();
 		}
 	"""
+	"""
+	param.name：X轴的值
+	param.data：Y轴的值
+	param.value：Y轴的值
+	param.type：点击事件均为click
+	param.seriesName：legend的名称
+	param.seriesIndex：系列序号（series中当前图形是第几个图形第几个）
+	param.dataIndex：数值序列（X轴上当前点是第几个点）
+
+	alert(param.data.name)节点名称，经过测试，param.data.xxx就是每个节点的某种属性！！
+	"""
 	content1 = """.on("click", chart_click);
-	function chart_click(){
+	function chart_click(param){
+		//alert(param.data.name);
 		auto_change_height();
 	}
-	function auto_change_height(parms){
+	function auto_change_height(param){
 		var container = document.getElementById(\'"""
 	content2 = """');
 	    var allNode=0;
@@ -113,6 +125,24 @@ def make_hover(html):
 	sub = html.find("\"animation\"")
 	return html[:sub]+newcontent+html[sub:]
 
+def make_open_file(html):
+	""" 双击打开文件---没成功
+	"""
+	sub_start = html.find("<body>")
+	sub_end = html.rfind("</body>")
+
+	sub_div_start = html.find("<div",sub_start,sub_end)
+	sub_div_end = html.rfind("</div>",sub_start,sub_end)
+	#content_div = html[sub_div_start:sub_div_end].split('"')[1]
+
+	#sub_script_start = html.find("<script>",sub_start,sub_end)
+	#sub_script_end = html.rfind("</script>",sub_start,sub_end)
+	#sub_var = html.find("var",sub_script_start,sub_script_end)
+	#content_eha = html[sub_var:sub_var+50].split(" ",3)[1]
+
+	return html
+
+
 
 def html_add_script(html,content):
     # 测试版, 传入带有script表标签的内容
@@ -127,7 +157,8 @@ def html_add_param(html,content):
 	return html[:sub+5]+content+html[sub+5:]
 
 def draw_html(data, temp=False,name="render.html",\
-	symbol_size=11,auto_change_height=True,change_hover=True):
+	symbol_size=13,auto_change_height=True,change_hover=True,\
+	open_file=True):
 	if type(data)!=list:
 		data = [data]
 	c = (
@@ -154,6 +185,9 @@ def draw_html(data, temp=False,name="render.html",\
 	
 	if change_hover==True:
 		html = make_hover(html)
+
+	if open_file==True:
+		html = make_open_file(html)
 
 	with open(name, "w") as f:
 		f.write(html)
