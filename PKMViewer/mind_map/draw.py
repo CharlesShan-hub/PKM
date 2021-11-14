@@ -6,7 +6,7 @@ def make_height_auto_content(html):
 	""" In JS:
 		chart_f0487771e16b49a4b7f46e2302533471.on("click", chart_click);	
 		function chart_click(){
-			alert(111);
+			//alert(111);
 			auto_change_height();
 		}
 		function auto_change_height(){
@@ -26,6 +26,11 @@ def make_height_auto_content(html):
 		    container.style.height = newWidth + 'px';
 		    chart_f0487771e16b49a4b7f46e2302533471.resize();
 		}
+		var dataobj = res.data.data;
+		document.getElementById("RobotEchartlen").style.width =
+		dataobj.length * 60 > 350 ? dataobj.length * 60 + "px" : "350px"; //动态设置容器宽度
+		myChart.resize();//直接加这句即可
+		myChart.setOption(option,true);
 	"""
 	"""
 	param.name：X轴的值
@@ -41,7 +46,7 @@ def make_height_auto_content(html):
 	content1 = """.on("click", chart_click);
 	function chart_click(param){
 		//alert(param.data.name);
-		auto_change_height();
+		auto_change_height(param);
 	}
 	function auto_change_height(param){
 		var container = document.getElementById(\'"""
@@ -56,10 +61,10 @@ def make_height_auto_content(html):
 	       allNode++;
 	    }
 	    var height=window.innerHeight;
-	    var currentHeight=40*allNode;
-	    var newWidth=Math.max(currentHeight,height);
+	    var currentHeight=45*allNode;
+	    var newHeight=Math.max(currentHeight,height);
 	    container.style.width = window.innerWidth + 'px';
-	    container.style.height = newWidth + 'px';
+	    container.style.height = newHeight + 'px';
 	"""
 	content4 = """.resize();
 	}
