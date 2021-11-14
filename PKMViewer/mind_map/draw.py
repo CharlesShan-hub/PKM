@@ -118,7 +118,7 @@ def make_hover(html):
 	        }
 	        return arr.join("<br>");
 	    }
-	    content = creatArr(content,35);
+	    content = creatArr(content,38);
 	    return content.split("\\n").join("<br>");
 	},
 	"""

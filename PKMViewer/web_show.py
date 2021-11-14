@@ -3,6 +3,7 @@
 # @Date  :  2020/04/26
 
 import sys
+import os
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -32,7 +33,9 @@ class MainWindow(QMainWindow):
         self.webview = WebEngineView(self)  # self必须要有，是将主窗口作为参数，传给浏览器
         # charlesshan.top是我自己的网址，这里改成你自己的(没有就写127.0.0.1)
         #self.webview.load(QUrl("http://www.charlesshan.top:8080/index.html"))
-        self.webview.load(QUrl("http://127.0.0.1:80/index.html"))
+        #self.webview.load(QUrl("http://127.0.0.1:80/index.html"))
+        self.webview.load(QUrl("file://"+os.getcwd()+"/render.html"))
+
         self.create_tab(self.webview)
 
         # 使用QToolBar创建导航栏，并使用QAction创建按钮
