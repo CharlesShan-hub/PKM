@@ -3,11 +3,9 @@ import mind_map.process as mind_process
 import mind_map.draw as mind_draw
 import mind_map.kg as mind_kg
 from shutil import copyfile
-import web_show
 import sys
 
-if __name__ == '__main__':
-    Build_Only = False
+def run(Build_Only=False):
     if(len(sys.argv)>1 and sys.argv[1]=='build'):
         print("Only Rebuild!")
         Build_Only = True
@@ -53,6 +51,10 @@ if __name__ == '__main__':
     target = "/usr/local/var/www/index.html"
     copyfile(source, target)
 
+    ##<TAG-STAST> --- Don't move!!
     if Build_Only==False:
+        import web_show
         web_show.run()
+    ##<TAG-END>
 
+run()
