@@ -80,7 +80,7 @@ class MainWindow(QMainWindow):
     def rebuild_slot(self):
         os.popen("open "+os.getcwd()+"/PKM-BUILD.command;");
         import time
-        time.sleep(1)
+        time.sleep(1.5)
         
         self.webview.load(QUrl("file://"+os.getcwd()+"/render.html"))
 
