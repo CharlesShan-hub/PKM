@@ -46,17 +46,19 @@ PKM(Personal Knowledge Map)，个人知识地图致力于在构建知识树的�
 
 1. 利用Xmind搭建内部富有关联的知识地图 -> learn.xmind
 
-   ![image text](./resources/demo.png)
+   ![通过Xmind构建测试导图](./resources/demo.png)
 
 2. 利用PKMViewer中的工具，将思维导图中的数据提炼出来，进行处理，生成HTML展示。
 
-   ![](./resources/demo3.png)
+   ![生成的HTML展示](./resources/demo3.png)
 
-3. 可以将数据提炼为关系，插入到Neoj4知识图谱中。
+3. 可以通过Nginx搭建属于自己的知识展示网站
 
-   ![image text](./resources/demo2.png)
+   ![映射到自己的网站上](./resources/demo4.jpg)
 
-4. 可以通过Nginx搭建属于自己的知识展示网站
+4. 可以将数据提炼为关系，插入到Neoj4知识图谱中。
+
+   ![将数据插入到知识图谱中](./resources/demo2.png)
 
 ## 想挖的坑
 

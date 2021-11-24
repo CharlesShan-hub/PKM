@@ -42,9 +42,12 @@ def creat_node(data):
 				# 定义结点类型
 				node_type = item[1:]
 			elif item[0:2]=='#0':
-				# 跳过一个结点
+				# 开启子结点结构(本结点省略)
 				inher_type=data["name"]
 				return None
+			elif item[0:2]=='#1':
+				# 开启子结点结构(本结点不省略)
+				inher_type=data["name"]
 	# 构造节点
 	node = Node(node_type)
 	node.update(tags)
