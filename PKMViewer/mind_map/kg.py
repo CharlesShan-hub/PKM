@@ -17,6 +17,7 @@ class Link():
 '''
 
 inher_type = 'Undefined'
+omit_child = False
 
 ##连接neo4j数据库，输入地址、用户名、密码
 graph = Graph(
@@ -28,6 +29,7 @@ graph = Graph(
 def creat_node(data):
 	# 初始化
 	global inher_type
+	global omit_child
 	node_type = inher_type
 	# 标签
 	tags = {}
@@ -48,6 +50,15 @@ def creat_node(data):
 			elif item[0:2]=='#1':
 				# 开启子结点结构(本结点不省略)
 				inher_type=data["name"]
+			elif item[0:2]=='#2':
+				# 备注结点(完全忽略) --- 没实现
+				return None
+			elif item[0:2]=='#3':
+				# 忽略本结点与后继结点 --- 没实现
+				pass
+			elif item[0:2]=='#4':
+				# 忽略本结点的后继结点
+				omit_child = True
 	# 构造节点
 	node = Node(node_type)
 	node.update(tags)
@@ -60,6 +71,7 @@ def change_to_pair(data,father=None,kind="Echart",depth=0):
 	'''
 	# 初始化变量
 	global graph
+	global omit_child
 	# 创建结点
 	node = creat_node(data)
 	if node!=None:
@@ -70,13 +82,16 @@ def change_to_pair(data,father=None,kind="Echart",depth=0):
 		node=father
 
 	# 插入子节点
-	if "children" in data:
+	if "children" in data and omit_child==False:
 		for item in data["children"]:
 			child = change_to_pair(item,node)
 			if node==child:
 				continue
 			relation = Relationship(node,'Branch',child)
 			graph.create(relation)
+
+	# 恢复现场
+	omit_child = False
 	# 返回构造好的本级内容
 	return node
 
