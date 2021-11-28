@@ -18,6 +18,7 @@ class Link():
 
 inher_type = 'Undefined'
 omit_child = False
+omit_all = False
 
 ##连接neo4j数据库，输入地址、用户名、密码
 graph = Graph(
@@ -30,12 +31,22 @@ def creat_node(data):
 	# 初始化
 	global inher_type
 	global omit_child
+	global omit_all
 	node_type = inher_type
 	# 标签
 	tags = {}
 	tags['name'] = data["name"]
 	# 标签 - 解析数据
 	if 'labels' in data:
+		''' 功能介绍
+		* 继承类型:
+		'#0':忽略根节点的继承类型操作
+		'#1':保存根节点的继承类型操作
+		* 注释:
+		'#2':根节点是注释
+		'#3':树是注释
+		'#4':子树是注释
+		'''
 		for item in data["labels"]:
 			if item[0]=='$':
 				# 定义结点标签
@@ -51,13 +62,14 @@ def creat_node(data):
 				# 开启子结点结构(本结点不省略)
 				inher_type=data["name"]
 			elif item[0:2]=='#2':
-				# 备注结点(完全忽略) --- 没实现
+				# [忽略节点]备注结点(完全忽略)某节点
 				return None
 			elif item[0:2]=='#3':
-				# 忽略本结点与后继结点 --- 没实现
-				pass
+				# [忽略树]忽略本结点与后继结点
+				omit_all = True
+				return None
 			elif item[0:2]=='#4':
-				# 忽略本结点的后继结点
+				# [忽略子树]忽略本结点的后继结点
 				omit_child = True
 	# 构造节点
 	node = Node(node_type)
@@ -72,20 +84,24 @@ def change_to_pair(data,father=None,kind="Echart",depth=0):
 	# 初始化变量
 	global graph
 	global omit_child
+	global omit_all
 	# 创建结点
 	node = creat_node(data)
-	if node!=None:
+	if node!=None: # 正常模式-创建节点
 		graph.create(node)
-	elif father==None:
+	elif omit_all==True: # 本结点(及其子节点)是备注
+		omit_all = False
+		return None
+	elif father==None: # 本结点是标签但没有父节点-引起错误
 		return False
-	else:
+	else: # 本结点是标签，有父节点
 		node=father
 
 	# 插入子节点
 	if "children" in data and omit_child==False:
 		for item in data["children"]:
 			child = change_to_pair(item,node)
-			if node==child:
+			if node==child or child==None:
 				continue
 			relation = Relationship(node,'Branch',child)
 			graph.create(relation)

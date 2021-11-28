@@ -17,10 +17,9 @@ def run(Build_Only=False):
     mind_process.set_base_path("../KnowledgeMap")#"./resources"
     #path="learn.xmind"
     #path="./数学/高等数学/高等数学.xmind"
-    #path="./计算机科学/计算机组成原理/计算机组成原理.xmind"
+    path="./计算机科学/计算机组成原理/计算机组成原理.xmind"
     #path="./计算机科学/操作系统/操作系统.xmind"
-    path="./计算机科学/计算机网络/计算机网络.xmind"
-    #path="./计算机科学/计算机网络/计算机网络(Lab).xmind"
+    #path="./计算机科学/计算机网络/计算机网络.xmind"
     #path="./计算机科学/数据结构/数据结构.xmind"
     #path="./文史哲/马克思主义原理/马克思主义原理.xmind"
     #path="./文史哲/近代史纲要/近代史纲要.xmind"
@@ -36,7 +35,7 @@ def run(Build_Only=False):
     
     # Change json to neoj4 type
     #mind_kg.clear()
-    mind_kg.change_to_pair(data)
+    #mind_kg.change_to_pair(data)
 
     # Make defined type Node to show
     #data = mind_process.data_filter(data,kind="Structure")
