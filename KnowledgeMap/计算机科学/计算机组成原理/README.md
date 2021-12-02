@@ -40,9 +40,15 @@
   2. 2019年北邮计算机学院课程课件
   ```
 
+* __Computer Organization__:犹他大学CS/ECE 3810: Computer Organization课程
+
+  ```
+  网站链接：http://www.cs.utah.edu/~bojnordi/classes/3810/f20/
+  ```
+
 * __计算机组成原理 by 唐朔飞 (z-lib.org).pdf__:考研计算机组成原理标准教材  
 
-* __Computer Organization and Design The Hardware Software Interface [RISC-V Edition] by David A. Patterson, John L. Hennessy (z-lib.org).pdf__:国际著名教材《计算机组织与结构》  
+* __Computer Organization and Design The HardwareSoftware Interface 5th Edition - With all appendices and advanced material by David A. Patterson, John L. Hennessy.pdf__:国际著名教材《计算机组织与结构》  
 
 * __ISO.IEC 646标准__ : ASCII标准  
 
@@ -50,7 +56,7 @@
 
   ```
   1. ASCII标准介绍网页备份: IEEE 754 - Standard binary floating point arithmetic.html 
-  2. __ieee754eng.zip__ : IEEE 754浮点数标准工具。This is software created by http://www.softelectro.ru/program_en.html. It's used to show examples about IEEE754.  
+  2. ieee754eng.zip: IEEE 754浮点数标准工具。This is software created by http://www.softelectro.ru/program_en.html. It's used to show examples about IEEE754.  
   ```
 
 ## 外部资源
@@ -73,3 +79,7 @@
 按照《2022年计算机组成原理考研复习指导》与相关课程进行整理，完成全部知识框架搭建  
 ### V2 2021.11.5
 按照《2022年计算机组成原理考研复习指导》与相关课程进行整理，进行习题归纳与知识整合  
+
+## 更新计划
+
+1. 根据犹他大学《CS/ECE 3810: Computer Organization》课程补充细节

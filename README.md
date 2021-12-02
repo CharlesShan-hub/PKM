@@ -17,23 +17,23 @@ PKM(Personal Knowledge Map)，个人知识地图致力于在构建知识树的�
 
 |                        **计算机科学**                        |                                                              |                                                              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| [计算机组成原理](./KnowledgeMap/计算机科学/计算机组成原理/README.md) |                      （计算机体系结构）                      |                    （计算机体系结构进阶）                    |
-|   [操作系统](./KnowledgeMap/计算机科学/操作系统/README.md)   |   [数据结构](./KnowledgeMap/计算机科学/数据结构/README.md)   |                      （算法设计与分析）                      |
-| [计算机网络](./KnowledgeMap/计算机科学/计算机网络/README.md) |                           (数据库)                           |                                                              |
+| 💎[计算机组成原理](./KnowledgeMap/计算机科学/计算机组成原理/README.md) | 🐦[计算机体系结构](./KnowledgeMap/计算机科学/计算机体系结构/README.md) | 💎[计算机网络](./KnowledgeMap/计算机科学/计算机网络/README.md) |
+|  💎[操作系统](./KnowledgeMap/计算机科学/操作系统/README.md)   |  💎[数据结构](./KnowledgeMap/计算机科学/数据结构/README.md)   |                      （算法设计与分析）                      |
+|                           (数据库)                           |                                                              |                                                              |
 |                         (多媒体基础)                         |                      （图像与视频处理）                      |                        （交互式媒体）                        |
 |                         （高级变换）                         |                       （数字信号处理）                       |                          （信息论）                          |
 |                         （软件工程）                         |                           （前端）                           |                           （后端）                           |
-|     [区块链](./KnowledgeMap/计算机科学/区块链/README.md)     |                         （人工智能）                         |                                                              |
+|    🐦[区块链](./KnowledgeMap/计算机科学/区块链/README.md)     |                         （人工智能）                         |                                                              |
 |                          （Julia）                           |                          （Python）                          |                           （Java）                           |
 |                            （C）                             |                          （Matlab）                          |                        （Javascript）                        |
 |                                                              |                                                              |                                                              |
 |                           **数学**                           |                                                              |                                                              |
-|      [高等数学](./KnowledgeMap/数学/高等数学/README.md)      |      [线性代数](./KnowledgeMap/数学/线性代数/README.md)      | [概率论与数理统计](./KnowledgeMap/数学/概率论与数理统计/README.md) |
+|     ⭐️[高等数学](./KnowledgeMap/数学/高等数学/README.md)      |     ✏️[线性代数](./KnowledgeMap/数学/线性代数/README.md)      | ✏️[概率论与数理统计](./KnowledgeMap/数学/概率论与数理统计/README.md) |
 |                                                              |                                                              |                                                              |
 |                          **文史哲**                          |                                                              |                                                              |
-|                        （西方哲学史）                        |                        （中国哲学史）                        | [马克思主义原理](./KnowledgeMap/文史哲/马克思主义原理/README.md) |
-| [毛泽东思想](./KnowledgeMap/文史哲/毛泽东思想和中国特色社会主义理论体系概论/README.md) | [中国特色社会主义理论体系概论](./KnowledgeMap/文史哲/毛泽东思想和中国特色社会主义理论体系概论/README.md) |   [近代史纲要](./KnowledgeMap/文史哲/近代史纲要/README.md)   |
-| [思想道德修养](./KnowledgeMap/文史哲/思想道德修养/README.md) |                            (英语)                            |                                                              |
+|                        （西方哲学史）                        |                        （中国哲学史）                        | ⭐️[马克思主义原理](./KnowledgeMap/文史哲/马克思主义原理/README.md) |
+| ⭐️[毛泽东思想](./KnowledgeMap/文史哲/毛泽东思想和中国特色社会主义理论体系概论/README.md) | ⭐️[中国特色社会主义理论体系概论](./KnowledgeMap/文史哲/毛泽东思想和中国特色社会主义理论体系概论/README.md) |  ⭐️[近代史纲要](./KnowledgeMap/文史哲/近代史纲要/README.md)   |
+| ⭐️[思想道德修养](./KnowledgeMap/文史哲/思想道德修养/README.md) |                            (英语)                            |                                                              |
 |                                                              |                                                              |                                                              |
 |                        **经济**与管理                        |                                                              |                                                              |
 |                         (宏观经济学)                         |                        （微观经济学）                        |                                                              |
@@ -41,6 +41,11 @@ PKM(Personal Knowledge Map)，个人知识地图致力于在构建知识树的�
 |                                                              |                                                              |                                                              |
 |                         **艺术设计**                         |                                                              |                                                              |
 |                                                              |                                                              |                                                              |
+
+* 💎：已经多次迭代熟能生巧
+* ⭐️：已经完成一次知识点覆盖
+* ✏️：正在进行学习
+* 🐦：在学习计划中
 
 ## 项目逻辑
 
