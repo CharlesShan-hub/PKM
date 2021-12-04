@@ -24,6 +24,8 @@
   5. Memory Systems
   ```
 
+* __数字设计和计算机体系结构（原书第2版） by （美国）戴维·莫尼·哈里斯（David Money Harris） （美国）莎拉 L.哈里斯（Sarah L.Harris）.pdf__:国际知名教材
+
 ## 外部资源
 
 * 
