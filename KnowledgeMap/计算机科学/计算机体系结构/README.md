@@ -1,6 +1,6 @@
 # PKM - 计算机体系结构  
 
-![image text](/Users/kimshan/Public/learn/PKM/KnowledgeMap/计算机科学/计算机体系结构/resources/计算机体系结构.png)
+![image text](./resources/计算机体系结构.png)
 
 * 
 

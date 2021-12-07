@@ -166,7 +166,13 @@
   Graph_Learning_A_Survey.pdf
   ```
 
+## 外部资料
+
+* [学习和使用知识图谱需要知道的一些事情-漆桂林](https://www.zhihu.com/question/48510028)
+* [][https://zhuanlan.zhihu.com/p/433073550]
+
 ## 版本
+
 ### V1 2022.xx.xx
 按照小象知识图谱课程进行整理，完成初步知识框架搭建  
 

@@ -1,5 +1,5 @@
 # PKM - 数据结构  
-![image text](./resources/数据结构.png)
+![数据结构导图概览](./resources/数据结构.png)
 ## 介绍
 数据结构按照408考研辅导进行梳理。
 ## 资源

@@ -1,6 +1,15 @@
 # PKM - 计算机网络 
-![image text](./resources/计算机网络.png)
+![计算机网络导图概览](./resources/计算机网络.png)
+
+* 计算机网络体系结构
+* 物理层
+* 数据链路层
+* 网络层
+* 传输层
+* 应用层
+
 ## 介绍
+
 计算机网络按照408考研辅导进行梳理。
 ## 资源
 链接: https://pan.baidu.com/s/1M34LB98BsKdHGby2eMC_Qw  
