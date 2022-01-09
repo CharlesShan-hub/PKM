@@ -15,9 +15,9 @@ def run(Build_Only=False):
 
     # Method 2: Load Xmind file(multipul files)
     mind_process.set_base_path("../KnowledgeMap")#"./resources"
-    #path="learn.xmind"
+    path="learn.xmind"
     #path="./数学/高等数学/高等数学.xmind"
-    path="./计算机科学/计算机组成原理/计算机组成原理.xmind"
+    #path="./计算机科学/计算机组成原理/计算机组成原理.xmind"
     #path="./计算机科学/操作系统/操作系统.xmind"
     #path="./计算机科学/计算机网络/计算机网络.xmind"
     #path="./计算机科学/数据结构/数据结构.xmind"
