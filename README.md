@@ -23,7 +23,7 @@ PKM(Personal Knowledge Map)，个人知识地图致力于在构建知识树的�
 |                         (多媒体基础)                         |                      （图像与视频处理）                      |                        （交互式媒体）                        |
 |                         （高级变换）                         |                       （数字信号处理）                       |                          （信息论）                          |
 |                         （软件工程）                         |                           （前端）                           |                           （后端）                           |
-|    🐦[区块链](./KnowledgeMap/计算机科学/区块链/README.md)     |                         （人工智能）                         |                                                              |
+|    ✏️[区块链](./KnowledgeMap/计算机科学/区块链/README.md)     |                         （人工智能）                         |                                                              |
 |                          （Julia）                           |                          （Python）                          |                           （Java）                           |
 |                            （C）                             |                          （Matlab）                          |                        （Javascript）                        |
 |                                                              |                                                              |                                                              |
@@ -55,6 +55,9 @@ PKM(Personal Knowledge Map)，个人知识地图致力于在构建知识树的�
 | ------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------------------ |
 | [正则表达式博客](https://zhuanlan.zhihu.com/p/58110403) | [正则表达式可视化](https://regexper.com/) | [正则表达式可视化2](https://blog.robertelder.org/regular-expression-visualizer/) |
 | **设计模式**                                            |                                           |                                                              |
+|                                                         |                                           |                                                              |
+| **数据库**                                              |                                           |                                                              |
+| SQL Server                                              | MongoDB                                   | Sqlite                                                       |
 |                                                         |                                           |                                                              |
 |                                                         |                                           |                                                              |
 
