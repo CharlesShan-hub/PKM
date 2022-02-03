@@ -3,12 +3,22 @@
 
  🍔：官网链接	🧊：笔记整理	🥑：导图规划
 
-* 计算机网络体系结构
-  * 🥑 [计算机网络体系结构](./计算机网络体系结构.xmind)
-  * 🧊 [主干ISP、地区ISP、本地ISP？](./notes/计算机网络体系结构/主干ISP、地区ISP、本地ISP？.md)
+* 总论与周边
+  
+  * 🥑 [计算机网络](./计算机网络.xmind)
   * 🧊 [标准化组织](./notes/标准化组织.md)
 
+* 计算机网络体系结构
+
+  * 🧊 [计算机网络体系结构](./notes/计算机网络体系结构/计算机网络体系结构.md)
+  * 🧊 [主干ISP、地区ISP、本地ISP？](./notes/计算机网络体系结构/主干ISP、地区ISP、本地ISP？.md)
+
 * 物理层
+
+  * 🥑 [物理层](./物理层.xmind)
+
+  * 🧊 [物理层](./notes/物理层/物理层.md)
+
 * 数据链路层
 * 网络层
 * 传输层
@@ -68,13 +78,43 @@
   2. 中文计算机网络.pdf（翻译）
   ```
 
+* __TCP/IP详解__：国际经典著作
+
+  ```
+  卷1:原理
+  卷2:实现
+  卷3:扩展
+  ```
+
 * __CSAM协议族__
 
   ```
   1191044A_scan.pdf
   ```
 
+* **计算机网络实验课程与工具**
+
+  ```
+  1. ns3: https://www.nsnam.org/
+  	* （官方教程）ns-3-tutorial.pdf
+  2. nse教程
+  	* 如何学习ns3: https://blog.csdn.net/Mary19920410/article/details/72520674
+  	* NS3官网（Tutorial, Manual, ns-3: ns-3 Documentation, ns-3 Model Library）https://www.nsnam.org/
+  	* NS3 Google论坛： http://groups.google.com/forum/#!forum/ns-3-users
+  	* 大牛的博客等： zhua0404.blogspot.com/s， ns-3 | Luiz Felipe Perrone，
+  	* NS3 Project网址： ns3simulation.com/
+  3. Cisco Packet Tracer - 需要注册账户（免费）
+  	* Packet Tracer软件：https://www.packettracernetwork.com/download/download-packet-tracer.html
+  	* Cisco官方课程：https://www.netacad.com/courses/all-courses
+  4. 计算机网络实验（计算机网络 思科Cisco Packet Tracer仿真实验-哔哩哔哩）：https://b23.tv/WbUfNDR
+  5. 计算机网络实验教程 计算机网络实验教程 by （美）Emad Aboelela.pdf
+  ```
+  
+
+
+
 ## 版本
+
 ### V1 2021.8.24
 按照《2022年计算机网络考研复习指导》与相关课程进行整理，完成全部知识框架搭建  
 ### V2 2021.11.23
