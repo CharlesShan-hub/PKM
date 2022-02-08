@@ -46,6 +46,18 @@
 链接: https://pan.baidu.com/s/1M34LB98BsKdHGby2eMC_Qw  
 提取码: 1cv1  如果资源失效请联系我
 
+* **[网友笔记](https://blog.csdn.net/weixin_45067603/article/details/106974036)**
+
+  ```
+  链接：https://pan.baidu.com/s/16NJVC2-vQu2HcJqb6nJQFw 提取码：djqm
+  【计算机网络笔记Part1 概述】      https://blog.csdn.net/weixin_45067603/article/details/106974036
+  【计算机网络笔记Part2 物理层（Physical Layer）】    https://blog.csdn.net/weixin_45067603/article/details/106974965
+  【计算机网络笔记Part3 数据链路层（Data Link Layer）】    https://blog.csdn.net/weixin_45067603/article/details/106980441
+  【计算机网络笔记Part4 网络层（Network Layer）】    https://blog.csdn.net/weixin_45067603/article/details/106993253
+  【计算机网络笔记Part5 传输层（Transport Layer）】    https://blog.csdn.net/weixin_45067603/article/details/107034202
+  【计算机网络笔记Part6 应用层（Application Layer）】    https://blog.csdn.net/weixin_45067603/article/details/107053479
+  ```
+
 * __2023王道计算机网络资料__ : 2023王道配套视频与习题解答
 
   ```
