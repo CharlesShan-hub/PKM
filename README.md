@@ -5,8 +5,6 @@
 
 <p align="right">独立思考能力是科学研究和创造发明的一项必备才能。在历史上任何一个较重要的科学上的创造和发明，都是和创造发明者的独立地深入地看问题的方法分不开的。——华罗庚</p>
 
-<p align="right"><a>https://charlesshan-hub.github.io/PKM</a></p>
-
 ## 项目介绍  
 
 PKM(Personal Knowledge Map)，个人知识地图致力于在构建知识树的基础上加入其他要素，使之成为具有可发展性，强关联性的新型知识树。  
