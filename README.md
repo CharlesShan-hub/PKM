@@ -1,4 +1,7 @@
 # PKM - Personal Knowledge Map  
+
+2023.2.12
+
 ![image text](./resources/title_small.png)
 
 
