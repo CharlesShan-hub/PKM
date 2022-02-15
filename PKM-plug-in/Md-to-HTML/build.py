@@ -41,3 +41,5 @@ def ConvertAllMdToHtml(typoraApp, inFileCoor, fileMenuCoor, outFileCoor, quitFil
             if FileFormat.IsMdFile(name):
                 mdFile = os.path.join(root, name)
                 ConvertMdToHtml(typoraApp, inFileCoor, fileMenuCoor, outFileCoor, quitFileCoor, mdFile)
+
+

@@ -1,0 +1,1512 @@
+<!doctype html>
+<html style='font-size:19px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+/*
+ * Copyright (C) 2018 Drake, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@import url();
+@include-when-export url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --monospace: "JetBrains Mono", "Fira Code", Menlo, "Ubuntu Mono", Consolas; /*code font*/
+    --text-font: var(--monospace); /*default font*/
+    --title-font: var(--monospace); /*title font*/
+
+    --text-color: #333333;
+    --bg-color: #ffffff;
+    --control-text-color: var(--text-color);
+    --meta-content-color: var(--text-color);
+    --active-file-border-color: var(--drake-accent);
+    --rawblock-edit-panel-bd: var(--code-block-bg-color);
+    --item-hover-bg-color: #E5E5E596;
+    --active-file-bg-color: var(--item-hover-bg-color);
+
+    --blur-text-color: rgba(51, 51, 51, 0.5);
+    --drake-accent: #e95f59;
+    --drake-highlight: #d63200;
+    --a-color: #036aca;
+    --variable-color: var(--drake-highlight);
+    --outline-active-color: var(--a-color);
+    --code-block-bg-color: #2b2b2b;
+    --code-block-color: #A9B7C6;
+    --title-color: #135ce0;
+    --blockquote-border-color: #b2aec5;
+    --blockquote-color: #595959;
+    --blockquote-bg-color: #fff9f9;
+    --strong-color: var(--title-color);
+    --h2-underline-color: var(--title-color);
+    --horizontal-divider-color: var(--title-color);
+    --height-light-color: var(--drake-highlight);
+    --height-light-border-color: var(--drake-highlight);
+    --yaml-color: #777777;
+    --yaml-bg-color: #f7f7f7;
+    --footnotes-bg-color: #3c3d3e;
+    --footnotes-highlight: #FFD760;
+    --table-border-color: #dfe2e5;
+    --table-header-bg-color: #f6f8fa;
+    --table-bg-color: var(--bg-color);
+    --table-n2-bg-color: #f6f8fa;
+    --input-bg-color: var(--item-hover-bg-color);
+    --btn-hover-bg-color: var(--item-hover-bg-color);
+    --checkbox-checked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M425.984 726.016l384-384-59.99-61.995-324.01 324.011-152.021-152.021L213.973 512zm384-598.016q36.01 0 61.013 25.984T896 213.974v596.01q0 34.005-25.003 59.99t-61.013 25.983h-596.01q-36.011 0-61.014-25.984t-25.003-59.989v-596.01q0-34.006 25.003-59.99T213.973 128h596.011z' fill='%2365b73b'/%3E%3C/svg%3E");
+    --checkbox-unchecked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M810.667 213.333v597.334H213.333V213.333h597.334m0-85.333H213.333C166.4 128 128 166.4 128 213.333v597.334C128 857.6 166.4 896 213.333 896h597.334C857.6 896 896 857.6 896 810.667V213.333C896 166.4 857.6 128 810.667 128z' fill='%23333333'/%3E%3C/svg%3E");
+}
+
+html {
+    font-size: 12px;
+}
+
+body {
+    font-family: var(--text-font) !important;
+    color: var(--text-color);
+    -webkit-font-feature-settings: "liga" on, "calt" on;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    background-image: linear-gradient(
+            90deg
+            ,rgba(60,10,30,.04) 3%,transparent 0),linear-gradient(
+            1turn
+            ,rgba(60,10,30,.04) 3%,transparent 0);
+    background-size: 20px 20px;
+    background-position: 50%;
+}
+
+/*code block*/
+.md-fences {
+    font-size: 1rem;
+    padding: 0.5rem !important;
+    border-radius: 2px;
+    word-wrap: normal;
+    background-color: var(--code-block-bg-color);
+    color: var(--code-block-color);
+    border: none;
+}
+.on-focus-mode .CodeMirror.cm-s-inner:not(.CodeMirror-focused) *,
+.on-focus-mode .md-fences.md-focus .CodeMirror-code > :not(.CodeMirror-activeline) *,
+.on-focus-mode .md-htmlblock.md-focus .CodeMirror-code > :not(.CodeMirror-activeline) * {
+    color: #909090 !important
+}
+
+/*mermaid*/
+[id^=mermaidChart] {
+    fill: var(--text-color) !important;
+}
+[id^=mermaidChart] rect.rect {
+    fill: rgba(175, 255, 212, 0.3) !important;
+}
+.md-diagram-panel-preview text.actor > tspan { /*方块文字*/
+    fill: var(--code-block-color) !important;
+    stroke: none !important;
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+}
+.md-diagram-panel-preview .actor { /*方块*/
+    stroke: var(--table-border-color) !important;
+    fill: var(--code-block-bg-color) !important;
+}
+.md-diagram-panel-preview .actor-line { /*竖线*/
+    stroke: var(--text-color) !important;
+    stroke-width: 1px;
+}
+.md-diagram-panel-preview .messageLine0 { /*横线*/
+    stroke-width: 1.5;
+    stroke-dasharray: none;
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .messageLine1 { /*虚线*/
+    stroke-width: 1.5 !important;
+    stroke-dasharray: 2, 2 !important;
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .messageText { /*描述文字*/
+    fill: var(--text-color) !important;
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+}
+.md-diagram-panel-preview .activation0 { /*长方形*/
+    fill: #e6e6e6 !important;
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .labelText, .md-diagram-panel-preview .labelText > tspan { /*循环标记*/
+    fill: var(--code-block-color) !important;
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+    dominant-baseline: unset;
+    alignment-baseline: unset;
+}
+.md-diagram-panel-preview .labelBox { /*循环标记背景*/
+    stroke: var(--table-border-color) !important;
+    fill: var(--code-block-bg-color) !important;
+}
+.md-diagram-panel-preview .loopLine { /*循环标记虚线*/
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .loopText, .md-diagram-panel-preview .loopText > tspan { /*循环名称*/
+    fill: var(--text-color) !important;
+    font-size: 1rem !important;
+}
+.md-diagram-panel-preview .sequenceNumber { /*序号*/
+    fill: var(--bg-color) !important;
+}
+pre.md-fences-advanced.md-focus .md-fences-adv-panel {
+    border: none;
+}
+.md-diagram-panel-preview .edgePath .path { /*箭头*/
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .edgeLabel rect { /*条件文字背景*/
+    fill: var(--bg-color) !important;
+}
+.md-diagram-panel-preview .edgeLabel span { /*条件文字*/
+    color: var(--text-color);
+}
+.md-diagram-panel-preview .node rect,
+.md-diagram-panel-preview .node circle,
+.md-diagram-panel-preview .node ellipse,
+.md-diagram-panel-preview .node polygon,
+.md-diagram-panel-preview .node path { /*形状*/
+    stroke: var(--table-border-color) !important;
+    fill: var(--code-block-bg-color) !important;
+}
+#write .md-diagram-panel .md-diagram-panel-preview div { /*形状内文字*/
+    color: var(--code-block-color) !important;
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+}
+
+/*code snippet*/
+#write code, tt {
+    margin: 0 2px;
+    border-radius: 2px;
+    color: var(--drake-highlight);
+    background-color: #fff5f5;
+    padding: .065em .4em;
+}
+
+/*variable*/
+var {
+    color: var(--variable-color);
+    font-weight: bold;
+}
+
+/*raw block*/
+.md-rawblock-control:not(.md-rawblock-tooltip) {
+    border-radius: 2px 0 2px 2px;
+    padding: 0.2rem !important;
+}
+.md-rawblock:hover > .md-rawblock-container {
+    background: none;
+}
+.md-rawblock-input {
+    font-size: 1rem;
+}
+.md-rawblock-tooltip-btn:hover {
+    background: none;
+}
+.md-rawblock:hover > .md-rawblock-tooltip {
+    border-radius: 2px 2px 0 0;
+    margin-bottom: 2px !important;
+}
+.md-rawblock-tooltip.md-rawblock-control {
+    border-radius: 2px 2px 0 0;
+    color: var(--code-block-color);
+}
+.md-rawblock-tooltip-name {
+    color: var(--code-block-color);
+    opacity: 1;
+}
+
+/*quote block*/
+blockquote:before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 4px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: var(--blockquote-border-color);
+    border-radius: 2px;
+}
+
+blockquote {
+    color: var(--blockquote-color);
+    border-radius: 2px;
+    padding: 10px 16px;
+    background-color: var(--blockquote-bg-color);
+    position: relative;
+    border-left: none;
+}
+
+#write strong {
+    color: var(--strong-color);
+    font-weight: bold;
+}
+#write blockquote strong {
+    color: var(--blockquote-color);
+}
+
+/*link*/
+#write a {
+    color: var(--a-color);
+    text-decoration: none;
+}
+.on-focus-mode #write a .md-plain, .on-focus-mode .md-htmlblock-container a:hover {
+    border-bottom: .1rem solid var(--blur-text-color);
+}
+#write a .md-plain, .md-htmlblock-container a:hover,
+.on-focus-mode #write .md-focus a .md-plain, .md-focus .md-htmlblock-container a:hover {
+    border-bottom: .1rem solid var(--a-color);
+}
+[md-inline=link] a {
+    margin: 0 .2rem;
+}
+a:any-link {
+    color: var(--a-color);
+}
+
+img {
+    border-left: none;
+    border-right: none;
+    vertical-align: baseline;
+    border-radius: 2px;
+}
+
+#write {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 30px 100px;
+}
+#typora-source .CodeMirror-lines {
+    max-width: 1200px;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+    margin-top: 30px;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--title-font);
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+    color: var(--title-color);
+}
+
+h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
+    visibility: hidden;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 0;
+}
+
+h2.md-end-block.md-heading {
+    font-size: 1.6rem;
+    display: inline-block;
+}
+
+h2.md-end-block.md-heading:after {
+    display: block;
+    content: '';
+    height: 2px;
+    margin-top: 4px;
+    background-color: var(--h2-underline-color);
+    border-radius: 2px;
+}
+.on-focus-mode h2.md-end-block.md-heading:not(.md-focus):not(.md-focus-container):after {
+    background-color: var(--blur-text-color) !important;
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit !important;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit !important;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit !important;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit !important;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit !important;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit !important;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: var(--horizontal-divider-color);
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul, ol {
+    padding-inline-start: 2em;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+    background-color: var(--table-bg-color);
+}
+table tr {
+    border-top: .1em solid var(--table-border-color);
+    margin: 0;
+    padding: 0;
+}
+table th {
+    font-weight: bold;
+    border: .1em solid var(--table-border-color);
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: .1em solid var(--table-border-color);
+    margin: 0;
+    padding: 6px 13px;
+}
+table thead {
+    background-color: var(--table-header-bg-color);
+}
+table tr:nth-child(2n) {
+    background-color: var(--table-n2-bg-color);
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write em {
+    padding: 0 5px 0 2px;
+}
+
+/* height light */
+#write mark {
+    border: .1em solid var(--height-light-border-color);
+    color: var(--height-light-color);
+    background-color: transparent;
+    padding: .1rem .5rem;
+    border-radius: 2rem;
+    margin: 0 .2rem;
+    font-size: .95rem;
+}
+
+/*shortcut*/
+kbd {
+    border: .1em solid #5b5b5e;
+    background: transparent;
+    color: var(--text-color);
+    margin: 0 .4rem;
+    font-family: var(--text-font) !important;
+    font-size: .95rem;
+    padding: .3em .4em;
+    border-radius: .4em;
+    vertical-align: top;
+    box-shadow: .1em .1em .2em rgba(0, 0, 0, 0.3);
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 12px;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+/*YAML*/
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.45;
+    background-color: var(--yaml-bg-color);
+    border: 0;
+    border-radius: 2px;
+    color: var(--yaml-color);
+    margin-top: 0 !important;
+}
+
+.mathjax-block > .code-tooltip {
+    bottom: .375rem;
+}
+
+#write > h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write > h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image > .md-meta {
+    border-radius: 2px;
+    font-family: initial;
+    padding: 2px 0 0 4px;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.typora-quick-open-item {
+    font-size: 1rem !important;
+    height: 50px;
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#typora-quick-open {
+    box-shadow: 0 0 8px #00000045;
+    padding: 0;
+}
+
+.ty-quick-open-category.ty-has-prev .ty-quick-open-category-title {
+    border-top: none;
+}
+
+#typora-quick-open-input {
+    margin: 8px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+
+#typora-quick-open-input input {
+    font-size: 1rem;
+    box-shadow: none;
+    padding-top: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 32px;
+    max-height: 32px;
+    border: none;
+}
+
+.modal-dialog#typora-quick-open {
+    border-radius: 8px;
+}
+
+.ty-quick-open-category-title {
+    padding-left: 8px;
+    color: #BEBEBE;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.typora-quick-open-item-path {
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 1px;
+}
+
+/*search input*/
+.form-control {
+    border: none;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn {
+    border-radius: 2px;
+}
+
+#search-panel-replaceall-btn {
+    padding-right: 5px !important;
+    text-align: center !important;
+}
+
+#search-panel-replace-btn {
+    text-align: center !important;
+}
+
+#md-searchpanel input {
+    background: var(--input-bg-color);
+    border-radius: 2px;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 2px;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+}
+
+.searchpanel-search-option-btn.active {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: initial;
+}
+
+/*sidebar*/
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+#typora-sidebar {
+    font-size: 1.1rem;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.file-list-item-summary, .file-list-item-parent-loc, .file-list-item-time, .file-list-item-summary {
+    font-size: 0.9rem !important;
+    font-family: var(--text-font);
+}
+
+.file-list-item-file-ext-part {
+    display: none;
+}
+
+.outline-item {
+    font-size: 1rem;
+}
+
+/*footnotes mark*/
+#write .md-footnote {
+    background-color: inherit;
+    color: var(--drake-highlight);
+    font-size: 0.9rem;
+    border-radius: 0.9rem;
+    padding-left: 0;
+}
+
+#write .md-footnote:before {
+    content: "[";
+}
+
+#write .md-footnote:after {
+    content: "]";
+}
+
+/*footnotes content*/
+.md-hover-tip .code-tooltip-content {
+    border-radius: 2px;
+}
+
+/*footnotes title*/
+span.md-def-name {
+    padding-right: 3ch;
+    padding-left: 0;
+    position: relative;
+    font-weight: normal;
+}
+
+/*footnotes desc*/
+.footnotes {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--text-color);
+    position: relative;
+}
+
+/*footnotes tooltip text*/
+.code-tooltip-content .md-plain {
+    font-size: 0.9rem;
+    font-family: inherit;
+}
+
+.code-tooltip-content code {
+    padding: 0 2px;
+    font-family: inherit;
+    color: var(--footnotes-highlight);
+    background-color: inherit;
+}
+
+.code-tooltip-content a {
+    color: var(--footnotes-highlight);
+}
+
+div.code-tooltip-content {
+    box-shadow: 0 0 8px #00000045;
+    background: var(--footnotes-bg-color);
+}
+
+.footnotes {
+    opacity: 1;
+}
+
+.md-def-name:after {
+    content: ". ^";
+    color: var(--text-color);
+}
+
+.md-def-footnote .md-def-name:before {
+    content: "";
+    color: var(--text-color);
+    position: absolute;
+}
+
+.md-def-name:before {
+    content: "";
+    color: var(--text-color);
+    position: absolute;
+}
+
+.md-content.md-url, .md-def-content.md-def-url.md-auto-disp {
+    text-decoration: none;
+    border-bottom: .1rem solid var(--text-color);
+}
+
+.CodeMirror-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.file-list-item-summary {
+    font-size: 1em;
+}
+
+.pin-outline #outline-content .outline-active strong, .pin-outline .outline-active {
+    font-weight: 500;
+    color: var(--outline-active-color);
+}
+
+.file-list-item.active {
+    border-left: 4px solid var(--drake-accent);
+}
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    box-shadow: none;
+    background: var(--btn-hover-bg-color);
+}
+
+/*checkbox*/
+#write input[type=checkbox] {
+    opacity: 0;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-left: -2em;
+    margin-top: 0;
+    top: 0;
+}
+
+#write .ul-list li.md-task-list-item.task-list-done::before {
+    content: "";
+    background: var(--checkbox-checked) 0 0 no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-left: -2em;
+}
+
+#write .ul-list li.md-task-list-item.task-list-not-done::before {
+    content: "";
+    background: var(--checkbox-unchecked) 0 0 no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-left: -2em;
+}
+
+/*insert table*/
+.btn {
+    border-radius: 2px;
+}
+
+.modal-content {
+    border-radius: 8px;
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background-color: var(--btn-hover-bg-color);
+    color: var(--drake-highlight);
+}
+
+.btn-primary {
+    background-color: transparent;
+    color: var(--drake-highlight);
+}
+
+.btn-default {
+    background-color: transparent;
+}
+
+.btn:active {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+#table-insert-col, #table-insert-row {
+    background: var(--input-bg-color);
+    border-radius: 2px;
+}
+
+/*preference panel*/
+#megamenu-content {
+    background-image: none !important;
+    background-color: var(--bg-color);
+}
+#top-titlebar {
+    height: inherit;
+    background-color: var(--bg-color);
+}
+#megamenu-menu-sidebar {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.long-btn {
+    width: inherit;
+    min-width: 300px;
+    border: 1px solid var(--text-color);
+    border-radius: 6px;
+}
+.megamenu-menu-panel h1 {
+    margin-bottom: 3rem;
+    text-align: left;
+}
+.megamenu-menu-panel h1, .megamenu-menu-panel h2 {
+    font-weight: normal;
+}
+#recent-file-panel-search-input {
+    height: 45px;
+    border: none;
+    border-bottom: 1px solid var(--text-color);
+    padding-left: 8px;
+}
+#recent-file-panel-search-input::placeholder {
+    color: var(--text-color);
+    opacity: .5;
+}
+.megamenu-menu-header {
+    border-bottom: none;
+}
+#recent-file-panel-action-btn {
+    background: none;
+    border: none;
+}
+#recent-file-panel-action-btn-container {
+    float: none;
+    display: inline-block;
+}
+#top-titlebar .toolbar-icon.btn.hover, #top-titlebar .toolbar-icon.btn:hover {
+    background-color: var(--btn-hover-bg-color);
+    color: var(--text-color);
+}
+.megamenu-menu-panel .btn:hover {
+    background-color: var(--btn-hover-bg-color) !important;
+    color: var(--text-color);
+}
+#recent-file-panel tbody tr:nth-child(2n-1),
+.megamenu-menu-panel table thead,
+.megamenu-menu-panel table tr {
+    background-color: transparent;
+}
+.megamenu-menu-panel table {
+    font-weight: normal;
+}
+#megamenu-back-btn {
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+}
+.megamenu-menu-header #megamenu-menu-header-title {
+    color: var(--text-color);
+}
+header, .context-menu, .megamenu-content, footer {
+    font-family: var(--text-font);
+}
+.ty-preferences select {
+    padding-left: 2px;
+}
+.preference-item-hint {
+    font-size: 14px;
+}
+a.ty-link {
+    color: var(--a-color);
+    margin: 0 .2rem;
+}
+
+/**
+    code render
+    Name: IntelliJ IDEA darcula theme
+    From IntelliJ IDEA by JetBrains
+ */
+.cm-s-inner.CodeMirror {
+    background: none;
+    color: var(--code-block-color);
+}
+.cm-s-inner span.cm-meta {
+    color: #BBB529;
+}
+.cm-s-inner span.cm-number {
+    color: #6897BB;
+}
+.cm-s-inner span.cm-keyword {
+    color: #CC7832;
+}
+.cm-s-inner span.cm-def {
+    color: #FFD760;
+}
+.cm-s-inner span.cm-variable {
+    color: var(--code-block-color);
+}
+.cm-s-inner span.cm-variable-2 {
+    color: var(--code-block-color);
+}
+.cm-s-inner span.cm-variable-3 {
+    color: #9876AA;
+}
+.cm-s-inner span.cm-type {
+    color: #AABBCC;
+}
+.cm-s-inner span.cm-property {
+    color: #FFC66D;
+}
+.cm-s-inner span.cm-operator {
+    color: var(--code-block-color);
+}
+.cm-s-inner span.cm-string {
+    color: #6A8759;
+}
+.cm-s-inner span.cm-string-2 {
+    color: #6A8759;
+}
+.cm-s-inner span.cm-comment {
+    color: #787878;
+}
+.cm-s-inner span.cm-link {
+    color: #CC7832;
+}
+.cm-s-inner span.cm-atom {
+    color: #CC7832;
+}
+.cm-s-inner span.cm-error {
+    color: #BC3F3C;
+}
+.cm-s-inner span.cm-tag {
+    color: #E8BF6A;
+}
+.cm-s-inner span.cm-quote {
+    color: #a6e22e;
+}
+.cm-s-inner span.cm-attribute {
+    color: #9876AA;
+}
+.cm-s-inner span.cm-qualifier {
+    color: #6A8759;
+}
+.cm-s-inner span.cm-bracket {
+    color: #E8BF6A;
+}
+.cm-s-inner span.cm-builtin {
+    color: #FF9E59;
+}
+.cm-s-inner span.cm-special {
+    color: #FF9E59;
+}
+.cm-s-inner span.cm-matchhighlight {
+    color: #FFFFFF;
+    background-color: rgba(50, 89, 48, .7);
+    font-weight: normal;
+}
+.cm-s-inner span.cm-searching {
+    color: #FFFFFF;
+    background-color: rgba(61, 115, 59, .7);
+    font-weight: normal;
+}
+.cm-s-inner .CodeMirror-gutters {
+    border-right: 1px solid rgba(120, 120, 120, 0.3);
+}
+.cm-s-inner .CodeMirror-linenumber {
+    color: #585b5d;
+}
+.cm-s-inner .CodeMirror-matchingbracket {
+    background-color: #3B514D;
+    color: #FFEF28 !important;
+}
+.cm-s-inner .CodeMirror-selected {
+    background: #214283 !important;
+}
+.cm-s-inner .CodeMirror-selectedtext {
+    background: #214283 !important;
+}
+.cm-s-typora-default .CodeMirror-selectedtext {
+    background: var(--select-text-bg-color) !important;
+}
+.cm-overlay.CodeMirror-selectedtext {
+    background: var(--select-text-bg-color) !important;
+}
+.cm-s-inner div.CodeMirror-cursor {
+    border-left: 1px solid var(--code-block-color);
+}
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>局域网</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='局域网'><span>局域网</span></h1><p><span>2023.2.15</span></p><h2 id='lan的概念与结构'><span>LAN的概念与结构</span></h2><ol><li><span>拓扑结构：星型，环型，总线型，星型和总线型复合结构</span></li><li><span>传输介质：双绞线（主流），同轴电缆，光纤</span></li><li><span>介质访问控制方式：CSMA/CD或令牌总线——总线型局域网，令牌环——环型局域网</span></li><li><span>具体网络种类：</span></li></ol><figure><table><thead><tr><th style='text-align:center;' ><span>网络种类</span></th><th style='text-align:center;' ><span>IEEE标准</span></th><th style='text-align:center;' ><span>协议</span></th><th style='text-align:center;' ><span>物理结构</span></th><th style='text-align:center;' ><span>逻辑结构</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><a href='https://zh.wikipedia.org/wiki/%E4%BB%A5%E5%A4%AA%E7%BD%91'><span>以太网</span></a></td><td style='text-align:center;' ><span>IEEE 802.3</span></td><td style='text-align:center;' ><span>一般CSMA/CD</span><br><span>但10BASE-T就不用</span></td><td style='text-align:center;' ><span>星型或扩展星型</span></td><td style='text-align:center;' ><span>总线型</span></td></tr><tr><td style='text-align:center;' ><a href='https://zh.wikipedia.org/wiki/%E4%BB%A4%E7%89%8C%E7%8E%AF'><span>令牌环网</span></a></td><td style='text-align:center;' ><span>IEEE 802.5</span></td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><span>星型</span></td><td style='text-align:center;' ><span>环型</span></td></tr><tr><td style='text-align:center;' ><a href='https://zh.wikipedia.org/wiki/%E5%85%89%E7%BA%A4%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%8F%A3'><span>FDDI网</span></a></td><td style='text-align:center;' ><span>IEEE 802.8</span></td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><span>双环型</span></td><td style='text-align:center;' ><span>环型</span></td></tr></tbody></table></figure><ol start='5' ><li><span>数据链路层 = LLC(逻辑链路控制子层,现在已经意义不大了)+MAC(介质访问控制子层)</span></li></ol><h2 id='以太网与ieee8023'><span>以太网与IEEE802.3</span></h2><ol><li><p><span>特点：</span><strong><span>无连接，不可靠服务；曼彻斯特编码</span></strong>
+<span>无连接:发送方和接收方之间无“握手过程”。 </span>
+<span>不可靠:</span><strong><span>不</span></strong><span>对发送方的数据帧</span><strong><span>编号</span></strong><span>，接收方</span><strong><span>不</span></strong><span>向发送方进行</span><strong><span>确认</span></strong><span>，差错帧直接丢弃，差错纠正由高层负责</span></p></li><li><p><a href='https://zhuanlan.zhihu.com/p/139707963'><span>种类</span></a></p><ol><li><strong><span>标准以太网【重要！！！】</span></strong></li></ol><figure><table><thead><tr><th style='text-align:center;' ><span>参数</span></th><th style='text-align:center;' ><span>10BASE5</span></th><th style='text-align:center;' ><span>10BASE2</span></th><th style='text-align:center;' ><span>10BASE-T</span></th><th style='text-align:center;' ><span>10BASE-FL</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>传输媒体</span></td><td style='text-align:center;' ><span>基带同轴电缆（粗缆）</span></td><td style='text-align:center;' ><span>频带同轴电缆（细缆）</span></td><td style='text-align:center;' ><span>非屏蔽双绞线</span></td><td style='text-align:center;' ><span>光线对（850nm）</span></td></tr><tr><td style='text-align:center;' ><span>编码</span></td><td style='text-align:center;' ><span>曼彻斯特</span></td><td style='text-align:center;' ><span>曼彻斯特</span></td><td style='text-align:center;' ><span>曼彻斯特</span></td><td style='text-align:center;' ><span>曼彻斯特</span></td></tr><tr><td style='text-align:center;' ><span>拓扑结构</span></td><td style='text-align:center;' ><span>总线型</span></td><td style='text-align:center;' ><span>总线型</span></td><td style='text-align:center;' ><span>星型</span></td><td style='text-align:center;' ><span>点对点</span></td></tr><tr><td style='text-align:center;' ><span>最大段长</span></td><td style='text-align:center;' ><span>500m</span></td><td style='text-align:center;' ><span>185m</span></td><td style='text-align:center;' ><span>100m</span></td><td style='text-align:center;' ><span>2km</span></td></tr><tr><td style='text-align:center;' ><span>最多节点数</span></td><td style='text-align:center;' ><span>100</span></td><td style='text-align:center;' ><span>30</span></td><td style='text-align:center;' ><span>2</span></td><td style='text-align:center;' ><span>2</span></td></tr><tr><td style='text-align:center;' ><span>传输速率</span></td><td style='text-align:center;' ><span>10Mb/s</span></td><td style='text-align:center;' ><span>10Mb/s</span></td><td style='text-align:center;' ><span>10Mb/s</span></td><td style='text-align:center;' ><span>10Mb/s</span></td></tr></tbody></table></figure><ol start='2' ><li><strong><span>高速以太网【重要！！！】</span></strong></li></ol><figure><table><thead><tr><th style='text-align:center;' ><span>参数</span></th><th style='text-align:center;' ><span>100BASE-T</span></th><th style='text-align:center;' ><span>吉比特以太网</span></th><th style='text-align:center;' ><span>十吉比特以太网</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>传输媒体</span></td><td style='text-align:center;' ><span>双绞线</span></td><td style='text-align:center;' ><span>光纤或双绞线</span></td><td style='text-align:center;' ><span>光纤</span></td></tr><tr><td style='text-align:center;' ><span>协议</span></td><td style='text-align:center;' ><span>半双工: CSMA/CD</span><br><span>全双工: 不用CSMA/CD</span></td><td style='text-align:center;' ><span>半双工: CSMA/CD</span><br><span>全双工: 不用CSMA/CD</span></td><td style='text-align:center;' ><span>只有全双工</span></td></tr><tr><td style='text-align:center;' ><span>拓扑结构</span></td><td style='text-align:center;' ><span>星型</span></td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>传输速率</span></td><td style='text-align:center;' ><span>100Mb/s</span></td><td style='text-align:center;' ><span>1Gb/s</span></td><td style='text-align:center;' ><span>10Gb/s</span></td></tr></tbody></table></figure><ol start='3' ><li><p><span>以太网种类相关例题</span></p><ol><li><p><span>如果使用5类UTP来设计一个覆盖范围为200m的10BASET以太网,那么需要采用的设备是()</span></p><p><span>A.放大器</span></p><p><span>B.中继器</span></p><p><span>C.网桥</span></p><p><span>D.路由器</span></p><p><span>10BASET——100m，需要【中继器】</span></p></li><li><p><span>10BaseT以太网采用的传输介质是()。</span></p><p><span>A.双绞线</span></p><p><span>B.同轴电缆</span></p><p><span>C.光纤</span></p><p><span>D.微波</span></p><p><span>【双绞线】</span></p></li><li><p><span>IEE802.3标准规定,若采用同轴电缆作为传输介质,在无中继的情况下,传输介质的最大长度不能超过(）</span></p><p><span>A.500m</span></p><p><span>B.200m</span></p><p><span>C.100m</span></p><p><span>D.50m</span></p><p><span>【500m】</span></p></li><li><p><span>下列关于吉比特以太网的说法中,错误的是()</span></p><p><span>A.支持流量控制机制</span></p><p><span>B.采用曼彻斯特编码,利用光纤进行数据传输</span></p><p><span>C.数据的传输时间主要受线路传输延迟的制约</span></p><p><span>D.同时支持全双工模式和半双工模式</span></p><p><span>【B】吉比特以太网的物理层有两个标准:IEEE802.z和IEEE802.3ab,前者采用光纤通道,后者采用4对UTP5类线</span></p></li><li><p><span>【2019统考真题】100 BaseT快速以太网使用的导向传输介质是(A)</span></p><p><span>A.双绞线B.单模光纤C.多模光纤D.同轴电缆</span></p><p>&nbsp;</p></li></ol></li><li><p><span>计算机与外界局域网的连接是通过主机箱内插入的一块</span><strong><span>网络接口板</span></strong><span>[又称</span><strong><span>网络适配器(Adapter)</span></strong><span>或</span><strong><span>网络接口卡(Network Interface Card,NIC)</span></strong><span>]实现的。全世界的每块网卡在出厂时都有一个唯一的代码,称为</span><strong><span>介质访问控制(MAC)地址</span></strong><span>。</span></p></li><li><p><strong><span>MAC帧格式——DIX Ethernet V2</span></strong></p><p><img src="resources/MAC帧格式.png" alt="MAC帧格式" style="zoom:50%;" /></p><ol><li><span>前导码（8B）=前同步码（7B）+帧开始定界符（1B）。前同步码就像，一二一，喊口号，一起走。帧开始定界符一开始也是101010，最后两个是11，就像读课文前的“一二”。</span></li><li><span>目的地址（6B）</span></li><li><span>源地址（6B）</span></li><li><span>类型（2B）</span></li><li><strong><span>数据（46～1500B）</span></strong><span>。IP数据报就是在这里。以太网帧长最短64B，其中数据部分是46B，其他部分18B。以太网MTU是1500B。</span></li><li><span>FCS（4B）</span></li><li><span>为什么没有结束定界符？因为以太网用曼彻斯特编码，0和1都是01或10，而没有信号的时候就是00。</span></li></ol></li><li><p><strong><span>MAC帧格式——IEEE802.3</span></strong></p><ol><li><span>第三个字段是长度/类型</span></li></ol><ol start='2' ><li><span>当长度/类型字段值小于0x0600时,数据字段必须装入LLC子层。</span></li></ol></li><li><p><span>【小坑例题】网卡实现的主要功能在()</span></p><p><span>A.物理层和数据链路层</span></p><p><span>B.数据链路层和网络层</span></p><p><span>C.物理层和网络层</span></p><p><span>D.数据链路层和应用层</span></p><p><span>答案：A，因为{网卡}对应{以太网协议}，对应物理层与链路层</span></p></li><li><p><span>【小坑例题】同一局域网中的两个设备具有相同的静态MAC地址时,会发生(C)</span></p><p><span>A.首次引导的设备排他地使用该地址,第二个设备不能通信</span></p><p><span>B.最后引导的设备排他地使用该地址,另一个设备不能通信</span></p><p><span>C.在网络上的这两个设备都不能正确通信</span></p><p><span>D.两个设备都可以通信,因为它们可以读分组的整个内容,知道哪些分组是发给它们的,而不是发给其他站的</span></p><p><span>【王道解析】在使用静态地址的系统中,如果有重复的硬件地址,那么这两个设备都不能正常通信,原因是:第一,目的MAC地址等于本机MAC地址的帧是不会被发送到网络上去的;第二,其他设备的用户发送给一个设备的帧也会被另一个设备接收,其中必有一个设备必须处理不属于本设备的帧,浪费了资源;第三,正确实现的ARP软件都会禁止把同一个MAC地址绑定到两个不同的IP地址,这就使得具有相同MAC地址的设备上的用户在会话时都发生时断时续的现象</span></p></li></ol></li></ol><h2 id='ieee80211无线局域网'><span>IEEE802.11无线局域网</span></h2><h3 id='无线局域网的组成'><span>无线局域网的组成</span></h3><p><span>无线局域网可分为两大类:有</span><strong><span>固定基础设施的无线局域网</span></strong><span>和</span><strong><span>无固定基础设施的移动自组织网络</span></strong><span>。所谓“固定基础设施”,是指预先建立的、能覆盖一定地理范围的固定基站。</span></p><ol><li><p><strong><span>有固定基础设施无线局域网</span></strong></p><ul><li><p><span>IEEE制定了无线局域网的</span><strong><span>802.11</span></strong><span>系列协议标准。802.11使用</span><strong><span>星形拓扑</span></strong><span>,其</span><strong><span>中心称为接入点(Access Point,AP)</span></strong><span>,在MAC层使用</span><strong><span>CSMA/CA</span></strong><span>协议。使用802.11系列协议的局域网又称</span><strong><span>Wi-Fi</span></strong><span>。</span></p></li><li><p><span>基本服务集：802.11标准规定无线局域网的最小构件是</span><strong><span>基本服务集</span></strong><span>(Basic Service Set,</span><strong><span>BSS</span></strong><span>)。基本服务集包括一个接入点和若干移动站。</span></p></li><li><p><span>AP/基站：各站在本BSS内之间的通信,或与本BSS外部站的通信,都必须通过本BSS的AP。上面提到的</span><strong><span>AP就是</span></strong><span>基本服务集中的</span><strong><span>基站</span></strong><span>(base station)。</span></p></li><li><p><span>SSID/网络名：安装AP时,必须为该AP分配一个不超过32字节</span><strong><span>服务集标识符</span></strong><span>(Service Set IDentifier,SSID)和一个信道。</span><strong><span>SSID是</span></strong><span>指使用该AP的</span><strong><span>无线局域网的名字</span></strong><span>。</span></p></li><li><p><span>基本服务区：一个基本服务集覆盖的地理范围称为一个</span><strong><span>基本服务区</span></strong><span>(Basic Service Area,BSA),无线局域的基本服务区的范围直径一般不超过100m。</span></p></li><li><p><span>DS与SS：一个基本服务集可以是孤立的,也可通过AP连接到一个</span><strong><span>分配系统</span></strong><span>( Distribution System,DS),然后再连接到另一个基本服务集,就构成了一个</span><strong><span>扩展的服务集</span></strong><span>(Extended Service Set,SS)。分配系统的作用就是使扩展的服务集对上层的表现就像一个基本服务集一样。</span></p></li><li><p><span>ESS：</span><strong><span>ESS</span></strong><span>还可以通过一种称为</span><strong><span>Portal(门户)</span></strong><span>的设备为无线用户提供到有线连接的以太网的接入。门户的作用相当于一个网桥。在下图中,移动站A如果要和另一个基本服务集中的移动站B通信,就必须经过两个接入点AP1和AP2, A→AP1→AP2→B,注意</span><strong><span>AP1到AP2通信是使用有线</span></strong><span>传输的。移动站A从某个基本服务集漫游到另一个基本服务集时(图3.27中的A),仍然可保持与另一个移动站B的通信。但A在不同的基本服务集使用的AP改变了。</span></p><p><img src="resources/基本服务集与扩展服务集.png" alt="基本服务集与扩展服务集" style="zoom: 67%;" /></p></li></ul></li><li><p><strong><span>无固定基础设施移动自组织网络</span></strong><span>，又称自组网络(ad hoc network)。</span></p><ul><li><span>自组网络没有上述基本服务集中的AP,而是由一些平等状态的移动站相互通信组成的临时网络。各结点之间地位平等,中间结点都转发结点,因此都具有路由器的功能。</span></li><li><span>自组网络通常是这样构成的:一些可移动设备发现它们附近还有其他的可移动设备,并且要求和其他移动设备进行通信。自组网络中的每个移动站都要参与网络中其他移动站的路由的发现和维护,同时由移动站构成的网络拓扑可能随时间变化得很快,因此在固定网络中行之有效的些路由选择协议对移动自组网络已不适用,需引起特别的关注。</span></li><li><strong><span>自组网络和移动IP并不相同</span></strong><span>。</span><strong><span>移动IP技术</span></strong><span>使漫游的主机可以用多种方法连接到因特网,其</span><strong><span>核心</span></strong><span>网络功能</span><strong><span>仍然是基于固定网络</span></strong><span>中一直使用的各种路由选择协议。而</span><strong><span>自组网络</span></strong><span>是把移动性扩展到无线领域中的自治系统,</span><strong><span>具有自己特定的路由选择协议,并且可以不和因特网相连</span></strong><span>。</span></li></ul></li></ol><h3 id='80211局域网的mac帧'><strong><span>802.11局域网的MAC帧</span></strong></h3><p><span>802.11帧共有三种类型,即</span><strong><span>数据帧、控制帧和管理帧</span></strong><span>。数据帧的格式如图所示。</span></p><p><img src="resources/无线MAC帧2.png" alt="无线MAC帧2" style="zoom:50%;" /></p><p><span>802.11数据帧由以下三大部分组成：</span></p><ol><li><p><strong><span>MAC首部</span></strong><span>,共30字节。帧的复杂性都在MAC首部。</span></p><p><span>（RA，TA</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-1397-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-1397-TEX-N-2192"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo accent="false" stretchy="false">→</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\to</script><span>收发方地址；DA，SA</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-1397-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-1397-TEX-N-2192"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo accent="false" stretchy="false">→</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\to</script><span>目的与源头地址；</span><strong><span>1234，收发目源</span></strong><span>）</span></p></li></ol><p><img src="resources/无线MAC帧.png" alt="无线MAC帧" style="zoom:50%;" /></p><ol start='2' ><li><strong><span>帧主体</span></strong><span>,即帧的数据部分,不超过2312字。它比以太网的最大长度长很多。</span></li></ol><ol start='3' ><li><p><strong><span>帧检验序列FCS</span></strong><span>是尾部,共4字节。</span></p></li><li><p><span>802.11 MAC帧头格式</span></p><p><a href='https://changeself.cn/news/shownews.php?id=96'><span>更详细的博客</span></a></p></li></ol><figure><table><thead><tr><th style='text-align:center;' ><span>功能</span></th><th style='text-align:center;' ><span>To DS</span></th><th style='text-align:center;' ><span>From DS</span></th><th style='text-align:center;' ><span>Address1(RA)</span></th><th style='text-align:center;' ><span>Address2(SA)</span></th><th style='text-align:center;' ><span>Address3(DA)</span></th><th style='text-align:center;' ><span>Address4(SA)</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>IBSS</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>DA</span></td><td style='text-align:center;' ><span>SA</span></td><td style='text-align:center;' ><span>BSSID</span></td><td style='text-align:center;' ><span>未使用</span></td></tr><tr><td style='text-align:center;' ><span>To AP</span><br><span>基础结构类型</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>BSSID</span></td><td style='text-align:center;' ><span>SA</span></td><td style='text-align:center;' ><span>DA</span></td><td style='text-align:center;' ><span>未使用</span></td></tr><tr><td style='text-align:center;' ><span>From AP</span><br><span>基础结构类型</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>DA</span></td><td style='text-align:center;' ><span>BSSID</span></td><td style='text-align:center;' ><span>SA</span></td><td style='text-align:center;' ><span>未使用</span></td></tr><tr><td style='text-align:center;' ><span>WDS</span><br><span>无线分布式系统</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>RA</span></td><td style='text-align:center;' ><span>TA</span></td><td style='text-align:center;' ><span>DA</span></td><td style='text-align:center;' ><span>SA</span></td></tr></tbody></table></figure><p><span>下面是我自己总结的一张图：</span></p><p><img src="resources/IMG_2236.jpeg" alt="IMG_2236" style="zoom:80%;" /></p><ol start='5' ><li><p><a href='https://www.nowcoder.com/questionTerminal/91043687ac5f4e51a498fb7060fd86a4'><span>例题</span></a><span>【2017年统考真题】: 在下图所示的网络中，若主机H发送一个封装访问Internet的IP分组的IEEE 802.11数据帧F，则帧F的地址1、地址2和地址3分别是(B)</span></p><p><img src="resources/tupian.png" alt="tupian" style="zoom:80%;" /></p><p><span>A. 00-12-34-56-78-9a，00-12-34-56-78-9b，00-12-34-56-78-9c</span>
+<span>B. 00-12-34-56-78-9b，00-12-34-56-78-9a，00-12-34-56-78-9c</span>
+<span>C. 00-12-34-56-78-9b，00-12-34-56-78-9c，00-12-34-56-78-9a</span>
+<span>D. 00-12-34-56-78-9a，00-12-34-56-78-9c，00-12-34-56-78-9b</span></p></li></ol><h2 id='vlan'><span>VLAN</span></h2><ol><li><p><strong><span>传统局域网的局限</span></strong></p><ol><li><p><span>• </span><strong><span>缺乏流量隔离</span></strong><span>:即使把组流量局域化道 一个单一交换机中，广播流量仍会跨越 整个机构网络(ARP、RIP、DHCP协议)</span></p><p><span>• </span><strong><span>管理用户不便</span></strong><span>:如果一个主机在不同组 间移动，必须改变物理布线，连接到新 的交换机上。</span></p><p><span>• </span><strong><span>路由器成本较高</span></strong><span>:局域网内使用很多路 由器花销较</span></p></li></ol></li><li><p><strong><span>VLAN基本概念</span></strong></p><p><span>虚拟局域网VLAN(Virtual Local Area Network)是一种</span><strong><span>将局域网内的设备划分成与物理位置无关的逻辑组 的技术</span></strong><span>，这些逻辑组有某些共同的需求。每个VLAN是一个单独的广播域/不同的子网。</span></p></li><li><p><strong><span>VLAN实现</span></strong></p><ol><li><span>比普通的以太网的MAC帧多了4字节VLAN标记</span></li><li><span>VLAN标记的前两个字节表明是IEEE 802.1Q帧，接下来4位没用，</span><strong><span>后面12位是VLAN标识符VID</span></strong><span>， 唯一表示了该以太网帧属于哪个VLAN。</span></li><li><span>VID的取值范围为0~4095，但0和4095都不用来表示VLAN，因此用于</span><strong><span>表示VLAN的有效VID取值范围为1~4094</span></strong><span>。</span></li><li><span>IEEE 802.1Q帧是由</span><strong><span>交换机来处理</span></strong><span>的，而不是由用户主机来处理的。(即</span><strong><span>主机和交换机之间只交换普通的以太网帧</span></strong><span>)</span></li></ol></li><li><p><span>以下关于虚拟局域网特性的描述中，错误的是(D)。</span>
+<span>A.虚拟局域网是建立在局域网交换技术基础上的 </span>
+<span>B.虚拟局域网可以将局域网上的结点划分成若干个「逻辑工作组」，那么一个逻辑工作组就是一个虚拟网络 </span>
+<span>C.逻辑工作组的结点组成不受物理位置的限制 </span>
+<span>D.虚拟网络建立在网络交换机之上，它以硬件方式来实现逻辑工作组的划分与管理</span></p></li><li><p><span>下列关于虚拟局域网(VLAN)的说法中,不正确的是(B)</span></p><p><span>A.虚拟局域网建立在交换技术的基础上</span></p><p><span>B.虚拟局域网通过硬件方式实现逻辑分组与管理</span></p><p><span>C.虚拟网的划分与计算机的实际物理位置无关</span></p><p><span>D.虚拟局域网中的计算机可以处于不同的局域网中</span></p><p><span>可以在不同局域网！比如这个图：</span></p><p><img src="resources/案例.png" alt="案例" style="zoom:50%;" /></p></li><li><p><span>【重要】划分虚拟局域网(VLAN)有多种方式,(C)不是正确的划分方式。</span></p><p><span>A.基于交换机端口划分</span></p><p><span>B.基于网卡地址划分</span></p><p><span>C.基于用户名划分</span></p><p><span>D.基于网络层地址划分</span></p><p><span>一般有</span><strong><span>三种划分VLAN的方法</span></strong><span>。①</span><strong><span>基于端口</span></strong><span>,将交换机的若干端口划为一个逻辑组,这种方法最简单、最有效,如果主机离开了原来的端口,那么就可能进入一个新的子网。②</span><strong><span>基于MAC地址</span></strong><span>,按MAC地址将一些主机划分为一个逻辑子网,当主机的物理位置从一个交换机移动到另个交换机时,它仍然属于原来的子网。③</span><strong><span>基于IP地址</span></strong><span>,根据网络层地址或协议划分LAN,这样VLAN就可以</span><strong><span>跨越路由器进行扩展</span></strong><span>,将多个局域网的主机连接在一起。</span></p></li><li><p><span>下列选项中,(C)不是虚拟局域网(VLAN)的优点。</span></p><p><span>A.有效共享网络资源</span></p><p><span>B.简化网络管理</span></p><p><span>C.</span><a href='https://zh.wikipedia.org/wiki/%E9%93%BE%E8%B7%AF%E8%81%9A%E5%90%88'><span>链路聚合</span></a></p><p><span>D.提高网络安全性</span></p><p><span>选项A、B和D都是VLAN的优点。</span><strong><span>链路聚合是解决交换机之间的宽带瓶颈问题的技术</span></strong><span>。</span></p></li></ol></div></div>
+</body>
+</html>
