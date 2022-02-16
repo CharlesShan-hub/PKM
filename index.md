@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2023.2.15
+2022.2.16
 
 ![image text](./resources/title_small.png)
 
@@ -10,9 +10,11 @@
 
 ## 项目介绍  
 
-[增值计划包含四部分](https://mp.weixin.qq.com/s/ZsyQF_1GkhmzLBzkzwwmQw)，**阅读增值**，解释为知识或技能本身；**运动增值**，解释为身体机能的锻炼，**习惯增值**，解释为方法的调整，**时间增值**，解释为效率的提升。（目前为PKM，以后会逐步将后三个也纳入其中😁）
+[增值计划](https://mp.weixin.qq.com/s/ZsyQF_1GkhmzLBzkzwwmQw)包含四部分，**阅读增值**，解释为知识或技能本身；**运动增值**，解释为身体机能的锻炼，**习惯增值**，解释为方法的调整，**时间增值**，解释为效率的提升。（目前为PKM，以后会逐步将后三个也纳入其中😁）
 
-PKM(Personal Knowledge Map)计划为阅读增值部分的应对方案，个人知识地图致力于在构建知识树的基础上加入其他要素，使之成为具有可发展性，强关联性的新型知识树。  
+[个人系统](https://mp.weixin.qq.com/s/0rQYsTMU1mmTcyVq8__Okg?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhY2Nlc3NfcmVzb3VyY2UiLCJleHAiOjE2NDQ5NzcwNzcsImciOiIxTFZLb2dvWEkxQWgyZ2gzIiwiaWF0IjoxNjQ0OTc2Nzc3LCJ1c2VySWQiOi0xNzc4NTU2MDA4fQ.jEYAE0iYCrzF-L6PAGwqFFohGAOjDAnX4AOABpuK8lU)的分类则更加丰富，个人系统社群现在(2023.2.16)分为**时间管理**，**知识管理**，**目标管理**，**情绪管理**，**健康管理**，**财务管理**，**人际交往**八个小组。
+
+**PKM(Personal Knowledge Map)计划**是为阅读增值部分或知识系统设计的方案，个人知识地图致力于在构建知识树的基础上加入其他要素，使之成为具有可发展性，强关联性的新型知识树。  
 
 个人知识地图关注于：构建某学科的全面的知识树；将不同学科知识树进行关联与整合；将基于Xmind的知识图提炼出知识数据关系。  目前阶段专注于构建单独学科的内在知识导图。
 
@@ -46,7 +48,7 @@ PKM(Personal Knowledge Map)计划为阅读增值部分的应对方案，个人�
 | (网络安全)                                                   | (中间件)                                                     |                          |
 | 🌟[数据结构](./KnowledgeMap/计算机科学/数据结构/README.md)    | (算法设计与分析)                                             | (软件工程)               |
 | (计算机图形学)                                               | (GPU编程)                                                    | (并行计算)               |
-| (分布式与云计算)                                             | ✏️[区块链](./KnowledgeMap/计算机科学/区块链/README.md)        |                          |
+| (分布式与云计算)                                             | (区块链)                                                     |                          |
 
 
 
@@ -90,12 +92,13 @@ PKM(Personal Knowledge Map)计划为阅读增值部分的应对方案，个人�
 
 **[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 软件与技术**
 
-|          |           |           |
-| :------: | :-------: | :-------: |
-|  (Git)   |  (Xcode)  | (Protege) |
-| (OpenGL) |  (Unity)  |   (Vue)   |
-| (React)  | (Angular) | (MongoDB) |
-| (Sqlite) | (Arduino) |  (Linux)  |
+|                                                       |           |           |
+| :---------------------------------------------------: | :-------: | :-------: |
+| ✏️[以太坊](./KnowledgeMap/计算机科学/以太坊/README.md) |           |           |
+|                         (Git)                         |  (Xcode)  | (Protege) |
+|                       (OpenGL)                        |  (Unity)  |   (Vue)   |
+|                        (React)                        | (Angular) | (MongoDB) |
+|                       (Sqlite)                        | (Arduino) |  (Linux)  |
 
 
 
@@ -173,7 +176,7 @@ PKM(Personal Knowledge Map)计划为阅读增值部分的应对方案，个人�
 
    ![将数据插入到知识图谱中](./resources/demo2.png)
    
-5. 知识结构为通过思维导图连接的知识点（项目/领域标题），与通过Markdown文档表现的具体内容笔记。通过[**Docusaurus**](https://docusaurus.io/zh-CN/)进行静态网络的搭建，快速生成对应博客。
+5. 知识结构为通过思维导图连接的知识点（项目/领域标题），与通过Markdown文档表现的具体内容笔记。通过[**Docusaurus**](https://docusaurus.io/zh-CN/)进行静态网络的搭建，快速生成对应[博客](https://charlesshan-hub.github.io)。
 
 ## 想挖的坑
 
