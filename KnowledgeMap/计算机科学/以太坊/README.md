@@ -1,7 +1,9 @@
 # PKM - 以太坊  
 2022.2.17
 
-## 目录![image text](./resources/以太坊.png)
+## 目录
+
+![image text](./resources/以太坊.png)
 
 * 以太坊基础
   * [以太坊综述](./notes/以太坊基础/以太坊综述.md)
