@@ -75,7 +75,7 @@
 |     (C)      |   (SQL)   |   (Java)   |
 |    (C++)     | (Python)  |  (Julia)   |
 | (Javascript) | (Matlab)  | (Solidity) |
-|   (Swift)    |           |            |
+|   (Swift)    |   (Go)    |            |
 
 
 

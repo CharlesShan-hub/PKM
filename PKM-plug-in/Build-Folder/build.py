@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 
 # 生成的文件夹的根目录
 FOLDER_BASE_PATH = './notes/'
@@ -73,7 +74,7 @@ def main():
 					os.makedirs(os.path.dirname(item[1])+'/resources')
 				print("file: ",item[1])
 				with open(item[1],'w') as f:
-					f.write('# '+item[-2])
+					f.write('# '+item[-2]+'\n'+time.strftime("%Y.%m.%d", time.localtime()))
 				temp_f.write(blank_number*item[0]*' '+'* ['+item[2]+']('+item[1]+')\n')
 			else:
 				temp_f.write(blank_number*item[0]*' '+'* '+item[2]+'\n')
