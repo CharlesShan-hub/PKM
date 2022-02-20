@@ -56,7 +56,7 @@
     * [尚硅谷Java入门视频教程](https://www.bilibili.com/video/BV1Kb411W75N)
   * 【Go】
     * [Golang](https://www.bilibili.com/video/BV1ME411Y71o)
-    * [GoWeb][https://www.bilibili.com/video/BV1nJ411D7P4]
+    * [GoWeb](https://www.bilibili.com/video/BV1nJ411D7P4)
   * 【以太坊】
     * [以太坊](https://www.bilibili.com/video/BV1NJ411D7rf)，课件在网盘
     * [区块链项目硅谷投票系统](https://www.bilibili.com/video/BV1JJ411D7Ve)
@@ -65,6 +65,7 @@
 * 以太坊
 
   * [Ethereum官网](https://ethereum.org/en/)
+  * [以太坊英文官方文档](https://ethereum.org/en/developers/docs/)
   * [以太坊官方文档 ( Ethereum Homestead Documentation )](http://www.ethdocs.org/en/latest/index.html) 
   * [《精通以太坊》( Mastering Ethereum ) ](https://github.com/ethereumbook/ethereumbook)
   * [《以太坊白皮书》 ( A Next-Generation Smart Contract and Decentralized Application Platform )](https://github.com/ethereum/wiki/wiki/White-Paper)
@@ -99,7 +100,7 @@
 * 编程语言, 编辑器, 第三方库,开发框架
 
   * [Solidity官方文档](https://solidity.readthedocs.io/en/latest/)
-  * [Remix ][https://remix.ethereum.org/] 基于浏览器的 Solidity 在线编辑器
+  * [Remix ](https://remix.ethereum.org/) 基于浏览器的 Solidity 在线编辑器
   * ~~solcjs Solidity 的命令行编译器~~
   * web3js – 以太坊 javascipt API库
 

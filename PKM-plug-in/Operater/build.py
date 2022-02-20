@@ -41,11 +41,11 @@ def show_tree(command_list):
 				print("没有路径:",BASE_PATH+command_list[command_list.index('-path')+1])
 			else:PATH = BASE_PATH+command_list[command_list.index('-path')+1]
 
-	if ('-p' not in command_list and '-l' not in command_list) or '-p' in command_list:
+	if  '-p' in command_list:
 		for item in get_all_file(PATH,'-all' not in command_list):
 			temp=item.replace(PATH,'')
 			print(temp)
-	elif '-l' in command_list:
+	elif ('-p' not in command_list and '-l' not in command_list) or '-l' in command_list:
 		first=True
 		for item in get_all_file(PATH,'-all' not in command_list):
 			temp=item.replace(PATH,'')
@@ -147,6 +147,7 @@ def main():
 			break
 		elif command=="help":
 			print("exit: 退出程序\n"\
+				"clear: 清空屏幕\n"\
 				"show: 检查所有拥有html的目录结构(PKM文件夹)\n"\
 				"show -l:按照逻辑结构展示\n"\
 				"show -p:按照物理结构展示\n"\
@@ -156,6 +157,9 @@ def main():
 				"hide list:取消展示的目录\n"\
 				"hide add: 增加取消展示的目录\n"\
 				"hide reduce: 减少某取消展示的目录")
+		elif command=='clear':
+			os.system("clear")
+			print("PKM Operater\n",end='')
 		elif command.split(" ")[0]=="show":
 			show_tree(command_list)
 		elif command_list[0]=="hide":
