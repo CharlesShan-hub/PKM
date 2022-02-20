@@ -1,5 +1,5 @@
 # PKM - 以太坊  
-2022.2.17
+2022.2.20
 
 ## 目录
 
@@ -14,6 +14,8 @@
   * [以太坊交易、gas、EVM](./notes/深入理解以太坊/以太坊交易、gas、EVM.md)
 * 以太坊编程及应用
   * [Solidity基础](./notes/以太坊编程及应用/Solidity基础.md)
+  * [Solidity进阶](./notes/以太坊编程及应用/Solidity进阶.md)
+  * [ERC20代币合约](./notes/以太坊编程及应用/ERC20代币合约.md)
   * [简单投票DApp](./notes/以太坊编程及应用/简单投票DApp.md)
   * [Web3.js及简单应用](./notes/以太坊编程及应用/Web3.js及简单应用.md)
 * 深入理解合约流
@@ -101,7 +103,7 @@
 
   * [Solidity官方文档](https://solidity.readthedocs.io/en/latest/)
   * [Remix ](https://remix.ethereum.org/) 基于浏览器的 Solidity 在线编辑器
-  * ~~solcjs Solidity 的命令行编译器~~
+  * solcjs Solidity 的命令行编译器
   * web3js – 以太坊 javascipt API库
 
   * Truffle – 以太坊开发框架
