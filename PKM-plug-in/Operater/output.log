@@ -1,0 +1,4 @@
+INFO [02-21|11:00:40.745] Starting Geth in ephemeral dev mode... 
+INFO [02-21|11:00:40.749] Maximum peer count                       ETH=50 LES=0 total=50
+INFO [02-21|11:00:40.757] Set global gas cap                       cap=50,000,000
+Fatal: Failed to read password file: open password.txt: no such file or directory

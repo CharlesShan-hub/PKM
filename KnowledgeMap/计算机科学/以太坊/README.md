@@ -1,5 +1,5 @@
 # PKM - 以太坊  
-2022.2.20
+2022.2.21
 
 ## 目录
 
@@ -53,7 +53,11 @@
 提取码: u7gp  
 如果资源失效请联系我  
 
+* 尚硅谷区块链资料
+  https://pan.baidu.com/s/1PJocX5nbpWCwMERMF76vAQ 提取码：yyds 
+
 * 以太坊课程
+
   * 【Java】
     * [尚硅谷Java入门视频教程](https://www.bilibili.com/video/BV1Kb411W75N)
   * 【Go】
