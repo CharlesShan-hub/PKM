@@ -7,6 +7,7 @@ import json
 BASE_PATH = '../../KnowledgeMap'
 PATH = BASE_PATH
 hide=[]
+block={}
 
 def get_all_file(path,ignore=True):
 	''' 获取某路径下的所有html文件路径名
@@ -115,9 +116,20 @@ def hide_operation(command_list):
 			print(command_list[2]+' 并不在忽略列表中')
 
 
+def block_operation(command_list):
+	'''
+	'''
+	print("试运行模块")
+	if command_list[1]=='add':
+		pass
+	elif  command_list[1]=='reduce':
+		pass
+	pass
+
+
 def init():
 	if os.path.exists('./setting.json') == False:
-		data = json.dumps({'hide': []}, sort_keys=True, indent=4, separators=(',', ': '))
+		data = json.dumps({'hide': [],'block':{}}, sort_keys=True, indent=4, separators=(',', ': '))
 		with open('./setting.json','w') as f:
 			f.write(data)
 
@@ -126,6 +138,8 @@ def init():
 	data = json.loads(data)
 	global hide
 	hide=data['hide']
+	global block
+	block=data['block']
 
 
 def main():
@@ -164,6 +178,8 @@ def main():
 			show_tree(command_list)
 		elif command_list[0]=="hide":
 			hide_operation(command_list)
+		elif command_list[0]=="block":
+			block_operation(command_list)
 		else:
 			print("type `help` to see what can do")
 		#else:

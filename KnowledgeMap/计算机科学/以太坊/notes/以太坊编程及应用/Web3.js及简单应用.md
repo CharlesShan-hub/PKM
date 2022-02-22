@@ -1,6 +1,6 @@
 # Web3.js及简单应用
 
-2022.2.21
+2022.2.22
 
 ## 主要内容
 
@@ -179,6 +179,7 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
 
 * **web3 通用工具方法**
 
+  * v1.0.0开始都放进了```web3.utils```
   * **以太单位转换**
     * ```web3.fromWei```
     * ```web3.toWei```
@@ -206,7 +207,7 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
     * 异步:```web3.eth.getAccounts( (err, res)=>console.log(res) )```
     * v1.0.0:```web3.eth.getAccounts().then(console.log)```
 
-* **区块相关**
+* **web3.eth – 区块相关**
 
   * **区块高度查询**
     * 同步:```web3.eth. blockNumber```
@@ -215,13 +216,13 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
     * 同步:```web3.eth.gasPrice```
     * 异步:```web3.eth.getGasPrice( callback )```
   * **区块查询**
-    * 同步:```web3.eth.getBlockNumber(hashStringOrBlockNumber[ ,returnTransactionObjects] )```
-    * 异步:```web3.eth.getBlockNumber( hashStringOrBlockNumber, callback )```
+    * 同步:```web3.eth.getBlock(hashStringOrBlockNumber[ ,returnTransactionObjects] )```
+    * 异步:```web3.eth.getBlock( hashStringOrBlockNumber, callback )```
   * **块中交易数量查询**
     * 同步:```web3.eth.getBlockTransactionCount( hashStringOrBlockNumber )```
     * 异步:```web3.eth.getBlockTransactionCount( hashStringOrBlockNumber, callback )```
 
-* **交易相关**
+* **web3.eth – 交易相关**
 
   * **余额查询**
     * 同步:```web3.eth.getBalance(addressHexString [, defaultBlock])``` 
@@ -230,7 +231,7 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
     * 同步:```web3.eth.getTransaction(transactionHash)```
     * 异步:```web3.eth.getTransaction(transactionHash [, callback])```
 
-* **交易执行相关**
+* **web3.eth – 交易执行相关**
 
   - **交易收据查询(已进块)**
     - 同步:```web3.eth.getTransactionReceipt(hashString)```
@@ -239,7 +240,7 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
     - 同步:```web3.eth.estimateGas(callObject)```
     - 异步:```web3.eth.estimateGas(callObject [, callback])```
 
-* **发送交易**
+* **web3.eth – 发送交易**
 
   * ```web3.eth.sendTransaction(transactionObject [, callback])```
   * 交易对象:
@@ -251,7 +252,7 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
     * data:交易携带的字串数据，可选
     * nonce:整数 nonce 值，可选
 
-* **消息调用**
+* **web3.eth – 消息调用**
 
   * ```web3.eth.call(callObject[,defaultBlock][,callback])```
 
@@ -264,34 +265,40 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
     ```js
     var result = web3.eth.call({ to: "0xc4abd0339eb8d57087278718986382264244252f",
     data:
-    "0xc6888fa100000000000000000000000000000000000000000000000000 0 0000000000003" });
+    "0xc6888fa10000000000000000000000000000000000000000000000000000000000000003" });
     console.log(result);
     ```
 
-* **日志过滤(事件监听)**
+* **web3.eth – 日志过滤(事件监听)**
 
   * web3.eth.filter( filterOptions [ , callback ] )
 
     ```js
-    // filterString 可以是 'latest' or 'pending' var filter = web3.eth.filter(filterString); // 或者可以填入一个日志过滤 options var filter = web3.eth.filter(options);
+    // filterString 可以是 'latest' or 'pending' 
+    var filter = web3.eth.filter(filterString); 
+    
+    // 或者可以填入一个日志过滤 
+    options var filter = web3.eth.filter(options);
     
     // 监听日志变化
-     filter.watch(function(error, result){ if (!error) console.log(result); }); // 还可以用传入回调函数的方法，立刻开始监听日志 web3.eth.filter(options, function(error, result){
+    filter.watch(function(error, result){ if (!error) console.log(result); }); 
     
-    if (!error) console.log(result); });
+    // 还可以用传入回调函数的方法，立刻开始监听日志 
+    web3.eth.filter(options, function(error, result){
+    	if (!error) console.log(result); 
+    });
     ```
 
-* **合约相关 —— 创建合约**
+* **web3.eth – 合约相关 —— 创建合约**
 
   * web3.eth.contract
 
     ```js
     var MyContract = web3.eth.contract(abiArray); // 通过地址初始化合约实例
-     var contractInstance = MyContract.at(address); // 或者部署一个新合约
     
-    var contractInstance = MyContract.new([constructorParam1]
+    var contractInstance = MyContract.at(address); // 或者部署一个新合约
     
-    [, constructorParam2], {data: '0x12345...', from: myAccount, gas: 1000000});
+    var contractInstance = MyContract.new([constructorParam1][, constructorParam2], {data: '0x12345...', from: myAccount, gas: 1000000});
     ```
 
 * **调用合约函数**
@@ -301,7 +308,7 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
     ```js
     // 直接调用，自动按函数类型决定用 sendTransaction 还是 call
     
-    myContractInstance.myMethod(param1 [, param2, ...] [, transactionObject] [, defaultBlock] [, callback]);
+    myContractInstance.myMethod(param1 [, param2, ...] [, transactionObject] [,defaultBlock] [, callback]);
     
     // 显式以消息调用形式 call 该函数 myContractInstance.myMethod.call(param1 [, param2, ...] [,
     
@@ -309,7 +316,7 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
     
     // 显式以发送交易形式调用该函数
     
-    myContractInstance.myMethod.sendTransaction(param1 [, param2, ...] [, transactionObject] [, callback]);
+    myContractInstance.myMethod.sendTransaction(param1 [, param2, ...] [,transactionObject] [, callback]);
     ```
 
 * **监听合约事件**
@@ -317,7 +324,7 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
   * 合约的 event 类似于 filter，可以设置过滤选项来监听 
 
     ```js
-    * var event = myContractInstance.MyEvent({valueA: 23}[, additionalFilterObject]) 
+    var event = myContractInstance.MyEvent({valueA: 23}[, additionalFilterObject]) 
     // 监听事件
     event.watch(function(error, result){ if (!error) console.log(result); }); 
     //还可以用传入回调函数的方法，立刻开始监听事件
@@ -333,6 +340,32 @@ balance.plus(21).toString(10); //"131242344353464564564574574567477"
 ### Solc简单使用
 
 2022.2.21
+
+Car.sol
+
+```solidity
+pragma solidity ^0.8.0; 
+contract Car {
+    bytes brand=new bytes(12);
+    uint price;
+    constructor(string memory newBrand,uint newPrice){
+        brand=bytes(newBrand);
+        price=newPrice;
+    }
+    function setBrand(string memory newBrand) public{
+        brand=bytes(newBrand);
+    }
+    function getBrand() public view returns(string memory) {
+        return string(brand);
+    }
+    function setPrice(uint newPrice) public{
+        price=newPrice;
+    }
+    function getPrice() public view returns(uint) {
+        return price;
+    } 
+}
+```
 
 * 构建node_modules：```npm install web3@0.20.1 --save-dev```
 
@@ -382,7 +415,273 @@ true
 > 
 ```
 
+### 通过web3部署合约
+
+2022.2.22
+
+先复制abi文件和bin文件内容
+
+```bash
+kimshan@MacBook-Pro contract % cat Car_sol_Car.abi
+....
+kimshan@MacBook-Pro contract % cat Car_sol_Car.bin
+....
+```
+
+在geth里边解锁用户
+
+```bash
+> personal.unlockAccount(eth.accounts[0])
+Unlock account 0x386725811ce4e6b3b2fbbbfa1680348d8e7ee652
+Passphrase: 
+true
+```
+
+下面内容在node控制台操作(创建合约)
+
+```bash
+> var abi = “cat Car_sol_Car.abi”输出的内容;
+> var byteCode = "0x"+“cat Car_sol_Car.bin”输出的内容;
+> var carContract = web3.eth.contract(abi);
+> var diployTxObject = {from:web3.eth.accounts[0],data:byteCode,gas:1000000};
+undefined
+> var carContractInstance = carContract.new("MyCar",1234500,diployTxObject);
+undefined
+> carContractInstance.address
+'0x9daa31533be0de26d6ea8fc605f38d7145685347'
+```
+
+下面内容在node控制台操作(调用合约)
+
+```bash
+> carContractInstance.getBrand.call()
+'MyCar'
+> carContractInstance.getPrice.call()
+BigNumber { s: 1, e: 6, c: [ 1234500 ] }
+> carContractInstance.getBrand({from:web3.eth.accounts[0]})
+'0x12999f1db59a614744b6b52b74f58ef503a0944fbdf4dd24725cdd216ce0bcec'
+```
+
+## 使用Web3js构建脚本
+
+2022.2.22
+
+1. 最简单的转账脚本: test.js
+
+```js
+var Web3 = require('web3');
+var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+
+var arguments_ = process.argv.splice(2);
+
+if(!arguments_ || arguments_.length!=2){
+	console.log("Parameter error!");
+	return;
+}
+
+var _from = web3.eth.accounts[0];
+//var _to = web3.eth.accounts[1];
+var _to = arguments_[0];
+//var _value = 10000000;
+var _value = arguments_[1];
+
+web3.eth.sendTransaction({from:_from,to:_to,value:_value},(err,res)=>{
+	if(err){
+		console.log("Error: ",err);
+	}else{
+		console.log("Result: ",res);
+	}
+});
+```
+
+命令台运行记录:
+
+```bash
+kimshan@MacBook-Pro web3Test % node test.js 0xbb4e3e33b7dfd4b1c44173638546941ed1bb611e 1000000000000000000
+Result:  0xe88a7967744dcc8fde46b161558c5f0c804c89cd99cee322fbf96aee46e8a593
+```
 
 
 
+2. 调用子货币合约案例：sendCoin.js
+
+   1. Geth需要开启转账密码模式( --http.api personal )
+
+      ```bash
+      geth --datadir ./mychain/ --networkid 15 --dev --dev.period 1 --password password.txt --http --http.api personal,eth,net,web3 console --allow-insecure-unlock 2>output.log
+      ```
+
+   2. Coin.sol
+
+      ```solidity
+      pragma solidity >0.4.21 <0.6.0; 
+      contract Coin {
+          address public minter;
+          mapping (address => uint) public balances;
+          event Sent(address from, address to, uint amount); 
+          constructor() public { 
+              minter = msg.sender; 
+          } 
+          function mint(address receiver, uint amount) public {
+              require(msg.sender == minter); 
+              balances[receiver] += amount;
+          }
+          function send(address receiver, uint amount) public {
+              require(amount <= balances[msg.sender]); 
+              balances[msg.sender] -= amount; 
+              balances[receiver] += amount;
+              emit Sent(msg.sender, receiver, amount);
+          }
+      }
+      ```
+
+   3. 合约部署(主要是获取合约地址):这是我的合约地址```0x6341D3f5f08B945517Cb2C564E72062DB6506809```
+
+   4. sendCoin.js
+
+      1. 通过外部给定参数(转帐对象,转账金额,本账户密码)来进行子代币转账
+         1. 可以通过脚本自动解锁账户
+         2. 异步调用
+      2. 直接调用脚本查看用户余额
+      3. 错误调用格式判断
+
+      ```js
+      // 连接到私链
+      var Web3 = require('web3');
+      var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+      
+      
+      // 选择运行
+      var arguments_ = process.argv.splice(2);
+      if(!arguments_ || arguments_.length!=3){
+      	if(arguments_.length==0){
+          // 直接调用脚本不出传参数>查询账户余额
+      		just_check=true;
+      		var _from = web3.eth.accounts[0];
+      	}else{
+          // 调用方式错误
+      		console.log('Wong Parms')
+      		return;
+      	}
+      }else{
+        // 转账模式
+        var just_check=false;
+      	var _from = web3.eth.accounts[0];
+      	//var _to = web3.eth.accounts[1];
+      	var _to = arguments_[0];
+      	//var _value = 10000000;
+      	var _value = arguments_[1];
+      	var _password = arguments_[2];
+      }
+      
+      // 创建合约
+      const fs = require('fs'); 
+      var code = fs.readFileSync('Coin.sol').toString()
+      var solc = require('solc');
+      var compiledCode = solc.compile(code);
+      var abi = JSON.parse(compiledCode.contracts[':Coin'].interface);
+      var CoinContract = web3.eth.contract(abi);
+      var contractAddress = "0x6341D3f5f08B945517Cb2C564E72062DB6506809";
+      var contractInstance = CoinContract.at(contractAddress);
+      
+      
+      // 查看余额操作
+      console.log('accounts[0] balance: ',contractInstance.balances(web3.eth.accounts[0]).plus(21).toString(10));
+      console.log('accounts[1] balance: ',contractInstance.balances(web3.eth.accounts[1]).plus(21).toString(10));
+      
+      if(just_check==true)
+      	return
+      
+      
+      // 解锁账户
+      web3.personal.unlockAccount(_from,_password, (err,res)=>{
+      	if(err){
+      		console.log("Error: ",err);
+      	}else{
+      		console.log("Result: ",res);
+          // 进行交易
+      		contractInstance.send(_to, _value, {from:_from},(err,res)=>{
+      			if(err){
+      				console.log("Error: ",err);
+      			}else{
+      				console.log("Result: ",res);
+      			}
+      		});
+      	}
+      });
+      ```
+
+   5. 本地node_modules需要进行配置：
+
+      注意solc的版本需要和```pragma solidity >0.4.21 <0.6.0; ```匹配！
+
+      ```bash
+      kimshan@MacBook-Pro web3Test % npm install process  --save-dev
+      kimshan@MacBook-Pro web3Test % npm install solc@0.4.22  --save-dev
+      kimshan@MacBook-Pro web3Test % npm install web3  --save-dev
+      ```
+
+   6. 运行结果展示
+
+      ```bash
+      kimshan@MacBook-Pro web3Test % node test.js wrong
+      Wong Parms
+      kimshan@MacBook-Pro web3Test % node test.js 0xbb4e3e33b7dfd4b1c44173638546941ed1bb611e 10 111111
+      accounts[0] balance:  211
+      accounts[1] balance:  131
+      Result:  true
+      Result:  0x9b5fa7f7562d5f7ecf051b12e1ed3d8db01808fb04b90f966dd7f5a1ef24be88
+      kimshan@MacBook-Pro web3Test % node test.js 
+      accounts[0] balance:  201
+      accounts[1] balance:  141
+      ```
+
+3. 监听的脚本
+
+   1. test2.js
+
+      ```js
+      var Web3 = require('web3');
+      var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+      
+      const fs = require('fs'); 
+      var code = fs.readFileSync('Coin.sol').toString()
+      var solc = require('solc');
+      var compiledCode = solc.compile(code);
+      var abi = JSON.parse(compiledCode.contracts[':Coin'].interface);
+      var CoinContract = web3.eth.contract(abi);
+      var contractAddress = "0x6341D3f5f08B945517Cb2C564E72062DB6506809";
+      var contractInstance = CoinContract.at(contractAddress);
+      
+      contractInstance.Sent("latest",(err,res)=>{
+      	if(err){
+      		console.log("Error: ",err);
+      	}else{
+      		console.log("Sent Event occurs: ",res);
+      	}
+      });
+      ```
+
+   2. 终端调用:先运行test2.js, 然后发起test.js脚本定义的转账, 出块后事件会被监听到
+
+      其中的```args```参数，是event规定的参数。
+
+      ```bash
+      kimshan@MacBook-Pro web3Test % node test2.js
+      Sent Event occurs:  {
+        address: '0x6341d3f5f08b945517cb2c564e72062db6506809',
+        blockNumber: 823,
+        transactionHash: '0x4fb3f803587fbdd778a7e2917307f8f53971a5699346b509b52f3fd216ce4156',
+        transactionIndex: 0,
+        blockHash: '0xdc1300412c9136ab1e9a9f60e20f52a38584cdbf0cca546dbb890f9b45701bab',
+        logIndex: 0,
+        removed: false,
+        event: 'Sent',
+        args: {
+          from: '0x75ff5f62085e14713fffa2e13a1b8ddd455a1ec3',
+          to: '0xbb4e3e33b7dfd4b1c44173638546941ed1bb611e',
+          amount: BigNumber { s: 1, e: 1, c: [Array] }
+        }
+      }
+      ```
 
