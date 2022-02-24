@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.2.22
+2022.2.24
 
 ![image text](./resources/title_small.png)
 
@@ -67,18 +67,6 @@
 
 
 
-**[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 编程语言**
-
-|              |           |            |
-| :----------: | :-------: | :--------: |
-|    (VHDL)    | (Verilog) |   (汇编)   |
-|     (C)      |   (SQL)   |   (Java)   |
-|    (C++)     | (Python)  |  (Julia)   |
-| (Javascript) | (Matlab)  | (Solidity) |
-|   (Swift)    |   (Go)    |            |
-
-
-
 **[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 关联学科（非数学）**
 
 |              |                  |              |
@@ -87,6 +75,19 @@
 |   (信息论)   | （数字信号处理） | （高级变换） |
 |   (密码学)   |                  |              |
 |              |                  |              |
+
+
+
+**[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 编程/标记语言**
+
+|              |           |            |
+| :----------: | :-------: | :--------: |
+|    (VHDL)    | (Verilog) |   (汇编)   |
+|     (C)      |   (SQL)   |   (Java)   |
+|    (C++)     | (Python)  |  (Julia)   |
+| (Javascript) | (Matlab)  | (Solidity) |
+|   (Swift)    |   (Go)    |   (HTML)   |
+|    (CSS)     |   (PHP)   |            |
 
 
 
@@ -99,6 +100,7 @@
 |                       (OpenGL)                        |  (Unity)  |   (Vue)   |
 |                        (React)                        | (Angular) | (MongoDB) |
 |                       (Sqlite)                        | (Arduino) |  (Linux)  |
+|                        (Ajax)                         |           |           |
 
 
 
