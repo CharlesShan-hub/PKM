@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.2.24
+2022.2.26
 
 ![image text](./resources/title_small.png)
 
@@ -80,27 +80,28 @@
 
 **[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 编程/标记语言**
 
-|              |           |            |
-| :----------: | :-------: | :--------: |
-|    (VHDL)    | (Verilog) |   (汇编)   |
-|     (C)      |   (SQL)   |   (Java)   |
-|    (C++)     | (Python)  |  (Julia)   |
-| (Javascript) | (Matlab)  | (Solidity) |
-|   (Swift)    |   (Go)    |   (HTML)   |
-|    (CSS)     |   (PHP)   |            |
+|                                                              |                                                              |                                                             |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :---------------------------------------------------------: |
+|                            (VHDL)                            | 🔗[Verilog](https://www.runoob.com/w3cnote/verilog-tutorial.html) |                           (汇编)                            |
+|                             (C)                              |                            (C++)                             |                           (Java)                            |
+|                  🔗[Go](https://go.dev/doc/)                  |            🔗[Python](https://docs.python.org/3/)             |         🔗[Julia](https://docs.julialang.org/en/v1/)         |
+|     🔗[SQL](https://www.runoob.com/sql/sql-tutorial.html)     |     🔗[Matlab](https://www.mathworks.com/help/index.html)     | 🔗[Solidity](https://solidity-cn.readthedocs.io/zh/develop/) |
+|  🔗[Swift](https://www.runoob.com/swift/swift-tutorial.html)  |                                                              |                                                             |
+|    🔗[HTML](https://www.runoob.com/html/html5-intro.html)     |    🔗[CSS](https://www.runoob.com/css3/css3-tutorial.html)    |  🔗[Javascript](https://www.runoob.com/js/js-tutorial.html)  |
+| 🔗[Typescript](https://www.runoob.com/typescript/ts-tutorial.html) |     🔗[PHP](https://www.runoob.com/php/php-tutorial.html)     |                                                             |
 
 
 
 **[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 软件与技术**
 
-|                                                       |           |           |
-| :---------------------------------------------------: | :-------: | :-------: |
-| ✏️[以太坊](./KnowledgeMap/计算机科学/以太坊/README.md) |           |           |
-|    ✏️[Git](./KnowledgeMap/计算机科学/Git/README.md)    |  (Xcode)  | (Protege) |
-|                       (OpenGL)                        |  (Unity)  |   (Vue)   |
-|                        (React)                        | (Angular) | (MongoDB) |
-|                       (Sqlite)                        | (Arduino) |  (Linux)  |
-|                        (Ajax)                         |           |           |
+|                                                            |                                                         |                                                              |
+| :--------------------------------------------------------: | :-----------------------------------------------------: | :----------------------------------------------------------: |
+|   ⭐️[以太坊](./KnowledgeMap/计算机科学/以太坊/README.md)    | 🔗[Arduino](https://www.arduino.cn/thread-1066-1-1.html) | 🔗[ESP8266](https://blog.csdn.net/dpjcn1990/category_9291479.html) |
+| 🔗[Git](https://www.runoob.com/regexp/regexp-tutorial.html) |                         (Xcode)                         |                          (Protege)                           |
+|                          (OpenGL)                          |                         (Unity)                         |            🔗[Vue](https://cn.vuejs.org/v2/guide/)            |
+|                          (React)                           |                        (Angular)                        |                          (MongoDB)                           |
+|                          (Sqlite)                          |                         (Ajax)                          |                           (Linux)                            |
+|                                                            |                                                         |                                                              |
 
 
 
@@ -146,6 +147,7 @@
 * ⭐️：已经完成一次知识点覆盖
 * ✏️：正在进行学习
 * 🐦：已加入学习计划
+* 🔗：连接他人学习系统
 * (  )：草稿构建
 
 #  零碎专题

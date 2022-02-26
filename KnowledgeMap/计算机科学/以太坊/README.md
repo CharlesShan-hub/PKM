@@ -1,5 +1,5 @@
 # PKM - 以太坊  
-2022.2.24
+2022.2.25
 
 ## 目录
 
@@ -22,13 +22,21 @@
   * [自动化编译和部署](./notes/深入理解合约流/自动化编译和部署.md)
   * [自动化测试](./notes/深入理解合约流/自动化测试.md)
   * [合约工作流](./notes/深入理解合约流/合约工作流.md)
-* 深入理解以太坊原理
+
+<div style="display:none">
+  * 深入理解以太坊原理
+  * [解读以太坊白皮书](./notes/深入理解以太坊原理/解读以太坊白皮书.md)
+  * [以太坊黄皮书简介](./notes/深入理解以太坊原理/以太坊黄皮书简介.md)
+  * [梅克尔皮特里夏树](./notes/深入理解以太坊原理/梅克尔皮特里夏树.md)
+  * [MPT源码结构](./notes/深入理解以太坊原理/MPT源码结构.md)
+  * [以太坊难度调整](./notes/深入理解以太坊原理/以太坊难度调整.md)
   * [以太坊的概念与实现](./notes/深入理解以太坊原理/以太坊的概念与实现.md)
   * [源码结构与分析](./notes/深入理解以太坊原理/源码结构与分析.md)
 * DApp项目实战
   * [基于token的投票](./notes/DApp项目实战/基于token的投票.md)
   * [基于ipfs的去中心化eBay](./notes/DApp项目实战/基于ipfs的去中心化eBay.md)
   * [ICO-DApp](./notes/DApp项目实战/ICO-DApp.md)
+</div>
 
 ## 介绍
 
@@ -75,7 +83,9 @@
   * [以太坊官方文档 ( Ethereum Homestead Documentation )](http://www.ethdocs.org/en/latest/index.html) 
   * [《精通以太坊》( Mastering Ethereum ) ](https://github.com/ethereumbook/ethereumbook)
   * [《以太坊白皮书》 ( A Next-Generation Smart Contract and Decentralized Application Platform )](https://github.com/ethereum/wiki/wiki/White-Paper)
+  * [《以太坊白皮书》官网](https://ethereum.org/en/whitepaper/)
   * [《以太坊黄皮书》](https://github.com/wanshan1024/ethereum_yellowpaper)
+  * [以太坊社区知识总结](https://github.com/EthFans/wiki/wiki)
 
 * 以太坊区块链浏览器
 
@@ -113,5 +123,5 @@
   * Truffle – 以太坊开发框架
 
 ## 版本
-### V1 2022.2.??
-按照尚硅谷区块链课程进行整理，完成全部基础框架构建  
+### V1 2022.2.25
+按照尚硅谷区块链课程（以太坊白皮书之前）进行整理，完成基础框架构建
