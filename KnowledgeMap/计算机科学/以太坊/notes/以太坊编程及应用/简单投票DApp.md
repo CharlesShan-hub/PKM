@@ -346,6 +346,14 @@ github：https://github.com/CharlesShan-hub/SimpleVoteDapp
 
 视频介绍：https://www.bilibili.com/video/bv1LS4y1k7jv
 
+如果采用geth命令台主要要允许跨域访问
+
+```bash
+geth --datadir ./mychain/ --networkid 15 --dev --dev.period 1 --password password.txt --http --http.api personal,eth,net,web3 --http.corsdomain '*' console --allow-insecure-unlock 2>output.log
+```
+
+
+
 Voting.sol
 
 ```solidity
