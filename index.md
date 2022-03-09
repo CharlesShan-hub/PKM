@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.3.1
+2022.3.7
 
 ![image text](./resources/title_small.png)
 
@@ -82,13 +82,57 @@
 
 |                                                              |                                                              |                                                             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :---------------------------------------------------------: |
-|                            (VHDL)                            | 🔗[Verilog](https://www.runoob.com/w3cnote/verilog-tutorial.html) |                           (汇编)                            |
-|                             (C)                              |                            (C++)                             |                           (Java)                            |
+|                            (VHDL)                            | 🔗[Verilog](https://www.runoob.com/w3cnote/verilog-tutorial.html) |                         (assembly)                          |
+|                             (C)                              |                            (C++)                             |                            (C#)                             |
+|                            (Java)                            |                                                              |                                                             |
 |                  🔗[Go](https://go.dev/doc/)                  |            🔗[Python](https://docs.python.org/3/)             |         🔗[Julia](https://docs.julialang.org/en/v1/)         |
 |     🔗[SQL](https://www.runoob.com/sql/sql-tutorial.html)     |     🔗[Matlab](https://www.mathworks.com/help/index.html)     | 🔗[Solidity](https://solidity-cn.readthedocs.io/zh/develop/) |
 |  🔗[Swift](https://www.runoob.com/swift/swift-tutorial.html)  |                                                              |                                                             |
 |    🔗[HTML](https://www.runoob.com/html/html5-intro.html)     |    🔗[CSS](https://www.runoob.com/css3/css3-tutorial.html)    |  🔗[Javascript](https://www.runoob.com/js/js-tutorial.html)  |
-| 🔗[Typescript](https://www.runoob.com/typescript/ts-tutorial.html) |     🔗[PHP](https://www.runoob.com/php/php-tutorial.html)     |                                                             |
+| 🔗[TypeScript](https://www.runoob.com/typescript/ts-tutorial.html) |     🔗[PHP](https://www.runoob.com/php/php-tutorial.html)     |                                                             |
+|                            (ABAP)                            |                            (apl)                             |                        (asciiarmor)                         |
+|                           (ASN.1)                            |                            (asp)                             |                           (bash)                            |
+|                           (basic)                            |                         (cassandra)                          |                          (ceylon)                           |
+|                           (clike)                            |                          (clojure)                           |                           (cmake)                           |
+|                           (cobol)                            |                        (coffeescript)                        |                        (commonlisp)                         |
+|                            (CQL)                             |                          (crystal)                           |                          (cypher)                           |
+|                           (cython)                           |                             (D)                              |                           (dart)                            |
+|                            (diff)                            |                           (django)                           |                        (dockerfile)                         |
+|                            (dtd)                             |                           (dylan)                            |                            (ejs)                            |
+|                           (elixir)                           |                            (elm)                             |                        (embeddedjs)                         |
+|                            (erb)                             |                           (erlang)                           |                            (F#)                             |
+|                            (flow)                            |                           (forth)                            |                          (fortran)                          |
+|                           (fsharp)                           |                            (gas)                             |                            (gfm)                            |
+|                          (gherkin)                           |                            (glsl)                            |                          (groovy)                           |
+|                         (handlebars)                         |                          (haskell)                           |                           (haxe)                            |
+|                          (htaccess)                          |                            (http)                            |                           (hxml)                            |
+|                            (idl)                             |                            (ini)                             |                           (jade)                            |
+|                           (jinja2)                           |                            (json)                            |                            (jsp)                            |
+|                            (jsx)                             |                           (kotlin)                           |                           (latex)                           |
+|                            (less)                            |                            (lisp)                            |                        (livescript)                         |
+|                            (lua)                             |                          (makefile)                          |                          (mariadb)                          |
+|                          (markdown)                          |                        (mathematica)                         |                           (mbox)                            |
+|                          (mermaid)                           |                           (mssql)                            |                           (nginx)                           |
+|                            (nim)                             |                            (nsis)                            |                           (objc)                            |
+|                        (objective-c)                         |                           (ocaml)                            |                          (octave)                           |
+|                             (oz)                             |                           (pascal)                           |                           (perl)                            |
+|                           (perl6)                            |                            (pgp)                             |                           (plsql)                           |
+|                         (powershell)                         |                         (properties)                         |                         (protobuf)                          |
+|                         (pseudocode)                         |                             (q)                              |                             (R)                             |
+|                           (react)                            |                      (reStructuredText)                      |                            (rst)                            |
+|                            (ruby)                            |                            (rust)                            |                            (SAS)                            |
+|                           (scala)                            |                           (scheme)                           |                           (scss)                            |
+|                          (sequence)                          |                             (sh)                             |                         (smalltalk)                         |
+|                           (SPARQL)                           |                        (spreadsheet)                         |                          (sqlite)                           |
+|                          (squirrel)                          |                           (stylus)                           |                            (tcl)                            |
+|                            (tex)                             |                         (tiddlywiki)                         |                         (tiki wiki)                         |
+|                            (toml)                            |                            (tsx)                             |                          (turtle)                           |
+|                            (twig)                            |                             (V)                              |                            (vb)                             |
+|                          (vbscript)                          |                            (vue)                             |                         (velocity)                          |
+|                          (web-idl)                           |                            (wiki)                            |                           (xaml)                            |
+|                            (xml)                             |                          (xml-dtd)                           |                          (xquery)                           |
+|                           (yacas)                            |                            (yaml)                            |                                                             |
+|                                                              |                                                              |                                                             |
 
 
 

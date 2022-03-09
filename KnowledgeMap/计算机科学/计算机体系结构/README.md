@@ -1,6 +1,6 @@
 # PKM - 计算机体系结构  
 
-2022.2.22
+2022.3.7
 
 ![image text](./resources/计算机体系结构.png)
 
@@ -32,7 +32,10 @@
 
 ## 外部资源
 
-* 
+* 《深入理解计算机体系结构》高质量up主讲解
+  * 笔记链接：https://fengmuzi2003.gitbook.io/csapp3e/
+
+* 《深入理解计算机体系结构》作者讲解：https://www.bilibili.com/video/BV1a54y1k7YE?p=1
 
 
 
