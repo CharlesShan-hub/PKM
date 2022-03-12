@@ -1,6 +1,6 @@
 # IPv6
 
-2022.2.10
+2022.3.10
 
 * 数据报
 
@@ -9,7 +9,7 @@
   * 只能在主机处分片->也可以说**IPv6不能分片**（IPv4是主机和路由器处分片）
   * **没有检验和字段**
 
-  <img src="../数据链路层/resources/ipv6.jpeg" alt="ipv6" style="zoom: 50%;" />
+  <img src="./resources/ipv6.jpeg" alt="ipv6" style="zoom: 50%;" />
 
 * IPV6数据报的目的地址可以是以下**三种基本类型地址**之一：
 
