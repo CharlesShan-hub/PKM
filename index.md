@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.3.11
+2022.3.15
 
 ![image text](./resources/title_small.png)
 
@@ -82,7 +82,7 @@
 
 |                                                            |                                                              |                                                             |
 | :--------------------------------------------------------: | :----------------------------------------------------------: | :---------------------------------------------------------: |
-|                           (VHDL)                           | 🔗[Verilog](https://www.runoob.com/w3cnote/verilog-tutorial.html) |                         (assembly)                          |
+|                           (VHDL)                           | 🔗[Verilog](https://www.runoob.com/w3cnote/verilog-tutorial.html) |                         (Assembly)                          |
 |                            (C)                             |                            (C++)                             |                            (C#)                             |
 |                           (Java)                           |                                                              |                                                             |
 |                 🔗[Go](https://go.dev/doc/)                 |            🔗[Python](https://docs.python.org/3/)             |         🔗[Julia](https://docs.julialang.org/en/v1/)         |
@@ -139,14 +139,14 @@
 
 **[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 软件与技术**
 
-|                                                            |                                                         |                                                         |
-| :--------------------------------------------------------: | :-----------------------------------------------------: | :-----------------------------------------------------: |
-|   ⭐️[以太坊](./KnowledgeMap/计算机科学/以太坊/README.md)    | 🔗[Arduino](https://www.arduino.cn/thread-1066-1-1.html) | ✏️[ESP8266](./KnowledgeMap/计算机科学/ESP8266/README.md) |
-| 🔗[Git](https://www.runoob.com/regexp/regexp-tutorial.html) |                         (Xcode)                         |                        (Protege)                        |
-|                          (OpenGL)                          |                         (Unity)                         |         🔗[Vue](https://cn.vuejs.org/v2/guide/)          |
-|                          (React)                           |                        (Angular)                        |                        (MongoDB)                        |
-|                          (Sqlite)                          |                         (Ajax)                          |                         (Linux)                         |
-|                                                            |                                                         |                                                         |
+|                                                             |                                                         |                                                         |
+| :---------------------------------------------------------: | :-----------------------------------------------------: | :-----------------------------------------------------: |
+|    ⭐️[以太坊](./KnowledgeMap/计算机科学/以太坊/README.md)    | 🔗[Arduino](https://www.arduino.cn/thread-1066-1-1.html) | ✏️[ESP8266](./KnowledgeMap/计算机科学/ESP8266/README.md) |
+| 🔗[Git](https://www.runoob.com/regexp/regexp-tutorial.html)  |                         (Xcode)                         |                        (Protege)                        |
+|                          (OpenGL)                           |                         (Unity)                         |         🔗[Vue](https://cn.vuejs.org/v2/guide/)          |
+|                           (React)                           |                        (Angular)                        |                        (MongoDB)                        |
+|                          (Sqlite)                           |                         (Ajax)                          |                         (Linux)                         |
+| ✏️[Minecraft](./KnowledgeMap/计算机科学/Minecraft/README.md) |                                                         |                                                         |
 
 
 
@@ -202,8 +202,8 @@
 | [正则表达式博客](https://zhuanlan.zhihu.com/p/58110403) | [正则表达式可视化](https://regexper.com/) | [正则表达式可视化2](https://blog.robertelder.org/regular-expression-visualizer/) |
 | **设计模式**                                            |                                           |                                                              |
 |                                                         |                                           |                                                              |
-| **数据库**                                              |                                           |                                                              |
-| SQL Server                                              | MongoDB                                   | Sqlite                                                       |
+|                                                         |                                           |                                                              |
+|                                                         |                                           |                                                              |
 |                                                         |                                           |                                                              |
 |                                                         |                                           |                                                              |
 

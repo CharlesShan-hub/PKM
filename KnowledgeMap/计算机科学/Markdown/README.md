@@ -1,6 +1,6 @@
 # Markdown 
 
-2022.3.11
+2022.3.13
 
 ## 目录
 
@@ -13,6 +13,7 @@
   * 🍔 [公式整理](https://1024th.github.io/MathJax_Tutorial_CN/#/)
 * 编辑器扩展
   * 🧊 [Typora扩展](./notes/编辑器扩展/Typora扩展.md)
+  * 🍔 [mermaid](https://mermaid-js.github.io/mermaid/#/)
 
 
 ## 介绍

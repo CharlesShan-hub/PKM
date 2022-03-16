@@ -74,7 +74,7 @@ def main():
 					os.makedirs(os.path.dirname(item[1])+'/resources')
 				print("file: ",item[1])
 				with open(item[1],'w') as f:
-					f.write('# '+item[-2]+'\n'+time.strftime("%Y.%m.%d", time.localtime()))
+					f.write('# '+item[-2]+'\n'+time.strftime("%Y.%m.%d", time.localtime())+'\n[TOC]')
 				temp_f.write(blank_number*item[0]*' '+'* ['+item[2]+']('+item[1]+')\n')
 			else:
 				temp_f.write(blank_number*item[0]*' '+'* '+item[2]+'\n')

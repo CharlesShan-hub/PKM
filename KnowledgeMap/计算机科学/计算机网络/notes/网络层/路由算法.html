@@ -3,7 +3,7 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
-<link href='https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
@@ -201,67 +201,12 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .md-inline-math-container mjx-container { zoom: 0.95; }
 
 
-/*
- * Copyright (C) 2018 Drake, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-@import url();
-@include-when-export url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
 :root {
-    --monospace: "JetBrains Mono", "Fira Code", Menlo, "Ubuntu Mono", Consolas; /*code font*/
-    --text-font: var(--monospace); /*default font*/
-    --title-font: var(--monospace); /*title font*/
-
-    --text-color: #333333;
-    --bg-color: #ffffff;
-    --control-text-color: var(--text-color);
-    --meta-content-color: var(--text-color);
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
     --active-file-border-color: var(--drake-accent);
-    --rawblock-edit-panel-bd: var(--code-block-bg-color);
-    --item-hover-bg-color: #E5E5E596;
-    --active-file-bg-color: var(--item-hover-bg-color);
-
-    --blur-text-color: rgba(51, 51, 51, 0.5);
     --drake-accent: #e95f59;
     --drake-highlight: #d63200;
-    --a-color: #036aca;
-    --variable-color: var(--drake-highlight);
-    --outline-active-color: var(--a-color);
-    --code-block-bg-color: #2b2b2b;
-    --code-block-color: #A9B7C6;
-    --title-color: #135ce0;
-    --blockquote-border-color: #b2aec5;
-    --blockquote-color: #595959;
-    --blockquote-bg-color: #fff9f9;
-    --strong-color: var(--title-color);
-    --h2-underline-color: var(--title-color);
-    --horizontal-divider-color: var(--title-color);
-    --height-light-color: var(--drake-highlight);
-    --height-light-border-color: var(--drake-highlight);
-    --yaml-color: #777777;
-    --yaml-bg-color: #f7f7f7;
-    --footnotes-bg-color: #3c3d3e;
-    --footnotes-highlight: #FFD760;
-    --table-border-color: #dfe2e5;
-    --table-header-bg-color: #f6f8fa;
-    --table-bg-color: var(--bg-color);
-    --table-n2-bg-color: #f6f8fa;
-    --input-bg-color: var(--item-hover-bg-color);
-    --btn-hover-bg-color: var(--item-hover-bg-color);
-    --checkbox-checked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M425.984 726.016l384-384-59.99-61.995-324.01 324.011-152.021-152.021L213.973 512zm384-598.016q36.01 0 61.013 25.984T896 213.974v596.01q0 34.005-25.003 59.99t-61.013 25.983h-596.01q-36.011 0-61.014-25.984t-25.003-59.989v-596.01q0-34.006 25.003-59.99T213.973 128h596.011z' fill='%2365b73b'/%3E%3C/svg%3E");
-    --checkbox-unchecked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M810.667 213.333v597.334H213.333V213.333h597.334m0-85.333H213.333C166.4 128 128 166.4 128 213.333v597.334C128 857.6 166.4 896 213.333 896h597.334C857.6 896 896 857.6 896 810.667V213.333C896 166.4 857.6 128 810.667 128z' fill='%23333333'/%3E%3C/svg%3E");
 }
 
 html {
@@ -269,224 +214,16 @@ html {
 }
 
 body {
-    font-family: var(--text-font) !important;
-    color: var(--text-color);
-    -webkit-font-feature-settings: "liga" on, "calt" on;
-    -webkit-font-smoothing: subpixel-antialiased;
-    text-rendering: optimizeLegibility;
+    font-family: "JetBrains Mono", Menlo, Consolas !important;
+    color: #333333;
+    -webkit-font-smoothing: auto;
+    line-height: 1.6rem;
     letter-spacing: 0;
     margin: 0;
     overflow-x: hidden;
 }
 
-#write {
-    background-image: linear-gradient(
-            90deg
-            ,rgba(60,10,30,.04) 3%,transparent 0),linear-gradient(
-            1turn
-            ,rgba(60,10,30,.04) 3%,transparent 0);
-    background-size: 20px 20px;
-    background-position: 50%;
-}
-
-/*code block*/
-.md-fences {
-    font-size: 1rem;
-    padding: 0.5rem !important;
-    border-radius: 2px;
-    word-wrap: normal;
-    background-color: var(--code-block-bg-color);
-    color: var(--code-block-color);
-    border: none;
-}
-.on-focus-mode .CodeMirror.cm-s-inner:not(.CodeMirror-focused) *,
-.on-focus-mode .md-fences.md-focus .CodeMirror-code > :not(.CodeMirror-activeline) *,
-.on-focus-mode .md-htmlblock.md-focus .CodeMirror-code > :not(.CodeMirror-activeline) * {
-    color: #909090 !important
-}
-
-/*mermaid*/
-[id^=mermaidChart] {
-    fill: var(--text-color) !important;
-}
-[id^=mermaidChart] rect.rect {
-    fill: rgba(175, 255, 212, 0.3) !important;
-}
-.md-diagram-panel-preview text.actor > tspan { /*方块文字*/
-    fill: var(--code-block-color) !important;
-    stroke: none !important;
-    font-family: var(--text-font) !important;
-    font-size: 1rem !important;
-}
-.md-diagram-panel-preview .actor { /*方块*/
-    stroke: var(--table-border-color) !important;
-    fill: var(--code-block-bg-color) !important;
-}
-.md-diagram-panel-preview .actor-line { /*竖线*/
-    stroke: var(--text-color) !important;
-    stroke-width: 1px;
-}
-.md-diagram-panel-preview .messageLine0 { /*横线*/
-    stroke-width: 1.5;
-    stroke-dasharray: none;
-    stroke: var(--text-color) !important;
-}
-.md-diagram-panel-preview .messageLine1 { /*虚线*/
-    stroke-width: 1.5 !important;
-    stroke-dasharray: 2, 2 !important;
-    stroke: var(--text-color) !important;
-}
-.md-diagram-panel-preview .messageText { /*描述文字*/
-    fill: var(--text-color) !important;
-    font-family: var(--text-font) !important;
-    font-size: 1rem !important;
-}
-.md-diagram-panel-preview .activation0 { /*长方形*/
-    fill: #e6e6e6 !important;
-    stroke: var(--text-color) !important;
-}
-.md-diagram-panel-preview .labelText, .md-diagram-panel-preview .labelText > tspan { /*循环标记*/
-    fill: var(--code-block-color) !important;
-    font-family: var(--text-font) !important;
-    font-size: 1rem !important;
-    dominant-baseline: unset;
-    alignment-baseline: unset;
-}
-.md-diagram-panel-preview .labelBox { /*循环标记背景*/
-    stroke: var(--table-border-color) !important;
-    fill: var(--code-block-bg-color) !important;
-}
-.md-diagram-panel-preview .loopLine { /*循环标记虚线*/
-    stroke: var(--text-color) !important;
-}
-.md-diagram-panel-preview .loopText, .md-diagram-panel-preview .loopText > tspan { /*循环名称*/
-    fill: var(--text-color) !important;
-    font-size: 1rem !important;
-}
-.md-diagram-panel-preview .sequenceNumber { /*序号*/
-    fill: var(--bg-color) !important;
-}
-pre.md-fences-advanced.md-focus .md-fences-adv-panel {
-    border: none;
-}
-.md-diagram-panel-preview .edgePath .path { /*箭头*/
-    stroke: var(--text-color) !important;
-}
-.md-diagram-panel-preview .edgeLabel rect { /*条件文字背景*/
-    fill: var(--bg-color) !important;
-}
-.md-diagram-panel-preview .edgeLabel span { /*条件文字*/
-    color: var(--text-color);
-}
-.md-diagram-panel-preview .node rect,
-.md-diagram-panel-preview .node circle,
-.md-diagram-panel-preview .node ellipse,
-.md-diagram-panel-preview .node polygon,
-.md-diagram-panel-preview .node path { /*形状*/
-    stroke: var(--table-border-color) !important;
-    fill: var(--code-block-bg-color) !important;
-}
-#write .md-diagram-panel .md-diagram-panel-preview div { /*形状内文字*/
-    color: var(--code-block-color) !important;
-    font-family: var(--text-font) !important;
-    font-size: 1rem !important;
-}
-
-/*code snippet*/
-#write code, tt {
-    margin: 0 2px;
-    border-radius: 2px;
-    color: var(--drake-highlight);
-    background-color: #fff5f5;
-    padding: .065em .4em;
-}
-
-/*variable*/
-var {
-    color: var(--variable-color);
-    font-weight: bold;
-}
-
-/*raw block*/
-.md-rawblock-control:not(.md-rawblock-tooltip) {
-    border-radius: 2px 0 2px 2px;
-    padding: 0.2rem !important;
-}
-.md-rawblock:hover > .md-rawblock-container {
-    background: none;
-}
-.md-rawblock-input {
-    font-size: 1rem;
-}
-.md-rawblock-tooltip-btn:hover {
-    background: none;
-}
-.md-rawblock:hover > .md-rawblock-tooltip {
-    border-radius: 2px 2px 0 0;
-    margin-bottom: 2px !important;
-}
-.md-rawblock-tooltip.md-rawblock-control {
-    border-radius: 2px 2px 0 0;
-    color: var(--code-block-color);
-}
-.md-rawblock-tooltip-name {
-    color: var(--code-block-color);
-    opacity: 1;
-}
-
-/*quote block*/
-blockquote:before {
-    display: block;
-    position: absolute;
-    content: '';
-    width: 4px;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background-color: var(--blockquote-border-color);
-    border-radius: 2px;
-}
-
-blockquote {
-    color: var(--blockquote-color);
-    border-radius: 2px;
-    padding: 10px 16px;
-    background-color: var(--blockquote-bg-color);
-    position: relative;
-    border-left: none;
-}
-
-#write strong {
-    color: var(--strong-color);
-    font-weight: bold;
-}
-#write blockquote strong {
-    color: var(--blockquote-color);
-}
-
-/*link*/
-#write a {
-    color: var(--a-color);
-    text-decoration: none;
-}
-.on-focus-mode #write a .md-plain, .on-focus-mode .md-htmlblock-container a:hover {
-    border-bottom: .1rem solid var(--blur-text-color);
-}
-#write a .md-plain, .md-htmlblock-container a:hover,
-.on-focus-mode #write .md-focus a .md-plain, .md-focus .md-htmlblock-container a:hover {
-    border-bottom: .1rem solid var(--a-color);
-}
-[md-inline=link] a {
-    margin: 0 .2rem;
-}
-a:any-link {
-    color: var(--a-color);
-}
-
 img {
-    border-left: none;
-    border-right: none;
-    vertical-align: baseline;
     border-radius: 2px;
 }
 
@@ -495,8 +232,10 @@ img {
     margin: 0 auto;
     padding: 20px 30px 100px;
 }
-#typora-source .CodeMirror-lines {
-    max-width: 1200px;
+
+#write p {
+    line-height: 1.6rem;
+    word-spacing: .05rem;
 }
 
 #write > ul:first-child,
@@ -512,63 +251,24 @@ body > *:last-child {
     margin-bottom: 0 !important;
 }
 
+a {
+    color: var(--drake-highlight);
+    padding: 0 2px;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: var(--title-font);
     position: relative;
-    margin-top: 2rem;
+    margin-top: 3rem;
     margin-bottom: 1rem;
     font-weight: bold;
     line-height: 1.4;
     cursor: text;
-    color: var(--title-color);
-}
-
-h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
-    visibility: hidden;
-}
-
-h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin-top: 0;
-}
-
-h2.md-end-block.md-heading {
-    font-size: 1.6rem;
-    display: inline-block;
-}
-
-h2.md-end-block.md-heading:after {
-    display: block;
-    content: '';
-    height: 2px;
-    margin-top: 4px;
-    background-color: var(--h2-underline-color);
-    border-radius: 2px;
-}
-.on-focus-mode h2.md-end-block.md-heading:not(.md-focus):not(.md-focus-container):after {
-    background-color: var(--blur-text-color) !important;
-}
-
-h3 {
-    font-size: 1.4rem;
-}
-
-h4 {
-    font-size: 1.2rem;
-}
-
-h5 {
-    font-size: 1rem;
-}
-
-h6 {
-    font-size: 1rem;
+    color: #273849;
 }
 
 h1:hover a.anchor,
@@ -579,6 +279,7 @@ h5:hover a.anchor,
 h6:hover a.anchor {
     text-decoration: none;
 }
+
 
 h1 tt,
 h1 code {
@@ -610,6 +311,45 @@ h6 code {
     font-size: inherit !important;
 }
 
+h2 a,
+h3 a {
+    color: #34495e;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-top: 0;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    padding-bottom: 10px;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eaecef;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
 p,
 blockquote,
 ul,
@@ -628,7 +368,7 @@ hr {
     height: 2px;
     padding: 0;
     margin: 16px 0;
-    background-color: var(--horizontal-divider-color);
+    background-color: #e7e7e7;
     border: 0 none;
     overflow: hidden;
     box-sizing: content-box;
@@ -680,8 +420,9 @@ li p.first {
     display: inline-block;
 }
 
-ul, ol {
-    padding-inline-start: 2em;
+ul,
+ol {
+    padding-left: 30px;
 }
 
 ul:first-child,
@@ -694,38 +435,75 @@ ol:last-child {
     margin-bottom: 0;
 }
 
+blockquote {
+    color: #304455;
+    border-radius: 2px;
+    padding: 10px 16px;
+    background-color: #fdefee;
+    position: relative;
+    border-left: none;
+}
+
+/*quote block*/
+blockquote:before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 4px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color:var(--drake-accent);
+    border-radius: 2px;
+}
+
+#write strong {
+    color: #ffffff;
+    display: inline-block;
+    font-weight: normal;
+    font-size: 0.9em;
+    padding: 0 7px;
+    background-color: #909090;
+    border-radius: 3em;
+}
+
 table {
     padding: 0;
     word-break: initial;
-    background-color: var(--table-bg-color);
 }
+
 table tr {
-    border-top: .1em solid var(--table-border-color);
+    border-top: 1px solid #dfe2e5;
     margin: 0;
     padding: 0;
 }
-table th {
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
     font-weight: bold;
-    border: .1em solid var(--table-border-color);
+    border: 1px solid #dfe2e5;
     border-bottom: 0;
+    text-align: left;
     margin: 0;
     padding: 6px 13px;
 }
-table td {
-    border: .1em solid var(--table-border-color);
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
     margin: 0;
     padding: 6px 13px;
 }
-table thead {
-    background-color: var(--table-header-bg-color);
-}
-table tr:nth-child(2n) {
-    background-color: var(--table-n2-bg-color);
-}
+
 table tr th:first-child,
 table tr td:first-child {
     margin-top: 0;
 }
+
 table tr th:last-child,
 table tr td:last-child {
     margin-bottom: 0;
@@ -735,33 +513,56 @@ table tr td:last-child {
     padding: 0 5px 0 2px;
 }
 
-/* height light */
-#write mark {
-    border: .1em solid var(--height-light-border-color);
-    color: var(--height-light-color);
-    background-color: transparent;
-    padding: .1rem .5rem;
-    border-radius: 2rem;
-    margin: 0 .2rem;
-    font-size: .95rem;
+#write table thead th {
+    background-color: #f2f2f2;
 }
 
-/*shortcut*/
-kbd {
-    border: .1em solid #5b5b5e;
-    background: transparent;
-    color: var(--text-color);
-    margin: 0 .4rem;
-    font-family: var(--text-font) !important;
-    font-size: .95rem;
-    padding: .3em .4em;
-    border-radius: .4em;
-    vertical-align: top;
-    box-shadow: .1em .1em .2em rgba(0, 0, 0, 0.3);
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+/*code block*/
+#write .md-fences {
+    font-size: 1rem;
+    padding: 0.5rem !important;
+    border-radius: 2px;
+    font-family: inherit !important;
+    word-wrap: normal;
+    background-color: #2b2b2b;
+    color: #A9B7C6;
+    border: none;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/*code snippet*/
+#write code, tt {
+    margin: 0 2px;
+    border-radius: 2px;
+    font-family: initial !important;
+    color: var(--drake-highlight);
+}
+
+/* heighlight. */
+#write mark {
+    background-color: #e7ecf3;
+    color: inherit;
+    border-radius: 2px;
+    padding: 2px 2px;
+    margin: 0 2px;
 }
 
 #write del {
     padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
 }
 
 .md-task-list-item > input {
@@ -783,15 +584,14 @@ kbd {
     }
 }
 
-/*YAML*/
 #write pre.md-meta-block {
     padding: 1rem;
-    font-size: 1rem;
+    font-size: 85%;
     line-height: 1.45;
-    background-color: var(--yaml-bg-color);
+    background-color: #f7f7f7;
     border: 0;
     border-radius: 2px;
-    color: var(--yaml-color);
+    color: #777777;
     margin-top: 0 !important;
 }
 
@@ -835,97 +635,20 @@ kbd {
     padding-bottom: 20px;
 }
 
-.typora-quick-open-item {
-    font-size: 1rem !important;
-    height: 50px;
-    padding-left: 8px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+.sidebar-tabs {
+    border-bottom: none;
 }
 
 #typora-quick-open {
-    box-shadow: 0 0 8px #00000045;
-    padding: 0;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
 }
 
-.ty-quick-open-category.ty-has-prev .ty-quick-open-category-title {
-    border-top: none;
-}
-
-#typora-quick-open-input {
-    margin: 8px;
-    box-shadow: none;
-    border-radius: 2px;
-}
-
-#typora-quick-open-input input {
-    font-size: 1rem;
-    box-shadow: none;
-    padding-top: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
-    line-height: 32px;
-    max-height: 32px;
-    border: none;
-}
-
-.modal-dialog#typora-quick-open {
-    border-radius: 8px;
-}
-
-.ty-quick-open-category-title {
+.typora-quick-open-item {
+	font-size: 1rem !important;
+	height: 48px; 
     padding-left: 8px;
-    color: #BEBEBE;
-    font-size: 0.8rem;
-    margin-bottom: 4px;
-}
-
-.typora-quick-open-item-path {
-    font-size: 0.8rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-top: 1px;
-}
-
-/*search input*/
-.form-control {
-    border: none;
-    border-radius: 2px;
-    box-shadow: none;
-}
-
-#md-searchpanel .btn {
-    border-radius: 2px;
-}
-
-#search-panel-replaceall-btn {
-    padding-right: 5px !important;
-    text-align: center !important;
-}
-
-#search-panel-replace-btn {
-    text-align: center !important;
-}
-
-#md-searchpanel input {
-    background: var(--input-bg-color);
-    border-radius: 2px;
-}
-
-.searchpanel-search-option-btn {
-    border-radius: 2px;
-    border: none;
-    background: transparent;
-    color: var(--text-color);
-}
-
-.searchpanel-search-option-btn.active {
-    background: var(--text-color);
-    color: var(--bg-color);
-}
-
-.form-control:focus {
-    box-shadow: none;
+    padding-top: 4px;
 }
 
 #md-notification:before {
@@ -933,6 +656,7 @@ kbd {
 }
 
 /** focus mode */
+
 .on-focus-mode blockquote {
     border-left-color: rgba(85, 85, 85, 0.12);
 }
@@ -944,30 +668,76 @@ footer {
     font-family: initial;
 }
 
-/*sidebar*/
 .file-node-content:hover .file-node-icon,
 .file-node-content:hover .file-node-open-state {
     visibility: visible;
 }
 
-#typora-sidebar {
-    font-size: 1.1rem;
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    font-size: 1rem;
+    background-color: var(--side-bar-bg-color);
+} 
+
+.md-lang {
+    color: #b4654d;
 }
 
-.sidebar-tabs {
-    border-bottom: none;
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
 }
 
-.file-list-item-summary, .file-list-item-parent-loc, .file-list-item-time, .file-list-item-summary {
-    font-size: 0.9rem !important;
-    font-family: var(--text-font);
+
+/*insert element*/
+
+span.cm-comment {
+    color: #808080 !important;
 }
 
-.file-list-item-file-ext-part {
-    display: none;
+.ty-quick-open-category.ty-has-prev .ty-quick-open-category-title {
+    border-top:none;
+}
+
+.file-list-item-summary {
+    font-family: initial;
+}
+
+#typora-quick-open-input {
+	margin: 8px;
+	box-shadow:none;
+	border-radius:2px;
+}
+
+#typora-quick-open-input input {
+	font-size: 1rem;
+	box-shadow:none;
+	padding-top: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 32px;
+	max-height: 32px;
+}
+
+.modal-dialog#typora-quick-open{
+	border-radius: 2px;
+}
+
+.ty-quick-open-category-title {
+	padding-left: 8px;
+	color: #BEBEBE;
+}
+
+.typora-quick-open-item-path {
+    font-size: 10px;
+    text-overflow:ellipsis;
+    white-space:nowrap
 }
 
 .outline-item {
+    font-size: 1rem;
+}
+
+.sidebar-tab {
     font-size: 1rem;
 }
 
@@ -983,7 +753,6 @@ footer {
 #write .md-footnote:before {
     content: "[";
 }
-
 #write .md-footnote:after {
     content: "]";
 }
@@ -997,7 +766,7 @@ footer {
 span.md-def-name {
     padding-right: 3ch;
     padding-left: 0;
-    position: relative;
+    position:relative;
     font-weight: normal;
 }
 
@@ -1005,8 +774,8 @@ span.md-def-name {
 .footnotes {
     font-size: 1rem;
     font-weight: normal;
-    color: var(--text-color);
-    position: relative;
+    color: #304455;
+    position:relative;
 }
 
 /*footnotes tooltip text*/
@@ -1018,43 +787,37 @@ span.md-def-name {
 .code-tooltip-content code {
     padding: 0 2px;
     font-family: inherit;
-    color: var(--footnotes-highlight);
+    color: #FFD760;
     background-color: inherit;
 }
 
 .code-tooltip-content a {
-    color: var(--footnotes-highlight);
+    color: #FFD760;
 }
 
 div.code-tooltip-content {
-    box-shadow: 0 0 8px #00000045;
-    background: var(--footnotes-bg-color);
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
 
 .footnotes {
-    opacity: 1;
+    opacity:1;
 }
 
 .md-def-name:after {
     content: ". ^";
-    color: var(--text-color);
+    color: #304455;
 }
 
 .md-def-footnote .md-def-name:before {
     content: "";
-    color: var(--text-color);
-    position: absolute;
+    color: #304455;
+    position:absolute;
 }
 
 .md-def-name:before {
     content: "";
-    color: var(--text-color);
-    position: absolute;
-}
-
-.md-content.md-url, .md-def-content.md-def-url.md-auto-disp {
-    text-decoration: none;
-    border-bottom: .1rem solid var(--text-color);
+    color: #304455;
+    position:absolute;
 }
 
 .CodeMirror-scroll::-webkit-scrollbar {
@@ -1067,169 +830,11 @@ div.code-tooltip-content {
 
 .pin-outline #outline-content .outline-active strong, .pin-outline .outline-active {
     font-weight: 500;
-    color: var(--outline-active-color);
+    color: var(--drake-highlight);
 }
 
 .file-list-item.active {
     border-left: 4px solid var(--drake-accent);
-}
-
-#md-searchpanel .btn:not(.close-btn):hover {
-    box-shadow: none;
-    background: var(--btn-hover-bg-color);
-}
-
-/*checkbox*/
-#write input[type=checkbox] {
-    opacity: 0;
-    height: 1.6rem;
-    width: 1.6rem;
-    margin-left: -2em;
-    margin-top: 0;
-    top: 0;
-}
-
-#write .ul-list li.md-task-list-item.task-list-done::before {
-    content: "";
-    background: var(--checkbox-checked) 0 0 no-repeat;
-    background-size: 100%;
-    display: inline-block;
-    position: absolute;
-    height: 1.6rem;
-    width: 1.6rem;
-    margin-left: -2em;
-}
-
-#write .ul-list li.md-task-list-item.task-list-not-done::before {
-    content: "";
-    background: var(--checkbox-unchecked) 0 0 no-repeat;
-    background-size: 100%;
-    display: inline-block;
-    position: absolute;
-    height: 1.6rem;
-    width: 1.6rem;
-    margin-left: -2em;
-}
-
-/*insert table*/
-.btn {
-    border-radius: 2px;
-}
-
-.modal-content {
-    border-radius: 8px;
-}
-
-.btn-primary:hover, .btn-primary:active {
-    background-color: var(--btn-hover-bg-color);
-    color: var(--drake-highlight);
-}
-
-.btn-primary {
-    background-color: transparent;
-    color: var(--drake-highlight);
-}
-
-.btn-default {
-    background-color: transparent;
-}
-
-.btn:active {
-    box-shadow: none;
-    border-color: transparent;
-}
-
-.modal-footer {
-    border-top: none;
-}
-
-#table-insert-col, #table-insert-row {
-    background: var(--input-bg-color);
-    border-radius: 2px;
-}
-
-/*preference panel*/
-#megamenu-content {
-    background-image: none !important;
-    background-color: var(--bg-color);
-}
-#top-titlebar {
-    height: inherit;
-    background-color: var(--bg-color);
-}
-#megamenu-menu-sidebar {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-.long-btn {
-    width: inherit;
-    min-width: 300px;
-    border: 1px solid var(--text-color);
-    border-radius: 6px;
-}
-.megamenu-menu-panel h1 {
-    margin-bottom: 3rem;
-    text-align: left;
-}
-.megamenu-menu-panel h1, .megamenu-menu-panel h2 {
-    font-weight: normal;
-}
-#recent-file-panel-search-input {
-    height: 45px;
-    border: none;
-    border-bottom: 1px solid var(--text-color);
-    padding-left: 8px;
-}
-#recent-file-panel-search-input::placeholder {
-    color: var(--text-color);
-    opacity: .5;
-}
-.megamenu-menu-header {
-    border-bottom: none;
-}
-#recent-file-panel-action-btn {
-    background: none;
-    border: none;
-}
-#recent-file-panel-action-btn-container {
-    float: none;
-    display: inline-block;
-}
-#top-titlebar .toolbar-icon.btn.hover, #top-titlebar .toolbar-icon.btn:hover {
-    background-color: var(--btn-hover-bg-color);
-    color: var(--text-color);
-}
-.megamenu-menu-panel .btn:hover {
-    background-color: var(--btn-hover-bg-color) !important;
-    color: var(--text-color);
-}
-#recent-file-panel tbody tr:nth-child(2n-1),
-.megamenu-menu-panel table thead,
-.megamenu-menu-panel table tr {
-    background-color: transparent;
-}
-.megamenu-menu-panel table {
-    font-weight: normal;
-}
-#megamenu-back-btn {
-    color: var(--text-color);
-    border: 1px solid var(--text-color);
-}
-.megamenu-menu-header #megamenu-menu-header-title {
-    color: var(--text-color);
-}
-header, .context-menu, .megamenu-content, footer {
-    font-family: var(--text-font);
-}
-.ty-preferences select {
-    padding-left: 2px;
-}
-.preference-item-hint {
-    font-size: 14px;
-}
-a.ty-link {
-    color: var(--a-color);
-    margin: 0 .2rem;
 }
 
 /**
@@ -1237,114 +842,46 @@ a.ty-link {
     Name: IntelliJ IDEA darcula theme
     From IntelliJ IDEA by JetBrains
  */
-.cm-s-inner.CodeMirror {
-    background: none;
-    color: var(--code-block-color);
-}
-.cm-s-inner span.cm-meta {
-    color: #BBB529;
-}
-.cm-s-inner span.cm-number {
-    color: #6897BB;
-}
-.cm-s-inner span.cm-keyword {
-    color: #CC7832;
-}
-.cm-s-inner span.cm-def {
-    color: #FFD760;
-}
-.cm-s-inner span.cm-variable {
-    color: var(--code-block-color);
-}
-.cm-s-inner span.cm-variable-2 {
-    color: var(--code-block-color);
-}
-.cm-s-inner span.cm-variable-3 {
-    color: #9876AA;
-}
-.cm-s-inner span.cm-type {
-    color: #AABBCC;
-}
-.cm-s-inner span.cm-property {
-    color: #FFC66D;
-}
-.cm-s-inner span.cm-operator {
-    color: var(--code-block-color);
-}
-.cm-s-inner span.cm-string {
-    color: #6A8759;
-}
-.cm-s-inner span.cm-string-2 {
-    color: #6A8759;
-}
-.cm-s-inner span.cm-comment {
-    color: #787878;
-}
-.cm-s-inner span.cm-link {
-    color: #CC7832;
-}
-.cm-s-inner span.cm-atom {
-    color: #CC7832;
-}
-.cm-s-inner span.cm-error {
-    color: #BC3F3C;
-}
-.cm-s-inner span.cm-tag {
-    color: #E8BF6A;
-}
-.cm-s-inner span.cm-quote {
-    color: #a6e22e;
-}
-.cm-s-inner span.cm-attribute {
-    color: #9876AA;
-}
-.cm-s-inner span.cm-qualifier {
-    color: #6A8759;
-}
-.cm-s-inner span.cm-bracket {
-    color: #E8BF6A;
-}
-.cm-s-inner span.cm-builtin {
-    color: #FF9E59;
-}
-.cm-s-inner span.cm-special {
-    color: #FF9E59;
-}
-.cm-s-inner span.cm-matchhighlight {
-    color: #FFFFFF;
-    background-color: rgba(50, 89, 48, .7);
-    font-weight: normal;
-}
-.cm-s-inner span.cm-searching {
-    color: #FFFFFF;
-    background-color: rgba(61, 115, 59, .7);
-    font-weight: normal;
-}
-.cm-s-inner .CodeMirror-gutters {
-    border-right: 1px solid rgba(120, 120, 120, 0.3);
-}
-.cm-s-inner .CodeMirror-linenumber {
-    color: #585b5d;
-}
-.cm-s-inner .CodeMirror-matchingbracket {
-    background-color: #3B514D;
-    color: #FFEF28 !important;
-}
-.cm-s-inner .CodeMirror-selected {
-    background: #214283 !important;
-}
-.cm-s-inner .CodeMirror-selectedtext {
-    background: #214283 !important;
-}
-.cm-s-typora-default .CodeMirror-selectedtext {
-    background: var(--select-text-bg-color) !important;
-}
-.cm-overlay.CodeMirror-selectedtext {
-    background: var(--select-text-bg-color) !important;
-}
-.cm-s-inner div.CodeMirror-cursor {
-    border-left: 1px solid var(--code-block-color);
-}
+/*.cm-s-inner  {  }*/
+.cm-s-inner.CodeMirror { background: #2B2B2B; color: #A9B7C6; }
+
+.cm-s-inner span.cm-meta { color: #BBB529; }
+.cm-s-inner span.cm-number { color: #6897BB; }
+.cm-s-inner span.cm-keyword { color: #CC7832; }
+.cm-s-inner span.cm-def { color: #FFD760; }
+.cm-s-inner span.cm-variable { color: #A9B7C6; }
+.cm-s-inner span.cm-variable-2 { color: #A9B7C6; }
+.cm-s-inner span.cm-variable-3 { color: #9876AA; }
+.cm-s-inner span.cm-type { color: #AABBCC; }
+.cm-s-inner span.cm-property { color: #FFC66D; }
+.cm-s-inner span.cm-operator { color: #A9B7C6; }
+.cm-s-inner span.cm-string { color: #6A8759; }
+.cm-s-inner span.cm-string-2 { color: #6A8759; }
+.cm-s-inner span.cm-comment { color: #61A151; }
+.cm-s-inner span.cm-link { color: #CC7832; }
+.cm-s-inner span.cm-atom { color: #CC7832; }
+.cm-s-inner span.cm-error { color: #BC3F3C; }
+.cm-s-inner span.cm-tag { color: #E8BF6A; }
+.cm-s-inner span.cm-quote { color: #a6e22e; }
+.cm-s-inner span.cm-attribute { color: #9876AA; }
+.cm-s-inner span.cm-qualifier { color: #6A8759; }
+.cm-s-inner span.cm-bracket { color: #E8BF6A; }
+.cm-s-inner span.cm-builtin { color: #FF9E59; }
+.cm-s-inner span.cm-special { color: #FF9E59; }
+.cm-s-inner span.cm-matchhighlight { color: #FFFFFF; background-color: rgba(50, 89, 48, .7); font-weight: normal;}
+.cm-s-inner span.cm-searching { color: #FFFFFF; background-color: rgba(61, 115, 59, .7); font-weight: normal;}
+
+.cm-s-inner .CodeMirror-cursor { border-left: 1px solid #A9B7C6; }
+.cm-s-inner .CodeMirror-gutters { background: #313335; border-right: 1px solid #313335; }
+.cm-s-inner .CodeMirror-guttermarker { color: #FFEE80; }
+.cm-s-inner .CodeMirror-guttermarker-subtle { color: #D0D0D0; }
+.cm-s-inner .CodeMirrir-linenumber { color: #606366; }
+.cm-s-inner .CodeMirror-matchingbracket { background-color: #3B514D; color: #FFEF28 !important; }
+
+.cm-s-inner .CodeMirror-selected{ background: #214283 !important; }
+.cm-s-inner .CodeMirror-selectedtext { background: #214283 !important; }
+.cm-overlay.CodeMirror-selectedtext { background: #B5D6FC !important; }
+.cm-s-inner div.CodeMirror-cursor { border-left: 1px solid #ffffff; }
 
 
 mjx-container[jax="SVG"] {
@@ -1498,6 +1035,6 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 </style><title>路由算法</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='路由算法'><span>路由算法</span></h1><p><span>2022.3.11</span></p><h2 id='静态路由与动态路由'><span>静态路由与动态路由</span></h2><ol start='' ><li><p><strong><span>静态路由算法(又称非自适应路由算法)</span></strong><span>。</span></p><ol><li><span>手工配置路由信息。适用于小型网络（小型军事/商业网络）。</span></li><li><a href='https://baike.baidu.com/item/%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/8990860'><span>默认路由</span></a><span>:一种特殊的静态路由。</span></li></ol></li><li><p><strong><span>动态路由算法(又称自适应路由算法)</span></strong><span>。路由器之间交换信息,然后按照算法优化出来适应不断变化的网络。增加了网络负担。</span></p></li><li><p><span>静态动态最主要的区别：动态路由选择可随网络的通信量或拓扑变化而自适应地调整,而静态路由选择则需要手工去调整相关的路由信息。</span></p></li><li><p><span>下列关于路由算法的描述中,(B)是错误的</span></p><p><span>A.静态路由有时也被称为非自适应的算法</span></p><p><span>B.静态路由所使用的路由选择一旦启动就不能修改</span></p><p><span>C.动态路由也称自适应算法,会根据网络的拓扑变化和流量变化改变路由决策</span></p><p><span>D.动态路由算法需要实时获得网络的状态</span></p><p>&nbsp;</p></li></ol><h2 id='距离向量路由算法'><span>距离向量路由算法</span></h2><h3 id='rip协议'><span>RIP协议</span></h3><ol><li><p><span>距离向量：自身到其他每个目的网络的距离记录</span></p></li><li><p><span>条数：采用</span><strong><span>“跳数”</span></strong><span>作为距离的度量，跳数最多为15，</span><strong><span>跳数=16代表网络不可达</span></strong></p></li><li><p><span>30s广播一次路由更新信息</span></p></li><li><p><span>RIP2之前不支持子网掩码的广播，RIP2之后支持变长子网掩码和CIDR</span></p></li><li><p><span>RIP是</span><strong><span>应用层</span></strong><span>协议，使用</span><strong><span>UDP</span></strong><span>进行传输，端口520。</span></p></li><li><p><span>RIP最大的优点是实现简单、开销小、收敛过程较快。RIP的缺点如下：</span></p><ol><li><span>RIP限制了网络的规模，它能使用的最大距离为15(16表示不可达)。</span></li><li><span>路由器之间交换的是路由器中的完整路由表，因此网络规模越大，开销也越大。</span></li><li><span>网络出现故障时，会出现慢收敛现象（即需要较长时间才能将此信息传送到所有路由器)，俗称“坏消息传得慢”，使更新过程的收敛时间长。RIP是应用层协议，它使用UDP传送数据(端口520)。RIP选择的路径不一定是时间最短的，但一定是具有最少路由器的路径。因为它是根据最少跳数进行路径选择的。</span></li><li><span>可能遇到</span><strong><span>“环路”</span></strong><span>问题</span></li></ol></li><li><p><span>环路问题原因：在距离向量路由协议中,()最可能导致路由回路的问题。</span></p><p><span>A.由于网络带宽的限制,某些路由更新数据报被丢弃</span></p><p><span>B.由于路由器不知道整个网络的拓扑结构信息,当收到一个路由更新信息时,又将该更新信息发回自己发送该路由信息的路由器</span></p><p><span>C.当一个路由器发现自己的一条直接相邻链路断开时,未能将这个变化报告给其他路由器</span></p><p><span>D.慢收敛导致路由器接收了无效的路由信息</span></p><p><span>【解析】在距离向量路由协议中,“好消息传得快,而坏消息传得慢”,（造成坏消息传得慢，好消息传得快，因为好消息可能时坏消息之前产生的，坏消息发送前，好消息又会传回来把坏消息覆盖。）这就导致了当路由信息发生变化时,该变化未能及时地被所有路由器知道,而仍然可能在路由器之间进行传递,这就是“慢收敛”现象。</span><strong><span>慢收敛是导致发生路由回路的根本原因</span></strong><span>。</span></p></li><li><p><strong><span>直接交付：路由器与目的网络直接相连</span></strong></p><p><strong><span>间接交付</span></strong><span>：路由器与目的网络间接相连，需要传给下一跳路由器</span></p><ul><li><p><span>例题：(未使用CIDR)当一个IP分组进行直接交付时,要求发送方和目的站具有相同的（）</span></p><p><span>A.IP地址</span></p><p><span>B.主机号</span></p><p><span>C.端口号</span></p><p><span>D.子网地址</span></p><p><span>【解析】判断一个IP分组的交付方式是直接交付还是间接交付,路由器需要根据分组的目的IP地址和该路由器接收端口的IP地址是否属于同一个子网来进行判断。具体来说,将该分组的源IP地址和目的IP地址分别与子网掩码进行“与”操作,如果得到的子网地址相同,那么该分组就采用直接交付方式,否则采用间接交付方式。</span></p></li><li><p><span>例题：下列关于路由器交付的说法中，错误的是()。</span></p><p><span>Ⅰ.路由选择分直接交付和间接交付</span></p><p><span>Ⅱ.直接交付时，两台机器可以不在同一物理网段内</span></p><p><span>Ⅲ.间接交付时，不涉及直接交付</span></p><p><span>IV.直接交付时，不涉及路由器</span></p><p><span>A.I和II</span></p><p><span>B.II和II</span></p><p><span>C.III和V</span></p><p><span>D.I和IV</span></p><p><span>【答案】：B。发送站与目的站在同一网段内时可以直接交付。间接交付的最后一个路由器是直接交付。</span></p></li></ul></li><li><p><span>RIP帧格式</span></p><p><img src="resources/RIP帧格式.png" alt="RIP帧格式" style="zoom:67%;" /></p></li></ol><h3 id='rip特点'><span>RIP特点</span></h3><ol><li><span>交换信息方式：和</span><strong><span>邻居</span></strong><span>交换信息</span></li><li><span>交换信息内容：信息包括</span><strong><span>[每条路径的目的地(另一节点)，路径的代价(距离)]</span></strong></li><li><span>信息更新时间：一般情况</span><strong><span>30s</span></strong><span>更新一次</span></li></ol><h3 id='距离向量算法'><span>距离向量算法</span></h3><p><span>每个路由表项目都有三个关键数据：&lt;目的网络N,距离d,下一跳路由器地址X&gt;。对于每个相邻路由器发送过来的RIP报文，执行如下步骤：</span></p><ul><li><p><span>对地址为X的相邻路由器发来的RIP报文，先修改此报文中的所有项目：把“下一跳”字段中的地址都改为X,并把所有“距离”字段的值加1。</span></p></li><li><p><span>对修改后的IP报文中的每个项目，执行如下步骤：</span></p><ul><li><span>当原路由表中没有目的网络N时，把该项目添加到路由表中。</span></li><li><span>当原路由表中有目的网络N,且下一跳路由器的地址是X时，用收到的项目替换原路由表中的项目。</span></li><li><span>当原路由表中有目的网络N,且下一跳路由器的地址不是X时，如果收到的项目中的距离小于路由表中的距离，那么就用收到的项目替换原路由表中的项目：否则什么也不做。</span></li></ul></li><li><p><span>如果180秒（RP默认超时时间为180秒)还没有收到相邻路由器的更新路由表，那么把此相邻路由器记为不可达路由器，即把距离设置为16（距离为16表示不可达）。</span></p></li><li><p><span>返回。</span></p></li></ul><h2 id='链路状态路由算法'><span>链路状态路由算法</span></h2><ol start='' ><li><p><span>摘要</span></p><ol start='' ><li><span>和谁发信息：每个节点拥有完整的拓网拓扑信息；把自己所知道的</span><strong><span>全部信息</span></strong><span>交换给</span><strong><span>所有节点</span></strong><span>（除了刚发给自己的那个节点），</span><strong><span>洪泛法</span></strong><span>。</span></li><li><span>交换什么：发送的信息就是与本路由器相邻的所有路由器的链路状态(本路由器和哪些路由器相邻,以及该链路的度量/代价一一费用、距离、时延、带宽等)。（不只是跳数）</span></li><li><span>什么时候发信息：链路状态</span><strong><span>变化时发消息</span></strong><span>;每隔30分钟也刷新一次。（RIP是30s发一次）</span></li></ol></li><li><p><span>链路状态路由算法/</span><strong><span>OFPS协议</span></strong><span>的过程</span></p><ol start='' ><li><span>每个路由器发现它的邻居结点【</span><strong><span>HELLO问候分组</span></strong><span>】,并了解邻居节点的网络地址。</span></li><li><span>设置到它的每个邻居的成本度量 </span><strong><span>metric</span></strong><span>。</span></li><li><span>构造【</span><strong><span>DD数据库描述分组</span></strong><span>】,向邻站给出自己的链路状态数据库中的所有链路状态项目的</span><strong><span>摘要信息</span></strong><span>。</span></li><li><span>如果DD分组中的摘要自己都有,则邻站不做处理;如果有没有的或者是更新的,则发送【</span><strong><span>LSR链路状态请求分组</span></strong><span>】请求自己没有的和比自己更新的信息。</span></li><li><span>收到邻站的LSR分组后,发送【</span><strong><span>LSU链路状态更新分组</span></strong><span>】进行更新。</span></li><li><span>更新完毕后,邻站返回一个【</span><strong><span>LSACK链路态确认分组</span></strong><span>】进行确认。</span></li><li><span>路由器获取全部信息后，利用</span><strong><span>Dijkstra算法</span></strong><span>算出路由。</span></li></ol><p><span>只要一个路由器的链路状态发生变化</span></p><ol start='' ><li><span>泛洪发送【LSU链路状态更新分组】进行更新。</span></li><li><span>更新完毕后,其他站返回一个【LSACK链路状态确认分组】进行确认。</span></li><li><span>路由器获取全部信息后，利用Dijkstra算法算出路由。</span></li></ol><p><img src="resources/OFPS.png" alt="OFPS" style="zoom:67%;" /></p></li><li><p><span>OFPS特点</span></p><ol><li><p><span>OSPF对不同的链路可根据IP分组的不同服务类型(TOS)而设置成不同的代价。因此，OSPF对于不同类型的业务可计算出不同的路由，十分灵活。</span></p><p><span>10Mbps的以太网的链路开销是10，16Mbps令牌环网的链路开销是6，FDDI或快速以太网的开销是1，2M串行链路的开销是48，56KB串行线路的开销为1785（</span><a href='https://zhidao.baidu.com/question/299217373.html'><span>原文链接</span></a><span>）</span></p></li><li><p><span>如果到同一个目的网络有多条相同代价的路径，那么可以将通信量分配给这几条路径。这称为多路径间的负载平衡。</span></p></li><li><p><span>所有在OSPF路由器之间交换的分组都具有鉴别功能，因而保证了仅在可信赖的路由器之间交换链路状态信息。</span></p></li><li><p><span>支持可变长度的子网划分和无分类编址CIDR。</span></p></li><li><p><span>每个链路状态都带上一个32位的序号，序号越大，状态就越新。</span></p></li></ol></li><li><p><strong><span>OFPS区域</span></strong></p><p><span>为了使OSPF能够用于规模很大的网络,OPF将一个自治系统再划分为若干个更小的范围,叫做区域。每一个区域都有一个32位的区域标识符(用点分十进制表示)。区域也不能太大,在一个区域内的路由器最好不超过200个。</span></p><p><img src="resources/OFPS区域.jpg" alt="OFPS区域" style="zoom:50%;" /></p></li><li><p><span>OFPS属于</span><strong><span>网络层</span></strong><span>(考纲)或传输层(另一种说法)协议，使用IP数据报传输。</span></p></li><li><p><span>例题：关于链路状态协议的描述,(A)是错误的</span></p><p><span>A.仅相邻路由器需要交换各自的路由表</span></p><p><span>B.全网路由器的拓扑数据库是一致的</span></p><p><span>C.采用洪泛技术更新链路变化信息</span></p><p><span>D.具有快速收敛的优点</span></p></li></ol><h3 id='协议对比'><span>协议对比</span></h3><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' ><span>RIP</span></th><th style='text-align:center;' ><span>OFPS</span></th><th style='text-align:center;' ><span>BGP</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>层</span></td><td style='text-align:center;' ><span>应用层</span></td><td style='text-align:center;' ><span>网络层</span></td><td style='text-align:center;' ><span>应用层</span></td></tr><tr><td style='text-align:center;' ><span>用什么传输</span></td><td style='text-align:center;' ><span>UDP</span></td><td style='text-align:center;' ><span>IP</span></td><td style='text-align:center;' ><span>TCP</span></td></tr><tr><td style='text-align:center;' ><span>协议字段</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>89</span></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>端口</span></td><td style='text-align:center;' ><span>520</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>算法</span></td><td style='text-align:center;' ><strong><span>距离</span></strong><span>向量</span></td><td style='text-align:center;' ><span>链路状态</span></td><td style='text-align:center;' ><strong><span>路径</span></strong><span>向量</span></td></tr><tr><td style='text-align:center;' ><span>和谁发消息</span></td><td style='text-align:center;' ><span>相邻路由器</span></td><td style='text-align:center;' ><span>AS内所有路由器</span></td><td style='text-align:center;' ><span>相邻路由器</span></td></tr><tr><td style='text-align:center;' ><span>发什么消息</span></td><td style='text-align:center;' ><span>路由表中全部的&lt;目的地, 跳数&gt;</span></td><td style='text-align:center;' ><span>摘要信息/路由表部分全部信息</span></td><td style='text-align:center;' ><span>首次：全部路由表</span><br><span>更新：有变化部分</span></td></tr><tr><td style='text-align:center;' ><span>计算方法</span></td><td style='text-align:center;' ><span>跳数最少</span></td><td style='text-align:center;' ><span>综合计算</span></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>什么时候发</span></td><td style='text-align:center;' ><span>30s一次，180s记为不可达</span></td><td style='text-align:center;' ><span>信息更新立刻广播，10s一次问候分组，30min更新一次数据库</span></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr></tbody></table></figure><h2 id='层次路由'><span>层次路由</span></h2><ol start='' ><li><p><span>简介</span></p><ol><li><span>将一个大网络分成众多“</span><strong><span>自治系统（AS）</span></strong><span>”（一个自治系统可以包含很多局域网），每个自治系统决定内部用那种路由算法</span></li><li><strong><span>内部网关协议/域内路由选择（IGP）</span></strong><span>：自治系统内部的自己可决定的协议，常见的为OFPS与RIP协议。</span></li><li><strong><span>外部网关协议/域间路由选择（EGP）</span></strong><span>：常见的有</span><strong><span>BGP</span></strong><span>。</span></li><li><span>一个自治系统分成很多区域（Area），那个路由器知道本区域内把分组转交目的地的方案，但不用知道其他区域的结构。</span></li></ol></li><li><p><span>BGP简介</span></p><p><span>边界网关协议(BGP)只能力求寻找一条能够到达目的网络且比较好的路由（不能兜圈子），而并非寻找一条最佳路由。BGP采用的是路径向量路由选择协议，它与距离向量协议和链路状态协议有很大的区别。BGP是应用层协议，它是基于TCP的。</span></p></li></ol><ol start='3' ><li><p><span>BGP的工作原理</span></p><p><span>每个自治系统的管理员要选择至少一个路由器（可以有多个)作为该自治系统的“BGP发言人”。一个BGP发言人与其他自治系统中的BGP发言人要交换路由信息，就要先建立TCP连接（可见BGP报文是通过TCP传送的也就是说BGP报文是TCP报文的数据部分)，然后在此连接上交换BGP报文以建立BGP会话，再利用BGP会话交换路由信息。当所有BGP发言人都相互交换网络可达性的信息后，各BGP发言人就可找出到达各个自治系统的较好路由。</span></p><p><span>每个BGP发言人除必须运行BGP外，还必须运行该AS所用的内部网关协议，OSPF或RIP。BGP所交换的网络可达性信息就是要到达某个网络（用网络前缀表示）所要经过的一系列AS。</span></p></li></ol><ol start='4' ><li><p><span>BGP特点</span></p><ol><li><span>【BGP之间信息少】BGP交换路由信息的结点数量级是自治系统的数量级，要比这些自治系统中的网络数少很多。</span></li><li><span>【BGP内部信息少】每个自治系统中BGP发言人（或边界路由器）的数目是很少的。这样就使得自治系统之间的路由选择不致过分复杂。</span></li><li><span>【BGP路由表】BGP支持CIDR,因此BGP的路由表也就应当包括目的网络前缀、下一挑路由器，以及到达该目的网络所要经过的各个自治系统序列。</span></li><li><span>【变化时更新】在BGP刚运行时，BGP的邻站交换整个BGP路由表，但以后只需在发生变化时更新有变化的部分。这样做对节省网络带宽和减少路由器的处理开销都有好处。</span></li></ol></li></ol><ol start='5' ><li><p><span>四种BGP报文</span></p><p><span>1)</span><strong><span>打开(Open)报文</span></strong><span>。用来与相邻的另一个BGP发言人建立关系。</span></p><p><span>2)</span><strong><span>更新(Update)报文</span></strong><span>。用来发送某一路由的信息，以及列出要撤销的多条路由。</span></p><p><span>3)</span><strong><span>保活(Keepalive)报文</span></strong><span>。用来确认打开报文并周期性地证实邻站关系。</span></p><p><span>4)</span><strong><span>通知(Notification)报文</span></strong><span>。用来发送检测到的差错。</span></p></li></ol><ol start='6' ><li><p><span>【2013统考真题】假设Internet的两个自治系统构成的网络如下图所示，自治系统AS1由路由器R1连接两个子网构成；自治系统AS2由路由器R2、R3互联并连接3个子网构成。各子网地址、R2的接口名、R1与R3的部分接口IP地址如下图所示。</span><img src="resources/2013.png" alt="2013" style="zoom:67%;" /></p><p><span>请回答下列问题：</span></p><p><span>1)假设路由表结构如下表所示。利用路由聚合技术，给出R2的路由表，要求包括到达图中所有子网的路由，且路由表中的路由项尽可能少。</span></p><p><span>【答案】😭AS1里边的两个网络进行聚合，AS2里边的两个网络进行聚合，而不是和路由器聚合！</span></p><p>&nbsp;</p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1047" cid="n1047" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="56.881ex" height="5.43ex" role="img" focusable="false" viewBox="0 -1450 25141.3 2400" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.149ex;"><defs><path id="MJX-195-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-195-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-195-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-195-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-195-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-195-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-195-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path id="MJX-195-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-195-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-195-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-195-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path id="MJX-195-TEX-S3-7D" d="M131 1414T131 1429T133 1447T148 1450H153H167L182 1444Q276 1404 336 1343T415 1207Q421 1184 421 1154T423 851L424 531L426 517Q434 462 460 415T518 339T571 296T608 274Q615 270 616 267T618 251Q618 241 618 238T615 232T608 227Q542 194 491 132T426 -15L424 -29L423 -350Q422 -622 422 -652T415 -706Q397 -780 337 -841T182 -943L167 -949H153Q137 -949 134 -946T131 -928Q131 -914 132 -911T144 -904Q146 -903 148 -902Q299 -820 323 -680Q324 -663 325 -349T327 -19Q355 145 541 241L561 250L541 260Q356 355 327 520Q326 537 325 850T323 1181Q315 1227 293 1267T244 1332T193 1374T151 1401T132 1413Q131 1414 131 1429Z"></path><path id="MJX-195-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mrow"><g data-mml-node="mo" transform="translate(0 250)"></g><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,700)"><g data-mml-node="mtd" transform="translate(500,0)"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-195-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-195-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-195-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-195-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(2778,0)"><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(3556,0)"><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4334,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-195-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(4834,0)"><use data-c="32" xlink:href="#MJX-195-TEX-N-32"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(7834,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-195-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-195-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-195-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-195-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-195-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(4055.8,0)"><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(4833.8,0)"><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="mo" transform="translate(5611.8,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-195-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(5889.8,0)"><use data-c="30" xlink:href="#MJX-195-TEX-N-30"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(500,0)"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(1000,0)"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(1500,0)"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(2000,0)"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(2500,0)"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(3000,0)"></use></g></g></g><g data-mml-node="mtr" transform="translate(0,-700)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-195-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-195-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-195-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-195-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(2778,0)"><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(3556,0)"><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E"></use><use data-c="31" xlink:href="#MJX-195-TEX-N-31" transform="translate(278,0)"></use><use data-c="32" xlink:href="#MJX-195-TEX-N-32" transform="translate(778,0)"></use><use data-c="38" xlink:href="#MJX-195-TEX-N-38" transform="translate(1278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(5334,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-195-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(5834,0)"><use data-c="32" xlink:href="#MJX-195-TEX-N-32"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(7834,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-195-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-195-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-195-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-195-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-195-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(4055.8,0)"><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(4833.8,0)"><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E"></use><use data-c="31" xlink:href="#MJX-195-TEX-N-31" transform="translate(278,0)"></use></g><g data-mml-node="mo" transform="translate(5611.8,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-195-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(5889.8,0)"><use data-c="30" xlink:href="#MJX-195-TEX-N-30"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(500,0)"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(1000,0)"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(1500,0)"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(2000,0)"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(2500,0)"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(3000,0)"></use></g></g></g></g><g data-mml-node="mo" transform="translate(17223.8,0) translate(0 -0.5)"><use data-c="7D" xlink:href="#MJX-195-TEX-S3-7D"></use></g></g><g data-mml-node="mo" transform="translate(18251.6,0)"><use data-c="3D" xlink:href="#MJX-195-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(19307.3,0)"><use data-c="31" xlink:href="#MJX-195-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-195-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-195-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-195-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(22085.3,0)"><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E"></use><use data-c="35" xlink:href="#MJX-195-TEX-N-35" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(22863.3,0)"><use data-c="2E" xlink:href="#MJX-195-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-195-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(23641.3,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-195-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(24141.3,0)"><use data-c="32" xlink:href="#MJX-195-TEX-N-32"></use><use data-c="34" xlink:href="#MJX-195-TEX-N-34" transform="translate(500,0)"></use></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable rowspacing=".5em" columnspacing="1em" displaystyle="true"><mtr><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN" fence="true" stretchy="true" symmetric="true"></mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>153.14</mn><mn>.5</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>25</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>153.14</mn><mn>.5</mn><mn>.0</mn><mo stretchy="false">|</mo><mn>0000000</mn></mtd></mtr><mtr><mtd><mn>153.14</mn><mn>.5</mn><mn>.128</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>25</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>153.14</mn><mn>.5</mn><mn>.1</mn><mo stretchy="false">|</mo><mn>0000000</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">}</mo></mrow><mo>=</mo><mn>153.14</mn><mn>.5</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>24</mn></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1052" cid="n1052" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="56.252ex" height="5.43ex" role="img" focusable="false" viewBox="0 -1450 24863.3 2400" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.149ex;"><defs><path id="MJX-196-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-196-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-196-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-196-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-196-TEX-N-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path><path id="MJX-196-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-196-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-196-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path id="MJX-196-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-196-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-196-TEX-S3-7D" d="M131 1414T131 1429T133 1447T148 1450H153H167L182 1444Q276 1404 336 1343T415 1207Q421 1184 421 1154T423 851L424 531L426 517Q434 462 460 415T518 339T571 296T608 274Q615 270 616 267T618 251Q618 241 618 238T615 232T608 227Q542 194 491 132T426 -15L424 -29L423 -350Q422 -622 422 -652T415 -706Q397 -780 337 -841T182 -943L167 -949H153Q137 -949 134 -946T131 -928Q131 -914 132 -911T144 -904Q146 -903 148 -902Q299 -820 323 -680Q324 -663 325 -349T327 -19Q355 145 541 241L561 250L541 260Q356 355 327 520Q326 537 325 850T323 1181Q315 1227 293 1267T244 1332T193 1374T151 1401T132 1413Q131 1414 131 1429Z"></path><path id="MJX-196-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-196-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mrow"><g data-mml-node="mo" transform="translate(0 250)"></g><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,700)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-196-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-196-TEX-N-39" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-196-TEX-N-34" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(1778,0)"></use><use data-c="37" xlink:href="#MJX-196-TEX-N-37" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(2778,0)"><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E"></use><use data-c="32" xlink:href="#MJX-196-TEX-N-32" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(778,0)"></use></g><g data-mml-node="mn" transform="translate(4056,0)"><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4834,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-196-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(5334,0)"><use data-c="32" xlink:href="#MJX-196-TEX-N-32"></use><use data-c="35" xlink:href="#MJX-196-TEX-N-35" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(7334,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-196-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-196-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-196-TEX-N-39" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-196-TEX-N-34" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(1778,0)"></use><use data-c="37" xlink:href="#MJX-196-TEX-N-37" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(4055.8,0)"><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(778,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(1278,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(1778,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(2278,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(2778,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(3278,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(3778,0)"></use></g><g data-mml-node="mn" transform="translate(8333.8,0)"><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(278,0)"></use></g></g></g><g data-mml-node="mtr" transform="translate(0,-700)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-196-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-196-TEX-N-39" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-196-TEX-N-34" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(1778,0)"></use><use data-c="37" xlink:href="#MJX-196-TEX-N-37" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(2778,0)"><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E"></use><use data-c="32" xlink:href="#MJX-196-TEX-N-32" transform="translate(278,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(778,0)"></use></g><g data-mml-node="mn" transform="translate(4056,0)"><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4834,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-196-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(5334,0)"><use data-c="32" xlink:href="#MJX-196-TEX-N-32"></use><use data-c="34" xlink:href="#MJX-196-TEX-N-34" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(7334,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-196-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-196-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-196-TEX-N-39" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-196-TEX-N-34" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(1778,0)"></use><use data-c="37" xlink:href="#MJX-196-TEX-N-37" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(4055.8,0)"><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(778,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(1278,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(1778,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(2278,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(2778,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(3278,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(3778,0)"></use></g><g data-mml-node="mn" transform="translate(8333.8,0)"><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(278,0)"></use></g></g></g></g><g data-mml-node="mo" transform="translate(16445.8,0) translate(0 -0.5)"><use data-c="7D" xlink:href="#MJX-196-TEX-S3-7D"></use></g></g><g data-mml-node="mo" transform="translate(17473.6,0)"><use data-c="3D" xlink:href="#MJX-196-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(18529.3,0)"><use data-c="31" xlink:href="#MJX-196-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-196-TEX-N-39" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-196-TEX-N-34" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-196-TEX-N-31" transform="translate(1778,0)"></use><use data-c="37" xlink:href="#MJX-196-TEX-N-37" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(21307.3,0)"><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E"></use><use data-c="32" xlink:href="#MJX-196-TEX-N-32" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(778,0)"></use></g><g data-mml-node="mn" transform="translate(22585.3,0)"><use data-c="2E" xlink:href="#MJX-196-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-196-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(23363.3,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-196-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(23863.3,0)"><use data-c="32" xlink:href="#MJX-196-TEX-N-32"></use><use data-c="33" xlink:href="#MJX-196-TEX-N-33" transform="translate(500,0)"></use></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable rowspacing=".5em" columnspacing="1em" displaystyle="true"><mtr><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN" fence="true" stretchy="true" symmetric="true"></mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>194.17</mn><mn>.20</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>25</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>194.17</mn><mn>.00010100</mn><mn>.0</mn></mtd></mtr><mtr><mtd><mn>194.17</mn><mn>.21</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>24</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>194.17</mn><mn>.00010101</mn><mn>.0</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">}</mo></mrow><mo>=</mo><mn>194.17</mn><mn>.20</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>23</mn></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p>&nbsp;</p><p>&nbsp;</p><figure><table><thead><tr><th style='text-align:center;' ><span>目的网络</span></th><th style='text-align:center;' ><span>下一跳</span></th><th style='text-align:center;' ><span>接口</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>153.14.5.0/24</span></td><td style='text-align:center;' ><span>153.14.3.2</span></td><td style='text-align:center;' ><span>S0</span></td></tr><tr><td style='text-align:center;' ><span>194.17.20.0/23</span></td><td style='text-align:center;' ><span>194.17.24.2</span></td><td style='text-align:center;' ><span>S1</span></td></tr><tr><td style='text-align:center;' ><span>194.17.20.128/25</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>E0</span></td></tr></tbody></table></figure><p><span>2)若R2收到一个目的1P地址为194.17.20.200的IP分组，R2会通过那个接口转发该IP分组？</span></p><p><span>【答案】：（最长前缀匹配原则）E0</span></p><p><span>3)R1与R2之间利用哪个路由协议交换路由信息？该路由协议的报文被封装到哪个协议的分组中进行传输</span></p><p><span>【答案】：AS间，用BGP，封装在TCP中</span></p></li><li><p><span>【2014】42.(10分)某网络中的路由器运行OSP℉路由协议，题42表是路由器R1维护的主要链路状态信息(LSI),题42图是根据题42表及R1的接口名构造出来的网络拓扑。</span></p><p><img src="resources/2014.png" alt="2014" style="zoom:60%;" /></p><p><span>1)假设路由表结构如下表所示，请给出题42图中R1的路由表，要求包括到达题42图中子网192.1.x.x的路由，且路由表中的路由项尽可能少。</span></p><p><span>找到最短路径，192.1.6和7从L1，原来只有这两个才用CIDR，而不是四个一起用😭</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1131" cid="n1131" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="51.727ex" height="5.43ex" role="img" focusable="false" viewBox="0 -1450 22863.3 2400" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.149ex;"><defs><path id="MJX-197-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-197-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-197-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-197-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-197-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-197-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-197-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path id="MJX-197-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-197-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-197-TEX-N-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path><path id="MJX-197-TEX-S3-7D" d="M131 1414T131 1429T133 1447T148 1450H153H167L182 1444Q276 1404 336 1343T415 1207Q421 1184 421 1154T423 851L424 531L426 517Q434 462 460 415T518 339T571 296T608 274Q615 270 616 267T618 251Q618 241 618 238T615 232T608 227Q542 194 491 132T426 -15L424 -29L423 -350Q422 -622 422 -652T415 -706Q397 -780 337 -841T182 -943L167 -949H153Q137 -949 134 -946T131 -928Q131 -914 132 -911T144 -904Q146 -903 148 -902Q299 -820 323 -680Q324 -663 325 -349T327 -19Q355 145 541 241L561 250L541 260Q356 355 327 520Q326 537 325 850T323 1181Q315 1227 293 1267T244 1332T193 1374T151 1401T132 1413Q131 1414 131 1429Z"></path><path id="MJX-197-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-197-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-197-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mrow"><g data-mml-node="mo" transform="translate(0 250)"></g><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,700)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-197-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-197-TEX-N-39" transform="translate(500,0)"></use><use data-c="32" xlink:href="#MJX-197-TEX-N-32" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-197-TEX-N-31" transform="translate(1778,0)"></use></g><g data-mml-node="mn" transform="translate(2278,0)"><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E"></use><use data-c="36" xlink:href="#MJX-197-TEX-N-36" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(3056,0)"><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(3834,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-197-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(4334,0)"><use data-c="32" xlink:href="#MJX-197-TEX-N-32"></use><use data-c="34" xlink:href="#MJX-197-TEX-N-34" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(6334,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-197-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-197-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-197-TEX-N-39" transform="translate(500,0)"></use><use data-c="32" xlink:href="#MJX-197-TEX-N-32" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-197-TEX-N-31" transform="translate(1778,0)"></use></g><g data-mml-node="mn" transform="translate(3555.8,0)"><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(778,0)"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(1278,0)"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(1778,0)"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(2278,0)"></use><use data-c="31" xlink:href="#MJX-197-TEX-N-31" transform="translate(2778,0)"></use><use data-c="31" xlink:href="#MJX-197-TEX-N-31" transform="translate(3278,0)"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(3778,0)"></use></g><g data-mml-node="mn" transform="translate(7833.8,0)"><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(278,0)"></use></g></g></g><g data-mml-node="mtr" transform="translate(0,-700)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-197-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-197-TEX-N-39" transform="translate(500,0)"></use><use data-c="32" xlink:href="#MJX-197-TEX-N-32" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-197-TEX-N-31" transform="translate(1778,0)"></use></g><g data-mml-node="mn" transform="translate(2278,0)"><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E"></use><use data-c="37" xlink:href="#MJX-197-TEX-N-37" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(3056,0)"><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(3834,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-197-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(4334,0)"><use data-c="32" xlink:href="#MJX-197-TEX-N-32"></use><use data-c="34" xlink:href="#MJX-197-TEX-N-34" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(6334,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-197-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-197-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-197-TEX-N-39" transform="translate(500,0)"></use><use data-c="32" xlink:href="#MJX-197-TEX-N-32" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-197-TEX-N-31" transform="translate(1778,0)"></use></g><g data-mml-node="mn" transform="translate(3555.8,0)"><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(778,0)"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(1278,0)"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(1778,0)"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(2278,0)"></use><use data-c="31" xlink:href="#MJX-197-TEX-N-31" transform="translate(2778,0)"></use><use data-c="31" xlink:href="#MJX-197-TEX-N-31" transform="translate(3278,0)"></use><use data-c="31" xlink:href="#MJX-197-TEX-N-31" transform="translate(3778,0)"></use></g><g data-mml-node="mn" transform="translate(7833.8,0)"><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(278,0)"></use></g></g></g></g><g data-mml-node="mo" transform="translate(14945.8,0) translate(0 -0.5)"><use data-c="7D" xlink:href="#MJX-197-TEX-S3-7D"></use></g></g><g data-mml-node="mo" transform="translate(15973.6,0)"><use data-c="3D" xlink:href="#MJX-197-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(17029.3,0)"><use data-c="31" xlink:href="#MJX-197-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-197-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-197-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-197-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-197-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(19807.3,0)"><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E"></use><use data-c="36" xlink:href="#MJX-197-TEX-N-36" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(20585.3,0)"><use data-c="2E" xlink:href="#MJX-197-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-197-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(21363.3,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-197-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(21863.3,0)"><use data-c="32" xlink:href="#MJX-197-TEX-N-32"></use><use data-c="33" xlink:href="#MJX-197-TEX-N-33" transform="translate(500,0)"></use></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable rowspacing=".5em" columnspacing="1em" displaystyle="true"><mtr><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN" fence="true" stretchy="true" symmetric="true"></mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>192.1</mn><mn>.6</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>24</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>192.1</mn><mn>.00000110</mn><mn>.0</mn></mtd></mtr><mtr><mtd><mn>192.1</mn><mn>.7</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>24</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>192.1</mn><mn>.00000111</mn><mn>.0</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">}</mo></mrow><mo>=</mo><mn>153.14</mn><mn>.6</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>23</mn></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p>&nbsp;</p><figure><table><thead><tr><th><span>目的网络</span></th><th><span>下一跳</span></th><th><span>端口</span></th></tr></thead><tbody><tr><td><span>192.1.1.0/24（照抄）</span></td><td><span>-</span></td><td><span>E0</span></td></tr><tr><td><span>192.1.5.0/24（照抄）</span></td><td><span>10.1.1.10</span></td><td><span>L1</span></td></tr><tr><td><span>153.14.6.0/23</span></td><td><span>10.1.1.2</span></td><td><span>L0</span></td></tr></tbody></table></figure><p><span>2)当主机192.1.1.130向主机192.1.7.211发送一个TTL=64的IP分组时，R1通过哪个接口转发该IP分组？主机192.1.7.211收到的IP分组TTL是多少？</span></p><p><span>【答案】L0，61</span></p><p><span>3)若R1增加一条Metric为10的链路连接Internet,则题42表中R1的LSI需要增加哪些信息</span></p><p><span>【答案】Net2：Prefix 0.0.0.0（😭Internet网络前缀默认是0.0.0.0，要背的） Metric 10</span></p></li></ol></div></div>
+<div id='write'  class=''><h1 id='路由算法'><span>路由算法</span></h1><p><span>2022.3.11</span></p><h2 id='静态路由与动态路由'><span>静态路由与动态路由</span></h2><ol start='' ><li><p><strong><span>静态路由算法(又称非自适应路由算法)</span></strong><span>。</span></p><ol><li><span>手工配置路由信息。适用于小型网络（小型军事/商业网络）。</span></li><li><a href='https://baike.baidu.com/item/%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/8990860'><span>默认路由</span></a><span>:一种特殊的静态路由。</span></li></ol></li><li><p><strong><span>动态路由算法(又称自适应路由算法)</span></strong><span>。路由器之间交换信息,然后按照算法优化出来适应不断变化的网络。增加了网络负担。</span></p></li><li><p><span>静态动态最主要的区别：动态路由选择可随网络的通信量或拓扑变化而自适应地调整,而静态路由选择则需要手工去调整相关的路由信息。</span></p></li><li><p><span>下列关于路由算法的描述中,(B)是错误的</span></p><p><span>A.静态路由有时也被称为非自适应的算法</span></p><p><span>B.静态路由所使用的路由选择一旦启动就不能修改</span></p><p><span>C.动态路由也称自适应算法,会根据网络的拓扑变化和流量变化改变路由决策</span></p><p><span>D.动态路由算法需要实时获得网络的状态</span></p><p>&nbsp;</p></li></ol><h2 id='距离向量路由算法'><span>距离向量路由算法</span></h2><h3 id='rip协议'><span>RIP协议</span></h3><ol><li><p><span>距离向量：自身到其他每个目的网络的距离记录</span></p></li><li><p><span>条数：采用</span><strong><span>“跳数”</span></strong><span>作为距离的度量，跳数最多为15，</span><strong><span>跳数=16代表网络不可达</span></strong></p></li><li><p><span>30s广播一次路由更新信息</span></p></li><li><p><span>RIP2之前不支持子网掩码的广播，RIP2之后支持变长子网掩码和CIDR</span></p></li><li><p><span>RIP是</span><strong><span>应用层</span></strong><span>协议，使用</span><strong><span>UDP</span></strong><span>进行传输，端口520。</span></p></li><li><p><span>RIP最大的优点是实现简单、开销小、收敛过程较快。RIP的缺点如下：</span></p><ol><li><span>RIP限制了网络的规模，它能使用的最大距离为15(16表示不可达)。</span></li><li><span>路由器之间交换的是路由器中的完整路由表，因此网络规模越大，开销也越大。</span></li><li><span>网络出现故障时，会出现慢收敛现象（即需要较长时间才能将此信息传送到所有路由器)，俗称“坏消息传得慢”，使更新过程的收敛时间长。RIP是应用层协议，它使用UDP传送数据(端口520)。RIP选择的路径不一定是时间最短的，但一定是具有最少路由器的路径。因为它是根据最少跳数进行路径选择的。</span></li><li><span>可能遇到</span><strong><span>“环路”</span></strong><span>问题</span></li></ol></li><li><p><span>环路问题原因：在距离向量路由协议中,()最可能导致路由回路的问题。</span></p><p><span>A.由于网络带宽的限制,某些路由更新数据报被丢弃</span></p><p><span>B.由于路由器不知道整个网络的拓扑结构信息,当收到一个路由更新信息时,又将该更新信息发回自己发送该路由信息的路由器</span></p><p><span>C.当一个路由器发现自己的一条直接相邻链路断开时,未能将这个变化报告给其他路由器</span></p><p><span>D.慢收敛导致路由器接收了无效的路由信息</span></p><p><span>【解析】在距离向量路由协议中,“好消息传得快,而坏消息传得慢”,（造成坏消息传得慢，好消息传得快，因为好消息可能时坏消息之前产生的，坏消息发送前，好消息又会传回来把坏消息覆盖。）这就导致了当路由信息发生变化时,该变化未能及时地被所有路由器知道,而仍然可能在路由器之间进行传递,这就是“慢收敛”现象。</span><strong><span>慢收敛是导致发生路由回路的根本原因</span></strong><span>。</span></p></li><li><p><strong><span>直接交付：路由器与目的网络直接相连</span></strong></p><p><strong><span>间接交付</span></strong><span>：路由器与目的网络间接相连，需要传给下一跳路由器</span></p><ul><li><p><span>例题：(未使用CIDR)当一个IP分组进行直接交付时,要求发送方和目的站具有相同的（）</span></p><p><span>A.IP地址</span></p><p><span>B.主机号</span></p><p><span>C.端口号</span></p><p><span>D.子网地址</span></p><p><span>【解析】判断一个IP分组的交付方式是直接交付还是间接交付,路由器需要根据分组的目的IP地址和该路由器接收端口的IP地址是否属于同一个子网来进行判断。具体来说,将该分组的源IP地址和目的IP地址分别与子网掩码进行“与”操作,如果得到的子网地址相同,那么该分组就采用直接交付方式,否则采用间接交付方式。</span></p></li><li><p><span>例题：下列关于路由器交付的说法中，错误的是()。</span></p><p><span>Ⅰ.路由选择分直接交付和间接交付</span></p><p><span>Ⅱ.直接交付时，两台机器可以不在同一物理网段内</span></p><p><span>Ⅲ.间接交付时，不涉及直接交付</span></p><p><span>IV.直接交付时，不涉及路由器</span></p><p><span>A.I和II</span></p><p><span>B.II和II</span></p><p><span>C.III和V</span></p><p><span>D.I和IV</span></p><p><span>【答案】：B。发送站与目的站在同一网段内时可以直接交付。间接交付的最后一个路由器是直接交付。</span></p></li></ul></li><li><p><span>RIP帧格式</span></p><p><img src="resources/RIP帧格式.png" alt="RIP帧格式" style="zoom:67%;" /></p></li></ol><h3 id='rip特点'><span>RIP特点</span></h3><ol><li><span>交换信息方式：和</span><strong><span>邻居</span></strong><span>交换信息</span></li><li><span>交换信息内容：信息包括</span><strong><span>[每条路径的目的地(另一节点)，路径的代价(距离)]</span></strong></li><li><span>信息更新时间：一般情况</span><strong><span>30s</span></strong><span>更新一次</span></li></ol><h3 id='距离向量算法'><span>距离向量算法</span></h3><p><span>每个路由表项目都有三个关键数据：&lt;目的网络N,距离d,下一跳路由器地址X&gt;。对于每个相邻路由器发送过来的RIP报文，执行如下步骤：</span></p><ul><li><p><span>对地址为X的相邻路由器发来的RIP报文，先修改此报文中的所有项目：把“下一跳”字段中的地址都改为X,并把所有“距离”字段的值加1。</span></p></li><li><p><span>对修改后的IP报文中的每个项目，执行如下步骤：</span></p><ul><li><span>当原路由表中没有目的网络N时，把该项目添加到路由表中。</span></li><li><span>当原路由表中有目的网络N,且下一跳路由器的地址是X时，用收到的项目替换原路由表中的项目。</span></li><li><span>当原路由表中有目的网络N,且下一跳路由器的地址不是X时，如果收到的项目中的距离小于路由表中的距离，那么就用收到的项目替换原路由表中的项目：否则什么也不做。</span></li></ul></li><li><p><span>如果180秒（RP默认超时时间为180秒)还没有收到相邻路由器的更新路由表，那么把此相邻路由器记为不可达路由器，即把距离设置为16（距离为16表示不可达）。</span></p></li><li><p><span>返回。</span></p></li></ul><h2 id='链路状态路由算法'><span>链路状态路由算法</span></h2><ol start='' ><li><p><span>摘要</span></p><ol start='' ><li><span>和谁发信息：每个节点拥有完整的拓网拓扑信息；把自己所知道的</span><strong><span>全部信息</span></strong><span>交换给</span><strong><span>所有节点</span></strong><span>（除了刚发给自己的那个节点），</span><strong><span>洪泛法</span></strong><span>。</span></li><li><span>交换什么：发送的信息就是与本路由器相邻的所有路由器的链路状态(本路由器和哪些路由器相邻,以及该链路的度量/代价一一费用、距离、时延、带宽等)。（不只是跳数）</span></li><li><span>什么时候发信息：链路状态</span><strong><span>变化时发消息</span></strong><span>;每隔30分钟也刷新一次。（RIP是30s发一次）</span></li></ol></li><li><p><span>链路状态路由算法/</span><strong><span>OFPS协议</span></strong><span>的过程</span></p><ol start='' ><li><span>每个路由器发现它的邻居结点【</span><strong><span>HELLO问候分组</span></strong><span>】,并了解邻居节点的网络地址。</span></li><li><span>设置到它的每个邻居的成本度量 </span><strong><span>metric</span></strong><span>。</span></li><li><span>构造【</span><strong><span>DD数据库描述分组</span></strong><span>】,向邻站给出自己的链路状态数据库中的所有链路状态项目的</span><strong><span>摘要信息</span></strong><span>。</span></li><li><span>如果DD分组中的摘要自己都有,则邻站不做处理;如果有没有的或者是更新的,则发送【</span><strong><span>LSR链路状态请求分组</span></strong><span>】请求自己没有的和比自己更新的信息。</span></li><li><span>收到邻站的LSR分组后,发送【</span><strong><span>LSU链路状态更新分组</span></strong><span>】进行更新。</span></li><li><span>更新完毕后,邻站返回一个【</span><strong><span>LSACK链路态确认分组</span></strong><span>】进行确认。</span></li><li><span>路由器获取全部信息后，利用</span><strong><span>Dijkstra算法</span></strong><span>算出路由。</span></li></ol><p><span>只要一个路由器的链路状态发生变化</span></p><ol start='' ><li><span>泛洪发送【LSU链路状态更新分组】进行更新。</span></li><li><span>更新完毕后,其他站返回一个【LSACK链路状态确认分组】进行确认。</span></li><li><span>路由器获取全部信息后，利用Dijkstra算法算出路由。</span></li></ol><p><img src="resources/OFPS.png" alt="OFPS" style="zoom:67%;" /></p></li><li><p><span>OFPS特点</span></p><ol><li><p><span>OSPF对不同的链路可根据IP分组的不同服务类型(TOS)而设置成不同的代价。因此，OSPF对于不同类型的业务可计算出不同的路由，十分灵活。</span></p><p><span>10Mbps的以太网的链路开销是10，16Mbps令牌环网的链路开销是6，FDDI或快速以太网的开销是1，2M串行链路的开销是48，56KB串行线路的开销为1785（</span><a href='https://zhidao.baidu.com/question/299217373.html'><span>原文链接</span></a><span>）</span></p></li><li><p><span>如果到同一个目的网络有多条相同代价的路径，那么可以将通信量分配给这几条路径。这称为多路径间的负载平衡。</span></p></li><li><p><span>所有在OSPF路由器之间交换的分组都具有鉴别功能，因而保证了仅在可信赖的路由器之间交换链路状态信息。</span></p></li><li><p><span>支持可变长度的子网划分和无分类编址CIDR。</span></p></li><li><p><span>每个链路状态都带上一个32位的序号，序号越大，状态就越新。</span></p></li></ol></li><li><p><strong><span>OFPS区域</span></strong></p><p><span>为了使OSPF能够用于规模很大的网络,OPF将一个自治系统再划分为若干个更小的范围,叫做区域。每一个区域都有一个32位的区域标识符(用点分十进制表示)。区域也不能太大,在一个区域内的路由器最好不超过200个。</span></p><p><img src="resources/OFPS区域.jpg" alt="OFPS区域" style="zoom:50%;" /></p></li><li><p><span>OFPS属于</span><strong><span>网络层</span></strong><span>(考纲)或传输层(另一种说法)协议，使用IP数据报传输。</span></p></li><li><p><span>例题：关于链路状态协议的描述,(A)是错误的</span></p><p><span>A.仅相邻路由器需要交换各自的路由表</span></p><p><span>B.全网路由器的拓扑数据库是一致的</span></p><p><span>C.采用洪泛技术更新链路变化信息</span></p><p><span>D.具有快速收敛的优点</span></p></li></ol><h3 id='协议对比'><span>协议对比</span></h3><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' ><span>RIP</span></th><th style='text-align:center;' ><span>OFPS</span></th><th style='text-align:center;' ><span>BGP</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>层</span></td><td style='text-align:center;' ><span>应用层</span></td><td style='text-align:center;' ><span>网络层</span></td><td style='text-align:center;' ><span>应用层</span></td></tr><tr><td style='text-align:center;' ><span>用什么传输</span></td><td style='text-align:center;' ><span>UDP</span></td><td style='text-align:center;' ><span>IP</span></td><td style='text-align:center;' ><span>TCP</span></td></tr><tr><td style='text-align:center;' ><span>协议字段</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>89</span></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>端口</span></td><td style='text-align:center;' ><span>520</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>算法</span></td><td style='text-align:center;' ><strong><span>距离</span></strong><span>向量</span></td><td style='text-align:center;' ><span>链路状态</span></td><td style='text-align:center;' ><strong><span>路径</span></strong><span>向量</span></td></tr><tr><td style='text-align:center;' ><span>和谁发消息</span></td><td style='text-align:center;' ><span>相邻路由器</span></td><td style='text-align:center;' ><span>AS内所有路由器</span></td><td style='text-align:center;' ><span>相邻路由器</span></td></tr><tr><td style='text-align:center;' ><span>发什么消息</span></td><td style='text-align:center;' ><span>路由表中全部的&lt;目的地, 跳数&gt;</span></td><td style='text-align:center;' ><span>摘要信息/路由表部分全部信息</span></td><td style='text-align:center;' ><span>首次：全部路由表</span><br><span>更新：有变化部分</span></td></tr><tr><td style='text-align:center;' ><span>计算方法</span></td><td style='text-align:center;' ><span>跳数最少</span></td><td style='text-align:center;' ><span>综合计算</span></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>什么时候发</span></td><td style='text-align:center;' ><span>30s一次，180s记为不可达</span></td><td style='text-align:center;' ><span>信息更新立刻广播，10s一次问候分组，30min更新一次数据库</span></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr></tbody></table></figure><h2 id='层次路由'><span>层次路由</span></h2><ol start='' ><li><p><span>简介</span></p><ol><li><span>将一个大网络分成众多“</span><strong><span>自治系统（AS）</span></strong><span>”（一个自治系统可以包含很多局域网），每个自治系统决定内部用那种路由算法</span></li><li><strong><span>内部网关协议/域内路由选择（IGP）</span></strong><span>：自治系统内部的自己可决定的协议，常见的为OFPS与RIP协议。</span></li><li><strong><span>外部网关协议/域间路由选择（EGP）</span></strong><span>：常见的有</span><strong><span>BGP</span></strong><span>。</span></li><li><span>一个自治系统分成很多区域（Area），那个路由器知道本区域内把分组转交目的地的方案，但不用知道其他区域的结构。</span></li></ol></li><li><p><span>BGP简介</span></p><p><span>边界网关协议(BGP)只能力求寻找一条能够到达目的网络且比较好的路由（不能兜圈子），而并非寻找一条最佳路由。BGP采用的是路径向量路由选择协议，它与距离向量协议和链路状态协议有很大的区别。BGP是应用层协议，它是基于TCP的。</span></p></li></ol><ol start='3' ><li><p><span>BGP的工作原理</span></p><p><span>每个自治系统的管理员要选择至少一个路由器（可以有多个)作为该自治系统的“BGP发言人”。一个BGP发言人与其他自治系统中的BGP发言人要交换路由信息，就要先建立TCP连接（可见BGP报文是通过TCP传送的也就是说BGP报文是TCP报文的数据部分)，然后在此连接上交换BGP报文以建立BGP会话，再利用BGP会话交换路由信息。当所有BGP发言人都相互交换网络可达性的信息后，各BGP发言人就可找出到达各个自治系统的较好路由。</span></p><p><span>每个BGP发言人除必须运行BGP外，还必须运行该AS所用的内部网关协议，OSPF或RIP。BGP所交换的网络可达性信息就是要到达某个网络（用网络前缀表示）所要经过的一系列AS。</span></p></li></ol><ol start='4' ><li><p><span>BGP特点</span></p><ol><li><span>【BGP之间信息少】BGP交换路由信息的结点数量级是自治系统的数量级，要比这些自治系统中的网络数少很多。</span></li><li><span>【BGP内部信息少】每个自治系统中BGP发言人（或边界路由器）的数目是很少的。这样就使得自治系统之间的路由选择不致过分复杂。</span></li><li><span>【BGP路由表】BGP支持CIDR,因此BGP的路由表也就应当包括目的网络前缀、下一挑路由器，以及到达该目的网络所要经过的各个自治系统序列。</span></li><li><span>【变化时更新】在BGP刚运行时，BGP的邻站交换整个BGP路由表，但以后只需在发生变化时更新有变化的部分。这样做对节省网络带宽和减少路由器的处理开销都有好处。</span></li></ol></li></ol><ol start='5' ><li><p><span>四种BGP报文</span></p><p><span>1)</span><strong><span>打开(Open)报文</span></strong><span>。用来与相邻的另一个BGP发言人建立关系。</span></p><p><span>2)</span><strong><span>更新(Update)报文</span></strong><span>。用来发送某一路由的信息，以及列出要撤销的多条路由。</span></p><p><span>3)</span><strong><span>保活(Keepalive)报文</span></strong><span>。用来确认打开报文并周期性地证实邻站关系。</span></p><p><span>4)</span><strong><span>通知(Notification)报文</span></strong><span>。用来发送检测到的差错。</span></p></li></ol><ol start='6' ><li><p><span>【2013统考真题】假设Internet的两个自治系统构成的网络如下图所示，自治系统AS1由路由器R1连接两个子网构成；自治系统AS2由路由器R2、R3互联并连接3个子网构成。各子网地址、R2的接口名、R1与R3的部分接口IP地址如下图所示。</span><img src="resources/2013.png" alt="2013" style="zoom:67%;" /></p><p><span>请回答下列问题：</span></p><p><span>1)假设路由表结构如下表所示。利用路由聚合技术，给出R2的路由表，要求包括到达图中所有子网的路由，且路由表中的路由项尽可能少。</span></p><p><span>【答案】😭AS1里边的两个网络进行聚合，AS2里边的两个网络进行聚合，而不是和路由器聚合！</span></p><p>&nbsp;</p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1047" cid="n1047" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="56.881ex" height="5.43ex" role="img" focusable="false" viewBox="0 -1450 25141.3 2400" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.149ex;"><defs><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-1-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-1-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-1-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-1-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-1-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-1-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path id="MJX-1-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-1-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-1-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-1-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path id="MJX-1-TEX-S3-7D" d="M131 1414T131 1429T133 1447T148 1450H153H167L182 1444Q276 1404 336 1343T415 1207Q421 1184 421 1154T423 851L424 531L426 517Q434 462 460 415T518 339T571 296T608 274Q615 270 616 267T618 251Q618 241 618 238T615 232T608 227Q542 194 491 132T426 -15L424 -29L423 -350Q422 -622 422 -652T415 -706Q397 -780 337 -841T182 -943L167 -949H153Q137 -949 134 -946T131 -928Q131 -914 132 -911T144 -904Q146 -903 148 -902Q299 -820 323 -680Q324 -663 325 -349T327 -19Q355 145 541 241L561 250L541 260Q356 355 327 520Q326 537 325 850T323 1181Q315 1227 293 1267T244 1332T193 1374T151 1401T132 1413Q131 1414 131 1429Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mrow"><g data-mml-node="mo" transform="translate(0 250)"></g><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,700)"><g data-mml-node="mtd" transform="translate(500,0)"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-1-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-1-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-1-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(2778,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(3556,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4334,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-1-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(4834,0)"><use data-c="32" xlink:href="#MJX-1-TEX-N-32"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(7834,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-1-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-1-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-1-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-1-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(4055.8,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(4833.8,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="mo" transform="translate(5611.8,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-1-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(5889.8,0)"><use data-c="30" xlink:href="#MJX-1-TEX-N-30"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(500,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(1000,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(1500,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(2000,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(2500,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(3000,0)"></use></g></g></g><g data-mml-node="mtr" transform="translate(0,-700)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-1-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-1-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-1-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(2778,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(3556,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use><use data-c="31" xlink:href="#MJX-1-TEX-N-31" transform="translate(278,0)"></use><use data-c="32" xlink:href="#MJX-1-TEX-N-32" transform="translate(778,0)"></use><use data-c="38" xlink:href="#MJX-1-TEX-N-38" transform="translate(1278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(5334,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-1-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(5834,0)"><use data-c="32" xlink:href="#MJX-1-TEX-N-32"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(7834,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-1-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-1-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-1-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-1-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(4055.8,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(4833.8,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use><use data-c="31" xlink:href="#MJX-1-TEX-N-31" transform="translate(278,0)"></use></g><g data-mml-node="mo" transform="translate(5611.8,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-1-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(5889.8,0)"><use data-c="30" xlink:href="#MJX-1-TEX-N-30"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(500,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(1000,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(1500,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(2000,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(2500,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(3000,0)"></use></g></g></g></g><g data-mml-node="mo" transform="translate(17223.8,0) translate(0 -0.5)"><use data-c="7D" xlink:href="#MJX-1-TEX-S3-7D"></use></g></g><g data-mml-node="mo" transform="translate(18251.6,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(19307.3,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-1-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-1-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-1-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(22085.3,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use><use data-c="35" xlink:href="#MJX-1-TEX-N-35" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(22863.3,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(23641.3,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-1-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(24141.3,0)"><use data-c="32" xlink:href="#MJX-1-TEX-N-32"></use><use data-c="34" xlink:href="#MJX-1-TEX-N-34" transform="translate(500,0)"></use></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable rowspacing=".5em" columnspacing="1em" displaystyle="true"><mtr><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN" fence="true" stretchy="true" symmetric="true"></mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>153.14</mn><mn>.5</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>25</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>153.14</mn><mn>.5</mn><mn>.0</mn><mo stretchy="false">|</mo><mn>0000000</mn></mtd></mtr><mtr><mtd><mn>153.14</mn><mn>.5</mn><mn>.128</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>25</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>153.14</mn><mn>.5</mn><mn>.1</mn><mo stretchy="false">|</mo><mn>0000000</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">}</mo></mrow><mo>=</mo><mn>153.14</mn><mn>.5</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>24</mn></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1052" cid="n1052" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="56.252ex" height="5.43ex" role="img" focusable="false" viewBox="0 -1450 24863.3 2400" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.149ex;"><defs><path id="MJX-2-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-2-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-2-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-2-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-2-TEX-N-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path><path id="MJX-2-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-2-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-2-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path id="MJX-2-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-2-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-2-TEX-S3-7D" d="M131 1414T131 1429T133 1447T148 1450H153H167L182 1444Q276 1404 336 1343T415 1207Q421 1184 421 1154T423 851L424 531L426 517Q434 462 460 415T518 339T571 296T608 274Q615 270 616 267T618 251Q618 241 618 238T615 232T608 227Q542 194 491 132T426 -15L424 -29L423 -350Q422 -622 422 -652T415 -706Q397 -780 337 -841T182 -943L167 -949H153Q137 -949 134 -946T131 -928Q131 -914 132 -911T144 -904Q146 -903 148 -902Q299 -820 323 -680Q324 -663 325 -349T327 -19Q355 145 541 241L561 250L541 260Q356 355 327 520Q326 537 325 850T323 1181Q315 1227 293 1267T244 1332T193 1374T151 1401T132 1413Q131 1414 131 1429Z"></path><path id="MJX-2-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-2-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mrow"><g data-mml-node="mo" transform="translate(0 250)"></g><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,700)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-2-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-2-TEX-N-39" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-2-TEX-N-34" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(1778,0)"></use><use data-c="37" xlink:href="#MJX-2-TEX-N-37" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(2778,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use><use data-c="32" xlink:href="#MJX-2-TEX-N-32" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(778,0)"></use></g><g data-mml-node="mn" transform="translate(4056,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4834,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-2-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(5334,0)"><use data-c="32" xlink:href="#MJX-2-TEX-N-32"></use><use data-c="35" xlink:href="#MJX-2-TEX-N-35" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(7334,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-2-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-2-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-2-TEX-N-39" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-2-TEX-N-34" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(1778,0)"></use><use data-c="37" xlink:href="#MJX-2-TEX-N-37" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(4055.8,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(778,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(1278,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(1778,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(2278,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(2778,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(3278,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(3778,0)"></use></g><g data-mml-node="mn" transform="translate(8333.8,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(278,0)"></use></g></g></g><g data-mml-node="mtr" transform="translate(0,-700)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-2-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-2-TEX-N-39" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-2-TEX-N-34" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(1778,0)"></use><use data-c="37" xlink:href="#MJX-2-TEX-N-37" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(2778,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use><use data-c="32" xlink:href="#MJX-2-TEX-N-32" transform="translate(278,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(778,0)"></use></g><g data-mml-node="mn" transform="translate(4056,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4834,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-2-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(5334,0)"><use data-c="32" xlink:href="#MJX-2-TEX-N-32"></use><use data-c="34" xlink:href="#MJX-2-TEX-N-34" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(7334,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-2-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-2-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-2-TEX-N-39" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-2-TEX-N-34" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(1778,0)"></use><use data-c="37" xlink:href="#MJX-2-TEX-N-37" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(4055.8,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(778,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(1278,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(1778,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(2278,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(2778,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(3278,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(3778,0)"></use></g><g data-mml-node="mn" transform="translate(8333.8,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(278,0)"></use></g></g></g></g><g data-mml-node="mo" transform="translate(16445.8,0) translate(0 -0.5)"><use data-c="7D" xlink:href="#MJX-2-TEX-S3-7D"></use></g></g><g data-mml-node="mo" transform="translate(17473.6,0)"><use data-c="3D" xlink:href="#MJX-2-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(18529.3,0)"><use data-c="31" xlink:href="#MJX-2-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-2-TEX-N-39" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-2-TEX-N-34" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-2-TEX-N-31" transform="translate(1778,0)"></use><use data-c="37" xlink:href="#MJX-2-TEX-N-37" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(21307.3,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use><use data-c="32" xlink:href="#MJX-2-TEX-N-32" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(778,0)"></use></g><g data-mml-node="mn" transform="translate(22585.3,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(23363.3,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-2-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(23863.3,0)"><use data-c="32" xlink:href="#MJX-2-TEX-N-32"></use><use data-c="33" xlink:href="#MJX-2-TEX-N-33" transform="translate(500,0)"></use></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable rowspacing=".5em" columnspacing="1em" displaystyle="true"><mtr><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN" fence="true" stretchy="true" symmetric="true"></mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>194.17</mn><mn>.20</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>25</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>194.17</mn><mn>.00010100</mn><mn>.0</mn></mtd></mtr><mtr><mtd><mn>194.17</mn><mn>.21</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>24</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>194.17</mn><mn>.00010101</mn><mn>.0</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">}</mo></mrow><mo>=</mo><mn>194.17</mn><mn>.20</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>23</mn></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p>&nbsp;</p><p>&nbsp;</p><figure><table><thead><tr><th style='text-align:center;' ><span>目的网络</span></th><th style='text-align:center;' ><span>下一跳</span></th><th style='text-align:center;' ><span>接口</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>153.14.5.0/24</span></td><td style='text-align:center;' ><span>153.14.3.2</span></td><td style='text-align:center;' ><span>S0</span></td></tr><tr><td style='text-align:center;' ><span>194.17.20.0/23</span></td><td style='text-align:center;' ><span>194.17.24.2</span></td><td style='text-align:center;' ><span>S1</span></td></tr><tr><td style='text-align:center;' ><span>194.17.20.128/25</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>E0</span></td></tr></tbody></table></figure><p><span>2)若R2收到一个目的1P地址为194.17.20.200的IP分组，R2会通过那个接口转发该IP分组？</span></p><p><span>【答案】：（最长前缀匹配原则）E0</span></p><p><span>3)R1与R2之间利用哪个路由协议交换路由信息？该路由协议的报文被封装到哪个协议的分组中进行传输</span></p><p><span>【答案】：AS间，用BGP，封装在TCP中</span></p></li><li><p><span>【2014】42.(10分)某网络中的路由器运行OSP℉路由协议，题42表是路由器R1维护的主要链路状态信息(LSI),题42图是根据题42表及R1的接口名构造出来的网络拓扑。</span></p><p><img src="resources/2014.png" alt="2014" style="zoom:60%;" /></p><p><span>1)假设路由表结构如下表所示，请给出题42图中R1的路由表，要求包括到达题42图中子网192.1.x.x的路由，且路由表中的路由项尽可能少。</span></p><p><span>找到最短路径，192.1.6和7从L1，原来只有这两个才用CIDR，而不是四个一起用😭</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1131" cid="n1131" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="51.727ex" height="5.43ex" role="img" focusable="false" viewBox="0 -1450 22863.3 2400" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.149ex;"><defs><path id="MJX-3-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-3-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-3-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-3-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-3-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-3-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-3-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path id="MJX-3-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-3-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-3-TEX-N-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path><path id="MJX-3-TEX-S3-7D" d="M131 1414T131 1429T133 1447T148 1450H153H167L182 1444Q276 1404 336 1343T415 1207Q421 1184 421 1154T423 851L424 531L426 517Q434 462 460 415T518 339T571 296T608 274Q615 270 616 267T618 251Q618 241 618 238T615 232T608 227Q542 194 491 132T426 -15L424 -29L423 -350Q422 -622 422 -652T415 -706Q397 -780 337 -841T182 -943L167 -949H153Q137 -949 134 -946T131 -928Q131 -914 132 -911T144 -904Q146 -903 148 -902Q299 -820 323 -680Q324 -663 325 -349T327 -19Q355 145 541 241L561 250L541 260Q356 355 327 520Q326 537 325 850T323 1181Q315 1227 293 1267T244 1332T193 1374T151 1401T132 1413Q131 1414 131 1429Z"></path><path id="MJX-3-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-3-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-3-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mrow"><g data-mml-node="mo" transform="translate(0 250)"></g><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,700)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-3-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-3-TEX-N-39" transform="translate(500,0)"></use><use data-c="32" xlink:href="#MJX-3-TEX-N-32" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-3-TEX-N-31" transform="translate(1778,0)"></use></g><g data-mml-node="mn" transform="translate(2278,0)"><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E"></use><use data-c="36" xlink:href="#MJX-3-TEX-N-36" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(3056,0)"><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(3834,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-3-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(4334,0)"><use data-c="32" xlink:href="#MJX-3-TEX-N-32"></use><use data-c="34" xlink:href="#MJX-3-TEX-N-34" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(6334,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-3-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-3-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-3-TEX-N-39" transform="translate(500,0)"></use><use data-c="32" xlink:href="#MJX-3-TEX-N-32" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-3-TEX-N-31" transform="translate(1778,0)"></use></g><g data-mml-node="mn" transform="translate(3555.8,0)"><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(778,0)"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(1278,0)"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(1778,0)"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(2278,0)"></use><use data-c="31" xlink:href="#MJX-3-TEX-N-31" transform="translate(2778,0)"></use><use data-c="31" xlink:href="#MJX-3-TEX-N-31" transform="translate(3278,0)"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(3778,0)"></use></g><g data-mml-node="mn" transform="translate(7833.8,0)"><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(278,0)"></use></g></g></g><g data-mml-node="mtr" transform="translate(0,-700)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-3-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-3-TEX-N-39" transform="translate(500,0)"></use><use data-c="32" xlink:href="#MJX-3-TEX-N-32" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-3-TEX-N-31" transform="translate(1778,0)"></use></g><g data-mml-node="mn" transform="translate(2278,0)"><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E"></use><use data-c="37" xlink:href="#MJX-3-TEX-N-37" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(3056,0)"><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(3834,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-3-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(4334,0)"><use data-c="32" xlink:href="#MJX-3-TEX-N-32"></use><use data-c="34" xlink:href="#MJX-3-TEX-N-34" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(6334,0)"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-3-TEX-N-2192"></use></g><g data-mml-node="mn" transform="translate(1277.8,0)"><use data-c="31" xlink:href="#MJX-3-TEX-N-31"></use><use data-c="39" xlink:href="#MJX-3-TEX-N-39" transform="translate(500,0)"></use><use data-c="32" xlink:href="#MJX-3-TEX-N-32" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-3-TEX-N-31" transform="translate(1778,0)"></use></g><g data-mml-node="mn" transform="translate(3555.8,0)"><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(278,0)"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(778,0)"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(1278,0)"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(1778,0)"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(2278,0)"></use><use data-c="31" xlink:href="#MJX-3-TEX-N-31" transform="translate(2778,0)"></use><use data-c="31" xlink:href="#MJX-3-TEX-N-31" transform="translate(3278,0)"></use><use data-c="31" xlink:href="#MJX-3-TEX-N-31" transform="translate(3778,0)"></use></g><g data-mml-node="mn" transform="translate(7833.8,0)"><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(278,0)"></use></g></g></g></g><g data-mml-node="mo" transform="translate(14945.8,0) translate(0 -0.5)"><use data-c="7D" xlink:href="#MJX-3-TEX-S3-7D"></use></g></g><g data-mml-node="mo" transform="translate(15973.6,0)"><use data-c="3D" xlink:href="#MJX-3-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(17029.3,0)"><use data-c="31" xlink:href="#MJX-3-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-3-TEX-N-35" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-3-TEX-N-33" transform="translate(1000,0)"></use><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E" transform="translate(1500,0)"></use><use data-c="31" xlink:href="#MJX-3-TEX-N-31" transform="translate(1778,0)"></use><use data-c="34" xlink:href="#MJX-3-TEX-N-34" transform="translate(2278,0)"></use></g><g data-mml-node="mn" transform="translate(19807.3,0)"><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E"></use><use data-c="36" xlink:href="#MJX-3-TEX-N-36" transform="translate(278,0)"></use></g><g data-mml-node="mn" transform="translate(20585.3,0)"><use data-c="2E" xlink:href="#MJX-3-TEX-N-2E"></use><use data-c="30" xlink:href="#MJX-3-TEX-N-30" transform="translate(278,0)"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(21363.3,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-3-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(21863.3,0)"><use data-c="32" xlink:href="#MJX-3-TEX-N-32"></use><use data-c="33" xlink:href="#MJX-3-TEX-N-33" transform="translate(500,0)"></use></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable rowspacing=".5em" columnspacing="1em" displaystyle="true"><mtr><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN" fence="true" stretchy="true" symmetric="true"></mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>192.1</mn><mn>.6</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>24</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>192.1</mn><mn>.00000110</mn><mn>.0</mn></mtd></mtr><mtr><mtd><mn>192.1</mn><mn>.7</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>24</mn></mtd><mtd><mo accent="false" stretchy="false">→</mo><mn>192.1</mn><mn>.00000111</mn><mn>.0</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">}</mo></mrow><mo>=</mo><mn>153.14</mn><mn>.6</mn><mn>.0</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>23</mn></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p>&nbsp;</p><figure><table><thead><tr><th><span>目的网络</span></th><th><span>下一跳</span></th><th><span>端口</span></th></tr></thead><tbody><tr><td><span>192.1.1.0/24（照抄）</span></td><td><span>-</span></td><td><span>E0</span></td></tr><tr><td><span>192.1.5.0/24（照抄）</span></td><td><span>10.1.1.10</span></td><td><span>L1</span></td></tr><tr><td><span>153.14.6.0/23</span></td><td><span>10.1.1.2</span></td><td><span>L0</span></td></tr></tbody></table></figure><p><span>2)当主机192.1.1.130向主机192.1.7.211发送一个TTL=64的IP分组时，R1通过哪个接口转发该IP分组？主机192.1.7.211收到的IP分组TTL是多少？</span></p><p><span>【答案】L0，61</span></p><p><span>3)若R1增加一条Metric为10的链路连接Internet,则题42表中R1的LSI需要增加哪些信息</span></p><p><span>【答案】Net2：Prefix </span><strong><span>0.0.0.0</span></strong><span>（😭Internet网络前缀默认是0.0.0.0，要背的） Metric 10</span></p></li></ol></div></div>
 </body>
 </html>
