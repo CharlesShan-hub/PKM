@@ -53,6 +53,16 @@ def get_all_resources(path):
 def main():
 	'''
 	'''
+	## README.md
+	with open(FROM_PATH+'/index.md','r') as f:
+		temp = f.read()
+		with open(TO_PATH+'/README.md','w') as to_f:
+			to_f.write(temp.replace(".md'>",".html'>"))
+		with open(FROM_PATH+'/README.md','w') as to_f:
+			to_f.write(temp.replace(".md'>",".html'>"))
+
+
+	## notes
 	if not os.path.exists(FROM_PATH):
 		os.makedirs(FROM_PATH)
 
