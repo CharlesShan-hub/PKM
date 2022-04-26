@@ -2,6 +2,8 @@
 
 2022.3.11
 
+[toc]
+
 ## 前言
 
 在课程 “简单投票 Dapp” 中，你已经在一个模拟的区块链(ganache)上 实现了一个投票合约，并且成功地通过 nodejs 控制台和网页与合约进行了交互。 在接下来的项目学习中，我们将会实现以下内容:
@@ -179,6 +181,25 @@ deployer.deploy(Voting, ['Alice', 'Bob', 'Cary'], {gas:
 
 ### 更新 truffle 配置文件
 
+修改`truffle-config.js`:
+
+```js
+networks: {
+    // Useful for testing. The `development` name is special - truffle uses it by default
+    // if it's defined here and no other network is specified at the command line.
+    // You should run a client (like ganache-cli, geth or parity) in a separate terminal
+    // tab if you use this network and you must also set the `host`, `port` and `network_id`
+    // options below to some value.
+    //
+    development: { // 改成自己的私链的地址
+      host: "127.0.0.1",     // Localhost (default: none)
+      port: 8545,            // Standard Ethereum port (default: none)
+      network_id: "*",       // Any network (default: none)
+    },
+    ...
+}
+```
+
 
 
 
@@ -189,7 +210,7 @@ deployer.deploy(Voting, ['Alice', 'Bob', 'Cary'], {gas:
 
 ## 实验记录
 
-2022.3.10
+2022.4.9
 
 1. geth命令
 
@@ -198,11 +219,140 @@ geth --datadir ./mychain/ --networkid 15 --dev --dev.period 0 --password passwor
 ```
 
 2. 安装环境
-   1. webpack```npm install webpack```
-   2. truffle```npm install -g truffle@5.1.48```
-
+   
+   1. 全局安装truffle：```npm install -g truffle@5.1.48```
+   2. truffle安装成功后输入```truffle --help```可以显示可以输入的命令
+   3. 为本项目安装webpack：```npm install webpack```；```npm install webpack-cli ```
+   
 3. truffle
-   1. ```truffle init```
-   2. ```truffle unbox webpack```
-   3. 
-
+   
+   1. ```truffle unbox webpack```，这步会报错，因为无法访问国外DNS.
+   
+      我们可以直接去[官网](https://github.com/truffle-box)下载资源:https://github.com/truffle-box/webpack-box
+   
+   2. 修改`truffle-config.js`：
+   
+      ```js
+      networks: {
+          // Useful for testing. The `development` name is special - truffle uses it by default
+          // if it's defined here and no other network is specified at the command line.
+          // You should run a client (like ganache-cli, geth or parity) in a separate terminal
+          // tab if you use this network and you must also set the `host`, `port` and `network_id`
+          // options below to some value.
+          //
+          development: {
+            host: "127.0.0.1",     // Localhost (default: none)
+            port: 8545,            // Standard Ethereum port (default: none)
+            network_id: "*",       // Any network (default: none)
+          },
+          ...
+      }
+      ```
+   
+   3. 可以运行```truffle console```
+   
+   4. 修改`2_deploy_contracts.js`:
+   
+      ```js
+      //const ConvertLib = artifacts.require("ConvertLib");// 案例
+      //const MetaCoin = artifacts.require("MetaCoin"); // 案例
+      
+      const Voting = artifacts.require("./Voting");
+      
+      module.exports = function(deployer) {
+        //deployer.deploy(ConvertLib);  // 案例
+        //deployer.link(ConvertLib, MetaCoin);  // 案例
+        //deployer.deploy(MetaCoin);  // 案例
+        deployer.deploy(Voting, {gas:290000});
+      };
+      ```
+   
+   5. 在contract文件夹中创建`Voting.sol`:
+   
+      ```solidity
+      pragma solidity ^0.5.0;
+      contract Voting{
+          mapping (string => uint8) public votesReceived;
+          string[] public candidateList;
+          constructor() public {
+              candidateList=["Alice","Bob","Cary"];
+      
+          }
+          function totalVotesFor(string memory candidate) view public returns (uint8) {
+              require(validCandidate(candidate));
+              return votesReceived[candidate];
+          }
+          function voteForCandidate(string memory candidate) public {
+              require(validCandidate(candidate)); 
+              votesReceived[candidate] += 1;
+          }
+          function validCandidate(string memory candidate) view public returns (bool) {
+              for(uint i = 0; i < candidateList.length; i++) {
+                  if (compareStr(candidateList[i], candidate)) {
+                      return true;
+                  }
+              }
+              return false;
+          }
+          function compareStr(string memory _str1, string memory _str2) pure public returns(bool) {
+              if(bytes(_str1).length == bytes(_str2).length)
+                  if(keccak256(abi.encodePacked(_str1)) == keccak256(abi.encodePacked(_str2)))
+                      return true;
+              return false;
+          }
+      }
+      ```
+   
+   6. 编译：`truffle compile`:
+   
+      ```bash
+      Compiling your contracts...
+      ===========================
+      > Compiling ./contracts/Voting.sol
+      > Artifacts written to /Users/kimshan/workplace/blockchain/MyTokenVoteDapp/build/contracts
+      > Compiled successfully using:
+         - solc: 0.5.16+commit.9c3226ce.Emscripten.clang
+      ```
+   
+   7. 部署：`truffle migrate`：
+   
+      ```bash
+      truffle(development)> truffle migrate
+      
+      Compiling your contracts...
+      ===========================
+      > Everything is up to date, there is nothing to compile.
+      
+      
+      
+      Starting migrations...
+      ======================
+      > Network name:    'development'
+      > Network id:      15
+      > Block gas limit: 8000000 (0x7a1200)
+      
+      
+      2_deploy_contracts.js
+      =====================
+      
+         Deploying 'Voting'
+         ------------------
+         > transaction hash:    0x84881612efd5c53c02f2f6f2e508999d6cbeb9a19102f36675c5033110d84fcb
+      
+      Error:  *** Deployment Failed ***
+      
+      "Voting" -- The contract code couldn't be stored, please check your gas limit..
+      
+          at /usr/local/lib/node_modules/truffle/build/webpack:/packages/deployer/src/deployment.js:364:1
+          at processTicksAndRejections (internal/process/task_queues.js:97:5)
+          at Migration._deploy (/usr/local/lib/node_modules/truffle/build/webpack:/packages/migrate/Migration.js:68:1)
+          at Migration._load (/usr/local/lib/node_modules/truffle/build/webpack:/packages/migrate/Migration.js:55:1)
+          at Migration.run (/usr/local/lib/node_modules/truffle/build/webpack:/packages/migrate/Migration.js:171:1)
+          at Object.runMigrations (/usr/local/lib/node_modules/truffle/build/webpack:/packages/migrate/index.js:150:1)
+          at Object.runFrom (/usr/local/lib/node_modules/truffle/build/webpack:/packages/migrate/index.js:110:1)
+          at Object.run (/usr/local/lib/node_modules/truffle/build/webpack:/packages/migrate/index.js:87:1)
+          at runMigrations (/usr/local/lib/node_modules/truffle/build/webpack:/packages/core/lib/commands/migrate.js:269:1)
+          at /usr/local/lib/node_modules/truffle/build/webpack:/packages/core/lib/commands/migrate.js:231:1
+      ```
+   
+      

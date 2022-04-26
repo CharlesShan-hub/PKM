@@ -1,5 +1,5 @@
 # ESP8266
-2022.04.07
+2022.04.15
 
 ## 目录
 ![ESP8266导图概览](./resources/ESP8266.png)
@@ -17,7 +17,8 @@
 * ESP8266资料
   * [esp8266引脚介绍](https://www.bilibili.com/video/BV1rK411c7xj)
   * [esp8266引脚介绍网页](https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/)
-
+  * [esp8266所有第三方库](http://www.taichi-maker.com/homepage/iot-development/iot-dev-reference/esp8266-c-plus-plus-reference/)
+  
 * ESP8266项目
   * [esp8266项目](https://randomnerdtutorials.com/projects-esp8266/)
 * 优秀博客

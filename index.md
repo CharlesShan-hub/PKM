@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.3.15
+2022.04.08
 
 ![image text](./resources/title_small.png)
 
@@ -146,7 +146,7 @@
 |                          (OpenGL)                           |                         (Unity)                         |         🔗[Vue](https://cn.vuejs.org/v2/guide/)          |
 |                           (React)                           |                        (Angular)                        |                        (MongoDB)                        |
 |                          (Sqlite)                           |                         (Ajax)                          |                         (Linux)                         |
-| ✏️[Minecraft](./KnowledgeMap/计算机科学/Minecraft/README.md) |                                                         |                                                         |
+| ✏️[Minecraft](./KnowledgeMap/计算机科学/Minecraft/README.md) |      ✏️[PS](./KnowledgeMap/计算机科学/PS/README.md)      |                                                         |
 
 
 
