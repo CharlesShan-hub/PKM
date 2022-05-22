@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.04.08
+2022.05.19
 
 ![image text](./resources/title_small.png)
 
@@ -206,6 +206,19 @@
 |                                                         |                                           |                                                              |
 |                                                         |                                           |                                                              |
 |                                                         |                                           |                                                              |
+
+人工智能相关框架梳理：
+
+* Python
+  * tensorflow：
+    * 官网：https://www.tensorflow.org/overview/?hl=zh-cn
+  * keras
+    * tensorflow的进一步封装
+    * 官网：https://keras.io/getting_started/
+  * 
+* Java
+* Julia
+* JS
 
 ## 项目逻辑
 
