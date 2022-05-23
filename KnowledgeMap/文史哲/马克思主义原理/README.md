@@ -1,7 +1,13 @@
 # PKM - 马克思主义原理  
+
+2022.5.23
+
 ![image text](./resources/马克思主义原理.png)
 ## 介绍
 马克思主义原理按照陆寓丰(腿姐)考研课程进行梳理。
+
+* [马克思主义是关于无产阶级和人类解放的科学](./notes/马克思主义是关于无产阶级和人类解放的科学.md)
+
 ## 资源
 链接: https://pan.baidu.com/s/1L8VTQbpa8-xFXVeSl20uTg  
 提取码: Xuc6  
