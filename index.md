@@ -207,6 +207,8 @@
 |                                                         |                                           |                                                              |
 |                                                         |                                           |                                                              |
 
+Matlab资源：[公众号](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NDc0NzQzMg==&action=getalbum&album_id=2393156468570226689&scene=173&from_msgid=2247485413&from_itemidx=1&count=3&nolastread=1#wechat_redirect)
+
 人工智能相关框架梳理：
 
 * Python
