@@ -9,7 +9,8 @@ ignore_path=[
 	'/KnowledgeMap/文史哲',
 	'/.git',
 	'/PKMViewer',
-	'/PKM-plug-in'
+	'/PKM-plug-in',
+	'/KnowledgeMap/读书'
 	] # 都是忽略文件夹！
 
 for i in range(len(ignore_path)):
