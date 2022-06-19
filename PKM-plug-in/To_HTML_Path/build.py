@@ -6,6 +6,13 @@ TO_PATH='../../../CharlesShan-hub.github.io'
 
 ignore_path=[
 	#'/KnowledgeMap/计算机科学/计算机网络',
+	#'/KnowledgeMap/计算机科学/计算机组成原理',
+	#'/KnowledgeMap/计算机科学/操作系统',
+	#'/KnowledgeMap/计算机科学/数据结构',
+	'/KnowledgeMap/计算机科学/以太坊',
+	#'/KnowledgeMap/计算机科学/密码学',
+	'/KnowledgeMap/计算机科学/JSON',
+	#'/KnowledgeMap/计算机科学/YAML',
 	'/KnowledgeMap/文史哲',
 	'/.git',
 	'/PKMViewer',
