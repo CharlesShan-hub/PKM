@@ -9,9 +9,9 @@ ignore_path=[
 	#'/KnowledgeMap/计算机科学/计算机组成原理',
 	#'/KnowledgeMap/计算机科学/操作系统',
 	#'/KnowledgeMap/计算机科学/数据结构',
-	'/KnowledgeMap/计算机科学/以太坊',
+	#'/KnowledgeMap/计算机科学/以太坊',
 	#'/KnowledgeMap/计算机科学/密码学',
-	'/KnowledgeMap/计算机科学/JSON',
+	#'/KnowledgeMap/计算机科学/JSON',
 	#'/KnowledgeMap/计算机科学/YAML',
 	'/KnowledgeMap/文史哲',
 	'/.git',
@@ -19,6 +19,13 @@ ignore_path=[
 	'/PKM-plug-in',
 	'/KnowledgeMap/读书'
 	] # 都是忽略文件夹！
+
+CSS_SRC = '''<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<link rel="stylesheet" type="text/css" href="../../style.css">
+<link rel="stylesheet" type="text/css" href="../../../style.css">
+<link rel="stylesheet" type="text/css" href="../../../../style.css">
+<link rel="stylesheet" type="text/css" href="../../../../../style.css">'''
 
 for i in range(len(ignore_path)):
 	ignore_path[i]=FROM_PATH+ignore_path[i]
@@ -95,6 +102,13 @@ def main():
 		print("Building "+to_file)
 		with open(file,'r') as f:
 			temp = f.read()
+			style_index_l = temp.find('<style ')
+			style_index_r = temp.find('</style>')
+			temp = temp[:style_index_l]+CSS_SRC+temp[style_index_r+8:]
+			#print(temp[:style_index_l]+CSS_SRC+temp[style_index_r+8:])
+			#print(temp[style_index_l],
+			#	temp[style_index_r+7])
+			#temp = 
 			with open(to_file,'w') as to_f:
 				to_f.write(temp.replace(".md'>",".html'>"))
 
