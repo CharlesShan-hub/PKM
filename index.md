@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.06.22
+2022.06.27
 
 [toc]
 
@@ -14,7 +14,7 @@
 
 
 
-**[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 基础理论**
+**[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 基础理论/专题**
 
 |                                                              |                                                              |                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- |
@@ -22,7 +22,7 @@
 | (数字系统设计)                                               | (计算理论)                                                   |                  |
 | 🌟[计算机组成原理](./KnowledgeMap/计算机科学/计算机组成原理/README.md) | 🐦[计算机体系结构](./KnowledgeMap/计算机科学/计算机体系结构/README.md) |                  |
 | (嵌入式系统)                                                 | (程序设计理论)                                               |                  |
-| 🌟[操作系统](./KnowledgeMap/计算机科学/操作系统/README.md)    | (数据库)                                                     |                  |
+| 🌟[操作系统](./KnowledgeMap/计算机科学/操作系统/README.md)    | 🗃[数据库](./KnowledgeMap/计算机科学/数据库/README.md)        |                  |
 | 💎[计算机网络](./KnowledgeMap/计算机科学/计算机网络/README.md) | (现代交换原理)                                               | (下一代网络技术) |
 | (网络安全)                                                   | (中间件)                                                     |                  |
 | 🌟[数据结构](./KnowledgeMap/计算机科学/数据结构/README.md)    | (算法设计与分析)                                             | (软件工程)       |
@@ -89,8 +89,8 @@
 |               ([octave](https://octave.org/))                | ([q](https://en.wikipedia.org/wiki/Q_(programming_language_from_Kx_Systems))) | ([spreadsheet](https://subjectguides.york.ac.uk/coding/spreadsheets)) |
 |        ([yacas](https://en.wikipedia.org/wiki/Yacas))        |                                                              |                                                              |
 |                          **数据库**                          |                                                              |                                                              |
-|     🔗[SQL](https://www.runoob.com/sql/sql-tutorial.html)     | ([cassandra](https://baike.baidu.com/item/cassandra/20140772?fr=aladdin)) | ([CQL](https://www.w3cschool.cn/neo4j/neo4j_cql_introduction.html)) |
-| ([cypher](https://blog.csdn.net/AinUser/article/details/72268344)) | ([jade](https://en.wikipedia.org/wiki/JADE_(programming_language))) |              ([mariadb](https://mariadb.org/))               |
+|     🔗[SQL](https://www.runoob.com/sql/sql-tutorial.html)     |                                                              | ([CQL](https://www.w3cschool.cn/neo4j/neo4j_cql_introduction.html)) |
+|       ([cypher](https://neo4j.com/developer/cypher/))        | ([jade](https://en.wikipedia.org/wiki/JADE_(programming_language))) |              ([mariadb](https://mariadb.org/))               |
 | ([plsql](https://baike.baidu.com/item/plsql/9042661?fr=aladdin)) |        ([sqlite](https://www.sqlite.org/index.html))         |   ([SPARQL](https://baike.baidu.com/item/SparQL/10956405))   |
 |                           **网站**                           |                                                              |                                                              |
 |  🔗[Javascript](https://www.runoob.com/js/js-tutorial.html)   | 🔗[TypeScript](https://www.runoob.com/typescript/ts-tutorial.html) |         ([coffeescript](http://coffee-script.org/))          |
@@ -175,6 +175,7 @@
 
 
 
+* 🗃：专题
 * 💎：熟能生巧
 * 🌟：已经多次迭代渐入佳境
 * ⭐️：已经完成一次知识点覆盖
