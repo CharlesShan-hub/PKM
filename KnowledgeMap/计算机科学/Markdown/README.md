@@ -1,6 +1,6 @@
 # Markdown 
 
-2022.6.17
+2022.6.27
 
 ## 目录
 
@@ -11,6 +11,7 @@
   * 🧊 [普通语法](./notes/原生语法/普通语法.md)
   * 🧊 [公式](./notes/原生语法/公式.md)
   * 🍔 [公式整理](https://1024th.github.io/MathJax_Tutorial_CN/#/)
+  * 🍔 [如何用LaTeX打出各种箭头](https://zhuanlan.zhihu.com/p/263896738)
 * 编辑器扩展
   * 🧊 [Typora扩展](./notes/编辑器扩展/Typora扩展.md)
   * 🍔 [Typora官方介绍](https://support.typora.io/Draw-Diagrams-With-Markdown/)
