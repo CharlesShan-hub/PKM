@@ -5,6 +5,7 @@ FROM_PATH='../..'
 TO_PATH='../../../CharlesShan-hub.github.io'
 
 ignore_path=[
+	#'/KnowledgeMap/计算机科学',
 	#'/KnowledgeMap/计算机科学/计算机网络',
 	#'/KnowledgeMap/计算机科学/计算机组成原理',
 	#'/KnowledgeMap/计算机科学/操作系统',
@@ -102,13 +103,11 @@ def main():
 		print("Building "+to_file)
 		with open(file,'r') as f:
 			temp = f.read()
-			style_index_l = temp.find('<style ')
-			style_index_r = temp.find('</style>')
-			temp = temp[:style_index_l]+CSS_SRC+temp[style_index_r+8:]
-			#print(temp[:style_index_l]+CSS_SRC+temp[style_index_r+8:])
-			#print(temp[style_index_l],
-			#	temp[style_index_r+7])
-			#temp = 
+			#print(file,temp.find('<mjx-container'))
+			if temp.find('<mjx-container')==-1:
+				style_index_l = temp.find('<style ')
+				style_index_r = temp.find('</style>')
+				temp = temp[:style_index_l]+CSS_SRC+temp[style_index_r+8:]
 			with open(to_file,'w') as to_f:
 				to_f.write(temp.replace(".md'>",".html'>"))
 
