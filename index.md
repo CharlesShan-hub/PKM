@@ -76,7 +76,7 @@
 |                         **硬件设计**                         |                                                              |                                                              |
 |                            (VHDL)                            | 🔗[Verilog](https://www.runoob.com/w3cnote/verilog-tutorial.html) |                                                              |
 |                         **底层开发**                         |                                                              |                                                              |
-|                             (C)                              |     ([clike](https://github.com/combinatorylogic/clike))     |                 🔗[cmake](https://cmake.org/)                 |
+|         ✏️[C](./KnowledgeMap/计算机科学/C/README.md)          |     ([clike](https://github.com/combinatorylogic/clike))     |                 🔗[cmake](https://cmake.org/)                 |
 |                          (Assembly)                          |                            (erb)                             | ([gas](https://baike.baidu.com/item/GAS/13876199?fr=aladdin)) |
 |                           **脚本**                           |                                                              |                                                              |
 | ([bash](https://baike.baidu.com/item/Bash/6367661?fr=aladdin)) | ([basic](https://baike.baidu.com/item/BASIC/207698?fr=aladdin)) | ([makefile](https://seisman.github.io/how-to-write-makefile/introduction.html)) |
