@@ -14,7 +14,7 @@ ignore_path=[
 	#'/KnowledgeMap/计算机科学/密码学',
 	#'/KnowledgeMap/计算机科学/JSON',
 	#'/KnowledgeMap/计算机科学/YAML',
-	'/KnowledgeMap/文史哲',
+	#'/KnowledgeMap/文史哲',
 	'/.git',
 	'/PKMViewer',
 	'/PKM-plug-in',
