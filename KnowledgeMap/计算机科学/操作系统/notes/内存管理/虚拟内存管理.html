@@ -1,0 +1,1267 @@
+<!doctype html>
+<html style='font-size:22px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+  text-align: justify;
+  overflow-x: hidden;
+  color: #282c34;
+  background-color: #fefefe;
+  -webkit-font-smoothing: antialiased;
+}
+
+content #write {
+  background-color: #fefefe;
+  max-width: 90%;
+  margin: 0 auto;
+  padding-bottom: 7.5rem;
+}
+
+content #write p {
+  word-spacing: 0.05rem;
+}
+
+content #write ol li {
+  padding-left: 0.5rem;
+}
+
+content #write > h1:first-child {
+  font-weight: normal;
+}
+
+content #write > h5.md-focus:before {
+  top: 2px;
+}
+
+::-moz-selection {
+  background-color: #bac6e9;
+}
+
+::selection {
+  background-color: #bac6e9;
+}
+
+/* h1-h3 */
+#write h1,
+#write h2,
+#write h3 {
+  font-style: normal;
+}
+
+#write h1,
+#write h2 {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+#write h1 {
+  font-size: 3rem;
+}
+
+#write h2 {
+  font-size: 2.4rem;
+}
+
+#write h2:after {
+  content: "";
+  display: block;
+  width: 6.25rem;
+  height: 1px;
+  margin: 0 auto;
+  border-bottom: 1px solid #2f2f2f;
+}
+
+#write h3 {
+  font-size: 1.8rem;
+}
+
+/* paragraph */
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* ul ol */
+ul,
+ol {
+  padding-left: 1.75rem;
+}
+
+ul:first-child,
+ol:first-child {
+  margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+/* blockquote */
+blockquote {
+  padding: 0.5rem 1rem;
+  border-left: 8px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+  border-radius: 4px;
+}
+
+blockquote code {
+  background-color: transparent;
+}
+
+/* horizontal line */
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 2px dashed #abb2bf;
+}
+
+/* table */
+table,
+.md-table-fig .md-table {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  border-collapse: separate;
+  overflow: hidden;
+}
+
+table th,
+table td,
+.md-table-fig .md-table th,
+.md-table-fig .md-table td {
+  padding: 10px 16px;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+table th:first-child,
+table td:first-child,
+.md-table-fig .md-table th:first-child,
+.md-table-fig .md-table td:first-child {
+  border-left: 0;
+}
+
+table thead,
+.md-table-fig .md-table thead {
+  background-color: #e7ecf3;
+  color: #000;
+}
+
+table caption + thead tr:first-child th,
+table caption + thead tr:first-child td,
+table colgroup + thead tr:first-child th,
+table colgroup + thead tr:first-child td,
+table thead + tbody tr:first-child th,
+table thead + tbody tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td,
+.md-table-fig .md-table caption + thead tr:first-child th,
+.md-table-fig .md-table caption + thead tr:first-child td,
+.md-table-fig .md-table colgroup + thead tr:first-child th,
+.md-table-fig .md-table colgroup + thead tr:first-child td,
+.md-table-fig .md-table thead + tbody tr:first-child th,
+.md-table-fig .md-table thead + tbody tr:first-child td,
+.md-table-fig .md-table thead:first-child tr:first-child th,
+.md-table-fig .md-table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+table tbody + tbody,
+.md-table-fig .md-table tbody + tbody {
+  border-top: 2px solid #ddd;
+}
+
+.md-table-fig .md-table-edit {
+  background-color: #ddd;
+}
+
+.md-table-fig .md-table-edit .btn-default:hover {
+  background-color: #bac6e9;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .arrow {
+  top: -10px;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .arrow::after {
+  border-bottom-color: #ddd;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset {
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset input {
+  color: #282c34 !important;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset input#md-grid-width, .md-table-fig .md-table-edit .md-table-resize-popover .md-reset input#md-grid-height {
+  text-align: center;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .popover-title {
+  border-top: 1px solid #eee;
+}
+
+/* yaml front matter */
+#write pre.md-meta-block {
+  background: #e7ecf3;
+  color: #486491;
+  border: 0;
+  border-radius: 6px;
+  line-height: 1.3rem;
+  padding: 0.5rem 1.5rem;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+/* table of contents */
+.md-toc {
+  margin-bottom: 1.25rem;
+}
+
+/* task list */
+.md-task-list-item > input::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -4px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #737373;
+  background: #fff;
+  -webkit-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item > input::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  width: 0.6rem;
+  height: 0.3rem;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  opacity: 0;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+
+.md-task-list-item > input:checked::before {
+  background-color: #67c23a;
+  border: none;
+}
+
+.md-task-list-item > input:checked::after {
+  opacity: 1;
+}
+
+.md-task-list-item.task-list-done {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* footnote */
+.footnotes {
+  font-size: 1rem;
+}
+
+/* math,html block common */
+.mathjax-block,
+.md-htmlblock {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+}
+
+.mathjax-block[contenteditable="false"]:active, .mathjax-block[contenteditable="false"]:focus,
+.md-htmlblock[contenteditable="false"]:active,
+.md-htmlblock[contenteditable="false"]:focus {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.mathjax-block:hover .md-rawblock-container,
+.mathjax-block:hover .md-rawblock-tooltip,
+.md-htmlblock:hover .md-rawblock-container,
+.md-htmlblock:hover .md-rawblock-tooltip {
+  background-color: #f5f6f7;
+  -webkit-animation: showRawBlockTooltip 0s linear;
+          animation: showRawBlockTooltip 0s linear;
+}
+
+.mathjax-block:hover .md-rawblock-container,
+.md-htmlblock:hover .md-rawblock-container {
+  border-radius: 6px 0 6px 6px;
+}
+
+.mathjax-block .md-rawblock-control,
+.md-htmlblock .md-rawblock-control {
+  background-color: #f5f6f7;
+}
+
+.mathjax-block .md-rawblock-tooltip,
+.md-htmlblock .md-rawblock-tooltip {
+  background-color: #f5f6f7;
+  -webkit-animation: showRawBlockTooltip 0s linear;
+          animation: showRawBlockTooltip 0s linear;
+  border-radius: 4px 4px 0 0;
+}
+
+/* math block */
+.mathjax-block .md-mathblock-panel .code-tooltip[contenteditable="false"] {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-before {
+  padding-top: 6px;
+  border-top-left-radius: 6px;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-after {
+  padding-bottom: 6px;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner {
+  color: #282c34;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-lines {
+  color: #282c34;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-gutters {
+  background-color: #f5f6f7;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selected,
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selectedtext {
+  background-color: #bac6e9 !important;
+}
+
+.mathjax-block .md-math-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* html block */
+.md-htmlblock .md-htmlblock-panel {
+  border-radius: 6px;
+  border-top-right-radius: 0;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input {
+  padding-top: 14px;
+  padding-bottom: 10px;
+}
+
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selected,
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selectedtext {
+  background-color: #bac6e9 !important;
+}
+
+/* strong */
+strong {
+  background-color: inherit;
+  color: #b5302e;
+}
+
+/* emphasis */
+em {
+  background-color: inherit;
+  color: #949415;
+}
+
+/* underline */
+u {
+  background-color: inherit;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid #f00;
+  padding-bottom: 1px;
+}
+
+/* code */
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+  font-size: inherit;
+}
+
+code {
+  background-color: rgba(34, 37, 38, 0.05);
+  color: #e96900;
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 2px;
+  padding: 3px 4px 1px;
+  border-radius: 4px;
+}
+
+/* strike */
+del {
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* hightlight */
+mark {
+  color: #282c34;
+  font-weight: 500;
+  padding: 1px 5px 2px;
+  border-radius: 2px;
+}
+
+/* hyperlink */
+a {
+  background-color: inherit;
+  color: #2484c1;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a img {
+  border: none;
+}
+
+/* code fences */
+.md-fences {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #282c34;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 2.5rem;
+  border: none;
+  border-radius: 6px;
+}
+
+.md-fences[contenteditable="false"]:active, .md-fences[contenteditable="false"]:focus {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.md-fences .code-tooltip {
+  background-color: #282c34;
+  border-radius: 4px;
+}
+
+.md-fences span {
+  color: #abb2bf;
+}
+
+.md-fences .code-tooltip .ty-input {
+  color: #fff;
+  font-weight: 500;
+}
+
+.ty-show .autoComplt-list li.active {
+  background-color: #bac6e9;
+}
+
+/* code container */
+.cm-s-inner {
+  background-color: #282c34;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+  background-color: #282c34;
+  border: none;
+}
+
+.cm-s-inner .CodeMirror-guttermarker,
+.cm-s-inner .CodeMirror-guttermarker-subtle,
+.cm-s-inner .CodeMirror-linenumber {
+  color: #737984;
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid #528bff !important;
+}
+
+.cm-s-inner div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line > span::-moz-selection,
+.cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+  background-color: #bac6e9;
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line > span::selection,
+.cm-s-inner .CodeMirror-line > span > span::selection {
+  background-color: #bac6e9;
+}
+
+.cm-s-inner .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0);
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+
+.cm-s-inner .CodeMirror-selected,
+.cm-s-inner .CodeMirror-selectedtext {
+  background-color: #404859 !important;
+}
+
+/* code fences color */
+.cm-s-inner .cm-keyword {
+  color: #c678dd !important;
+}
+
+.cm-s-inner .cm-operator {
+  color: #56b6c2 !important;
+}
+
+.cm-s-inner .cm-variable {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-variable-3 {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-builtin {
+  color: #e8bf6a !important;
+}
+
+.cm-s-inner .cm-atom {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-number {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-def {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-string {
+  color: #98c379 !important;
+}
+
+.cm-s-inner .cm-string-2 {
+  color: #80cbc4 !important;
+}
+
+.cm-s-inner .cm-comment {
+  color: #629755 !important;
+}
+
+.cm-s-inner .cm-tag {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-meta {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-attribute {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-property {
+  color: #61afef !important;
+}
+
+.cm-s-inner .cm-qualifier {
+  color: #decb6b !important;
+}
+
+.cm-s-inner .cm-error {
+  color: #fff !important;
+  background-color: #ec5f67 !important;
+}
+
+.cm-s-inner .cm-tag.cm-bracket {
+  color: #abb2bf !important;
+}
+
+/* scrollbar */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 4px;
+}
+
+/* find dialog */
+#typora-quick-open {
+  background-color: #fff;
+  color: #282c34;
+}
+
+#typora-quick-open .typora-quick-open-item.active {
+  background-color: #bac6e9 !important;
+}
+
+#typora-quick-open .ty-quick-open-category-title {
+  border-top: 1px solid #eee !important;
+}
+
+/* modal dialog */
+#common-dialog .modal-dialog .modal-content {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: #f5f6f7;
+  border: none;
+  border-radius: 6px;
+}
+
+#common-dialog .modal-dialog .modal-content .modal-footer .btn-default:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* preferences */
+.ty-preferences {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #282c34;
+}
+
+.ty-preferences .window-header h2 {
+  font-size: 1.6rem;
+}
+
+.ty-preferences .sidebar {
+  font-size: 1.4rem;
+}
+
+.ty-preferences .sidebar .nav-group-item.active,
+.ty-preferences .sidebar .nav-group-item:active {
+  color: #efefef;
+  background-color: #2f845e;
+}
+
+/* sidebar includes file-tree,articles and outline*/
+.html-for-mac #typora-sidebar {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* focus mode/typewriter mode notification  */
+#md-notification {
+  background-color: #fff !important;
+}
+
+#md-notification #ty-surpress-mode-warning-close-btn:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* Unibody sidebar */
+#megamenu-menu-sidebar {
+  color: #282c34;
+  font-size: 1rem;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list {
+  border-top-color: rgba(171, 192, 208, 0.1);
+  background-color: #222526;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li {
+  font-size: 0.8rem;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a {
+  color: #abc0d0 !important;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a.active, #megamenu-menu-sidebar #megamenu-menu-list li a:hover {
+  background-color: #3e4249 !important;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a#m-saved {
+  background-color: transparent !important;
+}
+
+.megamenu-opened .megamenu-menu {
+  left: 0;
+}
+
+#megamenu-content {
+  color: #000;
+}
+
+/* sidebar */
+#typora-sidebar {
+  background-color: #fafafa;
+  border-right: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-loading-template.file-list-item {
+  border-bottom: transparent !important;
+  background-color: rgba(171, 192, 208, 0.1);
+}
+
+#typora-sidebar .info-panel-tab-wrapper .info-panel-tab:hover {
+  color: inherit;
+}
+
+#typora-sidebar .info-panel-tab-wrapper .info-panel-tab .info-panel-tab-border {
+  background-color: #2f845e;
+  border-radius: 4px;
+}
+
+#typora-sidebar .sidebar-osx-tab .sidebar-tabs {
+  border-bottom-color: transparent;
+}
+
+#typora-sidebar #sidebar-content .file-list-item {
+  border-bottom: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-content .file-list-item.active {
+  background-color: rgba(66, 185, 131, 0.1);
+  border-left: 4px solid #2f845e;
+}
+
+#typora-sidebar #sidebar-content .ty-sidebar-search-panel {
+  border-bottom: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-content .ty-sidebar-search-panel .searchpanel-search-option-btn {
+  background-color: #fff;
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-node-content {
+  line-height: 1.375rem;
+  font-size: 1rem;
+  color: #282c34 !important;
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-tree-node:not(.file-node-root):hover > .file-node-background {
+  border-left: 4px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-tree-node.active > .file-node-background {
+  border-color: #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content #file-library-list-children .file-library-file-node:hover {
+  border-left: 4px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content #outline-content .no-collapse-outline .outline-item {
+  line-height: 1.375rem;
+  font-size: 1rem;
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-expander:before {
+  color: inherit;
+  font-size: 14px;
+  top: auto;
+  content: "\f0da";
+  font-family: FontAwesome;
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-expander:hover:before,
+#typora-sidebar #sidebar-content #outline-content .outline-item-open > .outline-item > .outline-expander:before {
+  content: "\f0d7";
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+#typora-sidebar #ty-sidebar-footer {
+  border-top: 1px solid #eee;
+}
+
+#typora-sidebar #ty-sidebar-footer .sidebar-footer-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* dropdown menu */
+.dropdown-menu {
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-top: 1px solid #eee;
+}
+
+.dropdown-menu > .show + .menuitem-group-label.show {
+  border-top: 1px solid #eee !important;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > li > a:hover,
+.dropdown-menu .menu-style-btn.active {
+  background-color: #bac6e9 !important;
+}
+
+.dropdown-menu li a {
+  color: #282c34 !important;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #bac6e9 !important;
+}
+
+.dropdown-menu .divider {
+  border-color: #fff;
+}
+
+/* sidebar-files-menu,toc-dropmenu,suggest common */
+#sidebar-files-menu,
+#toc-dropmenu,
+.auto-suggest-container {
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border: none;
+}
+
+#toc-dropmenu .outline-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* emoji,fences,word suggest */
+.auto-suggest-container {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.auto-suggest-container li.active, .auto-suggest-container li:hover {
+  background-color: #bac6e9 !important;
+}
+
+/** source code mode */
+#typora-source {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a6a6a;
+}
+
+#typora-source .cm-s-typora-default .cm-header,
+#typora-source .cm-s-typora-default .cm-property,
+#typora-source .CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+  color: #428bca;
+}
+
+#typora-source .cm-s-typora-default .cm-atom,
+#typora-source .cm-s-typora-default .cm-number {
+  color: #777777;
+}
+
+#typora-source .CodeMirror-selectedtext {
+  background-color: transparent !important;
+}
+
+.typora-node .file-list-item-parent-loc,
+.typora-node .file-list-item-time,
+.typora-node .file-list-item-summary {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>虚拟内存管理</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='虚拟内存管理'><span>虚拟内存管理</span></h1><p><span>2022.07.16</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#虚拟内存管理">虚拟内存管理</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" style="" href="#虚拟内存的基本概念">虚拟内存的基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n8"><a class="md-toc-inner" style="" href="#传统存储管理方式的特征">传统存储管理方式的特征</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n12"><a class="md-toc-inner" style="" href="#局部性原理">局部性原理</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n17"><a class="md-toc-inner" style="" href="#虚拟存储器的定义和特征">虚拟存储器的定义和特征</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" style="" href="#虚拟内存技术的实现">虚拟内存技术的实现</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n27"><a class="md-toc-inner" style="" href="#请求分页管理方式">请求分页管理方式</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n29"><a class="md-toc-inner" style="" href="#页表机制">页表机制</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n33"><a class="md-toc-inner" style="" href="#缺页中断机构">缺页中断机构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n37"><a class="md-toc-inner" style="" href="#地址变换机构">地址变换机构</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n41"><a class="md-toc-inner" style="" href="#页框分配">页框分配</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n43"><a class="md-toc-inner" style="" href="#驻留级大小">驻留级大小</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n47"><a class="md-toc-inner" style="" href="#内存分配策略">内存分配策略</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n51"><a class="md-toc-inner" style="" href="#物理块调入算法">物理块调入算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n55"><a class="md-toc-inner" style="" href="#调入页面的时机">调入页面的时机</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n59"><a class="md-toc-inner" style="" href="#从何处调入页面">从何处调入页面</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n67"><a class="md-toc-inner" style="" href="#页面置换算法">页面置换算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n69"><a class="md-toc-inner" style="" href="#最佳opt）置换算法">最佳（OPT）置换算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n255"><a class="md-toc-inner" style="" href="#先进先出fifo）置换算法">先进先出（FIFO）置换算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n259"><a class="md-toc-inner" style="" href="#最近最久未使用lru）置换算法">最近最久未使用（LRU）置换算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n263"><a class="md-toc-inner" style="" href="#时钟clock）置换算法">时钟（CLOCK）置换算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n267"><a class="md-toc-inner" style="" href="#改进型的时钟置换算法">改进型的时钟置换算法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n370"><a class="md-toc-inner" style="" href="#抖动和工作集">抖动和工作集</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n73"><a class="md-toc-inner" style="" href="#抖动">抖动</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n371"><a class="md-toc-inner" style="" href="#工作集">工作集</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n75"><a class="md-toc-inner" style="" href="#内存映射文件">内存映射文件</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n79"><a class="md-toc-inner" style="" href="#虚拟存储器性能影响因素">虚拟存储器性能影响因素</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n83"><a class="md-toc-inner" style="" href="#地址翻译">地址翻译</a></span></p></div><h2 id='虚拟内存的基本概念'><span>虚拟内存的基本概念</span></h2><p>&nbsp;</p><h3 id='传统存储管理方式的特征'><span>传统存储管理方式的特征</span></h3><ol><li><span>一次性：一次全部调入内存</span></li><li><span>驻留性：作业驻留在内存直到作业运行结束</span></li></ol><h3 id='局部性原理'><span>局部性原理</span></h3><ol><li><span>时间局部性：现在用的以后可能用</span></li><li><span>空间局部性：某处用了附近可能用</span></li></ol><h3 id='虚拟存储器的定义和特征'><span>虚拟存储器的定义和特征</span></h3><ol><li><p><span>多次性：多也可以多次调入内存</span></p></li><li><p><span>对唤性：暂时不用的作业部分调出内存</span></p></li><li><p><span>虚拟性：逻辑上扩充内存</span></p></li><li><p><span>注意</span></p><p><span>虚拟内存</span><u><span>最大</span></u><span>容量：由CPU寻址范围确定</span></p><p><span>虚拟内存</span><u><span>实际</span></u><span>容量：min{CPU寻址范围，内外存大小和}</span></p></li></ol><h3 id='虚拟内存技术的实现'><span>虚拟内存技术的实现</span></h3><p><span>三种方式：请求分页、请求分段、请求段页式</span></p><p><span>硬件支持：内存外存、页表机制、中断机构、地址变换机构</span></p><h2 id='请求分页管理方式'><span>请求分页管理方式</span></h2><h3 id='页表机制'><span>页表机制</span></h3><p><span>页号（隐藏）、内存块号、状态位（是否调入内存）、访问字段（for置换算法）、修改位、外存地址</span></p><p><img src="resources/pic3.png" referrerpolicy="no-referrer" alt="image-20220716175940903"></p><h3 id='缺页中断机构'><span>缺页中断机构</span></h3><p><span>缺页中断是</span><strong><span>内中断</span></strong></p><blockquote><p><span>中断</span></p><p><span>内中断(内部异常)：陷入Trap、故障(eg. 缺页中断)、终止</span></p><p><span>外中断：IO中断请求、人工干预</span></p></blockquote><h3 id='地址变换机构'><span>地址变换机构</span></h3><ol><li><span>查快表</span></li><li><span>查页表，修改位</span></li><li><span>缺页中断 &amp; 页面置换算法 &amp; 调入调出</span></li></ol><h2 id='页框分配'><span>页框分配</span></h2><h3 id='驻留级大小'><span>驻留级大小</span></h3><p><span>给一个进程分配的物理页框的集合就是</span><strong><span>驻留集</span></strong></p><ol><li><span>页框越少，主存中进程越多，CPU利用率越高</span></li><li><span>进程驻留集越小，缺页率越高</span></li><li><span>进程驻留集越多，缺页率变化不大</span></li></ol><h3 id='内存分配策略'><span>内存分配策略</span></h3><ol><li><span>分配：固定分配 &amp; 可变分配</span></li><li><span>置换：全局置换 &amp; 局部置换</span></li><li><u><span>固定分配局部置换</span></u><span>：进程的内存不变，缺页时自己换自己</span></li><li><u><span>可变分配全局置换</span></u><span>：进程的内存不受限，缺页时随便找空的</span></li><li><u><span>可变分配局部置换</span></u><span>：进程的内存受限但可变，缺页率越高分配的越多，缺页时自己换自己</span></li></ol><h3 id='物理块调入算法'><span>物理块调入算法</span></h3><p><span>采用固定分配的算法！</span></p><ol><li><u><span>平均分配算法</span></u><span>：按“人头儿”算（进程数量平均分配）</span></li><li><u><span>按比例分配算法</span></u><span>：按进程大小算</span></li><li><u><span>优先权分配算法</span></u><span>：通常分成两部分，一部分按比例，一部分按优先权</span></li></ol><h3 id='调入页面的时机'><span>调入页面的时机</span></h3><ol><li><u><span>预调页策略</span></u><span>：程序员指出一会儿调啥，常用于进程的首次调入。</span></li><li><u><span>请求调页策略</span></u><span>：一次调一页。运行期间的调入当时。</span></li></ol><h3 id='从何处调入页面'><span>从何处调入页面</span></h3><p><span>From where？</span></p><ol><li><span>文件区：存文件，离散分配</span></li><li><span>对换区：存用于对换的页面，连续分配</span></li></ol><p><span>Three Method</span></p><ol><li><u><span>系统拥有足够的对换区空间</span></u><span>：进程运行前把文件全都放到对换区，提高速度</span></li><li><u><span>系统缺少足够的对换区空间</span></u><span>：不被修改的文件都放入文件区，会被修改的部分放到对换区</span></li><li><u><span>UNIX方式</span></u><span>：进程相关的页面全在文件区，未运行过的从文件区调入，运行过又被换出的放到对换区，下次调着快。</span></li></ol><h2 id='页面置换算法'><span>页面置换算法</span></h2><iframe height="498" src="https://player.bilibili.com/player.html?aid=70156862&amp;bvid=BV1YE411D7nH&amp;cid=235890180&amp;page=46" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><h3 id='最佳opt）置换算法'><span>最佳（OPT）置换算法</span></h3><p><span>淘汰以后永远不使用的页面，或最长时间不使用的页面</span></p><p><span>缺点：人们无法预测未来，算法不能实现</span></p><h3 id='先进先出fifo）置换算法'><span>先进先出（FIFO）置换算法</span></h3><p><span>淘汰最先进来的页面</span></p><p><span>缺点：最早来的不见得不经常访问的；</span><strong><span>Belady异常</span></strong><span>（物理块数增大，缺页故障数不减反增）</span></p><h3 id='最近最久未使用lru）置换算法'><span>最近最久未使用（LRU）置换算法</span></h3><p><span>最近最常时间为访问的淘汰</span></p><h3 id='时钟clock）置换算法'><span>时钟（CLOCK）置换算法</span></h3><ol><li><span>将每一个进程视为一个循环队列。每个页面一个访问位，访问过是1，没访问过是0。</span></li><li><span>新页面要被置换进来时，会寻找第一个访问位是0的将其替换，被扫描过的页面由1变0。</span></li><li><span>如果找了一轮没找到，就将页面的访问位依次置0后，扫描第二遍。</span></li></ol><h3 id='改进型的时钟置换算法'><span>改进型的时钟置换算法</span></h3><ol><li><span>简单的时钟置换算法仅考虑到一个页面最近是否被访问过。事实上，如果被淘汰的页面没有被修改过就不需要执行1/0操作写回外存。只有被淘汰的页面被修改过时，才需要写回外存。</span></li><li><span>因此，除了考虑一个页面最近有没有被访问过之外，操作系统还应考虑页面有没有被修改过。在其他条件都相同时，应优先淘汰没有修改过的页面，避免/0操作。这就是改进型的时钟置换</span></li><li><span>算法的思想。修改位=0，表示页面没有被修改过；修改位=1，表示页面被修改过。为方便讨论，用（访问位，修改位）的形式表示各页面状态。如（1，1）表示一个页面近期被访问过，且被修改过。</span></li><li><span>算法规则：将所有可能被置换的页面排成一个循环队列</span>
+<span>第一轮：从当前位置开始扫描到第一个（0,0）的帧用于替换。本轮扫描不修改任何标志位</span>
+<span>第二轮：若第一轮扫描失败，则重新扫描，查找第一个（0,1）的帧用于替换。本轮将所有扫描过的帧访问位设为0</span>
+<span>第三轮：若第二轮扫描失败，则重新扫描，查找第一个（0,R）的帧用于替换。本轮扫描不修改任何标志位</span></li></ol><blockquote><p><span>我的理解：</span></p><ol><li><span>普通的时钟置换算法，只考虑把没访问的也先换出去。改进的时钟置换算法，想把没写过的内容先换出去，因为这样不用改主存。</span></li><li><span>（访问位，修改为）。先把没改没用（0，0）的换出去，找不到就找改了没用的（1，0）。这里可能会想，我都改了怎么可能没用过呢。实际上我的理解是，找（0，0）找（0，1）是一个整体。如果两轮没找到会刷新访问位。然后再来找（0，0），（0，1），不过这次就可以找到了，算法就可以结束了。</span></li><li><span>简化：「找(0,0)，找(0,1)，访问位(第一位)置0」</span></li></ol></blockquote><p><img src="resources/pic4.png" referrerpolicy="no-referrer" alt="image-20220716200548975"></p><h2 id='抖动和工作集'><span>抖动和工作集</span></h2><h3 id='抖动'><span>抖动</span></h3><ul><li><span>抖动：刚换出就要换入，刚换入就要换出</span></li><li><span>抖动根本原因：系统运行进程太多，每个进程的物理块太少</span></li></ul><h3 id='工作集'><span>工作集</span></h3><ul><li><p><strong><span>工作集</span></strong><span>：某段时间间隔内，进程要访问的页面的集合：比如下图t1的工作集是{2,3,5}</span></p><p><img src="resources/pic5.png" alt="image-20220716201215527" style="zoom:50%;" /></p></li><li><p><strong><span>工作集窗口</span></strong><span> Delta，比如上图的Delta = 5；（也就是保留五个）</span></p></li><li><p><span>把工作及窗口里边的重复的去掉得到工作集</span></p></li></ul><h2 id='内存映射文件'><span>内存映射文件</span></h2><p><span>内存映射文件（Memory- Mapped Files）与虚拟内存有些相似，将磁盘文件的全部或部分内容与进程虚拟地址空间的某个区域建立映射关系，便可以直接访问被映射的文件</span></p><h2 id='虚拟存储器性能影响因素'><span>虚拟存储器性能影响因素</span></h2><ul><li><span>抖动与工作集</span></li><li><span>局部性原理</span></li><li><span>页面置换算法</span></li><li><span>写回磁盘</span></li></ul><h2 id='地址翻译'><span>地址翻译</span></h2><p>&nbsp;</p></div></div>
+</body>
+</html>
