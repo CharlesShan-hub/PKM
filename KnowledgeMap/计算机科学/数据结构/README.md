@@ -77,6 +77,8 @@
 
 * **数据结构与算法(公众号)**（电子书）
 
+* **北邮计算机数据结构课件**
+
 ## 外部资料
 
 __算法可视化网站__ :https://www.cs.usfca.edu/~galles/visualization/Algorithms.html  
