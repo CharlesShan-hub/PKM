@@ -79,6 +79,8 @@
 
 * **北邮计算机数据结构课件**
 
+* **算法导论（原书第3版） by Thomas H.Cormen Charles E.Leiserson Ronald L.Rivest Clifford Stein.pdf**
+
 ## 外部资料
 
 __算法可视化网站__ :https://www.cs.usfca.edu/~galles/visualization/Algorithms.html  
