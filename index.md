@@ -19,17 +19,17 @@
 **[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 基础理论/专题**
 
 |                                                              |                                                              |                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- |
-| (电路分析基础)                                               | (模拟电路)                                                   | (数字电路)       |
-| (数字系统设计)                                               | (计算理论)                                                   |                  |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :--------------: |
+|                        (电路分析基础)                        |                          (模拟电路)                          |    (数字电路)    |
+|                        (数字系统设计)                        |                          (计算理论)                          |                  |
 | 🌟[计算机组成原理](./KnowledgeMap/计算机科学/计算机组成原理/README.md) | 🐦[计算机体系结构](./KnowledgeMap/计算机科学/计算机体系结构/README.md) |                  |
-| (嵌入式系统)                                                 | (程序设计理论)                                               |                  |
-| 🌟[操作系统](./KnowledgeMap/计算机科学/操作系统/README.md)    | 🗃[数据库](./KnowledgeMap/计算机科学/数据库/README.md)        |                  |
-| 💎[计算机网络](./KnowledgeMap/计算机科学/计算机网络/README.md) | (现代交换原理)                                               | (下一代网络技术) |
-| (网络安全)                                                   | (中间件)                                                     |                  |
-| 🌟[数据结构](./KnowledgeMap/计算机科学/数据结构/README.md)    | (算法设计与分析)                                             | (软件工程)       |
-| (计算机图形学)                                               | (GPU编程)                                                    | (并行计算)       |
-| (分布式与云计算)                                             | (区块链)                                                     |                  |
+|                         (嵌入式系统)                         |                        (程序设计理论)                        |                  |
+|  🌟[操作系统](./KnowledgeMap/计算机科学/操作系统/README.md)   |    🗃[数据库](./KnowledgeMap/计算机科学/数据库/README.md)     |                  |
+| 💎[计算机网络](./KnowledgeMap/计算机科学/计算机网络/README.md) |                        (现代交换原理)                        | (下一代网络技术) |
+|                          (网络安全)                          |                           (中间件)                           |                  |
+|  🌟[数据结构](./KnowledgeMap/计算机科学/数据结构/README.md)   |                       (算法设计与分析)                       |    (软件工程)    |
+|                        (计算机图形学)                        |                          (GPU编程)                           |    (并行计算)    |
+|                       (分布式与云计算)                       |                           (区块链)                           |                  |
 
 
 
@@ -86,7 +86,7 @@
 |       ([tcl](https://www.tcl.tk/about/language.html))        | ([vbscript](https://www.tutorialspoint.com/vbscript/index.htm)) |                                                              |
 |                    **数据科学与人工智能**                    |                                                              |                                                              |
 |         🔗[Julia](https://docs.julialang.org/en/v1/)          |     🔗[Matlab](https://www.mathworks.com/help/index.html)     | ([cobol]([https://baike.baidu.com/item/COBOL%E8%AF%AD%E8%A8%80/12789101?fromtitle=COBOL&fromid=1641359&fr=aladdin](https://baike.baidu.com/item/COBOL语言/12789101?fromtitle=COBOL&fromid=1641359&fr=aladdin))) |
-| ([lisp]([https://baike.baidu.com/item/lisp%E8%AF%AD%E8%A8%80](https://baike.baidu.com/item/lisp语言))) | ([commonlisp]([https://baike.baidu.com/item/Common%20Lisp/7786268?fr=aladdin](https://baike.baidu.com/item/Common Lisp/7786268?fr=aladdin))) |      ([cython](https://zhuanlan.zhihu.com/p/373236956))      |
+| ([lisp]([https://baike.baidu.com/item/lisp%E8%AF%AD%E8%A8%80](https://baike.baidu.com/item/lisp语言))) | ([commonlisp](https://baike.baidu.com/item/Common%20Lisp/7786268?fr=aladdin)) |      ([cython](https://zhuanlan.zhihu.com/p/373236956))      |
 | ([fortran]([https://baike.baidu.com/item/FORTRAN%E8%AF%AD%E8%A8%80/295590?fr=aladdin](https://baike.baidu.com/item/FORTRAN语言/295590?fr=aladdin))) |    ([mathematica](https://www.wolfram.com/mathematica/))     |              ([R](https://www.r-project.org/))               |
 |               ([octave](https://octave.org/))                | ([q](https://en.wikipedia.org/wiki/Q_(programming_language_from_Kx_Systems))) | ([spreadsheet](https://subjectguides.york.ac.uk/coding/spreadsheets)) |
 |        ([yacas](https://en.wikipedia.org/wiki/Yacas))        |                                                              |                                                              |
