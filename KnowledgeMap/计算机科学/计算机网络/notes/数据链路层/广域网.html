@@ -1,5 +1,5 @@
 <!doctype html>
-<html style='font-size:24px !important'>
+<html style='font-size:22px !important'>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
@@ -1107,10 +1107,158 @@ a img {
 }
 
 
- @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>广域网</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='广域网'><span>广域网</span></h1><p><span>2022.2.15</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#广域网">广域网</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#广域网基本概念">广域网基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n31"><a class="md-toc-inner" href="#ppp协议">PPP协议</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n104"><a class="md-toc-inner" href="#dhlc协议考纲已删）">DHLC协议（考纲已删）</a></span></p></div><h2 id='广域网基本概念'><span>广域网基本概念</span></h2><p><span>广域网(WAN, Wide Area Network),通常跨接很大的物理范围,所覆盖的范围从几十公里到几千公里,它能连接多个城市或国家,或横跨几个洲并能提供远距离通信,形成国际性的远程网络。</span></p><p><span>广域网的通信子网主要使用</span><strong><span>分组交换技术</span></strong><span>。广域网的通信子网可以利用公用分组交换网、卫星通信网和无线分组交换网,它将分布在不同地区的局域网或计算机系统互连起来,达到资源共享的目的。</span></p><p><span>因特网(Internet)是世界范围内最大的广域网。</span></p><p><img src="resources/广域网.png" alt="广域网" style="zoom: 50%;" /></p><p><span>与局域网的关系：</span></p><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:left;' ><span>广域网</span></th><th><span>局域网</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>覆盖范围</span></td><td style='text-align:left;' ><span>很广，通常跨区域</span></td><td><span>很小，通常在一个区域内</span></td></tr><tr><td style='text-align:center;' ><span>连接方式</span></td><td style='text-align:left;' ><span>节点间点对点连接，为了提高网络可靠性，一个节点交换机往往与多个节点交换机相连</span></td><td><span>普遍采用多点接入技术</span></td></tr><tr><td style='text-align:center;' ><span>OSI参考模型</span></td><td style='text-align:left;' ><span>物理+数据链路+【网络层】</span></td><td><span>物理层+数据链路</span></td></tr><tr><td style='text-align:center;' ><span>着重点</span></td><td style='text-align:left;' ><span>强调资源共享</span></td><td><span>强调数据传输</span></td></tr></tbody></table></figure><p><span>联系与相似点：广域网与局域网二者平等（而不是包含）；连接到一个广域网或局域网上的主机在该网进行通信时，只需要使用其网络的物理地址</span></p><h2 id='ppp协议'><span>PPP协议</span></h2><ol start='' ><li><p><span>PPP( Point-to-Point Protocol，点对点协议 )是使用</span><strong><span>串行</span></strong><span>线路通信的</span><strong><span>面向字节</span></strong><span>的协议,该协议应用在直接连接两个结点的链路上，</span><strong><span>只支持全双工</span></strong><span>。设计的目的主要是用来通过拨号或专线方式建立点对点连接发送数据,使其成为各种主机、网桥和路由器之间简单连的一种共同的解决方案。</span></p></li><li><p><span>背景：PPP协议是在</span><strong><span>SLIP协议</span></strong><span>的基础上发展而来的,它既可以在异步线路上传输,又可在同步线路上使用;不仅用于Modem链路,也用于租用的路由器到路由器的线路背景:SLIP主要完成数据报的传送,但没有寻址、数据检验、分组类型识别和数据压缩等功能,只能传送分组。如果上层不是IP协议,那么无法传输,并且此协议对一些高层应用也不支持,但实现比较简单。为了改进SLIP的缺点,于是制定了点对点协议(PPP）。</span></p></li><li><p><span>PPP协议应满足的要求</span></p><ol start='' ><li><span>简单: 对于链路层的帧,</span><strong><span>无需纠错,无需序号,无需流量控制</span></strong></li><li><span>封装成帧: </span><strong><span>帧定界符</span></strong></li><li><span>透明传输: 与帧定界符一样比特组合的数据该如何处理:</span><strong><span>异步线路用字节填充,同步线路用比特填充</span></strong><span>。</span></li><li><span>多种网络层协议: 封装📦IP数据报可以采用</span><strong><span>多种协议</span></strong><span>。</span></li><li><span>多种类型链路: 串行/并行,同步/异步,电/光</span></li><li><span>差错检测: </span><strong><span>错就丢弃</span></strong><span>。</span></li><li><span>检测连接状态: 链路是否正常工作。</span></li><li><span>最大传送单元数据部分: 最大长度MTU。(1500B)</span></li><li><span>网络层地址协商: 知道通信双方的网络层地址。</span></li><li><span>数据压缩协商</span></li></ol></li><li><p><span>PPP例题</span></p><ol start='' ><li><p><span>为实现透明传输(注:默认为异步线路),PPP使用的填充方法是(B，异步字节，同步比特)</span></p><p><span>A.位填充</span></p><p><span>B.字符填充</span></p><p><span>C.对字符数据使用字符填充,对非字符数据使用位填充</span></p><p><span>D.对字符数据使用位填充,对非字符数据使用字符填充</span></p></li><li><p><span>以下对PPP的说法中,错误的是(B，PPP确实支持差错控制，错就丢弃)</span></p><p><span>A.具有差错控制能力</span></p><p><span>B.仅支持IP协议</span></p><p><span>C.支持动态分配IP地址</span></p><p><span>D.支持身份验证</span></p><p>&nbsp;</p></li></ol></li><li><p><span>PPP协议应无需满足的要求: 纠错、流量控制、序号、不支持多点线路</span></p></li><li><p><span>PPP协议有三个组成部分</span></p><ol start='' ><li><span>一个将IP数据报封装到串行链路的方法。（同步串行/异步串行）。P数据报在PPP帧中就是其信息部分,这个信息部分的长度受最大传送单元(MTU)的限制。</span></li><li><strong><span>链路控制协议(LCP)</span></strong><span>。一种扩展链路控制协议,用于建立、配置、测试和管理数据链路（</span><strong><span>物理链路</span></strong><span>）。可以管理</span><strong><span>身份验证</span></strong><span>的功能</span></li><li><strong><span>网络控制协议(NCP)</span></strong><span>。PPP协议允许同时采用多种网络层协议,</span><strong><span>每个</span></strong><span>不同的</span><strong><span>网络层协议</span></strong><span>要用</span><strong><span>一个相应</span></strong><span>的</span><strong><span>NCP</span></strong><span>来配置,为网络层协议建立和配置</span><strong><span>逻辑连接</span></strong><span>。</span></li><li><img src="resources/PPP状态图.png" alt="PPP状态图" style="zoom: 50%;" /></li></ol></li><li><p><span>PPP帧的格式。PPP帧的前3个字段和最后2个字段与HDLC帧是一样的</span></p><ol start='' ><li><p><span>标志字段(F)仍为7E(01111110),前后各占1字节,若它出现在信息字段中,就必须做字节填充,使用的控制转义字节是7D(01111101)。</span></p></li><li><p><span>地址字段(A)占1字节,规定为OXFF，控制字段(C)占1字节,规定为0x03,两者的内容始终是固定不变的。PPP是面向字节的,因而所有PPP帧的长度都是整数个字节。</span></p></li><li><p><span>第4个字段是协议字段,占2字节,在HDLC中没有该字段,它是说明信息段中运载的是什么种类的分组。以比特0开始的是诸如、IPX和 AppleTalk这样的网络层协议;以比特1开始的被用来协商其他协议,包括LCP及每个支持的网络层协议的一个不同的NCP。</span></p></li><li><p><span>第5段信息段的长度是可变的,大于等于</span><strong><span>0</span></strong><span>且小于等于1500B。为了实现透明传输,当信息</span></p><p><span>段中出现和标志字段一样的比特组合时,必须采用一些措施来改进。</span></p><p><span>注意:因为PPP是点对点的,并不是总线形,所以</span><strong><span>无须采用CSMA/CD协议,自然就没有最短帧</span></strong><span>,所以信息段占0~1500字节,而不是46~1500字节。另外,当数据部分出现和标志位样的比特组合时,就需要采用一些措施来实现透明传输。</span></p></li></ol><p><img src="resources/格式.png" alt="格式" style="zoom:66%;" /></p><p>&nbsp;</p></li></ol><h2 id='dhlc协议考纲已删）'><span>DHLC协议（考纲已删）</span></h2><p><span>面向比特；ISO制定的；零比特插入法实现透明传输；全双工通信</span></p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+<div id='write'  class=''><h1 id='广域网'><span>广域网</span></h1><p><span>2022.08.14</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#广域网">广域网</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" style="" href="#广域网基本概念">广域网基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n32"><a class="md-toc-inner" style="" href="#ppp协议">PPP协议</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n105"><a class="md-toc-inner" style="" href="#dhlc协议考纲已删）">DHLC协议（考纲已删）</a></span></p></div><h2 id='广域网基本概念'><span>广域网基本概念</span></h2><p><span>广域网(WAN, Wide Area Network),通常跨接很大的物理范围,所覆盖的范围从几十公里到几千公里,它能连接多个城市或国家,或横跨几个洲并能提供远距离通信,形成国际性的远程网络。</span></p><p><span>广域网的通信子网主要使用</span><strong><span>分组交换技术</span></strong><span>。广域网的通信子网可以利用公用分组交换网、卫星通信网和无线分组交换网,它将分布在不同地区的局域网或计算机系统互连起来,达到资源共享的目的。</span></p><p><span>因特网(Internet)是世界范围内最大的广域网。</span></p><p><img src="resources/广域网.png" referrerpolicy="no-referrer" alt="img"></p><p><span>与局域网的关系：</span></p><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:left;' ><span>广域网</span></th><th><span>局域网</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>覆盖范围</span></td><td style='text-align:left;' ><span>很广，通常跨区域</span></td><td><span>很小，通常在一个区域内</span></td></tr><tr><td style='text-align:center;' ><span>连接方式</span></td><td style='text-align:left;' ><span>节点间点对点连接，为了提高网络可靠性，一个节点交换机往往与多个节点交换机相连</span></td><td><span>普遍采用多点接入技术</span></td></tr><tr><td style='text-align:center;' ><span>OSI参考模型</span></td><td style='text-align:left;' ><span>物理+数据链路+【网络层】</span></td><td><span>物理层+数据链路</span></td></tr><tr><td style='text-align:center;' ><span>着重点</span></td><td style='text-align:left;' ><span>强调资源共享</span></td><td><span>强调数据传输</span></td></tr></tbody></table></figure><p><span>联系与相似点：广域网与局域网二者平等（而不是包含）；连接到一个广域网或局域网上的主机在该网进行通信时，只需要使用其网络的物理地址</span></p><h2 id='ppp协议'><span>PPP协议</span></h2><ol start='' ><li><p><span>PPP( Point-to-Point Protocol，点对点协议 )是使用</span><strong><span>串行</span></strong><span>线路通信的</span><strong><span>面向字节</span></strong><span>的协议,该协议应用在直接连接两个结点的链路上，</span><strong><span>只支持全双工</span></strong><span>。设计的目的主要是用来通过拨号或专线方式建立点对点连接发送数据,使其成为各种主机、网桥和路由器之间简单连的一种共同的解决方案。</span></p></li><li><p><span>背景：PPP协议是在</span><strong><span>SLIP协议</span></strong><span>的基础上发展而来的,它既可以在异步线路上传输,又可在同步线路上使用;不仅用于Modem链路,也用于租用的路由器到路由器的线路背景:SLIP主要完成数据报的传送,但没有寻址、数据检验、分组类型识别和数据压缩等功能,只能传送分组。如果上层不是IP协议,那么无法传输,并且此协议对一些高层应用也不支持,但实现比较简单。为了改进SLIP的缺点,于是制定了点对点协议(PPP）。</span></p></li><li><p><span>PPP协议应满足的要求</span></p><ol start='' ><li><span>简单: 对于链路层的帧,</span><strong><span>无需纠错,无需序号,无需流量控制</span></strong></li><li><span>封装成帧: </span><strong><span>帧定界符</span></strong></li><li><span>透明传输: 与帧定界符一样比特组合的数据该如何处理:</span><strong><span>异步线路用字节填充,同步线路用比特填充</span></strong><span>。</span></li><li><span>多种网络层协议: 封装📦IP数据报可以采用</span><strong><span>多种协议</span></strong><span>。</span></li><li><span>多种类型链路: 串行/并行,同步/异步,电/光</span></li><li><span>差错检测: </span><strong><span>错就丢弃</span></strong><span>。</span></li><li><span>检测连接状态: 链路是否正常工作。</span></li><li><span>最大传送单元数据部分: 最大长度MTU。(1500B)</span></li><li><span>网络层地址协商: 知道通信双方的网络层地址。</span></li><li><span>数据压缩协商</span></li></ol></li><li><p><span>PPP例题</span></p><ol start='' ><li><p><span>为实现透明传输(注:默认为异步线路),PPP使用的填充方法是(B，异步字节，同步比特)</span></p><p><span>A.位填充</span></p><p><span>B.字符填充</span></p><p><span>C.对字符数据使用字符填充,对非字符数据使用位填充</span></p><p><span>D.对字符数据使用位填充,对非字符数据使用字符填充</span></p></li><li><p><span>以下对PPP的说法中,错误的是(B，PPP确实支持差错控制，错就丢弃)</span></p><p><span>A.具有差错控制能力</span></p><p><span>B.仅支持IP协议</span></p><p><span>C.支持动态分配IP地址</span></p><p><span>D.支持身份验证</span></p><p>&nbsp;</p></li></ol></li><li><p><span>PPP协议应无需满足的要求: 纠错、流量控制、序号、不支持多点线路</span></p></li><li><p><span>PPP协议有三个组成部分</span></p><ol start='' ><li><span>一个将IP数据报封装到串行链路的方法。（同步串行/异步串行）。P数据报在PPP帧中就是其信息部分,这个信息部分的长度受最大传送单元(MTU)的限制。</span></li><li><strong><span>链路控制协议(LCP)</span></strong><span>。一种扩展链路控制协议,用于建立、配置、测试和管理数据链路（</span><strong><span>物理链路</span></strong><span>）。可以管理</span><strong><span>身份验证</span></strong><span>的功能</span></li><li><strong><span>网络控制协议(NCP)</span></strong><span>。PPP协议允许同时采用多种网络层协议,</span><strong><span>每个</span></strong><span>不同的</span><strong><span>网络层协议</span></strong><span>要用</span><strong><span>一个相应</span></strong><span>的</span><strong><span>NCP</span></strong><span>来配置,为网络层协议建立和配置</span><strong><span>逻辑连接</span></strong><span>。</span></li></ol><p><img src="resources/PPP状态图.png" referrerpolicy="no-referrer" alt="img"></p></li><li><p><span>PPP帧的格式。PPP帧的前3个字段和最后2个字段与HDLC帧是一样的</span></p><ol start='' ><li><p><span>标志字段(F)仍为7E(01111110),前后各占1字节,若它出现在信息字段中,就必须做字节填充,使用的控制转义字节是7D(01111101)。</span></p></li><li><p><span>地址字段(A)占1字节,规定为OXFF，控制字段(C)占1字节,规定为0x03,两者的内容始终是固定不变的。PPP是面向字节的,因而所有PPP帧的长度都是整数个字节。</span></p></li><li><p><span>第4个字段是协议字段,占2字节,在HDLC中没有该字段,它是说明信息段中运载的是什么种类的分组。以比特0开始的是诸如、IPX和 AppleTalk这样的网络层协议;以比特1开始的被用来协商其他协议,包括LCP及每个支持的网络层协议的一个不同的NCP。</span></p></li><li><p><span>第5段信息段的长度是可变的,大于等于</span><strong><span>0</span></strong><span>且小于等于1500B。为了实现透明传输,当信息</span></p><p><span>段中出现和标志字段一样的比特组合时,必须采用一些措施来改进。</span></p><p><span>注意:因为PPP是点对点的,并不是总线形,所以</span><strong><span>无须采用CSMA/CD协议,自然就没有最短帧</span></strong><span>,所以信息段占0~1500字节,而不是46~1500字节。另外,当数据部分出现和标志位样的比特组合时,就需要采用一些措施来实现透明传输。</span></p></li></ol><p><img src="resources/格式.png" referrerpolicy="no-referrer" alt="img"></p><p>&nbsp;</p></li></ol><h2 id='dhlc协议考纲已删）'><span>DHLC协议（考纲已删）</span></h2><p><span>面向比特；ISO制定的；零比特插入法实现透明传输；全双工通信</span></p><p>&nbsp;</p></div></div>
 </body>
 </html>
