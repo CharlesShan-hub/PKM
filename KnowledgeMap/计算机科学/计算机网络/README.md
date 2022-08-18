@@ -1,6 +1,6 @@
 # 计算机网络 
 
-2022.08.14
+2022.08.17
 
 [TOC]
 ## 目录与题目类型
@@ -67,21 +67,34 @@
     * *DHCP*
     * *ICMP*
   * [IPv6](./notes/网络层/IPv6.md)
+    * *IPv6与IPv4的异同*
   * [IP组播](./notes/网络层/IP组播.md)
+    * *组播(概念、映射成组播MAC地址(0x00015E+'0'))*
   * [移动IP](./notes/网络层/移动IP.md)
+    * *移动IP基本概念*
   * [网络层设备](./notes/网络层/网络层设备.md)
 * **传输层**
   * [传输层的功能](./notes/传输层/传输层的功能.md)
   * [UDP](./notes/传输层/UDP.md)
+    * *UDP基本概念、UDP数据报格式、UDP检验*
   * [TCP](./notes/传输层/TCP.md)
+    * *TCP报文段（长度、字段意义）*
+    * *TCP三次握手、四次握手*
+    * *TCP可靠传输：序号、确认、重传(超时-RTO计算)*
+    * *TCP流量控制(rwnd)*
+    * *TCP拥塞控制(cwnd)，慢开始、拥塞避免、快重传、快恢复*
   * [TCP源码分析](https://www.cnblogs.com/RichardTAO/p/12097469.html#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B)(外链)
 * **应用层**
   * [应用层的功能](./notes/应用层/应用层的功能.md)
   * [网络应用模型](./notes/应用层/网络应用模型.md)
   * [域名系统DNS](./notes/应用层/域名系统DNS.md)
+    * *迭代查询 递归查询、DNS最多最少次数*
   * [文件传输协议FTP](./notes/应用层/文件传输协议FTP.md)
+    * *FTP细节与过程(端口号、主动被动、两种连接、匿名模式)*
   * [电子邮件E-mail](./notes/应用层/电子邮件E-mail.md)
+    * *MIME、SMTP、POP3、IMAP*
   * [万维网WWW](./notes/应用层/万维网WWW.md)
+    * *HTTP*
 
 
 ## 介绍
