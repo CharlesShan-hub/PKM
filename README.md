@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.08.15
+2022.08.23
 
 [toc]
 
