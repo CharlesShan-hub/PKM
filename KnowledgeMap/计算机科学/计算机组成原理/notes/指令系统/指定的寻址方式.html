@@ -1,0 +1,1378 @@
+<!doctype html>
+<html style='font-size:22px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+  text-align: justify;
+  overflow-x: hidden;
+  color: #282c34;
+  background-color: #fefefe;
+  -webkit-font-smoothing: antialiased;
+}
+
+content #write {
+  background-color: #fefefe;
+  max-width: 90%;
+  margin: 0 auto;
+  padding-bottom: 7.5rem;
+}
+
+content #write p {
+  word-spacing: 0.05rem;
+}
+
+content #write ol li {
+  padding-left: 0.5rem;
+}
+
+content #write > h1:first-child {
+  font-weight: normal;
+}
+
+content #write > h5.md-focus:before {
+  top: 2px;
+}
+
+::-moz-selection {
+  background-color: #bac6e9;
+}
+
+::selection {
+  background-color: #bac6e9;
+}
+
+/* h1-h3 */
+#write h1,
+#write h2,
+#write h3 {
+  font-style: normal;
+}
+
+#write h1,
+#write h2 {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+#write h1 {
+  font-size: 3rem;
+}
+
+#write h2 {
+  font-size: 2.4rem;
+}
+
+#write h2:after {
+  content: "";
+  display: block;
+  width: 6.25rem;
+  height: 1px;
+  margin: 0 auto;
+  border-bottom: 1px solid #2f2f2f;
+}
+
+#write h3 {
+  font-size: 1.8rem;
+}
+
+/* paragraph */
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* ul ol */
+ul,
+ol {
+  padding-left: 1.75rem;
+}
+
+ul:first-child,
+ol:first-child {
+  margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+/* blockquote */
+blockquote {
+  padding: 0.5rem 1rem;
+  border-left: 8px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+  border-radius: 4px;
+}
+
+blockquote code {
+  background-color: transparent;
+}
+
+/* horizontal line */
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 2px dashed #abb2bf;
+}
+
+/* table */
+table,
+.md-table-fig .md-table {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  border-collapse: separate;
+  overflow: hidden;
+}
+
+table th,
+table td,
+.md-table-fig .md-table th,
+.md-table-fig .md-table td {
+  padding: 10px 16px;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+table th:first-child,
+table td:first-child,
+.md-table-fig .md-table th:first-child,
+.md-table-fig .md-table td:first-child {
+  border-left: 0;
+}
+
+table thead,
+.md-table-fig .md-table thead {
+  background-color: #e7ecf3;
+  color: #000;
+}
+
+table caption + thead tr:first-child th,
+table caption + thead tr:first-child td,
+table colgroup + thead tr:first-child th,
+table colgroup + thead tr:first-child td,
+table thead + tbody tr:first-child th,
+table thead + tbody tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td,
+.md-table-fig .md-table caption + thead tr:first-child th,
+.md-table-fig .md-table caption + thead tr:first-child td,
+.md-table-fig .md-table colgroup + thead tr:first-child th,
+.md-table-fig .md-table colgroup + thead tr:first-child td,
+.md-table-fig .md-table thead + tbody tr:first-child th,
+.md-table-fig .md-table thead + tbody tr:first-child td,
+.md-table-fig .md-table thead:first-child tr:first-child th,
+.md-table-fig .md-table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+table tbody + tbody,
+.md-table-fig .md-table tbody + tbody {
+  border-top: 2px solid #ddd;
+}
+
+.md-table-fig .md-table-edit {
+  background-color: #ddd;
+}
+
+.md-table-fig .md-table-edit .btn-default:hover {
+  background-color: #bac6e9;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .arrow {
+  top: -10px;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .arrow::after {
+  border-bottom-color: #ddd;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset {
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset input {
+  color: #282c34 !important;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset input#md-grid-width, .md-table-fig .md-table-edit .md-table-resize-popover .md-reset input#md-grid-height {
+  text-align: center;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .popover-title {
+  border-top: 1px solid #eee;
+}
+
+/* yaml front matter */
+#write pre.md-meta-block {
+  background: #e7ecf3;
+  color: #486491;
+  border: 0;
+  border-radius: 6px;
+  line-height: 1.3rem;
+  padding: 0.5rem 1.5rem;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+/* table of contents */
+.md-toc {
+  margin-bottom: 1.25rem;
+}
+
+/* task list */
+.md-task-list-item > input::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -4px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #737373;
+  background: #fff;
+  -webkit-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item > input::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  width: 0.6rem;
+  height: 0.3rem;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  opacity: 0;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+
+.md-task-list-item > input:checked::before {
+  background-color: #67c23a;
+  border: none;
+}
+
+.md-task-list-item > input:checked::after {
+  opacity: 1;
+}
+
+.md-task-list-item.task-list-done {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* footnote */
+.footnotes {
+  font-size: 1rem;
+}
+
+/* math,html block common */
+.mathjax-block,
+.md-htmlblock {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+}
+
+.mathjax-block[contenteditable="false"]:active, .mathjax-block[contenteditable="false"]:focus,
+.md-htmlblock[contenteditable="false"]:active,
+.md-htmlblock[contenteditable="false"]:focus {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.mathjax-block:hover .md-rawblock-container,
+.mathjax-block:hover .md-rawblock-tooltip,
+.md-htmlblock:hover .md-rawblock-container,
+.md-htmlblock:hover .md-rawblock-tooltip {
+  background-color: #f5f6f7;
+  -webkit-animation: showRawBlockTooltip 0s linear;
+          animation: showRawBlockTooltip 0s linear;
+}
+
+.mathjax-block:hover .md-rawblock-container,
+.md-htmlblock:hover .md-rawblock-container {
+  border-radius: 6px 0 6px 6px;
+}
+
+.mathjax-block .md-rawblock-control,
+.md-htmlblock .md-rawblock-control {
+  background-color: #f5f6f7;
+}
+
+.mathjax-block .md-rawblock-tooltip,
+.md-htmlblock .md-rawblock-tooltip {
+  background-color: #f5f6f7;
+  -webkit-animation: showRawBlockTooltip 0s linear;
+          animation: showRawBlockTooltip 0s linear;
+  border-radius: 4px 4px 0 0;
+}
+
+/* math block */
+.mathjax-block .md-mathblock-panel .code-tooltip[contenteditable="false"] {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-before {
+  padding-top: 6px;
+  border-top-left-radius: 6px;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-after {
+  padding-bottom: 6px;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner {
+  color: #282c34;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-lines {
+  color: #282c34;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-gutters {
+  background-color: #f5f6f7;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selected,
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selectedtext {
+  background-color: #bac6e9 !important;
+}
+
+.mathjax-block .md-math-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* html block */
+.md-htmlblock .md-htmlblock-panel {
+  border-radius: 6px;
+  border-top-right-radius: 0;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input {
+  padding-top: 14px;
+  padding-bottom: 10px;
+}
+
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selected,
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selectedtext {
+  background-color: #bac6e9 !important;
+}
+
+/* strong */
+strong {
+  background-color: inherit;
+  color: #b5302e;
+}
+
+/* emphasis */
+em {
+  background-color: inherit;
+  color: #949415;
+}
+
+/* underline */
+u {
+  background-color: inherit;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid #f00;
+  padding-bottom: 1px;
+}
+
+/* code */
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+  font-size: inherit;
+}
+
+code {
+  background-color: rgba(34, 37, 38, 0.05);
+  color: #e96900;
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 2px;
+  padding: 3px 4px 1px;
+  border-radius: 4px;
+}
+
+/* strike */
+del {
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* hightlight */
+mark {
+  color: #282c34;
+  font-weight: 500;
+  padding: 1px 5px 2px;
+  border-radius: 2px;
+}
+
+/* hyperlink */
+a {
+  background-color: inherit;
+  color: #2484c1;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a img {
+  border: none;
+}
+
+/* code fences */
+.md-fences {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #282c34;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 2.5rem;
+  border: none;
+  border-radius: 6px;
+}
+
+.md-fences[contenteditable="false"]:active, .md-fences[contenteditable="false"]:focus {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.md-fences .code-tooltip {
+  background-color: #282c34;
+  border-radius: 4px;
+}
+
+.md-fences span {
+  color: #abb2bf;
+}
+
+.md-fences .code-tooltip .ty-input {
+  color: #fff;
+  font-weight: 500;
+}
+
+.ty-show .autoComplt-list li.active {
+  background-color: #bac6e9;
+}
+
+/* code container */
+.cm-s-inner {
+  background-color: #282c34;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+  background-color: #282c34;
+  border: none;
+}
+
+.cm-s-inner .CodeMirror-guttermarker,
+.cm-s-inner .CodeMirror-guttermarker-subtle,
+.cm-s-inner .CodeMirror-linenumber {
+  color: #737984;
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid #528bff !important;
+}
+
+.cm-s-inner div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line > span::-moz-selection,
+.cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+  background-color: #bac6e9;
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line > span::selection,
+.cm-s-inner .CodeMirror-line > span > span::selection {
+  background-color: #bac6e9;
+}
+
+.cm-s-inner .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0);
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+
+.cm-s-inner .CodeMirror-selected,
+.cm-s-inner .CodeMirror-selectedtext {
+  background-color: #404859 !important;
+}
+
+/* code fences color */
+.cm-s-inner .cm-keyword {
+  color: #c678dd !important;
+}
+
+.cm-s-inner .cm-operator {
+  color: #56b6c2 !important;
+}
+
+.cm-s-inner .cm-variable {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-variable-3 {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-builtin {
+  color: #e8bf6a !important;
+}
+
+.cm-s-inner .cm-atom {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-number {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-def {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-string {
+  color: #98c379 !important;
+}
+
+.cm-s-inner .cm-string-2 {
+  color: #80cbc4 !important;
+}
+
+.cm-s-inner .cm-comment {
+  color: #629755 !important;
+}
+
+.cm-s-inner .cm-tag {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-meta {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-attribute {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-property {
+  color: #61afef !important;
+}
+
+.cm-s-inner .cm-qualifier {
+  color: #decb6b !important;
+}
+
+.cm-s-inner .cm-error {
+  color: #fff !important;
+  background-color: #ec5f67 !important;
+}
+
+.cm-s-inner .cm-tag.cm-bracket {
+  color: #abb2bf !important;
+}
+
+/* scrollbar */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 4px;
+}
+
+/* find dialog */
+#typora-quick-open {
+  background-color: #fff;
+  color: #282c34;
+}
+
+#typora-quick-open .typora-quick-open-item.active {
+  background-color: #bac6e9 !important;
+}
+
+#typora-quick-open .ty-quick-open-category-title {
+  border-top: 1px solid #eee !important;
+}
+
+/* modal dialog */
+#common-dialog .modal-dialog .modal-content {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: #f5f6f7;
+  border: none;
+  border-radius: 6px;
+}
+
+#common-dialog .modal-dialog .modal-content .modal-footer .btn-default:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* preferences */
+.ty-preferences {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #282c34;
+}
+
+.ty-preferences .window-header h2 {
+  font-size: 1.6rem;
+}
+
+.ty-preferences .sidebar {
+  font-size: 1.4rem;
+}
+
+.ty-preferences .sidebar .nav-group-item.active,
+.ty-preferences .sidebar .nav-group-item:active {
+  color: #efefef;
+  background-color: #2f845e;
+}
+
+/* sidebar includes file-tree,articles and outline*/
+.html-for-mac #typora-sidebar {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* focus mode/typewriter mode notification  */
+#md-notification {
+  background-color: #fff !important;
+}
+
+#md-notification #ty-surpress-mode-warning-close-btn:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* Unibody sidebar */
+#megamenu-menu-sidebar {
+  color: #282c34;
+  font-size: 1rem;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list {
+  border-top-color: rgba(171, 192, 208, 0.1);
+  background-color: #222526;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li {
+  font-size: 0.8rem;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a {
+  color: #abc0d0 !important;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a.active, #megamenu-menu-sidebar #megamenu-menu-list li a:hover {
+  background-color: #3e4249 !important;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a#m-saved {
+  background-color: transparent !important;
+}
+
+.megamenu-opened .megamenu-menu {
+  left: 0;
+}
+
+#megamenu-content {
+  color: #000;
+}
+
+/* sidebar */
+#typora-sidebar {
+  background-color: #fafafa;
+  border-right: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-loading-template.file-list-item {
+  border-bottom: transparent !important;
+  background-color: rgba(171, 192, 208, 0.1);
+}
+
+#typora-sidebar .info-panel-tab-wrapper .info-panel-tab:hover {
+  color: inherit;
+}
+
+#typora-sidebar .info-panel-tab-wrapper .info-panel-tab .info-panel-tab-border {
+  background-color: #2f845e;
+  border-radius: 4px;
+}
+
+#typora-sidebar .sidebar-osx-tab .sidebar-tabs {
+  border-bottom-color: transparent;
+}
+
+#typora-sidebar #sidebar-content .file-list-item {
+  border-bottom: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-content .file-list-item.active {
+  background-color: rgba(66, 185, 131, 0.1);
+  border-left: 4px solid #2f845e;
+}
+
+#typora-sidebar #sidebar-content .ty-sidebar-search-panel {
+  border-bottom: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-content .ty-sidebar-search-panel .searchpanel-search-option-btn {
+  background-color: #fff;
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-node-content {
+  line-height: 1.375rem;
+  font-size: 1rem;
+  color: #282c34 !important;
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-tree-node:not(.file-node-root):hover > .file-node-background {
+  border-left: 4px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-tree-node.active > .file-node-background {
+  border-color: #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content #file-library-list-children .file-library-file-node:hover {
+  border-left: 4px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content #outline-content .no-collapse-outline .outline-item {
+  line-height: 1.375rem;
+  font-size: 1rem;
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-expander:before {
+  color: inherit;
+  font-size: 14px;
+  top: auto;
+  content: "\f0da";
+  font-family: FontAwesome;
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-expander:hover:before,
+#typora-sidebar #sidebar-content #outline-content .outline-item-open > .outline-item > .outline-expander:before {
+  content: "\f0d7";
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+#typora-sidebar #ty-sidebar-footer {
+  border-top: 1px solid #eee;
+}
+
+#typora-sidebar #ty-sidebar-footer .sidebar-footer-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* dropdown menu */
+.dropdown-menu {
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-top: 1px solid #eee;
+}
+
+.dropdown-menu > .show + .menuitem-group-label.show {
+  border-top: 1px solid #eee !important;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > li > a:hover,
+.dropdown-menu .menu-style-btn.active {
+  background-color: #bac6e9 !important;
+}
+
+.dropdown-menu li a {
+  color: #282c34 !important;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #bac6e9 !important;
+}
+
+.dropdown-menu .divider {
+  border-color: #fff;
+}
+
+/* sidebar-files-menu,toc-dropmenu,suggest common */
+#sidebar-files-menu,
+#toc-dropmenu,
+.auto-suggest-container {
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border: none;
+}
+
+#toc-dropmenu .outline-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* emoji,fences,word suggest */
+.auto-suggest-container {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.auto-suggest-container li.active, .auto-suggest-container li:hover {
+  background-color: #bac6e9 !important;
+}
+
+/** source code mode */
+#typora-source {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a6a6a;
+}
+
+#typora-source .cm-s-typora-default .cm-header,
+#typora-source .cm-s-typora-default .cm-property,
+#typora-source .CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+  color: #428bca;
+}
+
+#typora-source .cm-s-typora-default .cm-atom,
+#typora-source .cm-s-typora-default .cm-number {
+  color: #777777;
+}
+
+#typora-source .CodeMirror-selectedtext {
+  background-color: transparent !important;
+}
+
+.typora-node .file-list-item-parent-loc,
+.typora-node .file-list-item-time,
+.typora-node .file-list-item-summary {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>指定的寻址方式</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='指定的寻址方式'><span>指定的寻址方式</span></h1><p><span>2022.08.24</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#指定的寻址方式">指定的寻址方式</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n12"><a class="md-toc-inner" style="" href="#指令寻址和数据寻址">指令寻址和数据寻址</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n25"><a class="md-toc-inner" style="" href="#常见的数据寻址方式">常见的数据寻址方式</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n632"><a class="md-toc-inner" style="" href="#例题">例题</a></span></p></div><p><strong><span>寻址方式</span></strong><span>是指</span><u><span>寻找指令或操作数有效地址的方式</span></u><span>，即确定本条指令的数据地址及下一条待执行指令的地址的方法。寻址方式分为</span><strong><span>指令寻址</span></strong><span>和</span><strong><span>数据寻址</span></strong><span>两大类，指令中的地址码字段并不代表操作数的真实地址，这种地址称为</span><strong><span>形式地址(A)</span></strong><span>。形式地址结合寻址方式，可以计算出操作数在存储器中的真实地址，这种地址称为</span><strong><span>有效地址 (EA)</span></strong><span>。</span></p><p><span>注意，(A)表示地址为 A 的数值，A 既可以是寄存器编号，也可以是内存地址。对应的(A)就是寄存器中的数值，或相应内存单元的数值。例如，EA=(A)意思是有效地址是地址A 中的数值。</span></p><h2 id='指令寻址和数据寻址'><span>指令寻址和数据寻址</span></h2><p><span>寻址方式分为指令寻址和数据寻址两大类。</span><u><span>寻找下一条将要执行的指令地址</span></u><span>称为指令寻址；</span><u><span>寻找本条指令的数据地址</span></u><span>称为数据寻址。</span></p><ol><li><p><strong><span>指令寻址</span></strong></p><p><span>指令寻址方式有两种：一种是顺序寻址方式，另一种是跳跃寻址方式。</span></p><ol><li><strong><span>顺序寻址</span></strong>
+<span>通过程序计数器</span><strong><span>PC加1</span></strong><span>（1 个指令字长），自动形成下一条指令的地址。</span></li><li><strong><span>跳跃寻址</span></strong>
+<span>通过</span><strong><span>转移类指令</span></strong><span>实现。所谓跳跃，是指下条指令的地址不由程序计数器 PC 自动给出，而由本条指令给出下条指令地址的计算方式。而是否跳跃可能受到状态寄存器和操作数的控制，跳跃的地址分为绝对地址 （由标记符直接得到）和相对地址（相对于当前指令地址的偏移量），</span><u><span>跳跃的结果是当前指令修改PC值，所以下一条指令仍然通过PC给出</span></u><span>。</span></li></ol></li><li><p><strong><span>数据寻址</span></strong></p><ol><li><p><span>数据寻址是指如何在指令中表示一个操作数的地址，如何用这种表示得到操作数地址或如何计算出操作数的地址。</span></p></li><li><p><span>数据寻址的方式较多，为区别名种方式，</span><u><span>通常在指令字中设一个字段，用来指明属于哪种寻址方式</span></u><span>【这就是寻址特征】，由此可得指令的格式如下所示：</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>操作码</span></th><th style='text-align:center;' ><span>寻址特征</span></th><th style='text-align:center;' ><span>形式地址A</span></th></tr></thead><tbody></tbody></table></figure></li></ol></li></ol><h2 id='常见的数据寻址方式'><span>常见的数据寻址方式</span></h2><ol><li><p><strong><span>隐含寻址</span></strong></p><p><u><span>这种类型的指令不明显地给出操作数的地址，而在指令中隐含操作数的地址</span></u><span>。例如，单地址的指令格式就不明显地在地址字段中指出第二操作数的地址，而规定累加器 (ACC) 作为第二操作数地址，指令格式明显指出的仅是第一操作数的地址。因此，累加器(ACC）对单地址指令格式来说是隐含寻址，如图所示。</span></p><p><span>隐含寻址的优点是有利于缩短指令字长</span></p><p><span>缺点是需增加存储操作数或隐含址址的硬件</span></p><p><img src="resources/隐含寻址.png" referrerpolicy="no-referrer" alt="image-20220823223753561"></p></li><li><p><strong><span>立即(数)寻址</span></strong></p><p><span>这种类型的指令的地址字段指出的不是操作数的地址，而是操作数本身，又称立即数，采用补码表示。如图所示为立即寻址示意图，图中#表示立即寻址特征，A就是操作数。</span></p><p><span>立即寻址的优点是指令在执行阶段不访问主存，指令执行时间最短。</span></p><p><span>缺点是 A 的位数限制了立即数的范围。</span></p><p><img src="resources/立即寻址.png" referrerpolicy="no-referrer" alt="image-20220823232251187"></p></li><li><p><strong><span>直接寻址</span></strong></p><p><span>指令宇中的形式地址 A 是操作数的真实地址EA，即EA=A</span></p><p><img src="resources/直接寻址.png" referrerpolicy="no-referrer" alt="截屏2022-08-24 上午10.48.18"></p></li><li><p><strong><span>间接寻址</span></strong></p><p><span>间接寻址是相对手直接寻址而言的，指令的地址字段给出的形式地址不是操作数的真正地址，而是操作数有效地址所在的存储单元的地址，也就是操作数地址的地址，即 EA = (A)，如图所示。间接寻址可以是一次间接寻址，还可以是多次间接寻址。</span></p><p><img src="resources/间接寻址.png" referrerpolicy="no-referrer" alt="截屏2022-08-24 上午10.55.22"></p><p><span>在上图中，主存字第一位为1时，表示取出的仍不是操作数的地址，即名次间址：主存字第一位为0时，表示取得的是操作数的地址。间接寻址的优点是可扑大寻址范围（有效地址 EA 的位数大于形式地址A 的位数），便于编制程序（用间接寻址可方便地完成子程序返回)：缺点是指令在执行阶段要多次访存（一次间接寻址需两次访存，多次间接寻址需根据存储字的最高位确定访存次数)。由于访问速度过慢，这种寻址方式并不常用。一般问到扩大寻址范用时，通常指的是寄存器间接寻址。</span></p></li><li><p><strong><span>寄存器寻址</span></strong></p><p><span>寄存器寻址是指在指令字中直接给出操作数所在的寄存器编号，即EA=Ri，其操作数在由Ri,所指的寄存器内，如图所示。</span>
+<span>寄存器寻址的优点是指令在执行阶段不访问主存，只访问睿存器，因寄存器数量较小，对应地址码长度较小，使得指令字短且因不用访在，所以执行速度快，支持向量/5阵运算，缺点是寄存器价格昂贵，计算机中的寄存器个数有限。</span></p><p><img src="resources/寄存器寻址.png" referrerpolicy="no-referrer" alt="截屏2022-08-24 上午11.01.25"></p></li><li><p><strong><span>寄存器间接寻址</span></strong></p><p><span>寄存器间接寻址是指在寄存器 Ri， 中给出的不是一个操作数，而是操作数所在的地址，即EA=(Ri)</span></p><p><img src="resources/寄存器间接寻址.png" referrerpolicy="no-referrer" alt="截屏2022-08-24 上午11.03.18"></p><p><span>寄存器间接寻址的特点是，与一般间接寻址相比速度更快，但指令的执行阶段籍要访问主存（因为操作数在主存中)。</span></p></li><li><p><strong><span>相对寻址</span></strong></p><p><span>相对寻址是把 PC 的内容加上指令格式中的形式地址 A 而形成操作数的有效地址，即EA：(PC)+A，其中A 是相对于当前指令地址的位移量，可正可负，补码表示，如图所示。</span></p><p><img src="resources/相对寻址.png" referrerpolicy="no-referrer" alt="截屏2022-08-24 上午11.07.19"></p><p><span>A 的位数决定操作数的寻址范围相对寻址的优点是探作数的地址不是固定的，它随PC 值的变化而变化，且与指令地址之间总是相差一个固定值，因此便于程序浮动。相对寻址广泛应用于转移指令。</span></p><p><span>注意⚠️，对于转移指令 JMP A．当CPU 从存储器中取出一字节时，会自动执行(PC)+1-&gt;PC。若转移指令的地址为 X，</span><u><span>且占2B</span></u><span>，在取出该指令后，PC 的值会增2，即(PC)=X十2，这样在执行完该指今后，会自动跳转到X + 2 + A 的地址继续执行。</span></p></li><li><p><strong><span>基址寻址</span></strong></p><p><span>基址寻址是指将 CPU 中基址寄存器(BR）的内容加上指令格式中的形式地址 A 而形成操作数的有效地址，即EA=(BR)＋A，其中基址睿存器既可采用专用省存器，又可采用通用寄存器，如图所示。</span></p><p><img src="resources/基址寻址.png" referrerpolicy="no-referrer" alt="image-20220824111445664"></p></li><li><p><strong><span>变址寻址</span></strong></p><p><span>变址寻址是指有效地址 EA 等于指令字中的形式地址 A 与变址;省存器 1x 的内容之和，即EA= (IX)十A，其中下IX为变址寄存器（专用），也可用通用寄存器作为变址寄存器。下图所示为采用专用省存器 IX 的变址寻址示意图</span></p><p><img src="resources/变址寻址.png" referrerpolicy="no-referrer" alt="截屏2022-08-24 下午12.10.02"></p><p><span>变址奇存器是面向用户的，在程序执行过程中，变址寄存器的内容可由用户改变（作为偏移量），形式地址 A 不变（作为基地址）.</span></p><p><span>变址寻址的优点是可扩大寻址范围（变址寄存器的位数大于形式地址A 的位数）；在数组处理过程中，可设定 A 为数组的首地址，不断改交杏址寄存器1 的内容，便可很容易形成数组中任一数据的地址，特別适合编制循环程序。偏移量（变址寄存器IX）的位数足以表示整个存储空间。</span></p><p><span>显然，变址寻址与基址寻址的有效地址形成过程极为相似。但从本质上讲，两者有较大区别。基址寻址面向系统，主要用于为多道程序或数据分配在储空间，因此基址备存器的内容通常由操作系统或管理程序确定，在程序的执行过程中其值不可变，而指令字中的 A 是可变的：变址寻址立足于用户，主要用于处理数组问题，在变址寻址中，变址容存器的内容由用户设定，在程序执行过程中其值可变，而指令字中的A 是不可变的。</span></p></li><li><p><strong><span>堆栈寻址</span></strong></p><p><span>堆栈是存储器（或专用省存器组） 中一块特定的、按后进先出 (LIFO）原则管理的存储区，该存储区中读/写单元的地址是用一个特定的寄存器给出的，该寄存器称为堆栈指针 (SP)。堆栈可分为硬堆栈与软堆栈两种。</span></p><p><u><span>寄存器堆栈又称硬堆栈</span></u><span>，寄存器堆栈的成木较高、不适合做大容量的堆栈．而从</span><u><span>主在中划出一段区域来做堆栈是最合算且最常用的方法，这种堆栈称为软堆栈</span></u><span>。</span></p><p><span>在来用堆栈结构的计算机系统中，大部分指令表面上都表现为无操作数指令的形式，因为操作数地址都隐含使用了 SP。通常情况下，在读/写堆栈中的一个单元的前后都伴有自动完成对SP 内容的增量或减量操作。</span></p></li></ol><blockquote><p><span>小结：</span></p><ul><li><span>立即数寻址：[数]</span></li><li><span>直接寻址：[地址]</span></li><li><span>隐含寻址：[地址]+隐含</span></li><li><span>间接寻址：[地址的地址]，可以是一次间接寻址也可以是多次间接寻址</span></li><li><span>寄存器寻址：[寄存器编号]</span></li><li><span>寄存器间接寻址：[存地址的寄存器]</span></li><li><span>相对寻址：[地址偏移]，（相对PC的偏移）</span></li></ul></blockquote><figure><table><thead><tr><th style='text-align:center;' ><span>寻址方式</span></th><th style='text-align:center;' ><span>Data</span></th><th style='text-align:center;' ><span>访存次数</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>隐含寻址</span></td><td style='text-align:center;' ><span>隐含</span></td><td style='text-align:center;' ><span>0</span></td></tr><tr><td style='text-align:center;' ><span>立即数寻址</span></td><td style='text-align:center;' ><span>A</span></td><td style='text-align:center;' ><span>0</span></td></tr><tr><td style='text-align:center;' ><span>直接寻址</span></td><td style='text-align:center;' ><span>(A)</span></td><td style='text-align:center;' ><span>1</span></td></tr><tr><td style='text-align:center;' ><span>间接寻址</span></td><td style='text-align:center;' ><span>((A))</span></td><td style='text-align:center;' ><span>2</span></td></tr><tr><td style='text-align:center;' ><span>寄存器寻址</span></td><td style='text-align:center;' ><span>(R)</span></td><td style='text-align:center;' ><span>0</span></td></tr><tr><td style='text-align:center;' ><span>寄存器间接寻址</span></td><td style='text-align:center;' ><span>((R))</span></td><td style='text-align:center;' ><span>1</span></td></tr><tr><td style='text-align:center;' ><span>相对寻址</span></td><td style='text-align:center;' ><span>（(PC)+A）</span></td><td style='text-align:center;' ><span>1</span></td></tr><tr><td style='text-align:center;' ><span>基址寻址</span></td><td style='text-align:center;' ><span>（(BR)+A）</span></td><td style='text-align:center;' ><span>1</span></td></tr><tr><td style='text-align:center;' ><span>变址寻址</span></td><td style='text-align:center;' ><span>((IR)+A)</span></td><td style='text-align:center;' ><span>1</span></td></tr></tbody></table></figure><h2 id='例题'><span>例题</span></h2><ol><li><p><span>指令系统中采用不同寻址方式的目的是（ ）。</span>
+<span>A. 提供扩展操作码的可能并降低指令译码难度</span>
+<span>B. 可缩短指令字长，扩大寻址空间，提高编程的灵活性</span>
+<span>C. 实现程序控制</span>
+<span>D. 三者都正确</span></p><p><span>【答案】：D-&gt;B</span></p></li><li><p><span>直接寻址的无条件转移指令的功能是将指令中的地址码送入（ ）。</span>
+<span>A. 程序计数器 (PC)</span>
+<span>B. 累加器 (ACC)</span>
+<span>C. 指令寄存器 (RR)</span>
+<span>D. 地址寄存器 (MAR)</span></p><p><span>【答案】：A</span></p></li><li><p><span>为了缩短指令某个地址段的位数，有效的方法是来取( )</span>
+<span>A. 立即寻址</span>
+<span>B. 变址寻址</span>
+<span>C. 基址寻址</span>
+<span>D. 寄存器寻址</span></p><p><span>【答案】：C-&gt;D</span></p></li><li><p><span>简化地址结构的基本方法是尽量来用（）</span>
+<span>A.寄存器寻址</span>
+<span>B.隐地址</span>
+<span>C.直接寻址</span>
+<span>D.间接寻址</span></p><p><span>【答案】：C-&gt;B</span></p></li><li><p><span>在指令寻址的各种方式中，获取操作数最快的方式是（ ）</span>
+<span>A. 直接寻址</span>
+<span>B. 立即寻址</span>
+<span>C. 寄存器寻址</span>
+<span>D. 间按寻址</span></p><p><span>【答案】：B</span></p></li><li><p><span>假定指令中地址码所给出的是操作数的有效地址，则该指令来用（ ）。</span>
+<span>A.直接寻址</span>
+<span>B立即寻址</span>
+<span>C寄存器寻址</span>
+<span>D.间接寻址</span></p><p><span>【答案】：A</span></p></li><li><p><span>设指令中的地址码为 A，变址寄存器为 X，程序计数器为 PC，则变址</span><strong><span>间址</span></strong><span>寻址方式的操作数的有效地址EA是（）。</span>
+<span>A. ((PC)+A)</span>
+<span>B.((X) + A)</span>
+<span>C.(X)+(A)</span>
+<span>D.(X)+A</span></p><p><span>【答案】：D-&gt;B</span></p></li><li><p><span>( )便于处理教组问题</span>
+<span>A.间接寻址</span>
+<span>B.变址寻址</span>
+<span>C.相对寻址</span>
+<span>D.基址导址</span></p><p><span>【答案】：B</span></p></li><li><p><span>堆栈寻址方式中，设A为累加器，SP 为堆栈指示器，Msp为SP 指示的栈顶单元。若进栈操作的动作是</span><code>(A)-&gt;Msp</code><span>,</span><code>(SP)-1-&gt;SP</code><span>，则出栈操作的动作应为（）。</span>
+<span>A. </span><code>Msp-&gt;A</code><span>,</span><code>(SP)+1-&gt;SP</code>
+<span>B. </span><code>(SP) + 1-&gt;SP</code><span>. </span><code>(Msp) -&gt;A</code>
+<span>C. </span><code>(SP) - 1-&gt;SP</code><span>. </span><code>(Msp) -&gt;A</code>
+<span>D. </span><code>Msp-&gt;A</code><span>,</span><code>(SP)-1-&gt;SP</code></p><p><span>【答案】：B</span></p></li><li><p><span>相对寻址方式中，指令所提供的相对地址实质上是一种（ ）。</span>
+<span>A. 立即数</span>
+<span>B. 内存地址</span>
+<span>C. 以</span><strong><span>本</span></strong><span>条指令在内存中首地址为基准位置的偏移量</span>
+<span>D. 以</span><strong><span>下</span></strong><span>条指令在内存中首地址为基准位置的偏移量</span></p><p><span>【答案】：C-&gt;D</span></p></li><li><p><span>在多道程序设计中，最重要的寻址方式是（ ）。</span>
+<span>A. 相对寻址</span>
+<span>B. 间接寻址</span>
+<span>C. 立即寻址</span>
+<span>D. 按内容寻址</span></p><p><span>【答案】：A</span></p></li><li><p><span>指令寻址方式有顺序和跳跃两种，来用跳跃寻址方式可以实现（）.</span>
+<span>A.程序浮动</span>
+<span>B.程序的无条件浮动和条件浮动</span>
+<span>C.程序的无条件转移和条件转移</span>
+<span>D.程序的调用</span></p><p><span>【答案】：C</span></p></li><li><p><span>某机器指令字长为16位，主存按宇节编址，取指令时，每取一字节，PC 自动加1。当前指令地址为 2000H，指令内容为相对寻址的无条件转移指令，指令中的形式地址为40H。则取指令后及指令执行后PC的内容为（）</span>
+<span>A. 2000H, 2042H</span>
+<span>B. 2002H, 2040H</span>
+<span>C. 2002H, 2042H</span>
+<span>D. 2000H, 2040H</span></p><p><span>【答案】：C</span></p></li><li><p><span>对按字寻址的机器，程序计数器和指令寄存器的位数各取决于（ ）</span>
+<span>A.机器宇长，存储器的宇数</span>
+<span>B.存储器的字数，指令宇长</span>
+<span>C.指令字长，机器字长</span>
+<span>D.地址总线宽度，存储器的字数</span></p><p><span>【答案】：B</span></p></li></ol><ol start='15' ><li><p><span>假设寄存器R中的数值为200，主存地址为 200和300 的地址单元中存放的内容分别是300和400则（ ）方式下访问到的操作数为 200</span>
+<span>A. 直接寻址 200</span>
+<span>B. 寄存器间接寻址（R）</span>
+<span>C.存储器间接寻址(200）</span>
+<span>D.寄存器寻址R</span></p><p><span>【答案】：B-&gt;D</span></p></li></ol><ol start='16' ><li><p><span>假设某条指令的第一个操作数来用寄存器间接寻址方式，指令中给出的寄存器编号为8，8 号寄存器的内容为1200H，地址为 1200H 的单元中的内容为 12FCH，地址为12FCH 的单元中的内容为38D8H， 而地址为 38D81 的单元中的内容为88F9H。则该操作数的有效地址为（ ）</span>
+<span>A. 1200H</span>
+<span>B. 12FCH</span>
+<span>C. 38D8H</span>
+<span>D. 88F9H</span></p><p><span>【答案】：A</span></p></li><li><p><span>设相对寻址的转移指令占 3B，第一字节为操作码，第二、三字节为相对位移量（补码表示），而且数据在存储器中来用以低字节为字地址的存放方式。每当CpU从存储器取出一字节时，即自动完成(PC)+1-&gt;PC。若PC的当前值为240（十进制），要求转移到 290（十进制），则转移指令的第二、三字节的机器代码是（)若pC的当前值为240（十进制），要求转移到 200（十进制）。则转移指公第二、三字节的机器代码是（）</span>
+<span>A. 2FH、FFH</span>
+<span>B. D5H、00H</span>
+<span>C. D5H、FFH</span>
+<span>D. 2FH、00H</span></p><p><span>【答案】：D，C。47=48-1=30-1=2FH，-43=-(32+11)=-101011=11010101=D5H</span></p></li><li><p><span>关于指令的功能及分类，下列叙述中正确的是（ ）</span>
+<span>A. 算术与逻辑运算指令，通常完成算术运算或逻辑运算，都需要两个数据</span>
+<span>B. 移位操作指令，通常用于把指定的两个操作数向左或向右移一位</span>
+<span>C. 转移指令、子程序调用与返回指令，用于解决数据调用次序的需求</span>
+<span>D. 特权指令，通常仅用于实现系统软件，这类指令一般不提供给用户</span></p><p><span>【答案】：C-&gt;D。算术与逻拜运算指令用于完成对一个（如自增、取反等）或两个数据的算术运算或逻辑运算，因此 A 错误。移位操作用于把一个操作数左移或右移一位或多位，因此 B 错误。转移指令，子程序调用与返回指令用于解决变动程序中指令执行次序的需求，而不是数据调用次序的需求，因此C错误。</span></p></li><li><p><span>【2009统考直题】其机器字长为 16位，主存按字节编址，转移指今来用相对寻址，由2字节组成，第一字节为操作码字段，第二字节为相对位移量字段。假定取指令时，每取一字节PC 自动加1。若某转移指令所在主存地址为 2000H，相对位移量字段的内容为 06H，则该转移指令成功转移后的目标地址是（）.</span>
+<span>A. 2006H</span>
+<span>B. 2007H</span>
+<span>C. 2008H</span>
+<span>D. 2009H</span></p><p><span>【答案】：C</span></p></li><li><p><span>【2011 统考真题】偏移寻址通过将某个寄存器的内容与一个形式地址相加来生成有效地址、下列寻址方式中，不属于偏移寻址方式的是（）。</span>
+<span>A.间接寻址</span>
+<span>B.基址寻址</span>
+<span>C.相对寻址</span>
+<span>D.变址寻址</span></p><p><span>【答案】：A</span></p></li><li><p><strong><span>【2011 统考真题】</span></strong><span>某机器有一个标志寄存器，其中有进位/借位标志 CF、零标志 ZF、符号标志 SF 和溢出标志 OF，条件转移指令bgt（无符号整数比较大于时转移）的转移条件是（ ）</span>
+<span>A. CF+OF=1</span>
+<span>B. </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.154ex" height="2.362ex" role="img" focusable="false" viewBox="0 -1022 1394 1044" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.05ex;"><defs><path id="MJX-152-TEX-I-1D446" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path><path id="MJX-152-TEX-I-1D439" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path><path id="MJX-152-TEX-S4-2013" d="M0 248V285H499V248H0Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mover"><g data-mml-node="mrow"><g data-mml-node="mi"><use data-c="1D446" xlink:href="#MJX-152-TEX-I-1D446"></use></g><g data-mml-node="mi" transform="translate(645,0)"><use data-c="1D439" xlink:href="#MJX-152-TEX-I-1D439"></use></g></g><g data-mml-node="mo" transform="translate(0,637)"><svg width="1394" height="237" x="0" y="148" viewBox="348.5 148 1394 237"><use data-c="2013" xlink:href="#MJX-152-TEX-S4-2013" transform="scale(4.182,1)"></use></svg></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover><mrow><mi>S</mi><mi>F</mi></mrow><mo accent="true">―</mo></mover></math></mjx-assistive-mml></mjx-container><script type="math/tex">\overline{SF}</script><span>+ZF=1</span>
+<span>C. </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="9.51ex" height="2.498ex" role="img" focusable="false" viewBox="0 -1022 4203.4 1104" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-154-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-154-TEX-I-1D439" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path><path id="MJX-154-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-154-TEX-I-1D44D" d="M58 8Q58 23 64 35Q64 36 329 334T596 635L586 637Q575 637 512 637H500H476Q442 637 420 635T365 624T311 598T266 548T228 469Q227 466 226 463T224 458T223 453T222 450L221 448Q218 443 202 443Q185 443 182 453L214 561Q228 606 241 651Q249 679 253 681Q256 683 487 683H718Q723 678 723 675Q723 673 717 649Q189 54 188 52L185 49H274Q369 50 377 51Q452 60 500 100T579 247Q587 272 590 277T603 282H607Q628 282 628 271Q547 5 541 2Q538 0 300 0H124Q58 0 58 8Z"></path><path id="MJX-154-TEX-S4-2013" d="M0 248V285H499V248H0Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mover"><g data-mml-node="mrow"><g data-mml-node="mi"><use data-c="1D436" xlink:href="#MJX-154-TEX-I-1D436"></use></g><g data-mml-node="mi" transform="translate(760,0)"><use data-c="1D439" xlink:href="#MJX-154-TEX-I-1D439"></use></g><g data-mml-node="mo" transform="translate(1731.2,0)"><use data-c="2B" xlink:href="#MJX-154-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(2731.4,0)"><use data-c="1D44D" xlink:href="#MJX-154-TEX-I-1D44D"></use></g><g data-mml-node="mi" transform="translate(3454.4,0)"><use data-c="1D439" xlink:href="#MJX-154-TEX-I-1D439"></use></g></g><g data-mml-node="mo" transform="translate(0,637)"><svg width="4203.4" height="237" x="0" y="148" viewBox="1050.9 148 4203.4 237"><use data-c="2013" xlink:href="#MJX-154-TEX-S4-2013" transform="scale(12.61,1)"></use></svg></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover><mrow><mi>C</mi><mi>F</mi><mo>+</mo><mi>Z</mi><mi>F</mi></mrow><mo accent="true">―</mo></mover></math></mjx-assistive-mml></mjx-container><script type="math/tex">\overline{CF+ZF}</script><span>=1</span>
+<span>D. </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="9.334ex" height="2.498ex" role="img" focusable="false" viewBox="0 -1022 4125.4 1104" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-156-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-156-TEX-I-1D439" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path><path id="MJX-156-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-156-TEX-I-1D446" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path><path id="MJX-156-TEX-S4-2013" d="M0 248V285H499V248H0Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mover"><g data-mml-node="mrow"><g data-mml-node="mi"><use data-c="1D436" xlink:href="#MJX-156-TEX-I-1D436"></use></g><g data-mml-node="mi" transform="translate(760,0)"><use data-c="1D439" xlink:href="#MJX-156-TEX-I-1D439"></use></g><g data-mml-node="mo" transform="translate(1731.2,0)"><use data-c="2B" xlink:href="#MJX-156-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(2731.4,0)"><use data-c="1D446" xlink:href="#MJX-156-TEX-I-1D446"></use></g><g data-mml-node="mi" transform="translate(3376.4,0)"><use data-c="1D439" xlink:href="#MJX-156-TEX-I-1D439"></use></g></g><g data-mml-node="mo" transform="translate(0,637)"><svg width="4125.4" height="237" x="0" y="148" viewBox="1031.4 148 4125.4 237"><use data-c="2013" xlink:href="#MJX-156-TEX-S4-2013" transform="scale(12.376,1)"></use></svg></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover><mrow><mi>C</mi><mi>F</mi><mo>+</mo><mi>S</mi><mi>F</mi></mrow><mo accent="true">―</mo></mover></math></mjx-assistive-mml></mjx-container><script type="math/tex">\overline{CF+SF}</script><span> =1</span></p><p><span>【答案】：这里把A和B进行比较，就是把A和B进行相减。C</span></p></li><li><p><strong><span>【2013 统考真题】</span></strong><span>假设变址寄存器R的内容为 1000H，指令中的形式地址为 2000H；地址 1000H 中的内容为2000H，地址2000H 中的内容为 3000H，地址3000H 中的内容为 4000H，则变址寻址方式下访问到的操作数是（ ）。</span>
+<span>A. 1000H</span>
+<span>B. 2000H</span>
+<span>C. 3000H</span>
+<span>D. 4000H</span></p><p><span>【答案】：D</span></p></li><li><p><span>【2014 统考真题】某计算机有 16 个通用寄存器，来用32位定长指令宇，操作码字段（含寻址方式位）为8位，Store指令的源操作数和目的操作数分别采用寄存器直接寻址和基址寻址方式。若基址寄存器可使用任一通用寄存器，且偏移量用补码表示，则Store 指令中偏移量的取值范围是（ ）</span>
+<span>A. -32768~+32767</span>
+<span>B. -32767~+32768</span>
+<span>C. -65536~+65535</span>
+<span>D. -65535~+65536</span></p><p><span>【答案】：32 - 4 - 8 - 4 = 16。A</span></p></li><li><p><span>【2016 统考真题】某指令格式如下所示</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>OP</span></th><th style='text-align:center;' ><span>M</span></th><th style='text-align:center;' ><span>I</span></th><th style='text-align:center;' ><span>D</span></th></tr></thead><tbody></tbody></table></figure><p><span>其中M 为寻址方式，I为变址寄存器编号，D 为形式地址。若采用先变址后问址的寻址方式，则操作数的有效地址是（ ）。</span></p><p><span>A. I + D</span>
+<span>B. (I) + D</span>
+<span>C. ((I) + D)</span>
+<span>D. ((I)) + D</span></p><p><span>【答案】：C</span></p></li><li><p><span>【2017 统考真题】下列寻址方式中，最适合按下标顺序访问一维数组元素的是（ ）.</span>
+<span>A. 相对寻址</span>
+<span>B. 奇存器寻址</span>
+<span>C. 直接寻址</span>
+<span>D. 变址寻址</span></p><p><span>【答案】：D</span></p></li><li><p><span>【2018 统考真题】按字节编址的计算机中，某double 型数组 A 的首地址为 2000H，使用变址寻址和循环结构访问数组 A，保存数组下标的变址寄存器的初值为 0，每次循环取一个数组元素，其偏移地址为变址值乘以 sizeof (double)，取完后变址寄存器的内容自动加 1 若某次储环所取元素的地址为 2100H，则进入该次循环时变址奇存器的内容是（ ）。</span>
+<span>A. 25</span>
+<span>B. 32</span>
+<span>C. 64</span>
+<span>D. 100</span></p><p><span>【答案】：2000 0+8n，16x16/8=32，B</span></p></li><li><p><span>【2019 统考真题】莱计算机来用大端方式，按字节编址。某指令中操作数的机器数为1234 FFOOH，该操作数来用基址寻址方式，形式地址（用补码表示）为 FF12H，基址寄存器的内容为 F0000000H，则该操作数的 </span><strong><span>LSB（最低有效宇节）</span></strong><span>所在的地址是（ ）</span>
+<span>A. FO0O FF12H</span>
+<span>B. FO00 FF15H</span>
+<span>C. EFFF FF12H</span>
+<span>D. EFFF FF15H</span></p><p><span>【答案】：FF12=1111111100010010=1，0000000，1110，1110=-(16*14+14)=-238，C-&gt;D</span></p><p><a href='http://t.csdn.cn/lLMP8' target='_blank' class='url'>http://t.csdn.cn/lLMP8</a></p></li><li><p><span>【2020 统考真题】某计算机来用 16 位定长指令宇格式，操作码位数和导址方式位数固定，指令系统有 48 条指令，支持直接、问接、立即、相对4种寻址方式。在单地址指令中，直接寻址方式的可寻址范国是（ ）</span>
+<span>A. 0~255</span>
+<span>B. 0~1023</span>
+<span>C. -128~127</span>
+<span>D. -512~511</span></p><p><span>【答案】：16-6=10，10-2=8，2^8=256，A</span></p></li></ol></div></div>
+</body>
+</html>
