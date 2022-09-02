@@ -17,6 +17,7 @@ def get_name():
 		command = input('🤔 输入创建模块名称，生成readme模板(直接回车退出程序):')
 		# 退出
 		if command=='':
+			print("\n👋 模块构建取消!")
 			return False
 		# 判断非法字符
 		flag = not path_valid(command)
@@ -118,8 +119,12 @@ def main():
 	# 获取版本选项
 	content += get_ver()
 
+	print("\n以下是模板内容\n==================================")
+	print(content)
+	print("==================================")
 	creat = input('\n您是否要继续创建: README.md 以及对应目录 (Y/N):')
 	if creat!='Y' and creat !='':
+		print("\n👋 模块构建取消!")
 		return False
 	if(os.path.exists('./'+title+'/resources')):
 		replace = input('\n./'+title+'已经存在,您是否要重新创建 (Y/N):')
@@ -127,6 +132,7 @@ def main():
 			shutil.rmtree('./'+title)
 		else:creat!='N'
 	if creat!='Y' and creat !='':
+		print("\n👋 模块构建取消!")
 		return False
 	os.makedirs('./'+title+'/resources/extension')
 	with open('./'+title+'/README.md','w')as f:

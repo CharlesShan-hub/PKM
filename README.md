@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.08.29
+2022.08.30
 
 [toc]
 
@@ -157,7 +157,7 @@
 | ⭐️[毛泽东思想](./KnowledgeMap/文史哲/毛泽东思想和中国特色社会主义理论体系概论/README.md) | ⭐️[中国特色社会主义理论体系概论](./KnowledgeMap/文史哲/毛泽东思想和中国特色社会主义理论体系概论/README.md) |  ⭐️[近代史纲要](./KnowledgeMap/文史哲/近代史纲要/README.md)   |
 | ⭐️[思想道德修养](./KnowledgeMap/文史哲/思想道德修养/README.md) |                            (英语)                            |                                                              |
 |  ✏️ [社会心理学](./KnowledgeMap/文史哲/社会心理学/README.md)  |                                                              |                                                              |
-|    [弗兰肯斯坦](./KnowledgeMap/读书/弗兰肯斯坦/README.md)    |                                                              |                                                              |
+|   ⭐️[弗兰肯斯坦](./KnowledgeMap/读书/弗兰肯斯坦/README.md)    |                                                              |                                                              |
 
 
 
@@ -252,23 +252,27 @@ Matlab资源：[公众号](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NDc
 
 ## 项目逻辑
 
-1. 利用Xmind搭建内部富有关联的知识地图 -> learn.xmind
+1. 利用PKMViewer中的工具搭建统一格式的专题README文档
+
+   ![脚本截图](resources/脚本截图.png)
+
+2. 利用Xmind搭建内部富有关联的知识地图 -> learn.xmind
 
    ![通过Xmind构建测试导图](./resources/demo.png)
 
-2. 利用PKMViewer中的工具，将思维导图中的数据提炼出来，进行处理，生成HTML展示。
+3. 利用PKMViewer中的工具，将思维导图中的数据提炼出来，进行处理，生成HTML展示。
 
    ![生成的HTML展示](./resources/demo3.png)
 
-3. 可以通过Nginx搭建属于自己的知识展示网站
+4. 可以通过Nginx搭建属于自己的知识展示网站
 
    ![映射到自己的网站上](./resources/demo4.jpg)
 
-4. 可以将数据提炼为关系，插入到Neoj4知识图谱中。
+5. 可以将数据提炼为关系，插入到Neoj4知识图谱中。
 
    ![将数据插入到知识图谱中](./resources/demo2.png)
 
-5. 知识结构为通过思维导图连接的知识点（项目/领域标题），与通过Markdown文档表现的具体内容笔记。通过[**Docusaurus**](https://docusaurus.io/zh-CN/)进行静态网络的搭建，快速生成对应[博客](https://charlesshan-hub.github.io)。
+6. 知识结构为通过思维导图连接的知识点（项目/领域标题），与通过Markdown文档表现的具体内容笔记。通过[**Docusaurus**](https://docusaurus.io/zh-CN/)进行静态网络的搭建，快速生成对应[博客](https://charlesshan-hub.github.io)。
 
 ## 想挖的坑
 
