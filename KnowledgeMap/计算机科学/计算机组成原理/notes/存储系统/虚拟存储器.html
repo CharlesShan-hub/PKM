@@ -1,0 +1,1194 @@
+<!doctype html>
+<html style='font-size:22px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+  text-align: justify;
+  overflow-x: hidden;
+  color: #282c34;
+  background-color: #fefefe;
+  -webkit-font-smoothing: antialiased;
+}
+
+content #write {
+  background-color: #fefefe;
+  max-width: 90%;
+  margin: 0 auto;
+  padding-bottom: 7.5rem;
+}
+
+content #write p {
+  word-spacing: 0.05rem;
+}
+
+content #write ol li {
+  padding-left: 0.5rem;
+}
+
+content #write > h1:first-child {
+  font-weight: normal;
+}
+
+content #write > h5.md-focus:before {
+  top: 2px;
+}
+
+::-moz-selection {
+  background-color: #bac6e9;
+}
+
+::selection {
+  background-color: #bac6e9;
+}
+
+/* h1-h3 */
+#write h1,
+#write h2,
+#write h3 {
+  font-style: normal;
+}
+
+#write h1,
+#write h2 {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+#write h1 {
+  font-size: 3rem;
+}
+
+#write h2 {
+  font-size: 2.4rem;
+}
+
+#write h2:after {
+  content: "";
+  display: block;
+  width: 6.25rem;
+  height: 1px;
+  margin: 0 auto;
+  border-bottom: 1px solid #2f2f2f;
+}
+
+#write h3 {
+  font-size: 1.8rem;
+}
+
+/* paragraph */
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* ul ol */
+ul,
+ol {
+  padding-left: 1.75rem;
+}
+
+ul:first-child,
+ol:first-child {
+  margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+/* blockquote */
+blockquote {
+  padding: 0.5rem 1rem;
+  border-left: 8px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+  border-radius: 4px;
+}
+
+blockquote code {
+  background-color: transparent;
+}
+
+/* horizontal line */
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 2px dashed #abb2bf;
+}
+
+/* table */
+table,
+.md-table-fig .md-table {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  border-collapse: separate;
+  overflow: hidden;
+}
+
+table th,
+table td,
+.md-table-fig .md-table th,
+.md-table-fig .md-table td {
+  padding: 10px 16px;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+table th:first-child,
+table td:first-child,
+.md-table-fig .md-table th:first-child,
+.md-table-fig .md-table td:first-child {
+  border-left: 0;
+}
+
+table thead,
+.md-table-fig .md-table thead {
+  background-color: #e7ecf3;
+  color: #000;
+}
+
+table caption + thead tr:first-child th,
+table caption + thead tr:first-child td,
+table colgroup + thead tr:first-child th,
+table colgroup + thead tr:first-child td,
+table thead + tbody tr:first-child th,
+table thead + tbody tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td,
+.md-table-fig .md-table caption + thead tr:first-child th,
+.md-table-fig .md-table caption + thead tr:first-child td,
+.md-table-fig .md-table colgroup + thead tr:first-child th,
+.md-table-fig .md-table colgroup + thead tr:first-child td,
+.md-table-fig .md-table thead + tbody tr:first-child th,
+.md-table-fig .md-table thead + tbody tr:first-child td,
+.md-table-fig .md-table thead:first-child tr:first-child th,
+.md-table-fig .md-table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+table tbody + tbody,
+.md-table-fig .md-table tbody + tbody {
+  border-top: 2px solid #ddd;
+}
+
+.md-table-fig .md-table-edit {
+  background-color: #ddd;
+}
+
+.md-table-fig .md-table-edit .btn-default:hover {
+  background-color: #bac6e9;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .arrow {
+  top: -10px;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .arrow::after {
+  border-bottom-color: #ddd;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset {
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset input {
+  color: #282c34 !important;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset input#md-grid-width, .md-table-fig .md-table-edit .md-table-resize-popover .md-reset input#md-grid-height {
+  text-align: center;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .popover-title {
+  border-top: 1px solid #eee;
+}
+
+/* yaml front matter */
+#write pre.md-meta-block {
+  background: #e7ecf3;
+  color: #486491;
+  border: 0;
+  border-radius: 6px;
+  line-height: 1.3rem;
+  padding: 0.5rem 1.5rem;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+/* table of contents */
+.md-toc {
+  margin-bottom: 1.25rem;
+}
+
+/* task list */
+.md-task-list-item > input::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -4px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #737373;
+  background: #fff;
+  -webkit-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item > input::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  width: 0.6rem;
+  height: 0.3rem;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  opacity: 0;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+
+.md-task-list-item > input:checked::before {
+  background-color: #67c23a;
+  border: none;
+}
+
+.md-task-list-item > input:checked::after {
+  opacity: 1;
+}
+
+.md-task-list-item.task-list-done {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* footnote */
+.footnotes {
+  font-size: 1rem;
+}
+
+/* math,html block common */
+.mathjax-block,
+.md-htmlblock {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+}
+
+.mathjax-block[contenteditable="false"]:active, .mathjax-block[contenteditable="false"]:focus,
+.md-htmlblock[contenteditable="false"]:active,
+.md-htmlblock[contenteditable="false"]:focus {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.mathjax-block:hover .md-rawblock-container,
+.mathjax-block:hover .md-rawblock-tooltip,
+.md-htmlblock:hover .md-rawblock-container,
+.md-htmlblock:hover .md-rawblock-tooltip {
+  background-color: #f5f6f7;
+  -webkit-animation: showRawBlockTooltip 0s linear;
+          animation: showRawBlockTooltip 0s linear;
+}
+
+.mathjax-block:hover .md-rawblock-container,
+.md-htmlblock:hover .md-rawblock-container {
+  border-radius: 6px 0 6px 6px;
+}
+
+.mathjax-block .md-rawblock-control,
+.md-htmlblock .md-rawblock-control {
+  background-color: #f5f6f7;
+}
+
+.mathjax-block .md-rawblock-tooltip,
+.md-htmlblock .md-rawblock-tooltip {
+  background-color: #f5f6f7;
+  -webkit-animation: showRawBlockTooltip 0s linear;
+          animation: showRawBlockTooltip 0s linear;
+  border-radius: 4px 4px 0 0;
+}
+
+/* math block */
+.mathjax-block .md-mathblock-panel .code-tooltip[contenteditable="false"] {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-before {
+  padding-top: 6px;
+  border-top-left-radius: 6px;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-after {
+  padding-bottom: 6px;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner {
+  color: #282c34;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-lines {
+  color: #282c34;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-gutters {
+  background-color: #f5f6f7;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selected,
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selectedtext {
+  background-color: #bac6e9 !important;
+}
+
+.mathjax-block .md-math-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* html block */
+.md-htmlblock .md-htmlblock-panel {
+  border-radius: 6px;
+  border-top-right-radius: 0;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input {
+  padding-top: 14px;
+  padding-bottom: 10px;
+}
+
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selected,
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selectedtext {
+  background-color: #bac6e9 !important;
+}
+
+/* strong */
+strong {
+  background-color: inherit;
+  color: #b5302e;
+}
+
+/* emphasis */
+em {
+  background-color: inherit;
+  color: #949415;
+}
+
+/* underline */
+u {
+  background-color: inherit;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid #f00;
+  padding-bottom: 1px;
+}
+
+/* code */
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+  font-size: inherit;
+}
+
+code {
+  background-color: rgba(34, 37, 38, 0.05);
+  color: #e96900;
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 2px;
+  padding: 3px 4px 1px;
+  border-radius: 4px;
+}
+
+/* strike */
+del {
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* hightlight */
+mark {
+  color: #282c34;
+  font-weight: 500;
+  padding: 1px 5px 2px;
+  border-radius: 2px;
+}
+
+/* hyperlink */
+a {
+  background-color: inherit;
+  color: #2484c1;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a img {
+  border: none;
+}
+
+/* code fences */
+.md-fences {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #282c34;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 2.5rem;
+  border: none;
+  border-radius: 6px;
+}
+
+.md-fences[contenteditable="false"]:active, .md-fences[contenteditable="false"]:focus {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.md-fences .code-tooltip {
+  background-color: #282c34;
+  border-radius: 4px;
+}
+
+.md-fences span {
+  color: #abb2bf;
+}
+
+.md-fences .code-tooltip .ty-input {
+  color: #fff;
+  font-weight: 500;
+}
+
+.ty-show .autoComplt-list li.active {
+  background-color: #bac6e9;
+}
+
+/* code container */
+.cm-s-inner {
+  background-color: #282c34;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+  background-color: #282c34;
+  border: none;
+}
+
+.cm-s-inner .CodeMirror-guttermarker,
+.cm-s-inner .CodeMirror-guttermarker-subtle,
+.cm-s-inner .CodeMirror-linenumber {
+  color: #737984;
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid #528bff !important;
+}
+
+.cm-s-inner div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line > span::-moz-selection,
+.cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+  background-color: #bac6e9;
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line > span::selection,
+.cm-s-inner .CodeMirror-line > span > span::selection {
+  background-color: #bac6e9;
+}
+
+.cm-s-inner .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0);
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+
+.cm-s-inner .CodeMirror-selected,
+.cm-s-inner .CodeMirror-selectedtext {
+  background-color: #404859 !important;
+}
+
+/* code fences color */
+.cm-s-inner .cm-keyword {
+  color: #c678dd !important;
+}
+
+.cm-s-inner .cm-operator {
+  color: #56b6c2 !important;
+}
+
+.cm-s-inner .cm-variable {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-variable-3 {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-builtin {
+  color: #e8bf6a !important;
+}
+
+.cm-s-inner .cm-atom {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-number {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-def {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-string {
+  color: #98c379 !important;
+}
+
+.cm-s-inner .cm-string-2 {
+  color: #80cbc4 !important;
+}
+
+.cm-s-inner .cm-comment {
+  color: #629755 !important;
+}
+
+.cm-s-inner .cm-tag {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-meta {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-attribute {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-property {
+  color: #61afef !important;
+}
+
+.cm-s-inner .cm-qualifier {
+  color: #decb6b !important;
+}
+
+.cm-s-inner .cm-error {
+  color: #fff !important;
+  background-color: #ec5f67 !important;
+}
+
+.cm-s-inner .cm-tag.cm-bracket {
+  color: #abb2bf !important;
+}
+
+/* scrollbar */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 4px;
+}
+
+/* find dialog */
+#typora-quick-open {
+  background-color: #fff;
+  color: #282c34;
+}
+
+#typora-quick-open .typora-quick-open-item.active {
+  background-color: #bac6e9 !important;
+}
+
+#typora-quick-open .ty-quick-open-category-title {
+  border-top: 1px solid #eee !important;
+}
+
+/* modal dialog */
+#common-dialog .modal-dialog .modal-content {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: #f5f6f7;
+  border: none;
+  border-radius: 6px;
+}
+
+#common-dialog .modal-dialog .modal-content .modal-footer .btn-default:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* preferences */
+.ty-preferences {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #282c34;
+}
+
+.ty-preferences .window-header h2 {
+  font-size: 1.6rem;
+}
+
+.ty-preferences .sidebar {
+  font-size: 1.4rem;
+}
+
+.ty-preferences .sidebar .nav-group-item.active,
+.ty-preferences .sidebar .nav-group-item:active {
+  color: #efefef;
+  background-color: #2f845e;
+}
+
+/* sidebar includes file-tree,articles and outline*/
+.html-for-mac #typora-sidebar {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* focus mode/typewriter mode notification  */
+#md-notification {
+  background-color: #fff !important;
+}
+
+#md-notification #ty-surpress-mode-warning-close-btn:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* Unibody sidebar */
+#megamenu-menu-sidebar {
+  color: #282c34;
+  font-size: 1rem;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list {
+  border-top-color: rgba(171, 192, 208, 0.1);
+  background-color: #222526;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li {
+  font-size: 0.8rem;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a {
+  color: #abc0d0 !important;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a.active, #megamenu-menu-sidebar #megamenu-menu-list li a:hover {
+  background-color: #3e4249 !important;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a#m-saved {
+  background-color: transparent !important;
+}
+
+.megamenu-opened .megamenu-menu {
+  left: 0;
+}
+
+#megamenu-content {
+  color: #000;
+}
+
+/* sidebar */
+#typora-sidebar {
+  background-color: #fafafa;
+  border-right: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-loading-template.file-list-item {
+  border-bottom: transparent !important;
+  background-color: rgba(171, 192, 208, 0.1);
+}
+
+#typora-sidebar .info-panel-tab-wrapper .info-panel-tab:hover {
+  color: inherit;
+}
+
+#typora-sidebar .info-panel-tab-wrapper .info-panel-tab .info-panel-tab-border {
+  background-color: #2f845e;
+  border-radius: 4px;
+}
+
+#typora-sidebar .sidebar-osx-tab .sidebar-tabs {
+  border-bottom-color: transparent;
+}
+
+#typora-sidebar #sidebar-content .file-list-item {
+  border-bottom: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-content .file-list-item.active {
+  background-color: rgba(66, 185, 131, 0.1);
+  border-left: 4px solid #2f845e;
+}
+
+#typora-sidebar #sidebar-content .ty-sidebar-search-panel {
+  border-bottom: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-content .ty-sidebar-search-panel .searchpanel-search-option-btn {
+  background-color: #fff;
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-node-content {
+  line-height: 1.375rem;
+  font-size: 1rem;
+  color: #282c34 !important;
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-tree-node:not(.file-node-root):hover > .file-node-background {
+  border-left: 4px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-tree-node.active > .file-node-background {
+  border-color: #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content #file-library-list-children .file-library-file-node:hover {
+  border-left: 4px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content #outline-content .no-collapse-outline .outline-item {
+  line-height: 1.375rem;
+  font-size: 1rem;
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-expander:before {
+  color: inherit;
+  font-size: 14px;
+  top: auto;
+  content: "\f0da";
+  font-family: FontAwesome;
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-expander:hover:before,
+#typora-sidebar #sidebar-content #outline-content .outline-item-open > .outline-item > .outline-expander:before {
+  content: "\f0d7";
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+#typora-sidebar #ty-sidebar-footer {
+  border-top: 1px solid #eee;
+}
+
+#typora-sidebar #ty-sidebar-footer .sidebar-footer-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* dropdown menu */
+.dropdown-menu {
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-top: 1px solid #eee;
+}
+
+.dropdown-menu > .show + .menuitem-group-label.show {
+  border-top: 1px solid #eee !important;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > li > a:hover,
+.dropdown-menu .menu-style-btn.active {
+  background-color: #bac6e9 !important;
+}
+
+.dropdown-menu li a {
+  color: #282c34 !important;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #bac6e9 !important;
+}
+
+.dropdown-menu .divider {
+  border-color: #fff;
+}
+
+/* sidebar-files-menu,toc-dropmenu,suggest common */
+#sidebar-files-menu,
+#toc-dropmenu,
+.auto-suggest-container {
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border: none;
+}
+
+#toc-dropmenu .outline-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* emoji,fences,word suggest */
+.auto-suggest-container {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.auto-suggest-container li.active, .auto-suggest-container li:hover {
+  background-color: #bac6e9 !important;
+}
+
+/** source code mode */
+#typora-source {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a6a6a;
+}
+
+#typora-source .cm-s-typora-default .cm-header,
+#typora-source .cm-s-typora-default .cm-property,
+#typora-source .CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+  color: #428bca;
+}
+
+#typora-source .cm-s-typora-default .cm-atom,
+#typora-source .cm-s-typora-default .cm-number {
+  color: #777777;
+}
+
+#typora-source .CodeMirror-selectedtext {
+  background-color: transparent !important;
+}
+
+.typora-node .file-list-item-parent-loc,
+.typora-node .file-list-item-time,
+.typora-node .file-list-item-summary {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>虚拟存储器</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='虚拟存储器'><span>虚拟存储器</span></h1><p><span>2022.09.04</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#虚拟存储器">虚拟存储器</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n13"><a class="md-toc-inner" style="" href="#概念">概念</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6"><a class="md-toc-inner" style="" href="#页式虚拟存储器">页式虚拟存储器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n40"><a class="md-toc-inner" style="" href="#页表">页表</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n53"><a class="md-toc-inner" style="" href="#快表">快表</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n63"><a class="md-toc-inner" style="" href="#具有tlb-和cache-的多级存储系統">具有TLB 和Cache 的多级存储系統</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n8"><a class="md-toc-inner" style="" href="#段式虚拟存储器">段式虚拟存储器</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n10"><a class="md-toc-inner" style="" href="#段页式虚拟存储器">段页式虚拟存储器</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n196"><a class="md-toc-inner" style="" href="#虚拟存储器与cache的比较">虚拟存储器与Cache的比较</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n247"><a class="md-toc-inner" style="" href="#习题">习题</a></span></p></div><p><span>主存和辅存共同构成了虚拟存储器，二者在硬件和系统软件的共同管理下工作。对于应用程序员而言，虚拟存储器是透明的。虛拟存储器具有主存的速度和辅存的容量。</span></p><h2 id='概念'><span>概念</span></h2><p><span>虚拟存储器将主存或辅存的地址空间统一编址，形成一个庞大的地址空间，在这个空间内，用户可以自由编程，而不必在乎实际的主存容量和程序在主存中实际的存放位置。</span></p><p><span>用户编程允许涉及的地址称为虛地址或逻辑地址，虚地址对应的存储空间称为虚拟空间或程序空间。实际的主存单元地址称为实地址或物理地址，实地址对应的是主存地址空间，也称实地址空间。虚地址比实地址要大很多。虚拟存储器的地址空间如图所示。</span></p><p><img src="resources/虚拟内存的3个地址空间.png" referrerpolicy="no-referrer" alt="截屏2022-09-03 下午7.04.56"></p><p><span>CPU 使用虚地址时，由辅助硬件找出虚地址和实地址之间的对应关系，并判断这个虚地址对应的存储单元内容是否已装入主存。若已在主存中，则通过地址变换，CPU 可直接访问主存指示的实际单元：若不在主存中，则把包含这个字的一页或一段调入主存后再由 CPU 访问。若主存已满，则采用替换算法置换主存中的交换块（即页面）。</span></p><p><span>虚拟存储器也采用和 Cache 类似的技术，将辅存中经常访问的数据副本存放到主存中。但是缺页（或段）而访问辅存的代价很大，提高命中率是关键，因此</span><strong><span>虚拟存储机制采用全相联映射</span></strong><span>，每个虚页面可以存放到对应主存区域的任何一个空闲页位置。此外，当进行</span><strong><span>写操作</span></strong><span>时，不能每次写操作都同时写回磁盘，因而，在处理一致性问题时，采用</span><strong><span>回写法</span></strong><span>。</span></p><h2 id='页式虚拟存储器'><span>页式虚拟存储器</span></h2><p><strong><span>页式虚拟存储器</span></strong><span>以</span><strong><span>页为基本单位</span></strong><span>。虚拟空间与主存空间都被划分成同样大小的页，主存的页称为实页、页框，虛存的页称为虚页。把虚拟地址分为两个字段：</span><strong><span>虚页号和页内地址</span></strong><span>。虚拟地址到物理地址的转换是由页表实现的。页表是一张存放在主存中的虚页号和实页号的对照表，它记录程序的虚页调入主存时被安排在主存中的位置。</span><strong><span>页表一般长久地保存在内存中</span></strong><span>。</span></p><h3 id='页表'><span>页表</span></h3><p><span>下图是一个页表示例。</span><strong><span>有效位</span></strong><span>也称装入位，用来表示对应页面是否在主存，若为 1，则表示该虚拟页己从外存调入主存，此时页表项存放该页的物理页号；若为 0，则表示没有调入主存，此时页表项可以存放该页的磁盘地址。</span><strong><span>脏位</span></strong><span>也称修改位，用来表示页面是否被修改过，虚存机制中采用</span><strong><span>回写策略</span></strong><span>，利用胜位可判断替换时是否需要写回磁盘。</span><strong><span>引用位</span></strong><span>也称使用位，用来配合</span><strong><span>替换策略</span></strong><span>进行设置，例如是否实现最先调入(FIFO 位）或最近最少用（LRU位）策略等。</span></p><p><img src="resources/页表.png" referrerpolicy="no-referrer" alt="页表"></p><p><span>CPU执行指令时，需要先将虚拟地址转换为主行物理地址。</span><strong><span>页表基址奇存器</span></strong><span>存放进程的</span><strong><span>页表首地址</span></strong><span>，然后根据虚拟地址</span><strong><span>高位部分</span></strong><span>的</span><strong><span>虚拟页号</span></strong><span>找到对应的页表项，若装入位为 1，则取出物理页号，和虚拟地址低位部分的页内地址拼接，形成实际物理地址：若装入位为 0，则说明缺页，需要操作索统进行缺页处理。地址变换的过程如下图所示</span></p><p><img src="resources/页表2.png" referrerpolicy="no-referrer" alt="截屏2022-09-03 下午8.33.55"></p><p><span>页式虚拟存储器的优点是，页面的长度固定，页表简单，调入方便。缺点是，由于程序不可能正好是页面的整数倍，最后一页的零头将无法利用而造成浪费，并且页不是逻辑上独立的实体，所以处理、保护和共享都不及段式虚拟存储器方便。</span></p><h3 id='快表'><span>快表</span></h3><p><span>由地址转换过程可知，访存时先访问一次主存去查页表，再访问主存才能取得数据。如果缺页，那么还要进行页面替换、页面修改等，因此采用虚拟存储机制后，访问主存的次数更多了。</span></p><p><span>依据程序执行的局部性原理，在一段时间内总是经常访问某些页时，若把这些页对应的页表项存放在高速缓冲器组成的快表（TLB）中，则可以明显提高效率。相应地把放在主存中的页表称为慢表（Page)。在地址转换时，首先查找快表，者命中，则无须访问主存中的页表</span></p><p><strong><span>快表</span></strong><span>通常采用</span><strong><span>全相联或组相联方式</span></strong><span>。</span><strong><span>每个 TLB 项由页表表项内容加上一个TLB 标记字段组成</span></strong><span>，TLB 标记用来表示该表项取自页表中哪个虚页号对应的页表项，因此，TLB 标记的内容在全相联方式下就是该页表项对应的虚页号；组相联方式下则是对应虚页号的高位部分，而虚页号的低位部分用于选择TLB组的组索引（详细介绍见 《操作系统考研复习指导》一书的3.2.7节）。</span></p><h3 id='具有tlb-和cache-的多级存储系統'><span>具有TLB 和Cache 的多级存储系統</span></h3><p><span>下图是一个具有 TLB 和 Cache 的多级存储系统，其中 Cache 采用二路组相联方式。CPU给出一个 32 位的虚拟地址，TLB 采用全相联方式，每一项都有一个比较器，查找时将</span><u><span>虚页号</span></u><span>与</span><u><span>每个 TLB 标记字段</span></u><span>同时进行比较，若有某一项相等且对应有效位为 1，则TLB 命中，此时可直接通过TLB 进行地址转换：若末命中，则TLB 缺失，需要访问主存去查页表。图中所示的是两级页表方式，虚页号被分成页目录素引和页表索引两部分，由这两部分得到对应的页表项，从而进行地址转换，并将相应表项调入 TLB，若TLB 己满，则还需要采用替换策略。完成由虚拟地址到物理地址的转换后，Cache 机构根据映射方式将物理地址划分成多个字段，然后根据映射规则找到对应的 Cache 行或组，将对应 Cache 行中的标记与物理地址中的高位部分进行比较，若相等且对应有效位为 1，则 Cache 命中，此时据块内地址取出对应的字送 CPU。</span></p><p><img src="resources/TLB.png" referrerpolicy="no-referrer" alt="TLB"></p><p><span>查找时，快表和慢表也可以同步进行，若快表中有此虚页号，则能很快地找到对应的实页号，并使慢表的查找作废，从而就能做到虽采用虚拟存储器但访问主存速度几乎没有下降。</span></p><p><span>在一个具有 Cache 和 TLB 的虚拟存储系统中，CPU一次访存操作可能涉及 TLB、页表、Cache、主存和磁盘的访问，访问过程如下图所示。可见，CPU 访存过程中存在三种缺失情况：</span></p><ol><li><span>TLB 缺失：要访问的页面的页表项不在TLB 中</span></li><li><span>Cache 缺失：要访问的主存块不在Cache 中</span></li><li><span>Page 缺失：要访问的页面不在主存中。</span></li></ol><p><span>这三种缺失的可能组合情况如下表所示。</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>TLB</span></th><th style='text-align:center;' ><span>Page</span></th><th style='text-align:center;' ><span>Cache</span></th><th style='text-align:center;' ><span>说明</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>命中</span></td><td style='text-align:center;' ><span>命中</span></td><td style='text-align:center;' ><span>命中</span></td><td style='text-align:center;' ><span>TLB命中Page一定命中，信息在主存，可能在Cache</span></td></tr><tr><td style='text-align:center;' ><span>命中</span></td><td style='text-align:center;' ><span>命中</span></td><td style='text-align:center;' ><span>缺失</span></td><td style='text-align:center;' ><span>TLB命中Page一定命中，信息在主存，可能不在Cache</span></td></tr><tr><td style='text-align:center;' ><span>缺失</span></td><td style='text-align:center;' ><span>命中</span></td><td style='text-align:center;' ><span>命中</span></td><td style='text-align:center;' ><span>TLB缺失Page可能命中，信息在主存，可能在Cache</span></td></tr><tr><td style='text-align:center;' ><span>缺失</span></td><td style='text-align:center;' ><span>命中</span></td><td style='text-align:center;' ><span>缺失</span></td><td style='text-align:center;' ><span>TLB缺失Page可能命中，信息在主存，可能不在Cache</span></td></tr><tr><td style='text-align:center;' ><span>缺失</span></td><td style='text-align:center;' ><span>缺失</span></td><td style='text-align:center;' ><span>缺失</span></td><td style='text-align:center;' ><span>TLB缺失Page可能不命中，信息不在主存，也不在Cache</span></td></tr></tbody></table></figure><ul><li><span>（全命中）最好的情况是第1种组合，此时无须访问主存；</span></li><li><span>（找一次地址或找一次数据）第 2 种和第 3 种组合都需要访问一次主存；</span></li><li><span>（找地址+数据）第4种组合需要访问两次主存；</span></li><li><span>第5种组合发生“缺页异常”，需要访问磁盘，并且至少访问两次主存。</span></li><li><span>Cache 缺失处理由硬件完成；</span></li><li><span>缺页处理由软件完成，操作系统通过 “缺页异常处理程序〞来实现；</span></li><li><span>TLB 缺失既可以用硬件又可以用软件来处理。</span></li></ul><p><img src="resources/页表3.png" referrerpolicy="no-referrer" alt="页表3"></p><h2 id='段式虚拟存储器'><span>段式虚拟存储器</span></h2><p><span>段式虚拟存储器中的段是按程序的逻镇结构划分的，各个段的长度因程序而异。把虚拟地址分为两部分：</span><strong><span>段号和段内地址</span></strong><span>。虚拟地址到实地址之问的变换是由段表来实现的。段表是程序的逻辑段和在主存中存放位置的对照表。段表的每行记录与某个段对应的</span><strong><span>段号、装入位、段起点和段长</span></strong><span>等信息。由于段的长度可变，所以</span><strong><span>段表中要给出各段的起始地址与段的长度</span></strong><span>。</span></p><p><span>CPU 根据虚拉地址访存时，首先根据段号与段表基地址拼接成对应的段表行，然后根据该段装行的装入位判断该段是否已调入主存（装入位为 “1”，表示该段己调入主存；装入位为“0”，表示该段不在主存中）。已调入主存时，从段表读出该段在主存中的起始地址，与段内地址（偏移量）相加，得到对应的主存实地址。段式盛拟存储器的地址变换过程如下图所示。</span></p><p><span>段式盛拟存储器的优点是，段的分界与程序的自然分界相对应，因而具有逻辑独立性，使得它易于编译、管理、修改和保护，下图段式虛拟存储器的地址变换过程也便于多道程序的共享；缺点是因为段长度可变，分配空间不便，容易在段间留下碎片，不好利用，造成浪费。</span></p><p><img src="resources/段表.png" referrerpolicy="no-referrer" alt="截屏2022-09-03 下午8.53.41"></p><h2 id='段页式虚拟存储器'><span>段页式虚拟存储器</span></h2><p><span>把程序按逻辑结构</span><strong><span>分段</span></strong><span>，</span><strong><span>每段再划分为固定大小的页</span></strong><span>，主存空间也划分为大小相等的页，程序对主存的调入、调出仍以</span><strong><span>页</span></strong><span>为基本传送单位，这样的虚拟存储器称为段页式虚拟存储器。</span></p><p><span>在段页式虚拟存储器中，每个程序对应一个段表，每段对应一个页表，段的长度必须是页长的整数倍，段的起点必须是某一页的起点虚地址分为段号、段内页号、页内地址三部分。CPU 根据虚地址访存时，首先根据段号得到段表地址：然后从段表中取出该段的页表起始地址，与虛地址段内页号合成，得到页表地址，最后从页表中取出实页号，与页内地址拼接形成主存实地址。</span></p><p><span>段页式虛拟存储器的优点是，兼具页式和段式虛拟存储器的优点，可以按段实现共享和保护。缺点是在地址变换过程中需要两次查表，系统开销较大。</span></p><h2 id='虚拟存储器与cache的比较'><span>虚拟存储器与Cache的比较</span></h2><ol><li><p><span>相同之处</span></p><ol><li><span>最终目标都是为了提高系统性能，两者都有容量、速度、价格的梯度。</span></li><li><span>都把数据划分为小信息块，并作为基本的传递单位，虚存系统的信息块更大。</span></li><li><span>都有地址的映射、替换算法、更新策略等问题。</span></li><li><span>依据程序的局部性原理应用 “快速缓存的思想〞，将活跃的数据放在相对高速的部件中。</span></li></ol></li><li><p><span>不同之处</span></p><ol><li><span>Cache 主要解决系统速度，而虚拟存储器却是为了解决主存容量。</span></li><li><span>Cache 全由硬件实现，是硬件存储器，对所有程序员透明；而虚拟存储器由 0S 和硬件共同实现，是逻辑上的存储器，对系统程序员不透明，但对应用程序员透明。</span></li><li><span>对于不命中性能影响，因为CPU 的速度约为 Cache 的 10 倍，主存的速度为硬盘的 100 倍以上，因此虚拟存储器系统不命中时对系统性能影响更大。</span></li><li><span>CPU 与 Cache 和主存都建立了直接访问的通路，而辅存与 CPU 没有直接通路。也就是说在 Cache 不命中时主存能和 CPU 直接通信，同时将数据调入 Cache：而虚拟存储器系统不命中时，只能先由硬盘调入主存，而不能直接和 CPU 通信。</span></li></ol></li></ol><h2 id='习题'><span>习题</span></h2><ol><li><p><span>为使虛拟存储系统有效地发挥共预期的作用，所运行程序应具有的特性是( )。</span>
+<span>A. 不应含有过多的IO 操作</span>
+<span>B. 大小不应小于实际的内存容量</span>
+<span>C. 应具有较好的局部性</span>
+<span>D. 顺序执行的指令不应过多</span></p><p><span>【答案】：C</span></p></li><li><p><span>虚拟存储管理系统的基础是程序访问的局部性原理，此理论的基本含义是( )。</span>
+<span>A. 在程序的执行过程中，程序对主存的访问是不均匀的</span>
+<span>B. 空间局部性</span>
+<span>C. 时间局部性</span>
+<span>D. 代码的顺序执行</span></p><p><span>【答案】：A</span></p></li><li><p><span>虛拟存储器的常用管理方式有段式、页式、段页式，对于它们在与主存交换信息时的单位，以下表述正确的是（）。</span>
+<span>A.段式来用“页”</span>
+<span>C.段页式来用“段”和“页”</span>
+<span>B.页式采用“块”</span>
+<span>D.页式和段页式均仅采用“页”</span></p><p><span>【答案】：D</span></p></li><li><p><span>下列关于虚存的叙述中，正确的是（ ）。</span>
+<span>A.对应用程序员透明，对系统程序员不透明</span>
+<span>B. 对应用程序员不透明，对系统程序员透明</span>
+<span>C.对应用程序员、系统程序员都不透明</span>
+<span>D.对应用程序员、系统程序员都透明</span></p><p><span>【答案】：A</span></p></li><li><p><span>在虚拟存储器中，当程序正在执行时，由（ ）完成地址映射。</span>
+<span>A.程序员</span>
+<span>B.编译器</span>
+<span>C装入程序</span>
+<span>D.操作系统</span></p><p><span>【答案】：D</span></p></li><li><p><span>采用虛拟存储器的主要目的是（ ）。</span>
+<span>A. 提高主存储器的存取速度</span>
+<span>B. 扩大主存储器的存储空间</span>
+<span>C. 提高外存储器的存取速度</span>
+<span>D. 扩大外存储器的存储空间</span></p><p><span>【答案】：B</span></p></li><li><p><span>关于虛拟存储器，下列说法中正确的是（ ）。</span>
+<span>I. 虛拟存储器利用了局部性原理</span>
+<span>II. 页式虛拟存储器的页面若很小，主存中存放的页面数较多，导致缺页频率较低，换页次数诚少，最终可以提升操作速度</span>
+<span>III. 页式虛拟存储器的页面若很大，主存中存放的页面数较少，导致页面调度频率较高，换页次数增加，降低探作速度</span>
+<span>IV. 段式虛拟存储器中，段具有逻辑独立性，易于实现程序的编译、管理和保护，也便于多道程序共享</span>
+<span>A. I、III、IV</span>
+<span>B. I、II、III</span>
+<span>C. I、II、IV</span>
+<span>D. II、III、IV</span></p><p><span>【答案】：A</span></p></li><li><p><span>虚拟存储器中的页表有快表和慢表之分，下面关于页表的叙迷中正确的是（ ）。</span>
+<span>A. 快表与慢表都存储在主存中，但快表比慢表容量小</span>
+<span>B. 快表采用了优化的搜索算法，因此查找速度快</span>
+<span>C. 快表比慢表的命中率高，因此快表可以得到更多的搜索结果</span>
+<span>D. 快表采用相联存储器件组成，按照查找内容访问，因此比慢表查找速度快</span></p><p><span>【答案】：D</span></p></li><li><p><span>【2010 统考真题】下列命令组合的一次访存过程中，不可能发生的是（ ）。</span>
+<span>A. TLB未命中，Cache 未命中，Page 未命中</span>
+<span>B. TLB 未命中，Cache 命中，Page 命中</span>
+<span>C. TLB命中，Cache 未命中，Page 命中</span>
+<span>D. TLB命中，Cache 命中，Page 未命中</span></p><p><span>【答案】：D</span></p></li><li><p><span>【2013 统考真题】某计算机主存地址空间大小为 256 MB，按字节编址。虛拟地址空间大小为4GB，采用页式存储管理，页面大小为 4KB，TLB（快表）采用全相联映射，有4个页表项，内容如下表所示。</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>有效位</span></th><th style='text-align:center;' ><span>标记</span></th><th style='text-align:center;' ><span>页框号</span></th><th style='text-align:center;' ><span>...</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>FF180H</span></td><td style='text-align:center;' ><span>0002H</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>3FFF1H</span></td><td style='text-align:center;' ><span>0035H</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>02FF3H</span></td><td style='text-align:center;' ><span>0351H</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>03FFFH</span></td><td style='text-align:center;' ><span>0153H</span></td><td style='text-align:center;' ><span>...</span></td></tr></tbody></table></figure><p><span>则对虛拟地址 03FF F18OH 进行虛实地址变换的结果是（ ）。</span>
+<span>A. 015 3180E</span>
+<span>B. 003 5180H</span>
+<span>C. TLB缺失</span>
+<span>D. 缺页</span></p><p><span>【答案】：A</span></p></li><li><p><span>【2015 统考真题】假定编译器将賦值语句 “x=x+3:” 转换为指令“add xaddr， 3”，共中xaddr 是x对应的存储单元地址。若执行该指令的计算机来用页式虚拟存储管理方式，并配有相应的 TLB，且Cache 使用直写方式，则完成该指令功能需要访问主存的次数至少是（）</span>
+<span>A. 0</span>
+<span>B. 1</span>
+<span>C. 2</span>
+<span>D. 3</span></p><p><span>【答案】：B</span></p></li><li><p><span>【2015 统考真题】假定主存地址为 32 位，按宇节编址，主存和Cache 之间采用直接映射方式，主存块大小为 4个宇，每字32位，采用回写方式，则能存放4K 字数据的Cache 的，总容量的位数至少是（ ）。</span>
+<span>A. 146K</span>
+<span>B. 147K</span>
+<span>C.148K</span>
+<span>D. 158K</span></p><p><span>【答案】：32 = [Tag(32-4-10=18bits)]</span><span>[</span><span>Cache行 10bits]</span><span>[</span><span>块内地址 4x32=2^4B]，18+1+1=20，20K。4K 字：4Kx32bits = 128K。128K+20K=148K。C</span></p></li><li><p><span>【2019統考真题】下列关于缺页处理的叙述中，错误的是（）。</span>
+<span>A. 缺页是在地址转换时 CPU 检测到的一种异常</span>
+<span>B.缺页处理由採作系统提供的缺页处理程序来完成</span>
+<span>C块页处理程序根据页故障地址从外存读入所缺失的页</span>
+<span>D.缺页处理完成后回到发生缺页的指令的下一条指令执行</span></p><p><span>【答案】：D</span></p></li><li><p><span>【2020 統考真题】下列关子 TLB 和Cache 的叙述中，错误的是()。</span>
+<span>A．命中率都与程序局部性有关</span>
+<span>B.缺失后都需要去访问主存</span>
+<span>C.缺失处理都可以由硬件实现</span>
+<span>D. 都由 DRAM 存储器组成</span></p><p><span>【答案】：D。Cache 由 SRAM 组成；TLB 通常由相联存储器组成，也可由 SRAM 组成。DRAM 需要不断刷新，性能偏低，不适合组成TLB 和Cache。选项A、B和C都是TLB 和 Cache 的特点。</span></p></li><li><p><span>【2011 统考真题】莱计算机存储器按字节编址，虚拟（逻輯）地址空问大小为 16MB，主存（物理）地址空问大小为 1MB，页面大小为 4KB; Cache 采用直接映射方式，共8行；主存与Cache 之问交换的块大小为 32B。系统运行到某一时刻时，页表的部分内容和 Cache 的部分内容分別如下的左图和右图所示，图中页框号及标记宇段的内容为十六进制形式</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>虚页号</span></th><th style='text-align:center;' ><span>有效位</span></th><th style='text-align:center;' ><span>页框号</span></th><th style='text-align:center;' ><span>...</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>06</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>04</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>2</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>15</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>3</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>02</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>4</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>5</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>2B</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>6</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>7</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>32</span></td><td style='text-align:center;' ><span>...</span></td></tr></tbody></table></figure><figure><table><thead><tr><th style='text-align:center;' ><span>行号</span></th><th style='text-align:center;' ><span>有效位</span></th><th style='text-align:center;' ><span>标记</span></th><th style='text-align:center;' ><span>...</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>020</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>2</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>01D</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>3</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>105</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>4</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>064</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>5</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>14D</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>6</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>...</span></td></tr><tr><td style='text-align:center;' ><span>7</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>27A</span></td><td style='text-align:center;' ><span>...</span></td></tr></tbody></table></figure><p><span>回答下列问题：</span>
+<span>1）虚拟地址共有几位，哪几位表示虚页号？物理地址共有几位，哪几位表示页框号（物理页号）？</span>
+<span>2）使用物理地址访问 Cache 时，物理地址应划分成哪几个字段？要求说明每个字段的位数及在物理地址中的位置。</span>
+<span>3）虛拟地址 001C60F 所在的页面是否在主存中？若在主存中，则该虚拟地址对应的物理地址是什么？访问该地址时是否 Cache 命中？要求说明理由。</span>
+<span>4）假定为该机配置一个四路组相联的TLB，共可存放8个页表项，若其当前内容（十六进制）如下图所示，則此时虛拟地址 024BACH 所在的页面是否存在主存中？要求说明理由。</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>组号</span></th><th style='text-align:center;' ><span>有效位</span></th><th style='text-align:center;' ><span>标记</span></th><th style='text-align:center;' ><span>页框号</span></th><th style='text-align:center;' ><span>有效位</span></th><th style='text-align:center;' ><span>标记</span></th><th style='text-align:center;' ><span>页框号</span></th><th style='text-align:center;' ><span>有效位</span></th><th style='text-align:center;' ><span>标记</span></th><th style='text-align:center;' ><span>页框号</span></th><th><span>有效位</span></th><th style='text-align:center;' ><span>标记</span></th><th style='text-align:center;' ><span>页框号</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>【0</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>0】</span></td><td style='text-align:center;' ><span>【1</span></td><td style='text-align:center;' ><span>001</span></td><td style='text-align:center;' ><span>15】</span></td><td style='text-align:center;' ><span>【0</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>-】</span></td><td><span>【1</span></td><td style='text-align:center;' ><span>012</span></td><td style='text-align:center;' ><span>1F】</span></td></tr><tr><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>【1</span></td><td style='text-align:center;' ><span>013</span></td><td style='text-align:center;' ><span>2D】</span></td><td style='text-align:center;' ><span>【0</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>-】</span></td><td style='text-align:center;' ><span>【1</span></td><td style='text-align:center;' ><span>008</span></td><td style='text-align:center;' ><span>7E】</span></td><td><span>【0</span></td><td style='text-align:center;' ><span>-</span></td><td style='text-align:center;' ><span>-】</span></td></tr></tbody></table></figure><p><span>【答案】：</span></p><ol><li><span>16MB = 2^24B，虚拟地址共有24bits，4KB=2^12B，12～23位代表虚页号</span>
+<span>1MB = 2^20B，物理地址共有20bits，4KB=2^12B，12～19位代表虚页号</span></li><li><span>32B = 2^5B。块内地址：5bits，0～4位。</span>
+<span>8 = 2^3。Cache行数：3bits，5～7位。</span>
+<span>20-8=12bits，标记。8～19位。</span></li><li><span>001C60H。虚页号位001。对应页框号位04。</span>
+<span>物理地址：04C60H = 【0000,0100,1100】【011】【0,0000】B，011B=3，行号=105≠04C，不在，没命中</span></li><li><span>024BACH = 【0000,0010,010】【0】【1011,1010,1100】，页框号1F，TLB命中，在主存中</span></li></ol></li><li><p><span>【2018 统考真题】某计算机来用页式虚拟存储管理方式，按宇节编址。CPU 进行存储访问的过程如下图所示。根据该图回答下列问题，</span>
+<span>1）主存物理地址占多少位？</span>
+<span>2）TLB采用什么映射方式？TLB是用SRAM 还是用DRAM 实现？</span>
+<span>3）Cache 来用什么映射方式？若 Cache采用 LRU 替换算法和回写策略，则 Cache 每行中除数据（Data）Tag 和有效位外，还应有哪些附加位？ Cache 总容量是多少？Cache 中有效位的作用是什么？</span>
+<span>4）若 CPU 给出的虛拟地址为 0008 C040H，则对应的物理地址是多少？是否在 Cache中命中？说明理由。若CPU 给出的虛拟地址为 0007 C260H，则该地址所在主存块映射到的 Cache 组号是多少？</span></p><p><img src="resources/2018.png" referrerpolicy="no-referrer" alt="2018"></p><p><span>【答案】：</span></p><ol><li><span>主存地址 = 16+12 =。28bits</span></li><li><span>TLB采用全相联映射，SRAM实现</span></li><li><span>Cache采用二路组相连映射。脏位1bit，替换控制位1bit。每行：(1+2+20)+2^5x8 = 279bits</span>
+<span>行数 = 2^3 x 2 =16，总位数：16x279=4464bits，有效位作用是标记该行是否数据是否有效。</span></li><li><span>0008 C040H -&gt; 004 0040H = 【00400H】,【100】【0,0000】，100-&gt;0组，2行，标记00400H，但有效位为0，未命中。</span>
+<span> 0007 C260 -&gt; ??? ?260H = 【????2H】，【011】【0，0000】，组号3</span></li></ol></li><li><p><span>【2021 统考真题】假设计算机M的主存地址为 24 位，按字节编址；采用分页存储管理方式，虛拟地址为 30位，页大小为 4KB;TLB 来用二路组相联方式和 LRU 替换第略，共8组。请回答下列问题。</span>
+<span>1）虚拟地址中哪几位表示虛页号？哪几位表示页内地址？</span>
+<span>2）已知访问TLB时虛页号高位部分用作TLB标记，低位部分用作TLB组号，M的虛拟地址中哪几位是 TLB 标记？哪几位是TLB组号？</span>
+<span>3）假设TLB初始时为空，访问的虛页号依次为10,12,16,7,26,4,12和20，在此过程中，哪一个虛页号对应的TLB表项被替换？说明理由。</span>
+<span>4）若将M中的虚拟地址位数增加到 32位，则TLB 表项的位数增加几位？</span></p><p><span>【答案】：</span></p><ol><li><p><span>4KB = 2^12B，30-12=18，12～29位代表虚页号。0～11代表页内地址。</span></p></li><li><p><span>组号3bits，12~14位代表组号，15～29代表TLB标记</span></p></li><li><p><span>10=1[010]，12=1[100]，16=10000，7=0111，26=11010，20=10100</span></p><figure><table><thead><tr><th>&nbsp;</th><th><span>10</span></th><th><span>12</span></th><th><span>16</span></th><th><span>7</span></th><th><span>26</span></th><th><span>4</span></th><th><span>12</span></th><th><span>20</span></th></tr></thead><tbody><tr><td><span>组号</span></td><td><span>010</span></td><td><span>110</span></td><td><span>000</span></td><td><span>111</span></td><td><span>010</span></td><td><span>100</span></td><td><span>100</span></td><td><span>100</span></td></tr><tr><td><span>000</span></td><td>&nbsp;</td><td>&nbsp;</td><td><span>16</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>010</span></td><td><span>10</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><span>26</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>100</span></td><td>&nbsp;</td><td><span>12</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><span>4</span></td><td><span>12</span></td><td><span>20</span></td></tr><tr><td><span>110</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>001</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>011</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>101</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>111</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><span>7</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>10和4和12会被替换</span></p></li><li><p><span>2位</span></p></li></ol></li></ol></div></div>
+</body>
+</html>
