@@ -1188,10 +1188,158 @@ a img {
 }
 
 
- @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>README</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='pkm---数据结构'><span>PKM - 数据结构  </span></h1><p><span>2022.09.04</span></p><p><img src="./resources/数据结构.png" referrerpolicy="no-referrer" alt="数据结构导图概览"></p><h2 id='介绍'><span>介绍</span></h2><p><span>数据结构按照408考研辅导进行梳理。</span></p><ul><li><p><span>绪论</span></p><ul><li><a href='./notes/绪论/数据结构的基本概念.md'><span>数据结构的基本概念</span></a></li><li><a href='./notes/绪论/算法和算法评价.md'><span>算法和算法评价</span></a></li></ul></li><li><p><span>线性表</span></p><ul><li><a href='./notes/线性表/线性表的定义和基本操作.md'><span>线性表的定义和基本操作</span></a></li><li><a href='./notes/线性表/线性表的顺序表示.md'><span>线性表的顺序表示</span></a></li><li><a href='./notes/线性表/线性表的链式表示.md'><span>线性表的链式表示</span></a></li></ul></li><li><p><span>栈、队列和数组</span></p><ul><li><a href='./notes/栈、队列和数组/栈.md'><span>栈</span></a></li><li><a href='./notes/栈、队列和数组/队列.md'><span>队列</span></a></li><li><a href='./notes/栈、队列和数组/栈和队列的应用.md'><span>栈和队列的应用</span></a></li><li><a href='./notes/栈、队列和数组/数组和特殊矩阵.md'><span>数组和特殊矩阵</span></a></li></ul></li><li><p><span>串</span></p><ul><li><a href='./notes/串/串的定义和实现.md'><span>串的定义和实现</span></a></li><li><a href='./notes/串/串的模式匹配.md'><span>串的模式匹配</span></a></li></ul></li><li><p><span>树与二叉树</span></p><ul><li><a href='./notes/树与二叉树/树的基本概念.md'><span>树的基本概念</span></a></li><li><a href='./notes/树与二叉树/二叉树的概念.md'><span>二叉树的概念</span></a></li><li><a href='./notes/树与二叉树/二叉树的遍历和线索二叉树.md'><span>二叉树的遍历和线索二叉树</span></a></li><li><a href='./notes/树与二叉树/树、森林.md'><span>树、森林</span></a></li><li><a href='./notes/树与二叉树/树与二叉树的应用.md'><span>树与二叉树的应用</span></a></li></ul></li><li><p><span>图</span></p><ul><li><a href='./notes/图/图的基本概念.md'><span>图的基本概念</span></a></li><li><a href='./notes/图/图的存储及基本操作.md'><span>图的存储及基本操作</span></a></li><li><a href='./notes/图/图的遍历.md'><span>图的遍历</span></a></li><li><a href='./notes/图/图的应用.md'><span>图的应用</span></a></li></ul></li><li><p><span>查找</span></p><ul><li><a href='./notes/查找/查找的基本概念.md'><span>查找的基本概念</span></a></li><li><a href='./notes/查找/顺序查找和折半查找.md'><span>顺序查找和折半查找</span></a></li><li><a href='./notes/查找/树型查找.md'><span>树型查找</span></a></li><li><a href='./notes/查找/B树和B+树.md'><span>B树和B+树</span></a></li><li><a href='./notes/查找/散列表.md'><span>散列表</span></a></li></ul></li><li><p><span>排序</span></p><ul><li><a href='./notes/排序/排序的基本概念.md'><span>排序的基本概念</span></a></li><li><a href='./notes/排序/插入排序.md'><span>插入排序</span></a></li><li><a href='./notes/排序/交换排序.md'><span>交换排序</span></a></li><li><a href='./notes/排序/选择排序.md'><span>选择排序</span></a></li><li><a href='./notes/排序/归并排序和基数排序.md'><span>归并排序和基数排序</span></a></li><li><a href='./notes/排序/各种内部排序算法的比较与应用.md'><span>各种内部排序算法的比较与应用</span></a></li><li><a href='./notes/排序/外部排序.md'><span>外部排序</span></a></li></ul></li></ul><p>&nbsp;</p><h2 id='资源'><span>资源</span></h2><p><span>链接: </span><a href='https://pan.baidu.com/s/1yakyIWoCXFwO-HIiEXGK6Q' target='_blank' class='url'>https://pan.baidu.com/s/1yakyIWoCXFwO-HIiEXGK6Q</a><span></span><br/><span>提取码: abya</span><br/><span>如果资源失效请联系我  </span></p><ul><li><p><strong><span>2022王道数据结构资料</span></strong><span> : 2022王道配套视频与习题解答  </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 14px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1. 2022数据结构知识点</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">2. 2022数据结构知识点课件</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">3. 2022数据结构知识点习题讲解</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">4. 2022数据结构知识点思维导图</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">5. 2022数据结构强化直播</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">6. 2022数据结构考研真题讲解</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">7. 2022王道数据结构.pdf（课本）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">8. 2022数据结构新增考点补充文档.pdf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">9. 22版数据结构勘误.pdf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">10. 408真题原题与解析</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">11. 王道2022年计算机专业基础综合考试核心考点及模拟题.pdf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">12. 王道2022年计算机专业基础综合考试历年真题解析.pdf</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 384px;"></div><div class="CodeMirror-gutters" style="display: none; height: 384px;"></div></div></div></pre></li><li><p><strong><span>2022天勤数据结构.pdf</span></strong><span>: 2022年408考研辅导教材  </span></p></li><li><p><strong><span>github习题同步笔记</span></strong><span> : </span><a href='https://github.com/CharlesShan-hub/DataStructureNotes' target='_blank' class='url'>https://github.com/CharlesShan-hub/DataStructureNotes</a><span>  </span></p></li><li><p><strong><span>数据结构与算法(公众号)</span></strong><span>（电子书）</span></p></li><li><p><strong><span>北邮计算机数据结构课件</span></strong></p></li><li><p><strong><span>算法导论（原书第3版） by Thomas H.Cormen Charles E.Leiserson Ronald L.Rivest Clifford Stein.pdf</span></strong></p></li></ul><h2 id='外部资料'><span>外部资料</span></h2><p><strong><span>算法可视化网站</span></strong><span> :</span><a href='https://www.cs.usfca.edu/~galles/visualization/Algorithms.html' target='_blank' class='url'>https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</a><span>  </span></p><p><strong><span>多语言高颜值算法可视化网站</span></strong><span>: </span><a href='https://algorithm-visualizer.org/' target='_blank' class='url'>https://algorithm-visualizer.org/</a></p><h2 id='版本'><span>版本</span></h2><ul><li><p><strong><span>V1 2021.08.22</span></strong></p><p><span>按照《2022年数据结构考研复习指导》与相关课程进行整理，完成全部知识框架搭建  </span></p></li><li><p><strong><span>V2 2021.11.27</span></strong></p><p><span>按照《2022年数据结构考研复习指导》与相关课程进行整理，进行习题归纳与知识整合  </span></p></li><li><p><strong><span>V3 2022.09</span></strong></p></li></ul><h2 id='更新计划'><span>更新计划</span></h2><ul><li><span>适配知识图谱倒入工具</span></li><li><span>将学习脉络改造成《算法导论》内容</span></li></ul></div></div>
+<div id='write'  class=''><h1 id='pkm---数据结构'><span>PKM - 数据结构  </span></h1><p><span>2022.09.06</span></p><p><img src="./resources/数据结构.png" referrerpolicy="no-referrer" alt="数据结构导图概览"></p><h2 id='介绍'><span>介绍</span></h2><p><span>数据结构按照408考研辅导进行梳理。</span></p><ul><li><p><strong><span>绪论</span></strong></p><ul><li><p><a href='./notes/绪论/数据结构的基本概念.md'><span>数据结构的基本概念</span></a></p></li><li><p><a href='./notes/绪论/算法和算法评价.md'><span>算法和算法评价</span></a></p><ul><li><em><span>计算时间复杂度</span></em></li></ul></li></ul></li><li><p><strong><span>线性表</span></strong></p><ul><li><p><a href='./notes/线性表/线性表的定义和基本操作.md'><span>线性表的定义和基本操作</span></a></p></li><li><p><a href='./notes/线性表/线性表的顺序表示.md'><span>线性表的顺序表示</span></a></p><ul><li><em><span>顺序表的实现与基本操作</span></em></li><li><em><span>利用顺序表设计并实现算法</span></em></li></ul></li><li><p><a href='./notes/线性表/线性表的链式表示.md'><span>线性表的链式表示</span></a></p><ul><li><em><span>链表的实现与基本操作</span></em></li><li><em><span>利用链表设计并实现算法</span></em></li></ul></li></ul></li><li><p><strong><span>栈、队列和数组</span></strong></p><ul><li><p><a href='./notes/栈、队列和数组/栈.md'><span>栈</span></a></p><ul><li><em><span>基本概念、顺序/链式存储结构、入栈出栈顺序与种类</span></em></li></ul></li><li><p><a href='./notes/栈、队列和数组/队列.md'><span>队列</span></a></p><ul><li><span>基本概念、顺序/链式存储结构、</span></li></ul></li><li><p><a href='./notes/栈、队列和数组/栈和队列的应用.md'><span>栈和队列的应用</span></a></p><ul><li><span>多维数组的存储</span></li><li><span>栈、队列和数组的应用</span></li></ul></li><li><p><a href='./notes/栈、队列和数组/数组和特殊矩阵.md'><span>数组和特殊矩阵</span></a></p><ul><li><span>特殊矩阵的压缩存储</span></li></ul></li></ul></li><li><p><strong><span>串</span></strong></p><ul><li><a href='./notes/串/串的定义和实现.md'><span>串的定义和实现</span></a></li><li><a href='./notes/串/串的模式匹配.md'><span>串的模式匹配</span></a></li></ul></li><li><p><strong><span>树与二叉树</span></strong></p><ul><li><a href='./notes/树与二叉树/树的基本概念.md'><span>树的基本概念</span></a></li><li><a href='./notes/树与二叉树/二叉树的概念.md'><span>二叉树的概念</span></a></li><li><a href='./notes/树与二叉树/二叉树的遍历和线索二叉树.md'><span>二叉树的遍历和线索二叉树</span></a></li><li><a href='./notes/树与二叉树/树、森林.md'><span>树、森林</span></a></li><li><a href='./notes/树与二叉树/树与二叉树的应用.md'><span>树与二叉树的应用</span></a></li></ul></li><li><p><strong><span>图</span></strong></p><ul><li><a href='./notes/图/图的基本概念.md'><span>图的基本概念</span></a></li><li><a href='./notes/图/图的存储及基本操作.md'><span>图的存储及基本操作</span></a></li><li><a href='./notes/图/图的遍历.md'><span>图的遍历</span></a></li><li><a href='./notes/图/图的应用.md'><span>图的应用</span></a></li></ul></li><li><p><strong><span>查找</span></strong></p><ul><li><a href='./notes/查找/查找的基本概念.md'><span>查找的基本概念</span></a></li><li><a href='./notes/查找/顺序查找和折半查找.md'><span>顺序查找和折半查找</span></a></li><li><a href='./notes/查找/树型查找.md'><span>树型查找</span></a></li><li><a href='./notes/查找/B树和B+树.md'><span>B树和B+树</span></a></li><li><a href='./notes/查找/散列表.md'><span>散列表</span></a></li></ul></li><li><p><strong><span>排序</span></strong></p><ul><li><a href='./notes/排序/排序的基本概念.md'><span>排序的基本概念</span></a></li><li><a href='./notes/排序/插入排序.md'><span>插入排序</span></a></li><li><a href='./notes/排序/交换排序.md'><span>交换排序</span></a></li><li><a href='./notes/排序/选择排序.md'><span>选择排序</span></a></li><li><a href='./notes/排序/归并排序和基数排序.md'><span>归并排序和基数排序</span></a></li><li><a href='./notes/排序/各种内部排序算法的比较与应用.md'><span>各种内部排序算法的比较与应用</span></a></li><li><a href='./notes/排序/外部排序.md'><span>外部排序</span></a></li></ul></li></ul><p>&nbsp;</p><h2 id='资源'><span>资源</span></h2><p><span>链接: </span><a href='https://pan.baidu.com/s/1yakyIWoCXFwO-HIiEXGK6Q' target='_blank' class='url'>https://pan.baidu.com/s/1yakyIWoCXFwO-HIiEXGK6Q</a><span></span><br/><span>提取码: abya</span><br/><span>如果资源失效请联系我  </span></p><ul><li><p><strong><span>2023王道数据结构资料</span></strong><span> : 2023王道配套视频与习题解答  </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 14px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1. 2023数据结构知识点</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">7. 2023王道数据结构.pdf（课本）</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 64px;"></div><div class="CodeMirror-gutters" style="display: none; height: 64px;"></div></div></div></pre></li><li><p><strong><span>2022王道数据结构资料</span></strong><span> : 2022王道配套视频与习题解答  </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 14px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1. 2022数据结构知识点</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">2. 2022数据结构知识点课件</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">3. 2022数据结构知识点习题讲解</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">4. 2022数据结构知识点思维导图</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">5. 2022数据结构强化直播</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">6. 2022数据结构考研真题讲解</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">7. 2022王道数据结构.pdf（课本）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">8. 2022数据结构新增考点补充文档.pdf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">9. 22版数据结构勘误.pdf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">10. 408真题原题与解析</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">11. 王道2022年计算机专业基础综合考试核心考点及模拟题.pdf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">12. 王道2022年计算机专业基础综合考试历年真题解析.pdf</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 384px;"></div><div class="CodeMirror-gutters" style="display: none; height: 384px;"></div></div></div></pre></li><li><p><strong><span>2022天勤数据结构.pdf</span></strong><span>: 2022年408考研辅导教材  </span></p></li><li><p><strong><span>github习题同步笔记</span></strong><span> : </span><a href='https://github.com/CharlesShan-hub/DataStructureNotes' target='_blank' class='url'>https://github.com/CharlesShan-hub/DataStructureNotes</a><span>  </span></p></li><li><p><strong><span>数据结构与算法(公众号)</span></strong><span>（电子书）</span></p></li><li><p><strong><span>北邮计算机数据结构课件</span></strong></p></li><li><p><strong><span>算法导论（原书第3版） by Thomas H.Cormen Charles E.Leiserson Ronald L.Rivest Clifford Stein.pdf</span></strong></p></li></ul><h2 id='外部资料'><span>外部资料</span></h2><p><strong><span>算法可视化网站</span></strong><span> :</span><a href='https://www.cs.usfca.edu/~galles/visualization/Algorithms.html' target='_blank' class='url'>https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</a><span>  </span></p><p><strong><span>多语言高颜值算法可视化网站</span></strong><span>: </span><a href='https://algorithm-visualizer.org/' target='_blank' class='url'>https://algorithm-visualizer.org/</a></p><h2 id='版本'><span>版本</span></h2><ul><li><p><strong><span>V1 2021.08.22</span></strong></p><p><span>按照《2022年数据结构考研复习指导》与相关课程进行整理，完成全部知识框架搭建  </span></p></li><li><p><strong><span>V2 2021.11.27</span></strong></p><p><span>按照《2022年数据结构考研复习指导》与相关课程进行整理，进行习题归纳与知识整合  </span></p></li><li><p><strong><span>V3 2022.09</span></strong></p></li></ul><h2 id='更新计划'><span>更新计划</span></h2><ul><li><span>适配知识图谱倒入工具</span></li><li><span>将学习脉络改造成《算法导论》内容</span></li></ul></div></div>
 </body>
 </html>
