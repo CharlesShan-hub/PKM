@@ -46,7 +46,7 @@ def get_photo(title):
 	else:
 		hide = False
 
-	content = input('\n😄 是否生成封面 '+'"./resources/'+title+'.png" (Y/N/自定义文件名):')
+	content = input('\n😄 生成封面 '+'"./resources/'+title+'.png" (Y/N/自定义文件名):')
 	if content in['Y','']:
 		if hide:
 			return '<!--!['+title+'导图概览](./resources/'+title+'.png)-->\n'

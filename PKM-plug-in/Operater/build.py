@@ -63,7 +63,7 @@ def show_tree(command_list):
 						print(temp_list[i],end='')
 						if i!=len(temp_list)-1:
 							print('/',end='')
-					elif temp_list[i]==last_list[i]:
+					elif temp_list[i]==last_list[i] and '.' not in last_list[i]:
 						print('一'*len(temp_list[i])+'/',end='')
 					else:
 						print(temp_list[i],end='')
