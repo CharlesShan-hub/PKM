@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="210mm" height="297mm" viewBox="0 0 2100 2970" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs>
+
+		<radialGradient gradientUnits="objectBoundingBox" spreadMethod="reflect" id="CDGradient21rgb_94_186_202_rgb_243_250_251_" cx="0.0" cy="0.0" r="1.0" gradientTransform="rotate(44,0.5,0.5)">
+			<stop offset="0.0" stop-color="rgb(243,250,251)">
+			</stop>
+			<stop offset="1.0" stop-color="rgb(94,186,202)">
+			</stop>
+		</radialGradient>
+		<radialGradient gradientUnits="objectBoundingBox" spreadMethod="reflect" id="CDGradient21rgb_94_186_202_rgb_243_250_251_" cx="0.0" cy="0.0" r="1.0" gradientTransform="rotate(44,0.5,0.5)">
+			<stop offset="0.0" stop-color="rgb(243,250,251)">
+			</stop>
+			<stop offset="1.0" stop-color="rgb(94,186,202)">
+			</stop>
+		</radialGradient>
+		<radialGradient gradientUnits="objectBoundingBox" spreadMethod="reflect" id="CDGradient21rgb_94_186_202_rgb_243_250_251_" cx="0.0" cy="0.0" r="1.0" gradientTransform="rotate(44,0.5,0.5)">
+			<stop offset="0.0" stop-color="rgb(243,250,251)">
+			</stop>
+			<stop offset="1.0" stop-color="rgb(94,186,202)">
+			</stop>
+		</radialGradient>
+		<radialGradient gradientUnits="objectBoundingBox" spreadMethod="reflect" id="CDGradient21rgb_94_186_202_rgb_243_250_251_" cx="0.0" cy="0.0" r="1.0" gradientTransform="rotate(44,0.5,0.5)">
+			<stop offset="0.0" stop-color="rgb(243,250,251)">
+			</stop>
+			<stop offset="1.0" stop-color="rgb(94,186,202)">
+			</stop>
+		</radialGradient>
+		<g id="CDArrow5">
+			<path d="M 40 20 L 0 0L 40 -20L 35 0L 40 20">
+			</path>
+			<path d="M 35 0 L 40 0" fill="none">
+			</path>
+		</g>
+		<radialGradient gradientUnits="objectBoundingBox" spreadMethod="reflect" id="CDGradient21rgb_94_186_202_rgb_243_250_251_" cx="0.0" cy="0.0" r="1.0" gradientTransform="rotate(44,0.5,0.5)">
+			<stop offset="0.0" stop-color="rgb(243,250,251)">
+			</stop>
+			<stop offset="1.0" stop-color="rgb(94,186,202)">
+			</stop>
+		</radialGradient>
+		<radialGradient gradientUnits="objectBoundingBox" spreadMethod="reflect" id="CDGradient21rgb_94_186_202_rgb_243_250_251_" cx="0.0" cy="0.0" r="1.0" gradientTransform="rotate(44,0.5,0.5)">
+			<stop offset="0.0" stop-color="rgb(243,250,251)">
+			</stop>
+			<stop offset="1.0" stop-color="rgb(94,186,202)">
+			</stop>
+		</radialGradient>
+		<marker id="CDArrow5_rgb_0_21_113__size_0_end" markerUnits="userSpaceOnUse" markerHeight="20" markerWidth="20" refX="30" refY="0" orient="auto" viewBox="-10 -30 60 60">
+			<use xlink:href="#CDArrow5" fill="rgb(0,21,113)" stroke="rgb(0,21,113)" stroke-width="10.0" x="0" y="0" transform="translate(40,0) rotate(180)">
+			</use>
+		</marker>
+		<marker id="CDArrow5_rgb_99_13_58__size_0_end" markerUnits="userSpaceOnUse" markerHeight="20" markerWidth="20" refX="30" refY="0" orient="auto" viewBox="-10 -30 60 60">
+			<use xlink:href="#CDArrow5" fill="rgb(99,13,58)" stroke="rgb(99,13,58)" stroke-width="10.0" x="0" y="0" transform="translate(40,0) rotate(180)">
+			</use>
+		</marker>
+		<marker id="CDArrow5_rgb_37_37_37__size_0_end" markerUnits="userSpaceOnUse" markerHeight="20" markerWidth="20" refX="30" refY="0" orient="auto" viewBox="-10 -30 60 60">
+			<use xlink:href="#CDArrow5" fill="rgb(37,37,37)" stroke="rgb(37,37,37)" stroke-width="10.0" x="0" y="0" transform="translate(40,0) rotate(180)">
+			</use>
+		</marker>
+		<marker id="CDArrow5_rgb_152_35_182__size_0_end" markerUnits="userSpaceOnUse" markerHeight="20" markerWidth="20" refX="30" refY="0" orient="auto" viewBox="-10 -30 60 60">
+			<use xlink:href="#CDArrow5" fill="rgb(152,35,182)" stroke="rgb(152,35,182)" stroke-width="10.0" x="0" y="0" transform="translate(40,0) rotate(180)">
+			</use>
+		</marker>
+		<marker id="CDArrow5_rgb_27_65_206__size_0_end" markerUnits="userSpaceOnUse" markerHeight="20" markerWidth="20" refX="30" refY="0" orient="auto" viewBox="-10 -30 60 60">
+			<use xlink:href="#CDArrow5" fill="rgb(27,65,206)" stroke="rgb(27,65,206)" stroke-width="10.0" x="0" y="0" transform="translate(40,0) rotate(180)">
+			</use>
+		</marker>
+		<marker id="CDArrow5_rgb_131_116_107__size_0_end" markerUnits="userSpaceOnUse" markerHeight="20" markerWidth="20" refX="30" refY="0" orient="auto" viewBox="-10 -30 60 60">
+			<use xlink:href="#CDArrow5" fill="rgb(131,116,107)" stroke="rgb(131,116,107)" stroke-width="10.0" x="0" y="0" transform="translate(40,0) rotate(180)">
+			</use>
+		</marker>
+	</defs>
+	<svg x="0" y="0" width="2100" height="2970">
+		<g transform="translate(10.00,10.00)">
+		</g>
+	</svg>
+	<svg x="0" y="0" width="2100" height="2970">
+		<g transform="translate(466.70,127.11) scale(1,1) rotate(0.00,127.00,76.20) " fill="url(#CDGradient21rgb_94_186_202_rgb_243_250_251_)" fill-opacity="1.0" stroke="none" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 76.20 152.40 A 76.20 76.20 0.00 0 1 0.00 76.20 L 0.00 76.20 A 76.20 76.20 -0.00 0 1 76.20 0.00 L 177.80 0.00 A 76.20 76.20 0.00 0 1 254.00 76.20 L 254.00 76.20 A 76.20 76.20 -0.00 0 1 177.80 152.40 L 76.20 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="21" y="47" width="210" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="21.17 63.50 105.83 148.17 190.50 " y="88.69 88.69 88.69 88.69 88.69 ">
+						最小生成树</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(476.99,867.68) scale(1,1) rotate(0.00,127.00,76.20) " fill="url(#CDGradient21rgb_94_186_202_rgb_243_250_251_)" fill-opacity="1.0" stroke="rgb(94,186,202)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 76.20 152.40 A 76.20 76.20 0.00 0 1 0.00 76.20 L 0.00 76.20 A 76.20 76.20 -0.00 0 1 76.20 0.00 L 177.80 0.00 A 76.20 76.20 0.00 0 1 254.00 76.20 L 254.00 76.20 A 76.20 76.20 -0.00 0 1 177.80 152.40 L 76.20 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="42" y="47" width="168" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="42.33 84.67 127.00 169.33 " y="88.69 88.69 88.69 88.69 ">
+						最短路径</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(471.31,1805.57) scale(1,1) rotate(0.00,127.00,76.20) " fill="url(#CDGradient21rgb_94_186_202_rgb_243_250_251_)" fill-opacity="1.0" stroke="rgb(94,186,202)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 76.20 152.40 A 76.20 76.20 0.00 0 1 0.00 76.20 L 0.00 76.20 A 76.20 76.20 -0.00 0 1 76.20 0.00 L 177.80 0.00 A 76.20 76.20 0.00 0 1 254.00 76.20 L 254.00 76.20 A 76.20 76.20 -0.00 0 1 177.80 152.40 L 76.20 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="21" y="47" width="210" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="21.17 63.50 105.83 148.17 190.50 " y="88.69 88.69 88.69 88.69 88.69 ">
+						有向无环图</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(464.52,2128.28) scale(1,1) rotate(0.00,127.00,76.20) " fill="url(#CDGradient21rgb_94_186_202_rgb_243_250_251_)" fill-opacity="1.0" stroke="rgb(94,186,202)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 76.20 152.40 A 76.20 76.20 0.00 0 1 0.00 76.20 L 0.00 76.20 A 76.20 76.20 -0.00 0 1 76.20 0.00 L 177.80 0.00 A 76.20 76.20 0.00 0 1 254.00 76.20 L 254.00 76.20 A 76.20 76.20 -0.00 0 1 177.80 152.40 L 76.20 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="62" y="47" width="128" height="59" fill="rgb(255,255,1279)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="62.17 89.98 122.45 149.50 " y="88.69 88.69 88.69 88.69 ">
+						AOV网</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(909.69,412.90) scale(1,1) rotate(0.00,127.00,76.20) " fill="rgb(70,120,197)" fill-opacity="1.0" stroke="rgb(70,120,197)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 25.40 152.40 A 25.40 25.40 0.00 0 1 0.00 127.00 L 0.00 25.40 A 25.40 25.40 -0.00 0 1 25.40 0.00 L 228.60 0.00 A 25.40 25.40 0.00 0 1 254.00 25.40 L 254.00 127.00 A 25.40 25.40 -0.00 0 1 228.60 152.40 L 25.40 152.40  Z">
+			</path>
+			<g transform="translate(-0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="42" y="52" width="170" height="49" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="41.17 69.40 83.50 92.90 " y="86.79 86.79 86.79 86.79 ">
+						Prim</tspan>
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="128.17 170.50 " y="86.79 86.79 ">
+						算法</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(913.08,126.95) scale(1,1) rotate(0.00,127.00,76.20) " fill="rgb(70,120,197)" fill-opacity="1.0" stroke="rgb(70,120,197)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 25.40 152.40 A 25.40 25.40 0.00 0 1 0.00 127.00 L 0.00 25.40 A 25.40 25.40 -0.00 0 1 25.40 0.00 L 228.60 0.00 A 25.40 25.40 0.00 0 1 254.00 25.40 L 254.00 127.00 A 25.40 25.40 -0.00 0 1 228.60 152.40 L 25.40 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="15" y="52" width="224" height="49" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="14.09 42.32 56.42 79.96 101.13 122.30 145.84 " y="86.79 86.79 86.79 86.79 86.79 86.79 86.79 ">
+						Kruskal</tspan>
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="155.25 197.58 " y="86.79 86.79 ">
+						算法</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(593.70,203.31) scale(1,1) rotate(0.00,158.00,142.89) ">
+			<path stroke="rgb(0,21,113)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_0_21_113__size_0_end)" d="M 127.00 0.00 L 254.90 0.00 L 254.90 285.79 L 310.99 285.79 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(593.70,203.15) scale(1,1) rotate(0.00,159.69,0.08) ">
+			<path stroke="rgb(0,21,113)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_0_21_113__size_0_end)" d="M 127.00 0.17 L 314.38 0.17 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(918.46,320.99) scale(1,1) rotate(0.00,75.00,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 150.00 75.00 L 150.00 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,75.00,37.50) ">
+				<rect x="12" y="8" width="126" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="11.50 53.83 96.17 " y="49.99 49.99 49.99 ">
+						选结点</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(916.84,30.03) scale(1,1) rotate(0.00,75.00,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 150.00 75.00 L 150.00 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,75.00,37.50) ">
+				<rect x="33" y="8" width="84" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="32.67 75.00 " y="49.99 49.99 ">
+						选边</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1081.38,320.99) scale(1,1) rotate(0.00,250.64,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 501.28 75.00 L 501.28 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,250.64,37.50) ">
+				<rect x="46" y="8" width="408" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="46.26 88.59 130.92 173.26 215.59 257.92 " y="49.99 49.99 49.99 49.99 49.99 49.99 ">
+						时间复杂度：</tspan>
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="300.26 333.19 347.28 358.28 386.52 397.51 417.38 440.92 " y="49.99 49.99 49.99 49.99 49.99 49.99 49.99 49.99 ">
+						O(|V|^2)</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1078.03,30.03) scale(1,1) rotate(0.00,249.85,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 499.70 75.00 L 499.70 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,249.85,37.50) ">
+				<rect x="13" y="8" width="472" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="13.45 55.78 98.12 140.45 182.78 225.12 " y="49.99 49.99 49.99 49.99 49.99 49.99 ">
+						时间复杂度：</tspan>
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="267.45 300.38 314.48 353.30 362.70 386.24 409.79 443.91 472.15 " y="49.99 49.99 49.99 49.99 49.99 49.99 49.99 49.99 49.99 ">
+						O(Elog2E)</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(484.08,296.31) scale(1,1) rotate(0.00,109.03,61.37) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 122.75 L 218.06 122.75 L 218.06 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,109.03,61.37) ">
+				<rect x="4" y="2" width="210" height="119" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="3.19 45.53 87.86 130.19 172.53 3.19 45.53 87.86 130.19 172.53 " y="43.88 43.88 43.88 43.88 43.88 103.85 103.85 103.85 103.85 103.85 ">
+						边权值和最小的生成树</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1223.56,459.86) scale(1,1) rotate(0.00,106.33,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 212.67 75.00 L 212.67 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,106.33,37.50) ">
+				<rect x="1" y="8" width="210" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="0.50 42.83 85.17 127.50 169.83 " y="49.99 49.99 49.99 49.99 49.99 ">
+						适合稠密图</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1226.38,166.43) scale(1,1) rotate(0.00,106.33,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 212.67 75.00 L 212.67 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,106.33,37.50) ">
+				<rect x="1" y="8" width="210" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="0.50 42.83 85.17 127.50 169.83 " y="49.99 49.99 49.99 49.99 49.99 ">
+						适合稀疏图</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(904.45,1362.56) scale(1,1) rotate(0.00,127.00,76.20) " fill="rgb(70,120,197)" fill-opacity="1.0" stroke="rgb(70,120,197)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 25.40 152.40 A 25.40 25.40 0.00 0 1 0.00 127.00 L 0.00 25.40 A 25.40 25.40 -0.00 0 1 25.40 0.00 L 228.60 0.00 A 25.40 25.40 0.00 0 1 254.00 25.40 L 254.00 127.00 A 25.40 25.40 -0.00 0 1 228.60 152.40 L 25.40 152.40  Z">
+			</path>
+			<g transform="translate(-0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="44" y="52" width="166" height="49" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="43.50 71.74 97.60 " y="86.79 86.79 86.79 ">
+						BFS</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="125.83 168.17 " y="86.79 86.79 ">
+						算法</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(911.61,727.91) scale(1,1) rotate(0.00,127.00,76.20) " fill="rgb(70,120,197)" fill-opacity="1.0" stroke="rgb(70,120,197)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 25.40 152.40 A 25.40 25.40 0.00 0 1 0.00 127.00 L 0.00 25.40 A 25.40 25.40 -0.00 0 1 25.40 0.00 L 228.60 0.00 A 25.40 25.40 0.00 0 1 254.00 25.40 L 254.00 127.00 A 25.40 25.40 -0.00 0 1 228.60 152.40 L 25.40 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="15" y="52" width="224" height="49" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="14.11 44.68 54.08 63.49 84.66 105.82 117.58 131.68 " y="86.79 86.79 86.79 86.79 86.79 86.79 86.79 86.79 ">
+						Dijkstra</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="155.23 197.56 " y="86.79 86.79 ">
+						算法</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(913.76,1042.74) scale(1,1) rotate(0.00,127.00,76.20) " fill="rgb(70,120,197)" fill-opacity="1.0" stroke="rgb(70,120,197)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 25.40 152.40 A 25.40 25.40 0.00 0 1 0.00 127.00 L 0.00 25.40 A 25.40 25.40 -0.00 0 1 25.40 0.00 L 228.60 0.00 A 25.40 25.40 0.00 0 1 254.00 25.40 L 254.00 127.00 A 25.40 25.40 -0.00 0 1 228.60 152.40 L 25.40 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="33" y="52" width="188" height="49" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="32.91 58.77 68.17 91.72 112.88 " y="86.79 86.79 86.79 86.79 86.79 ">
+						Floyd</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="136.43 178.76 " y="86.79 86.79 ">
+						算法</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(910.70,1258.51) scale(1,1) rotate(0.00,117.83,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 235.65 75.00 L 235.65 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,117.83,37.50) ">
+				<rect x="33" y="8" width="168" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="33.16 75.49 117.83 160.16 " y="49.99 49.99 49.99 49.99 ">
+						广度优先</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(486.87,496.18) scale(1,1) rotate(0.00,133.51,60.17) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 120.33 L 267.02 120.33 L 267.02 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,133.51,60.17) ">
+				<rect x="7" y="1" width="252" height="119" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="6.51 48.84 91.17 133.51 175.84 218.17 6.51 48.84 91.17 133.51 175.84 218.17 " y="42.67 42.67 42.67 42.67 42.67 42.67 102.65 102.65 102.65 102.65 102.65 102.65 ">
+						添加与集合距离最近的结点</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(486.97,649.64) scale(1,1) rotate(0.00,134.55,60.17) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 120.33 L 269.11 120.33 L 269.11 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,134.55,60.17) ">
+				<rect x="8" y="1" width="252" height="119" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="7.55 49.89 92.22 134.55 176.89 219.22 7.55 49.89 92.22 134.55 176.89 219.22 " y="42.67 42.67 42.67 42.67 42.67 42.67 102.65 102.65 102.65 102.65 102.65 102.65 ">
+						添加与顶点距离最近的结点</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(467.14,474.35) scale(1,1) rotate(0.00,159.85,159.85) " fill="rgb(255,255,255)" fill-opacity="0.0" stroke="rgb(37,37,37)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0" stroke-dasharray="0,0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" stroke-dasharray="0,0" d="M 0.00 0.00 L 0.00 319.70 L 319.70 319.70 L 319.70 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(467.14,474.35) scale(1,1) rotate(0.00,159.85,159.85) " fill="none" fill-opacity="1.0" stroke="rgb(37,37,37)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0" stroke-dasharray="0,0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" stroke-dasharray="0,0" d="M 0.00 0.00 L 0.00 319.70 L 319.70 319.70 L 319.70 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(603.99,804.11) scale(1,1) rotate(0.00,153.81,69.89) ">
+			<path stroke="rgb(99,13,58)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_99_13_58__size_0_end)" d="M 109.94 187.82 L 220.00 187.82 L 220.00 -8.94 L 307.63 -8.94 L 307.63 -5.00 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(603.99,943.88) scale(1,1) rotate(0.00,154.89,76.45) ">
+			<path stroke="rgb(99,13,58)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_99_13_58__size_0_end)" d="M 109.94 48.05 L 220.00 48.05 L 220.00 167.48 L 309.77 167.48 L 309.77 157.89 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(603.99,943.88) scale(1,1) rotate(0.00,150.23,247.44) ">
+			<path stroke="rgb(99,13,58)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_99_13_58__size_0_end)" d="M 109.94 48.05 L 220.00 48.05 L 220.00 497.41 L 295.47 497.41 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(841.31,944.96) scale(1,1) rotate(0.00,191.00,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 382.00 75.00 L 382.00 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,191.00,37.50) ">
+				<rect x="1" y="8" width="380" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="0.50 42.83 85.17 127.50 169.83 212.17 254.50 296.83 339.17 " y="49.99 49.99 49.99 49.99 49.99 49.99 49.99 49.99 49.99 ">
+						添加结点让距离减小</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(749.46,542.71) scale(1,1) rotate(0.00,79.61,36.90) ">
+			<path stroke="rgb(37,37,37)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_37_37_37__size_0_end)" d="M 159.23 -0.00 L -0.57 -0.00 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(845.54,622.65) scale(1,1) rotate(0.00,191.00,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 382.00 75.00 L 382.00 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,191.00,37.50) ">
+				<rect x="1" y="8" width="380" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="0.50 42.83 85.17 127.50 169.83 212.17 254.50 296.83 339.17 " y="49.99 49.99 49.99 49.99 49.99 49.99 49.99 49.99 49.99 ">
+						添加距离最小的结点</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(753.89,729.96) scale(1,1) rotate(0.00,142.36,37.07) ">
+			<path stroke="rgb(37,37,37)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_37_37_37__size_0_end)" d="M 177.68 -1.46 L -5.00 -1.46 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(479.56,1039.43) scale(1,1) rotate(0.00,119.45,61.37) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 122.75 L 238.90 122.75 L 238.90 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,119.45,61.37) ">
+				<rect x="14" y="2" width="210" height="119" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="13.61 55.95 98.28 140.61 182.95 13.61 55.95 98.28 140.61 182.95 " y="43.88 43.88 43.88 43.88 43.88 103.85 103.85 103.85 103.85 103.85 ">
+						到某一结点的最短路径</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1249.15,619.38) scale(1,1) rotate(0.00,159.91,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 319.81 75.00 L 319.81 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,159.91,37.50) ">
+				<rect x="82" y="13" width="154" height="49" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="82.53 115.45 129.55 140.55 168.78 179.78 199.65 223.19 " y="48.09 48.09 48.09 48.09 48.09 48.09 48.09 48.09 ">
+						O(|V|^2)</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1246.56,942.39) scale(1,1) rotate(0.00,159.91,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 319.81 75.00 L 319.81 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,159.91,37.50) ">
+				<rect x="82" y="13" width="154" height="49" fill="rgb(255,255,1279)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="82.53 115.45 129.55 140.55 168.78 179.78 199.65 223.19 " y="48.09 48.09 48.09 48.09 48.09 48.09 48.09 48.09 ">
+						O(|V|^3)</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1166.08,1259.05) scale(1,1) rotate(0.00,197.59,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 395.17 75.00 L 395.17 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,197.59,37.50) ">
+				<rect x="120" y="13" width="154" height="49" fill="rgb(255,255,1279)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="120.21 153.14 167.23 178.23 206.47 217.46 237.33 260.87 " y="48.09 48.09 48.09 48.09 48.09 48.09 48.09 48.09 ">
+						O(|V|^2)</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1327.01,1367.07) scale(1,1) rotate(0.00,106.33,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 212.67 75.00 L 212.67 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,106.33,37.50) ">
+				<rect x="43" y="8" width="126" height="59" fill="rgb(255,255,1279)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="42.83 85.17 127.50 " y="49.99 49.99 49.99 ">
+						无权图</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1195.99,728.81) scale(1,1) rotate(0.00,159.44,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 318.89 75.00 L 318.89 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,159.44,37.50) ">
+				<rect x="20" y="8" width="278" height="59" fill="rgb(255,255,1279)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="19.64 61.97 104.31 146.64 172.25 214.58 256.92 " y="49.99 49.99 49.99 49.99 49.99 49.99 49.99 ">
+						无权图+带权图</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1322.44,822.12) scale(1,1) rotate(0.00,99.26,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 198.53 75.00 L 198.53 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,99.26,37.50) ">
+				<rect x="1" y="13" width="196" height="49" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="0.50 14.60 56.93 99.26 141.60 183.93 " y="48.09 48.09 48.09 48.09 48.09 48.09 ">
+						(无负结点)</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1200.69,1049.02) scale(1,1) rotate(0.00,159.44,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 318.89 75.00 L 318.89 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,159.44,37.50) ">
+				<rect x="20" y="8" width="278" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="19.64 61.97 104.31 146.64 172.25 214.58 256.92 " y="49.99 49.99 49.99 49.99 49.99 49.99 49.99 ">
+						无权图+带权图</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1326.54,1149.92) scale(1,1) rotate(0.00,141.60,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 283.19 75.00 L 283.19 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,141.60,37.50) ">
+				<rect x="0" y="13" width="282" height="49" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="0.50 " y="48.09 ">
+						(</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="14.60 56.93 99.26 141.60 183.93 226.26 " y="48.09 48.09 48.09 48.09 48.09 48.09 ">
+						可以有负结点</tspan>
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="268.60 " y="48.09 ">
+						)</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1206.93,1366.58) scale(1,1) rotate(0.00,49.31,37.50) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 98.63 75.00 L 98.63 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,49.31,37.50) ">
+				<rect x="7" y="8" width="84" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="6.98 49.31 " y="49.99 49.99 ">
+						单源</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1198.52,821.89) scale(1,1) rotate(0.00,49.31,37.50) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 98.63 75.00 L 98.63 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,49.31,37.50) ">
+				<rect x="7" y="8" width="84" height="59" fill="rgb(255,255,1279)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="6.98 49.31 " y="49.99 49.99 ">
+						单源</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1203.23,1152.21) scale(1,1) rotate(0.00,49.31,37.50) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 98.63 75.00 L 98.63 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,49.31,37.50) ">
+				<rect x="7" y="8" width="84" height="59" fill="rgb(255,255,1279)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="6.98 49.31 " y="49.99 49.99 ">
+						多源</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(527.72,1980.43) scale(1,1) rotate(0.00,66.65,37.32) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 74.65 L 133.30 74.65 L 133.30 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,66.65,37.32) ">
+				<rect x="1" y="8" width="130" height="59" fill="rgb(255,255,1279)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="0.80 30.69 58.50 90.16 " y="49.82 49.82 49.82 49.82 ">
+						DAG图</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(908.31,2339.79) scale(1,1) rotate(0.00,126.99,85.14) " fill="rgb(70,120,197)" fill-opacity="1.0" stroke="rgb(70,120,197)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 25.40 170.28 A 25.40 25.40 0.00 0 1 0.00 144.88 L 0.00 25.40 A 25.40 25.40 -0.00 0 1 25.40 0.00 L 228.57 0.00 A 25.40 25.40 0.00 0 1 253.97 25.40 L 253.97 144.88 A 25.40 25.40 -0.00 0 1 228.57 170.28 L 25.40 170.28  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,126.99,85.14) ">
+				<rect x="0" y="26" width="252" height="119" fill="rgb(255,255,1279)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="0.00 42.33 84.67 127.00 169.33 211.67 42.32 84.65 126.99 169.32 " y="67.65 67.65 67.65 67.65 67.65 67.65 127.62 127.62 127.62 127.62 ">
+						有向无环图描述表达式</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(598.31,1881.77) scale(1,1) rotate(0.00,155.00,271.58) ">
+			<path stroke="rgb(152,35,182)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_152_35_182__size_0_end)" d="M 127.00 -0.00 L 182.61 -0.00 L 182.61 543.15 L 305.00 543.15 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(473.65,2301.58) scale(1,1) rotate(0.00,127.50,32.84) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 65.69 L 255.00 65.69 L 255.00 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(-0.00,0.00) scale(1,1) rotate(0.00,127.50,32.84) ">
+				<rect x="1" y="3" width="252" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="0.50 42.83 85.17 127.50 169.83 212.17 " y="45.34 45.34 45.34 45.34 45.34 45.34 ">
+						顶点表示活动</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(819.55,2004.99) scale(1,1) rotate(0.00,215.19,46.90) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 93.80 L 430.39 93.80 L 430.39 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,215.19,46.90) ">
+				<rect x="25" y="17" width="380" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="24.69 67.03 109.36 151.69 194.03 236.36 278.69 321.03 363.36 " y="59.40 59.40 59.40 59.40 59.40 59.40 59.40 59.40 59.40 ">
+						找到做事的先后顺序</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(903.07,2122.63) scale(1,1) rotate(0.00,127.00,76.20) " fill="rgb(70,120,197)" fill-opacity="1.0" stroke="rgb(70,120,197)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 25.40 152.40 A 25.40 25.40 0.00 0 1 0.00 127.00 L 0.00 25.40 A 25.40 25.40 -0.00 0 1 25.40 0.00 L 228.60 0.00 A 25.40 25.40 0.00 0 1 254.00 25.40 L 254.00 127.00 A 25.40 25.40 -0.00 0 1 228.60 152.40 L 25.40 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="43" y="47" width="168" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="42.33 84.67 127.00 169.33 " y="88.69 88.69 88.69 88.69 ">
+						拓扑排序</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(598.31,1881.77) scale(1,1) rotate(0.00,152.38,158.53) ">
+			<path stroke="rgb(152,35,182)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_152_35_182__size_0_end)" d="M 127.00 0.00 L 182.56 0.00 L 182.56 317.06 L 299.76 317.06 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(904.45,1820.53) scale(1,1) rotate(0.00,127.00,76.20) " fill="rgb(70,120,197)" fill-opacity="1.0" stroke="rgb(70,120,197)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 25.40 152.40 A 25.40 25.40 0.00 0 1 0.00 127.00 L 0.00 25.40 A 25.40 25.40 -0.00 0 1 25.40 0.00 L 228.60 0.00 A 25.40 25.40 0.00 0 1 254.00 25.40 L 254.00 127.00 A 25.40 25.40 -0.00 0 1 228.60 152.40 L 25.40 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="22" y="47" width="210" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="21.17 63.50 105.83 148.17 190.50 " y="88.69 88.69 88.69 88.69 88.69 ">
+						逆拓扑排序</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(905.82,1626.02) scale(1,1) rotate(0.00,127.00,76.20) " fill="rgb(70,120,197)" fill-opacity="1.0" stroke="rgb(70,120,197)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 25.40 152.40 A 25.40 25.40 0.00 0 1 0.00 127.00 L 0.00 25.40 A 25.40 25.40 -0.00 0 1 25.40 0.00 L 228.60 0.00 A 25.40 25.40 0.00 0 1 254.00 25.40 L 254.00 127.00 A 25.40 25.40 -0.00 0 1 228.60 152.40 L 25.40 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="45" y="47" width="164" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="44.13 74.02 98.45 125.20 167.53 " y="88.69 88.69 88.69 88.69 88.69 ">
+						DFS算法</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(474.84,1519.53) scale(1,1) rotate(0.00,127.00,76.20) " fill="url(#CDGradient21rgb_94_186_202_rgb_243_250_251_)" fill-opacity="1.0" stroke="rgb(94,186,202)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 76.20 152.40 A 76.20 76.20 0.00 0 1 0.00 76.20 L 0.00 76.20 A 76.20 76.20 -0.00 0 1 76.20 0.00 L 177.80 0.00 A 76.20 76.20 0.00 0 1 254.00 76.20 L 254.00 76.20 A 76.20 76.20 -0.00 0 1 177.80 152.40 L 76.20 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="42" y="47" width="168" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="42.33 84.67 127.00 169.33 " y="88.69 88.69 88.69 88.69 ">
+						图的遍历</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(601.84,1595.73) scale(1,1) rotate(0.00,151.99,53.25) ">
+			<path stroke="rgb(27,65,206)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_27_65_206__size_0_end)" d="M 127.00 -0.00 L 215.42 -0.00 L 215.42 106.49 L 298.98 106.49 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(601.84,1492.93) scale(1,1) rotate(0.00,150.51,51.40) ">
+			<path stroke="rgb(27,65,206)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_27_65_206__size_0_end)" d="M 127.00 102.80 L 271.23 102.80 L 271.23 0.00 L 296.02 0.00 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(914.84,1533.02) scale(1,1) rotate(0.00,117.83,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 235.65 75.00 L 235.65 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,117.83,37.50) ">
+				<rect x="33" y="8" width="168" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="33.16 75.49 117.83 160.16 " y="49.99 49.99 49.99 49.99 ">
+						深度优先</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1172.97,1530.80) scale(1,1) rotate(0.00,197.59,37.50) " fill="rgb(91,105,118)" fill-opacity="1.0" stroke="rgb(91,105,118)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 75.00 L 395.17 75.00 L 395.17 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,197.59,37.50) ">
+				<rect x="108" y="13" width="178" height="49" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="107.81 140.74 154.84 165.83 194.07 205.07 " y="48.09 48.09 48.09 48.09 48.09 48.09 ">
+						O(|V|+</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="229.79 238.04 265.01 " y="48.09 48.09 48.09 ">
+						|E|</tspan>
+					<tspan font-size="42" font-family="Helvetica" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="273.27 " y="48.09 ">
+						)</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1032.82,1702.22) scale(1,1) rotate(0.00,62.81,97.25) ">
+			<path stroke="rgb(37,37,37)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_37_37_37__size_0_end)" d="M 127.00 0.00 L 170.21 0.00 L 170.21 194.51 L 130.62 194.51 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(1229.27,1689.10) scale(1,1) rotate(0.00,184.14,115.88) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 231.75 L 368.28 231.75 L 368.28 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,184.14,115.88) ">
+				<rect x="15" y="26" width="338" height="179" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="16.61 58.94 101.27 131.16 155.59 182.34 224.68 267.01 309.34 14.81 57.14 99.48 141.81 184.14 226.48 268.81 311.14 35.98 78.31 120.64 162.98 205.31 247.64 289.98 " y="68.40 68.40 68.40 68.40 68.40 68.40 68.40 68.40 68.40 128.37 128.37 128.37 128.37 128.37 128.37 128.37 128.37 188.34 188.34 188.34 188.34 188.34 188.34 188.34 ">
+						每次DFS递归结束后代表本结点没有后续了，就输出</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(908.96,2558.39) scale(1,1) rotate(0.00,127.00,76.20) " fill="rgb(70,120,197)" fill-opacity="1.0" stroke="rgb(70,120,197)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 25.40 152.40 A 25.40 25.40 0.00 0 1 0.00 127.00 L 0.00 25.40 A 25.40 25.40 -0.00 0 1 25.40 0.00 L 228.60 0.00 A 25.40 25.40 0.00 0 1 254.00 25.40 L 254.00 127.00 A 25.40 25.40 -0.00 0 1 228.60 152.40 L 25.40 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="43" y="47" width="168" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0" x="42.33 84.67 127.00 169.33 " y="88.69 88.69 88.69 88.69 ">
+						关键路径</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(462.69,2403.47) scale(1,1) rotate(0.00,127.00,76.20) " fill="url(#CDGradient21rgb_94_186_202_rgb_243_250_251_)" fill-opacity="1.0" stroke="rgb(94,186,202)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 76.20 152.40 A 76.20 76.20 0.00 0 1 0.00 76.20 L 0.00 76.20 A 76.20 76.20 -0.00 0 1 76.20 0.00 L 177.80 0.00 A 76.20 76.20 0.00 0 1 254.00 76.20 L 254.00 76.20 A 76.20 76.20 -0.00 0 1 177.80 152.40 L 76.20 152.40  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.00,76.20) ">
+				<rect x="62" y="47" width="128" height="59" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="62.21 90.02 122.49 149.46 " y="88.69 88.69 88.69 88.69 ">
+						AOE网</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(469.52,2578.89) scale(1,1) rotate(0.00,127.13,66.08) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 132.16 L 254.27 132.16 L 254.27 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,127.13,66.08) ">
+				<rect x="1" y="7" width="252" height="119" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="0.13 42.47 84.80 127.13 169.47 211.80 " y="48.59 48.59 48.59 48.59 48.59 48.59 ">
+						顶点表示事件</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="21.30 63.63 105.97 148.30 190.63 " y="108.56 108.56 108.56 108.56 108.56 ">
+						边表示活动</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(591.52,2204.48) scale(1,1) rotate(0.00,156.08,26.15) ">
+			<path stroke="rgb(131,116,107)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_131_116_107__size_0_end)" d="M 105.85 52.68 L 307.17 52.68 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(589.69,2479.67) scale(1,1) rotate(0.00,159.63,77.46) ">
+			<path stroke="rgb(131,116,107)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_131_116_107__size_0_end)" d="M 127.00 0.00 L 226.13 0.00 L 226.13 154.92 L 314.26 154.92 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(598.31,1881.77) scale(1,1) rotate(0.00,160.07,0.00) ">
+			<path stroke="rgb(152,35,182)" stroke-width="6" stroke-linecap="round" stroke-opacity="1.0" marker-end="url(#CDArrow5_rgb_152_35_182__size_0_end)" d="M 127.00 -0.00 L 315.15 -0.00 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(1030.07,2051.90) scale(1,1) rotate(0.00,109.93,73.47) ">
+			<path stroke="rgb(37,37,37)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0" stroke-dasharray="0,0" marker-end="url(#CDArrow5_rgb_37_37_37__size_0_end)" d="M 127.00 146.94 L 255.12 146.94 L 255.12 -0.00 L 219.86 -0.00 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(1140.05,1944.14) scale(1,1) rotate(0.00,54.94,53.88) ">
+			<path stroke="rgb(37,37,37)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0" stroke-dasharray="0,0" marker-end="url(#CDArrow5_rgb_37_37_37__size_0_end)" d="M 0.00 -0.00 L -349.82 -0.00 L -349.82 355.95 L 145.15 355.95 L 145.15 107.76 L 109.89 107.76 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(1263.96,2350.24) scale(1,1) rotate(0.00,126.67,180.42) " fill="rgb(196,209,212)" fill-opacity="1.0" stroke="rgb(196,209,212)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 360.83 L 253.35 360.83 L 253.35 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,126.67,180.42) ">
+				<rect x="18" y="1" width="216" height="359" fill="rgb(255,255,255)" stroke="none" opacity="0.0">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="22.64 39.61 61.37 103.71 146.04 188.37 " y="42.98 42.98 42.98 42.98 42.98 42.98 ">
+						1.事件最早</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="18.43 43.83 " y="102.95 102.95 ">
+						2.</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="600" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="65.59 107.92 150.25 192.59 " y="102.95 102.95 102.95 102.95 ">
+						活动最早</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="" y="">
+						</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="18.43 43.83 65.59 107.92 150.25 192.59 " y="162.92 162.92 162.92 162.92 162.92 162.92 ">
+						3.事件最迟</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="18.43 43.83 " y="222.90 222.90 ">
+						4.</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="600" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="65.59 107.92 150.25 192.59 " y="222.90 222.90 222.90 222.90 ">
+						活动最迟</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="" y="">
+						</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="18.43 43.83 " y="282.87 282.87 ">
+						5.</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="600" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="65.59 107.92 150.25 192.59 " y="282.87 282.87 282.87 282.87 ">
+						时间余量</tspan>
+					<tspan font-size="42" font-family="PingFang SC" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="18.43 43.83 65.59 107.92 150.25 192.59 " y="342.84 342.84 342.84 342.84 342.84 342.84 ">
+						6.关键路径</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1035.96,2530.65) scale(1,1) rotate(0.00,114.00,51.97) ">
+			<path stroke="rgb(37,37,37)" stroke-width="1" stroke-linecap="round" stroke-opacity="1.0" stroke-dasharray="0,0" marker-end="url(#CDArrow5_rgb_37_37_37__size_0_end)" d="M 127.00 103.94 L 177.54 103.94 L 177.54 -0.00 L 228.01 -0.00 " fill="none">
+			</path>
+		</g>
+		<g transform="translate(913.59,1368.07) scale(1,1) rotate(0.00,24.91,24.91) " fill="rgb(255,255,255)" fill-opacity="1.0" stroke="rgb(122,122,122)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 24.91 A 24.91 24.91 -0.00 1 1 49.83 24.91 A 24.91 24.91 0.00 1 1 0.00 24.91  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,24.91,24.91) ">
+				<text stroke-width="0">
+					<tspan font-size="38" font-family="Tahoma" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="14.32 " y="34.38 ">
+						1</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(920.67,733.43) scale(1,1) rotate(0.00,24.91,24.91) " fill="rgb(255,255,255)" fill-opacity="1.0" stroke="rgb(122,122,122)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 24.91 A 24.91 24.91 -0.00 1 1 49.83 24.91 A 24.91 24.91 0.00 1 1 0.00 24.91  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,24.91,24.91) ">
+				<text stroke-width="0">
+					<tspan font-size="38" font-family="Tahoma" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="14.32 " y="34.38 ">
+						2</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(920.91,1046.98) scale(1,1) rotate(0.00,24.91,24.91) " fill="rgb(255,255,255)" fill-opacity="1.0" stroke="rgb(122,122,122)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 24.91 A 24.91 24.91 -0.00 1 1 49.83 24.91 A 24.91 24.91 0.00 1 1 0.00 24.91  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,24.91,24.91) ">
+				<text stroke-width="0">
+					<tspan font-size="38" font-family="Tahoma" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0" x="14.32 " y="34.38 ">
+						3</tspan>
+				</text>
+			</g>
+		</g>
+	</svg>
+</svg>
