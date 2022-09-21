@@ -1,6 +1,6 @@
 # PKM - 数据结构  
 
-2022.09.17
+2022.09.19
 
 ![数据结构导图概览](./resources/数据结构.png)
 ## 介绍
@@ -117,7 +117,9 @@
 
 * __2022天勤数据结构.pdf__: 2022年408考研辅导教材  
 
-* __github习题同步笔记__ : https://github.com/CharlesShan-hub/DataStructureNotes  
+* **(Github)习题同步笔记** : https://github.com/CharlesShan-hub/DataStructureNotes  
+
+* **(Github)C语言可复用数据结构实现**：https://github.com/CharlesShan-hub/CDataStructure
 
 * **数据结构与算法(公众号)**（电子书）
 
