@@ -1,5 +1,5 @@
 <!doctype html>
-<html style='font-size:24px !important'>
+<html style='font-size:22px !important'>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
@@ -22,8 +22,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +49,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +71,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
@@ -87,7 +86,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,6 +129,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
@@ -1111,7 +1111,7 @@ a img {
 </style><title>操作系统引导</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='操作系统引导'><span>操作系统引导</span></h1><p><span>2022.05.21</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#操作系统引导">操作系统引导</a></span></p></div><p><span>①</span><strong><span>激活 CPU</span></strong><span>。激活的 CPU 读取 </span><strong><span>ROM</span></strong><span> 中的 </span><strong><span>boot</span></strong><span> 程序，将</span><strong><span>指令寄存器</span></strong><span>置为 </span><strong><span>BIOS</span></strong><span>(基本输入/输出系统）的第一条指令，即开始执行 BIOS 的指令。</span></p><p><span>②</span><strong><span>硬件自检</span></strong><span>。启动 BIOS 程序后，先进行硬件自检，检查硬件是否出现故障。如有故障，主板会发出不同含义的蜂鸣，启动中止；如无故障，屏幕会显示 CPU、内存、硬盘等信息。</span></p><p><span>③</span><strong><span>加载带有操作系统的硬盘</span></strong><span>。硬件自检后，BIOS 开始读取 </span><strong><span>Boot Sequence</span></strong><span>(通过 CMOS 里保存的启动顺序，或者通过与用户交互的方式），把控制权交给启动顺序排在第一位的存储设备，然后 CPU 将该存储设备引导扇区的内容加载到内存中。</span></p><p><span>④</span><strong><span>加载主引导记录 MBR</span></strong><span>。硬盘以特定的标识符区分引导硬盘和非引导硬盘。如果发现一个存储设备不是可引导盘，就检查下一个存储设备。如无其他启动设备，就会死机。主引导记录MBR 的作用是告诉 CPU 去硬盘的哪个主分区去找操作系统。</span></p><p><span>⑤</span><strong><span>扫描硬盘分区表</span></strong><span>，</span><strong><span>并加载硬盘活动分区</span></strong><span>。MBR 包含硬盘分区表，硬盘分区表以特定的标识符区分活动分区和非活动分区。主引导记录扫描硬盘分区表，进而识別含有操作系统的硬盘分区（活动分区）。找到硬盘活动分区后，开始加载硬盘活动分区，将控制权交给活动分区。</span></p><p><span>⑥</span><strong><span>加载分区引导记录 PBR</span></strong><span>。读取活动分区的第一个扇区，这个扇区称为分区引导记录(PBR)，其作用是寻找并激活分区根目录下用于引导操作系统的程序（启动管理器)。</span></p><p><span>⑦</span><strong><span>加载启动管理器</span></strong><span>。分区引导记录搜索活动分区中的启动管理器，加载启动管理器。</span></p><p><span>⑧</span><strong><span>加载操作系统</span></strong><span>。</span></p><blockquote><p><span>小结：</span></p><ul><li><span>硬盘</span></li></ul><ul><li><span>-(主引导记录MBR)&gt; </span></li></ul><ul><li><span>硬盘分区</span></li></ul><ul><li><span>-(硬盘分区表)&gt; </span></li></ul><ul><li><span>硬盘活动分区</span></li></ul><ul><li><span>-(第一个扇区: 分区引导记录(PBR))&gt; </span></li></ul><ul><li><span>启动管理器</span></li><li><img src="./resources/操作系统引导.png" alt="img" style="zoom:130%;" /></li></ul></blockquote><ul><li><p><span>计算机操作系统的引导程序位于（）中。</span></p><p><span>A. 主板BIOS，B. 片外Cache, C. 主存ROM区 D. 硬盘</span></p><p><span>D。操作系统的引导程序位于磁盘活动分区的引导扇区中。引导程序分为两种：一种是位子 ROM中的自举程序 （B1OS 的组成部分），用于启动具体的设备：另一种是位于装有操作系统硬盘的活动分区的引导扇区中的引导程序（称为启动管理器），用于引导操作系统。</span></p></li><li><p><span>计算机的启动过程是（）。 OCPU 加电，CS:IP 指向 FFFFOF; ②进行操作系统引导；</span>
+<div id='write'  class=''><h1 id='操作系统引导'><span>操作系统引导</span></h1><p><span>2022.05.21</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#操作系统引导">操作系统引导</a></span></p></div><p><span>①</span><strong><span>激活 CPU</span></strong><span>。激活的 CPU 读取 </span><strong><span>ROM</span></strong><span> 中的 </span><strong><span>boot</span></strong><span> 程序，将</span><strong><span>指令寄存器</span></strong><span>置为 </span><strong><span>BIOS</span></strong><span>(基本输入/输出系统）的第一条指令，即开始执行 BIOS 的指令。</span></p><p><span>②</span><strong><span>硬件自检</span></strong><span>。启动 BIOS 程序后，先进行硬件自检，检查硬件是否出现故障。如有故障，主板会发出不同含义的蜂鸣，启动中止；如无故障，屏幕会显示 CPU、内存、硬盘等信息。</span></p><p><span>③</span><strong><span>加载带有操作系统的硬盘</span></strong><span>。硬件自检后，BIOS 开始读取 </span><strong><span>Boot Sequence</span></strong><span>(通过 CMOS 里保存的启动顺序，或者通过与用户交互的方式），把控制权交给启动顺序排在第一位的存储设备，然后 CPU 将该存储设备引导扇区的内容加载到内存中。</span></p><p><span>④</span><strong><span>加载主引导记录 MBR</span></strong><span>。硬盘以特定的标识符区分引导硬盘和非引导硬盘。如果发现一个存储设备不是可引导盘，就检查下一个存储设备。如无其他启动设备，就会死机。主引导记录MBR 的作用是告诉 CPU 去硬盘的哪个主分区去找操作系统。</span></p><p><span>⑤</span><strong><span>扫描硬盘分区表</span></strong><span>，</span><strong><span>并加载硬盘活动分区</span></strong><span>。MBR 包含硬盘分区表，硬盘分区表以特定的标识符区分活动分区和非活动分区。主引导记录扫描硬盘分区表，进而识別含有操作系统的硬盘分区（活动分区）。找到硬盘活动分区后，开始加载硬盘活动分区，将控制权交给活动分区。</span></p><p><span>⑥</span><strong><span>加载分区引导记录 PBR</span></strong><span>。读取活动分区的第一个扇区，这个扇区称为分区引导记录(PBR)，其作用是寻找并激活分区根目录下用于引导操作系统的程序（启动管理器)。</span></p><p><span>⑦</span><strong><span>加载启动管理器</span></strong><span>。分区引导记录搜索活动分区中的启动管理器，加载启动管理器。</span></p><p><span>⑧</span><strong><span>加载操作系统</span></strong><span>。</span></p><blockquote><p><span>小结：</span></p><ul><li><span>硬盘</span></li><li><span>-(主引导记录MBR)&gt; </span></li><li><span>硬盘分区</span></li><li><span>-(硬盘分区表)&gt; </span></li><li><span>硬盘活动分区</span></li><li><span>-(第一个扇区: 分区引导记录(PBR))&gt; </span></li><li><span>启动管理器</span></li><li><img src="./resources/操作系统引导.png" referrerpolicy="no-referrer" alt="img"></li></ul></blockquote><ul><li><p><span>计算机操作系统的引导程序位于（）中。</span></p><p><span>A. 主板BIOS，B. 片外Cache, C. 主存ROM区 D. 硬盘</span></p><p><span>D。操作系统的引导程序位于磁盘活动分区的引导扇区中。引导程序分为两种：一种是位子 ROM中的自举程序 （B1OS 的组成部分），用于启动具体的设备：另一种是位于装有操作系统硬盘的活动分区的引导扇区中的引导程序（称为启动管理器），用于引导操作系统。</span></p></li><li><p><span>计算机的启动过程是（）。 OCPU 加电，CS:IP 指向 FFFFOF; ②进行操作系统引导；</span>
 <span>③执行 JMP 指令跳转到 BIOS; ④登记 B1OS 中断例程入口地址；⑤硬件自检。</span></p><p><span>答案：13452</span></p></li><li><p><span>检查分区表是否正确，确定哪个分区为活动分区，并在程序结束时将该分区的启动程序</span>
 <span>（操作系统引导扇区）调入内存加以执行，这是（）的任务。</span>
 <span>A. MBR</span>

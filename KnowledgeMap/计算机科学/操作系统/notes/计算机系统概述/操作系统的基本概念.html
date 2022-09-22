@@ -1,9 +1,12 @@
 <!doctype html>
-<html style='font-size:24px !important'>
+<html style='font-size:22px !important'>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
-<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+<style type='text/css'>html {overflow-x: initial !important;}:root { --mermaid-theme: default; --mermaid-sequence-numbers: off; --mermaid-flowchart-curve: linear; --mermaid--gantt-left-padding: 75; --sequence-theme: simple; }
+
+
+:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
@@ -22,8 +25,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +52,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +74,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
@@ -87,7 +89,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,6 +132,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
@@ -199,6 +202,87 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
 .typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
 .md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
 
 
 html {
@@ -1111,6 +1195,6 @@ a img {
 </style><title>操作系统的基本概念</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='操作系统的基本概念'><span>操作系统的基本概念</span></h1><p><span>2022.05.20</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#操作系统的基本概念">操作系统的基本概念</a></span></p></div><ol><li><p><span>计算机分层：硬件、操作系统、应用软件、用户。</span></p></li><li><p><span>操作系统概念是：控制和管理计算机系统的硬件和软件资源、组织调度计算机工作与分配资源、为用户和软件提供接口与环境的程序集合。</span></p></li><li><p><span>特征</span></p><ol><li><strong><span>并发</span></strong><span>：多个时间同一时间间隔内发生。</span></li><li><strong><span>并发与并行</span></strong></li><li><strong><span>共享</span></strong><span>：系统中的资源可以供内存中多个并发执行的进程共同使用。</span></li><li><strong><span>互斥共享方式</span></strong><span>，</span><strong><span>临界资源</span></strong></li><li><strong><span>同时访问方式</span></strong></li><li><span>并发与共享是</span><strong><span>最基本</span></strong><span>的特征，两者互为条件。</span></li><li><strong><span>虚拟</span></strong><span>：物理上的实体变为若干逻辑上的对应物。</span></li><li><strong><span>时分复用技术</span></strong><span>：</span><strong><span>虚拟处理器</span></strong></li><li><strong><span>空分复用技术</span></strong><span>：</span><strong><span>虚拟存储器</span></strong></li><li><strong><span>异步</span></strong><span>：多道程序环境允许多个程序并发执行，但由于资源受限，执行不能一贯到底。</span></li></ol></li><li><p><span>功能与目标</span></p><p><img src="./resources/操作系统.png" alt="img" style="zoom:50%;" /></p></li></ol><ol start='5' ><li><p><span>接口 = </span><strong><span>命令接口</span></strong><span> + </span><strong><span>程序接口</span></strong></p><ol><li><span>命令接口 = </span><strong><span>联机命令接口</span></strong><span>(交互式命令接口) + </span><strong><span>脱机命令接口</span></strong><span>(批处理命令接口)</span></li><li><span>程序接口 = {广义指令(系统调用)}</span></li><li><span>系统调用只能通过用户程序间接使用</span></li><li><span>用户可以通过命令接口和系统调用两种方式使用计算机</span></li><li><span>GUI（图形接口），GUI通过调用程序接口实现。GUI不是操作系统的一部分，GUI调用的系统调用是操作系统的一部分。</span></li></ol></li></ol><p>&nbsp;</p></div></div>
+<div id='write'  class=''><h1 id='操作系统的基本概念'><span>操作系统的基本概念</span></h1><p><span>2022.05.20</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n265"><a class="md-toc-inner" style="cursor: pointer;" href="#操作系统的基本概念">操作系统的基本概念</a></span></p></div><ol start='' ><li><p><span>计算机分层：硬件、操作系统、应用软件、用户。</span></p></li><li><p><span>操作系统的概念：控制和管理计算机系统的硬件和软件资源、组织调度计算机工作与分配资源、为用户和软件提供接口与环境的程序集合。</span></p></li><li><p><span>操作系统的目标：方便性（最重要）、时效性（最重要）、可扩展性、开放性</span></p></li><li><p><span>操作系统的作用：</span></p><p><img src="resources/操作系统.png" referrerpolicy="no-referrer" alt="操作系统"></p><ol start='' ><li><span>OS作为用户与计算机硬件系统之间的接口：用户通过&lt;</span><strong><span>命令方式</span></strong><span>&gt;，&lt;</span><strong><span>系统调用方式</span></strong><span>&gt;，&lt;</span><strong><span>图标-窗口方式</span></strong><span>&gt;实现与操作系统的通信</span></li><li><span>OS作为计算机系统资源的管理者：管理&lt;处理机&gt;，&lt;存储器&gt;，&lt;文件&gt;，&lt;IO设备&gt;</span></li><li><span>OS实现了对计算机资源的抽象：OS是铺设在计算机硬件上的多层软件的集合，它可以对硬件或已抽象的模型进行抽象。(eg. 裸机+IO设备管理软件-&gt;第一层虚拟机+文件系统-&gt;第二层虚拟机+...)</span></li></ol></li><li><p><span>操作系统的特征</span></p><ol start='' ><li><strong><span>并发</span></strong><span>：多个时间同一时间间隔内发生。</span></li><li><strong><span>并发与并行</span></strong></li><li><strong><span>共享</span></strong><span>：系统中的资源可以供内存中多个并发执行的进程共同使用。</span></li><li><strong><span>互斥共享方式</span></strong><span>，</span><strong><span>临界资源</span></strong></li><li><strong><span>同时访问方式</span></strong></li><li><span>并发与共享是</span><strong><span>最基本</span></strong><span>的特征，两者互为条件。</span></li><li><strong><span>虚拟</span></strong><span>：物理上的实体变为若干逻辑上的对应物。</span></li><li><strong><span>时分复用技术</span></strong><span>：</span><strong><span>虚拟处理器</span></strong></li><li><strong><span>空分复用技术</span></strong><span>：</span><strong><span>虚拟存储器</span></strong></li><li><strong><span>异步</span></strong><span>：多道程序环境允许多个程序并发执行，但由于资源受限，执行不能一贯到底。</span></li></ol></li><li><p><span>接口 = </span><strong><span>命令接口</span></strong><span> + </span><strong><span>程序接口</span></strong></p><ol start='' ><li><p><span>命令接口 = </span><strong><span>联机命令接口</span></strong><span>(交互式命令接口) + </span><strong><span>脱机命令接口</span></strong><span>(批处理命令接口)</span></p></li><li><p><span>程序接口 = {广义指令(系统调用)}</span></p></li><li><p><span>系统调用只能通过用户程序间接使用</span></p></li><li><p><span>系统调用是操作系统提供给应用程序的唯一接口</span></p></li><li><p><span>用户可以通过命令接口和系统调用两种方式使用计算机</span></p></li><li><p><span>GUI（图形接口），GUI通过调用程序接口实现。GUI不是操作系统的一部分，</span><u><span>GUI调用的系统调用</span></u><span>是操作系统的一部分。</span></p></li><li><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart104" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="chart-title-mermaidChart104 chart-desc-mermaidChart104" height="269" style="max-width: 964.4375px;" viewBox="0 0 964.4375 269"><title id="chart-title-mermaidChart104"></title><desc id="chart-desc-mermaidChart104"></desc><style>#mermaidChart104 {font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart104 .error-icon{fill:#552222;}#mermaidChart104 .error-text{fill:#552222;stroke:#552222;}#mermaidChart104 .edge-thickness-normal{stroke-width:2px;}#mermaidChart104 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart104 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart104 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart104 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart104 .marker{fill:#333333;stroke:#333333;}#mermaidChart104 .marker.cross{stroke:#333333;}#mermaidChart104 svg{font-family:sans-serif;font-size:16px;}#mermaidChart104 .label{font-family:sans-serif;color:#333;}#mermaidChart104 .cluster-label text{fill:#333;}#mermaidChart104 .cluster-label span{color:#333;}#mermaidChart104 .label text,#mermaidChart104 span{fill:#333;color:#333;}#mermaidChart104 .node rect,#mermaidChart104 .node circle,#mermaidChart104 .node ellipse,#mermaidChart104 .node polygon,#mermaidChart104 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart104 .node .label{text-align:center;}#mermaidChart104 .node.clickable{cursor:pointer;}#mermaidChart104 .arrowheadPath{fill:#333333;}#mermaidChart104 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaidChart104 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart104 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaidChart104 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaidChart104 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart104 .cluster text{fill:#333;}#mermaidChart104 .cluster span{color:#333;}#mermaidChart104 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart104 :root{--mermaid-font-family:sans-serif;}#mermaidChart104 :root{--mermaid-alt-font-family:sans-serif;}</style><g transform="translate(0, 0)"><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-MAIN LE-A" id="L-MAIN-A" style="opacity: 1;"><path class="path" d="M54.75313273514851,109L97.578125,33.5L184.9140625,33.5" marker-end="url(#arrowhead1665)" style="fill:none"></path><defs><marker id="arrowhead1665" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-A LE-系统调用/广义指令" id="L-A-系统调用/广义指令" style="opacity: 1;"><path class="path" d="M521.1328125,33.5L608.46875,33.5L689.1796875,33.5" marker-end="url(#arrowhead1666)" style="fill:none"></path><defs><marker id="arrowhead1666" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-MAIN LE-B" id="L-MAIN-B" style="opacity: 1;"><path class="path" d="M69.21720297029702,160L97.578125,185L122.578125,185" marker-end="url(#arrowhead1667)" style="fill:none"></path><defs><marker id="arrowhead1667" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-B LE-联机命令接口/交互式命令接口" id="L-B-联机命令接口/交互式命令接口" style="opacity: 1;"><path class="path" d="M482.0106745049505,159.5L608.46875,134.5L633.46875,134.5" marker-end="url(#arrowhead1668)" style="fill:none"></path><defs><marker id="arrowhead1668" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-B LE-脱机命令接口/批处理命令接口" id="L-B-脱机命令接口/批处理命令接口" style="opacity: 1;"><path class="path" d="M482.0106745049505,210.5L608.46875,235.5L633.46875,235.5" marker-end="url(#arrowhead1669)" style="fill:none"></path><defs><marker id="arrowhead1669" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-MAIN-A" class="edgeLabel L-LS-MAIN' L-LE-A" style=""></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-系统调用/广义指令" class="edgeLabel L-LS-A' L-LE-系统调用/广义指令" style=""></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-MAIN-B" class="edgeLabel L-LS-MAIN' L-LE-B" style=""></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-B-联机命令接口/交互式命令接口" class="edgeLabel L-LS-B' L-LE-联机命令接口/交互式命令接口" style=""></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-B-脱机命令接口/批处理命令接口" class="edgeLabel L-LS-B' L-LE-脱机命令接口/批处理命令接口" style=""></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-MAIN-1964" transform="translate(40.2890625,134.5)" style="opacity: 1;"><rect rx="5" ry="5" x="-32.2890625" y="-25.5" width="64.578125" height="51" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-22.2890625,-15.5)"><foreignObject width="44.578125" height="31"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">接口</div></foreignObject></g></g></g><g class="node default" id="flowchart-A-1965" transform="translate(353.0234375,33.5)" style="opacity: 1;"><rect rx="5" ry="5" x="-168.109375" y="-25.5" width="336.21875" height="51" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-158.109375,-15.5)"><foreignObject width="316.21875" height="31"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">程序接口/程序员接口/低级接口</div></foreignObject></g></g></g><g class="node default" id="flowchart-系统调用/广义指令-1967" transform="translate(794.953125,33.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-105.7734375" y="-25.5" width="211.546875" height="51" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-95.7734375,-15.5)"><foreignObject width="191.546875" height="31"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">系统调用/广义指令</div></foreignObject></g></g></g><g class="node default" id="flowchart-B-1969" transform="translate(353.0234375,185)" style="opacity: 1;"><rect rx="5" ry="5" x="-230.4453125" y="-25.5" width="460.890625" height="51" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-220.4453125,-15.5)"><foreignObject width="440.890625" height="31"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">命令接口/用户接口/操作员级接口/高层接口</div></foreignObject></g></g></g><g class="node default" id="flowchart-联机命令接口/交互式命令接口-1971" transform="translate(794.953125,134.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-161.484375" y="-25.5" width="322.96875" height="51" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-151.484375,-15.5)"><foreignObject width="302.96875" height="31"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">联机命令接口/交互式命令接口</div></foreignObject></g></g></g><g class="node default" id="flowchart-脱机命令接口/批处理命令接口-1973" transform="translate(794.953125,235.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-161.484375" y="-25.5" width="322.96875" height="51" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-151.484375,-15.5)"><foreignObject width="302.96875" height="31"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">脱机命令接口/批处理命令接口</div></foreignObject></g></g></g></g></g></g></svg></div></li></ol></li><li><p><span>系统开机后，操作系统程序会被自动加载到内存的系统区，这段区域是RAM！</span></p><p>&nbsp;</p></li></ol><p>&nbsp;</p></div></div>
 </body>
 </html>
