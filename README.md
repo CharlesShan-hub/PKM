@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.09.19
+2022.09.23
 
 [toc]
 
@@ -124,11 +124,12 @@
 |                                                              |                                                              |                                                              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |    ⭐️[以太坊](./KnowledgeMap/计算机科学/以太坊/README.md)     |   🔗[Arduino](https://www.arduino.cn/thread-1066-1-1.html)    |   ✏️[ESP8266](./KnowledgeMap/计算机科学/ESP8266/README.md)    |
-|  ✏️[Git](./KnowledgeMap/计算机科学/Git/README.md)  |                           (Xcode)                            |                          (Protege)                           |
+|       ✏️[Git](./KnowledgeMap/计算机科学/Git/README.md)        |                           (Xcode)                            |                          (Protege)                           |
 |                           (OpenGL)                           |                           (Unity)                            |       ✏️[Vue](./KnowledgeMap/计算机科学/Vue/README.md)        |
 |                           (React)                            |                          (Angular)                           |                          (MongoDB)                           |
 |                           (Sqlite)                           |                            (Ajax)                            |                           (Linux)                            |
 | ✏️[Minecraft](./KnowledgeMap/计算机科学/Minecraft/README.md)  |        ✏️[PS](./KnowledgeMap/计算机科学/PS/README.md)         |                              AU                              |
+|        ✏️[AI](./KnowledgeMap/计算机科学/AI/README.md)         |                                                              |                                                              |
 |                           (Django)                           |                            (diff)                            |                           (docker)                           |
 |              ([ejs](https://ejs.bootcss.com/))               | ([embeddedjs](https://www.embedthis.com/goahead/doc/users/js.html)) |     ([gherkin](https://zhuanlan.zhihu.com/p/321929049))      |
 |          ([handlebars](https://handlebarsjs.com/))           | ([htaccess](https://baike.baidu.com/item/htaccess/1645473))  | ([http](https://www.techtarget.com/whatis/definition/HTTP-Hypertext-Transfer-Protocol)) |
