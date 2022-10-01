@@ -1,6 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.09.23
+2022.09.29
 
 
 
@@ -267,7 +267,7 @@ Matlab资源：[公众号](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NDc
 
 4. 可以通过Nginx搭建属于自己的知识展示网站
 
-   ![映射到自己的网站上](./resources/demo4.jpg)
+   ![映射到自己的网站上](./resources/demo4.png)
 
 5. 可以将数据提炼为关系，插入到Neoj4知识图谱中。
 
