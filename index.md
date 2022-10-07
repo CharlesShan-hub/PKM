@@ -1,10 +1,8 @@
 # PKM - Personal Knowledge Map  
 
-2022.09.29
+2022.10.06
 
-
-
-![image text](./resources/title_small.png)
+![image text](./resources/title_small.webp)
 
 
 
@@ -13,8 +11,6 @@
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1437274865&auto=0&height=66"></iframe>
 
 ## 内容地图
-
-
 
 **[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 基础理论/专题**
 
@@ -255,23 +251,23 @@ Matlab资源：[公众号](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NDc
 
 1. 利用PKMViewer中的工具搭建统一格式的专题README文档
 
-   ![脚本截图](resources/脚本截图.png)
+   ![脚本截图](resources/脚本截图.webp)
 
 2. 利用Xmind搭建内部富有关联的知识地图 -> learn.xmind
 
-   ![通过Xmind构建测试导图](./resources/demo.png)
+   ![通过Xmind构建测试导图](./resources/demo.webp)
 
 3. 利用PKMViewer中的工具，将思维导图中的数据提炼出来，进行处理，生成HTML展示。
 
-   ![生成的HTML展示](./resources/demo3.png)
+   ![生成的HTML展示](./resources/demo3.webp)
 
 4. 可以通过Nginx搭建属于自己的知识展示网站
 
-   ![映射到自己的网站上](./resources/demo4.png)
+   ![映射到自己的网站上](./resources/demo4.webp)
 
 5. 可以将数据提炼为关系，插入到Neoj4知识图谱中。
 
-   ![将数据插入到知识图谱中](./resources/demo2.png)
+   ![将数据插入到知识图谱中](./resources/demo2.webp)
 
 6. 知识结构为通过思维导图连接的知识点（项目/领域标题），与通过Markdown文档表现的具体内容笔记。通过[**Docusaurus**](https://docusaurus.io/zh-CN/)进行静态网络的搭建，快速生成对应[博客](https://charlesshan-hub.github.io)。
 
