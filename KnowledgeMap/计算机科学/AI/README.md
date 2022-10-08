@@ -1,5 +1,5 @@
 # AI
-2022.10.03
+2022.10.07
 
 [toc]
 <!--![AI导图概览](./resources/AI.png)-->
@@ -27,12 +27,14 @@
     * [Adobe Live](https://www.youtube.com/playlist?list=PLD8AMy73ZVxWSupN9leUtVksoLCawb1tB)
     * [Make It with Creative Cloud](https://www.youtube.com/playlist?list=PLD8AMy73ZVxWtUAf-Zzw6baso-4YgR4wz)
 
-* 第三方教程
+* 第三方教程或资源
   * [90分钟 AI教程](https://www.bilibili.com/video/BV1cy4y1p7vp)
     * 课程资源链接：https://pan.baidu.com/s/18Xxi4jlMobbDPTKJtTpKmw 提取码：0000
     * 公众号：GenJi是真想教会你
   * [Adobe Illustrator Complete Course in Urdu / Hindi](https://www.youtube.com/playlist?list=PLW-zSkCnZ-gCq0DjkzY-YapCBEk0lA6lR)
-
+  * [Memm AI资源](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5MjE1NTY4Nw==&action=getalbum&album_id=2085937727765610500)
+    * 包含软件下载、素材收集、脚本推荐、案例合集
+  
 * 案例或视频收藏
 
   * [學 Illustrator 一定要搞懂筆刷工具 🔥 因為很重要所以講三遍](https://www.youtube.com/watch?v=PK3MHtDKH9A)

@@ -21,7 +21,7 @@ ignore_path=[
 	'/KnowledgeMap/读书'
 	] # 都是忽略文件夹！
 
-HEAD_TITLE = '''<title>PKM</title>
+HEAD_TITLE = '''
 <link rel="shortcut icon" type="image/x-icon" href="https://charlesshan.top/resources/favicon.ico?">'''
 
 CSS_SRC = '''<link rel="stylesheet" type="text/css" href="style.css">
@@ -109,6 +109,10 @@ def main():
 			#print(file,temp.find('<mjx-container'))
 			style_index_l = temp.find('<head>')+len('<head>')
 			temp = temp[:style_index_l]+HEAD_TITLE+temp[style_index_l:]
+
+			style_index_l = temp.find('<title>')+len('<title>')
+			temp = temp[:style_index_l]+'PKM - Personal Knowledge Map'+temp[temp.find('</title>'):]
+
 			while temp.find('<pre><span>xxxxxxxxxx</span></pre>')!=-1:
 				style_index_l = temp.find('<pre><span>xxxxxxxxxx</span></pre>')
 				temp = temp[:style_index_l]+temp[style_index_l+len('<pre><span>xxxxxxxxxx</span></pre>'):]
