@@ -1,5 +1,5 @@
 # AI
-2022.10.07
+2022.10.29
 
 [toc]
 <!--![AI导图概览](./resources/AI.png)-->
@@ -15,8 +15,22 @@
 
 本模块按照xxxx进行构建
 ## 资源
-链接:
+链接: https://pan.baidu.com/s/1Rv9OprDE5lOpMmP_drRTeQ?pwd=qfem 
+提取码: qfem 
 如果资源失效请联系我
+
+* 软件资源
+  * Adobe Illustrator安装包
+    * 26.2.1 - Mac - https://www.didixk.com/26848.html
+    * 26.3.1 - Mac - MacWK
+    * 26.4.1 - Mac - https://www.zhiniw.com/?s=adobe
+    * 26.5.1 - Win - www.macxin.com
+    * 27.0.0 - Mac - Memm微信公众号
+  * 插件
+* 教程资源
+  * AI初级课程（公众号memm）
+
+## 外部资料
 
 * [Adobe官方](https://www.adobe.com/cn/)
 
