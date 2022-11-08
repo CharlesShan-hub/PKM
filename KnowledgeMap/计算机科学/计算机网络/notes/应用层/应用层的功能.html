@@ -22,8 +22,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +49,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +71,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
@@ -87,7 +86,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,6 +129,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
@@ -1111,6 +1111,6 @@ a img {
 </style><title>应用层的功能</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='应用层的功能'><span>应用层的功能</span></h1><p><span>2022.03.15</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#应用层的功能">应用层的功能</a></span></p></div><ul><li><p><a href='./网络应用模型.md'><span>网络应用模型</span></a></p><ul><li><span>客户/服务器模型</span></li><li><span>P2P模型</span></li></ul></li><li><p><a href='../网络层/IPv4.md'><span>动态主机配置协议(DHCP)</span></a></p></li><li><p><a href='域名系统DNS.md'><span>域名系统(DNS)</span></a></p><ul><li><span>层次域名空间；域名服务器；域名解析过程</span></li></ul></li><li><p><a href='文件传输协议FTP.md'><span>文件传输协议(FTP)</span></a></p><ul><li><span>FTP的工作原理；控制连接与数据连接</span></li></ul></li><li><p><a href='电子邮件E-mail.md'><span>电子邮件(E-mail)</span></a></p><ul><li><span>电子邮件系统的组成结构：电子邮件格式与MIME;SMTP与POP3</span></li></ul></li><li><p><a href='万维网WWW.md'><span>万维网(WWW)</span></a></p><ul><li><span>WWW的概念与组成结构</span></li><li><span>HTTP</span></li></ul></li></ul><blockquote><p><span>课程推荐：</span></p><p><a href='https://www.bilibili.com/video/BV1n7411s7QF'><span>计算机网络微课堂第079讲 应用层概述</span></a></p></blockquote></div></div>
+<div id='write'  class=''><h1 id='应用层的功能'><span>应用层的功能</span></h1><p><span>2022.10.04</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n112"><a class="md-toc-inner" style="" href="#应用层的功能">应用层的功能</a></span></p></div><ul><li><p><a href='./网络应用模型.md'><span>网络应用模型</span></a></p><ul><li><span>客户/服务器模型</span></li><li><span>P2P模型</span></li></ul></li><li><p><a href='../网络层/IPv4.md'><span>动态主机配置协议(DHCP)</span></a></p></li><li><p><a href='域名系统DNS.md'><span>域名系统(DNS)</span></a></p><ul><li><span>层次域名空间；域名服务器；域名解析过程</span></li></ul></li><li><p><a href='文件传输协议FTP.md'><span>文件传输协议(FTP)</span></a></p><ul><li><span>FTP的工作原理；控制连接与数据连接</span></li></ul></li><li><p><a href='电子邮件E-mail.md'><span>电子邮件(E-mail)</span></a></p><ul><li><span>电子邮件系统的组成结构：电子邮件格式与MIME;SMTP与POP3</span></li></ul></li><li><p><a href='万维网WWW.md'><span>万维网(WWW)</span></a></p><ul><li><span>WWW的概念与组成结构</span></li><li><span>HTTP</span></li></ul></li></ul><blockquote><p><span>课程推荐：</span></p><p><a href='https://www.bilibili.com/video/BV1n7411s7QF'><span>计算机网络微课堂第079讲 应用层概述</span></a></p></blockquote><figure><table><thead><tr><th><span>应用程序</span></th><th><span>协议</span></th><th><span>端口号</span></th></tr></thead><tbody><tr><td><span>DNS</span></td><td><span>UDP</span></td><td><span>53</span></td></tr><tr><td><span>FTP数据连接</span></td><td><span>TCP</span></td><td><span>20</span></td></tr><tr><td><span>FTP控制链接</span></td><td><span>TCP</span></td><td><span>21</span></td></tr><tr><td><span>TFTP(简单文件传输)</span></td><td><span>UDP</span></td><td><span>69</span></td></tr><tr><td><span>SMTP(邮件)</span></td><td><span>TCP</span></td><td><span>25</span></td></tr><tr><td><span>POP3(邮件)</span></td><td><span>TCP</span></td><td><span>110</span></td></tr><tr><td><span>IMAP(邮件)</span></td><td><span>TCP</span></td><td><span>143</span></td></tr><tr><td><span>SNMP(简单网络管理)</span></td><td><span>UDP</span></td><td><span>161</span></td></tr><tr><td><span>TELNET</span></td><td><span>TCP</span></td><td><span>23</span></td></tr><tr><td><span>HTTP</span></td><td><span>TCP</span></td><td><span>80</span></td></tr></tbody></table></figure><p>&nbsp;</p><p>&nbsp;</p></div></div>
 </body>
 </html>

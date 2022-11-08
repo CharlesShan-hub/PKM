@@ -1,6 +1,6 @@
 # 计算机网络 
 
-2022.08.20
+2022.11.06
 
 [TOC]
 ## 目录与主要内容
@@ -39,7 +39,7 @@
   * [组帧](./notes/数据链路层/组帧.md)
     * *字符计数、字符填充、零比特填充、违规编码*
   * [差错控制](./notes/数据链路层/差错控制.md)
-    * *奇偶校验码、CRC、海明码*
+    * *奇偶校验码、CRC、海明码(n+k+1≤2^k)*
   * [流量控制与可靠传输机制](./notes/数据链路层/流量控制.md)
     * *三种协议：停止等待、后退N帧、选择重传*
     * *n种指标：利用率、帧序号比特数、窗口大小、帧长*
@@ -106,6 +106,7 @@
 链接: https://pan.baidu.com/s/1M34LB98BsKdHGby2eMC_Qw?1cv1  
 提取码: 1cv1  如果资源失效请联系我  
 
+* [计算机网络408考研 历年真题解析 by 湖科大教书匠](https://www.bilibili.com/video/BV1VE411A7Ak)
 * **[网友笔记](https://blog.csdn.net/weixin_45067603/article/details/106974036)**
   * 链接：https://pan.baidu.com/s/16NJVC2-vQu2HcJqb6nJQFw 提取码：djqm  
   * [【计算机网络笔记Part1 概述】](https://blog.csdn.net/weixin_45067603/article/details/106974036)
