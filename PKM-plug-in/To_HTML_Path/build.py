@@ -16,6 +16,7 @@ ignore_path=[
 	#'/KnowledgeMap/计算机科学/YAML',
 	#'/KnowledgeMap/文史哲',
 	'/.git',
+	'/.obsidian',
 	'/PKMViewer',
 	'/PKM-plug-in',
 	'/KnowledgeMap/读书'

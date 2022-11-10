@@ -22,8 +22,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +49,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +71,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
@@ -87,7 +86,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,6 +129,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
@@ -1111,6 +1111,6 @@ a img {
 </style><title>README</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='pkm---线性代数'><span>PKM - 线性代数  </span></h1><p><span>2022.08.02</span></p><p><img src="./resources/线性代数.png" referrerpolicy="no-referrer" alt="image text"></p><h2 id='介绍'><span>介绍</span></h2><p><span>按照张宇2022、2023考研数学提高班进行归纳与整合。</span></p><h2 id='资源'><span>资源</span></h2><p><span>链接: 链接: </span><a href='https://pan.baidu.com/s/1qPELqhj0HR8ZzqCduhF_4A' target='_blank' class='url'>https://pan.baidu.com/s/1qPELqhj0HR8ZzqCduhF_4A</a><span></span><br/><span>提取码: vr89</span><br/><span>如果资源失效请联系我  </span></p><p><span>外部资料：</span></p><p><a href='https://zhuanlan.zhihu.com/p/58472836'><span>知乎推荐的线性代数课程</span></a></p><h2 id='版本'><span>版本</span></h2><h3 id='v1-202110xx'><span>V1 2021.10.xx  </span></h3><p><span>按照2022张宇考研课程进行整理，完成全部知识框架搭建   </span></p></div></div>
+<div id='write'  class=''><h1 id='pkm---线性代数'><span>PKM - 线性代数  </span></h1><p><span>2022.08.02</span></p><p><img src="./resources/线性代数.png" referrerpolicy="no-referrer" alt="image text"></p><h2 id='介绍'><span>介绍</span></h2><p><span>按照张宇2022、2023考研数学提高班进行归纳与整合。</span></p><h2 id='资源'><span>资源</span></h2><p><span>链接: 链接: </span><a href='https://pan.baidu.com/s/1qPELqhj0HR8ZzqCduhF_4A' target='_blank' class='url'>https://pan.baidu.com/s/1qPELqhj0HR8ZzqCduhF_4A</a><span></span><br/><span>提取码: vr89</span><br/><span>如果资源失效请联系我  </span></p><p><span>外部资料：</span></p><p><a href='https://zhuanlan.zhihu.com/p/58472836'><span>知乎推荐的线性代数课程</span></a></p><p><a href='https://www.bilibili.com/read/cv6499426'><span>（数一）二次曲面类型与二次型的正负惯性指数的关系</span></a></p><h2 id='版本'><span>版本</span></h2><h3 id='v1-202110xx'><span>V1 2021.10.xx  </span></h3><p><span>按照2022张宇考研课程进行整理，完成全部知识框架搭建   </span></p></div></div>
 </body>
 </html>
