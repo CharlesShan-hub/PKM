@@ -22,8 +22,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +49,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +71,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
@@ -87,7 +86,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,6 +129,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
@@ -1107,159 +1107,11 @@ a img {
 }
 
 
-
-mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-  min-height: 1px;
-  min-width: 1px;
-}
-
-mjx-container[jax="SVG"] > svg a {
-  fill: blue;
-  stroke: blue;
-}
-
-mjx-assistive-mml {
-  position: absolute !important;
-  top: 0px;
-  left: 0px;
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 1px 0px 0px 0px !important;
-  border: 0px !important;
-  display: block !important;
-  width: auto !important;
-  overflow: hidden !important;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-mjx-assistive-mml[display="block"] {
-  width: 100% !important;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][display="true"][width="full"] {
-  display: flex;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > g > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
-  stroke-width: 3;
-}
-
-g[data-mml-node="xypic"] path {
-  stroke-width: inherit;
-}
-
-.MathJax g[data-mml-node="xypic"] path {
-  stroke-width: inherit;
-}
-mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
-							stroke-width: 0;
-						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>指令执行过程</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='指令执行过程'><span>指令执行过程</span></h1><p><span>2022.08.26</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#指令执行过程">指令执行过程</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" style="" href="#指令周期">指令周期</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n45"><a class="md-toc-inner" style="" href="#指令周期的数据流">指令周期的数据流</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n50"><a class="md-toc-inner" style="" href="#取指周期">取指周期</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n88"><a class="md-toc-inner" style="" href="#间址周期">间址周期</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n122"><a class="md-toc-inner" style="" href="#执行周期">执行周期</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n129"><a class="md-toc-inner" style="" href="#中断周期">中断周期</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n160"><a class="md-toc-inner" style="" href="#指令执行方案">指令执行方案</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n165"><a class="md-toc-inner" style="" href="#单指令周期">单指令周期</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n172"><a class="md-toc-inner" style="" href="#多指令周期">多指令周期</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n179"><a class="md-toc-inner" style="" href="#流水线方案">流水线方案</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n199"><a class="md-toc-inner" style="" href="#例题">例题</a></span></p></div><h2 id='指令周期'><span>指令周期</span></h2><blockquote><ol><li><span>指令周期，机器周期，时钟周期(节拍/T周期)</span></li><li><span>定长/不定长的机器周期</span></li><li><span>取址、间址、执行、中断周期</span></li><li><span>FE、IND、EX、INT</span></li></ol></blockquote><p><span>CPU 从主存中</span><u><span>取出并执行</span></u><span>一条指令的时间称为</span><strong><span>指令周期</span></strong><span>，不同指令的指令周期可能不同。指令周期常用若干</span><strong><span>机器周期</span></strong><span>来表示，一个机器周期又包含者干</span><strong><span>时钟周期</span></strong><span>（也称</span><strong><span>节拍或T周期</span></strong><span>，它是 CPU 操作的最基本单位）。每个指令周期内的机器周期数可以不等，每个机器周期内的节拍数也可以不等。下图反映了上述关系。下图(a)为定长的机器周期，每个机器周期包含 4个节拍(T)；图(b)所示为不定长的机器周期，每个机器周期包含的节拍数可以为 4个，也可以为3个。</span></p><p><img src="resources/各种周期关系.png" referrerpolicy="no-referrer" alt="截屏2022-08-26 上午10.21.07"></p><p><span>对于无条件转移指令JMP X，在执行时不需要访问主存，只包含取指阶段（包括取指和分析）和执行阶段，所以其指令周期仅包含取指周期和执行周期。</span></p><p><span>对于间接寻址的指令，为了取操作数，需要先访问一次主存，取出有效地址，然后访问主存，取出操作数，所以还需包括间址周期。间址周期介于取指周期和执行周期之间。</span></p><p><span>当 CPU 采用中断方式实现主机和 I/O 设备的信息交换时，CPU 在每条指令执行结束前，都要发中断查询信号，若有中断请求，则 CPU 进入中断响应阶段，又称中断周期。这样，一个完整的指令周期应包括</span><strong><span>取指、间址、执行和中断</span></strong><span>4个周期，如下图所示。</span></p><p><img src="resources/指令周期.png" referrerpolicy="no-referrer" alt="截屏2022-08-26 上午10.34.54"></p><p><span>上述4个工作周期都有 CPU 访存操作，只是访存的目的不同。取指周期是为了取指令，间址周期是为了取有效地址，执行周期是为了取操作数，中断周期是为了保存程序断点，为了区别不同的工作周期，在 CPU 内设置 </span><strong><span>4 个标志触发器FE、IND、EX 和INT</span></strong><span>， 它们分别对应取指、间址、执行和中断周期，并以“1” 状态表示有效，分别由 1-&gt;FE、 1-&gt;IND、1-&gt;EX 和1-&gt;INT 这4个信号控制。</span></p><p><span>注意：中断周期中的进栈探作是将SP减1，这和传统意义上的进栈操作相反，原因是</span><strong><span>计算机的堆栈中都是向低地址增加</span></strong><span>，</span><strong><span>所以进栈操作是减1而不是加1</span></strong><span>.</span></p><h2 id='指令周期的数据流'><span>指令周期的数据流</span></h2><p><span>数据流是根据指令要求依次访问的数据序列。在指令执行的不同阶段，要求依次访问的数据序列是不同的。而且对于不同的指令，它们的数据流往往也是不同的。</span></p><h3 id='取指周期'><span>取指周期</span></h3><p><u><span>取指周期的任务是根据 PC 中的内容从主存中取出指令代码并存放在IR中</span></u><span>。</span></p><p><span>取指周期的数据流如下图所示。PC 中存放的是指令的地址，根据此地址从内存单元中取出的是指令，并放在指令寄存器IR中，取指令的同时，PC加1。</span></p><p><span>取指周期的数据流向如下：</span></p><ol><li><strong><span>PC</span></strong><span> -(1)-&gt; </span><strong><span>MAR</span></strong><span> -(2)-&gt; </span><strong><span>地址总线</span></strong><span> -(3)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>CU</span></strong><span> 发出</span><strong><span>读命令</span></strong><span> -(4)-&gt; </span><strong><span>控制总线</span></strong><span> -(5)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>主存</span></strong><span> -(6)-&gt; </span><strong><span>数据总线</span></strong><span> -(7)-&gt; </span><strong><span>MDR</span></strong><span> -(8)-&gt; </span><strong><span>IR</span></strong><span>（存放指令）</span></li><li><strong><span>CU</span></strong><span> 发出</span><strong><span>控制信号</span></strong><span> -(9)-&gt; </span><strong><span>PC</span></strong><span> 内容</span><strong><span>加 1</span></strong></li></ol><p><img src="resources/取指周期数据流.png" referrerpolicy="no-referrer" alt="截屏2022-08-26 下午12.06.27"></p><h3 id='间址周期'><span>间址周期</span></h3><p><u><span>间址周期的任务是取操作数有效地址</span></u><span>。以一次间址为例，将指令中的地址码送到 MAR 并送至地址总线，此后CU 向存储器发读命令，以获取有效地址并存至 MDR.</span></p><p><img src="resources/间址周期数据流.png" referrerpolicy="no-referrer" alt="截屏2022-08-26 下午12.08.10"></p><p><span>间址周期的数据流向如下：</span></p><ol start='' ><li><strong><span>Ad(IR)（或 MDR)</span></strong><span>  -(1)-&gt; </span><strong><span>MAR</span></strong><span> -(2)-&gt; </span><strong><span>地址总线</span></strong><span> -(3)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>CU</span></strong><span> 发出</span><strong><span>读命令</span></strong><span> -(4)-&gt; </span><strong><span>控制总线</span></strong><span> -(5)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>主存</span></strong><span> -(6)-&gt; </span><strong><span>数据总线</span></strong><span> -(7)-&gt; </span><strong><span>MDR</span></strong><span>（存放有效地址）</span></li></ol><p><u><span>其中，Ad(R)表示取出 IR 中存放的指令字的地址字段</span></u></p><h3 id='执行周期'><span>执行周期</span></h3><p><span>执行周期的任务是取操作数，并根据 IR 中的指令字的操作码通过 ALU 操作产生执行结果。不同指令的执行周期操作不同，因此没有统一的数据流向。</span></p><h3 id='中断周期'><span>中断周期</span></h3><p><u><span>中断周期的任务是处理中断请求</span></u><span>。假设程序断点存入堆栈中，并用</span><u><strong><span>SP</span></strong><span> 指示</span><strong><span>栈顶地址</span></strong><span>，而且进栈操作是先修改栈顶指针，后存入数据</span></u><span>，数据流如图所示。</span></p><p><img src="resources/中断周期数据流.png" referrerpolicy="no-referrer" alt="截屏2022-08-26 下午12.12.49"></p><p><span>中断周期的数据流向如下：(SP减1是进栈！)</span></p><ol><li><strong><span>CU</span></strong><span>控制将</span><strong><span>SP减1</span></strong><span>，</span><strong><span>SP</span></strong><span> -(1)-&gt; </span><strong><span>MAR</span></strong><span> -(2)-&gt; </span><strong><span>地址总线</span></strong><span> -(3)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>CU</span></strong><span> 发出</span><strong><span>写命令</span></strong><span> -(4)-&gt; </span><strong><span>控制总线</span></strong><span> -(5)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>PC</span></strong><span> -(6)-&gt; </span><strong><span>MDR</span></strong><span> -(7)-&gt; </span><strong><span>数据总线</span></strong><span> -(8)-&gt; </span><strong><span>主存</span></strong><span>（程序断点存入主存）</span></li><li><strong><span>CU</span></strong><span>（中断服务程序的入口地址) -(9)-&gt; </span><strong><span>PC</span></strong></li></ol><h2 id='指令执行方案'><span>指令执行方案</span></h2><p><span>一个指令周期通常要包括几个时间段（执行步骤），每个步骤完成指令的一部分功能，几个依次执行的步骤完成这条指令的全部功能。出于性能和硬件成本等考虑，可以选用3种不同的方案来安排指令的执行步骤</span></p><h3 id='单指令周期'><span>单指令周期</span></h3><p><strong><span>对所有指令都选用相同的执行时间来完成</span></strong><span>，称为</span><strong><span>单指令周期方案</span></strong><span>。此时每条指令都在固定的时钟周期内完成，指令之间</span><strong><span>串行</span></strong><span>执行，即下一条指令只能在前一条指令执行结束后才能启动。因此，指令周期取决于执行时间最长的指令的执行时间。对于那些本来可以在更短时间内完成的指令，要使用这个较长的周期来完成，会降低整个系统的运行速度。</span></p><h3 id='多指令周期'><span>多指令周期</span></h3><p><strong><span>对不同类型的指令选用不同的执行步骤</span></strong><span>，称为</span><strong><span>多指令周期方案</span></strong><span>。指令之间</span><strong><span>串行</span></strong><span>执行，即下条指令只能在前一指令执行完后才能启动。但可选用不同个数的时钟周期来完成不同指令的执行过程，指令需要几个周期就为其分配几个周期，不再要求所有指令占用相同的执行时间。</span></p><h3 id='流水线方案'><span>流水线方案</span></h3><p><strong><span>指令之间可以并行执行的方案</span></strong><span>，称为</span><strong><span>流水线方案</span></strong><span>，其追求的目标是力争在每个时钟脉冲周期完成一条指令的执行过程 （只在理想情况下才能达到该效果）。这种方案通过在每个时钟周期启动一条指令，尽量让多条指令同时运行，但各自处在不同的执行步骤中。</span></p><h2 id='例题'><span>例题</span></h2><ol><li><p><span>计算机工作的最小时间周期是（ ）</span>
+<div id='write'  class=''><h1 id='指令执行过程'><span>指令执行过程</span></h1><p><span>2022.11.25</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#指令执行过程">指令执行过程</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" style="" href="#指令周期">指令周期</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n23"><a class="md-toc-inner" style="" href="#指令周期的数据流">指令周期的数据流</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n25"><a class="md-toc-inner" style="" href="#取指周期">取指周期</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n39"><a class="md-toc-inner" style="" href="#间址周期">间址周期</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n51"><a class="md-toc-inner" style="" href="#执行周期">执行周期</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n53"><a class="md-toc-inner" style="" href="#中断周期">中断周期</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n66"><a class="md-toc-inner" style="" href="#指令执行方案">指令执行方案</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n68"><a class="md-toc-inner" style="" href="#单指令周期">单指令周期</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n70"><a class="md-toc-inner" style="" href="#多指令周期">多指令周期</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n72"><a class="md-toc-inner" style="" href="#流水线方案">流水线方案</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n74"><a class="md-toc-inner" style="" href="#例题">例题</a></span></p></div><h2 id='指令周期'><span>指令周期</span></h2><blockquote><ol start='' ><li><span>指令周期，机器周期，时钟周期(节拍/T周期)</span></li><li><span>定长/不定长的机器周期</span></li><li><span>取址、间址、执行、中断周期</span></li><li><span>FE、IND、EX、INT</span></li></ol></blockquote><p><span>CPU 从主存中</span><u><span>取出并执行</span></u><span>一条指令的时间称为</span><strong><span>指令周期</span></strong><span>，不同指令的指令周期可能不同。指令周期常用若干</span><strong><span>机器周期</span></strong><span>来表示，一个机器周期又包含者干</span><strong><span>时钟周期</span></strong><span>（也称</span><strong><span>节拍或T周期</span></strong><span>，它是 CPU 操作的最基本单位）。每个指令周期内的机器周期数可以不等，每个机器周期内的节拍数也可以不等。下图反映了上述关系。下图(a)为定长的机器周期，每个机器周期包含 4个节拍(T)；图(b)所示为不定长的机器周期，每个机器周期包含的节拍数可以为 4个，也可以为3个。</span></p><p><img src="resources/各种周期关系.png" referrerpolicy="no-referrer" alt="截屏2022-08-26 上午10.21.07"></p><p><span>对于无条件转移指令JMP X，在执行时不需要访问主存，只包含取指阶段（包括取指和分析）和执行阶段，所以其指令周期仅包含取指周期和执行周期。</span></p><p><span>对于间接寻址的指令，为了取操作数，需要先访问一次主存，取出有效地址，然后访问主存，取出操作数，所以还需包括间址周期。间址周期介于取指周期和执行周期之间。</span></p><p><span>当 CPU 采用中断方式实现主机和 I/O 设备的信息交换时，CPU 在每条指令执行结束前，都要发中断查询信号，若有中断请求，则 CPU 进入中断响应阶段，又称中断周期。这样，一个完整的指令周期应包括</span><strong><span>取指、间址、执行和中断</span></strong><span>4个周期，如下图所示。</span></p><p><img src="resources/指令周期.png" referrerpolicy="no-referrer" alt="截屏2022-08-26 上午10.34.54"></p><p><span>上述4个工作周期都有 CPU 访存操作，只是访存的目的不同。取指周期是为了取指令，间址周期是为了取有效地址，执行周期是为了取操作数，中断周期是为了保存程序断点，为了区别不同的工作周期，在 CPU 内设置 </span><strong><span>4 个标志触发器FE、IND、EX 和INT</span></strong><span>， 它们分别对应取指、间址、执行和中断周期，并以“1” 状态表示有效，分别由 1-&gt;FE、 1-&gt;IND、1-&gt;EX 和1-&gt;INT 这4个信号控制。</span></p><p><span>注意：中断周期中的进栈探作是将SP减1，这和传统意义上的进栈操作相反，原因是</span><strong><span>计算机的堆栈中都是向低地址增加</span></strong><span>，</span><strong><span>所以进栈操作是减1而不是加1</span></strong><span>.</span></p><h2 id='指令周期的数据流'><span>指令周期的数据流</span></h2><p><span>数据流是根据指令要求依次访问的数据序列。在指令执行的不同阶段，要求依次访问的数据序列是不同的。而且对于不同的指令，它们的数据流往往也是不同的。</span></p><h3 id='取指周期'><span>取指周期</span></h3><p><u><span>取指周期的任务是根据 PC 中的内容从主存中取出指令代码并存放在IR中</span></u><span>。</span></p><p><span>取指周期的数据流如下图所示。PC 中存放的是指令的地址，根据此地址从内存单元中取出的是指令，并放在指令寄存器IR中，取指令的同时，PC加“1”。</span></p><p><strong><span>取指操作由硬件自动完成，无需得到相应的指令</span></strong><span>。</span></p><p><span>取指周期的数据流向如下：</span></p><ol start='' ><li><strong><span>PC</span></strong><span> -(1)-&gt; </span><strong><span>MAR</span></strong><span> -(2)-&gt; </span><strong><span>地址总线</span></strong><span> -(3)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>CU</span></strong><span> 发出</span><strong><span>读命令</span></strong><span> -(4)-&gt; </span><strong><span>控制总线</span></strong><span> -(5)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>主存</span></strong><span> -(6)-&gt; </span><strong><span>数据总线</span></strong><span> -(7)-&gt; </span><strong><span>MDR</span></strong><span> -(8)-&gt; </span><strong><span>IR</span></strong><span>（存放指令）</span></li><li><strong><span>CU</span></strong><span> 发出</span><strong><span>控制信号</span></strong><span> -(9)-&gt; </span><strong><span>PC</span></strong><span> 内容</span><strong><span>加 1</span></strong></li></ol><p><img src="resources/取指周期数据流.png" referrerpolicy="no-referrer" alt="截屏2022-08-26 下午12.06.27"></p><h3 id='间址周期'><span>间址周期</span></h3><p><u><span>间址周期的任务是取操作数有效地址</span></u><span>。以一次间址为例，将指令中的地址码送到 MAR 并送至地址总线，此后CU 向存储器发读命令，以获取有效地址并存至 MDR.</span></p><p><img src="resources/间址周期数据流.png" referrerpolicy="no-referrer" alt="截屏2022-08-26 下午12.08.10"></p><p><span>间址周期的数据流向如下：</span></p><ol start='' ><li><strong><span>Ad(IR)（或 MDR)</span></strong><span>  -(1)-&gt; </span><strong><span>MAR</span></strong><span> -(2)-&gt; </span><strong><span>地址总线</span></strong><span> -(3)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>CU</span></strong><span> 发出</span><strong><span>读命令</span></strong><span> -(4)-&gt; </span><strong><span>控制总线</span></strong><span> -(5)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>主存</span></strong><span> -(6)-&gt; </span><strong><span>数据总线</span></strong><span> -(7)-&gt; </span><strong><span>MDR</span></strong><span>（存放有效地址）</span></li></ol><p><u><span>其中，Ad(R)表示取出 IR 中存放的指令字的地址字段</span></u></p><h3 id='执行周期'><span>执行周期</span></h3><p><span>执行周期的任务是取操作数，并根据 IR 中的指令字的操作码通过 ALU 操作产生执行结果。不同指令的执行周期操作不同，因此没有统一的数据流向。</span></p><h3 id='中断周期'><span>中断周期</span></h3><p><u><span>中断周期的任务是处理中断请求</span></u><span>。假设程序断点存入堆栈中，并用</span><u><strong><span>SP</span></strong><span> 指示</span><strong><span>栈顶地址</span></strong><span>，而且进栈操作是先修改栈顶指针，后存入数据</span></u><span>，数据流如图所示。</span></p><p><img src="resources/中断周期数据流.png" referrerpolicy="no-referrer" alt="截屏2022-08-26 下午12.12.49"></p><p><span>中断周期的数据流向如下：(SP减1是进栈！)</span></p><ol start='' ><li><strong><span>CU</span></strong><span>控制将</span><strong><span>SP减1</span></strong><span>，</span><strong><span>SP</span></strong><span> -(1)-&gt; </span><strong><span>MAR</span></strong><span> -(2)-&gt; </span><strong><span>地址总线</span></strong><span> -(3)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>CU</span></strong><span> 发出</span><strong><span>写命令</span></strong><span> -(4)-&gt; </span><strong><span>控制总线</span></strong><span> -(5)-&gt; </span><strong><span>主存</span></strong></li><li><strong><span>PC</span></strong><span> -(6)-&gt; </span><strong><span>MDR</span></strong><span> -(7)-&gt; </span><strong><span>数据总线</span></strong><span> -(8)-&gt; </span><strong><span>主存</span></strong><span>（程序断点存入主存）</span></li><li><strong><span>CU</span></strong><span>（中断服务程序的入口地址) -(9)-&gt; </span><strong><span>PC</span></strong></li></ol><h2 id='指令执行方案'><span>指令执行方案</span></h2><p><span>一个指令周期通常要包括几个时间段（执行步骤），每个步骤完成指令的一部分功能，几个依次执行的步骤完成这条指令的全部功能。出于性能和硬件成本等考虑，可以选用3种不同的方案来安排指令的执行步骤</span></p><h3 id='单指令周期'><span>单指令周期</span></h3><p><strong><span>对所有指令都选用相同的执行时间来完成</span></strong><span>，称为</span><strong><span>单指令周期方案</span></strong><span>。此时每条指令都在固定的时钟周期内完成，指令之间</span><strong><span>串行</span></strong><span>执行，即下一条指令只能在前一条指令执行结束后才能启动。因此，指令周期取决于执行时间最长的指令的执行时间。对于那些本来可以在更短时间内完成的指令，要使用这个较长的周期来完成，会降低整个系统的运行速度。</span></p><h3 id='多指令周期'><span>多指令周期</span></h3><p><strong><span>对不同类型的指令选用不同的执行步骤</span></strong><span>，称为</span><strong><span>多指令周期方案</span></strong><span>。指令之间</span><strong><span>串行</span></strong><span>执行，即下条指令只能在前一指令执行完后才能启动。但可选用不同个数的时钟周期来完成不同指令的执行过程，指令需要几个周期就为其分配几个周期，不再要求所有指令占用相同的执行时间。</span></p><h3 id='流水线方案'><span>流水线方案</span></h3><p><strong><span>指令之间可以并行执行的方案</span></strong><span>，称为</span><strong><span>流水线方案</span></strong><span>，其追求的目标是力争在每个时钟脉冲周期完成一条指令的执行过程 （只在理想情况下才能达到该效果）。这种方案通过在每个时钟周期启动一条指令，尽量让多条指令同时运行，但各自处在不同的执行步骤中。</span></p><h2 id='例题'><span>例题</span></h2><ol start='' ><li><p><span>计算机工作的最小时间周期是（ ）</span>
 <span>A. 时钟周期</span>
 <span>B. 指令周期</span>
 <span>C. CPU周期</span>
@@ -1336,6 +1188,6 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 <span>A. 每个指令周期中 CPU 都至少访问内存一次</span>
 <span>B. 每个指令周期一定大于等于一个CPU 时钟周期</span>
 <span>C. 空操作指令的指令周期中任何寄存器的内容都不会被改变</span>
-<span>D. 当前程序在每条指令执行结束时都可能被外部中断打断</span></p><p><span>【答案】：C</span></p></li></ol><p>&nbsp;</p></div></div>
+<span>D. 当前程序在每条指令执行结束时都可能被外部中断打断</span></p><p><span>【答案】：C</span></p></li></ol></div></div>
 </body>
 </html>
