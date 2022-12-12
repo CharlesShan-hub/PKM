@@ -22,8 +22,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +49,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +71,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
@@ -87,7 +86,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,6 +129,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
@@ -1107,11 +1107,159 @@ a img {
 }
 
 
- @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>树的基本概念</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='树的基本概念'><span>树的基本概念</span></h1><p><span>2022.09.13</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#树的基本概念">树的基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n4"><a class="md-toc-inner" style="" href="#基本概念">基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n8"><a class="md-toc-inner" style="" href="#例题">例题</a></span></p></div><h1 id='基本概念'><span>基本概念</span></h1><p><span>根结点、子树、祖先、双亲、孩子、度、分支结点（非终端结点）、叶子结点（终端结点）、路径、路径长度、森林</span></p><blockquote><p><span>重要‼️：树中度为i的结点为ni，总结点数为n，则n = 总度数 + 1，分别求总结点数，总度数，然后解决其中的变量</span></p></blockquote><h2 id='例题'><span>例题</span></h2><ol><li><p><span>树最适合用来表示（ ）的数据。</span>
+<div id='write'  class=''><h1 id='树的基本概念'><span>树的基本概念</span></h1><p><span>2022.12.10</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#树的基本概念">树的基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n4"><a class="md-toc-inner" style="" href="#基本概念">基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n8"><a class="md-toc-inner" style="" href="#例题">例题</a></span></p></div><h1 id='基本概念'><span>基本概念</span></h1><p><span>根结点、子树、祖先、双亲、孩子、度、分支结点（非终端结点）、叶子结点（终端结点）、路径、路径长度、森林</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n32" cid="n32" mdtype="math_block" data-math-tag-before="2" data-math-labels="[]" data-math-tag-after="3"><div class="md-rawblock-container md-math-container" contenteditable="false" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" width="full" style="min-width: 29.78ex; position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="2.262ex" role="img" focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex; min-width: 29.78ex;"><defs><path id="MJX-114-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-114-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-114-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-114-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-114-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-114-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(0.026018,-0.026018) translate(0, -750)"><g data-mml-node="math"><g data-mml-node="mtable" transform="translate(2078,0) translate(-2078,0)"><g transform="translate(0 750) matrix(1 0 0 -1 0 0) scale(38.43)"><svg data-table="true" preserveAspectRatio="xMidYMid" viewBox="4503.4 -750 1 1000"><g transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="mlabeledtr"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">总</text></g><g data-mml-node="mtext" transform="translate(836.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">结</text></g><g data-mml-node="mtext" transform="translate(1673.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">点</text></g><g data-mml-node="mtext" transform="translate(2509.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">数</text></g><g data-mml-node="mo" transform="translate(3671.5,0)"><use data-c="3D" xlink:href="#MJX-114-TEX-N-3D"></use></g><g data-mml-node="mtext" transform="translate(4727.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">总</text></g><g data-mml-node="mtext" transform="translate(5563.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">度</text></g><g data-mml-node="mtext" transform="translate(6400.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">数</text></g><g data-mml-node="mo" transform="translate(7506.7,0)"><use data-c="2B" xlink:href="#MJX-114-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(8506.9,0)"><use data-c="31" xlink:href="#MJX-114-TEX-N-31"></use></g></g></g></g></svg><svg data-labels="true" preserveAspectRatio="xMaxYMid" viewBox="1278 -750 1 1000"><g data-labels="true" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="mtd" id="mjx-eqn:3"><g data-mml-node="mtext"><use data-c="28" xlink:href="#MJX-114-TEX-N-28"></use><use data-c="33" xlink:href="#MJX-114-TEX-N-33" transform="translate(389,0)"></use><use data-c="29" xlink:href="#MJX-114-TEX-N-29" transform="translate(889,0)"></use></g></g></g></svg></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true"><mlabeledtr><mtd><mtext>(3)</mtext></mtd><mtd><mtext>总</mtext><mtext>结</mtext><mtext>点</mtext><mtext>数</mtext><mo>=</mo><mtext>总</mtext><mtext>度</mtext><mtext>数</mtext><mo>+</mo><mn>1</mn></mtd></mlabeledtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><blockquote><p><span>重要‼️：</span></p><ul><li><span>树中度为i的结点为ni，总结点数为n，则</span><code>n = 总度数 + 1</code><span>，分别求</span><strong><span>总结点数</span></strong><span>，</span><strong><span>总度数</span></strong><span>，然后解决其中的变量</span></li><li><span>度为m的树，第i层最多有</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.771ex" height="1.912ex" role="img" focusable="false" viewBox="0 -833.9 2108.6 844.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-112-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-112-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-112-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-112-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D45A" xlink:href="#MJX-112-TEX-I-1D45A"></use></g><g data-mml-node="TeXAtom" transform="translate(911,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D456" xlink:href="#MJX-112-TEX-I-1D456"></use></g><g data-mml-node="mo" transform="translate(345,0)"><use data-c="2212" xlink:href="#MJX-112-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1123,0)"><use data-c="31" xlink:href="#MJX-112-TEX-N-31"></use></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>m</mi><mrow data-mjx-texclass="ORD"><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">m^{i-1}</script><span>个结点</span></li><li><span>注意区分“度为m的树”（至少有一个结点度为m）和“m叉树”（可以为空树）</span></li></ul></blockquote><h1 id='例题'><span>例题</span></h1><ol start='' ><li><p><span>树最适合用来表示（ ）的数据。</span>
 <span>A. 有序</span>
 <span>B. 无序</span>
 <span>C. 任意元素之间具有多种联系</span>
@@ -1119,7 +1267,7 @@ a img {
 <span>A. n-1</span>
 <span>B. n</span>
 <span>C.n+1</span>
-<span>D. 2n</span></p><p><span>【答案】：A</span></p></li></ol><ol start='03' ><li><p><span>树的路径长度是从树根到每个结点的路径长度的（ ）。</span>
+<span>D. 2n</span></p><p><span>【答案】：A</span></p></li><li><p><span>树的路径长度是从树根到每个结点的路径长度的（ ）。</span>
 <span>A. 总和</span>
 <span>B. 最小值</span>
 <span>C.最大值</span>
@@ -1131,7 +1279,7 @@ a img {
 <span>A. 至少有h＋3个结点</span>
 <span>B.至多有4h-1个结点</span>
 <span>C.至多有4h个结点</span>
-<span>D.至少有h+4个结点</span></p><p><span>【答案】：A</span></p></li></ol><ol start='03' ><li><p><span>假定一棵度为3的树中，结点数为 50，则其最小高度为（ ）.</span>
+<span>D.至少有h+4个结点</span></p><p><span>【答案】：A</span></p></li><li><p><span>假定一棵度为3的树中，结点数为 50，则其最小高度为（ ）.</span>
 <span>A. 3</span>
 <span>B. 4</span>
 <span>C. 5</span>
@@ -1139,6 +1287,6 @@ a img {
 <span>A. 41</span>
 <span>B. 82</span>
 <span>C. 113</span>
-<span>D. 122</span></p><p><span>【答案】：B</span></p><p>&nbsp;</p></li></ol></div></div>
+<span>D. 122</span></p><p><span>【答案】：B</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n70" cid="n70" mdtype="math_block" data-math-tag-before="3" data-math-labels="[]" data-math-tag-after="3"><div class="md-rawblock-container md-math-container" contenteditable="false" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="51.549ex" height="5.204ex" role="img" focusable="false" viewBox="0 -1400 22784.8 2300" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.036ex;"><defs><path id="MJX-319-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-319-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-319-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-319-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-319-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-319-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-319-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-319-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-319-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-319-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-319-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-319-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,650)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-319-TEX-N-32"></use><use data-c="30" xlink:href="#MJX-319-TEX-N-30" transform="translate(500,0)"></use></g><g data-mml-node="mo" transform="translate(1222.2,0)"><use data-c="D7" xlink:href="#MJX-319-TEX-N-D7"></use></g><g data-mml-node="mn" transform="translate(2222.4,0)"><use data-c="34" xlink:href="#MJX-319-TEX-N-34"></use></g><g data-mml-node="mo" transform="translate(2944.7,0)"><use data-c="2B" xlink:href="#MJX-319-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(3944.9,0)"><use data-c="31" xlink:href="#MJX-319-TEX-N-31"></use><use data-c="30" xlink:href="#MJX-319-TEX-N-30" transform="translate(500,0)"></use></g><g data-mml-node="mo" transform="translate(5167.1,0)"><use data-c="D7" xlink:href="#MJX-319-TEX-N-D7"></use></g><g data-mml-node="mn" transform="translate(6167.3,0)"><use data-c="33" xlink:href="#MJX-319-TEX-N-33"></use></g><g data-mml-node="mo" transform="translate(6889.6,0)"><use data-c="2B" xlink:href="#MJX-319-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(7889.8,0)"><use data-c="32" xlink:href="#MJX-319-TEX-N-32"></use></g><g data-mml-node="mo" transform="translate(8612,0)"><use data-c="D7" xlink:href="#MJX-319-TEX-N-D7"></use></g><g data-mml-node="mn" transform="translate(9612.2,0)"><use data-c="31" xlink:href="#MJX-319-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(10334.4,0)"><use data-c="2B" xlink:href="#MJX-319-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(11334.7,0)"><use data-c="31" xlink:href="#MJX-319-TEX-N-31"></use><use data-c="30" xlink:href="#MJX-319-TEX-N-30" transform="translate(500,0)"></use></g><g data-mml-node="mo" transform="translate(12556.9,0)"><use data-c="D7" xlink:href="#MJX-319-TEX-N-D7"></use></g><g data-mml-node="mn" transform="translate(13557.1,0)"><use data-c="31" xlink:href="#MJX-319-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(14279.3,0)"><use data-c="2B" xlink:href="#MJX-319-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(15279.6,0)"><use data-c="31" xlink:href="#MJX-319-TEX-N-31"></use></g></g><g data-mml-node="mtd" transform="translate(15779.6,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-319-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1333.6,0)"><use data-c="31" xlink:href="#MJX-319-TEX-N-31"></use><use data-c="32" xlink:href="#MJX-319-TEX-N-32" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-319-TEX-N-33" transform="translate(1000,0)"></use></g><g data-mml-node="mo" transform="translate(2833.6,0)"><use data-c="28" xlink:href="#MJX-319-TEX-N-28"></use></g><g data-mml-node="mtext" transform="translate(3222.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">总</text></g><g data-mml-node="mtext" transform="translate(4059.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">结</text></g><g data-mml-node="mtext" transform="translate(4895.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">点</text></g><g data-mml-node="mtext" transform="translate(5732.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="845.6px" font-family="serif">数</text></g><g data-mml-node="mo" transform="translate(6616.3,0)"><use data-c="29" xlink:href="#MJX-319-TEX-N-29"></use></g></g></g><g data-mml-node="mtr" transform="translate(0,-650)"><g data-mml-node="mtd" transform="translate(5889.8,0)"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-319-TEX-N-31"></use><use data-c="32" xlink:href="#MJX-319-TEX-N-32" transform="translate(500,0)"></use><use data-c="34" xlink:href="#MJX-319-TEX-N-34" transform="translate(1000,0)"></use></g><g data-mml-node="mo" transform="translate(1722.2,0)"><use data-c="2212" xlink:href="#MJX-319-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(2722.4,0)"><use data-c="32" xlink:href="#MJX-319-TEX-N-32"></use><use data-c="30" xlink:href="#MJX-319-TEX-N-30" transform="translate(500,0)"></use></g><g data-mml-node="mo" transform="translate(3944.7,0)"><use data-c="2212" xlink:href="#MJX-319-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(4944.9,0)"><use data-c="31" xlink:href="#MJX-319-TEX-N-31"></use><use data-c="30" xlink:href="#MJX-319-TEX-N-30" transform="translate(500,0)"></use></g><g data-mml-node="mo" transform="translate(6167.1,0)"><use data-c="2212" xlink:href="#MJX-319-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(7167.3,0)"><use data-c="31" xlink:href="#MJX-319-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(7889.6,0)"><use data-c="2212" xlink:href="#MJX-319-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(8889.8,0)"><use data-c="31" xlink:href="#MJX-319-TEX-N-31"></use><use data-c="30" xlink:href="#MJX-319-TEX-N-30" transform="translate(500,0)"></use></g></g><g data-mml-node="mtd" transform="translate(15779.6,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-319-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1333.6,0)"><use data-c="38" xlink:href="#MJX-319-TEX-N-38"></use><use data-c="32" xlink:href="#MJX-319-TEX-N-32" transform="translate(500,0)"></use></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd><mn>20</mn><mo>×</mo><mn>4</mn><mo>+</mo><mn>10</mn><mo>×</mo><mn>3</mn><mo>+</mo><mn>2</mn><mo>×</mo><mn>1</mn><mo>+</mo><mn>10</mn><mo>×</mo><mn>1</mn><mo>+</mo><mn>1</mn></mtd><mtd><mi></mi><mo>=</mo><mn>123</mn><mo stretchy="false">(</mo><mtext>总</mtext><mtext>结</mtext><mtext>点</mtext><mtext>数</mtext><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mn>124</mn><mo>−</mo><mn>20</mn><mo>−</mo><mn>10</mn><mo>−</mo><mn>1</mn><mo>−</mo><mn>10</mn></mtd><mtd><mi></mi><mo>=</mo><mn>82</mn></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p>&nbsp;</p><p>&nbsp;</p></li></ol></div></div>
 </body>
 </html>

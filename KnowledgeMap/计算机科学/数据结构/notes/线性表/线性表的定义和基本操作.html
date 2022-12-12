@@ -22,8 +22,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +49,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +71,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
@@ -87,7 +86,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,6 +129,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
@@ -1111,7 +1111,7 @@ a img {
 </style><title>线性表的定义和基本操作</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='线性表的定义和基本操作'><span>线性表的定义和基本操作</span></h1><p><span>2022.09.04</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#线性表的定义和基本操作">线性表的定义和基本操作</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" style="" href="#线性表的定义">线性表的定义</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n9"><a class="md-toc-inner" style="" href="#线性表的基本操作">线性表的基本操作</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n13"><a class="md-toc-inner" style="" href="#例题">例题</a></span></p></div><h2 id='线性表的定义'><span>线性表的定义</span></h2><p><span>线性表是具有</span><strong><span>相同</span></strong><span>数据类型的n个数据元素的</span><strong><span>有限</span></strong><span>序列</span></p><ul><li><span>表中元素的个数有限。</span></li><li><span>表中元素具有逻辑上的顺序性，表中元素有其先后次序。</span></li><li><span>表中元素都是数据元素，每个元素都是单个元素。</span></li><li><span>表中元素的数据类型都相同，这意味着每个元素占有相同大小的存储空间。</span></li><li><span>表中元素具有抽象性，即仅讨论元素间的逻拜关系，而不考虑元素究竟表示什么内容。</span></li></ul><p><span>注意：</span><strong><span>线性表</span></strong><span>是一种</span><strong><span>逻辑结构</span></strong><span>，表示元素之问一对一的相邻关系。顺序表和链表是指存储结构，两者属于不同层面的概念，因此不要将其混淆。</span></p><h2 id='线性表的基本操作'><span>线性表的基本操作</span></h2><p><code>InitList (&amp;L)</code><span>：初始化表。构造一个空的线性表。</span>
+<div id='write'  class=''><h1 id='线性表的定义和基本操作'><span>线性表的定义和基本操作</span></h1><p><span>2022.09.04</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#线性表的定义和基本操作">线性表的定义和基本操作</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" style="" href="#线性表的定义">线性表的定义</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n18"><a class="md-toc-inner" style="" href="#线性表的基本操作">线性表的基本操作</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n20"><a class="md-toc-inner" style="" href="#例题">例题</a></span></p></div><h2 id='线性表的定义'><span>线性表的定义</span></h2><p><span>线性表是具有</span><strong><span>相同</span></strong><span>数据类型的n个</span><strong><span>数据元素</span></strong><span>的</span><strong><span>有限</span></strong><span>序列</span></p><ul><li><span>表中元素的个数有限。</span></li><li><span>表中元素具有逻辑上的顺序性，表中元素有其先后次序。</span></li><li><span>表中元素都是数据元素，每个元素都是单个元素。</span></li><li><span>表中元素的数据类型都相同，这意味着每个元素占有相同大小的存储空间。</span></li><li><span>表中元素具有抽象性，即仅讨论元素间的逻拜关系，而不考虑元素究竟表示什么内容。</span></li></ul><blockquote><p><strong><span>线性表</span></strong><span>是一种</span><strong><span>逻辑结构</span></strong><span>，表示元素之间一对一的相邻关系。</span></p><p><strong><span>顺序表</span></strong><span>和</span><strong><span>链表</span></strong><span>是指</span><strong><span>存储结构</span></strong><span>，两者属于不同层面的概念，因此不要将其混淆。</span></p></blockquote><h2 id='线性表的基本操作'><span>线性表的基本操作</span></h2><p><code>InitList (&amp;L)</code><span>：初始化表。构造一个空的线性表。</span>
 <code>Length (L)</code><span>：求表长。返回线性表L的长度，即L中数据元素的个数。</span>
 <code>LocateElem (L,e)</code><span>：按值查找操作。在表L中查找具有给定关键字值的元素。</span>
 <code>GetElem(L,i)</code><span>：按位查找操作。获取表L中第之个位置的元素的值。</span>
@@ -1119,18 +1119,18 @@ a img {
 <code>ListDelete (&amp;L,i,ce)</code><span>：删除操作。删除表L中第之个位置的元素，并用e返回州除元素的值。</span>
 <code>Printzist(L)</code><span>：输出操作。按前后顺序输出线性表L的所有元素值。</span>
 <code>Empty(L)</code><span>：判空操作。若L为空表，则返回true，否则返回 false。</span>
-<code>DestroyList（&amp;L)</code><span>：销毁操作。销毁线性表，并释放线性表工所占用的内存空间。</span></p><h2 id='例题'><span>例题</span></h2><ol><li><p><span>线性表是具有n个（）的有限序列。</span>
-<span>A.数据表</span>
-<span>B.宇符</span>
-<span>C.数据元素</span>
-<span>D.数据项</span></p><p><span>【答案】：C</span></p></li><li><p><span>以下（）是一个线性表，</span>
+<code>DestroyList（&amp;L)</code><span>：销毁操作。销毁线性表，并释放线性表工所占用的内存空间。</span></p><h2 id='例题'><span>例题</span></h2><ol start='' ><li><p><span>线性表是具有n个（）的有限序列。</span>
+<span>A. 数据表</span>
+<span>B. 字符</span>
+<span>C. 数据元素</span>
+<span>D. 数据项</span></p><p><span>【答案】：C</span></p></li><li><p><span>以下（）是一个线性表。</span>
 <span>A. 由n个实数组成的集合</span>
+<span>B. 由100个字符组成的序列</span>
 <span>C. 所有整数组成的序列</span>
-<span>B.由100个字符组成的序列</span>
-<span>D.邻接表</span></p><p><span>【答案】：B</span></p></li><li><p><span>在线性表中，除开始元素外，每个元素（）.</span>
+<span>D. 邻接表</span></p><p><span>【答案】：B</span></p></li><li><p><span>在线性表中，除开始元素外，每个元素（）.</span>
 <span>A. 只有唯一的前驱元素</span>
-<span>C. 有多个前驱元素</span>
 <span>B. 只有唯一的后继元素</span>
+<span>C. 有多个前驱元素</span>
 <span>D. 有多个后继元素</span></p><p><span>【答案】：A</span></p></li></ol></div></div>
 </body>
 </html>
