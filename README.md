@@ -1,8 +1,6 @@
 # PKM - Personal Knowledge Map  
 
-2022.11.03
-
-https://oms.pintia.cn/exams/1580530030643798016/landing 
+2023.01.01
 
 ![image text](./resources/title_small.webp)
 
