@@ -120,7 +120,7 @@ def main():
 			if temp.find('<mjx-container')==-1:
 				style_index_l = temp.find('<style ')
 				style_index_r = temp.find('</style>')
-				temp = temp[:style_index_l]+CSS_SRC+temp[style_index_r+8:]
+				temp = temp[:style_index_l]+temp[style_index_r+8:]
 			with open(to_file,'w') as to_f:
 				to_f.write(temp.replace(".md'>",".html'>"))
 

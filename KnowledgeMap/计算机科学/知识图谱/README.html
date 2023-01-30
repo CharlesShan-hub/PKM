@@ -1,0 +1,1199 @@
+<!doctype html>
+<html style='font-size:22px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<link rel="stylesheet" type="text/css" href="https://charlesshan.top/style.css">
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+  text-align: justify;
+  overflow-x: hidden;
+  color: #282c34;
+  background-color: #fefefe;
+  -webkit-font-smoothing: antialiased;
+}
+
+content #write {
+  background-color: #fefefe;
+  max-width: 90%;
+  margin: 0 auto;
+  padding-bottom: 7.5rem;
+}
+
+content #write p {
+  word-spacing: 0.05rem;
+}
+
+content #write ol li {
+  padding-left: 0.5rem;
+}
+
+content #write > h1:first-child {
+  font-weight: normal;
+}
+
+content #write > h5.md-focus:before {
+  top: 2px;
+}
+
+::-moz-selection {
+  background-color: #bac6e9;
+}
+
+::selection {
+  background-color: #bac6e9;
+}
+
+/* h1-h3 */
+#write h1,
+#write h2,
+#write h3 {
+  font-style: normal;
+}
+
+#write h1,
+#write h2 {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+#write h1 {
+  font-size: 3rem;
+}
+
+#write h2 {
+  font-size: 2.4rem;
+}
+
+#write h2:after {
+  content: "";
+  display: block;
+  width: 6.25rem;
+  height: 1px;
+  margin: 0 auto;
+  border-bottom: 1px solid #2f2f2f;
+}
+
+#write h3 {
+  font-size: 1.8rem;
+}
+
+/* paragraph */
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* ul ol */
+ul,
+ol {
+  padding-left: 1.75rem;
+}
+
+ul:first-child,
+ol:first-child {
+  margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+/* blockquote */
+blockquote {
+  padding: 0.5rem 1rem;
+  border-left: 8px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+  border-radius: 4px;
+}
+
+blockquote code {
+  background-color: transparent;
+}
+
+/* horizontal line */
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 2px dashed #abb2bf;
+}
+
+/* table */
+table,
+.md-table-fig .md-table {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  border-collapse: separate;
+  overflow: hidden;
+}
+
+table th,
+table td,
+.md-table-fig .md-table th,
+.md-table-fig .md-table td {
+  padding: 10px 16px;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+table th:first-child,
+table td:first-child,
+.md-table-fig .md-table th:first-child,
+.md-table-fig .md-table td:first-child {
+  border-left: 0;
+}
+
+table thead,
+.md-table-fig .md-table thead {
+  background-color: #e7ecf3;
+  color: #000;
+}
+
+table caption + thead tr:first-child th,
+table caption + thead tr:first-child td,
+table colgroup + thead tr:first-child th,
+table colgroup + thead tr:first-child td,
+table thead + tbody tr:first-child th,
+table thead + tbody tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td,
+.md-table-fig .md-table caption + thead tr:first-child th,
+.md-table-fig .md-table caption + thead tr:first-child td,
+.md-table-fig .md-table colgroup + thead tr:first-child th,
+.md-table-fig .md-table colgroup + thead tr:first-child td,
+.md-table-fig .md-table thead + tbody tr:first-child th,
+.md-table-fig .md-table thead + tbody tr:first-child td,
+.md-table-fig .md-table thead:first-child tr:first-child th,
+.md-table-fig .md-table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+table tbody + tbody,
+.md-table-fig .md-table tbody + tbody {
+  border-top: 2px solid #ddd;
+}
+
+.md-table-fig .md-table-edit {
+  background-color: #ddd;
+}
+
+.md-table-fig .md-table-edit .btn-default:hover {
+  background-color: #bac6e9;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .arrow {
+  top: -10px;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .arrow::after {
+  border-bottom-color: #ddd;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset {
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset input {
+  color: #282c34 !important;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .md-reset input#md-grid-width, .md-table-fig .md-table-edit .md-table-resize-popover .md-reset input#md-grid-height {
+  text-align: center;
+}
+
+.md-table-fig .md-table-edit .md-table-resize-popover .popover-title {
+  border-top: 1px solid #eee;
+}
+
+/* yaml front matter */
+#write pre.md-meta-block {
+  background: #e7ecf3;
+  color: #486491;
+  border: 0;
+  border-radius: 6px;
+  line-height: 1.3rem;
+  padding: 0.5rem 1.5rem;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+/* table of contents */
+.md-toc {
+  margin-bottom: 1.25rem;
+}
+
+/* task list */
+.md-task-list-item > input::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -4px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #737373;
+  background: #fff;
+  -webkit-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item > input::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  width: 0.6rem;
+  height: 0.3rem;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  opacity: 0;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+
+.md-task-list-item > input:checked::before {
+  background-color: #67c23a;
+  border: none;
+}
+
+.md-task-list-item > input:checked::after {
+  opacity: 1;
+}
+
+.md-task-list-item.task-list-done {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* footnote */
+.footnotes {
+  font-size: 1rem;
+}
+
+/* math,html block common */
+.mathjax-block,
+.md-htmlblock {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+}
+
+.mathjax-block[contenteditable="false"]:active, .mathjax-block[contenteditable="false"]:focus,
+.md-htmlblock[contenteditable="false"]:active,
+.md-htmlblock[contenteditable="false"]:focus {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.mathjax-block:hover .md-rawblock-container,
+.mathjax-block:hover .md-rawblock-tooltip,
+.md-htmlblock:hover .md-rawblock-container,
+.md-htmlblock:hover .md-rawblock-tooltip {
+  background-color: #f5f6f7;
+  -webkit-animation: showRawBlockTooltip 0s linear;
+          animation: showRawBlockTooltip 0s linear;
+}
+
+.mathjax-block:hover .md-rawblock-container,
+.md-htmlblock:hover .md-rawblock-container {
+  border-radius: 6px 0 6px 6px;
+}
+
+.mathjax-block .md-rawblock-control,
+.md-htmlblock .md-rawblock-control {
+  background-color: #f5f6f7;
+}
+
+.mathjax-block .md-rawblock-tooltip,
+.md-htmlblock .md-rawblock-tooltip {
+  background-color: #f5f6f7;
+  -webkit-animation: showRawBlockTooltip 0s linear;
+          animation: showRawBlockTooltip 0s linear;
+  border-radius: 4px 4px 0 0;
+}
+
+/* math block */
+.mathjax-block .md-mathblock-panel .code-tooltip[contenteditable="false"] {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-before {
+  padding-top: 6px;
+  border-top-left-radius: 6px;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-after {
+  padding-bottom: 6px;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner {
+  color: #282c34;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-lines {
+  color: #282c34;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-gutters {
+  background-color: #f5f6f7;
+}
+
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selected,
+.mathjax-block .md-mathblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selectedtext {
+  background-color: #bac6e9 !important;
+}
+
+.mathjax-block .md-math-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* html block */
+.md-htmlblock .md-htmlblock-panel {
+  border-radius: 6px;
+  border-top-right-radius: 0;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input {
+  padding-top: 14px;
+  padding-bottom: 10px;
+}
+
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selected,
+.md-htmlblock .md-htmlblock-panel .md-rawblock-input .cm-s-inner .CodeMirror-selectedtext {
+  background-color: #bac6e9 !important;
+}
+
+/* strong */
+strong {
+  background-color: inherit;
+  color: #b5302e;
+}
+
+/* emphasis */
+em {
+  background-color: inherit;
+  color: #949415;
+}
+
+/* underline */
+u {
+  background-color: inherit;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid #f00;
+  padding-bottom: 1px;
+}
+
+/* code */
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+  font-size: inherit;
+}
+
+code {
+  background-color: rgba(34, 37, 38, 0.05);
+  color: #e96900;
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 2px;
+  padding: 3px 4px 1px;
+  border-radius: 4px;
+}
+
+/* strike */
+del {
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* hightlight */
+mark {
+  color: #282c34;
+  font-weight: 500;
+  padding: 1px 5px 2px;
+  border-radius: 2px;
+}
+
+/* hyperlink */
+a {
+  background-color: inherit;
+  color: #2484c1;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a img {
+  border: none;
+}
+
+/* code fences */
+.md-fences {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #282c34;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 2.5rem;
+  border: none;
+  border-radius: 6px;
+}
+
+.md-fences[contenteditable="false"]:active, .md-fences[contenteditable="false"]:focus {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.md-fences .code-tooltip {
+  background-color: #282c34;
+  border-radius: 4px;
+}
+
+.md-fences span {
+  color: #abb2bf;
+}
+
+.md-fences .code-tooltip .ty-input {
+  color: #fff;
+  font-weight: 500;
+}
+
+.ty-show .autoComplt-list li.active {
+  background-color: #bac6e9;
+}
+
+/* code container */
+.cm-s-inner {
+  background-color: #282c34;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+  background-color: #282c34;
+  border: none;
+}
+
+.cm-s-inner .CodeMirror-guttermarker,
+.cm-s-inner .CodeMirror-guttermarker-subtle,
+.cm-s-inner .CodeMirror-linenumber {
+  color: #737984;
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid #528bff !important;
+}
+
+.cm-s-inner div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line > span::-moz-selection,
+.cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+  background-color: #bac6e9;
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line > span::selection,
+.cm-s-inner .CodeMirror-line > span > span::selection {
+  background-color: #bac6e9;
+}
+
+.cm-s-inner .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0);
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+
+.cm-s-inner .CodeMirror-selected,
+.cm-s-inner .CodeMirror-selectedtext {
+  background-color: #404859 !important;
+}
+
+/* code fences color */
+.cm-s-inner .cm-keyword {
+  color: #c678dd !important;
+}
+
+.cm-s-inner .cm-operator {
+  color: #56b6c2 !important;
+}
+
+.cm-s-inner .cm-variable {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-variable-3 {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-builtin {
+  color: #e8bf6a !important;
+}
+
+.cm-s-inner .cm-atom {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-number {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-def {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-string {
+  color: #98c379 !important;
+}
+
+.cm-s-inner .cm-string-2 {
+  color: #80cbc4 !important;
+}
+
+.cm-s-inner .cm-comment {
+  color: #629755 !important;
+}
+
+.cm-s-inner .cm-tag {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-meta {
+  color: #e06c75 !important;
+}
+
+.cm-s-inner .cm-attribute {
+  color: #d19a66 !important;
+}
+
+.cm-s-inner .cm-property {
+  color: #61afef !important;
+}
+
+.cm-s-inner .cm-qualifier {
+  color: #decb6b !important;
+}
+
+.cm-s-inner .cm-error {
+  color: #fff !important;
+  background-color: #ec5f67 !important;
+}
+
+.cm-s-inner .cm-tag.cm-bracket {
+  color: #abb2bf !important;
+}
+
+/* scrollbar */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 4px;
+}
+
+/* find dialog */
+#typora-quick-open {
+  background-color: #fff;
+  color: #282c34;
+}
+
+#typora-quick-open .typora-quick-open-item.active {
+  background-color: #bac6e9 !important;
+}
+
+#typora-quick-open .ty-quick-open-category-title {
+  border-top: 1px solid #eee !important;
+}
+
+/* modal dialog */
+#common-dialog .modal-dialog .modal-content {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: #f5f6f7;
+  border: none;
+  border-radius: 6px;
+}
+
+#common-dialog .modal-dialog .modal-content .modal-footer .btn-default:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* preferences */
+.ty-preferences {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #282c34;
+}
+
+.ty-preferences .window-header h2 {
+  font-size: 1.6rem;
+}
+
+.ty-preferences .sidebar {
+  font-size: 1.4rem;
+}
+
+.ty-preferences .sidebar .nav-group-item.active,
+.ty-preferences .sidebar .nav-group-item:active {
+  color: #efefef;
+  background-color: #2f845e;
+}
+
+/* sidebar includes file-tree,articles and outline*/
+.html-for-mac #typora-sidebar {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* focus mode/typewriter mode notification  */
+#md-notification {
+  background-color: #fff !important;
+}
+
+#md-notification #ty-surpress-mode-warning-close-btn:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* Unibody sidebar */
+#megamenu-menu-sidebar {
+  color: #282c34;
+  font-size: 1rem;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list {
+  border-top-color: rgba(171, 192, 208, 0.1);
+  background-color: #222526;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li {
+  font-size: 0.8rem;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a {
+  color: #abc0d0 !important;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a.active, #megamenu-menu-sidebar #megamenu-menu-list li a:hover {
+  background-color: #3e4249 !important;
+}
+
+#megamenu-menu-sidebar #megamenu-menu-list li a#m-saved {
+  background-color: transparent !important;
+}
+
+.megamenu-opened .megamenu-menu {
+  left: 0;
+}
+
+#megamenu-content {
+  color: #000;
+}
+
+/* sidebar */
+#typora-sidebar {
+  background-color: #fafafa;
+  border-right: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-loading-template.file-list-item {
+  border-bottom: transparent !important;
+  background-color: rgba(171, 192, 208, 0.1);
+}
+
+#typora-sidebar .info-panel-tab-wrapper .info-panel-tab:hover {
+  color: inherit;
+}
+
+#typora-sidebar .info-panel-tab-wrapper .info-panel-tab .info-panel-tab-border {
+  background-color: #2f845e;
+  border-radius: 4px;
+}
+
+#typora-sidebar .sidebar-osx-tab .sidebar-tabs {
+  border-bottom-color: transparent;
+}
+
+#typora-sidebar #sidebar-content .file-list-item {
+  border-bottom: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-content .file-list-item.active {
+  background-color: rgba(66, 185, 131, 0.1);
+  border-left: 4px solid #2f845e;
+}
+
+#typora-sidebar #sidebar-content .ty-sidebar-search-panel {
+  border-bottom: 1px solid #eee;
+}
+
+#typora-sidebar #sidebar-content .ty-sidebar-search-panel .searchpanel-search-option-btn {
+  background-color: #fff;
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-node-content {
+  line-height: 1.375rem;
+  font-size: 1rem;
+  color: #282c34 !important;
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-tree-node:not(.file-node-root):hover > .file-node-background {
+  border-left: 4px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content .file-tree-node.active > .file-node-background {
+  border-color: #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content .sidebar-content-content #file-library-list-children .file-library-file-node:hover {
+  border-left: 4px solid #2f845e;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+#typora-sidebar #sidebar-content #outline-content .no-collapse-outline .outline-item {
+  line-height: 1.375rem;
+  font-size: 1rem;
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-expander:before {
+  color: inherit;
+  font-size: 14px;
+  top: auto;
+  content: "\f0da";
+  font-family: FontAwesome;
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-expander:hover:before,
+#typora-sidebar #sidebar-content #outline-content .outline-item-open > .outline-item > .outline-expander:before {
+  content: "\f0d7";
+}
+
+#typora-sidebar #sidebar-content #outline-content .outline-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+#typora-sidebar #ty-sidebar-footer {
+  border-top: 1px solid #eee;
+}
+
+#typora-sidebar #ty-sidebar-footer .sidebar-footer-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* dropdown menu */
+.dropdown-menu {
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-top: 1px solid #eee;
+}
+
+.dropdown-menu > .show + .menuitem-group-label.show {
+  border-top: 1px solid #eee !important;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > li > a:hover,
+.dropdown-menu .menu-style-btn.active {
+  background-color: #bac6e9 !important;
+}
+
+.dropdown-menu li a {
+  color: #282c34 !important;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #bac6e9 !important;
+}
+
+.dropdown-menu .divider {
+  border-color: #fff;
+}
+
+/* sidebar-files-menu,toc-dropmenu,suggest common */
+#sidebar-files-menu,
+#toc-dropmenu,
+.auto-suggest-container {
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border: none;
+}
+
+#toc-dropmenu .outline-item:hover {
+  background-color: #bac6e9 !important;
+}
+
+/* emoji,fences,word suggest */
+.auto-suggest-container {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.auto-suggest-container li.active, .auto-suggest-container li:hover {
+  background-color: #bac6e9 !important;
+}
+
+/** source code mode */
+#typora-source {
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a6a6a;
+}
+
+#typora-source .cm-s-typora-default .cm-header,
+#typora-source .cm-s-typora-default .cm-property,
+#typora-source .CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+  color: #428bca;
+}
+
+#typora-source .cm-s-typora-default .cm-atom,
+#typora-source .cm-s-typora-default .cm-number {
+  color: #777777;
+}
+
+#typora-source .CodeMirror-selectedtext {
+  background-color: transparent !important;
+}
+
+.typora-node .file-list-item-parent-loc,
+.typora-node .file-list-item-time,
+.typora-node .file-list-item-summary {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>README</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='pkm---知识图谱'><span>PKM - 知识图谱 </span></h1><p><img src="./resources/知识图谱.png" referrerpolicy="no-referrer" alt="image text"></p><h2 id='介绍'><span>介绍</span></h2><p><span>按照小象学院2019知识图谱教程合集进行初次学习</span></p><h2 id='资源'><span>资源</span></h2><p><span>链接: </span><a href='https://pan.baidu.com/s/10aJdDAGvtTT27KfY-dNf0g' target='_blank' class='url'>https://pan.baidu.com/s/10aJdDAGvtTT27KfY-dNf0g</a><span> </span><br/><span>提取码: i7we</span></p><p><span>如果资源失效请联系我</span></p><ul><li><p><strong><span>小象学院2019知识图谱教程合集</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 13.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">2019知识图谱教程合集 [11.3G]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┗━━系列一：知识图谱完整项目实战（附源码）-不加密 [1.5G]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┣━━视频 [1.4G]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━01.完整项目案例运行演示.mp4 [75.8M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━23.RippleNet开源框架源码剖析.mp4 [47.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━03.项目业务需求分析.mp4 [26M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━04.项目总体架构设计.mp4 [107.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━05.知识图谱模型设计方法论.mp4 [90M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━06.知识图谱语义类型设计.mp4 [82M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━07.知识图谱语义关系设计.mp4 [50.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━08开发环境安装部署.mp4 [52.8M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━09.汽车品牌数据获取.mp4 [50.3M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━10.汽车车系数据获取.mp4 [63.3M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━11.汽车数据批量导入.mp4 [71.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━02.项目开发环境安装部署.mp4 [44M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━13.汽车配置数据获取.mp4 [103.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━14.web前端框架设计.mp4 [108.3M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━15.通用命名实体识别.mp4 [59.3M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━16.领域命名实体识别.mp4 [35.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━17.实体查询程序设计.mp4 [55.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━18.关系查询程序设计.mp4 [42.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━19.知识图谱数据可视化.mp4 [56.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━20.推荐系统基本原理和实现机制.mp4 [92.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━21.知识图谱与推荐系统融合的模式.mp4 [54.8M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━22.基于KGE的开源推荐系统框架.mp4 [48.1M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┗━━12.汽车车型数据获取.mp4 [55.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┗━━资料 [11.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┣━━kgcar.zip [11.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┗━━splider.zip [44.8K]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┣━━系列二：知识图谱实战案例完全剖析（附完整源码和数据集） [3.2G]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━pdf [9.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━知识图谱实战开发案例完全剖析-第1部分.pdf [1.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━知识图谱实战开发案例完全剖析-第2部分.pdf [1.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━知识图谱实战开发案例完全剖析-第3部分.pdf [2.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━知识图谱实战开发案例完全剖析-第4部分.pdf [1.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┗━━知识图谱实战开发案例完全剖析-第5部分.pdf [2.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━代码 [92.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━知识图谱实战案例完全剖析（附完整源码和数据集）【140893】语义类型设计.rar [1.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━知识图谱实战案例完全剖析（附完整源码和数据集）【140904】人工智能标记语言AIML基础.rar [248.6K]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┗━━知识图谱实战案例完全剖析（附完整源码和数据集）【140905】Python与Neo4j的集成.rar [90.8M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━视屏 [3G]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━1知识图谱基础 [498.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━1.1知识图谱完整案例演示.mp4 [162.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━1.2知识图谱与人工智能.mp4 [130M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━1.3知识图谱的典型应用.mp4 [99M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┗━━1.4知识图谱系统架构.mp4 [106.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━2知识图谱设计 [553.8M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━2.1知识设计方法.mp4 [192.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━2.2语义类型设计.mp4 [134.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━2.3语义关系设计.mp4 [93.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┗━━2.4本体对象设计.mp4 [133.1M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━3知识图谱存储 [1.1G]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━3.1数据存储模型.mp4 [187M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━3.2图数据库选型.mp4 [135.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━3.3Neo4j开发环境部署.mp4 [149.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━3.4Neo4j-可视化操作基础.mp4 [100.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━3.5Neo4j-CQL语法基础.mp4 [189.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━3.6Neo4j-完整案例操作实战.mp4 [112.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┗━━3.7Neo4j系统管理.mp4 [216.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━4知识图谱应用 [468.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━4.1自己动手开发第一个只能聊天机器人.mp4 [79.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━4.2人工智能标记语言AIML基础.mp4 [114.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┣━━4.3Python与Neo4j的集成.mp4 [169.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┃ &nbsp;  ┗━━4.4AIML与Neo4j的集成.mp4 [106M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┗━━5知识图谱获取 [506.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━5.1常用知识获取方法.mp4 [108.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━5.2国内外可用知识图谱资源.mp4 [152.1M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━5.3如何系统学习知识图谱1.mp4 [50.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━5.4如何系统学习知识图谱2.mp4 [42.8M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┗━━5.5如何系统学习知识图谱3.mp4 [152.3M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━知识图谱实战案例完全剖析（附完整源码和数据集）【140888】知识图谱完整案例演示.pdf [1.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━知识图谱实战案例完全剖析（附完整源码和数据集）【140892】知识设计方法.pdf [1.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━知识图谱实战案例完全剖析（附完整源码和数据集）【140898】知识存储模型.pdf [2.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━知识图谱实战案例完全剖析（附完整源码和数据集）【140903】自己动手开发第一个智能聊天机器人.pdf [1.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━知识图谱实战案例完全剖析（附完整源码和数据集）【140907】常用知识获取方法.pdf [2.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┗━━知识图谱实战案例完全剖析（附完整源码和数据集）【140909】如何系统学习知识图谱1.pdf [1.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┣━━系列三：小X学院《知识图谱》 [2.2G]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━视频 [2.1G]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━01.第一课： 知识图谱概论.flv [137.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━11.第十一课：行业知识图谱应用.mkv [177.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━03.第三课：知识抽取与挖掘I.flv [219.1M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━04.第四课：知识抽取与挖掘II.flv [207.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━05.第五课：知识存储.flv [236.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━02.第二课：知识表示与知识建模.flv [205M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━07.第七课：知识推理.mkv [188.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━08.第八课：语义搜索.mkv [192.8M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━09.第九课：知识问答I.mkv [203.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┣━━10.第十课：IBM watson Lite.mkv [186.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┃ &nbsp;  ┗━━06.第六课：知识融合.flv [175.1M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┗━━资料 [85.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━Assignment.zip [2.1M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━语义搜索简化版说明.pdf [362.2K]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第二讲 知识表示和知识建模.pdf [5.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第二讲_示例数据.zip [1.2K]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第九课：知识问答I.pdf [6.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第六讲 知识融合.pdf [5.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第七讲数据和代码.zip [6.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第七课 知识推理.pdf [1.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第三讲 知识抽取与挖掘I.pdf [7.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第八讲 语义搜索.pdf [7.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第十课：语义搜索和知识问答Demo.pdf [1.3M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第十一课：行业知识图谱应用.pdf [7.3M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第四讲 知识抽取与挖掘_update.pdf [9.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第四讲DeepDive实战说明.zip [3.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第五讲 知识存储.pdf [4.1M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第五课_代码和数据.zip [3.7K]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┣━━第一讲 知识图谱概览.pdf [13.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp; &nbsp; &nbsp; &nbsp;  ┗━━第十课 IBM watson Lite.pdf [2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┣━━系列四：2019张老师教你完完全全学习知识图谱 [4.5G]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━00.课件+代码.rar [86.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━9、常用知识图谱存储模型.mp4 [240.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━11、Neo4j图数据库开发环境部署.mp4 [203M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━12、Neo4j图数据可视化操作基础.mp4 [193.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━13、Neo4j-CQL图数据操作语言.mp4 [245.9M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━14、Neo4j图数据完整案例操作实战.mp4 [170.2M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━15、Neo4图数据系统管理.mp4 [313.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━16、开发第一个智能聊天机器人.mp4 [87.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━17、人工智能标记语言AIML基础.mp4 [155.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━18、Python和Neo4j的系统集成实战案例.mp4 [238.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━19、Neo4j和AIML的系统集成实战案例.mp4 [135.8M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━10、图数据选型的标准和依据.mp4 [236.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━20、常用知识图谱获取方法.mp4 [257.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━21、国内外可用知识图谱资源.mp4 [178M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━2、知识图谱与人工智能.mp4 [109.5M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━3、知识图谱的典型应用.mp4 [144.8M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━4、知识图谱的系统架构.mp4 [193.3M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━5、知识图谱模型设计方法论.mp4 [135.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━6、知识建模之语义类型设计.mp4 [747.4M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━7、知识建模之语义关系设计.mp4 [175.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┣━━8、知识建模之本体对象设计.mp4 [182.7M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┃ &nbsp;  ┗━━1、知识图谱完整案例演示.mp4 [187.6M]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 4557px;"></div><div class="CodeMirror-gutters" style="display: none; height: 4557px;"></div></div></div></pre></li><li><p><strong><span>东南大学《知识图谱》研究生课程</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 13.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1. 课程课件</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">2. 相关资料与论文推荐（Good Resources！）</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 62px;"></div><div class="CodeMirror-gutters" style="display: none; height: 62px;"></div></div></div></pre></li><li><p><strong><span>综述与标准</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 13.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">知识图谱标准化白皮书.pdf</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">知识图谱技术综述.pdf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Graph_Learning_A_Survey.pdf</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 93px;"></div><div class="CodeMirror-gutters" style="display: none; height: 93px;"></div></div></div></pre></li></ul><h2 id='外部资料'><span>外部资料</span></h2><ul><li><a href='https://www.zhihu.com/question/48510028'><span>学习和使用知识图谱需要知道的一些事情-漆桂林</span></a></li><li>[][https://zhuanlan.zhihu.com/p/433073550]</li></ul><h2 id='版本'><span>版本</span></h2><h3 id='v1-2022xxxx'><span>V1 2022.xx.xx</span></h3><p><span>按照小象知识图谱课程进行整理，完成初步知识框架搭建  </span></p><h1 id='更新计划'><span>更新计划</span></h1></div></div>
+</body>
+</html>

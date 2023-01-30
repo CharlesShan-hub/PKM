@@ -1,7 +1,8 @@
 <!doctype html>
-<html style='font-size:24px !important'>
+<html style='font-size:22px !important'>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<link rel="stylesheet" type="text/css" href="https://charlesshan.top/style.css">
 
 <style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
@@ -22,8 +23,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +50,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +72,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
@@ -87,7 +87,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,6 +130,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
@@ -1111,6 +1112,6 @@ a img {
 </style><title>README</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='json'><span>JSON</span></h1><p><span>2022.06.16</span></p><h2 id='目录'><span>目录</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n56"><a class="md-toc-inner" style="" href="#json">JSON</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n59"><a class="md-toc-inner" style="" href="#目录">目录</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n723"><a class="md-toc-inner" style="" href="#介绍">介绍</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n64"><a class="md-toc-inner" style="" href="#资源">资源</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n73"><a class="md-toc-inner" style="" href="#版本">版本</a></span></p></div><ul><li><a href='./notes/JSON语法.md'><span>JSON语法</span></a></li><li><a href='./notes/GeoJSON和TopoJSON.md'><span>GeoJSON和TopoJSON</span></a></li><li><a href='./notes/JSON与JS.md'><span>JSON与JS</span></a></li><li><a href='./notes/JSON与Python.md'><span>JSON与Python</span></a></li></ul><h2 id='介绍'><span>介绍</span></h2><p><span>本模块按照</span><a href='https://www.bilibili.com/video/BV1YC4y1h7ko'><span>在线json课程</span></a><span>进行构建</span></p><h2 id='资源'><span>资源</span></h2><ul><li><a href='https://zh.wikipedia.org/wiki/JSON'><span>JSON - Wiki</span></a></li><li><a href='https://www.json.cn/'><span>JSON在线解析器</span></a></li><li><a href='http://json.com/'><span>JSON Community</span></a></li><li><a href='https://www.json.org/json-en.html'><span>JSON 官方简介</span></a></li><li><a href='https://www.ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf'><span>JSON ECMA标准</span></a></li><li><a href='http://geojson.io/'><span>GeoJSON格式在线验证</span></a></li><li><a href='http://mapshaper.org'><span>在线转换GeoJSON和TopoJSON</span></a></li></ul><h2 id='版本'><span>版本</span></h2><ul><li><p><strong><span>V1 2022.6.16</span></strong></p><p><span>按照JSON在线课程进行整理，完成JSON语法，JS与JSON，python与JSON，GeoJSON和TopoJSON内容</span></p></li></ul><p>&nbsp;</p></div></div>
+<div id='write'  class=''><h1 id='json'><span>JSON</span></h1><p><span>2022.06.16</span></p><h2 id='目录'><span>目录</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#json">JSON</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#目录">目录</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n14"><a class="md-toc-inner" href="#介绍">介绍</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n16"><a class="md-toc-inner" href="#资源">资源</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n32"><a class="md-toc-inner" href="#版本">版本</a></span></p></div><ul><li><a href='./notes/JSON语法.md'><span>JSON语法</span></a></li><li><a href='./notes/GeoJSON和TopoJSON.md'><span>GeoJSON和TopoJSON</span></a></li><li><a href='./notes/JSON与JS.md'><span>JSON与JS</span></a></li><li><a href='./notes/JSON与Python.md'><span>JSON与Python</span></a></li></ul><h2 id='介绍'><span>介绍</span></h2><p><span>本模块按照</span><a href='https://www.bilibili.com/video/BV1YC4y1h7ko'><span>在线json课程</span></a><span>进行构建</span></p><h2 id='资源'><span>资源</span></h2><ul><li><a href='https://zh.wikipedia.org/wiki/JSON'><span>JSON - Wiki</span></a></li><li><a href='https://www.json.cn/'><span>JSON在线解析器</span></a></li><li><a href='http://json.com/'><span>JSON Community</span></a></li><li><a href='https://www.json.org/json-en.html'><span>JSON 官方简介</span></a></li><li><a href='https://www.ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf'><span>JSON ECMA标准</span></a></li><li><a href='http://geojson.io/'><span>GeoJSON格式在线验证</span></a></li><li><a href='http://mapshaper.org'><span>在线转换GeoJSON和TopoJSON</span></a></li></ul><h2 id='版本'><span>版本</span></h2><ul><li><p><strong><span>V1 2022.6.16</span></strong></p><p><span>按照JSON在线课程进行整理，完成JSON语法，JS与JSON，python与JSON，GeoJSON和TopoJSON内容</span></p></li></ul></div></div>
 </body>
 </html>

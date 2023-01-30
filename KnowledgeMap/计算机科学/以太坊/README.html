@@ -2,6 +2,7 @@
 <html style='font-size:22px !important'>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<link rel="stylesheet" type="text/css" href="https://charlesshan.top/style.css">
 
 <style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
@@ -22,8 +23,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +50,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +72,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
@@ -87,7 +87,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,6 +130,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
@@ -1121,7 +1122,7 @@ a img {
   * [基于token的投票](./notes/DApp项目实战/基于token的投票.md)<br>
   * [基于ipfs的去中心化eBay](./notes/DApp项目实战/基于ipfs的去中心化eBay.md)<br>
   * [ICO-DApp](./notes/DApp项目实战/ICO-DApp.md)
-</div><p>&nbsp;</p><h2 id='介绍'><span>介绍</span></h2><p><span>区块链按照尚硅谷机构培训课程整理。</span></p><p><span>掌握以太坊的基本概念和工作原理。</span></p><p><span>理解以太坊与比特币的联系和区别。</span></p><p><span>掌握以太坊客户端的使用。</span></p><p><span>深入理解智能合约。</span></p><p><span>掌握Solidity语法,并能够写出复杂的合约。</span></p><p><span>掌握web3js的调用,并能够实现具体的DApp。</span></p><p><span>综合运用各种工具,完成较复杂的项目。</span></p><h2 id='资源'><span>资源</span></h2><p><span>链接: </span><a href='https://pan.baidu.com/s/1XOjwGi4rPa5vIll5c_1lMg?pwd=u7gp' target='_blank' class='url'>https://pan.baidu.com/s/1XOjwGi4rPa5vIll5c_1lMg?pwd=u7gp</a><span></span><br/><span>提取码: u7gp</span><br/><span>如果资源失效请联系我  </span></p><ul><li><p><span>尚硅谷区块链资料</span>
+</div><p>&nbsp;</p><p>&nbsp;</p><h2 id='介绍'><span>介绍</span></h2><p><span>区块链按照尚硅谷机构培训课程整理。</span></p><p><span>掌握以太坊的基本概念和工作原理。</span></p><p><span>理解以太坊与比特币的联系和区别。</span></p><p><span>掌握以太坊客户端的使用。</span></p><p><span>深入理解智能合约。</span></p><p><span>掌握Solidity语法,并能够写出复杂的合约。</span></p><p><span>掌握web3js的调用,并能够实现具体的DApp。</span></p><p><span>综合运用各种工具,完成较复杂的项目。</span></p><h2 id='资源'><span>资源</span></h2><p><span>链接: </span><a href='https://pan.baidu.com/s/1XOjwGi4rPa5vIll5c_1lMg?pwd=u7gp' target='_blank' class='url'>https://pan.baidu.com/s/1XOjwGi4rPa5vIll5c_1lMg?pwd=u7gp</a><span></span><br/><span>提取码: u7gp</span><br/><span>如果资源失效请联系我  </span></p><ul><li><p><span>尚硅谷区块链资料</span>
 <a href='https://pan.baidu.com/s/1PJocX5nbpWCwMERMF76vAQ' target='_blank' class='url'>https://pan.baidu.com/s/1PJocX5nbpWCwMERMF76vAQ</a><span> 提取码：yyds </span></p></li><li><p><span>以太坊课程</span></p><ul><li><p><span>【Java】</span></p><ul><li><a href='https://www.bilibili.com/video/BV1Kb411W75N'><span>尚硅谷Java入门视频教程</span></a></li></ul></li><li><p><span>【Go】</span></p><ul><li><a href='https://www.bilibili.com/video/BV1ME411Y71o'><span>Golang</span></a></li><li><a href='https://www.bilibili.com/video/BV1nJ411D7P4'><span>GoWeb</span></a></li></ul></li><li><p><span>【以太坊】</span></p><ul><li><a href='https://www.bilibili.com/video/BV1NJ411D7rf'><span>以太坊</span></a><span>，课件在网盘</span></li><li><a href='https://www.bilibili.com/video/BV1JJ411D7Ve'><span>区块链项目硅谷投票系统</span></a></li><li><a href='https://www.bilibili.com/video/BV1EJ411D7SL'><span>区块链项目硅谷拍卖系统</span></a></li></ul></li></ul></li><li><p><span>以太坊</span></p><ul><li><a href='https://ethereum.org/en/'><span>Ethereum官网</span></a></li><li><a href='https://ethereum.org/en/developers/docs/'><span>以太坊英文官方文档</span></a></li><li><a href='http://www.ethdocs.org/en/latest/index.html'><span>以太坊官方文档 ( Ethereum Homestead Documentation )</span></a><span> </span></li><li><a href='https://github.com/ethereumbook/ethereumbook'><span>《精通以太坊》( Mastering Ethereum ) </span></a></li><li><a href='https://github.com/ethereum/wiki/wiki/White-Paper'><span>《以太坊白皮书》 ( A Next-Generation Smart Contract and Decentralized Application Platform )</span></a></li><li><a href='https://ethereum.org/en/whitepaper/'><span>《以太坊白皮书》官网</span></a></li><li><a href='https://github.com/wanshan1024/ethereum_yellowpaper'><span>《以太坊黄皮书》</span></a></li><li><a href='https://github.com/EthFans/wiki/wiki'><span>以太坊社区知识总结</span></a></li></ul></li><li><p><span>以太坊区块链浏览器</span></p><ul><li><a href='https://etherscan.io/' target='_blank' class='url'>https://etherscan.io/</a></li><li><a href='https://ropsten.etherscan.io/'><span>ropsten测试网络查看</span></a></li><li><a href='https://ethgasstation.info/'><span>以太坊gas信息</span></a></li></ul></li><li><p><span>钱包</span></p><ul><li><span>MetaMask - 浏览器插件钱包</span></li><li><a href='https://chrome.google.com/webstore/category/extensions'><span>安装MetaMask</span></a></li><li><a href='https://faucet.rinkeby.io/'><span>rinkeby测试网络水龙头</span></a></li><li><del><span>Jaxx - 一款多平台、多币种的钱包，可在各种操作系统上运行，包括Android，iOS，Windows，Mac和Linux。</span></del></li><li><del><span>MyEtherWallet(MEW) - 一个基于web的钱包，可以在任何浏览器中运行。</span></del></li><li><del><span>EmeraldWallet - 旨在与ETC配合使用，但与其他基于以太坊的区块链兼容。</span></del></li></ul></li><li><p><span>客户端</span></p><ul><li><p><a href='https://github.com/ethereum/go-ethereum'><span>go-ethereum ( Go )</span></a><span> - 官方推荐，开发使用最多</span></p><ul><li><a href='https://geth.ethereum.org/docs/'><span>Geth官方文档</span></a></li></ul></li><li><p><span>Ganache – 以太坊客户端(测试环境私链) </span></p></li><li><p><del><a href='https://github.com/ethcore/parity/releases'><span>parity ( Rust )</span></a><span> - 最轻便客户端，在历次以太坊网络攻击中表现卓越</span></del></p></li><li><p><del><a href='https://github.com/ethereum/cpp-ethereum'><span>cpp-ethereum(C++)</span></a></del></p></li><li><p><del><a href='https://github.com/heikoheiko/pyethapp'><span>pyethapp (python)</span></a></del></p></li><li><p><del><a href='https://github.com/ethereumjs/ethereumjs-lib'><span>ethereumjs-lib(javascript)</span></a></del></p></li><li><p><del><a href='https://github.com/ethereum/ethereumj'><span>EthereumJ / Harmony ( Java )</span></a></del></p></li></ul></li><li><p><span>编程语言, 编辑器, 第三方库,开发框架</span></p><ul><li><a href='https://solidity.readthedocs.io/en/latest/'><span>Solidity官方文档</span></a></li><li><a href='https://remix.ethereum.org/'><span>Remix </span></a><span> 基于浏览器的 Solidity 在线编辑器</span></li><li><span>solcjs Solidity 的命令行编译器</span></li><li><span>web3js – 以太坊 javascipt API库</span></li><li><span>Truffle – 以太坊开发框架</span></li></ul></li></ul><h2 id='版本'><span>版本</span></h2><h3 id='v1-2022225'><span>V1 2022.2.25</span></h3><p><span>按照尚硅谷区块链课程（以太坊白皮书之前）进行整理，完成基础框架构建</span></p><p><span>V2 2022.</span></p><p><span>按照尚硅谷区块链课程（不包括白皮书黄皮书）进行整理，完成两个案例</span></p></div></div>
 </body>
 </html>
