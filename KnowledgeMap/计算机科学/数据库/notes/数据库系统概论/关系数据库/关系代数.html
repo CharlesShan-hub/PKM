@@ -1108,10 +1108,158 @@ a img {
 }
 
 
- @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
-</style><title>关系的完整性</title>
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>关系代数</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='关系的完整性'><span>关系的完整性</span></h1><p><span>2023.02.01</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#关系的完整性">关系的完整性</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" style="" href="#overview">Overview</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n10"><a class="md-toc-inner" style="" href="#实体完整性">实体完整性</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n20"><a class="md-toc-inner" style="" href="#参照完整性">参照完整性</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n36"><a class="md-toc-inner" style="" href="#用户定义的完整性">用户定义的完整性</a></span></p></div><h2 id='overview'><span>Overview</span></h2><ol start='' ><li><span>实体完整性：主属性不能取空值</span></li><li><span>参照完整性：关系与关系的关系</span></li></ol><h2 id='实体完整性'><span>实体完整性</span></h2><ul><li><u><span>实体完整性规则</span></u><span>是针对</span><u><span>基本关系</span></u><span>而言的。一个基本表通常对应现实世界的一个实体集。</span></li><li><span>现实世界中的</span><u><span>实体是可区分的</span></u><span>，即它们具有某种</span><u><span>唯一性标识</span></u><span>。</span></li><li><span>关系模型中以</span><u><span>主码</span></u><span>作为唯一性标识。</span></li><li><span>主码中的属性即</span><u><span>主属性不能取空值</span></u><span>。主属性取空值，就说明存在某个不可标识的实体，即存在不可区分的实体，这与第（2）点相矛盾，因此这个规则称为实体完整性</span></li></ul><h2 id='参照完整性'><span>参照完整性</span></h2><ul><li><p><span>关系间的引用</span></p><ul><li><p><span>关系与关系间的引用案例</span></p><p><span>学生（</span><em><span>学号</span></em><span>，姓名，性别，专业号，年龄）　 </span></p><p><span>专业（</span><em><span>专业号</span></em><span>，专业名）</span></p></li><li><p><span>学生、课程、学生与课程之间的</span><u><span>多对多联系</span></u></p><p><span>学生（</span><em><span>学号</span></em><span>，姓名，性别，专业号，年龄）     </span></p><p><span>课程（</span><em><span>课程号</span></em><span>，课程名，学分）     </span></p><p><span>选修（</span><em><span>学号</span></em><span>，</span><em><span>课程号</span></em><span>，成绩）</span></p></li></ul></li><li><p><span>外码</span></p><p><img src="resources/image-20230103153221334.png" referrerpolicy="no-referrer" alt="image-20230201142814227"></p><blockquote><p><span>我的理解</span></p><p><span>外码，就是一条数据里边，用来连接到另一条数据的那条数据的主码。</span></p><p><span>比如：「学生学号，班长学号，xxx」，这里班长学号就是外吗。</span></p></blockquote><p><span>要求R的外码，要不是空置，要不是S的主码</span></p></li></ul><h2 id='用户定义的完整性'><span>用户定义的完整性</span></h2><p><span>一些特殊的完整性约束，比如要求成绩在0～100</span></p><p>&nbsp;</p></div></div>
+<div id='write'  class=''><h1 id='关系代数'><span>关系代数</span></h1><p><span>2023.02.01</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#关系代数">关系代数</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n15"><a class="md-toc-inner" style="" href="#集合运算">集合运算</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n8"><a class="md-toc-inner" style="" href="#关系运算">关系运算</a></span></p></div><blockquote><p><span>【关系代数（选择投影连接除）】 </span><a href='https://www.bilibili.com/video/BV1Aq4y1Y7wV/?share_source=copy_web&amp;vd_source=0470ad56f59229195a0a7f79ab37cb27' target='_blank' class='url'>https://www.bilibili.com/video/BV1Aq4y1Y7wV/?share_source=copy_web&vd_source=0470ad56f59229195a0a7f79ab37cb27</a></p><p><span>上边这个网课里边有一些练习题</span></p></blockquote><h2 id='集合运算'><span>集合运算</span></h2><p><span>交、并、补、笛卡尔积</span></p><p><img src="resources/image-20230201143758317.png" referrerpolicy="no-referrer" alt="image-20230201143758316"></p><h2 id='关系运算'><span>关系运算</span></h2><blockquote><ul><li><span>数据库常用的latex：</span><a href='https://billc.io/2020/04/latex-relational-algebra/' target='_blank' class='url'>https://billc.io/2020/04/latex-relational-algebra/</a></li><li><span>关系运算 连接：</span><a href='https://blog.csdn.net/u014395524/article/details/89420474' target='_blank' class='url'>https://blog.csdn.net/u014395524/article/details/89420474</a></li></ul></blockquote><ol><li><span>选择</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.292ex" height="1ex" role="img" focusable="false" viewBox="0 -431 571 442" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-13-TEX-I-1D70E" d="M184 -11Q116 -11 74 34T31 147Q31 247 104 333T274 430Q275 431 414 431H552Q553 430 555 429T559 427T562 425T565 422T567 420T569 416T570 412T571 407T572 401Q572 357 507 357Q500 357 490 357T476 358H416L421 348Q439 310 439 263Q439 153 359 71T184 -11ZM361 278Q361 358 276 358Q152 358 115 184Q114 180 114 178Q106 141 106 117Q106 67 131 47T188 26Q242 26 287 73Q316 103 334 153T356 233T361 278Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D70E" xlink:href="#MJX-13-TEX-I-1D70E"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>σ</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\sigma</script><span>：横着筛选行</span></li><li><span>投影</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.697ex" height="1.538ex" role="img" focusable="false" viewBox="0 -680 750 680" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-36-TEX-N-3A0" d="M128 619Q121 626 117 628T101 631T58 634H25V680H724V634H691Q651 633 640 631T622 619V61Q628 51 639 49T691 46H724V0H713Q692 3 569 3Q434 3 425 0H414V46H447Q489 47 498 49T517 61V634H232V348L233 61Q239 51 250 49T302 46H335V0H324Q303 3 180 3Q45 3 36 0H25V46H58Q100 47 109 49T128 61V619Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="3A0" xlink:href="#MJX-36-TEX-N-3A0"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Π</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Pi</script><span>：竖着筛就行</span></li><li><span>连接</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.036ex" height="1.154ex" role="img" focusable="false" viewBox="0 -505 900 510" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.011ex;"><defs><path id="MJX-39-TEX-N-22C8" d="M833 50T833 250T832 450T659 351T487 250T658 150T832 50Q833 50 833 250ZM873 10Q866 -5 854 -5Q851 -5 845 -3L449 226L260 115Q51 -5 43 -5Q39 -5 35 -1T28 7L26 11V489Q33 505 43 505Q51 505 260 385L449 274L845 503Q851 505 853 505Q866 505 873 490V10ZM412 250L67 450Q66 450 66 250T67 50Q69 51 240 150T412 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="22C8" xlink:href="#MJX-39-TEX-N-22C8"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>⋈</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\bowtie</script><span>：「学号 姓名」连接「姓名 性别」= 「学号 性别 姓名」</span></li><li><span>取余</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.296ex" role="img" focusable="false" viewBox="0 -537 778 573" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.081ex;"><defs><path id="MJX-68-TEX-N-F7" d="M318 466Q318 500 339 518T386 537Q418 537 438 517T458 466Q458 438 440 417T388 396Q355 396 337 417T318 466ZM56 237T56 250T70 270H706Q721 262 721 250T706 230H70Q56 237 56 250ZM318 34Q318 68 339 86T386 105Q418 105 438 85T458 34Q458 6 440 -15T388 -36Q355 -36 337 -15T318 34Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="F7" xlink:href="#MJX-68-TEX-N-F7"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>÷</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\div</script><span>：全部啥就除啥</span></li></ol><p><img src="resources/image-20230201161753605.png" referrerpolicy="no-referrer" alt="image-20230201161753605"></p><blockquote><p><span>除法：A的值a1对应的BC分别是{b1,c2}，{b2,c3}，{b2,c1}，我们可以发现{b1,c2}，{b2,c3}，{b2,c1}就是右边S的BC。a2，a3，a4均不能满足上述条件。所以a1是答案。</span></p></blockquote></div></div>
 </body>
 </html>

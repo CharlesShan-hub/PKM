@@ -7,11 +7,11 @@
 
 </head>
 <body onload="load()" >
-    <div id="88fefa1304ba4582a6b95799ad3cee14" class="chart-container" style="width:1080px; height:100vh;"></div>
+    <div id="9e25d43f2ca74078b91381ca725d5f56" class="chart-container" style="width:1080px; height:100vh;"></div>
     <script>
-        var chart_88fefa1304ba4582a6b95799ad3cee14 = echarts.init(
-            document.getElementById('88fefa1304ba4582a6b95799ad3cee14'), 'white', {renderer: 'canvas'});
-        var option_88fefa1304ba4582a6b95799ad3cee14 = {
+        var chart_9e25d43f2ca74078b91381ca725d5f56 = echarts.init(
+            document.getElementById('9e25d43f2ca74078b91381ca725d5f56'), 'white', {renderer: 'canvas'});
+        var option_9e25d43f2ca74078b91381ca725d5f56 = {
     
 	"formatter": function(params){
 	    var content = params.data.value;
@@ -4874,16 +4874,16 @@
         "padding": 5
     }
 };
-        chart_88fefa1304ba4582a6b95799ad3cee14.setOption(option_88fefa1304ba4582a6b95799ad3cee14);
-   chart_88fefa1304ba4582a6b95799ad3cee14.on("click", chart_click);
+        chart_9e25d43f2ca74078b91381ca725d5f56.setOption(option_9e25d43f2ca74078b91381ca725d5f56);
+   chart_9e25d43f2ca74078b91381ca725d5f56.on("click", chart_click);
 	function chart_click(param){
 		//alert(param.data.name);
 		auto_change_height(param);
 	}
 	function auto_change_height(param){
-		var container = document.getElementById('88fefa1304ba4582a6b95799ad3cee14');
+		var container = document.getElementById('9e25d43f2ca74078b91381ca725d5f56');
 	    var allNode=0;
-	    var nodes=chart_88fefa1304ba4582a6b95799ad3cee14._chartsViews[0]._data._graphicEls;
+	    var nodes=chart_9e25d43f2ca74078b91381ca725d5f56._chartsViews[0]._data._graphicEls;
 	    for(var i=0,count =nodes.length;i<count;i++){
 	       var node=nodes[i];
 	       if(node===undefined)
@@ -4895,7 +4895,7 @@
 	    var newHeight=Math.max(currentHeight,height);
 	    container.style.width = window.innerWidth + 'px';
 	    container.style.height = newHeight + 'px';
-	chart_88fefa1304ba4582a6b95799ad3cee14.resize();
+	chart_9e25d43f2ca74078b91381ca725d5f56.resize();
 	}
 
 	function load(){
