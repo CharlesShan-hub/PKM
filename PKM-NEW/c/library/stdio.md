@@ -9,12 +9,11 @@
 
 ### printf
 
-<details>
+Demo
 
-<summary>Demo</summary>
-
-<pre class="language-c"><code class="lang-c">/* printout.c -- uses conversion specifiers */
-#include &#x3C;stdio.h>
+```c
+/* printout.c -- uses conversion specifiers */
+#include <stdio.h>
 #define PI 3.141593
 int main(void)
 {
@@ -22,12 +21,12 @@ int main(void)
     float pies = 12.75;
     int cost = 7800;
 
-<strong>    printf("The %d contestants ate %f berry pies.\n", number,
-</strong><strong>           pies);
-</strong><strong>    printf("The value of pi is %f.\n", PI);
-</strong><strong>    printf("Farewell! thou art too dear for my possessing,\n");
-</strong><strong>    printf("%c%d\n", '$', 2 * cost);
-</strong>
+    printf("The %d contestants ate %f berry pies.\n", number,
+           pies);
+    printf("The value of pi is %f.\n", PI);
+    printf("Farewell! thou art too dear for my possessing,\n");
+    printf("%c%d\n", '$', 2 * cost);
+
     return 0;
 }
 
@@ -35,45 +34,34 @@ int main(void)
 // The value of pi is 3.141593.
 // Farewell! thou art too dear for my possessing,
 // $15600
-</code></pre>
+```
 
-</details>
+一图胜千言
 
-<details>
+![[../assets/printf.png]]
+printf format specifications quick reference[2]
 
-<summary>一图胜千言</summary>
+转换说明[3]
 
-<img src="../../../.gitbook/assets/image (31).png" alt="printf format specifications quick reference[2]" data-size="original">
+* `%a` 浮点数、十六进制数和p记数法（C99/C11）
+* `%A` 浮点数、十六进制数和p记数法（C99/C11）
+* `%c` 单个字符
+* `%d` 有符号十进制整数
+* `%e` 浮点数，e记数法
+* `%E` 浮点数，e记数法
+* `%f` 浮点数，十进制记数法
+* `%g` 根据值的不同，自动选择\_f或\*e。\*e格式用于指数小于-4或者大于或等于精度时
+* `%G` 根据值的不同，自动选择\_f或\*E。\*E格式用于指数小于-4或者大于或等于精度时
+* `%i` 有符号十进制整数（与d\_相同）
+* `%o` 无符号八进制整数
+* `%p` 指针
+* `%s` 字符串
+* `%u` 无符号十进制整数
+* `%x` 无符号十六进制整数，使用十六进制数0f
+* `%X` 无符号十六进制整数，使用十六进制数0F
+* `%%` 打印一个百分号
 
-</details>
-
-<details>
-
-<summary>转换说明[3]</summary>
-
-* %a 浮点数、十六进制数和p记数法（C99/C11）
-* %A 浮点数、十六进制数和p记数法（C99/C11）
-* %c 单个字符
-* %d 有符号十进制整数
-* %e 浮点数，e记数法
-* %E 浮点数，e记数法
-* %f 浮点数，十进制记数法
-* %\_g 根据值的不同，自动选择\_f或\*e。\*e格式用于指数小于-4或者大于或等于精度时
-* %\_G 根据值的不同，自动选择\_f或\*E。\*E格式用于指数小于-4或者大于或等于精度时
-* %\_i 有符号十进制整数（与d\_相同）
-* %o 无符号八进制整数
-* %p 指针
-* %s 字符串
-* %u 无符号十进制整数
-* %x 无符号十六进制整数，使用十六进制数0f
-* %X 无符号十六进制整数，使用十六进制数0F
-* %% 打印一个百分号
-
-</details>
-
-<details>
-
-<summary>转换说明修饰符</summary>
+转换说明修饰符
 
 * 标记：五种标记（-, +, 空格, #, and 0）
   * **-**：等待打印项左对齐。即，从字段的左侧开始打印该项。示例：“%-20s”
@@ -114,14 +102,11 @@ int main(void)
   * 和整型转换说明一起使用，表示size\_t类型的值。size\_t是sizeof返回的类型(C99)
   * 示例: "%zd"、"%12zd"
 
-</details>
+让程序指定 printf 宽度
 
-<details>
-
-<summary>*：让程序指定 printf 宽度</summary>
-
-<pre class="language-c"><code class="lang-c">/* varwid.c -- uses variable-width output field */
-#include &#x3C;stdio.h>
+```c
+/* varwid.c -- uses variable-width output field */
+#include <stdio.h>
 int main(void)
 {
     unsigned width, precision;
@@ -130,11 +115,11 @@ int main(void)
 
     printf("Enter a field width:\n");
     scanf("%d", &#x26;width);
-<strong>    printf("The number is :%*d:\n", width, number);
-</strong>    printf("Now enter a width and a precision:\n");
+    printf("The number is :%*d:\n", width, number);
+    printf("Now enter a width and a precision:\n");
     scanf("%d %d", &#x26;width, &#x26;precision);
-<strong>    printf("Weight = %*.*f\n", width, precision, weight);
-</strong>    printf("Done!\n");
+    printf("Weight = %*.*f\n", width, precision, weight);
+    printf("Done!\n");
 
     return 0;
 }
@@ -146,30 +131,20 @@ int main(void)
 // 10 3
 // Weight =    242.500
 // Done!
-</code></pre>
-
-</details>
+```
 
 ### scanf
 
-{% hint style="warning" %}
 scanf() 最不常用，因为他容易卡住。最好用 getchar()或者fgets()吧。
-{% endhint %}
 
-<details>
-
-<summary>scanf 与 printf 两点不一样</summary>
-
+scanf 与 printf 两点不一样
 * 变量前要加&
 * double 的转换说明是 lf 而不是 f
 
-</details>
+Demo
 
-<details>
-
-<summary>Demo</summary>
-
-<pre class="language-c"><code class="lang-c">// input.c -- when to use &#x26;
+```c
+// input.c -- when to use &#x26;
 #include &#x3C;stdio.h>
 int main(void)
 {
@@ -178,9 +153,9 @@ int main(void)
     char pet[30]; // string
 
     printf("Enter your age, assets, and favorite pet.\n");
-<strong>    scanf("%d %f", &#x26;age, &#x26;assets); // use the &#x26; here
-</strong><strong>    scanf("%s", pet);              // no &#x26; for char array
-</strong>    printf("%d $%.2f %s\n", age, assets, pet);
+    scanf("%d %f", &#x26;age, &#x26;assets); // use the &#x26; here
+    scanf("%s", pet);              // no &#x26; for char array
+    printf("%d $%.2f %s\n", age, assets, pet);
 
     return 0;
 }
@@ -188,13 +163,9 @@ int main(void)
 // 10 9.9
 // a
 // 10 $9.90 a
-</code></pre>
+```
 
-</details>
-
-<details>
-
-<summary>*：让程序跳过某个输入（读取文件有常用）</summary>
+让程序跳过某个输入（读取文件有常用）
 
 ```c
 /* skiptwo.c -- skips over first two integers of input */
@@ -215,11 +186,7 @@ int main(void)
 // The last integer was 3
 ```
 
-</details>
-
-<details>
-
-<summary>如果输入里边有空格，scanf 会认为这是两个输入！另外可以指定输入字符串长度</summary>
+如果输入里边有空格，scanf 会认为这是两个输入！另外可以指定输入字符串长度
 
 ```c
 /* scan_str.c -- using scanf() */
@@ -252,39 +219,29 @@ int main(void)
 
 ```
 
-</details>
 
 ### getchar, putchar
 
-<details>
-
-<summary>Demo</summary>
-
-<pre class="language-c"><code class="lang-c">/* echo_eof.c -- repeats input to end of file */
+```c
+/* echo_eof.c -- repeats input to end of file */
 #include &#x3C;stdio.h>
 int main(void)
 {
     int ch;
     
-<strong>    while ((ch = getchar()) != EOF)
-</strong><strong>        putchar(ch);
-</strong>    
+    while ((ch = getchar()) != EOF)
+        putchar(ch);
+    
     return 0;
 }
+```
 
-</code></pre>
-
-</details>
 
 ### gets, puts
 
-{% hint style="danger" %}
 不要用gets这个函数
-{% endhint %}
 
-<details>
-
-<summary>gets 会访问未规定的内存！！不要用这个函数！C99已经废除，不过大多数编译器保留了。</summary>
+gets 会访问未规定的内存！！不要用这个函数！C99已经废除，不过大多数编译器保留了。
 
 ```c
 #include <stdio.h>
@@ -317,11 +274,8 @@ int main()
 // (base) kimshan@MacBook-Pro output
 ```
 
-</details>
 
-<details>
-
-<summary>puts看到空字符才会结束。下面的例子打印不是字符串的东西，会出 bug</summary>
+puts看到空字符才会结束。下面的例子打印不是字符串的东西，会出 bug
 
 ```c
 /* nono.c -- no! */
@@ -339,13 +293,10 @@ int main(void)
 }
 ```
 
-</details>
 
 ### fgets, fputs
 
-<details>
-
-<summary>fgets 会留出\0的位置，超出范围的长度会被截断；fputs 不会自动换行</summary>
+fgets 会留出\0的位置，超出范围的长度会被截断；fputs 不会自动换行
 
 ```c
 #include <stdio.h>
@@ -375,17 +326,11 @@ int main()
 // (base) kimshan@MacBook-Pro output %
 ```
 
-</details>
-
 ### gets\_s
 
-{% hint style="danger" %}
 很多编译器不支持这个 C11 的新函数！
-{% endhint %}
 
-<details>
-
-<summary>你是否觉得 fgets 还要用 sizeof 有点麻烦，那就用gets_s吧。但是它没有fgets灵活</summary>
+你是否觉得 fgets 还要用 sizeof 有点麻烦，那就用gets_s吧。但是它没有fgets灵活
 
 ```c
 #include <stdio.h>
@@ -408,11 +353,7 @@ int main()
 }
 ```
 
-</details>
-
-<details>
-
-<summary>我们写一个自己的 s_gets</summary>
+我们写一个自己的 s_gets
 
 ```c
 char * s_gets(char * st, int n)
@@ -435,13 +376,10 @@ char * s_gets(char * st, int n)
 }
 ```
 
-</details>
 
 ### sprintf
 
-<details>
-
-<summary>进行字符串格式化，形成一个字符串保存到某个变量中</summary>
+进行字符串格式化，形成一个字符串保存到某个变量中
 
 ```c
 /* format.c -- format a string */
@@ -497,7 +435,6 @@ char *s_gets(char *st, int n)
 // Shan, Charles            : $1000000.00
 ```
 
-</details>
 
 ## Reference
 

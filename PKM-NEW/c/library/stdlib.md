@@ -7,9 +7,7 @@
 
 ## Function
 
-<details>
-
-<summary>qsort</summary>
+### qsort
 
 ```c
 #include <stdio.h>
@@ -47,11 +45,8 @@ int main()
 }
 ```
 
-</details>
 
-<details>
-
-<summary>atoi</summary>
+### atoi
 
 ```c
 #include <stdio.h>
@@ -75,7 +70,7 @@ int main()
 }
 ```
 
-</details>
+
 
 ## Reference
 

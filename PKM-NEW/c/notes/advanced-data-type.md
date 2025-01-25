@@ -1,10 +1,14 @@
 # Advanced Data Type
 
+---
+
+![[../assets/advanced-data-type-drawing|1000]]
+
+--- 
+
 ## struct
 
-<details>
-
-<summary>record in pascal</summary>
+record in pascal
 
 ```pascal
 program PrintBirthday;
@@ -25,28 +29,24 @@ begin
     // 打印生日
     writeln('Birthday: ', b.day, '/', b.month, '/', b.year);
 end.
-
 ```
 
-</details>
+struct in C
 
-<details>
-
-<summary>struct in C</summary>
-
-<pre class="language-c"><code class="lang-c">//* book.c -- one-book inventory */
+```c
+//* book.c -- one-book inventory */
 #include &#x3C;stdio.h>
 #include &#x3C;string.h>
 char * s_gets(char * st, int n);
 #define MAXTITL  41      /* maximum length of title + 1         */
 #define MAXAUTL  31      /* maximum length of author's name + 1 */
 
-<strong>struct book {            /* structure template: tag is book     */
-</strong><strong>    char title[MAXTITL];
-</strong><strong>    char author[MAXAUTL];
-</strong><strong>    float value;
-</strong><strong>};                       /* end of structure template           */
-</strong>
+struct book {            /* structure template: tag is book     */
+    char title[MAXTITL];
+    char author[MAXAUTL];
+    float value;
+};                       /* end of structure template           */
+
 int main(void)
 {
 <strong>    struct book library; /* declare library as a book variable  */
@@ -83,7 +83,9 @@ char * s_gets(char * st, int n)
     }
     return ret_val;
 }
+```
 
+```shell
 (base) kimshan@MacBook-Pro output % ./"book"
 Please enter the book title.
 Hello
@@ -94,13 +96,9 @@ Now enter the value.
 Hello by Charles: $10.00
 Charles: "Hello" ($10.00)
 Done.
-</code></pre>
+```
 
-</details>
-
-<details>
-
-<summary>struct 基础</summary>
+struct 基础
 
 声明
 
@@ -171,7 +169,13 @@ scanf("%f", &p_lib->value);
 s_gets(p_lib->author, MAXAUTL);
 ```
 
-</details>
+
+
+
+
+
+
+
 
 <details>
 
@@ -459,7 +463,8 @@ fwrite(&primer, sizeof(struct book),l,pbooks);
 
 只能存一个变量的数组，推荐使用方式：结构+联合
 
-<pre class="language-c"><code class="lang-c">struct owner {
+```c
+struct owner {
     char sosecurity[12];
     ...
 };
@@ -477,12 +482,11 @@ union data {
 
 struct car_data {
     char make[15];
-<strong>    int status; /* 私有为0，租赁为1 */
-</strong><strong>    union data ownerinfo;
-</strong>    ...
+    int status; /* 私有为0，租赁为1 */
+    union data ownerinfo;
+    ...
 };
-
-</code></pre>
+```
 
 ***
 
@@ -495,9 +499,7 @@ enum week = {Mon, Tus, Wen, Thr, Fri, Sat, Sun};
 enum levels = {lows = 100, medium = 500, high = 2000};
 ```
 
-<details>
-
-<summary>Demo</summary>
+Demo
 
 ```c
 /* enum.c -- uses enumerated values */
@@ -575,7 +577,6 @@ char * s_gets(char * st, int n)
 
 ```
 
-</details>
 
 ***
 
@@ -591,7 +592,7 @@ typedef+结构(上边结构里边)
 
 `int a[2][3];`
 
-<img src="../../../.gitbook/assets/file.excalidraw (10).svg" alt="" class="gitbook-drawing">
+![[../assets/nested-array-drawing|1000]]
 
 * 数组明后边的\[]和函数名后边的()具有相同优先级，他们优先级高于\*
 

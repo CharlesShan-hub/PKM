@@ -1,12 +1,6 @@
 
 # ADT
 
-<details>
-
-<summary>Demo</summary>
-
-
-
 ```cpp
 /** 线性表 - 单链表 - 带头结点 - 头插法与尾插法
  *  内容包括:
@@ -159,7 +153,5 @@ int main(void){
 	return 0;
 }
 ```
-
-</details>
 
 后边衔接数据结构了，请看我的 github：[https://github.com/CharlesShan-hub/DataStructureNotes](https://github.com/CharlesShan-hub/DataStructureNotes)

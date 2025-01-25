@@ -3,7 +3,7 @@
 
 ## APIs
 
-![[../assets/time-drawing|1000]]]
+![[../assets/time-drawing|1000]]
 
 <table><thead><tr><th width="298">Time manipulation - Functions</th><th>Description</th></tr></thead><tbody><tr><td><a href="https://cplusplus.com/reference/ctime/clock/"><strong>clock</strong></a></td><td>Clock program (function)</td></tr><tr><td><a href="https://cplusplus.com/reference/ctime/difftime/"><strong>difftime</strong></a></td><td>Return difference between two times (function)</td></tr><tr><td><a href="https://cplusplus.com/reference/ctime/mktime/"><strong>mktime</strong></a></td><td>Convert tm structure to time_t (function)</td></tr><tr><td><a href="https://cplusplus.com/reference/ctime/time/"><strong>time</strong></a></td><td>Get current time (function)</td></tr></tbody></table>
 
@@ -15,35 +15,29 @@
 
 ## Demos
 
-<details>
+Delay
 
-<summary>Delay</summary>
-
-<pre class="language-cpp"><code class="lang-cpp">// waiting.cpp -- using clock() in a time-delay loop
-#include &#x3C;iostream>
-#include &#x3C;ctime> // describes clock() function, clock_t type
+```c
+// waiting.cpp -- using clock() in a time-delay loop
+#include <iostream>
+#include <ctime> // describes clock() function, clock_t type
 int main()
 {
     using namespace std;
-    cout &#x3C;&#x3C; "Enter the delay time, in seconds: ";
+    cout << "Enter the delay time, in seconds: ";
     float secs;
     cin >> secs;
     clock_t delay = secs * <a data-footnote-ref href="#user-content-fn-1">CLOCKS_PER_SEC</a>;  // convert to clock ticks
-    cout &#x3C;&#x3C; "starting\a\n";
+    cout << "starting\a\n";
     clock_t start = clock();
     while (clock() - start &#x3C; delay )        // wait until time elapses
         ;                                   // note the semicolon
-    cout &#x3C;&#x3C; "done \a\n";
+    cout << "done \a\n";
     // cin.get();
     // cin.get();
     return 0; 
 }
-
-</code></pre>
-
-</details>
-
-<details>
+```
 
 <summary>Demo：clock()，clock_t，CLOCKS_PER_SEC</summary>
 
@@ -125,11 +119,8 @@ Elapsed time: 0.151287 seconds
 Elapsed time: 0.134296 seconds
 ```
 
-</details>
 
-<details>
-
-<summary>Demo：time()，struct tm</summary>
+Demo：time()，struct tm
 
 ```cpp
 struct tm {
@@ -168,7 +159,6 @@ int main()
 12时 4分 23秒
 ```
 
-</details>
 
 ## Reference
 

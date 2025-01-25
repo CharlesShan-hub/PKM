@@ -51,12 +51,6 @@ array2 = {100, 200}; // wrong!
 
 就像数学中的矩阵一样。比如三行四列的矩阵就是a\[3]\[4]
 
-<details>
-
-<summary>Demo</summary>
-
-
-
 ```c
 /* rain.c  -- finds yearly totals, yearly average, and monthly
  average for several years of rainfall data */
@@ -118,7 +112,6 @@ int main(void)
 //  7.3  7.3  4.9  3.0  2.3  0.6  1.2  0.3  0.5  1.7  3.6  6.7 
 ```
 
-</details>
 
 
 
