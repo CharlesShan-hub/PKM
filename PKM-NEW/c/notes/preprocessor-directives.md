@@ -3,11 +3,7 @@
 
 ## 预处理器指令
 
-<details>
-
-<summary>所有的预处理器指令（GPT）</summary>
-
-
+所有的预处理器指令（GPT）
 
 C语言的预处理器（Preprocessor）是一段特殊的代码处理程序，它负责在编译器实际编译源代码之前对源代码进行处理。预处理器指令以井号 `#` 开头，并且它们不是C语言语句的一部分，而是被编译器识别并执行的指令。以下是一些常用的C语言预处理器指令：
 
@@ -37,24 +33,22 @@ C语言的预处理器（Preprocessor）是一段特殊的代码处理程序，�
 22. `#message`：指令，用于在编译时生成一个消息，通常用于调试。
 23. `#assert`：指令，用于在编译时检查一个表达式是否为真，如果为假，则生成一个错误信息。
 
-</details>
 
-## #define
+## `#define`
 
-<details>
+`#define`
 
-<summary>#define</summary>
+```c
+/* preproc.c -- simple preprocessor examples */
+#include <stdio.h>
+#define TWO 2        /* you can use comments if you like   */
+#define OW "Consistency is the last refuge of the unimagina\
+tive. - Oscar Wilde" /* a backslash continues a definition */
+/* to the next line                   */
+#define FOUR  TWO*TWO
+#define PX printf("X is %d.\n", x)
+#define FMT  "X is %d.\n"
 
-<pre class="language-c"><code class="lang-c">/* preproc.c -- simple preprocessor examples */
-#include &#x3C;stdio.h>
-<strong>#define TWO 2        /* you can use comments if you like   */
-</strong><strong>#define OW "Consistency is the last refuge of the unimagina\
-</strong><strong>tive. - Oscar Wilde" /* a backslash continues a definition */
-</strong>/* to the next line                   */
-<strong>#define FOUR  TWO*TWO
-</strong><strong>#define PX printf("X is %d.\n", x)
-</strong><strong>#define FMT  "X is %d.\n"
-</strong>
 int main(void)
 {
     int x = TWO;
@@ -72,13 +66,12 @@ int main(void)
 // X is 4.
 // Consistency is the last refuge of the unimaginative. - Oscar Wilde
 // TWO: OW
-</code></pre>
+```
 
-</details>
 
-<details>
 
-<summary>#define(注意)</summary>
+
+`#define`(注意)
 
 注意长段的空格或者注释会编译成一个空格
 
@@ -87,13 +80,8 @@ int main(void)
 #define SIX 2 * 3 // 这两样是不一样的！
 ```
 
-</details>
 
-<details>
-
-<summary>#define(函数)</summary>
-
-
+`#define`(函数)
 
 ```c
 /* mac_arg.c -- macros with arguments */
@@ -134,13 +122,9 @@ int main(void)
 // After incrementing, x is 7.
 ```
 
-</details>
-
-<details>
-
-<summary>#define(井号)</summary>
 
 
+`#define`(井号)
 
 ```c
 /* subst.c -- substitute in string */
@@ -162,13 +146,8 @@ int main(void)
 // The square of 2 + 4 is 36.
 ```
 
-</details>
 
-<details>
-
-<summary>#dehine(x2, x3, x4, ....)</summary>
-
-
+`#dehine`(x2, x3, x4, ....)
 
 ```c
 // glue.c -- use the ## operator
@@ -189,11 +168,8 @@ int main(void)
 
 ```
 
-</details>
 
-<details>
-
-<summary>变参宏</summary>
+变参宏
 
 ```c
 // variadic.c -- variadic macros
@@ -217,15 +193,12 @@ int main(void)
 // Message 2: x = 48.00, y = 6.9282
 ```
 
-</details>
 
 
 
-## #include
+## `#include`
 
-<details>
-
-<summary>Demo</summary>
+Demo
 
 ```c
 #include <stdio.h> // 标准库
@@ -233,31 +206,20 @@ int main(void)
 #include "/usr/biff/p.h" // 绝对路径
 ```
 
-</details>
+## `#undef`、`#ifdef`、`#ifndef`、`#else`、`#endif`
 
-
-
-## #undef、#ifdef、#ifndef、#else、#endif
-
-<details>
-
-<summary> 取消定义</summary>
+ 取消定义
 
 ```c
 #define LIMIT 400
 #undef LIMIT
 ```
 
-</details>
+条件编译
 
-<details>
-
-<summary> 条件编译</summary>
-
-
-
-<pre class="language-c"><code class="lang-c">/* ifdef.c -- uses conditional compilation */
-#include &#x3C;stdio.h>
+```c
+/* ifdef.c -- uses conditional compilation */
+#include <stdio.h>
 #define JUST_CHECKING
 #define LIMIT 4
 
@@ -266,11 +228,11 @@ int main(void)
     int i;
     int total = 0;
 
-    for (i = 1; i &#x3C;= LIMIT; i++)
+    for (i = 1; i <= LIMIT; i++)
     {
         total += 2*i*i + 1;
-<strong>#ifdef JUST_CHECKING
-</strong>        printf("i=%d, running total = %d\n", i, total);
+#ifdef JUST_CHECKING
+        printf("i=%d, running total = %d\n", i, total);
 #endif
     }
     printf("Grand total = %d\n", total);
@@ -284,21 +246,16 @@ int main(void)
 // i=3, running total = 31
 // i=4, running total = 64
 // Grand total = 64
-</code></pre>
+```
 
-</details>
+ifndef
 
-<details>
+```c
+// names.h --revised with include protection
 
-<summary>ifndef</summary>
+#ifndef NAMES_H_
+#define NAMES_H_
 
-
-
-<pre class="language-cpp"><code class="lang-cpp">// names.h --revised with include protection
-
-<strong>#ifndef NAMES_H_
-</strong><strong>#define NAMES_H_
-</strong>
 // constants
 #define SLEN 32
 
@@ -319,15 +276,11 @@ char * s_gets(char * st, int n);
 
 #endif
 
-</code></pre>
+```
 
-</details>
+## `#if`, `#elif`, `#else`
 
-## #if, #elif, #else
-
-<details>
-
-<summary>demo</summary>
+demo
 
 ```c
 #if SYS == 1
@@ -358,11 +311,7 @@ char * s_gets(char * st, int n);
 
 <table><thead><tr><th width="179">宏</th><th>含义</th></tr></thead><tbody><tr><td><strong>DATE</strong></td><td>预处理的日期（"Mmm dd yyyy"形式的字符串常量，如Nov 23 2013）</td></tr><tr><td><strong>FILE</strong></td><td>表示当前源代码文件名的字符串字面量</td></tr><tr><td><strong>LINE</strong></td><td>表示当前源代码文件中行号的整型常量</td></tr><tr><td><strong>STDC</strong></td><td>设置为1时，表明实现遵循C标准</td></tr><tr><td><strong>STDC_HOSTED</strong></td><td>本机环境设置为1；否则设置为0</td></tr><tr><td><strong>STDC_VERSION</strong></td><td>支持C99标准，设置为199901L；支持C11标准，设置为201112L</td></tr><tr><td><strong>TIME</strong></td><td>翻译代码的时间，格式为“hh:mm:ss”</td></tr></tbody></table>
 
-<details>
-
-<summary>Demo</summary>
-
-
+Demo
 
 ```c
 // predef.c -- predefined identifiers
@@ -400,19 +349,16 @@ void why_me()
 // (base) kimshan@Mac
 ```
 
-</details>
 
-## #line、#error
+## `#line`、`#error`
 
-\#line可以重置行号和文件名
+`#line`可以重置行号和文件名
 
-\#error，这个需要 C11
+`#error`，这个需要 C11
 
-## #pragma
+## `#pragma`
 
-<details>
-
-<summary>#pragma 有什么用(GPT)</summary>
+`#pragma` 有什么用(GPT)
 
 \#pragma 是一个指令，用于给编译器一些指示。它不是ISO C的一部分，不过大多数C/C++编译器都支持它，只是支持的pragma不同。 下面是一些常见的用法：
 
@@ -422,15 +368,10 @@ void why_me()
 4. **指定段或函数属性**：在Windows平台上，可以使用#pragma来指定DLL导出的函数和数据。
 5. **消息输出**：`#pragma message("`string`")` 可以让编译器输出自定义的消息到屏幕上。 不同的编译器可能支持不同的#pragma指令，因此在使用时需要参考具体的编译器文档。
 
-</details>
 
 ## 泛型（C11）
 
-<details>
-
-<summary>Demo</summary>
-
-
+Demo
 
 ```c
 //  mytype.c
@@ -462,22 +403,18 @@ int main(void)
 // other
 ```
 
-</details>
 
 ## 内联函数（C99）
 
 普通函数通过堆栈调用。内联函数会把调用的地方替换成函数内容
 
-<details>
-
-<summary>Demo</summary>
-
 在C语言中，`inline` 关键字用于告诉编译器将一个函数定义为内联函数。内联函数在调用时不会产生函数调用开销，因为它会在调用点直接展开成函数体代码。这通常用于函数体较小的函数，以减少函数调用的开销。 以下是一个简单的 C 语言内联函数的例子：
 
-<pre class="language-c"><code class="lang-c">#include &#x3C;stdio.h>
+```c
+#include <stdio.h>
 // 定义一个内联函数，用于计算两个数的和
-<strong>inline int add(int a, int b) {
-</strong>    return a + b;
+inline int add(int a, int b) {
+    return a + b;
 }
 int main() {
     int x = 5;
@@ -486,11 +423,9 @@ int main() {
     printf("The sum is: %d\n", sum);
     return 0;
 }
-</code></pre>
+```
 
 在这个例子中，`add` 函数被声明为 `inline`，这意味着编译器会在每次调用 `add` 函数时，直接将 `add` 函数的代码插入到调用点，而不是生成一个函数调用。这通常会提高程序的运行效率，特别是当函数体较小时。
-
-</details>
 
 ## 问题集锦
 
