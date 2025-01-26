@@ -9,9 +9,7 @@
 4. \*：解引用（`val = *ptr;`），把 ptr 所指向的数据赋值给 val。
 5. 运算优先级：\*与++相同，顺序从右往左
 
-<details>
-
-<summary>优先级</summary>
+优先级
 
 **“顺序从右到左”我的理解是，都在指针左边比如`*++p2`就先++再\*，但如果是`*p1++`那就还是先\*再++**
 
@@ -41,17 +39,12 @@ int main(void)
 //   *p1 = 200,   *p2 = 200,     *p3 = 301
 ```
 
-</details>
 
 6. pintf 指针：%p
 7. 指向下一个内容：++
 8. 严重错误：解引用未初始化的指针，相当于在不知道什么地方改变了数据
 
-<details>
-
-<summary>解引用未初始化的指针</summary>
-
-
+解引用未初始化的指针
 
 ```c
 #include <stdio.h>
@@ -72,7 +65,6 @@ int main()
 }
 ```
 
-</details>
 
 ## 指针与数组
 
@@ -80,33 +72,28 @@ int main()
 * array代表数组 eg `int array[32];`
 * 已经把指针指向数组：`p = array[0];`
 
-<details>
+指针指向数组；通过指针访问数组
 
-<summary> 指针指向数组；通过指针访问数组</summary>
-
-<pre class="language-c"><code class="lang-c">#include &#x3C;stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
     int array[8] = {0, 1, 2, 3, 4, 5, 6, 7};
-<strong>    int *p1 = array;
-</strong><strong>    int *p2 = &#x26;array[0];
-</strong>
-    for (int i = 0; i &#x3C; 8; i++)
+    int *p1 = array;
+    int *p2 = &array[0];
+
+    for (int i = 0; i < 8; i++)
     {
-<strong>        printf("%d ", *(p1 + i)); // 0 1 2 3 4 5 6 7
-</strong><strong>        printf("%d ", *(p2 + i)); // 0 1 2 3 4 5 6 7
-</strong>    }
+        printf("%d ", *(p1 + i)); // 0 1 2 3 4 5 6 7
+        printf("%d ", *(p2 + i)); // 0 1 2 3 4 5 6 7
+    }
 
     return 0;
 
-</code></pre>
+```
 
-</details>
-
-<details>
-
-<summary>指针与二维数组：精髓在于，指针是“一层一层”指下去的</summary>
+指针与二维数组：精髓在于，指针是“一层一层”指下去的
 
 ```c
 /* zippo1.c --  zippo info */
@@ -139,11 +126,7 @@ int main(void)
 // *(*(zippo+2) + 1) = 3
 ```
 
-</details>
-
-<details>
-
-<summary>指针与二维数组，注意，[]优先级高于*！</summary>
+指针与二维数组，注意，[]优先级高于*！
 
 ```c
 /* zippo2.c --  zippo info via a pointer variable */
@@ -179,18 +162,13 @@ int main(void)
 // *(*(pz+2) + 1) = 3
 ```
 
-</details>
-
-* 符合字面量：比如`(int [2]){10,20}`
-
-<details>
-
-<summary>Demo</summary>
 
 
+符合字面量：比如`(int [2]){10,20}`
 
-<pre class="language-c"><code class="lang-c">// flc.c -- funny-looking constants
-#include &#x3C;stdio.h>
+```c
+// flc.c -- funny-looking constants
+#include <stdio.h>
 #define COLS 4
 int sum2d(const int ar[][COLS], int rows);
 int sum(const int ar[], int n);
@@ -200,13 +178,13 @@ int main(void)
     int * pt1;
     int (*pt2)[COLS];
     
-<strong>    pt1 = (int [2]) {10, 20};
-</strong><strong>    pt2 = (int [2][COLS]) { {1,2,3,-9}, {4,5,6,-8} };
-</strong>    
+    pt1 = (int [2]) {10, 20};
+    pt2 = (int [2][COLS]) { {1,2,3,-9}, {4,5,6,-8} };
+    
     total1 = sum(pt1, 2);
     total2 = sum2d(pt2, 2);
-<strong>    total3 = sum((int []){4,4,4,5,5,5}, 6);
-</strong>    printf("total1 = %d\n", total1);
+    total3 = sum((int []){4,4,4,5,5,5}, 6);
+    printf("total1 = %d\n", total1);
     printf("total2 = %d\n", total2);
     printf("total3 = %d\n", total3);
     
@@ -218,7 +196,7 @@ int sum(const int ar[], int n)
     int i;
     int total = 0;
     
-    for( i = 0; i &#x3C; n; i++)
+    for( i = 0; i < n; i++)
         total += ar[i];
     
     return total;
@@ -230,30 +208,24 @@ int sum2d(const int ar[][COLS], int rows)
     int c;
     int tot = 0;
     
-    for (r = 0; r &#x3C; rows; r++)
-        for (c = 0; c &#x3C; COLS; c++)
+    for (r = 0; r < rows; r++)
+        for (c = 0; c < COLS; c++)
             tot += ar[r][c];
     
     return tot;
 }
+```
 
-// (base) kimshan@MacBook-Pro output % ./"flc"
-// total1 = 30
-// total2 = 4
-// total3 = 2
-</code></pre>
-
-</details>
+```bash
+(base) kimshan@MacBook-Pro output % ./"flc"
+total1 = 30
+total2 = 4
+total3 = 2
+```
 
 ## 指针与函数
 
-* 通过 int array\[] 和 int \*array，作为形参是一样的
-
-<details>
-
-<summary>int array[] 与 int *array</summary>
-
-
+通过 `int array\[]` 和 `int *array`，作为形参是一样的
 
 ```c
 #include <stdio.h>
@@ -282,26 +254,21 @@ int main()
 }
 ```
 
-</details>
+悬空指针：指针指向一个地方，但是那个地方作用域已经结束（修改一行上边的代码）
 
-* 悬空指针：指针指向一个地方，但是那个地方作用域已经结束
-
-<details>
-
-<summary> 悬空指针（修改一行上边的代码）</summary>
-
-<pre class="language-c"><code class="lang-c">#include &#x3C;stdio.h>
-#include &#x3C;stdlib.h>
+```c
+#include <stdio.h>
+#include <stdlib.h>
 
 int *merge(int *array1, int array2[], int len1, int len2)
 {
     int res[len1 + len2];
-    for (int i = 0; i &#x3C; len1 + len2; i++)
+    for (int i = 0; i < len1 + len2; i++)
         *(res + i) = *(array1 + i);
-    for (int i = 0; i &#x3C; +len2; i++)
+    for (int i = 0; i < +len2; i++)
         res[i + len1] = array2[i];
-<strong>    return res; // wrong!但是编译器能通过
-</strong>}
+    return res; // wrong!但是编译器能通过
+}
 
 int main()
 {
@@ -312,20 +279,13 @@ int main()
     int *array3 = malloc(sizeof(int) * (LEN1 + LEN2));
     array3 = merge(array1, array2, LEN1, LEN2);
 
-    for (int i = 0; i &#x3C; LEN1 + LEN2; i++)
+    for (int i = 0; i < LEN1 + LEN2; i++)
         printf("%d ", *(array3 + i));
     return 0;
 }
+```
 
-</code></pre>
-
-</details>
-
-* 形参对原地址的变量的保护
-
-<details>
-
-<summary>形参+const，这样如果不小心写了<code>array[i]++</code>，编译器就会捕获这个错误</summary>
+形参对原地址的变量的保护，形参+const，这样如果不小心写了<code>array[i]++</code>，编译器就会捕获这个错误
 
 ```c
 int sum(const int *array, int n)
@@ -337,25 +297,22 @@ int sum(const int *array, int n)
 }
 ```
 
-</details>
-
 * 多重指针/多维数组，在函数里边怎么传参数
   * 不能这样声明：`int sum2(int ar[][], int rows);`，两个都是\[]不行
   * 需要这样：`int sum2(int ar[][COL], int rows);`，COL 放在数组中，rows 单独传入
   * 只能忽略最左边的：`int sum4d(int ar[][2][3][4], int rows);`因为C 规定数组的维数必须是固定的。
 
-<details>
+有很多等价写法
 
-<summary> 有很多等价写法</summary>
-
-<pre class="language-c"><code class="lang-c">// array2d.c -- functions for 2d arrays
-#include &#x3C;stdio.h>
+```c
+// array2d.c -- functions for 2d arrays
+#include <stdio.h>
 #define ROWS 3
 #define COLS 4
-<strong>void sum_rows(int ar[][COLS], int rows);
-</strong><strong>void sum_cols(int[][COLS], int);      // ok to omit names
-</strong><strong>int sum2d(int (*ar)[COLS], int rows); // another syntax
-</strong>int main(void)
+void sum_rows(int ar[][COLS], int rows);
+void sum_cols(int[][COLS], int);      // ok to omit names
+int sum2d(int (*ar)[COLS], int rows); // another syntax
+int main(void)
 {
     int junk[ROWS][COLS] = {
         {2, 4, 6, 8},
@@ -375,10 +332,10 @@ void sum_rows(int ar[][COLS], int rows)
     int c;
     int tot;
 
-    for (r = 0; r &#x3C; rows; r++)
+    for (r = 0; r < rows; r++)
     {
         tot = 0;
-        for (c = 0; c &#x3C; COLS; c++)
+        for (c = 0; c < COLS; c++)
             tot += ar[r][c];
         printf("row %d: sum = %d\n", r, tot);
     }
@@ -390,10 +347,10 @@ void sum_cols(int ar[][COLS], int rows)
     int c;
     int tot;
 
-    for (c = 0; c &#x3C; COLS; c++)
+    for (c = 0; c < COLS; c++)
     {
         tot = 0;
-        for (r = 0; r &#x3C; rows; r++)
+        for (r = 0; r < rows; r++)
             tot += ar[r][c];
         printf("col %d: sum = %d\n", c, tot);
     }
@@ -405,8 +362,8 @@ int sum2d(int ar[][COLS], int rows)
     int c;
     int tot = 0;
 
-    for (r = 0; r &#x3C; rows; r++)
-        for (c = 0; c &#x3C; COLS; c++)
+    for (r = 0; r < rows; r++)
+        for (c = 0; c < COLS; c++)
             tot += ar[r][c];
 
     return tot;
@@ -421,17 +378,9 @@ int sum2d(int ar[][COLS], int rows)
 // col 2: sum = 21
 // col 3: sum = 23
 // Sum of all elements = 8
-</code></pre>
+```
 
-</details>
-
-* 以上的写法很不方便，所以 C11 引入了 VLA 变长数组
-
-<details>
-
-<summary>Demo</summary>
-
-
+以上的写法很不方便，所以 C11 引入了 VLA 变长数组
 
 ```c
 //vararr2d.c -- functions using VLAs
@@ -498,5 +447,3 @@ int sum2d(int rows, int cols, int ar[rows][cols])
 // 3x10 VLA
 // Sum of all elements = 270
 ```
-
-</details>

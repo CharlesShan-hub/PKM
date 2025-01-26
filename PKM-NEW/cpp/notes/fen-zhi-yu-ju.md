@@ -31,13 +31,13 @@ else
 ## 6.2 逻辑表达式
 
 * 逻辑 `OR (||)`、逻辑 `AND (&&)`和逻辑 `NOT (!)`
-* 标识符`and`、`or`和`not`都是C++保留字，可以直接使用，C 需要加入[iso646.h.md](../c/library/iso646.h.md "mention")
+* 标识符`and`、`or`和`not`都是C++保留字，可以直接使用，C 需要加入[[../../c/library/iso646|iso646]]
 
 ***
 
 ## 6. 3 字符函数库 cctype
 
-* [ctypes.h.md](../c/library/ctypes.h.md "mention")
+* [[../../c/library/ctypes|ctypes]]
 
 ***
 

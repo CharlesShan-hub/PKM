@@ -1,3 +1,3 @@
 # cstring
 
-[string.h.md](../../c/library/string.h.md "mention")
+[[../../c/library/string|string]]
