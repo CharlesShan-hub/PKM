@@ -11,9 +11,9 @@ John Gruber于2004年创建了一种轻量级标记语言 Markdown，用于使�
 
 * [[notes/markdown-syntex|markdown-syntex]]
 
-markdown 语言的目标是使人们能够“使用易于阅读和编写的纯文本格式进行编写，并选择将其转换为结构有效的XHTML（或HTML）。从2012年开始，包括Jeff Atwood和John MacFarlane在内的一群人发起了Atwood所说的标准化工作。
+markdown 语言的目标是使人们能够“使用易于阅读和编写的纯文本格式进行编写，并选择将其转换为结构有效的XHTML（或HTML）。从2012年开始，包括Jeff Atwood和John MacFarlane在内的一群人发起了Atwood所说的标准化工作。下图[2]是markdown渲染过程。
 
-<img src="../../.gitbook/assets/md-render.excalidraw.svg" alt="markdown render workflow[2]" class="gitbook-drawing">
+![[assets/render-workflow-drawing|1000]]
 
 人们总结了 markdown 转其他标记语言的工具列表\[3]。其中 commonmark\[4] 是一个持续更新的很好的转换的实现标准。
 
