@@ -3,9 +3,7 @@
 
 ## 编译多个 c 文件
 
-<details>
-
-<summary>gcc file1.c file2.c</summary>
+gcc file1.c file2.c
 
 ```c
 /* hotel.h -- constants and declarations for hotel.c */
@@ -174,34 +172,28 @@ Thank you and goodbye.
 ```
 
 
-
-</details>
-
 ## 命令行参数
 
-<details>
-
-<summary>Demo</summary>
-
-<pre class="language-c"><code class="lang-c">/* repeat.c -- main() with arguments */
-#include &#x3C;stdio.h>
-<strong>int main(int argc, char *argv[])
-</strong>{
+```c
+/* repeat.c -- main() with arguments */
+#include <stdio.h>
+int main(int argc, char *argv[])
+{
     int count;
 
     printf("The command line has %d arguments:\n", argc - 1);
-    for (count = 1; count &#x3C; argc; count++)
-<strong>        printf("%d: %s\n", count, argv[count]);
-</strong>    printf("\n");
+    for (count = 1; count < argc; count++)
+        printf("%d: %s\n", count, argv[count]);
+    printf("\n");
 
     return 0;
 }
+```
 
-// (base) kimshan@MacBook-Pro output % ./"repeat" a b c
-// The command line has 3 arguments:
-// 1: a
-// 2: b
-// 3: c
-</code></pre>
-
-</details>
+```shell
+(base) kimshan@MacBook-Pro output % ./"repeat" a b c
+The command line has 3 arguments:
+1: a
+2: b
+3: c
+```

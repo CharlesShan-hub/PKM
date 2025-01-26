@@ -2,9 +2,7 @@
 
 ## 位运算符
 
-<details>
-
-<summary>按位与，或，非，异或</summary>
+按位与，或，非，异或
 
 ```c
 #include <stdio.h>
@@ -46,13 +44,7 @@ int main()
 
 ```
 
-</details>
-
-<details>
-
-<summary>移位：左右</summary>
-
-
+移位：左右
 
 ```c
 #include <stdio.h>
@@ -114,20 +106,14 @@ int main()
 }
 ```
 
-</details>
 
 ## 位字段
 
-<details>
-
-<summary>Demo</summary>
-
-
-
-<pre class="language-c"><code class="lang-c">/* dualview.c -- bit fields and bitwise operators */
-#include &#x3C;stdio.h>
-#include &#x3C;stdbool.h>
-#include &#x3C;limits.h>
+```c
+/* dualview.c -- bit fields and bitwise operators */
+#include <stdio.h>
+#include <stdbool.h>
+#include <limits.h>
 /* BIT-FIELD CONSTANTS */
 /* line styles     */
 #define SOLID 0
@@ -162,17 +148,17 @@ int main()
 
 const char *colors[8] = {"black", "red", "green", "yellow",
                          "blue", "magenta", "cyan", "white"};
-<strong>struct box_props
-</strong><strong>{
-</strong><strong>    bool opaque : 1;
-</strong><strong>    unsigned int fill_color : 3;
-</strong><strong>    unsigned int : 4;
-</strong><strong>    bool show_border : 1;
-</strong><strong>    unsigned int border_color : 3;
-</strong><strong>    unsigned int border_style : 2;
-</strong><strong>    unsigned int : 2;
-</strong><strong>};
-</strong>
+struct box_props
+{
+    bool opaque : 1;
+    unsigned int fill_color : 3;
+    unsigned int : 4;
+    bool show_border : 1;
+    unsigned int border_color : 3;
+    unsigned int border_style : 2;
+    unsigned int : 2;
+};
+
 union Views /* look at data as struct or as unsigned short */
 {
     struct box_props st_view;
@@ -190,20 +176,20 @@ int main(void)
     char bin_str[8 * sizeof(unsigned int) + 1];
 
     printf("Original box settings:\n");
-    show_settings(&#x26;box.st_view);
+    show_settings(&box.st_view);
     printf("\nBox settings using unsigned int view:\n");
     show_settings1(box.us_view);
 
     printf("bits are %s\n",
            itobs(box.us_view, bin_str));
-    box.us_view &#x26;= ~FILL_MASK;               /* clear fill bits */
+    box.us_view &= ~FILL_MASK;               /* clear fill bits */
     box.us_view |= (FILL_BLUE | FILL_GREEN); /* reset fill */
     box.us_view ^= OPAQUE;                   /* toggle opacity */
     box.us_view |= BORDER_RED;               /* wrong approach */
-    box.us_view &#x26;= ~STYLE_MASK;              /* clear style bits */
+    box.us_view &= ~STYLE_MASK;              /* clear style bits */
     box.us_view |= B_DOTTED;                 /* set style to dotted */
     printf("\nModified box settings:\n");
-    show_settings(&#x26;box.st_view);
+    show_settings(&box.st_view);
     printf("\nBox settings using unsigned int view:\n");
     show_settings1(box.us_view);
     printf("bits are %s\n",
@@ -240,13 +226,13 @@ void show_settings(const struct box_props *pb)
 void show_settings1(unsigned short us)
 {
     printf("box is %s.\n",
-           (us &#x26; OPAQUE) == OPAQUE ? "opaque" : "transparent");
+           (us & OPAQUE) == OPAQUE ? "opaque" : "transparent");
     printf("The fill color is %s.\n",
-           colors[(us >> 1) &#x26; 07]);
+           colors[(us >> 1) & 07]);
     printf("Border %s.\n",
-           (us &#x26; BORDER) == BORDER ? "shown" : "not shown");
+           (us & BORDER) == BORDER ? "shown" : "not shown");
     printf("The border style is ");
-    switch (us &#x26; STYLE_MASK)
+    switch (us & STYLE_MASK)
     {
     case B_SOLID:
         printf("solid.\n");
@@ -261,7 +247,7 @@ void show_settings1(unsigned short us)
         printf("unknown type.\n");
     }
     printf("The border color is %s.\n",
-           colors[(us >> 9) &#x26; 07]);
+           colors[(us >> 9) & 07]);
 }
 
 char *itobs(int n, char *ps)
@@ -270,7 +256,7 @@ char *itobs(int n, char *ps)
     const static int size = CHAR_BIT * sizeof(int);
 
     for (i = size - 1; i >= 0; i--, n >>= 1)
-        ps[i] = (01 &#x26; n) + '0';
+        ps[i] = (01 & n) + '0';
     ps[size] = '\0';
 
     return ps;
@@ -306,7 +292,4 @@ char *itobs(int n, char *ps)
 // The border style is dotted.
 // The border color is yellow.
 // bits are 00000000000000000001011100001100
-</code></pre>
-
-</details>
-
+```
