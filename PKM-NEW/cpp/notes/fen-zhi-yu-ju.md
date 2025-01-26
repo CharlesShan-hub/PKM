@@ -52,9 +52,7 @@ int c = a > b ? a : b;
 
 ## 6.5 switch
 
-<details>
-
-<summary>enum + switch</summary>
+enum + switch
 
 ```cpp
 // enum.cpp -- using enum
@@ -91,7 +89,7 @@ int main()
 
 ```
 
-```
+```bash
 (base) kimshan@MacBook-Pro output % ./"enum"
 Enter color code (0-6): 2
 Her shoes were yellow.
@@ -100,8 +98,6 @@ Her eyes were violet.
 Enter color code (0-6): 7
 Bye
 ```
-
-</details>
 
 ***
 
@@ -112,10 +108,6 @@ Bye
 ***
 
 ## 6.7 读取数字的循环
-
-<details>
-
-<summary>Demo</summary>
 
 ```cpp
 // cingolf.cpp -- non-numeric input skipped
@@ -152,7 +144,7 @@ int main()
 }
 ```
 
-```
+```bash
 (base) kimshan@MacBook-Pro output % ./"cingolf"
 Please enter your golf scores.
 You must enter 5 rounds.
@@ -164,15 +156,11 @@ round #5: 95
 94.2 = average score 5 rounds
 ```
 
-</details>
-
 ***
 
 ## 6.8 简单文件输入/输出
 
-<details>
-
-<summary>读文件并做错误处理的 Demo</summary>
+读文件并做错误处理的 Demo
 
 ```cpp
 // sumafile.cpp -- functions with an array argument
@@ -225,7 +213,5 @@ int main()
     // cin.get();
     return 0;
 }
-
 ```
 
-</details>

@@ -135,10 +135,6 @@ for(;condition;)
 
 ### if, else
 
-* [[../details/if-example|👉 example]]
-
-### ?:（条件运算符）
-
 ```c
 if(condition)
     statement1
@@ -146,7 +142,9 @@ else
     statement2
 ```
 
-等价于
+* [[../details/if-example|👉 example]]
+
+### ?:（条件运算符）
 
 ```c
 condition ? statement1 : statement2
@@ -173,118 +171,10 @@ break和 continue 都是针对本轮循环
 
 ### switch
 
-本质就是 if else
-
-```c
-/* animals.c -- uses a switch statement */
-#include <stdio.h>
-#include <ctype.h>
-int main(void)
-{
-    char ch;
-    
-    printf("Give me a letter of the alphabet, and I will give ");
-    printf("an animal name\nbeginning with that letter.\n");
-    printf("Please type in a letter; type # to end my act.\n");
-    while ((ch = getchar()) != '#')
-    {
-        if('\n' == ch)
-            continue;
-        if (islower(ch))     /* lowercase only          */
-            switch (ch)
-        {
-            case 'a' :
-                printf("argali, a wild sheep of Asia\n");
-                break;
-            case 'b' :
-                printf("babirusa, a wild pig of Malay\n");
-                break;
-            case 'c' :
-                printf("coati, racoonlike mammal\n");
-                break;
-            case 'd' :
-                printf("desman, aquatic, molelike critter\n");
-                break;
-            case 'e' :
-                printf("echidna, the spiny anteater\n");
-                break;
-            case 'f' :
-                printf("fisher, brownish marten\n");
-                break;
-            default :
-                printf("That's a stumper!\n");
-        }                /* end of switch           */
-        else
-            printf("I recognize only lowercase letters.\n");
-        while (getchar() != '\n')
-            continue;      /* skip rest of input line */
-        printf("Please type another letter or a #.\n");
-    }                        /* while loop end          */
-    printf("Bye!\n");
-    
-    return 0;
-}
-
-```
-
-
-
-如果没有 break 就会进入下一个代码块，可以利用这个特性，制作多重标签
-
-```c
-// vowels.c -- uses multiple labels
-#include <stdio.h>
-int main(void)
-{
-    char ch;
-    int a_ct, e_ct, i_ct, o_ct, u_ct;
-
-    a_ct = e_ct = i_ct = o_ct = u_ct = 0;
-
-    printf("Enter some text; enter # to quit.\n");
-    while ((ch = getchar()) != '#')
-    {
-        switch (ch)
-        {
-        case 'a':
-        case 'A':
-            a_ct++;
-            break;
-        case 'e':
-        case 'E':
-            e_ct++;
-            break;
-        case 'i':
-        case 'I':
-            i_ct++;
-            break;
-        case 'o':
-        case 'O':
-            o_ct++;
-            break;
-        case 'u':
-        case 'U':
-            u_ct++;
-            break;
-        default:
-            break;
-        } // end of switch
-    } // while loop end
-    printf("number of vowels:   A    E    I    O    U\n");
-    printf("                 %4d %4d %4d %4d %4d\n",
-           a_ct, e_ct, i_ct, o_ct, u_ct);
-
-    return 0;
-}
-
-// (base) kimshan@MacBook-Pro output % ./"vowels"
-// Enter some text; enter # to quit.
-// A
-// a
-// #
-// number of vowels:   A    E    I    O    U
-//                     2    0    0
-```
+* 本质就是 if else
+* switch的内容必须是整数或字符常量表达式，而不能是浮点数、字符串或其他数据类型
+* [[../details/switch-example1|👉 switch简单案例]]
+* 如果没有 break 就会进入下一个代码块，可以利用这个特性，制作多重标签：[[../details/switch-example2|👉案例]]
 
 ***
 
@@ -292,56 +182,4 @@ int main(void)
 
 ### goto
 
-唯一的 goto 使用场景：跳出多重循环
-
-```c
-#include <stdio.h>
-
-int main()
-{
-
-    for (int i = 0; i < 3; ++i)
-    {
-        for (int j = 0; j < 3; ++j)
-        {
-            for (int k = 0; k < 3; ++k)
-            {
-                printf("i: %d, j: %d, k: %d\n", i, j, k);
-                // 假设当 i == 1, j == 2, k == 2 时，我们需要跳出所有循环
-                if (i == 1 && j == 2 && k == 2)
-                {
-                    goto end_of_loops;
-                }
-            }
-        }
-    }
-
-end_of_loops:
-    printf("跳出所有循环。\n");
-test:
-    printf("不调用也会 print\n");
-
-    return 0;
-}
-// (base) kimshan@MacBook-Pro output % ./"a"
-// i: 0, j: 0, k: 0
-// i: 0, j: 0, k: 1
-// i: 0, j: 0, k: 2
-// i: 0, j: 1, k: 0
-// i: 0, j: 1, k: 1
-// i: 0, j: 1, k: 2
-// i: 0, j: 2, k: 0
-// i: 0, j: 2, k: 1
-// i: 0, j: 2, k: 2
-// i: 1, j: 0, k: 0
-// i: 1, j: 0, k: 1
-// i: 1, j: 0, k: 2
-// i: 1, j: 1, k: 0
-// i: 1, j: 1, k: 1
-// i: 1, j: 1, k: 2
-// i: 1, j: 2, k: 0
-// i: 1, j: 2, k: 1
-// i: 1, j: 2, k: 2
-// 跳出所有循环。
-// 不调用也会 print
-```
+唯一的 goto 使用场景：跳出多重循环（[[../details/goto-example|👉案例]]）
