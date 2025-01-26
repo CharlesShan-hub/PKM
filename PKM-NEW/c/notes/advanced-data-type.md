@@ -8,403 +8,291 @@
 
 ## struct
 
-record in pascal
+[[../details/struct-pascal-c|👉 struct：Pascal vs C]]
+
+1. 声明
+	1. 先定义结构再声明变量
+		```c
+		struct book {
+		    char title[MAXTITL];
+		    char author[MAXAUTL];
+		    float value;
+		};
+		
+		struct book library, *p_lib;
+		```
+	2. 定义结构与声明变量一起完成
+		```c
+		struct book { 
+		    char title[MAXTITL];
+		    char author[MAXAUTL];
+		    float value;
+		} library, *p_lib;
+		```
+	3. 声明结构数组
+		```c
+		struct book library[MAXBOOKS];
+		```
+	4. 嵌套的结构的声明
+		```c
+		struct book {
+			char title[MAXTITL];
+			char author[MAXAUTL];
+			float value;
+			struct book[MAXRELATE] res;
+		} library[MAXBOOKS];
+		```
+	5. typedef
+		```c
+		typedef struct BiTNode
+		{
+		    int data;
+		    struct BiTNode *lchild;
+		    struct BiTNode *rchild;
+		    //struct BiTNode *parent; // 变成了 三叉链表
+		}BiTNode,*BiTree;
+		```
+2. 初始化
+	1. 按顺序
+		```c
+		struct book library = 
+		{
+		    "The Pious Pirate and te Devious Damsel",
+		    "Rennee Vivotte",
+		    1.95
+		};
+		```
+	2. 按成员
+		```c
+		struct book gift = 
+		{
+		    .value = 25.99;
+		    .author = "Me";
+		    .title = "You";
+		}
+		```
+3. 访问
+	```c
+	scanf("%f", &library.value);
+	s_gets(library.author, MAXAUTL);
+	
+	scanf("%f", &p_lib->value);
+	s_gets(p_lib->author, MAXAUTL);
+	```
+4. struct + malloc
+	1. struct 中声明字符串然后 scanf 进来会导致错误（可能把字符串保存在任意位置）
+		```c
+		#include <stdio.h>
+		
+		#define LEN 20
+		
+		struct names {
+		    char first[LEN];
+		    char last[LEN];
+		};
+		
+		int main() {
+		    struct names veep = {"Talia", "Summers"};
+		    struct pnames treas = {"Brad", "Fallingjaw"};
+		    
+		    printf("%s and %s\n", veep.first, treas.first);
+		    
+		    struct names accountant;
+		    struct names attorney;
+		
+		    printf("Enter the last name of your accountant: ");
+		    scanf("%s", accountant.last);
+		
+		    printf("Enter the last name of your attorney: ");
+		    scanf("%s", attorney.last); /* 这里有一个潜在的危险 */
+		    
+		    return 0;
+		}
+		```
+	2. 现在更好的办法是，struct 里边不要字符串，而是改成指针，每次去 malloc
+		```c
+		// names3.c -- use pointers and malloc()
+		#include <stdio.h>
+		#include <string.h>   // for strcpy(), strlen()
+		#include <stdlib.h>   // for malloc(), free()
+		#define SLEN 81
+		struct namect {
+		    char * fname;  // using pointers
+		    char * lname;
+		    int letters;
+		};
+		
+		void getinfo(struct namect *);        // allocates memory
+		void makeinfo(struct namect *);
+		void showinfo(const struct namect *);
+		void cleanup(struct namect *);        // free memory when done
+		char * s_gets(char * st, int n);
+		
+		int main(void)
+		{
+		    struct namect person;
+		    
+		    getinfo(&person);
+		    makeinfo(&person);
+		    showinfo(&person);
+		    cleanup(&person);
+		    
+		    return 0;
+		}
+		
+		void getinfo (struct namect * pst)
+		{
+		    char temp[SLEN];
+		    printf("Please enter your first name.\n");
+		    s_gets(temp, SLEN);
+		    // allocate memory to hold name
+		    pst->fname = (char *) malloc(strlen(temp) + 1);
+		    // copy name to allocated memory
+		    strcpy(pst->fname, temp);
+		    printf("Please enter your last name.\n");
+		    s_gets(temp, SLEN);
+		    pst->lname = (char *) malloc(strlen(temp) + 1);
+		    strcpy(pst->lname, temp);
+		}
+		
+		void makeinfo (struct namect * pst)
+		{
+		    pst->letters = strlen(pst->fname) +
+		    strlen(pst->lname);
+		}
+		
+		void showinfo (const struct namect * pst)
+		{
+		    printf("%s %s, your name contains %d letters.\n",
+		           pst->fname, pst->lname, pst->letters);
+		}
+		
+		void cleanup(struct namect * pst)
+		{
+		    free(pst->fname);
+		    free(pst->lname);
+		}
+		
+		char * s_gets(char * st, int n)
+		{
+		    char * ret_val;
+		    char * find;
+		    
+		    ret_val = fgets(st, n, stdin);
+		    if (ret_val)
+		    {
+		        find = strchr(st, '\n');   // look for newline
+		        if (find)                  // if the address is not NULL,
+		            *find = '\0';          // place a null character there
+		        else
+		            while (getchar() != '\n')
+		                continue;          // dispose of rest of line
+		    }
+		    return ret_val;
+		}
+		```
+		
+5. struct 复合字面量（C99）
+	```c
+	/* complit.c -- compound literals */
+	#include <stdio.h>
+	#define MAXTITL  41
+	#define MAXAUTL  31
+	
+	struct book {          // structure template: tag is book
+	    char title[MAXTITL];
+	    char author[MAXAUTL];
+	    float value;
+	};
+	
+	int main(void)
+	{
+	    struct book readfirst;
+	    int score;
+	    
+	    printf("Enter test score: ");
+	    scanf("%d",&#x26;score);
+	    
+	    if(score >= 84)
+	        readfirst = (struct book) {"Crime and Punishment",
+	            "Fyodor Dostoyevsky",
+	            11.25};
+	    else
+	        readfirst = (struct book) {"Mr. Bouncy's Nice Hat",
+	            "Fred Winsome",
+	            5.99};
+	    printf("Your assigned reading:\n");
+	    printf("%s by %s: $%.2f\n",readfirst.title,
+	           readfirst.author, readfirst.value);
+	    
+	    return 0;
+	}
+	```
+
+6. 伸缩型成员变量（C99）：结构体里边的数组不写 MAX，只写 方括号，这样后边的 malloc 就要去计算大小了
+	```c
+	// flexmemb.c -- flexible array member (C99 feature)
+	#include <stdio.h>
+	#include <stdlib.h>
+	
+	struct flex
+	{
+	    size_t count;
+	    double average;
+	    double scores[];   // flexible array member
+	};
+	
+	void showFlex(const struct flex * p);
+	
+	int main(void)
+	{
+	    struct flex * pf1, *pf2;
+	    int n = 5;
+	    int i;
+	    int tot = 0;
+	    
+	    // allocate space for structure plus array
+	    pf1 = malloc(sizeof(struct flex) + n * sizeof(double));
+	    pf1->count = n;
+	    for (i = 0; i < n; i++)
+	    {
+	        pf1->scores[i] = 20.0 - i;
+	        tot += pf1->scores[i];
+	    }
+	    pf1->average = tot / n;
+	    showFlex(pf1);
+	    
+	    n = 9;
+	    tot = 0;
+	    pf2 = malloc(sizeof(struct flex) + n * sizeof(double));
+	    pf2->count = n;
+	    for (i = 0; i < n; i++)
+	    {
+	        pf2->scores[i] = 20.0 - i/2.0;
+	        tot += pf2->scores[i];
+	    }
+	    pf2->average = tot / n;
+	    showFlex(pf2);
+	    free(pf1);
+	    free(pf2);
+	    
+	    return 0;
+	}
+	
+	void showFlex(const struct flex * p)
+	{
+	    int i;
+	    printf("Scores : ");
+	    for (i = 0; i < p->count; i++)
+	        printf("%g ", p->scores[i]);
+	    printf("\nAverage: %g\n", p->average);
+	}
+	```
 
-```pascal
-program PrintBirthday;
 
-type
-    birthday = record
-        year : integer;
-        month : integer;
-        day : integer;
-    end;
 
-var
-    b : birthday;
 
-begin
-    b := (year: 2000; month: 1; day: 1); // 创建并初始化生日记录
 
-    // 打印生日
-    writeln('Birthday: ', b.day, '/', b.month, '/', b.year);
-end.
-```
-
-struct in C
-
-```c
-//* book.c -- one-book inventory */
-#include &#x3C;stdio.h>
-#include &#x3C;string.h>
-char * s_gets(char * st, int n);
-#define MAXTITL  41      /* maximum length of title + 1         */
-#define MAXAUTL  31      /* maximum length of author's name + 1 */
-
-struct book {            /* structure template: tag is book     */
-    char title[MAXTITL];
-    char author[MAXAUTL];
-    float value;
-};                       /* end of structure template           */
-
-int main(void)
-{
-<strong>    struct book library; /* declare library as a book variable  */
-</strong>    
-    printf("Please enter the book title.\n");
-    s_gets(library.title, MAXTITL); /* access to the title portion         */
-    printf("Now enter the author.\n");
-    s_gets(library.author, MAXAUTL);
-    printf("Now enter the value.\n");
-    scanf("%f", &#x26;library.value);
-    printf("%s by %s: $%.2f\n",library.title,
-           library.author, library.value);
-    printf("%s: \"%s\" ($%.2f)\n", library.author,
-           library.title, library.value);
-    printf("Done.\n");
-    
-    return 0;
-}
-
-char * s_gets(char * st, int n)
-{
-    char * ret_val;
-    char * find;
-    
-    ret_val = fgets(st, n, stdin);
-    if (ret_val)
-    {
-        find = strchr(st, '\n');   // look for newline
-        if (find)                  // if the address is not NULL,
-            *find = '\0';          // place a null character there
-        else
-            while (getchar() != '\n')
-                continue;          // dispose of rest of line
-    }
-    return ret_val;
-}
-```
-
-```shell
-(base) kimshan@MacBook-Pro output % ./"book"
-Please enter the book title.
-Hello
-Now enter the author.
-Charles
-Now enter the value.
-10
-Hello by Charles: $10.00
-Charles: "Hello" ($10.00)
-Done.
-```
-
-struct 基础
-
-声明
-
-```c
-// 1
-struct book {            /* structure template: tag is book     */
-    char title[MAXTITL];
-    char author[MAXAUTL];
-    float value;
-};                       /* end of structure template           */
-struct book library, *p_lib;
-
-// 2 简化
-struct book { 
-    char title[MAXTITL];
-    char author[MAXAUTL];
-    float value;
-} library, *p_lib;
-
-// 3. 数组
-struct book library[MAXBOOKS];
-
-// 4. 嵌套
-struct book {
-    char title[MAXTITL];
-    char author[MAXAUTL];
-    float value;
-    struct book[MAXRELATE] res;
-} library[MAXBOOKS];
-
-// 5 typedef
-typedef struct BiTNode
-{
-    int data;
-    struct BiTNode *lchild;
-    struct BiTNode *rchild;
-    //struct BiTNode *parent; // 变成了 三叉链表
-}BiTNode,*BiTree;
-```
-
-初始化
-
-```c
-// 1. 按顺序
-struct book library = 
-{
-    "The Pious Pirate and te Devious Damsel",
-    "Rennee Vivotte",
-    1.95
-};
-
-// 2. 按成员
-struct book gift = 
-{
-    .value = 25.99;
-    .author = "Me";
-    .title = "You";
-}
-```
-
-访问
-
-```c
-scanf("%f", &library.value);
-s_gets(library.author, MAXAUTL);
-
-scanf("%f", &p_lib->value);
-s_gets(p_lib->author, MAXAUTL);
-```
-
-
-
-
-
-
-
-
-
-<details>
-
-<summary>struct + malloc</summary>
-
-struct 中声明字符串然后 scanf 进来会导致错误（可能把字符串保存在任意位置）
-
-<pre class="language-c"><code class="lang-c">#include &#x3C;stdio.h>
-
-#define LEN 20
-
-struct names {
-    char first[LEN];
-    char last[LEN];
-};
-
-int main() {
-    struct names veep = {"Talia", "Summers"};
-    struct pnames treas = {"Brad", "Fallingjaw"};
-    
-    printf("%s and %s\n", veep.first, treas.first);
-    
-<strong>    struct names accountant;
-</strong><strong>    struct names attorney;
-</strong>
-    printf("Enter the last name of your accountant: ");
-<strong>    scanf("%s", accountant.last);
-</strong>
-    printf("Enter the last name of your attorney: ");
-<strong>    scanf("%s", attorney.last); /* 这里有一个潜在的危险 */
-</strong>    
-    return 0;
-}
-</code></pre>
-
-现在更好的办法是，struct 里边不要字符串，而是改成指针，每次去 malloc
-
-<pre class="language-c"><code class="lang-c">// names3.c -- use pointers and malloc()
-#include &#x3C;stdio.h>
-#include &#x3C;string.h>   // for strcpy(), strlen()
-#include &#x3C;stdlib.h>   // for malloc(), free()
-#define SLEN 81
-struct namect {
-<strong>    char * fname;  // using pointers
-</strong><strong>    char * lname;
-</strong>    int letters;
-};
-
-void getinfo(struct namect *);        // allocates memory
-void makeinfo(struct namect *);
-void showinfo(const struct namect *);
-void cleanup(struct namect *);        // free memory when done
-char * s_gets(char * st, int n);
-
-int main(void)
-{
-    struct namect person;
-    
-    getinfo(&#x26;person);
-    makeinfo(&#x26;person);
-    showinfo(&#x26;person);
-    cleanup(&#x26;person);
-    
-    return 0;
-}
-
-void getinfo (struct namect * pst)
-{
-    char temp[SLEN];
-    printf("Please enter your first name.\n");
-    s_gets(temp, SLEN);
-    // allocate memory to hold name
-<strong>    pst->fname = (char *) malloc(strlen(temp) + 1);
-</strong>    // copy name to allocated memory
-    strcpy(pst->fname, temp);
-    printf("Please enter your last name.\n");
-    s_gets(temp, SLEN);
-<strong>    pst->lname = (char *) malloc(strlen(temp) + 1);
-</strong>    strcpy(pst->lname, temp);
-}
-
-void makeinfo (struct namect * pst)
-{
-    pst->letters = strlen(pst->fname) +
-    strlen(pst->lname);
-}
-
-void showinfo (const struct namect * pst)
-{
-    printf("%s %s, your name contains %d letters.\n",
-           pst->fname, pst->lname, pst->letters);
-}
-
-void cleanup(struct namect * pst)
-{
-    free(pst->fname);
-    free(pst->lname);
-}
-
-char * s_gets(char * st, int n)
-{
-    char * ret_val;
-    char * find;
-    
-    ret_val = fgets(st, n, stdin);
-    if (ret_val)
-    {
-        find = strchr(st, '\n');   // look for newline
-        if (find)                  // if the address is not NULL,
-            *find = '\0';          // place a null character there
-        else
-            while (getchar() != '\n')
-                continue;          // dispose of rest of line
-    }
-    return ret_val;
-}
-
-
-</code></pre>
-
-</details>
-
-<details>
-
-<summary>struct 复合字面量（C99）</summary>
-
-<pre class="language-c"><code class="lang-c">/* complit.c -- compound literals */
-#include &#x3C;stdio.h>
-#define MAXTITL  41
-#define MAXAUTL  31
-
-struct book {          // structure template: tag is book
-    char title[MAXTITL];
-    char author[MAXAUTL];
-    float value;
-};
-
-int main(void)
-{
-    struct book readfirst;
-    int score;
-    
-    printf("Enter test score: ");
-    scanf("%d",&#x26;score);
-    
-    if(score >= 84)
-<strong>        readfirst = (struct book) {"Crime and Punishment",
-</strong><strong>            "Fyodor Dostoyevsky",
-</strong><strong>            11.25};
-</strong>    else
-<strong>        readfirst = (struct book) {"Mr. Bouncy's Nice Hat",
-</strong><strong>            "Fred Winsome",
-</strong><strong>            5.99};
-</strong>    printf("Your assigned reading:\n");
-    printf("%s by %s: $%.2f\n",readfirst.title,
-           readfirst.author, readfirst.value);
-    
-    return 0;
-}
-</code></pre>
-
-</details>
-
-<details>
-
-<summary>伸缩型成员变量（C99）</summary>
-
-结构体里边的数组不写 MAX，只写 方括号，这样后边的 malloc 就要去计算大小了
-
-<pre class="language-c"><code class="lang-c">// flexmemb.c -- flexible array member (C99 feature)
-#include &#x3C;stdio.h>
-#include &#x3C;stdlib.h>
-
-struct flex
-{
-    size_t count;
-    double average;
-<strong>    double scores[];   // flexible array member
-</strong>};
-
-void showFlex(const struct flex * p);
-
-int main(void)
-{
-<strong>    struct flex * pf1, *pf2;
-</strong>    int n = 5;
-    int i;
-    int tot = 0;
-    
-    // allocate space for structure plus array
-<strong>    pf1 = malloc(sizeof(struct flex) + n * sizeof(double));
-</strong>    pf1->count = n;
-    for (i = 0; i &#x3C; n; i++)
-    {
-        pf1->scores[i] = 20.0 - i;
-        tot += pf1->scores[i];
-    }
-    pf1->average = tot / n;
-    showFlex(pf1);
-    
-    n = 9;
-    tot = 0;
-<strong>    pf2 = malloc(sizeof(struct flex) + n * sizeof(double));
-</strong>    pf2->count = n;
-    for (i = 0; i &#x3C; n; i++)
-    {
-        pf2->scores[i] = 20.0 - i/2.0;
-        tot += pf2->scores[i];
-    }
-    pf2->average = tot / n;
-    showFlex(pf2);
-    free(pf1);
-    free(pf2);
-    
-    return 0;
-}
-
-void showFlex(const struct flex * p)
-{
-    int i;
-    printf("Scores : ");
-    for (i = 0; i &#x3C; p->count; i++)
-        printf("%g ", p->scores[i]);
-    printf("\nAverage: %g\n", p->average);
-}
-
-</code></pre>
-
-</details>
 
 <details>
 

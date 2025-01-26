@@ -96,99 +96,8 @@ while (expression)
     statement
 ```
 
-while + scanf，循环输入
-
-```c
-// power.c -- raises numbers to integer powers
-#include <stdio.h>
-double power(double n, int p); // ANSI prototype
-int main(void)
-{
-    double x, xpow;
-    int exp;
-    
-    printf("Enter a number and the positive integer power");
-    printf(" to which\nthe number will be raised. Enter q");
-    printf(" to quit.\n");
-    while (scanf("%lf%d", &x, &exp) == 2)
-    {
-        xpow = power(x,exp);   // function call
-        printf("%.3g to the power %d is %.5g\n", x, exp, xpow);
-        printf("Enter next pair of numbers or q to quit.\n");
-    }
-    printf("Hope you enjoyed this power trip -- bye!\n");
-    
-    return 0;
-}
-
-double power(double n, int p)  // function definition
-{
-    double pow = 1;
-    int i;
-    
-    for (i = 1; i <= p; i++)
-        pow *= n;
-    
-    return pow;                // return the value of pow
-}
-
-```
-
-```
-(base) kimshan@MacBook-Pro output % ./"power"
-Enter a number and the positive integer power to which
-the number will be raised. Enter q to quit.
-1 2
-1 to the power 2 is 1
-Enter next pair of numbers or q to quit.
-1.1 2
-1.1 to the power 2 is 1.21
-Enter next pair of numbers or q to quit.
-100 2    
-100 to the power 2 is 10000
-Enter next pair of numbers or q to quit.
-100.1 2
-100 to the power 2 is 10020
-Enter next pair of numbers or q to quit.
-100 11.1
-100 to the power 11 is 1e+22
-Enter next pair of numbers or q to quit.
-q
-Hope you enjoyed this power trip -- bye!
-```
-
-
-while + scanf，输入一个字符串
-```c
-// cypher2.c -- alters input, preserving non-letters
-#include <stdio.h>
-#include <ctype.h>            // for isalpha()
-int main(void)
-{
-    char ch;
-    
-    //while ((ch = getchar()) != '\n')
-    while ((ch = getchar()) != EOF)
-    {
-        if (isalpha(ch))      // if a letter,
-            putchar(ch + 1);  // display next letter
-        else                  // otherwise,
-            putchar(ch);      // display as is
-    }
-    putchar(ch);              // display the newline
-    
-    return 0;
-}
-
-```
-
-```
-(base) kimshan@MacBook-Pro output % ./"cypher2"
-ABCDabcd
-BCDEbcde
-```
-
-</details>
+* [[../details/while-example1|👉 while + scanf，循环输入]]
+* [[../details/while-examples2|👉 while + getchar，输入一个字符串]]
 
 ### do while
 
@@ -226,44 +135,7 @@ for(;condition;)
 
 ### if, else
 
-```c
-// electric.c -- calculates electric bill 
-#include <stdio.h>
-#define RATE1   0.13230       // rate for first 360 kwh      
-#define RATE2   0.15040       // rate for next 108 kwh  
-#define RATE3   0.30025       // rate for next 252 kwh
-#define RATE4   0.34025       // rate for over 720 kwh       
-#define BREAK1  360.0         // first breakpoint for rates  
-#define BREAK2  468.0         // second breakpoint for rates 
-#define BREAK3  720.0         // third breakpoint for rates
-#define BASE1   (RATE1 * BREAK1)
-// cost for 360 kwh            
-#define BASE2  (BASE1 + (RATE2 * (BREAK2 - BREAK1)))
-// cost for 468 kwh
-#define BASE3   (BASE1 + BASE2 + (RATE3 *(BREAK3 - BREAK2)))
-//cost for 720 kwh
-int main(void)
-{
-    double kwh;               // kilowatt-hours used         
-    double bill;              // charges                     
-    
-    printf("Please enter the kwh used.\n");
-    scanf("%lf", &kwh);       // %lf for type double         
-    if (kwh <= BREAK1)
-        bill = RATE1 * kwh;
-    else if (kwh <= BREAK2)   // kwh between 360 and 468     
-        bill = BASE1 + (RATE2 * (kwh - BREAK1));
-    else if (kwh <= BREAK3)   // kwh betweent 468 and 720
-        bill = BASE2 + (RATE3 * (kwh - BREAK2));
-    else                      // kwh above 680               
-        bill = BASE3 + (RATE4 * (kwh - BREAK3));
-    printf("The charge for %.1f kwh is $%1.2f.\n", kwh, bill);
-    
-    return 0;
-}
-
-```
-
+* [[../details/if-example|👉 example]]
 
 ### ?:（条件运算符）
 

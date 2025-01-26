@@ -2,14 +2,11 @@
 
 ## 函数基本组成结构
 
-<details>
-
-<summary>Demo</summary>
-
-<pre class="language-c"><code class="lang-c">/* proto.c -- uses a function prototype */
-#include &#x3C;stdio.h>
-<strong>int imax(int, int);        /* prototype */
-</strong>int main(void)
+```c
+/* proto.c -- uses a function prototype */
+#include <stdio.h>
+int imax(int, int);        /* prototype */
+int main(void)
 {
     printf("The maximum of %d and %d is %d.\n",
            3, 5, imax(3, 5)); 
@@ -18,13 +15,11 @@
     return 0;
 }
 
-<strong>int imax(int n, int m)
-</strong>{
+int imax(int n, int m)
+{
     return (n > m ? n : m);
 }
-</code></pre>
-
-</details>
+```
 
 * 函数原型（为了可以不用把 main 放在最底下，在最前边定义函数原型）
   * 如果没有传入参数，要写 void：`void test(void);`
@@ -34,11 +29,7 @@
 * 参数
   * 形参
   * 实参
-  * 形参不固定的情况：stdarg.h
-
-{% content-ref url="../library/stdarg.h.md" %}
-[stdarg.h.md](../library/stdarg.h.md)
-{% endcontent-ref %}
+  * 形参不固定的情况 [[../library/stdarg|👉 stdarg]]
 
 ## 递归
 
