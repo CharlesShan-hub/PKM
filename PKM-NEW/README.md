@@ -5,7 +5,7 @@
 
 ## Plan
 * [ ] 笔记迁移
-	* [ ] Gitbook迁移
+	* [x] Gitbook迁移
 		* [x] C
 		* [x] C++
 		* [x] Rust
