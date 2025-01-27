@@ -14,5 +14,7 @@
 		* [x] json
 		* [x] yaml
 		* [x] DIP
+		* [x] RE
+		* [x] LA
 	* [ ] Origin PKM迁移
 	* [ ] 其他平台迁移
