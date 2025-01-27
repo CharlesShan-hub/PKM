@@ -1,4 +1,4 @@
-# PKM - New Bron
+# PKM - New Born
 
 ## TOC
 ![[TOTAL-drawing|1000]]
@@ -13,5 +13,6 @@
 		* [x] markdown
 		* [x] json
 		* [x] yaml
+		* [x] DIP
 	* [ ] Origin PKM迁移
 	* [ ] 其他平台迁移
