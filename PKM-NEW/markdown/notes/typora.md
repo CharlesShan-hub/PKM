@@ -1,11 +1,8 @@
-# Typora扩展
-
-2022.3.11
+# Typora Markdown Extension
 
 > 原文链接：
 >
 > https://www.runoob.com/markdown/md-advance.html
-
 
 
 **1、横向流程图源码格式：**

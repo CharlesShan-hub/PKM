@@ -1,15 +1,11 @@
-# 公式
-
-2022.3.11
-
-[TOC]
+# Markdown Formula Summary
 
 > 原文链接：
 >
 > * [Markdown数学公式语法](https://www.jianshu.com/p/e74eb43960a1)
 > * [LaTex公式手册](https://www.cnblogs.com/1024th/p/11623258.html)
 > * 参考维基百科的[数学公式教程](https://zh.wikipedia.org/wiki/Help:%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F)
->   参考[Cmd Markdown 公式指导手册](https://www.zybuluo.com/codeep/note/163962#%E4%B8%83%E4%BA%A4%E6%8D%A2%E5%9B%BE%E8%A1%A8%E4%BD%BF%E7%94%A8%E5%8F%82%E8%80%83)
+> * 参考[Cmd Markdown 公式指导手册](https://www.zybuluo.com/codeep/note/163962#%E4%B8%83%E4%BA%A4%E6%8D%A2%E5%9B%BE%E8%A1%A8%E4%BD%BF%E7%94%A8%E5%8F%82%E8%80%83)
 
 ## 行内与独行
 

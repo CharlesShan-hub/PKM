@@ -1,4 +1,3 @@
-
 # Markdown
 
 ## Overview
@@ -7,9 +6,19 @@ John Gruber于2004年创建了一种轻量级标记语言 Markdown，用于使�
 
 ![[assets/markdown-syntex-drawing|1000]]
 
-下面是 markdown 冷门语法汇总：
+下面是各种 markdown 语法汇总：
 
-* [[notes/markdown-syntex|markdown-syntex]]
+* 原生语法
+	* [[notes/simple|👉 markdown 常用语法总结]]
+	* [[notes/markdown-syntex|👉 markdown 语法详细总结]]
+	* [[notes/formula|👉 markdown 公式细节语法]]
+	* [🔗 公式整理](https://1024th.github.io/MathJax_Tutorial_CN/#/)
+	* [🔗 如何用LaTeX打出各种箭头](https://zhuanlan.zhihu.com/p/263896738)
+* 编辑器扩展
+	* [[notes/typora|👉 typora 扩展 markdown 语法（流程图等）]]
+	* [🔗 Typora官方介绍](https://support.typora.io/Draw-Diagrams-With-Markdown/)
+	* [🔗 mermaid](https://mermaid-js.github.io/mermaid/#/)
+	* [🔗 标签-shields](https://shields.io/)
 
 markdown 语言的目标是使人们能够“使用易于阅读和编写的纯文本格式进行编写，并选择将其转换为结构有效的XHTML（或HTML）。从2012年开始，包括Jeff Atwood和John MacFarlane在内的一群人发起了Atwood所说的标准化工作。下图[2]是markdown渲染过程。
 
