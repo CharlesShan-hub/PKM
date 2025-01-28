@@ -6,12 +6,20 @@
 * wiki：[https://en.wikipedia.org/wiki/GeoJSON](https://en.wikipedia.org/wiki/GeoJSON)
 * 官网：[https://geojson.org/](https://geojson.org/)
 * 线上 Demo：[https://geojson.io/#map=2/0/20](https://geojson.io/#map=2/0/20)
+*  [GeoJSON格式在线验证](http://geojson.io/)
+* [百度百科](https://baike.baidu.com/item/GeoJson/12011566?fr=aladdin)
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+![[../assets/geojson.png]]
 
-<details>
+ GeoJSON 是用于描达地理空间信息的数据格式。GeoJSON不是一种新的格式，其语法规范是符合 JS0N 格式的，只不过对其名称进行了规范，专门用于表示地理信息。
 
-<summary>Demo of the above picture（其实就三种，Point，LineString，Polygon）</summary>
+   GeoJsoN 的最外层是一个单独的对象(object）。这个对象可表示：
+
+   1. ﻿﻿﻿几何体 (Geometry)。
+   2. ﻿﻿﻿﻿﻿特征 (Feature)。
+   3. ﻿﻿﻿﻿特征集合 (Featurecollection)
+
+   最外层的 GeoJSON 里可能包含有很多子对象，每一个GeoJSON 对象都有一个type属性，表示对象的类型，type 的值必领是下面之一。
 
 ```json
 {
@@ -390,157 +398,189 @@
 }
 ```
 
-</details>
-
 ## Wiki Notes
 
 * GeoJSON是一种开放的标准格式，用于表示简单的地理特征沿着非空间属性。它基于JSON格式。
 * 这些特征包括点（因此是地址和位置）、[线串](https://en.wikipedia.org/wiki/Polygonal\_chain)（因此是街道、高速公路和边界）、[多边形](https://en.wikipedia.org/wiki/Polygon)（国家、省、大片土地）以及这些类型的多部分集合。
-
-<table><thead><tr><th width="106">Types</th><th width="103">Picture</th><th>Code</th></tr></thead><tbody><tr><td>点</td><td><img src="../../.gitbook/assets/image (5).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
-    "type": "Point", 
-    "coordinates": [30.0, 10.0]
-}
-</code></pre></td></tr><tr><td>线</td><td><img src="../../.gitbook/assets/image (6).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
-    "type": "LineString", 
-    "coordinates": [
-        [30.0, 10.0],
-        [10.0, 30.0],
-        [40.0, 40.0]
-    ]
-}
-</code></pre></td></tr><tr><td>多边形</td><td><img src="../../.gitbook/assets/image (8).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
-    "type": "Polygon", 
-    "coordinates": [
-        [
-            [30.0, 10.0],
-            [40.0, 40.0],
-            [20.0, 40.0],
-            [10.0, 20.0],
-            [30.0, 10.0]
-        ]
-    ]
-}
-</code></pre></td></tr><tr><td>多边形</td><td><img src="../../.gitbook/assets/image (9).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
-    "type": "Polygon", 
-    "coordinates": [
-        [
-            [35.0, 10.0],
-            [45.0, 45.0],
-            [15.0, 40.0],
-            [10.0, 20.0],
-            [35.0, 10.0]
-        ],
-        [
-            [20.0, 30.0],
-            [35.0, 35.0],
-            [30.0, 20.0],
-            [20.0, 30.0]
-        ]
-    ]
-}
-</code></pre></td></tr><tr><td>多点</td><td><img src="../../.gitbook/assets/image (10).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
-    "type": "MultiPoint", 
-    "coordinates": [
-        [10.0, 40.0],
-        [40.0, 30.0],
-        [20.0, 20.0],
-        [30.0, 10.0]
-    ]
-}
-</code></pre></td></tr><tr><td>多线</td><td><img src="../../.gitbook/assets/image (11).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
-    "type": "MultiLineString", 
-    "coordinates": [
-        [
-            [10.0, 10.0],
-            [20.0, 20.0],
-            [10.0, 40.0]
-        ],
-        [
-            [40.0, 40.0],
-            [30.0, 30.0],
-            [40.0, 20.0],
-            [30.0, 10.0]
-        ]
-    ]
-}
-</code></pre></td></tr><tr><td>多体</td><td><img src="../../.gitbook/assets/image (12).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
-    "type": "MultiPolygon", 
-    "coordinates": [
-        [
-            [
-                [30.0, 20.0],
-                [45.0, 40.0],
-                [10.0, 40.0],
-                [30.0, 20.0]
-            ]
-        ], 
-        [
-            [
-                [15.0, 5.0],
-                [40.0, 10.0],
-                [10.0, 20.0],
-                [5.0, 10.0],
-                [15.0, 5.0]
-            ]
-        ]
-    ]
-}
-</code></pre></td></tr><tr><td>多体</td><td><img src="../../.gitbook/assets/image (13).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
-    "type": "MultiPolygon", 
-    "coordinates": [
-        [
-            [
-                [40.0, 40.0],
-                [20.0, 45.0],
-                [45.0, 30.0],
-                [40.0, 40.0]
-            ]
-        ], 
-        [
-            [
-                [20.0, 35.0],
-                [10.0, 30.0],
-                [10.0, 10.0],
-                [30.0, 5.0],
-                [45.0, 20.0],
-                [20.0, 35.0]
-            ],
-            [
-                [30.0, 20.0],
-                [20.0, 15.0],
-                [20.0, 25.0],
-                [30.0, 20.0]
-            ]
-        ]
-    ]
-}
-</code></pre></td></tr><tr><td>集合</td><td><img src="../../.gitbook/assets/image (14).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
-    "type": "GeometryCollection",
-    "geometries": [
-        {
-            "type": "Point",
-            "coordinates": [40.0, 10.0]
-        },
-        {
-            "type": "LineString",
-            "coordinates": [
-                [10.0, 10.0],
-                [20.0, 20.0],
-                [10.0, 40.0]
-            ]
-        },
-        {
-            "type": "Polygon",
-            "coordinates": [
-                [
-                    [40.0, 40.0],
-                    [20.0, 45.0],
-                    [45.0, 30.0],
-                    [40.0, 40.0]
-                ]
-            ]
-        }
-    ]
-}
-</code></pre></td></tr></tbody></table>
+* 点
+	 ![[../assets/image (5).png]]
+	```json
+	{
+	    "type": "Point", 
+	    "coordinates": [30.0, 10.0]
+	}
+	```
+* 线
+	 ![[../assets/image (6).png]]
+	```json
+	{
+	    "type": "LineString", 
+	    "coordinates": [
+	        [30.0, 10.0],
+	        [10.0, 30.0],
+	        [40.0, 40.0]
+	    ]
+	}
+	```
+* 多边形
+	![[../assets/image (8).png]]
+	```json
+	{
+	    "type": "Polygon", 
+	    "coordinates": [
+	        [
+	            [30.0, 10.0],
+	            [40.0, 40.0],
+	            [20.0, 40.0],
+	            [10.0, 20.0],
+	            [30.0, 10.0]
+	        ]
+	    ]
+	}
+	```
+* 多边形
+	 ![[../assets/image (9).png]]
+	```json
+	{
+	    "type": "Polygon", 
+	    "coordinates": [
+	        [
+	            [35.0, 10.0],
+	            [45.0, 45.0],
+	            [15.0, 40.0],
+	            [10.0, 20.0],
+	            [35.0, 10.0]
+	        ],
+	        [
+	            [20.0, 30.0],
+	            [35.0, 35.0],
+	            [30.0, 20.0],
+	            [20.0, 30.0]
+	        ]
+	    ]
+	}
+	```
+* 多点
+	 ![[../assets/image (10).png]]
+	```json
+	{
+	    "type": "MultiPoint", 
+	    "coordinates": [
+	        [10.0, 40.0],
+	        [40.0, 30.0],
+	        [20.0, 20.0],
+	        [30.0, 10.0]
+	    ]
+	}
+	```
+* 多线
+	 ![[../assets/image (11).png]]
+	```json
+	{
+	    "type": "MultiLineString", 
+	    "coordinates": [
+	        [
+	            [10.0, 10.0],
+	            [20.0, 20.0],
+	            [10.0, 40.0]
+	        ],
+	        [
+	            [40.0, 40.0],
+	            [30.0, 30.0],
+	            [40.0, 20.0],
+	            [30.0, 10.0]
+	        ]
+	    ]
+	}
+	```
+* 多体
+	 ![[../assets/image (12).png]]
+	```json
+	{
+	    "type": "MultiPolygon", 
+	    "coordinates": [
+	        [
+	            [
+	                [30.0, 20.0],
+	                [45.0, 40.0],
+	                [10.0, 40.0],
+	                [30.0, 20.0]
+	            ]
+	        ], 
+	        [
+	            [
+	                [15.0, 5.0],
+	                [40.0, 10.0],
+	                [10.0, 20.0],
+	                [5.0, 10.0],
+	                [15.0, 5.0]
+	            ]
+	        ]
+	    ]
+	}
+	```
+* 多体
+	 ![[../assets/image (13).png]]
+	```json
+	{
+	    "type": "MultiPolygon", 
+	    "coordinates": [
+	        [
+	            [
+	                [40.0, 40.0],
+	                [20.0, 45.0],
+	                [45.0, 30.0],
+	                [40.0, 40.0]
+	            ]
+	        ], 
+	        [
+	            [
+	                [20.0, 35.0],
+	                [10.0, 30.0],
+	                [10.0, 10.0],
+	                [30.0, 5.0],
+	                [45.0, 20.0],
+	                [20.0, 35.0]
+	            ],
+	            [
+	                [30.0, 20.0],
+	                [20.0, 15.0],
+	                [20.0, 25.0],
+	                [30.0, 20.0]
+	            ]
+	        ]
+	    ]
+	}
+	```
+* 集合
+	 ![[../assets/image (14).png]]
+	```json
+	{
+	    "type": "GeometryCollection",
+	    "geometries": [
+	        {
+	            "type": "Point",
+	            "coordinates": [40.0, 10.0]
+	        },
+	        {
+	            "type": "LineString",
+	            "coordinates": [
+	                [10.0, 10.0],
+	                [20.0, 20.0],
+	                [10.0, 40.0]
+	            ]
+	        },
+	        {
+	            "type": "Polygon",
+	            "coordinates": [
+	                [
+	                    [40.0, 40.0],
+	                    [20.0, 45.0],
+	                    [45.0, 30.0],
+	                    [40.0, 40.0]
+	                ]
+	            ]
+	        }
+	    ]
+	}
+	```

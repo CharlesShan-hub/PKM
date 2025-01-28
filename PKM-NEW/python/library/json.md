@@ -1,8 +1,4 @@
-# JSON与Python
-
-2022.6.16
-
-[toc]
+# JSON
 
 ## Overview
 
