@@ -1,9 +1,5 @@
 # 简介
 
-2022.6.17
-
-[toc]
-
 > 本文按照YAML官方文档1.2.2版本翻译总结而成
 >
 > https://yaml.org/spec/1.2.2/#chapter-1-introduction-to-yaml

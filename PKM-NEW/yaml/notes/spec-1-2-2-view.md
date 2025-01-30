@@ -1,6 +1,4 @@
 # 模型
-2022.06.17
-[TOC]
 
 > 本文按照YAML官方文档1.2.2版本翻译总结而成
 >
@@ -8,9 +6,15 @@
 
 YAML is both a text format and a method for [presenting](https://yaml.org/spec/1.2.2/#presenting-the-serialization-tree) any [native data structure](https://yaml.org/spec/1.2.2/#representing-native-data-structures) in this format. Therefore, this specification defines two concepts: a class of data objects called YAML [representations](https://yaml.org/spec/1.2.2/#representation-graph) and a syntax for [presenting](https://yaml.org/spec/1.2.2/#presenting-the-serialization-tree) YAML [representations](https://yaml.org/spec/1.2.2/#representation-graph) as a series of characters, called a YAML [stream](https://yaml.org/spec/1.2.2/#streams).
 
+YAML 既是一种文本格式，也是一种以这种格式呈现任何本机数据结构的方法。因此，本规范定义了两个概念：一类称为 YAML 表示的数据对象和一种将 YAML 表示呈现为一系列字符的语法，称为 YAML 流。
+
 A YAML *processor* is a tool for converting information between these complementary views. It is assumed that a YAML processor does its work on behalf of another module, called an *application*. This chapter describes the information structures a YAML processor must provide to or obtain from the application.
 
+YAML 处理器是一种在这些互补视图之间转换信息的工具。假设 YAML 处理器代表另一个模块（称为应用程序）工作。本章介绍 YAML 处理器必须向应用程序提供或从应用程序获取的信息结构。
+
 YAML information is used in two ways: for machine processing and for human consumption. The challenge of reconciling these two perspectives is best done in three distinct translation stages: [representation](https://yaml.org/spec/1.2.2/#representation-graph), [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) and [presentation](https://yaml.org/spec/1.2.2/#presentation-stream). [Representation](https://yaml.org/spec/1.2.2/#representation-graph) addresses how YAML views [native data structures](https://yaml.org/spec/1.2.2/#representing-native-data-structures) to achieve portability between programming environments. [Serialization](https://yaml.org/spec/1.2.2/#serialization-tree) concerns itself with turning a YAML [representation](https://yaml.org/spec/1.2.2/#representation-graph) into a serial form, that is, a form with sequential access constraints. [Presentation](https://yaml.org/spec/1.2.2/#presentation-stream) deals with the formatting of a YAML [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) as a series of characters in a human-friendly manner.
+
+YAML 信息有两种用途：用于机器处理和供人类使用。协调这两个观点的挑战最好在三个不同的转换阶段完成：表示、序列化和表示。表示解决了 YAML 如何查看本机数据结构以实现编程环境之间的可移植性。序列化涉及将 YAML 表示转换为串行形式，即具有顺序访问约束的形式。表示涉及以人性化的方式将 YAML 序列化格式化为一系列字符。
 
 ## 3.1. Processes
 
