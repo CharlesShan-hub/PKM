@@ -13,11 +13,11 @@
 *YAML’s [block collections](https://yaml.org/spec/1.2.2/#block-collection-styles) use [indentation](https://yaml.org/spec/1.2.2/#indentation-spaces) for scope and begin each entry on its own line. [Block sequences](https://yaml.org/spec/1.2.2/#block-sequences) indicate each entry with a dash and space (“`- `”). [Mappings](https://yaml.org/spec/1.2.2/#mapping) use a colon and space (“`: `”) to mark each [key/value pair](https://yaml.org/spec/1.2.2/#mapping). [Comments](https://yaml.org/spec/1.2.2/#comments) begin with an octothorpe (also called a “hash”, “sharp”, “pound” or “number sign” - “`#`”).*
 
 * YAML的使用[缩进](https://yaml.org/spec/1.2.2/#indentation-spaces)作为[块集合](https://yaml.org/spec/1.2.2/#block-collection-styles)的范围，并在自己的行上开始每个条目。
-* [块序列](https://yaml.org/spec/1.2.2/#block-sequences)用破折号和空格(“' - '”)表示每个条目。
-* [映射](https://yaml.org/spec/1.2.2/#mapping)使用冒号和空格(“':'”)来标记每个[键/值对](https://yaml.org/spec/1.2.2/#mapping)。
-* [语句](https://yaml.org/spec/1.2.2/#comments)以八通码(也称为“哈希”、“sharp”、“pound”或“数字符号”-“#”)开始。
+* [块序列](https://yaml.org/spec/1.2.2/#block-sequences)用破折号和空格(“`- `”)表示每个条目。
+* [映射](https://yaml.org/spec/1.2.2/#mapping)使用冒号和空格(“`: `”)来标记每个[键/值对](https://yaml.org/spec/1.2.2/#mapping)。
+* [语句](https://yaml.org/spec/1.2.2/#comments)以八通码(也称为“hash”、“sharp”、“pound” 或 “number sign” - “`# `”)开始。
 
-**Example 2.1 Sequence of Scalars (ball players)**
+**Example 2.1 Sequence of Scalars (ball players)** **标量序列（球手）**
 
 ```yaml
 - Mark McGwire
@@ -25,7 +25,7 @@
 - Ken Griffey
 ```
 
-**Example 2.2 Mapping Scalars to Scalars (player statistics)**
+**Example 2.2 Mapping Scalars to Scalars (player statistics)** **将标量映射到标量（玩家统计信息）**
 
 ```yaml
 hr:  65    # Home runs
@@ -33,7 +33,7 @@ avg: 0.278 # Batting average
 rbi: 147   # Runs Batted In
 ```
 
-**Example 2.3 Mapping Scalars to Sequences (ball clubs in each league)**
+**Example 2.3 Mapping Scalars to Sequences (ball clubs in each league)** **将标量映射到序列（每个联赛中的球杆）**
 
 ```yaml
 american:
@@ -46,7 +46,7 @@ national:
 - Atlanta Braves
 ```
 
-**Example 2.4 Sequence of Mappings (players’ statistics)**
+**Example 2.4 Sequence of Mappings (players’ statistics)** **映射序列（玩家的统计数据）**
 
 ```yaml
 -
@@ -62,7 +62,6 @@ national:
 *YAML also has [flow styles](https://yaml.org/spec/1.2.2/#flow-style-productions), using explicit [indicators](https://yaml.org/spec/1.2.2/#indicator-characters) rather than [indentation](https://yaml.org/spec/1.2.2/#indentation-spaces) to denote scope. The [flow sequence](https://yaml.org/spec/1.2.2/#flow-sequences) is written as a [comma](https://yaml.org/spec/1.2.2/#flow-collection-styles) separated list within [square](https://yaml.org/spec/1.2.2/#flow-sequences) [brackets](https://yaml.org/spec/1.2.2/#flow-sequences). In a similar manner, the [flow mapping](https://yaml.org/spec/1.2.2/#flow-mappings) uses [curly](https://yaml.org/spec/1.2.2/#flow-mappings) [braces](https://yaml.org/spec/1.2.2/#flow-mappings).*
 
 * YAML还有[流样式](https://yaml.org/spec/1.2.2/#flow-style-productions)，使用显式的[指示器](https://yaml.org/spec/1.2.2/#indicator-characters)而不是[缩进](https://yaml.org/spec/1.2.2/#indentation-spaces)来表示作用域。
-
 * [流序列](https://yaml.org/spec/1.2.2/#flow-sequences)被写成[逗号](https://yaml.org/spec/1.2.2/#flow-collection-styles)分隔在[方框](https://yaml.org/spec/1.2.2/#flow-sequences)[方括号](https://yaml.org/spec/1.2.2/#flow-sequences)中的列表。以类似的方式，[流映射](https://yaml.org/spec/1.2.2/#flow-mappings)使用[大括号](https://yaml.org/spec/1.2.2/#flow-mappings)[大括号](https://yaml.org/spec/1.2.2/#flow-mappings)。
 
 **Example 2.5 Sequence of Sequences**
