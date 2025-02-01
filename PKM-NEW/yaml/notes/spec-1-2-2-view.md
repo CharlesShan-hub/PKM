@@ -20,11 +20,16 @@ YAML 信息有两种用途：用于机器处理和供人类使用。协调这两
 
 Translating between [native data structures](https://yaml.org/spec/1.2.2/#representing-native-data-structures) and a character [stream](https://yaml.org/spec/1.2.2/#streams) is done in several logically distinct stages, each with a well defined input and output data model, as shown in the following diagram:
 
+[原生数据结构](https://yaml.org/spec/1.2.2/#representing-native-data-structures)和字符[流](https://yaml.org/spec/1.2.2/#streams)之间的转换在几个逻辑上不同的阶段中完成，每个阶段都有定义明确的输入和输出数据模型
+
+
 **Figure 3.1. Processing Overview**
 
 ![Processing Overview](https://yaml.org/spec/1.2.2/img/overview2.svg)
 
 A YAML processor need not expose the [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) or [representation](https://yaml.org/spec/1.2.2/#representation-graph) stages. It may translate directly between [native data structures](https://yaml.org/spec/1.2.2/#representing-native-data-structures) and a character [stream](https://yaml.org/spec/1.2.2/#streams) ([dump](https://yaml.org/spec/1.2.2/#dump) and [load](https://yaml.org/spec/1.2.2/#load) in the diagram above). However, such a direct translation should take place so that the [native data structures](https://yaml.org/spec/1.2.2/#representing-native-data-structures) are [constructed](https://yaml.org/spec/1.2.2/#constructing-native-data-structures) only from information available in the [representation](https://yaml.org/spec/1.2.2/#representation-graph). In particular, [mapping key order](https://yaml.org/spec/1.2.2/#mapping), [comments](https://yaml.org/spec/1.2.2/#comments) and [tag handles](https://yaml.org/spec/1.2.2/#tag-handles) should not be referenced during [construction](https://yaml.org/spec/1.2.2/#constructing-native-data-structures).
+
+YAML 处理器不需要公开[序列化](https://yaml.org/spec/1.2.2/#serialization-tree)或[表示](https://yaml.org/spec/1.2.2/#representation-graph) 阶段。 它可以直接在[本机数据结构和](https://yaml.org/spec/1.2.2/#representing-native-data-structures)字符之间进行转换 [stream](https://yaml.org/spec/1.2.2/#streams) （上图中的 [dump](https://yaml.org/spec/1.2.2/#dump) 和 [load](https://yaml.org/spec/1.2.2/#load)）。但是，应该进行这种直接转换，[以便仅根据](https://yaml.org/spec/1.2.2/#constructing-native-data-structures) [](https://yaml.org/spec/1.2.2/#representing-native-data-structures)[表示](https://yaml.org/spec/1.2.2/#representation-graph)。特别是，在[构造](https://yaml.org/spec/1.2.2/#constructing-native-data-structures)过程中不应引用[映射键顺序](https://yaml.org/spec/1.2.2/#mapping)、[注释](https://yaml.org/spec/1.2.2/#comments)和[标记句柄](https://yaml.org/spec/1.2.2/#tag-handles)。
 
 ### 3.1.1. Dump
 

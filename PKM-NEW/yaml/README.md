@@ -11,7 +11,7 @@
 * Yaml 官网 & 各个语言沟通 yaml 的方案：[https://yaml.org/](https://yaml.org/)
 * Yaml官网 1.2.2 语法：[https://yaml.org/spec/1.2.2/](https://yaml.org/spec/1.2.2/)
 	* [[notes/spec-1-2-2-introduction|简介]]：讲述了YAML的语言特点，发展目标，发展历程以及帮助文档结构安排。
-	* [[notes/spec-1-2-2-overview|概述]]
+	* [[notes/spec-1-2-2-overview|概述]]：介绍了yaml的大部分语法，并给出了案例。
 	* [[notes/spec-1-2-2-view|视图]]
 	* [[notes/spec-1-2-2-syntex|语法]]
 	* [[notes/spec-1-2-2-character|字符]]

@@ -121,9 +121,11 @@ action: grand slam
 
 *Repeated [nodes](https://yaml.org/spec/1.2.2/#nodes) (objects) are first [identified](https://yaml.org/spec/1.2.2/#anchors-and-aliases) by an [anchor](https://yaml.org/spec/1.2.2/#anchors-and-aliases) (marked with the ampersand - “`&`”) and are then [aliased](https://yaml.org/spec/1.2.2/#anchors-and-aliases) (referenced with an asterisk - “`*`”) thereafter.*
 
-重复的[节点](https://yaml.org/spec/1.2.2/#nodes)(对象)首先由[锚](https://yaml.org/spec/1.2.2/#anchors-and-aliases)[标识](https://yaml.org/spec/1.2.2/#anchors-and-aliases)(用&号标记)，然后[别名](https://yaml.org/spec/1.2.2/#anchors-and-aliases)(用星号引用- " ' * ' ")。
+重复的[节点](https://yaml.org/spec/1.2.2/#nodes)（对象）首先由[锚点](https://yaml.org/spec/1.2.2/#anchors-and-aliases)（标有 & 符号 - “`&`”）[标识](https://yaml.org/spec/1.2.2/#anchors-and-aliases)，然后[是别名](https://yaml.org/spec/1.2.2/#anchors-and-aliases)（用星号 - “`*`”引用”）。
 
 **Example 2.9 Single Document with Two Comments**
+
+`Sammy Sosa`的节点在本文档中出现了两次
 
 ```yaml
 ---
@@ -138,7 +140,7 @@ rbi:
 
 **Example 2.10 Node for “`Sammy Sosa`” appears twice in this document**
 
-`Sammy Sosa`的节点在本文档中出现了两次
+上例中第二个`Sammy Sosa`和第一个合并
 
 ```yaml
 ---
@@ -153,7 +155,7 @@ rbi:
 
 *A question mark and space (“`? `”) indicate a complex [mapping](https://yaml.org/spec/1.2.2/#mapping) [key](https://yaml.org/spec/1.2.2/#nodes). Within a [block collection](https://yaml.org/spec/1.2.2/#block-collection-styles), [key/value pairs](https://yaml.org/spec/1.2.2/#mapping) can start immediately following the [dash](https://yaml.org/spec/1.2.2/#block-sequences), [colon](https://yaml.org/spec/1.2.2/#flow-mappings) or [question mark](https://yaml.org/spec/1.2.2/#flow-mappings).*
 
-一个问号和一个空格(" ' ?' ")表示复杂的[映射](https://yaml.org/spec/1.2.2/#mapping) [key](https://yaml.org/spec/1.2.2/#nodes)。在[块集合](https://yaml.org/spec/1.2.2/#block-collection-styles)中，[键/值对](https://yaml.org/spec/1.2.2/#mapping)可以紧跟着[破折号](https://yaml.org/spec/1.2.2/#block-sequences)，[冒号](https://yaml.org/spec/1.2.2/#flow-mappings)或[问号](https://yaml.org/spec/1.2.2/#flow-mappings)。
+一个问号和一个空格(" `?` ")表示复杂的[映射](https://yaml.org/spec/1.2.2/#mapping) [key](https://yaml.org/spec/1.2.2/#nodes)。在[块集合](https://yaml.org/spec/1.2.2/#block-collection-styles)中，[键/值对](https://yaml.org/spec/1.2.2/#mapping)可以紧跟着[破折号](https://yaml.org/spec/1.2.2/#block-sequences)，[冒号](https://yaml.org/spec/1.2.2/#flow-mappings)或[问号](https://yaml.org/spec/1.2.2/#flow-mappings)。
 
 **Example 2.11 Mapping between Sequences**
 
