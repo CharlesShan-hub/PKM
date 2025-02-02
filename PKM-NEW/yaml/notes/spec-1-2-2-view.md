@@ -6,7 +6,9 @@
 
 YAML is both a text format and a method for [presenting](https://yaml.org/spec/1.2.2/#presenting-the-serialization-tree) any [native data structure](https://yaml.org/spec/1.2.2/#representing-native-data-structures) in this format. Therefore, this specification defines two concepts: a class of data objects called YAML [representations](https://yaml.org/spec/1.2.2/#representation-graph) and a syntax for [presenting](https://yaml.org/spec/1.2.2/#presenting-the-serialization-tree) YAML [representations](https://yaml.org/spec/1.2.2/#representation-graph) as a series of characters, called a YAML [stream](https://yaml.org/spec/1.2.2/#streams).
 
-YAML 既是一种文本格式，也是一种以这种格式呈现任何本机数据结构的方法。因此，本规范定义了两个概念：一类称为 YAML 表示的数据对象和一种将 YAML 表示呈现为一系列字符的语法，称为 YAML 流。
+YAML 既是一种文本格式，也是一种以这种格式呈现任何本机数据结构的方法。因此，本规范定义了两个概念
+* YAML 表示的数据对象。
+* YAML 流：将 YAML 表示呈现为一系列字符的语法。
 
 A YAML *processor* is a tool for converting information between these complementary views. It is assumed that a YAML processor does its work on behalf of another module, called an *application*. This chapter describes the information structures a YAML processor must provide to or obtain from the application.
 
@@ -14,7 +16,10 @@ YAML 处理器是一种在这些互补视图之间转换信息的工具。假设
 
 YAML information is used in two ways: for machine processing and for human consumption. The challenge of reconciling these two perspectives is best done in three distinct translation stages: [representation](https://yaml.org/spec/1.2.2/#representation-graph), [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) and [presentation](https://yaml.org/spec/1.2.2/#presentation-stream). [Representation](https://yaml.org/spec/1.2.2/#representation-graph) addresses how YAML views [native data structures](https://yaml.org/spec/1.2.2/#representing-native-data-structures) to achieve portability between programming environments. [Serialization](https://yaml.org/spec/1.2.2/#serialization-tree) concerns itself with turning a YAML [representation](https://yaml.org/spec/1.2.2/#representation-graph) into a serial form, that is, a form with sequential access constraints. [Presentation](https://yaml.org/spec/1.2.2/#presentation-stream) deals with the formatting of a YAML [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) as a series of characters in a human-friendly manner.
 
-YAML 信息有两种用途：用于机器处理和供人类使用。协调这两个观点的挑战最好在三个不同的转换阶段完成：表示、序列化和表示。表示解决了 YAML 如何查看本机数据结构以实现编程环境之间的可移植性。序列化涉及将 YAML 表示转换为串行形式，即具有顺序访问约束的形式。表示涉及以人性化的方式将 YAML 序列化格式化为一系列字符。
+YAML 信息有两种用途：用于机器处理和供人类使用。协调这两个观点的挑战最好在三个不同的转换阶段完成：表示、序列化和表示。
+* Representation：YAML 如何查看本机数据结构以实现编程环境之间的可移植性。
+* Serialization：涉及将 YAML 表示转换为串行形式，即具有顺序访问约束的形式。
+* Presentation：涉及以人性化的方式将 YAML 序列化格式化为一系列字符。
 
 ## 3.1. Processes
 
@@ -29,19 +34,30 @@ Translating between [native data structures](https://yaml.org/spec/1.2.2/#repres
 
 A YAML processor need not expose the [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) or [representation](https://yaml.org/spec/1.2.2/#representation-graph) stages. It may translate directly between [native data structures](https://yaml.org/spec/1.2.2/#representing-native-data-structures) and a character [stream](https://yaml.org/spec/1.2.2/#streams) ([dump](https://yaml.org/spec/1.2.2/#dump) and [load](https://yaml.org/spec/1.2.2/#load) in the diagram above). However, such a direct translation should take place so that the [native data structures](https://yaml.org/spec/1.2.2/#representing-native-data-structures) are [constructed](https://yaml.org/spec/1.2.2/#constructing-native-data-structures) only from information available in the [representation](https://yaml.org/spec/1.2.2/#representation-graph). In particular, [mapping key order](https://yaml.org/spec/1.2.2/#mapping), [comments](https://yaml.org/spec/1.2.2/#comments) and [tag handles](https://yaml.org/spec/1.2.2/#tag-handles) should not be referenced during [construction](https://yaml.org/spec/1.2.2/#constructing-native-data-structures).
 
-YAML 处理器不需要公开[序列化](https://yaml.org/spec/1.2.2/#serialization-tree)或[表示](https://yaml.org/spec/1.2.2/#representation-graph) 阶段。 它可以直接在[本机数据结构和](https://yaml.org/spec/1.2.2/#representing-native-data-structures)字符之间进行转换 [stream](https://yaml.org/spec/1.2.2/#streams) （上图中的 [dump](https://yaml.org/spec/1.2.2/#dump) 和 [load](https://yaml.org/spec/1.2.2/#load)）。但是，应该进行这种直接转换，[以便仅根据](https://yaml.org/spec/1.2.2/#constructing-native-data-structures) [](https://yaml.org/spec/1.2.2/#representing-native-data-structures)[表示](https://yaml.org/spec/1.2.2/#representation-graph)。特别是，在[构造](https://yaml.org/spec/1.2.2/#constructing-native-data-structures)过程中不应引用[映射键顺序](https://yaml.org/spec/1.2.2/#mapping)、[注释](https://yaml.org/spec/1.2.2/#comments)和[标记句柄](https://yaml.org/spec/1.2.2/#tag-handles)。
+YAML 处理器不需要公开[序列化](https://yaml.org/spec/1.2.2/#serialization-tree)或[表示](https://yaml.org/spec/1.2.2/#representation-graph) 阶段。 它可以直接在[本机数据结构和](https://yaml.org/spec/1.2.2/#representing-native-data-structures)字符之间进行转换 [stream](https://yaml.org/spec/1.2.2/#streams) （上图中的 [dump](https://yaml.org/spec/1.2.2/#dump) 和 [load](https://yaml.org/spec/1.2.2/#load)）。但是，应该进行这种直接转换，[以便仅根据](https://yaml.org/spec/1.2.2/#constructing-native-data-structures)[表示](https://yaml.org/spec/1.2.2/#representation-graph)。特别是，在[构造](https://yaml.org/spec/1.2.2/#constructing-native-data-structures)过程中不应引用[映射键顺序](https://yaml.org/spec/1.2.2/#mapping)、[注释](https://yaml.org/spec/1.2.2/#comments)和[标记句柄](https://yaml.org/spec/1.2.2/#tag-handles)。
 
 ### 3.1.1. Dump
 
 *Dumping* native data structures to a character [stream](https://yaml.org/spec/1.2.2/#streams) is done using the following three stages:
 
+将本机数据结构转储到字符[流](https://yaml.org/spec/1.2.2/#streams)使用以下三个阶段完成：
+
 - Representing Native Data Structures
 
   YAML *represents* any *native data structure* using three [node kinds](https://yaml.org/spec/1.2.2/#nodes): [sequence](https://yaml.org/spec/1.2.2/#sequence) - an ordered series of entries; [mapping](https://yaml.org/spec/1.2.2/#mapping) - an unordered association of [unique](https://yaml.org/spec/1.2.2/#node-comparison) [keys](https://yaml.org/spec/1.2.2/#nodes) to [values](https://yaml.org/spec/1.2.2/#nodes); and [scalar](https://yaml.org/spec/1.2.2/#scalar) - any datum with opaque structure presentable as a series of Unicode characters.
+  
+  YAML 使用三种[节点类型](https://yaml.org/spec/1.2.2/#nodes)_表示_任何_本机数据结构_： 
+  * [sequence](https://yaml.org/spec/1.2.2/#sequence) - 一系列有序的条目;
+  * [mapping](https://yaml.org/spec/1.2.2/#mapping) - [唯一](https://yaml.org/spec/1.2.2/#node-comparison)[键](https://yaml.org/spec/1.2.2/#nodes)与[值的](https://yaml.org/spec/1.2.2/#nodes)无序关联;
+  * [scalar](https://yaml.org/spec/1.2.2/#scalar) - 任何具有不透明结构的数据，可表示为一系列 Unicode 字符。
 
   Combined, these primitives generate directed graph structures. These primitives were chosen because they are both powerful and familiar: the [sequence](https://yaml.org/spec/1.2.2/#sequence) corresponds to a Perl array and a Python list, the [mapping](https://yaml.org/spec/1.2.2/#mapping) corresponds to a Perl hash table and a Python dictionary. The [scalar](https://yaml.org/spec/1.2.2/#scalar) represents strings, integers, dates and other atomic data types.
+  
+  这些基元组合在一起，生成有向图形结构。 选择这些原语是因为它们既强大又熟悉： [sequence](https://yaml.org/spec/1.2.2/#sequence) 对应一个 Perl 数组和一个 Python 列表，[mapping](https://yaml.org/spec/1.2.2/#mapping) 对应一个 Perl 哈希表和一个 Python 字典。 [scalar](https://yaml.org/spec/1.2.2/#scalar)表示字符串、整数、日期和其他原子数据类型。
 
   Each YAML [node](https://yaml.org/spec/1.2.2/#nodes) requires, in addition to its [kind](https://yaml.org/spec/1.2.2/#nodes) and [content](https://yaml.org/spec/1.2.2/#nodes), a [tag](https://yaml.org/spec/1.2.2/#tags) specifying its data type. Type specifiers are either [global](https://yaml.org/spec/1.2.2/#tags) URIs or are [local](https://yaml.org/spec/1.2.2/#tags) in scope to a single [application](https://yaml.org/spec/1.2.2/#processes-and-models). For example, an integer is represented in YAML with a [scalar](https://yaml.org/spec/1.2.2/#scalar) plus the [global tag](https://yaml.org/spec/1.2.2/#tags) “`tag:yaml.org,2002:int`”. Similarly, an invoice object, particular to a given organization, could be represented as a [mapping](https://yaml.org/spec/1.2.2/#mapping) together with the [local tag](https://yaml.org/spec/1.2.2/#tags) “`!invoice`”. This simple model can represent any data structure independent of programming language.
+  
+  每个 YAML [节点](https://yaml.org/spec/1.2.2/#nodes)除了其[类型和](https://yaml.org/spec/1.2.2/#nodes)[内容](https://yaml.org/spec/1.2.2/#nodes)之外，还需要一个[标签](https://yaml.org/spec/1.2.2/#tags) 指定其数据类型。 类型说明符可以是[全局](https://yaml.org/spec/1.2.2/#tags) URI，也可以是单个 URI 的本地 [应用程序](https://yaml.org/spec/1.2.2/#processes-and-models)。例如，在 YAML 中，整数由[标量](https://yaml.org/spec/1.2.2/#scalar)加上[全局标记](https://yaml.org/spec/1.2.2/#tags) “`tag：yaml.org，2002：int`” 表示。同样，特定于给定组织的 invoice 对象可以[表示为映射](https://yaml.org/spec/1.2.2/#mapping)以及[本地标记](https://yaml.org/spec/1.2.2/#tags) “`！invoice`”。这个简单的模型可以表示独立于编程语言的任何数据结构。
 
 - Serializing the Representation Graph
 
