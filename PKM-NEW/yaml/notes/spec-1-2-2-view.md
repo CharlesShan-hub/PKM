@@ -34,38 +34,75 @@ Translating between [native data structures](https://yaml.org/spec/1.2.2/#repres
 
 A YAML processor need not expose the [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) or [representation](https://yaml.org/spec/1.2.2/#representation-graph) stages. It may translate directly between [native data structures](https://yaml.org/spec/1.2.2/#representing-native-data-structures) and a character [stream](https://yaml.org/spec/1.2.2/#streams) ([dump](https://yaml.org/spec/1.2.2/#dump) and [load](https://yaml.org/spec/1.2.2/#load) in the diagram above). However, such a direct translation should take place so that the [native data structures](https://yaml.org/spec/1.2.2/#representing-native-data-structures) are [constructed](https://yaml.org/spec/1.2.2/#constructing-native-data-structures) only from information available in the [representation](https://yaml.org/spec/1.2.2/#representation-graph). In particular, [mapping key order](https://yaml.org/spec/1.2.2/#mapping), [comments](https://yaml.org/spec/1.2.2/#comments) and [tag handles](https://yaml.org/spec/1.2.2/#tag-handles) should not be referenced during [construction](https://yaml.org/spec/1.2.2/#constructing-native-data-structures).
 
-YAML 处理器不需要公开[序列化](https://yaml.org/spec/1.2.2/#serialization-tree)或[表示](https://yaml.org/spec/1.2.2/#representation-graph) 阶段。 它可以直接在[本机数据结构和](https://yaml.org/spec/1.2.2/#representing-native-data-structures)字符之间进行转换 [stream](https://yaml.org/spec/1.2.2/#streams) （上图中的 [dump](https://yaml.org/spec/1.2.2/#dump) 和 [load](https://yaml.org/spec/1.2.2/#load)）。但是，应该进行这种直接转换，[以便仅根据](https://yaml.org/spec/1.2.2/#constructing-native-data-structures)[表示](https://yaml.org/spec/1.2.2/#representation-graph)。特别是，在[构造](https://yaml.org/spec/1.2.2/#constructing-native-data-structures)过程中不应引用[映射键顺序](https://yaml.org/spec/1.2.2/#mapping)、[注释](https://yaml.org/spec/1.2.2/#comments)和[标记句柄](https://yaml.org/spec/1.2.2/#tag-handles)。
+YAML处理器无需展示序列化或表示阶段的过程。它可以直接在本地数据结构与字符流之间进行转换（如图中的dump和load过程）。这种转换应确保本地数据结构仅根据表示中提供的信息来构建。特别是，在构建过程中不应考虑映射键的顺序、注释以及标签处理程序等因素。
 
 ### 3.1.1. Dump
 
 *Dumping* native data structures to a character [stream](https://yaml.org/spec/1.2.2/#streams) is done using the following three stages:
 
-将本机数据结构转储到字符[流](https://yaml.org/spec/1.2.2/#streams)使用以下三个阶段完成：
+将本机数据结构转储到字符流使用以下三个阶段完成：
 
 - Representing Native Data Structures
 
   YAML *represents* any *native data structure* using three [node kinds](https://yaml.org/spec/1.2.2/#nodes): [sequence](https://yaml.org/spec/1.2.2/#sequence) - an ordered series of entries; [mapping](https://yaml.org/spec/1.2.2/#mapping) - an unordered association of [unique](https://yaml.org/spec/1.2.2/#node-comparison) [keys](https://yaml.org/spec/1.2.2/#nodes) to [values](https://yaml.org/spec/1.2.2/#nodes); and [scalar](https://yaml.org/spec/1.2.2/#scalar) - any datum with opaque structure presentable as a series of Unicode characters.
   
-  YAML 使用三种[节点类型](https://yaml.org/spec/1.2.2/#nodes)_表示_任何_本机数据结构_： 
+  YAML 使用三种[节点类型](https://yaml.org/spec/1.2.2/#nodes)表示任何本机数据结构： 
   * [sequence](https://yaml.org/spec/1.2.2/#sequence) - 一系列有序的条目;
-  * [mapping](https://yaml.org/spec/1.2.2/#mapping) - [唯一](https://yaml.org/spec/1.2.2/#node-comparison)[键](https://yaml.org/spec/1.2.2/#nodes)与[值的](https://yaml.org/spec/1.2.2/#nodes)无序关联;
+		```yaml
+		product:
+	   - sku         : BL394D
+	     quantity    : 4
+	     description : Football
+	     price       : 450.00
+	   - sku         : BL4438H
+	     quantity    : 1
+	     description : Super Hoop
+	     price       : 2392.00
+		```
+  * [mapping](https://yaml.org/spec/1.2.2/#mapping) - [唯一](https://yaml.org/spec/1.2.2/#node-comparison)[键](https://yaml.org/spec/1.2.2/#nodes)与[值](https://yaml.org/spec/1.2.2/#nodes)的无序关联;
+		```yaml
+		batchLimit: 1000
+		threadCountLimit: 2
+		key: value
+		keyMapping: <What goes here?>
+		```
   * [scalar](https://yaml.org/spec/1.2.2/#scalar) - 任何具有不透明结构的数据，可表示为一系列 Unicode 字符。
 
   Combined, these primitives generate directed graph structures. These primitives were chosen because they are both powerful and familiar: the [sequence](https://yaml.org/spec/1.2.2/#sequence) corresponds to a Perl array and a Python list, the [mapping](https://yaml.org/spec/1.2.2/#mapping) corresponds to a Perl hash table and a Python dictionary. The [scalar](https://yaml.org/spec/1.2.2/#scalar) represents strings, integers, dates and other atomic data types.
   
   这些基元组合在一起，生成有向图形结构。 选择这些原语是因为它们既强大又熟悉： [sequence](https://yaml.org/spec/1.2.2/#sequence) 对应一个 Perl 数组和一个 Python 列表，[mapping](https://yaml.org/spec/1.2.2/#mapping) 对应一个 Perl 哈希表和一个 Python 字典。 [scalar](https://yaml.org/spec/1.2.2/#scalar)表示字符串、整数、日期和其他原子数据类型。
 
-  Each YAML [node](https://yaml.org/spec/1.2.2/#nodes) requires, in addition to its [kind](https://yaml.org/spec/1.2.2/#nodes) and [content](https://yaml.org/spec/1.2.2/#nodes), a [tag](https://yaml.org/spec/1.2.2/#tags) specifying its data type. Type specifiers are either [global](https://yaml.org/spec/1.2.2/#tags) URIs or are [local](https://yaml.org/spec/1.2.2/#tags) in scope to a single [application](https://yaml.org/spec/1.2.2/#processes-and-models). For example, an integer is represented in YAML with a [scalar](https://yaml.org/spec/1.2.2/#scalar) plus the [global tag](https://yaml.org/spec/1.2.2/#tags) “`tag:yaml.org,2002:int`”. Similarly, an invoice object, particular to a given organization, could be represented as a [mapping](https://yaml.org/spec/1.2.2/#mapping) together with the [local tag](https://yaml.org/spec/1.2.2/#tags) “`!invoice`”. This simple model can represent any data structure independent of programming language.
-  
-  每个 YAML [节点](https://yaml.org/spec/1.2.2/#nodes)除了其[类型和](https://yaml.org/spec/1.2.2/#nodes)[内容](https://yaml.org/spec/1.2.2/#nodes)之外，还需要一个[标签](https://yaml.org/spec/1.2.2/#tags) 指定其数据类型。 类型说明符可以是[全局](https://yaml.org/spec/1.2.2/#tags) URI，也可以是单个 URI 的本地 [应用程序](https://yaml.org/spec/1.2.2/#processes-and-models)。例如，在 YAML 中，整数由[标量](https://yaml.org/spec/1.2.2/#scalar)加上[全局标记](https://yaml.org/spec/1.2.2/#tags) “`tag：yaml.org，2002：int`” 表示。同样，特定于给定组织的 invoice 对象可以[表示为映射](https://yaml.org/spec/1.2.2/#mapping)以及[本地标记](https://yaml.org/spec/1.2.2/#tags) “`！invoice`”。这个简单的模型可以表示独立于编程语言的任何数据结构。
+  ```yaml
+	# 这是一个使用全局标签的整数标量，它告诉 YAML 解析器 `42` 是一个整数。
+	number: !!int 42
+	
+	# `!invoice` 和 `!item` 是局部标签，它们用于定义一个特定于应用程序的数据结构。在这个例子中，`!invoice` 表示一个发票对象，而 `!item` 表示发票中的一个项目。
+	!invoice
+	  id: 12345
+	  date: 2023-04-01
+	  items:
+	    - !item
+	      product: "Widget"
+	      quantity: 1
+	      price: !!float 19.99
+	
+	```
 
+	Each YAML [node](https://yaml.org/spec/1.2.2/#nodes) requires, in addition to its [kind](https://yaml.org/spec/1.2.2/#nodes) and [content](https://yaml.org/spec/1.2.2/#nodes), a [tag](https://yaml.org/spec/1.2.2/#tags) specifying its data type. Type specifiers are either [global](https://yaml.org/spec/1.2.2/#tags) URIs or are [local](https://yaml.org/spec/1.2.2/#tags) in scope to a single [application](https://yaml.org/spec/1.2.2/#processes-and-models). For example, an integer is represented in YAML with a [scalar](https://yaml.org/spec/1.2.2/#scalar) plus the [global tag](https://yaml.org/spec/1.2.2/#tags) “`tag:yaml.org,2002:int`”. Similarly, an invoice object, particular to a given organization, could be represented as a [mapping](https://yaml.org/spec/1.2.2/#mapping) together with the [local tag](https://yaml.org/spec/1.2.2/#tags) “`!invoice`”. This simple model can represent any data structure independent of programming language.
+	
+	每个YAML节点除了需要知道其类型和内容外，还需要一个标签来指明其数据类型。这些类型标签要么是全局统一资源标识符（URI），要么是仅限于特定应用程序的本地标签。例如，在YAML中，整数是通过一个标量值加上全局标签“tag:yaml.org,2002:int”来表示的。同样，特定于某个组织的发票对象可以表示为一个映射，并加上本地标签“!invoice”。这种简单的模型能够描述任何与编程语言无关的数据结构。
+	
 - Serializing the Representation Graph
 
   For sequential access mediums, such as an event callback API, a YAML [representation](https://yaml.org/spec/1.2.2/#representation-graph) must be *serialized* to an ordered tree. Since in a YAML [representation](https://yaml.org/spec/1.2.2/#representation-graph), [mapping keys](https://yaml.org/spec/1.2.2/#nodes) are unordered and [nodes](https://yaml.org/spec/1.2.2/#nodes) may be referenced more than once (have more than one incoming “arrow”), the serialization process is required to impose an [ordering](https://yaml.org/spec/1.2.2/#mapping-key-order) on the [mapping keys](https://yaml.org/spec/1.2.2/#nodes) and to replace the second and subsequent references to a given [node](https://yaml.org/spec/1.2.2/#nodes) with place holders called [aliases](https://yaml.org/spec/1.2.2/#anchors-and-aliases). YAML does not specify how these *serialization details* are chosen. It is up to the YAML [processor](https://yaml.org/spec/1.2.2/#processes-and-models) to come up with human-friendly [key order](https://yaml.org/spec/1.2.2/#mapping-key-order) and [anchor](https://yaml.org/spec/1.2.2/#anchors-and-aliases) names, possibly with the help of the [application](https://yaml.org/spec/1.2.2/#processes-and-models). The result of this process, a YAML [serialization tree](https://yaml.org/spec/1.2.2/#serialization-tree), can then be traversed to produce a series of event calls for one-pass processing of YAML data.
+  
+  在顺序访问的介质中，例如事件回调API，需要将YAML的数据表示转换为一个有序的树结构。由于在YAML的数据表示中，映射的键是无序的，且节点可能被多次引用，因此在序列化过程中需要确定映射键的顺序，并将对同一节点的多次引用转换为称为别名的占位符。YAML标准并没有规定如何选择这些序列化细节，这取决于YAML处理器来决定一个直观的键顺序和锚点名称，可能还需要应用程序的协助。这个过程的结果是一个YAML序列化树，它可以通过遍历产生一系列事件调用，从而实现一次性处理YAML数据。
 
 - Presenting the Serialization Tree
 
   The final output process is *presenting* the YAML [serializations](https://yaml.org/spec/1.2.2/#serialization-tree) as a character [stream](https://yaml.org/spec/1.2.2/#streams) in a human-friendly manner. To maximize human readability, YAML offers a rich set of stylistic options which go far beyond the minimal functional needs of simple data storage. Therefore the YAML [processor](https://yaml.org/spec/1.2.2/#processes-and-models) is required to introduce various *presentation details* when creating the [stream](https://yaml.org/spec/1.2.2/#streams), such as the choice of [node styles](https://yaml.org/spec/1.2.2/#node-styles), how to [format scalar content](https://yaml.org/spec/1.2.2/#scalar-formats), the amount of [indentation](https://yaml.org/spec/1.2.2/#indentation-spaces), which [tag handles](https://yaml.org/spec/1.2.2/#tag-handles) to use, the [node tags](https://yaml.org/spec/1.2.2/#node-tags) to leave [unspecified](https://yaml.org/spec/1.2.2/#resolved-tags), the set of [directives](https://yaml.org/spec/1.2.2/#directives) to provide and possibly even what [comments](https://yaml.org/spec/1.2.2/#comments) to add. While some of this can be done with the help of the [application](https://yaml.org/spec/1.2.2/#processes-and-models), in general this process should be guided by the preferences of the user.
+  
+  YAML的最终输出过程是将YAML的序列化数据以人类友好的方式转换为字符流输出。为了提高可读性，YAML提供了多种样式选择，这些选择不仅满足了简单数据存储的基本功能，还提供了更多的灵活性。因此，在创建字符流时，YAML处理器需要考虑各种输出细节，如选择节点样式、标量内容的格式化方式、缩进大小、使用的标签句柄、保留未指定的节点标签、提供的指令，甚至包括添加的注释。虽然一些细节可以通过应用程序来辅助完成，但总体上，这个过程应该根据用户的需求和喜好来调整。
 
 ### 3.1.2. Load
 
@@ -74,20 +111,30 @@ YAML 处理器不需要公开[序列化](https://yaml.org/spec/1.2.2/#serializat
 - Parsing the Presentation Stream
 
   *Parsing* is the inverse process of [presentation](https://yaml.org/spec/1.2.2/#presentation-stream), it takes a [stream](https://yaml.org/spec/1.2.2/#streams) of characters and produces a [serialization tree](https://yaml.org/spec/1.2.2/#serialization-tree). Parsing discards all the [details](https://yaml.org/spec/1.2.2/#presenting-the-serialization-tree) introduced in the [presentation](https://yaml.org/spec/1.2.2/#presentation-stream) process, reporting only the [serialization tree](https://yaml.org/spec/1.2.2/#serialization-tree). Parsing can fail due to [ill-formed](https://yaml.org/spec/1.2.2/#well-formed-streams-and-identified-aliases) input.
+  
+  解析是呈现过程的逆过程，它将字符流转换为序列化树。在解析过程中，会忽略呈现时添加的所有格式细节，只保留序列化树的结构。如果输入的字符流格式不正确，解析过程可能会失败。
 
 - Composing the Representation Graph
 
   *Composing* takes a [serialization tree](https://yaml.org/spec/1.2.2/#serialization-tree) and produces a [representation graph](https://yaml.org/spec/1.2.2/#representation-graph). Composing discards all the [details](https://yaml.org/spec/1.2.2/#presenting-the-serialization-tree) introduced in the [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) process, producing only the [representation graph](https://yaml.org/spec/1.2.2/#representation-graph). Composing can fail due to any of several reasons, detailed [below](https://yaml.org/spec/1.2.2/#loading-failure-points).
+  
+  组合过程是将序列化树转换成代表图。在这个过程中，会忽略序列化时添加的所有格式细节，只保留代表图的结构。组合可能会因为多种原因失败，具体原因将在下面详细讨论。
 
 - Constructing Native Data Structures
 
   The final input process is *constructing* [native data structures](https://yaml.org/spec/1.2.2/#representing-native-data-structures) from the YAML [representation](https://yaml.org/spec/1.2.2/#representation-graph). Construction must be based only on the information available in the [representation](https://yaml.org/spec/1.2.2/#representation-graph) and not on additional [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) or [presentation details](https://yaml.org/spec/1.2.2/#presenting-the-serialization-tree) such as [comments](https://yaml.org/spec/1.2.2/#comments), [directives](https://yaml.org/spec/1.2.2/#directives), [mapping key order](https://yaml.org/spec/1.2.2/#mapping), [node styles](https://yaml.org/spec/1.2.2/#node-styles), [scalar content format](https://yaml.org/spec/1.2.2/#scalar-formats), [indentation](https://yaml.org/spec/1.2.2/#indentation-spaces) levels etc. Construction can fail due to the [unavailability](https://yaml.org/spec/1.2.2/#available-tags) of the required [native data types](https://yaml.org/spec/1.2.2/#representing-native-data-structures).
+  
+  最后的输入过程是从YAML的表示中创建本地数据结构。这一过程应仅依赖于表示中的信息，而不应考虑序列化或呈现时的额外信息，如注释、指令、映射键的排序、节点样式、标量内容的格式、缩进层次等。如果所需的本地数据类型不可用，构建过程可能会失败。
 
 ## 3.2. Information Models
 
 This section specifies the formal details of the results of the above processes. To maximize data portability between programming languages and implementations, users of YAML should be mindful of the distinction between [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) or [presentation](https://yaml.org/spec/1.2.2/#presentation-stream) properties and those which are part of the YAML [representation](https://yaml.org/spec/1.2.2/#representation-graph). Thus, while imposing a [order](https://yaml.org/spec/1.2.2/#mapping-key-order) on [mapping keys](https://yaml.org/spec/1.2.2/#nodes) is necessary for flattening YAML [representations](https://yaml.org/spec/1.2.2/#representation-graph) to a sequential access medium, this [serialization detail](https://yaml.org/spec/1.2.2/#serializing-the-representation-graph) must not be used to convey [application](https://yaml.org/spec/1.2.2/#processes-and-models) level information. In a similar manner, while [indentation](https://yaml.org/spec/1.2.2/#indentation-spaces) technique and a choice of a [node style](https://yaml.org/spec/1.2.2/#node-styles) are needed for the human readability, these [presentation details](https://yaml.org/spec/1.2.2/#presenting-the-serialization-tree) are neither part of the YAML [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) nor the YAML [representation](https://yaml.org/spec/1.2.2/#representation-graph). By carefully separating properties needed for [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) and [presentation](https://yaml.org/spec/1.2.2/#presentation-stream), YAML [representations](https://yaml.org/spec/1.2.2/#representation-graph) of [application](https://yaml.org/spec/1.2.2/#processes-and-models) information will be consistent and portable between various programming environments.
 
+本节详细规定了上述流程的结果。为了提高YAML在不同编程语言和环境间的数据可移植性，用户应区分开序列化和展示属性与YAML表示本身的部分。例如，在将YAML表示转换为顺序访问格式时，虽然需要确定映射键的顺序，但这部分序列化细节不应用于传递应用级别的信息。同样，虽然为了易读性需要选择缩进方式和节点样式，但这些展示细节并不属于YAML的序列化或表示。通过清晰地区分序列化和展示所需的属性，YAML表示的应用信息能在不同的编程环境中保持一致和可移植。
+
 The following diagram summarizes the three *information models*. Full arrows denote composition, hollow arrows denote inheritance, “`1`” and “`*`” denote “one” and “many” relationships. A single “`+`” denotes [serialization](https://yaml.org/spec/1.2.2/#serialization-tree) details, a double “`++`” denotes [presentation](https://yaml.org/spec/1.2.2/#presentation-stream) details.
+
+在下图中，三个信息模型被总结。实箭头表示组合关系，空心箭头表示继承关系，`1`和`*`分别代表“一个”和“多个”的关系。单个`+`表示序列化细节，而双`++`表示展示细节。
 
 **Figure 3.2. Information Models**
 

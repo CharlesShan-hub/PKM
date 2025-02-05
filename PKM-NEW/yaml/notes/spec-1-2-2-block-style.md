@@ -115,9 +115,9 @@ b-chomped-last(KEEP)  ::= b-as-line-feed | <end-of-input>
 
 **Example 8.4 Chomping Final Line Break**
 
-| `strip: |-  text↓ clip: |  text↓ keep: |+  text↓ ` | `{ "strip": "text",  "clip": "text\n",  "keep": "text\n" } ` |
-| -------------------------------------------------- | ------------------------------------------------------------ |
-|                                                    |                                                              |
+| `strip: | -  text↓ clip: | text↓ keep: | +  text↓ ` | `{ "strip": "text",  "clip": "text\n",  "keep": "text\n" } ` |
+| ------- | -------------- | ----------- | ---------- | ------------------------------------------------------------ |
+|         |                |             |            |                                                              |
 
 Legend:
 
