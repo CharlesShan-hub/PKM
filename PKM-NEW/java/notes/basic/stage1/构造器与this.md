@@ -1,7 +1,5 @@
 # 构造器与this
 
-[toc]
-
 ## 构造器
 
 * 构造器案例
@@ -14,9 +12,9 @@
       Person p1 = new Person();
       Person p2 = new Person(18,"Carl");
       Person p3 = new Person(22);
-      System.out.println(p1.age);
-      System.out.println(p2.age);
-      System.out.println(p3.age);
+      System.out.println(p1.age); // 1
+      System.out.println(p2.age); // 18
+      System.out.println(p3.age); // 22
     }
   }
   class Person{
@@ -36,7 +34,7 @@
   }
   ```
 
-* 不写构造器的时候，一个类在编译的时候也会有构造器！
+* 不写构造器的时候，一个类在编译的时候也会有构造器！（可以用 javap 指令反编译看）
 
   ```java
   public Person{}
@@ -46,7 +44,7 @@
     Person(){} // <- 默认构造器
   }
   
-  // 但是当用户写了构造器之后，默认构造器就没了，就不能再直接new Person();了
+  // 但是当用户写了构造器之后，默认构造器就没了，就不能再直接new Person();了，除非显示的写出来Person(){}
   ```
 
 * 对象创建流程的分析（面试题）
@@ -92,6 +90,30 @@
   ```
 
 * this本质：其实this和name、age一样，都是成员变量，不过this被隐藏起来了，this存放的是对象自己的地址！
+  
+	```java
+	public class Demo{
+		public static void main(String[] args){
+			Dog d1 = new Dog("One", 20);
+			Dog d2 = new Dog("Two", 30);
+			System.out.println(d1.hashCode()); // 1933863327
+			d1.info();// 1933863327
+			System.out.println(d2.hashCode()); // 112810359
+			d2.info();// 112810359
+		}
+	}
+	class Dog{
+		public String name;
+		public int age;
+		public Dog(String name, int age){
+			this.name = name;
+			this.age = age;
+		}
+		public void info(){
+			System.out.println(this.hashCode());
+		}
+	}
+	```
 
 * 构造器与this
 
