@@ -173,8 +173,14 @@
 	* 244：（重点）对象创建流程解析
 	* 245~250：this
 	* 251~261：[[notes/basic/stage1/第七章作业|第七章作业]]
-* 第 8 章
-	* 262
+	* 262：内容梳理
+* 第 8 章：[[notes/basic/stage1/包|包]]，[[notes/basic/stage1/访问修饰符|访问修饰符]]，[[notes/basic/stage1/封装|封装]]，[[notes/basic/stage1/继承|继承]]，[[notes/basic/stage1/多态|多态]]，[super](notes/basic/stage1/super.md)
+	* 263~271：IDEA软件
+	* 272~277：包
+	* 278~279：（重点）访问修饰符
+	* 280~284：（重点）封装
+	* 285~296：（重点）继承
+	* 
 
 ## Old Content
 
