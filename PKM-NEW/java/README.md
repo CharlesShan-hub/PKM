@@ -174,13 +174,24 @@
 	* 245~250：this
 	* 251~261：[[notes/basic/stage1/第七章作业|第七章作业]]
 	* 262：内容梳理
-* 第 8 章：[[notes/basic/stage1/包|包]]，[[notes/basic/stage1/访问修饰符|访问修饰符]]，[[notes/basic/stage1/封装|封装]]，[[notes/basic/stage1/继承|继承]]，[[notes/basic/stage1/多态|多态]]，[super](notes/basic/stage1/super.md)
+* 第 8 章：[[notes/basic/stage1/包|包]]，[[notes/basic/stage1/访问修饰符|访问修饰符]]，[[notes/basic/stage1/封装|封装]]，[[notes/basic/stage1/继承|继承]]，[super](notes/basic/stage1/super.md)，[[notes/basic/stage1/多态|多态]]
 	* 263~271：IDEA软件
 	* 272~277：包
 	* 278~279：（重点）访问修饰符
 	* 280~284：（重点）封装
-	* 285~296：（重点）继承
-	* 
+	* 285~292：（重点）继承，概念与细节
+	* 293~296：继承，内存层面的本质
+	* 297~301：super
+	* 302：方法重写
+	* 303：方法重写细节：返回类型越来越小，访问权限越来越大，参数列表完全一样
+	* 304~305：方法重写vs 方法重载案例
+	* 306：多态的引出（没有多态很麻烦）
+	* 307：多态（方法重载和方法重写也是多态）
+	* 308：（重点）多态（对象的多态）
+	* 309：多态改进 306 的代码
+	* 310：多态的细节：向上转型
+	* 311：多态的细节：向下转型
+	* 312：
 
 ## Old Content
 

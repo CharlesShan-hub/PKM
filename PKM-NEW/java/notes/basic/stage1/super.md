@@ -30,7 +30,7 @@ class Student extends People{
   public String study(int time){
     return "Study for "+time+" minutes. "+super.sleep(time*2);
   }
-  // 使用父类的方法
+  // 使用父类的属性
   public int getAge(int age){
     return super.age;
   }
