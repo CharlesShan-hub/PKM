@@ -18,10 +18,8 @@
    A a = new A();
    A b = a;
    A c = b;
-   System.out.println(a==c);
+   System.out.println(a==c); // true
    ```
-
-   > true
 
 6. 案例2
 
@@ -34,10 +32,8 @@
    // main
    B b = new B();
    A a = b;
-   System.out.println(a==b);
+   System.out.println(a==b); // true
    ```
-
-   > true
 
 7. .equals()源码(JDK 17)
 
@@ -84,18 +80,19 @@
    }
    ```
 
-8. 字符串比较案例
+8. int 比较
+	```java
+	Integer i1 = new Integer(1000);
+	Integer i2 = new Integer(1000);
+	System.out.println(i1 == i2);
+	System.out.println(i1.equals(i2));
+	```
 
-   ```java
-   String str1 = "abc";
-   String str2 = "abc";
-   System.out.println(str1 == str2);
-   System.out.println(str1.equals(str2));
-   ```
-
-   > true
-   >
-   > true
+	```bash
+	false
+	true
+	```
+9. 字符串比较案例
 
    ```java
    String str1 = new String("abc");
@@ -104,49 +101,50 @@
    System.out.println(str1.equals(str2));
    ```
 
-   > false
-   >
-   > true
+	```bash
+	false
+	true
+	```
 
-9. 重写.equal方法
+10. 重写.equal方法
 
-   ```java
-   class Person{
-     private String name; 
-     private int age; 
-     private char gender;
-     
-   	//重写 Object 的 equals 方法 
-     @Override
-     public boolean equals(Object obj) {
-       //判断如果比较的两个对象是同一个对象，则直接返回 true 
-       if(this == obj) {
-         return true; 
-       }
-       //类型判断
-       if(obj instanceof Person) {//是 Person，我们才比较
-         Person p = (Person)obj;
-         return this.name.equals(p.name) && this.age == p.age && this.gender == p.gender;
-       }
-       //如果不是 Person ，则直接返回 false 
-       return false;
-   	}
-     
-     public Person(String name, int age, char gender) { 
-       this.name = name;
-       this.age = age;
-       this.gender = gender; 
-     }
-     public String getName() {return name;}
-     public void setName(String name) {this.name = name;}
-     public int getAge() {return age;}
-     public void setAge(int age) { this.age = age;}
-     public char getGender() {return gender;}
-     public void setGender(char gender) {this.gender = gender;} 
-   }
-   ```
+	```java
+	class Person{
+	 private String name; 
+	 private int age; 
+	 private char gender;
+	 
+	//重写 Object 的 equals 方法 
+	 @Override
+	 public boolean equals(Object obj) {
+	   //判断如果比较的两个对象是同一个对象，则直接返回 true 
+	   if(this == obj) {
+		 return true; 
+	   }
+	   //类型判断
+	   if(obj instanceof Person) {//是 Person，我们才比较
+		 Person p = (Person)obj;
+		 return this.name.equals(p.name) && this.age == p.age && this.gender == p.gender;
+	   }
+	   //如果不是 Person ，则直接返回 false 
+	   return false;
+	}
+	 
+	 public Person(String name, int age, char gender) { 
+	   this.name = name;
+	   this.age = age;
+	   this.gender = gender; 
+	 }
+	 public String getName() {return name;}
+	 public void setName(String name) {this.name = name;}
+	 public int getAge() {return age;}
+	 public void setAge(int age) { this.age = age;}
+	 public char getGender() {return gender;}
+	 public void setGender(char gender) {this.gender = gender;} 
+	}
+	```
 
-10. 练习
+11. 练习
 
     ```java
     Person p1 = new Person(); 
@@ -176,11 +174,45 @@
     System.out.println(s1==s2); //F
     ```
 
+12. 练习
+	```java
+	//代码如下 EqualsExercise03.java
+	int it = 65;
+	float fl = 65.0f;
+	System.out.println("65和65.0f是否相等？ " + (it == fl));
+	char ch1 = 'A'; char ch2 = 12;
+	System.out.println("65和 'A' 是否相等？ " + (it == ch1));
+	System.out.println("12和ch2是否相等？ " + (12 == ch2));
+	
+	String str1 = new String("hello");
+	String str2 = new String("hello");
+	System.out.println("str1和str2是否相等？ " + (str1 == str2));
+	
+	System.out.println("str1是否equals str2? " + (str1.equals(str2)));
+	System.out.println("hello" == new java.sql.Date());
+	```
+
+	```java
+	//代码如下 EqualsExercise03.java
+	int it = 65;
+	float fl = 65.0f;
+	System.out.println("65和65.0f是否相等？ " + (it == fl)); // true
+	char ch1 = 'A'; char ch2 = 12;
+	System.out.println("65和 'A' 是否相等？ " + (it == ch1)); // true
+	System.out.println("12和ch2是否相等？ " + (12 == ch2)); // true
+	
+	String str1 = new String("hello");
+	String str2 = new String("hello");
+	System.out.println("str1和str2是否相等？ " + (str1 == str2)); // false
+	
+	System.out.println("str1是否equals str2? " + (str1.equals(str2))); // true
+	System.out.println("hello" == new java.sql.Date()); // false
+	```
 ## Hashcode方法
 
-1. 提高具有哈希结构的容器的效率!
+1. 提高具有哈希结构的容器的效率!（比如 HashMap，HashSet 等等）
 2. 两个引用，如果指向的是同一个对象，则哈希值肯定是一样的!
-3. 两个引用，如果指向的是不同对象，则哈希值是不一样的
+3. 两个引用，如果指向的是不同对象，则哈希值是不一样的（除非发生哈希碰撞）
 4. 哈希值主要根据地址号来的，不能完全将哈希值等价于地址。
 5. 集合中hashCode如果需要的话，也会重写,在讲解集合时，老韩在说如何重写hashCode() 代码
 
@@ -192,7 +224,7 @@ public class Program {
     AA aa3 = aa;
     System.out.println("aa.hashCode()=" + aa.hashCode());
     System.out.println("aa2.hashCode()=" + aa2.hashCode());
-    System.out.println("aa3.hashCode()=" + aa3.hashCode());
+    System.out.println("aa3.hashCode()=" + aa3.hashCode()); // aa3 和 aa 的一样
   } 
 }
 class AA {}
@@ -206,22 +238,50 @@ aa3.hashCode()=112810359
 
 ## toString方法
 
-1. 默认返回:全类名+@+哈希值的十六进制
+1. 默认返回:**全类名**+@+哈希值的十六进制（**全类名 = 包名+类名**）
+	```java
+	package ex_objects;  
+	  
+	public class Test {  
+	    public static void main(String[] args){  
+	        Cat c = new Cat();  
+	        Dog d = new Dog();  
+	        System.out.println(c.toString());  
+	        System.out.println(c); // 等价于
+	        // ex_objects.Cat@3feba861  
+	        System.out.println(d.toString()); 
+	        System.out.println(d);  // 等价于
+	        // I'm not a people, but you are a true dog!  
+	    }  
+	}  
+	  
+	class Cat{}  
+	class Dog{  
+	    @Override  
+	    public String toString(){  
+	        return "I'm not a people, but you are a true dog!";  
+	    }
+	}
+	```
 2. 子类往往重写 toString 方法，用于返回对象的属性信息
-
-```java
-class Person{
-  String name;
-  public Person(String name){
-    this.name = name;
-  }
-  @Override
-  public String toString(){
-    return "name="+name;
-  }
-}
-```
-
+	```java
+	class Person{
+	  String name;
+	  public Person(String name){
+	    this.name = name;
+	  }
+	  @Override
+	  public String toString(){
+	    return "name="+name;
+	  }
+	}
+	```
+3. Object的 toString
+	```java
+	public static String toString(Object o, String nullDefault) {  
+	    return (o != null) ? o.toString() : nullDefault;  
+	}
+	```
 ## finalize方法
 
 当垃圾回收器确定不存在该对象的更多引用时，由对象的垃圾回收器调用此方法
@@ -243,7 +303,7 @@ public class Program{
 
 > 什么都不输出
 
-垃圾回收机制的调用，是由系统来决定(即有自己的GC算法),也可以通过System.gc()主动触发垃圾回收机制
+垃圾回收机制的调用，是由系统来决定(即有自己的GC算法),也可以通过`System.gc()`主动触发垃圾回收机制
 
 ```java
 class People{
