@@ -218,13 +218,18 @@
 	* 370：房屋查找
 	* 371：查找
 	* 372：总结，[[notes/basic/stage1/第九章作业|第九章作业]]
-* 第 10 章：[[notes/basic/stage2/类变量和类方法|类变量和类方法]]，[[notes/basic/stage2/代码块|代码块]]
+* 第 10 章：[[notes/basic/stage2/类变量和类方法|类变量和类方法]]，[[notes/basic/stage2/代码块|代码块]]，[[notes/basic/stage2/设计模式|设计模式]]，[[notes/basic/stage2/final|final]]，[[notes/basic/stage2/抽象类|抽象类]]，[[notes/basic/stage2/interface|interface]]，[[notes/basic/stage2/内部类|内部类]]
 	* 373~374：类变量的引出
 	* 375：类变量内存布局
 	* 376~377：类变量的使用与细节
 	* 378~381：类方法+案例
 	* 382~384：main
-	* 385~390：代码块
+	* 385~390：（重点）代码块
+	* 391~392：（重点）设计模式——单例
+	* 393~396：（重点）final
+	* 397~401：（重点）抽象类
+	* 402~411：（重点）接口
+	* 412~：（重点）四种内部类
 
 ## Old Content
 
@@ -246,7 +251,7 @@
     
   * | 第二阶段 | 提升编程能力 |      |
     | :------: | :----------: | :--: |
-    |    [[notes/basic/stage2/类变量和类方法|类变量和类方法]]    |    [[notes/basic/stage2/代码块|代码块]]    |      |
+    |    [[notes/basic/stage2/类变量和类方法]]    |    [[notes/basic/stage2/代码块]]    |      |
     |          |              |      |
     |          |              |      |
     |          |              |      |
