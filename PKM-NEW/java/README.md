@@ -249,8 +249,9 @@
 	* 456~458：[[notes/basic/stage2/第十二章作业|第十二章作业]]
 * 第 13 章：[[notes/basic/stage2/包装类|包装类]]，[[notes/basic/stage2/String|String]]，[[notes/basic/stage2/常用类|常用类]]
 	* 459~464：包装类
-	* 465~：String
-	* 461：StringBuffer
+	* 465~473：（重要）String
+	* 474~477：StringBuffer
+	* 478~：StringBuilder
 
 ## Old Content
 
