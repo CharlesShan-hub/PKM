@@ -235,6 +235,22 @@
 	* 424：自定义类实现枚举
 	* 425：enum 关键字实现枚举
 	* 426：enum 注意事项
+	* 427~431：enum 案例
+	* 432~434：注解
+	* 435：（了解就行）元注解
+	* 436~442：[[notes/basic/stage2/第十一章作业|第十一章作业]] 以及内容梳理
+* 第 12 章：[[notes/basic/stage2/异常|异常]]
+	* 443~444：异常处理入门
+	* 445：（重点）异常体系图
+	* 446~452：try catch
+	* 453：throws
+	* 454：自定义异常
+	* 455：throw 和 throws 对比
+	* 456~458：[[notes/basic/stage2/第十二章作业|第十二章作业]]
+* 第 13 章：[[notes/basic/stage2/包装类|包装类]]，[[notes/basic/stage2/String|String]]，[[notes/basic/stage2/常用类|常用类]]
+	* 459~464：包装类
+	* 465~：String
+	* 461：StringBuffer
 
 ## Old Content
 
