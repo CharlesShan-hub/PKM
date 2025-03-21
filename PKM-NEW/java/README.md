@@ -247,11 +247,15 @@
 	* 454：自定义异常
 	* 455：throw 和 throws 对比
 	* 456~458：[[notes/basic/stage2/第十二章作业|第十二章作业]]
-* 第 13 章：[[notes/basic/stage2/包装类|包装类]]，[[notes/basic/stage2/String|String]]，[[notes/basic/stage2/常用类|常用类]]
+* 第 13 章：[[notes/basic/stage2/包装类|包装类]]，[[notes/basic/stage2/String|String]]，[[notes/basic/stage2/Math|Math]]，[[notes/basic/stage2/Arrays|Arrays]]，[[BigInteger和BigDecimal]]，[[notes/basic/stage2/日期类|日期类]]
 	* 459~464：包装类
 	* 465~473：（重要）String
-	* 474~477：StringBuffer
-	* 478~：StringBuilder
+	* 474~477：（重要）StringBuffer
+	* 478~479：（重要）StringBuilder
+	* 480：Math
+	* 481~484：Array
+	* 485：System
+	* 486：大数表示
 
 ## Old Content
 

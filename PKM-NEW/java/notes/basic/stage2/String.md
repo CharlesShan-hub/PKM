@@ -768,3 +768,96 @@ public class StringBufferEx {
 
 ## StringBuilder
 
+### StringBuilder 类笔记
+
+#### 基本介绍
+
+1. **描述**：
+   - `StringBuilder` 是一个可变的字符序列类。
+   - 提供了与 `StringBuffer` 兼容的 API，但不保证同步。
+   - 设计为 `StringBuffer` 的一个简易替换，用于字符串缓冲区被单个线程使用时。
+   - 在大多数实现中，`StringBuilder` 比 `StringBuffer` 更快，因为它不需要同步。
+
+2. **主要操作**：
+   - 主要操作是 `append` 和 `insert` 方法。
+   - 这些方法可以重载，以接受任意类型的数据。
+
+#### 使用场景
+
+- 当需要在单个线程中频繁修改字符串内容时，推荐使用 `StringBuilder`。
+- 由于 `StringBuilder` 不是线程安全的，因此在多线程环境中应使用 `StringBuffer`。
+
+#### 示例代码
+
+```java
+public class StringBuilderExample {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(", World!"); // 使用 append 方法添加字符串
+        System.out.println(sb.toString()); // 输出: Hello, World!
+
+        sb.insert(7, "Java"); // 在索引 7 处插入字符串 "Java"
+        System.out.println(sb.toString()); // 输出: Hello, JavaWorld!
+
+        // 重载 append 方法，接受任意类型的数据
+        sb.append(123).append(true).append(45.67);
+        System.out.println(sb.toString()); // 输出: Hello, JavaWorld!123true45.67
+    }
+}
+```
+
+```
+Hello, World!
+Hello, JavaWorld!
+Hello, JavaWorld!123true45.67
+```
+
+
+最后看一下他们三个的比较
+
+```java
+public class StringBuilderVsString {
+    public static void main(String[] args) {
+        String text = "";
+        long startTime = 0L;
+        long endTime = 0L;
+
+        // 使用 StringBuffer
+        StringBuffer buffer = new StringBuffer("");
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < 20000; i++) {
+            buffer.append(String.valueOf(i));
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("StringBuffer的执行时间: " + (endTime - startTime));
+
+        // 使用 StringBuilder
+        startTime = System.currentTimeMillis();
+        StringBuilder builder = new StringBuilder("");
+        for (int i = 0; i < 20000; i++) {
+            builder.append(String.valueOf(i));
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("StringBuilder的执行时间: " + (endTime - startTime));
+
+        // 使用 String 进行连接
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < 20000; i++) {
+            text = text + i;
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("String的执行时间: " + (endTime - startTime));
+    }
+}
+```
+
+```bash
+StringBuffer的执行时间: 1
+StringBuilder的执行时间: 0
+String的执行时间: 73
+```
+
+1. 如果字符串存在大量的修改操作，一般使用 StringBuffer 或 StringBuilder
+2. 如果字符串存在大量的修改操作，并在单线程的情况，使用 StringBuilder
+3. 如果字符串存在大量的修改操作，并在多线程的情况，使用 StringBuffer
+4. 如果我们字符串很少修改，被多个对象引用，使用 String，比如配置信息等
