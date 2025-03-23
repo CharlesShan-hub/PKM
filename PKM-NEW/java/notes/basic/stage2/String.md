@@ -1,5 +1,7 @@
 ## String
 
+![[../../../assets/String-drawing| 1000]]
+
 ### 基本概念
 
 1. **String 对象用于保存字符串，也就是一组字符序列**

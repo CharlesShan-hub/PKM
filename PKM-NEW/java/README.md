@@ -256,6 +256,11 @@
 	* 481~484：Array
 	* 485：System
 	* 486：大数表示
+	* 487~492：日期
+	* 493~497：[[notes/basic/stage2/第十三章作业|第十三章作业]]
+* 第 14 章：[[notes/basic/stage2/集合|集合]]
+	* 498~499：（背下来）集合的框架图
+	* 500：Collection 接口
 
 ## Old Content
 
