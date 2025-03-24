@@ -261,6 +261,14 @@
 * 第 14 章：[[notes/basic/stage2/集合|集合]]
 	* 498~499：（背下来）集合的框架图
 	* 500：Collection 接口
+	* 501~503：迭代器（iterator）与增强 for 的方式遍历Collection
+	* 504~508：List 接口
+	* 509~511：ArrayList ，追源码，扩容机制
+	* 512~513：Vector，追源码，扩容机制
+	* 514：（可跳过）双向链表复现
+	* 515~516：LinkedList 追源码
+	* 517：Set 接口
+	* 518
 
 ## Old Content
 
