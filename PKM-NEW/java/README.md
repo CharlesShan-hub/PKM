@@ -268,39 +268,25 @@
 	* 514：（可跳过）双向链表复现
 	* 515~516：LinkedList 追源码
 	* 517：Set 接口
-	* 518
+	* 518~520：HashSet 概念
+	* 520~524：（重点难度）HashSet 源码分析（哈希表+链表+红黑树）
+	* 525~526：HashSet 练习
+	* 527~529：LinkedHashSet：就是 HashSet 底层加入了双向链表
+	* 530~535：Map 接口
+	* 536
 
-## Old Content
 
-  * |                         第一阶段                          |               建立编程思想                |                                                              |
-    | :-------------------------------------------------------: | :---------------------------------------: | :----------------------------------------------------------: |
-    |                           Part1                           |                零散知识点                 |                                                              |
-    |         [反思总结](notes/basic/stage1/反思总结.md)         | [背景介绍](notes/basic/stage1/背景介绍.md) |          [Java文档](notes/basic/stage1/Java文档.md)           |
-    |          [Dos指令](notes/basic/stage1/Dos指令.md)          |     [编码](notes/basic/stage1/编码.md)     |                                                              |
-    |                           Part2                           |                 基础语法                  |                                                              |
-    |       [第一个程序](notes/basic/stage1/第一个程序.md)       |     [变量与数据类型](notes/basic/stage1/变量与数据类型.md)     |            [运算符](notes/basic/stage1/运算符.md)             |
-    | [标识符规则与规范](notes/basic/stage1/标识符规则与规范.md) | [键盘输入](notes/basic/stage1/键盘输入.md) |              [进制](notes/basic/stage1/进制.md)               |
-    |         [控制结构](notes/basic/stage1/控制结构.md)         |     [数组](notes/basic/stage1/数组.md)     |              [排序](notes/basic/stage1/排序.md)               |
-    |             [查找](notes/basic/stage1/排序.md)             | [递归案例](notes/basic/stage1/递归案例.md) |                                                              |
-    |                           Part3                           |                 类与对象                  |                                                              |
-    |         [类与对象的引出](notes/basic/stage1/类与对象的引出.md)         | [属性与成员方法](notes/basic/stage1/属性与成员方法.md) | [构造器与this](notes/basic/stage1/构造器与this.md) |
-    |  [面向对象基础案例](notes/basic/stage1/面向对象基础案例.md)  |       [包](notes/basic/stage1/包.md)       |         [访问修饰符](notes/basic/stage1/访问修饰符.md)          |
-    |              [封装](notes/basic/stage1/封装.md)              |      [继承](notes/basic/stage1/继承.md)      |               [super](notes/basic/stage1/super.md)               |
-    | [多态](notes/basic/stage1/多态.md) | [Object](notes/basic/stage1/Object.md) |  |
-    
-  * | 第二阶段 | 提升编程能力 |      |
-    | :------: | :----------: | :--: |
-    |    [[notes/basic/stage2/类变量和类方法]]    |    [[notes/basic/stage2/代码块]]    |      |
-    |          |              |      |
-    |          |              |      |
-    |          |              |      |
-  
-  * | 第三阶段 | 增强分析需求 |      |
-    | :------: | :----------: | :--: |
-    |          |              |      |
-    |          |              |      |
-    |          |              |      |
-    |          |              |      |
+## 后续内容
+
+* JavaWeb：Maven 、 MySQL 、 Mybatis 、 spring
+* 苍穹外卖
+* 黑马点评
+* Redis：redis 高级篇、原理篇
+* 手写 rpc：网络通信、负载均衡
+* juc：并发编程
+* leetcode：代码随想录
+* 中间件：消息队列、 springcloud
+* 八股：mysql+redis 进阶+juc+jvm+计算机基础
 
 ## 资源
 
