@@ -145,11 +145,56 @@ for hour in ChineseHour:
 
 ### Iteration
 
+does not provide the aliases
+
 ```python
-print(list(Color))
-# [<Color.RED: 1>, <Color.GREEN: 2>, <Color.BLUE: 3>]
+class ColorWithAliases(Enum):
+	RED = 1
+	GREEN = 2
+	BLUE = 3
+	Alias = 1
+
+print(list(ColorWithAliases))
+# [<ColorWithAliases.RED: 1>, <ColorWithAliases.GREEN: 2>, <ColorWithAliases.BLUE: 3>]
 ```
 
+use `__members__` to get key and value，it can visit aliases members
+
+```python
+for key, value in ColorWithAliases.__members__.items():
+	print(key, value)
+
+# RED ColorWithAliases.RED
+# GREEN ColorWithAliases.GREEN
+# BLUE ColorWithAliases.BLUE
+# ALIAS ColorWithAliases.RED
+```
+
+### Comparisons
+
+use `is` or `is not`
+
+```python
+print(Color.RED is Color.GREEN) # True
+```
+
+use `==` or `!=`
+
+```python
+print(Color.RED == Color.RED) # True
+```
+
+can not compare enum with values
+
+```python
+print(Color.RED is == 1) # TypeError ❌
+```
+
+can not compare enum with `>` or `<`
+
+```python
+print(Color.RED is < Color.GREEN) # TypeError ❌
+```
 
 ## Enum Classes
 
