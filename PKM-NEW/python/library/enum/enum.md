@@ -4,6 +4,7 @@
 > 官网教程： https://docs.python.org/3/howto/enum.html
 > 网友教程： https://blog.csdn.net/tekin_cn/article/details/145955099
 
+---
 ## Enum Methods
 
 ### Define Enum and Visit item & attributes
@@ -318,9 +319,77 @@ restored_fruit = json.loads(json_str, object_hook=enum_hook)
 print(restored_fruit)  # 输出: Fruit.apple
 ```
 
+
+---
 ## Enum Classes
 
 ![[assets/enum-drawing|1000]]
+
+### ReprEnum
+
+`ReprEnum` 是 `StrEnum` 和 `IntEnum` 的基类。他主要是为了说明它的子类需要手动重写`__repr__`函数。
+
+```python
+from enum import ReprEnum
+
+class Status(ReprEnum): #❌ 不可以这样！
+    ACTIVE = 1
+    INACTIVE = 0
+
+    def __repr__(self):
+        return f"<Status: {self.name}={self.value}>"
+
+# TypeError: ReprEnum subclasses must be mixed with a data type (i.e. int, str, float, etc.)
+```
+
+由此可见，我们需要指定value的数据类型。
+
+```python
+from enum import ReprEnum
+from dataclasses import dataclass
+
+@dataclass
+class RGB:
+    r: int
+    g: int
+    b: int
+
+class Color(RGB, ReprEnum): # ❌ 不可以，只允许枚举同时继承一个非枚举类型（如int）和Enum/ReprEnum
+    RED = RGB(255, 0, 0)
+    GREEN = RGB(0, 255, 0)
+    BLUE = RGB(0, 0, 255)
+
+    def __repr__(self):
+        return f"<Color: {self.name}={self.value}>"
+
+print(Color.RED)
+```
+
+我们只能修改成如下内容，这也就是和上边的`IntEnum`一样了
+
+```python
+from enum import ReprEnum
+
+class Color(int, ReprEnum):
+    RED = 1
+    GREEN = 2
+    BLUE = 3
+
+    def __repr__(self):
+        return f"<Color: {self.name}={self.value}>"
+
+print(Color.RED) # 1
+```
+
+`IntEnum`的源码如下
+
+```python
+class IntEnum(int, ReprEnum):
+	"""
+	Enum where members are also (and must be) ints
+	"""
+```
+
 ### IntEnum
 
 当我们需要知道每一个name对应的整数，甚至需要运算的时候，就要用到`IntEnum`
@@ -347,5 +416,233 @@ if response == HTTPStatus.NOT_FOUND:
 print(HTTPStatus.OK + 100)  # 300
 ```
 
+### StrEnum
 
+`StrEnum` 与 `IntEnum` 类似，但是多了一些内容。`StrEnum` 默认提供了 `_generate_next_value_` 函数，默认value是name的小写。
 
+```python
+# 源码
+class StrEnum(str, Enum):
+	// ...
+	@staticmethod
+	def _generate_next_value_(name, start, count, last_values):
+		"""
+		Return the lower-cased version of the member name.
+		"""
+		return name.lower()
+```
+
+```python
+from enum import Enum, auto
+from typing import Union
+
+# 定义枚举（兼容 Python 3.4+）
+class Color(str, Enum):
+    RED = "red"
+    GREEN = "green"
+    BLUE = "blue"
+
+# 需要Python3.11
+class Color(StrEnum):
+	RED = "red"
+    GREEN = "green"
+    BLUE = "blue"
+
+# 默认value就是name的小写
+class Color(StrEnum):
+	RED = auto()
+	GREEN = auto()
+	BLUE = auto()
+
+# 检查是否是合法的颜色
+def print_color(color: Union[Color, str]):
+    if isinstance(color, Color):
+        print(f"Enum color: {color.value}")
+    elif color in [c.value for c in Color]:
+        color_enum = Color(color)
+        print(f"String color (converted to enum): {color_enum.value}")
+    else:
+        raise ValueError(f"Invalid color: {color}")
+
+print_color(Color.RED)    # 输出: Enum color: red
+print_color("green")      # 输出: String color (converted to enum): green
+print_color("yellow")     # 报错: ValueError: Invalid color: yellow
+```
+
+另外，`StrEnum`保证了每一个value都是str。并且还可以根据多个参数指定更多内容。
+
+```python
+# 源码
+class StrEnum(str, ReprEnum):
+    def __new__(cls, *values):
+        "values must already be of type `str`"
+        if len(values) > 3:
+            raise TypeError('too many arguments for str(): %r' % (values, ))
+        if len(values) == 1:
+            # it must be a string
+            if not isinstance(values[0], str):
+                raise TypeError('%r is not a string' % (values[0], ))
+        if len(values) >= 2:
+            # check that encoding argument is a string
+            if not isinstance(values[1], str):
+                raise TypeError('encoding must be a string, not %r' % (values[1], ))
+        if len(values) == 3:
+            # check that errors argument is a string
+            if not isinstance(values[2], str):
+                raise TypeError('errors must be a string, not %r' % (values[2]))
+        value = str(*values)
+        member = str.__new__(cls, value)
+        member._value_ = value
+        return member
+```
+
+```python
+class MyStrEnum(StrEnum):
+    # 使用单个参数（字符串值）
+    HELLO = "你好"
+    
+    # 使用两个参数（字符串值和编码）
+    WORLD = ("世界".encode("utf-8"), "utf-8")
+    
+    # 使用三个参数（字符串值、编码和错误处理）
+    # 忽略无法解码的字节
+    PYTHON = ("蟒蛇".encode("utf-8"), "ascii", "ignore")
+    # 用替换字符(通常是?)代替无法解码的字节
+    JAVA = ("咖啡".encode("utf-8"), "ascii", "replace")
+    # 默认模式，遇到无法解码的字节直接抛出异常
+    # RUST = ("齿轮".encode("utf-8"), "ascii", "strict")
+
+print(MyStrEnum.HELLO)  # 输出：你好
+print(MyStrEnum.WORLD)  # 输出：世界
+print(MyStrEnum.PYTHON)  # 不输出
+print(MyStrEnum.JAVA)  # 输出：������
+```
+
+### FlagBoundary
+
+* STRICT (严格模式)
+	- Flag 的默认模式
+	- 任何超出定义范围的位都会引发 ValueError
+	- 保证类型安全，不允许未定义的标志位组合
+	- 适合需要严格控制的场景
+* CONFORM (修正模式)
+	- 自动丢弃超出定义范围的位
+	- 只保留有效的标志位
+	- 适合需要自动清理无效数据的场景
+	- 可以避免程序因无效数据而中断
+* EJECT (弹出模式)
+	- 当值超出范围时，直接返回原始整数值
+	- 不再保持枚举类型
+	- 适合需要与现有整数API兼容的场景
+	- 可以平滑过渡到枚举系统
+* KEEP (保留模式)
+	- IntFlag 的默认模式
+	- 保留所有位，包括未定义的位
+	- 会显示未定义位的十六进制值
+	- 适合需要完整保留原始数据的位操作场景
+	- 常用于硬件寄存器操作等低级编程
+
+```python
+from enum import Flag, auto, STRICT, CONFORM, EJECT, KEEP
+
+class StrictFlag(Flag, boundary=STRICT):
+    A = 1
+    B = 2
+    
+# print(StrictFlag.A | StrictFlag(4))  
+# ValueError: <flag 'StrictFlag'> invalid value 4
+
+class ConformFlag(Flag, boundary=CONFORM):
+    A = 1
+    B = 2
+    
+print(ConformFlag.A | ConformFlag(4))  # 输出 A (只保留有效的1，丢弃4)
+
+class EjectFlag(Flag, boundary=EJECT):
+    A = 1
+    B = 2
+    
+print(EjectFlag(4))  # 输出 4 (整数)
+# print(EjectFlag.A | EjectFlag(4)) 
+# TypeError: unsupported operand type(s) for |: 'EjectFlag' and 'int'
+
+class KeepFlag(Flag, boundary=KEEP):
+    A = 1
+    B = 2
+    
+print(KeepFlag.A | KeepFlag(5))  # 输出 A|4 (保留所有位)
+```
+
+### Flag
+
+`Flag` 是 `Enum` 的一个特殊子类，专门用于处理 **位掩码（bitmask）** 或 **组合标志（combinable flags）** 的场景。  
+
+| 特性 | `Enum` | `Flag` |
+|------|--------|--------|
+| **用途** | 表示互斥的、独立的枚举值 | 表示可以组合的标志（bitmask） |
+| **是否可组合** | ❌ 不能组合（每个值独立） | ✅ 可以用 `|`、`&`、`~` 等位运算组合 |
+| **比较方式** | 只能 `==` 或 `is` 比较 | 可以检查是否包含某个标志（`&`） |
+| **典型用例** | 状态机（如 `Color.RED`）、分类 | 权限控制、选项组合（如文件打开模式） |
+
+`Enum` 无法处理组合情况，每个成员是**互斥的**，不能组合。例如：
+
+```python
+from enum import Enum
+
+class Color(Enum):
+    RED = 1
+    GREEN = 2
+    BLUE = 4
+
+# ❌ 不能组合
+mixed = Color.RED | Color.GREEN  # 报错！
+```
+
+`Flag` 允许位运算组合：允许用 `|`（OR）、`&`（AND）、`~`（NOT）等操作组合多个标志
+
+```python
+from enum import Flag, auto
+
+class Permissions(Flag):
+    READ = auto()    # 1
+    WRITE = auto()   # 2
+    EXECUTE = auto() # 4
+
+# ✅ 可以组合
+user_perms = Permissions.READ | Permissions.WRITE  # READ + WRITE (3)
+admin_perms = Permissions.READ | Permissions.WRITE | Permissions.EXECUTE  # 7
+
+# 检查是否包含某个权限
+print(Permissions.READ in user_perms)  # True
+print(user_perms & Permissions.WRITE)  # Permissions.WRITE
+```
+
+再如，网络协议标志（如 TCP 标志位）
+
+```python
+class TCPFlags(Flag):
+    FIN = 0x01
+    SYN = 0x02
+    RST = 0x04
+    PSH = 0x08
+    ACK = 0x10
+    URG = 0x20
+
+packet_flags = TCPFlags.SYN | TCPFlags.ACK  # SYN-ACK 包
+```
+
+### IntFlag
+
+需要进一步和int进行运算
+
+```python
+class Permissions(IntFlag):
+    READ = 1
+    WRITE = 2
+    EXECUTE = 4
+
+# 可以直接进行位运算
+perms = Permissions.READ | Permissions.WRITE
+print(perms)  # Permissions.READ|WRITE
+print(perms & 3)  # 3 (可以直接和整数运算)
+```
