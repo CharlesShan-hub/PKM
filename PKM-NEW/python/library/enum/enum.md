@@ -3,6 +3,7 @@
 > 官方api文档： https://docs.python.org/3/library/enum.html
 > 官网教程： https://docs.python.org/3/howto/enum.html
 > 网友教程： https://blog.csdn.net/tekin_cn/article/details/145955099
+> 香港博主教程： https://learnscript.net/zh/python/enumerations/
 
 ---
 ## Enum Methods
@@ -75,7 +76,7 @@ class Direction(Enum):
 	# Back = 2
 ```
 
-### Using automatic values
+### auto
 
 使用`auto`得到默认递增的 value
 
@@ -646,3 +647,184 @@ perms = Permissions.READ | Permissions.WRITE
 print(perms)  # Permissions.READ|WRITE
 print(perms & 3)  # 3 (可以直接和整数运算)
 ```
+
+### member & nomember
+
+```python
+# 源码
+class nonmember(object):
+    """
+    Protects item from becoming an Enum member during class creation.
+    """
+    def __init__(self, value):
+        self.value = value
+
+class member(object):
+    """
+    Forces item to become an Enum member during class creation.
+    """
+    def __init__(self, value):
+        self.value = value
+```
+
+`member` 和 `nonmember` 可以把一个不能用来当成value的内容强行包装成value
+
+|**特性**|**`@member`**|**`@nonmember`**|
+|---|---|---|
+|**用途**|显式标记一个成员为枚举成员|显式标记一个成员**不**作为枚举成员|
+|**是否出现在 `__members__`**|✅ 是|❌ 否|
+|**是否可迭代**|✅ 是（`for item in Enum` 可访问）|❌ 否（迭代时不会出现）|
+|**典型场景**|强制将方法/属性视为枚举成员|临时变量、辅助方法等不希望暴露的成员
+
+```python
+from enum import Enum, nonmember, member
+
+class Outer(Enum):
+    a = 1
+    b = 2
+    @nonmember
+    class Inner1(Enum):
+        foo = 10
+        bar = 11
+    
+    @member
+    class Inner2(Enum):  # Inner 本身成为 Outer 的成员
+        foo = 10
+        bar = 11
+
+# 访问枚举成员
+print(Outer.Inner1.foo)  # 输出: Outer.Inner.foo
+print(Outer.Inner2.value.foo)  # 输出: Outer.Inner.foo
+
+# 遍历枚举成员
+print(list(Outer)) # [<Outer.a: 1>, <Outer.b: 2>, <Outer.Inner2: <enum 'Inner2'>>]
+```
+
+### property
+
+允许 `Enum` 成员具有属性，而不会与成员名称冲突。 `value` 和 `name` 属性就是这样实现的。
+
+枚举属性通过 @property 定义后：
+
+- 会成为实例属性（通过枚举成员访问）
+- 保持只读特性（符合枚举不可变原则）
+- 不会出现在枚举迭代中
+
+```python
+class Status(Enum):
+    PENDING = 1
+    PROCESSING = 2
+    COMPLETED = 3
+
+    @property
+    def is_finished(self):
+        return self == Status.COMPLETED
+
+# 使用示例
+print(Status.PENDING.is_finished)  # False
+print(Status.COMPLETED.is_finished)  # True
+```
+
+```python
+class Color(Enum):
+    RED = (255, 0, 0)
+    GREEN = (0, 255, 0)
+    BLUE = (0, 0, 255)
+
+    def __init__(self, r, g, b):
+        self.rgb = (r, g, b)
+
+    @property
+    def hex_code(self):
+        return f'#{self.rgb[0]:02x}{self.rgb[1]:02x}{self.rgb[2]:02x}'
+
+# 使用示例
+print(Color.RED.hex_code)  # 输出: #ff0000
+```
+
+### EnumCheck & verify
+
+`verify`是枚举类装饰器，用于检查用户选择的枚举约束。
+
+`EnumCheck`枚举包含：`CONTINUOUS`、`NAMED_FLAGS`、`UNIQUE`三个元素
+
+CONTINUOUS - 验证枚举值是否是连续的整数
+
+```python
+from enum import Enum, verify, CONTINUOUS
+
+@verify(CONTINUOUS)
+class Status(Enum):
+    PENDING = 1
+    PROCESSING = 2  # 正常，因为1,2,3是连续的
+    COMPLETED = 3
+    # SKIPPED = 5  # 会报错，因为跳过了4
+```
+
+NAMED_FLAGS - 验证标志枚举(Flag)的值是否是2的幂次方
+
+```python
+@verify(NAMED_FLAGS) 
+class Permissions(Flag):
+    READ = 1    # 2^0
+    WRITE = 2   # 2^1 
+    EXECUTE = 4 # 2^2
+    # INVALID = 3  # 会报错，因为3不是2的幂次方
+```
+
+UNIQUE - 验证value是独一无二的，单独使用时，和`@unique`没区别
+
+```python
+@verify(UNIQUE)
+class Color(Enum):
+    RED = 1
+    GREEN = 2
+    BLUE = 3  # 这会正常通过验证
+    # RED = 4  # 这会引发 ValueError，因为 RED 已经存在
+```
+
+这三个可以混合使用
+
+```python
+@verify(UNIQUE, CONTINUOUS)  # 同时验证唯一性和连续性
+class Status(Enum):
+    PENDING = 1
+    PROCESSING = 2
+    COMPLETED = 3
+```
+
+## Enum Functions
+
+### global_enum
+
+`global_enum` 用于将枚举成员注册为全局变量。它的主要作用是将枚举类的所有成员自动注入到模块的全局命名空间中，这样可以直接通过成员名访问枚举值，而不需要通过枚举类名。
+
+```python
+from enum import Enum, global_enum
+
+@global_enum
+class Color(Enum):
+    RED = 1
+    GREEN = 2
+    BLUE = 3
+
+# 现在可以直接使用 RED, GREEN, BLUE 而不需要 Color.RED
+print(RED)  # 输出: Color.RED
+```
+
+### global_str
+
+使用 enum_name 代替 class.enum_name，它是一个函数，不是装饰器
+
+```python
+class Direction(Enum):
+    UP = 1
+    DOWN = 2
+    LEFT = 3
+    RIGHT = 4
+
+print(Direction.UP)             # Direction.UP
+print(Direction.UP.name)        # UP
+print(global_str(Direction.UP)) # UP
+```
+
