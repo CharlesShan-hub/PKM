@@ -59,10 +59,6 @@ plt.show()
 ![[../assets/image (34).png]]
 <figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
 
-<details>
-
-<summary>Code</summary>
-
 ```python
 from skimage import data, exposure
 from matplotlib import pyplot as plt
@@ -131,8 +127,6 @@ plt.title('Hist of Added')
 plt.tight_layout()
 plt.show()
 ```
-
-</details>
 
 3. 主色调直方图
 
