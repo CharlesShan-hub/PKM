@@ -313,7 +313,15 @@
 	* 624：BufferedWriter
 	* 625：文件拷贝案例（字符）
 	* 626~627：BufferedStream in and out
-	* 628~630：ObjectStream in and out
+	* 628~631：ObjectStream in and out
+	* 632：System.in，System.out
+	* 633~635：InputStreamReader、OutputStreamWriter(编码)
+	* 636~637：PrintStream、PrintWriter
+	* 638~640：Properties
+	* 641~643：作业
+* 第 20 章：（坦克大战项目第三部分）
+* 第 21 章：网络
+	* 661:
 
 ## 后续内容
 

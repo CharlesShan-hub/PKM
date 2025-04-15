@@ -8,10 +8,17 @@
     * java.io.ObjectOutputStream
 
 * 主要特点：
-    * **实现对象的序列化(Serialization)**【常用】
-    * 也可以实现Enternalizable接口（不常用）
     * 可以写入基本数据类型和对象
     * 通常与ObjectInputStream配合使用
+
+* **注意⚠️**
+	* **实现对象的序列化(Serialization)【常用】**
+    * **也可以实现Enternalizable接口（不常用）**
+    * **读写顺序需要一致！**
+    * **序列化类时，类中的成员也要可以序列化！**
+    * **如果有哪个属性不希望被保存，可以用transient修饰**
+    * **static属性不会被保存**
+    * **建议增加SerialVersionUID，提高版本兼容性**
 
 * 常用构造方法：
     * `ObjectOutputStream(OutputStream out)`：创建写入指定输出流的ObjectOutputStream
