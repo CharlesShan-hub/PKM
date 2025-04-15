@@ -303,6 +303,17 @@
 	* 610~613：File 创建以及常用操作
 	* 614：各种类的关系
 	* 615：FileInputStream
+	* 616：FileOutputStream
+	* 617：文件拷贝案例（注意写入限制长度）
+	* 618：文件字符流说明
+	* 619：FileReader
+	* 620：FileWriter
+	* 621~622：节点流
+	* 623：BufferedReader
+	* 624：BufferedWriter
+	* 625：文件拷贝案例（字符）
+	* 626~627：BufferedStream in and out
+	* 628~630：ObjectStream in and out
 
 ## 后续内容
 
