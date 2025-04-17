@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 顶部导航栏 -->
+        <div class="navbar">
+            <div class="navbar-title">Learning System</div>
+            <a href="#" class="logout-link">退出登录</a>
+        </div>
+
+        <!-- 表单部分 -->
+        <div class="form-section">
+            <div class="form-row">
+                <div class="form-fields">
+                    <!-- 姓名输入 -->
+                    <div class="form-group">
+                        <label for="name">姓名:</label>
+                        <input type="text" id="name" v-model="formData.name" placeholder="请输入姓名">
+                    </div>
+                    
+                    <!-- 性别选择 -->
+                    <div class="form-group">
+                        <label for="gender">性别:</label>
+                        <select id="gender" v-model="formData.gender">
+                            <option value="">--请选择--</option>
+                            <option value=1>男</option>
+                            <option value=2>女</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 职位选择 -->
+                    <div class="form-group">
+                        <label for="job">职位:</label>
+                        <select id="job" v-model="formData.job">
+                            <option value="">--请选择--</option>
+                            <option value="1">班主任</option>
+                            <option value="2">讲师</option>
+                            <option value="3">学工主管</option>
+                            <option value="4">教研主管</option>
+                            <option value="5">咨询师</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- 按钮组 -->
+                <div class="form-buttons">
+                    <button class="btn btn-primary" @click="search">查询</button>
+                    <button type="button" class="btn btn-secondary" @click="clearForm">清空</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表格展示区 没用vue -->
+        <!-- <div class="form-section">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>头像</th>
+                        <th>职位</th>
+                        <th>入职日期</th>
+                        <th>最后操作时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>令狐冲</td>
+                        <td>男</td>
+                        <td><img src="https://web-framework.oss-cn-hangzhou.aliyuncs.com/2023/1.jpg" class="image-img"></td>
+                        <td>讲师</td>
+                        <td>2020-05-15</td>
+                        <td>2023-06-10 14:30</td>
+                        <td class="action-buttons">
+                            <button class="action-btn edit-btn">编辑</button>
+                            <button class="action-btn delete-btn">删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>任盈盈</td>
+                        <td>女</td>
+                        <td><img src="https://web-framework.oss-cn-hangzhou.aliyuncs.com/2023/2.jpg" class="image-img"></td>
+                        <td>学工主管</td>
+                        <td>2019-08-20</td>
+                        <td>2023-06-08 09:45</td>
+                        <td class="action-buttons">
+                            <button class="action-btn edit-btn">编辑</button>
+                            <button class="action-btn delete-btn">删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>岳不群</td>
+                        <td>男</td>
+                        <td><img src="https://web-framework.oss-cn-hangzhou.aliyuncs.com/2023/3.jpg" class="image-img"></td>
+                        <td>教研主管</td>
+                        <td>2018-03-10</td>
+                        <td>2023-06-05 16:20</td>
+                        <td class="action-buttons">
+                            <button class="action-btn edit-btn">编辑</button>
+                            <button class="action-btn delete-btn">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+
+        <!-- 表格展示区 -->
+        <div class="form-section">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>头像</th>
+                        <th>职位</th>
+                        <th>入职日期</th>
+                        <th>最后操作时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(user, index) in users" :key="index.id">
+                        <td>{{ user.name }}</td>
+                        <td>
+                            <span v-if="user.gender === 1">男</span>
+                            <span v-else>女</span>
+                        </td>
+                        <td><img :src="user.image" class="image-img"></td>
+                        <td>
+                            <span v-if="user.job === '1'">班主任</span>
+                            <span v-else-if="user.job === '2'">讲师</span>
+                            <span v-else-if="user.job === '3'">学工主管</span>
+                            <span v-else-if="user.job === '4'">教研主管</span>
+                            <span v-else-if="user.job === '5'">咨询师</span>
+                            <span v-else>其他</span>
+                        </td>
+                        <td>{{ user.entrydate }}</td>
+                        <td>{{ user.updatetime }}</td>
+                        <td class="action-buttons">
+                            <button class="action-btn edit-btn" @click="editUser(index)">编辑</button>
+                            <button class="action-btn delete-btn" @click="deleteUser(index)">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 版权区域 -->
+        <footer class="footer">
+            <div class="copyright">
+                &copy; <span id="currentYear"></span> Learning System. All Rights Reserved.
+            </div>
+        </footer>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="script.js" type="module"></script>
+    </body>
+</html>

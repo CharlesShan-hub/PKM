@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Basic Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Vue Basic Demo</h1>
+
+    <hr>
+    <div id="v-for-example">
+        <h2>v-for 指令示例</h2>
+
+        <div class="bloc k">
+            <p>数组遍历</p>
+            <ul>
+                <li v-for="(item, index) in items" :key="item.id">
+                    {{ index + 1 }}. {{ item }}
+                </li>
+            </ul>
+        </div>
+            
+        <div class="block">
+            <p>对象遍历</p>
+            <ul>
+                <li v-for="(value, key) in user" :key="key">
+                    {{ key }}: {{ value }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <p>数字遍历</p>
+            <div>
+                <span v-for="n in 5" :key="n">{{ n }} </span>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div id="v-bind-example">
+        <h2>v-bind | v-on | v-model(双向绑定) 指令示例</h2>
+        
+        <div class="block">
+            <p>使用 v-bind 绑定 class</p>
+            <div v-bind:class="classObject">这是一个动态类的示例1</div>
+            <div :class="classObject">这是一个动态类的示例2</div>
+            <button @click="toggleClass">切换样式</button>
+        </div>
+        
+        <div class="block">
+            <p>使用 v-bind 绑定 style</p>
+            <div :style="styleObject">这是一个动态样式的示例</div>
+            <button @click="changeStyle">改变样式</button>
+        </div>
+        
+        <div class="block">
+            <p>使用 v-bind 绑定属性</p>
+            <input type="text" v-model="inputValue">
+            <p>输入的值：{{ inputValue }}</p>
+        </div>
+        
+        <div class="block">
+            <p>使用 v-on 绑定事件</p>
+            <button @click="handleClick">点击我 ({{ clickCount }})</button>
+        </div>
+    </div>
+
+    <hr>
+    <div id="v-if-example">
+        <h2>v-if ｜ v-show 指令示例</h2>
+
+        <div class="block">
+            <p>使用 v-if 条件渲染</p>
+            <div v-if="showMessage">这是一个条件渲染的示例</div>
+            <button @click="toggleMessage">切换显示</button>
+        </div>
+
+        <div class="block">
+            <p>使用 v-show 条件渲染</p>
+            <div v-show="showMessage">这是一个条件渲染的示例</div>
+            <button @click="toggleMessage">切换显示</button>
+        </div>
+    </div>
+    
+</body>
+<script src="script.js" type="module"></script>
+</html>

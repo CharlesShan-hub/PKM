@@ -331,35 +331,78 @@
 * 第一部分：前端Web基础（2天）：[[PKM-NEW/java/notes/javaweb/java-h5c3|java-h5c3]]
 	1. Web开发-导学视频  👌
 	2. Web前端开发初识  👌
-	3. HTML-CSS-入门程序  
-	4. HTML-CSS-VsCode开发工具  
-	5. HTML-CSS-常见标签和样式-央视新闻-标题-排版  
-	6. HTML-CSS-常见标签和样式-央视新闻-标题-样式  
-	7. HTML-CSS-常见标签和样式-央视新闻-标题-样式(选择器)  
-	8. HTML-CSS-常见标签和样式-央视新闻-正文-排版  
-	9. HTML-CSS-常见标签和样式-央视新闻-正文-样式  
-	10. HTML-CSS-常见标签和样式-央视新闻-整体布局  
-	11. HTML-CSS-常见标签和样式-tlias案例-顶部导航栏  
-	12. HTML-CSS-常见标签和样式-表单标签  
-	13. HTML-CSS-常见标签和样式-表单项标签  
-	14. HTML-CSS-常见标签和样式-tlias案例-搜索表单区域  
-	15. HTML-CSS-常见标签和样式-tlias案例-底部版权区域  
-	16. HTML-CSS-课程总结  
-	17. JS-课程介绍  
-	18. JS-核心语法-引入方式  
-	19. JS-核心语法-变量&数据类型  
-	20. JS-核心语法-函数  
-	21. JS-核心语法-自定义对象&JSON  
-	22. JS-核心语法-DOM  
-	23. JS-事件监听-语法&常见事件  
-	24. JS-事件监听-常见事件(优化-JS模块化)  
-	25. Vue-快速入门  
-	26. Vue-常用指令-v-for  
-	27. Vue-常用指令-v-bind&v-if&v-show  
-	28. Vue-常用指令-v-model与v-on  
-	29. Ajax-入门  
-	30. Ajax-案例 
-* 第二部分：后端Web基础（4天）
+	3. HTML-CSS-入门程序  👌
+	4. HTML-CSS-VsCode开发工具  👌
+	5. HTML-CSS-常见标签和样式-央视新闻-标题-排版  👌
+	6. HTML-CSS-常见标签和样式-央视新闻-标题-样式  👌
+	7. HTML-CSS-常见标签和样式-央视新闻-标题-样式(选择器)  👌
+	8. HTML-CSS-常见标签和样式-央视新闻-正文-排版  👌
+	9. HTML-CSS-常见标签和样式-央视新闻-正文-样式  👌
+	10. HTML-CSS-常见标签和样式-央视新闻-整体布局  👌
+	11. HTML-CSS-常见标签和样式-tlias案例-顶部导航栏  👌
+	12. HTML-CSS-常见标签和样式-表单标签👌
+	13. HTML-CSS-常见标签和样式-表单项标签 👌
+	14. HTML-CSS-常见标签和样式-tlias案例-搜索表单区域👌
+	15. HTML-CSS-常见标签和样式-tlias案例-底部版权区域    👌
+	16. HTML-CSS-课程总结    👌
+	17. JS-课程介绍    👌
+	18. JS-核心语法-引入方式  👌  
+	19. JS-核心语法-变量&数据类型  👌  
+	20. JS-核心语法-函数    👌
+	21. JS-核心语法-自定义对象&JSON  👌  
+	22. JS-核心语法-DOM    👌
+	23. JS-事件监听-语法&常见事件  👌  
+	24. JS-事件监听-常见事件(优化-JS模块化)   👌 
+	25. Vue-快速入门    👌
+	26. Vue-常用指令-v-for  👌  
+	27. Vue-常用指令-v-bind&v-if&v-show    👌
+	28. Vue-常用指令-v-model与v-on    👌
+	29. Ajax-入门 👌
+	30. Ajax-案例 👌
+* 第二部分：后端Web基础（4天）：[[PKM-NEW/java/notes/javaweb/maven|maven]]
+	31. Maven-课程介绍  
+	32. Maven-概述-介绍&安装  
+	33. Maven-IDEA集成  
+	34. Maven-依赖管理  
+	35. 单元测试-概述&入门  
+	36. 单元测试-断言&常见注解  
+	37. 单元测试-企业开发规范&AI生成生成单元测试  
+	38. 单元测试-Maven依赖范围  
+	39. Maven-常见问题解决方案  
+	40. Web基础-课程安排  
+	41. Web基础-SpringBootWeb入门-入门程序  
+	42. Web基础-SpringBootWeb入门-入门解析  
+	43. Web基础-HTTP协议-概述  
+	44. Web基础-HTTP协议-请求协议  
+	45. Web基础-HTTP协议-响应协议  
+	46. Web基础-SpringBootWeb案例  
+	47. Web基础-分层解耦-三层架构  
+	48. Web基础-分层解耦-IOC与DI入门  
+	49. Web基础-分层解耦-IOC&DI详解  
+	50. MySQL-课程介绍  
+	51. MySQL-概述-安装&数据模型  
+	52. MySQL-SQL-DDL-数据库操作&图形化工具  
+	53. MySQL-SQL-DDL-表操作-创建表  
+	54. MySQL-SQL-DDL-表操作-数据类型  
+	55. MySQL-SQL-DDL-表操作-设计表案例  
+	56. MySQL-SQL-DDL-表操作-查询-修改-删除  
+	57. MySQL-SQL-DML-insert&update&delete  
+	58. MySQL-SQL-DQL-基本查询  
+	59. MySQL-SQL-DQL-条件查询  
+	60. MySQL-SQL-DQL-分组查询  
+	61. MySQL-SQL-DQL-排序查询&分页查询  
+	62. JDBC-入门程序  
+	63. JDBC-执行DQL语句  
+	64. JDBC-预编译SQL  
+	65. Mybatis-入门程序  
+	66. Mybatis-辅助配置&JDBC VS Mybatis  
+	67. Mybatis-数据库连接池  
+	68. Mybatis-增删改查-删除操作  
+	69. Mybatis-增删改查-新增操作  
+	70. Mybatis-增删改查-更新操作  
+	71. Mybatis-增删改查-查询操作  
+	72. Mybatis-XML映射配置  
+	73. SpringBoot项目配置文件 
 * 第三部分：后端Web实战（6天） 
 * 第四部分：后端Web进阶（2天） 
 * 第五部分：前端Web实战（4天） 
@@ -368,49 +411,6 @@
 以下是去除前面数字后的课程名称列表（保留课程名称中的数字）：
 
  
-31. Maven-课程介绍  
-32. Maven-概述-介绍&安装  
-33. Maven-IDEA集成  
-34. Maven-依赖管理  
-35. 单元测试-概述&入门  
-36. 单元测试-断言&常见注解  
-37. 单元测试-企业开发规范&AI生成生成单元测试  
-38. 单元测试-Maven依赖范围  
-39. Maven-常见问题解决方案  
-40. Web基础-课程安排  
-41. Web基础-SpringBootWeb入门-入门程序  
-42. Web基础-SpringBootWeb入门-入门解析  
-43. Web基础-HTTP协议-概述  
-44. Web基础-HTTP协议-请求协议  
-45. Web基础-HTTP协议-响应协议  
-46. Web基础-SpringBootWeb案例  
-47. Web基础-分层解耦-三层架构  
-48. Web基础-分层解耦-IOC与DI入门  
-49. Web基础-分层解耦-IOC&DI详解  
-50. MySQL-课程介绍  
-51. MySQL-概述-安装&数据模型  
-52. MySQL-SQL-DDL-数据库操作&图形化工具  
-53. MySQL-SQL-DDL-表操作-创建表  
-54. MySQL-SQL-DDL-表操作-数据类型  
-55. MySQL-SQL-DDL-表操作-设计表案例  
-56. MySQL-SQL-DDL-表操作-查询-修改-删除  
-57. MySQL-SQL-DML-insert&update&delete  
-58. MySQL-SQL-DQL-基本查询  
-59. MySQL-SQL-DQL-条件查询  
-60. MySQL-SQL-DQL-分组查询  
-61. MySQL-SQL-DQL-排序查询&分页查询  
-62. JDBC-入门程序  
-63. JDBC-执行DQL语句  
-64. JDBC-预编译SQL  
-65. Mybatis-入门程序  
-66. Mybatis-辅助配置&JDBC VS Mybatis  
-67. Mybatis-数据库连接池  
-68. Mybatis-增删改查-删除操作  
-69. Mybatis-增删改查-新增操作  
-70. Mybatis-增删改查-更新操作  
-71. Mybatis-增删改查-查询操作  
-72. Mybatis-XML映射配置  
-73. SpringBoot项目配置文件  
 74. 准备工作-开发规范-开发模式  
 75. 准备工作-开发规范-Restful  
 76. 准备工作-工程搭建  
