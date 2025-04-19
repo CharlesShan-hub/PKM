@@ -360,16 +360,16 @@
 	29. Ajax-入门 👌
 	30. Ajax-案例 👌
 * 第二部分：后端Web基础（4天）：[[PKM-NEW/java/notes/javaweb/maven|maven]]
-	31. Maven-课程介绍  
-	32. Maven-概述-介绍&安装  
-	33. Maven-IDEA集成  
-	34. Maven-依赖管理  
-	35. 单元测试-概述&入门  
-	36. 单元测试-断言&常见注解  
-	37. 单元测试-企业开发规范&AI生成生成单元测试  
-	38. 单元测试-Maven依赖范围  
-	39. Maven-常见问题解决方案  
-	40. Web基础-课程安排  
+	31. Maven-课程介绍  👌
+	32. Maven-概述-介绍&安装  👌
+	33. Maven-IDEA集成  👌
+	34. Maven-依赖管理  👌
+	35. 单元测试-概述&入门 👌 
+	36. 单元测试-断言&常见注解  👌
+	37. 单元测试-企业开发规范&AI生成生成单元测试  👌
+	38. 单元测试-Maven依赖范围  👌
+	39. Maven-常见问题解决方案  👌
+	40. Web基础-课程安排  👌
 	41. Web基础-SpringBootWeb入门-入门程序  
 	42. Web基础-SpringBootWeb入门-入门解析  
 	43. Web基础-HTTP协议-概述  
