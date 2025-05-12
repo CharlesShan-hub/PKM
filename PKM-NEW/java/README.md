@@ -320,8 +320,11 @@
 	* 638~640：Properties
 	* 641~643：作业
 * 第 20 章：（坦克大战项目第三部分）
-* 第 21 章：网络
-	* 661:
+* 第 21 章：[[PKM-NEW/java/notes/basic/stage3/网络|网络]]
+	* 661~665：网络相关概念；IP；域名，端口号，TCP/IP协议栈，TCP、UDP
+	* 666：INetAddress类
+	* 667~670：TCP编程实践
+	* 
 
 ### JavaWeb
 
@@ -370,12 +373,12 @@
 	38. 单元测试-Maven依赖范围  👌
 	39. Maven-常见问题解决方案  👌
 	40. Web基础-课程安排  👌
-	41. Web基础-SpringBootWeb入门-入门程序  
-	42. Web基础-SpringBootWeb入门-入门解析  
-	43. Web基础-HTTP协议-概述  
-	44. Web基础-HTTP协议-请求协议  
-	45. Web基础-HTTP协议-响应协议  
-	46. Web基础-SpringBootWeb案例  
+	41. Web基础-SpringBootWeb入门-入门程序  👌  
+	42. Web基础-SpringBootWeb入门-入门解析  👌
+	43. Web基础-HTTP协议-概述  👌
+	44. Web基础-HTTP协议-请求协议  👌  
+	45. Web基础-HTTP协议-响应协议  👌
+	46. Web基础-SpringBootWeb案例  👌
 	47. Web基础-分层解耦-三层架构  
 	48. Web基础-分层解耦-IOC与DI入门  
 	49. Web基础-分层解耦-IOC&DI详解  
