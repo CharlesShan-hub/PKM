@@ -558,8 +558,8 @@
 
 ## MySQL
 
-* MySQL的安装与配置
-* 数据库：创建、查看、删除、备份、恢复
+* MySQL的安装与配置：[[PKM-NEW/java/notes/mysql/安装与配置|安装与配置]]
+* 数据库：创建、查看、删除、备份、恢复：[[PKM-NEW/java/notes/mysql/数据库]]
 * 表：创建、修改、删除
 * 数据类型（重点）
 * CRUD（重点）
