@@ -382,6 +382,7 @@
 	47. Web基础-分层解耦-三层架构  
 	48. Web基础-分层解耦-IOC与DI入门  
 	49. Web基础-分层解耦-IOC&DI详解  
+* 第三部分：后端Web实战（6天）：
 	50. MySQL-课程介绍  
 	51. MySQL-概述-安装&数据模型  
 	52. MySQL-SQL-DDL-数据库操作&图形化工具  
@@ -406,14 +407,12 @@
 	71. Mybatis-增删改查-查询操作  
 	72. Mybatis-XML映射配置  
 	73. SpringBoot项目配置文件 
-* 第三部分：后端Web实战（6天） 
 * 第四部分：后端Web进阶（2天） 
 * 第五部分：前端Web实战（4天） 
 * 第六部分：项目部署（2天）
 
 以下是去除前面数字后的课程名称列表（保留课程名称中的数字）：
 
- 
 74. 准备工作-开发规范-开发模式  
 75. 准备工作-开发规范-Restful  
 76. 准备工作-工程搭建  
@@ -542,8 +541,6 @@
 199. Docker-部署-DockerCompose  
 200. Web开发-完结  
 
-（注：课程名称内部的数字（如"HTML-CSS-入门程序"中的"HTML-CSS"）被保留，仅移除了开头的序号。）
-
 ## 后续内容
 
 * JavaWeb：Maven 、 MySQL 、 Mybatis 、 spring
@@ -560,9 +557,9 @@
 
 * MySQL的安装与配置：[[PKM-NEW/java/notes/mysql/安装与配置|安装与配置]]
 * 数据库：创建、查看、删除、备份、恢复：[[PKM-NEW/java/notes/mysql/数据库]]
-* 表：创建、修改、删除
-* 数据类型（重点）
-* CRUD（重点）
+* 表：创建、修改、删除：[[PKM-NEW/java/notes/mysql/数据表|数据表]]
+* 数据类型（重点）：[[PKM-NEW/java/notes/mysql/数据类型|数据类型]]
+* CRUD（重点）：[[PKM-NEW/java/notes/mysql/CRUD|CRUD]]
 * 函数（重点）
 * 内连接
 * 外连接
