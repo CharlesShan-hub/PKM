@@ -12,31 +12,31 @@ tags: [excalidraw]
 ## Text Elements
 Image Basic ^kFebd2xM
 
-[[../notes/image-basic]] ^oq3mmV9L
+[[PKM-NEW/dip/notes/image-basic]] ^oq3mmV9L
 
 Color Space ^D9RA5BjP
 
-[[../notes/color-space]] ^CeuFyQVW
+[[PKM-NEW/dip/notes/color-space]] ^CeuFyQVW
 
 Image Feature ^Fpgfy1K0
 
-[[../notes/image-feature]] ^jC1uN5EJ
+[[PKM-NEW/dip/notes/image-feature]] ^jC1uN5EJ
 
 Pixel Transform ^CABKCCHp
 
-[[../notes/pixel-transform]] ^1S4vMVvP
+[[PKM-NEW/dip/notes/pixel-transform]] ^1S4vMVvP
 
 Space Transform ^tGQ94aI6
 
-[[../notes/space-transform]] ^UddPiofh
+[[PKM-NEW/dip/notes/space-transform]] ^UddPiofh
 
 Frequceial Transform ^CWujusvm
 
-[[../notes/frequceial-transform]] ^j5BhrT5W
+[[PKM-NEW/dip/notes/frequceial-transform]] ^j5BhrT5W
 
 Image Compression ^vuqdiRFD
 
-[[../notes/image-compression]] ^T4yanBcn
+[[PKM-NEW/dip/notes/image-compression]] ^T4yanBcn
 
 %%
 ## Drawing

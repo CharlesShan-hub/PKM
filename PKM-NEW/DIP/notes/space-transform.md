@@ -4,7 +4,7 @@
 ---
 ## Overview
 
-![[../assets/space-transform-drawing|1000]]
+![[PKM-NEW/dip/assets/space-transform-drawing|1000]]
 
 ***
 
@@ -32,7 +32,7 @@ $$
 k = \frac{1}{mn}\begin{bmatrix} 1&1&...&1\\1&1&...&1\\...&...&...&...\\1&1&...&1\end{bmatrix}_{mn}
 $$
 
-![[../assets/image (49).png]]
+![[PKM-NEW/dip/assets/image (49).png]]
 <figure><img src="../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -84,7 +84,7 @@ $$
 W(i,j) = \frac{G(i,j)}{\sum_{i=-a}^{a}\sum_{i=-b}^{b}G(i,j)}
 $$
 
-![[../assets/image (50).png]]
+![[PKM-NEW/dip/assets/image (50).png]]
 <figure><img src="../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -134,7 +134,7 @@ plt.show()
 ### Mean
 
 以上滤波器均为线性滤波，而中值滤波是一种基于统计的非线性滤波，它是椒盐噪声的“特效药”。
-![[../assets/image (51).png]]
+![[PKM-NEW/dip/assets/image (51).png]]
 <figure><img src="../../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -188,7 +188,7 @@ $$
 G_y = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}
 $$
 
-![[../assets/image (52).png]]
+![[PKM-NEW/dip/assets/image (52).png]]
 <figure><img src="../../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -242,7 +242,7 @@ $$
 G_y = \begin{bmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix}
 $$
 
-![[../assets/image (53).png]]
+![[PKM-NEW/dip/assets/image (53).png]]
 <figure><img src="../../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -297,7 +297,7 @@ $$
 
 另外，可以把边缘加到原图上得到锐化图像。
 
-![[../assets/image (56).png]]
+![[PKM-NEW/dip/assets/image (56).png]]
 <figure><img src="../../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
 
 <details>

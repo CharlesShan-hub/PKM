@@ -7,7 +7,7 @@
 
 通过`np.fft.fft2`可以进行图片的傅里叶变换。
 
-![[../assets/image (91).png]]
+![[PKM-NEW/dip/assets/image (91).png]]
 <figure><img src="../../.gitbook/assets/image (91).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -69,7 +69,7 @@ plt.show()
 
 简单的把频域切成高通与低通，会产生“振铃”效应。
 
-![[../assets/image (90).png]]
+![[PKM-NEW/dip/assets/image (90).png]]
 <figure><img src="../../.gitbook/assets/image (90).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -146,7 +146,7 @@ plt.show()
 
 ### Butterworth Filter
 
-![[../assets/image (92).png]]
+![[PKM-NEW/dip/assets/image (92).png]]
 <figure><img src="../../.gitbook/assets/image (92).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -214,7 +214,7 @@ $$
 \phi_j^{i}(x)=2^{j/2}\phi(2^j x-i)
 $$
 
-![[../assets/image (111).png]]
+![[PKM-NEW/dip/assets/image (111).png]]
 <figure><img src="../../.gitbook/assets/image (111).png" alt=""><figcaption><p>[1]</p></figcaption></figure>
 
 ## Reference

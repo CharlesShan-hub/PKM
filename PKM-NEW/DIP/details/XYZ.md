@@ -3,7 +3,7 @@
 1931 年 XYZ 颜色匹配函数是 1931 年 RGB 颜色匹配函数的线性变换，以便赋予它们一些数学上的便利性质。事实上，我们一直在讨论的 RGB CMFs 在实用色度学中大部分未被使用。现代色域是用 XYZ 来定义的。\[1]
 
 其实RGB和LMS都可以通过线性变换得到XYZ。LMS 中，人眼的三种视锥细胞的响应值是归一化过的，所以LMS的色彩空间中每个维度的大小都是0到1。三种视锥细胞的真实的响应函数是这样的\[2]。
-![[../assets/XYZ.png]]
+![[PKM-NEW/dip/assets/XYZ.png]]
 <!--https://present5.com/victor-steinberg-video-standards-signals-formats-and-interfaces-2/-->
 XYZ color matching functions, CIE 1931 and Stockman and Sharpe 2006.\[2]
 

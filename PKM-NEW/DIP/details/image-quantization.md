@@ -2,7 +2,7 @@
 
 通过调整量化级别，展示了不同量化程度对图像的影响，反映了量化过程中图像细节的损失。
 
-![[../assets/quantization.png]]
+![[PKM-NEW/dip/assets/quantization.png]]
 
 ```python
 import numpy as np

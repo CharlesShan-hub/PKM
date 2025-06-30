@@ -3,7 +3,7 @@
 ---
 ## Overview
 
-![[../assets/dip-image-drawing|1000]]
+![[PKM-NEW/dip/assets/dip-image-drawing|1000]]
 
 ***
 ## Image
@@ -14,14 +14,14 @@
 ## Sampling
 
 * 采样：从连续信号到离散信号。
-* 通过不同尺寸的灰度图像，展示不同采样对图片的影响：[[../details/image-sampling|👉 image-sampling]]
-	![[../assets/sampling.png]]
+* 通过不同尺寸的灰度图像，展示不同采样对图片的影响：[[PKM-NEW/dip/details/image-sampling|👉 image-sampling]]
+	![[PKM-NEW/dip/assets/sampling.png]]
 
 ## Quantization
 
 * 量化：用多少比特代表每个像素的颜色。
-* 不同量化级别对图片颜色的影响：[[../details/image-quantization|👉 image-quantization]]
-	![[../assets/quantization.png]]
+* 不同量化级别对图片颜色的影响：[[PKM-NEW/dip/details/image-quantization|👉 image-quantization]]
+	![[PKM-NEW/dip/assets/quantization.png]]
 
 ## Neighbor
 

@@ -4,7 +4,7 @@
 ---
 ## Overview
 
-![[../assets/image-feature-drawing|1000]]
+![[PKM-NEW/dip/assets/image-feature-drawing|1000]]
 
 ***
 
@@ -14,7 +14,7 @@
 
 1. 一般颜色直方图：某个色彩通道的直方图。
 
-![[../assets/image (32).png]]
+![[PKM-NEW/dip/assets/image (32).png]]
 <figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -56,7 +56,7 @@ plt.show()
 
 2. 全局累加直方图：当图像中的特征并不能取遍所有可取值时，**统计直方图中会出现一些零值**。这些零值的出现会对相似性度量的计算带来影响，从而使得相似性度量并不能正确反映图像之间的颜色差别。
 
-![[../assets/image (34).png]]
+![[PKM-NEW/dip/assets/image (34).png]]
 <figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
 
 ```python
@@ -263,7 +263,7 @@ $$
 $$
 \gamma_{i,j}^{(k)}=\underset{p_1\in I_{(i)}, p_2\in I}{\operatorname{P}}[p_2\in I_{(j)}\mid |p_1-p_2|=k]
 $$
-![[../assets/image (36).png]]
+![[PKM-NEW/dip/assets/image (36).png]]
 <figure><img src="../../.gitbook/assets/image (36).png" alt="" width="563"><figcaption></figcaption></figure>
 
 <details>
@@ -336,10 +336,10 @@ plt.show()
 
 <summary>Overview</summary>
 
-![[../assets/image (37).png]]
+![[PKM-NEW/dip/assets/image (37).png]]
 <img src="../../.gitbook/assets/image (37).png" alt="数字图像处理—图像纹理特征[1]" data-size="original">播客中的图片\[1]
 
-![[../assets/image (38).png]]
+![[PKM-NEW/dip/assets/image (38).png]]
 <img src="../../.gitbook/assets/image (38).png" alt="综述[2]" data-size="original">综述总结\[2]
 
 [https://github.com/cgreen259/Texture-Toolbox](https://github.com/cgreen259/Texture-Toolbox)
@@ -352,7 +352,7 @@ plt.show()
 
 要理解 2D 的自相关函数还是先看看一维的自相关函数。自相关函数代表了一个信号移动一些距离，和自己是相像的程度！
 
-![[../assets/image (96).png]]
+![[PKM-NEW/dip/assets/image (96).png]]
 <figure><img src="../../.gitbook/assets/image (96).png" alt=""><figcaption><p>参考了[5]，但不一样</p></figcaption></figure>
 
 <details>
@@ -433,7 +433,7 @@ $$
 | x<0, y≥0  | \[1-x, Ni] | \[1, Nj-y] |
 | x<0, y<0  | \[1-x, Ni] | \[1-y, Nj] |
 
-![[../assets/image (40).png]]
+![[PKM-NEW/dip/assets/image (40).png]]
 <figure><img src="../../.gitbook/assets/image (40).png" alt=""><figcaption><p>为了增强可视化效果，图2 中间我扣下了一部分</p></figcaption></figure>
 
 <details>
@@ -499,8 +499,8 @@ plt.show()
 
 <summary>书中的描述与例子[4]</summary>
 
-![[../assets/image (41).png]]
-![[../assets/image (42).png]]
+![[PKM-NEW/dip/assets/image (41).png]]
+![[PKM-NEW/dip/assets/image (42).png]]
 <img src="../../.gitbook/assets/image (41).png" alt="" data-size="original"><img src="../../.gitbook/assets/image (42).png" alt="" data-size="original">
 
 </details>
@@ -509,7 +509,7 @@ plt.show()
 
 计算梯度幅度的直方图。不同的纹理的图片对应的梯度幅度直方图比较稳定，因为取的幅度，所以不受方向影响。
 
-![[../assets/image (97).png]]
+![[PKM-NEW/dip/assets/image (97).png]]
 <figure><img src="../../.gitbook/assets/image (97).png" alt="" width="563"><figcaption><p>[6]</p></figcaption></figure>
 
 论文\[6]的计算方法：
@@ -523,14 +523,14 @@ plt.show()
 
 一般采用 0,45,90,135 四个角度的方向来计算距离为 n 的灰度共生矩阵。下面是方向为0，距离 n 为 1 的案例：
 
-![[../assets/image (98).png]]
+![[PKM-NEW/dip/assets/image (98).png]]
 <figure><img src="../../.gitbook/assets/image (98).png" alt=""><figcaption><p>一图胜千言[7]</p></figcaption></figure>
 
 另外灰度共生矩阵（GLDM）可以进一步计算的到很多统计量。
 
 论文中提出了 14 种：角二阶矩（能量）​、对比度、熵、相关性、均匀性、逆差矩、和平均、和方差、和熵、差方差（变异差异）​、差熵、局部平稳性、相关信息测度1、相关信息测度2。
 
-![[../assets/image (99).png]]
+![[PKM-NEW/dip/assets/image (99).png]]
 <figure><img src="../../.gitbook/assets/image (99).png" alt="" width="563"><figcaption></figcaption></figure>
 
 <details>
@@ -625,7 +625,7 @@ plt.show()
 
 具体内容可以看网页\[8]\[9]。
 
-![[../assets/image (30).png]]
+![[PKM-NEW/dip/assets/image (30).png]]
 <figure><img src="../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -719,7 +719,7 @@ $$
 \begin{aligned} &x'=x\cos(\theta)+y\sin(\theta),\ &y'=-x\sin(\theta)+y\cos(\theta). \end{aligned}
 $$
 
-![[../assets/image (100).png]]
+![[PKM-NEW/dip/assets/image (100).png]]
 <figure><img src="../../.gitbook/assets/image (100).png" alt="" width="375"><figcaption></figcaption></figure>
 
 <details>
@@ -828,18 +828,18 @@ plt.show()
 
 根据顺时针方向读出8个二进制值。每个位置有自己的权重。求出这个 3 x 3 的块的值。（下图 为 25）
 
-![[../assets/image (105).png]]
+![[PKM-NEW/dip/assets/image (105).png]]
 <figure><img src="../../.gitbook/assets/image (105).png" alt=""><figcaption><p>[10]</p></figcaption></figure>
 
 因为人类视觉系统对纹理的感知与平均灰度（亮度）无关，而局部二值模式方法注重像素灰度的变化，所以它符合人类视觉对图像纹理的感知特点。LBP计算过程如图5-6所示。
 
-![[../assets/image (101).png]]
+![[PKM-NEW/dip/assets/image (101).png]]
 <figure><img src="../../.gitbook/assets/image (101).png" alt="" width="563"><figcaption></figcaption></figure>
 
-![[../assets/image (102).png]]
+![[PKM-NEW/dip/assets/image (102).png]]
 <figure><img src="../../.gitbook/assets/image (102).png" alt=""><figcaption></figcaption></figure>
 
-![[../assets/image (104).png]]
+![[PKM-NEW/dip/assets/image (104).png]]
 <figure><img src="../../.gitbook/assets/image (104).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -1017,7 +1017,7 @@ plt.show()
 
 我的理解是，其实有了很多的备选的边界，然后精髓是把图像的 xy 轴当成实轴虚轴，进行傅里叶变换，取前几项进行近似（这样就平滑了）
 
-![[../assets/image (28).png]]
+![[PKM-NEW/dip/assets/image (28).png]]
 <figure><img src="../../.gitbook/assets/image (28).png" alt="" width="188"><figcaption></figcaption></figure>
 
 <details>
@@ -1087,7 +1087,7 @@ $$
 
 ## Edge
 
-> [space-transform.md](space-transform.md "mention")
+> [space-transform.md](PKM-NEW/dip/notes/space-transform.md "mention")
 
 ### 一阶边缘检测
 
@@ -1117,7 +1117,7 @@ SUSAN算法：
    3. 当核心在角点时 , USAN 区域最小
 3. 可以通过计算每 1 个像素的 USAN 值，并与设定的门限值进行比较， 如果该像素的 USAN 值小于门限 值，则该点可以认为是 1 个边缘点
 
-![[../assets/image (29).png]]
+![[PKM-NEW/dip/assets/image (29).png]]
 <figure><img src="../../.gitbook/assets/image (29).png" alt=""><figcaption><p>[14] <a href="https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045">https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045</a></p></figcaption></figure>
 
 ***

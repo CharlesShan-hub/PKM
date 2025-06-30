@@ -3,7 +3,7 @@
 
 下面的案例是模拟“图片采样”的过程，生成了四个不同尺寸的灰度图像，每个图像都是通过余弦函数计算得到的黑白图案，并且将这些图案排列展示出来，来展示不同“分辨率”的图片的采样过程的影响。
 
-![[../assets/sampling.png]]
+![[PKM-NEW/dip/assets/sampling.png]]
 
 ```python
 import numpy as np

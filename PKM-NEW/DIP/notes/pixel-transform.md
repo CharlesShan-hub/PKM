@@ -12,7 +12,7 @@
 
 Gamma变换（幂次变换）：用于改变亮度。
 
-![[../assets/image (66).png]]
+![[PKM-NEW/dip/assets/image (66).png]]
 <figure><img src="../../.gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -47,7 +47,7 @@ plt.show()
 2. 求 cdf。类似从概率密度函数求概率分布函数。$$cdf[t] = \sum_0^tp[t]$$。
 3. 累计概率的 0 到 1，就是颜色的 0 到 1。
 
-![[../assets/image (67).png]]
+![[PKM-NEW/dip/assets/image (67).png]]
 <figure><img src="../../.gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
 
 <details>

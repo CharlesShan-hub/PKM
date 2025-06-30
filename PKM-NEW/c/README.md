@@ -2,7 +2,7 @@
 
 ## Overview
 
-![[assets/ADG-drawing|1000]]
+![[PKM-NEW/c/assets/ADG-drawing|1000]]
 
 ## Book Links
 

@@ -8,7 +8,7 @@ RGB 虽然从颜色组成原理上有很好的解释，但我们调整颜色时�
 
 HSV 色彩空间的 Hue 可以理解成 RGB 中间的白色向四周画一个圆。
 
-![[../assets/image (82).png]]
+![[PKM-NEW/dip/assets/image (82).png]]
 The Amazing Math behind Colors! \[2]
 
 RGB 到 HSV 是非线性的变换
@@ -19,7 +19,7 @@ $$
 
 至此，我们的到了 HSV。
 
-![[../assets/image (84).png]] 
+![[PKM-NEW/dip/assets/image (84).png]] 
 <!--[3]-->
 
 1. [https://en.wikipedia.org/wiki/HSL\_and\_HSV#Motivation](https://en.wikipedia.org/wiki/HSL\_and\_HSV#Motivation)

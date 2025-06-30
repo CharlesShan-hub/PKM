@@ -48,7 +48,7 @@ DIP ^vqRhHgW0
 
 [[yaml/README]] ^tXDDPpJi
 
-[[DIP/README]] ^dpIUUTE2
+[[PKM-NEW/dip/README]] ^dpIUUTE2
 
 c ^Ulgv8tLN
 
