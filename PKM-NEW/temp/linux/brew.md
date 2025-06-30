@@ -14,7 +14,7 @@
 
 ---
 
-## For brew itself
+## Brew管理
 
 * brew版本
 	```shell
@@ -68,7 +68,7 @@
 
 ---
 
-## For packages
+## 包管理
 
 * 搜寻软件包的信息，支持正则表达式
 	```shell
@@ -172,6 +172,3 @@
 	```shell
 	brew install --build-from-source <package-name>
 	```
-
----
-
