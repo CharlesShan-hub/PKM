@@ -53,3 +53,101 @@ spring:
 ---
 ## 使用配置文件
 
+### value
+application.yaml
+```yaml
+server:
+  port: 8080
+user:
+  name: 'Charles'
+```
+
+HelloWorldController.java：采用`@Value`进行配置的获取。
+```Java
+package com.charlesshan.helloworld.controller;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+    @Value("${user.name}")
+    public String name;
+    
+    @RequestMapping("/name")
+    public String name(){
+        return name;
+    }
+}
+```
+
+使用，访问`http://localhost:8080/name`，返回`Charles`
+
+### ConfigrationProtites
+如果我们的配置是一个完整的对象，一项一项的读太麻烦了，如何作为一个整体读进来呢
+
+application.yaml
+```YAML
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+```
+
+DbConfig.java：写一个配置类用来保存配置
+```Java
+package com.charlesshan.helloworld.config;
+
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Data
+@Component
+@ConfigurationProperties(prefix = "spring.datasource")
+public class DbConfig {
+    private String url;
+    private String username;
+    private String password;
+}
+```
+
+HelloController.java
+```Java
+package com.charlesshan.helloworld.controller;
+
+import com.charlesshan.helloworld.config.DbConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+    @Autowired
+    private DbConfig dbConfig;
+    @RequestMapping("/db_config")
+    public DbConfig default_user() {
+        if (dbConfig == null) {
+            dbConfig = new DbConfig();
+        }
+        return dbConfig;
+    }
+}
+```
+
+访问http://localhost:8080/db_config，可以看到返回的内容
+```json
+{
+	"url":"jdbc:mysql://localhost:3306/test_db?useSSL=false&serverTimezone=UTC",
+	"username":"root",
+	"password":"123456"
+}
+```
+
+---
+## 整合 MyBatis
+
