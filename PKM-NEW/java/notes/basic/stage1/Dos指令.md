@@ -1,4 +1,6 @@
 # Dos指令
+---
+## 命令
 * [Microsoft DOS and Windows command line](https://www.computerhope.com/msdos.htm)
 * 运行思路：接受指令 -> 解析指令 -> 执行指令
 * 路径
@@ -9,7 +11,7 @@
 		* Program Files  Progra file  Progra zhang  则三个目录分别表示为：C:\Progra~1; C:\Progra~2; C:\Progra~3;
 		* 如果是总字母不足6个，例如 C:\\aa bb 则表示为C:\\aabb~1
 		* 路径映射：例如：在CMD中输入 subst w: "C:\\Documents and Settings" 然后就可以直接用w:\\替代C:\\Documents and Settings了
-* dir（类似于Mac的ls）
+* dir（类似于linux的ls）
 	* 可以通过`dir 绝对路径` 来查看制定目录的dir
 * cd
 	* 从其他盘切换到C盘：`cd /D C`
@@ -24,3 +26,16 @@
 * echo：输入内容到文件
 * type：类似于unix的cat，显示文件
 * move：移动文件
+
+---
+## 快捷键
+- win + D
+    - 回到桌面
+- win + E
+    - 打开资源管理器
+- win + R
+    - 打开运行窗口
+- win + L
+    - 锁屏
+- alt + tab
+    - 应用之间的切换
