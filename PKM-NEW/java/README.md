@@ -320,11 +320,11 @@
 	* 638~640：Properties
 	* 641~643：作业
 * 第 20 章：（坦克大战项目第三部分）
-* 第 21 章：[[PKM-NEW/java/notes/basic/stage3/网络|网络]]
+* 第 21 章（待续）：[[PKM-NEW/java/notes/basic/stage3/网络|网络]]
 	* 661~665：网络相关概念；IP；域名，端口号，TCP/IP协议栈，TCP、UDP
 	* 666：INetAddress类
 	* 667~670：TCP编程实践
-	* 
+* 动力节点补充：[[jvm]]
 
 ### JavaWeb
 
