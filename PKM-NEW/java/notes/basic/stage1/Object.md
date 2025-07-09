@@ -1,5 +1,6 @@
 # Object
 
+---
 ## equals方法
 
 1. 使用方法：`==`，比较运算符
@@ -42,6 +43,8 @@
    public boolean equals(Object obj) {
      return (this == obj);
    }
+	```
+	```java
    // Integer.java
    public boolean equals(Object obj) {
      if (obj instanceof Integer) {
@@ -49,6 +52,8 @@
      }
      return false;
    }
+   	```
+	```java
    // String.java(jdk17)
    public boolean equals(Object anObject) {
      if (this == anObject) {
@@ -58,6 +63,8 @@
        && (!COMPACT_STRINGS || this.coder == aString.coder)
        && StringLatin1.equals(value, aString.value);
    }
+   	```
+	```java
    // String.java(jdk8)
    public boolean equals(Object anObject) {
      if (this == anObject) {//如果是同一个对象
@@ -208,6 +215,8 @@
 	System.out.println("str1是否equals str2? " + (str1.equals(str2))); // true
 	System.out.println("hello" == new java.sql.Date()); // false
 	```
+
+---
 ## Hashcode方法
 
 1. 提高具有哈希结构的容器的效率!（比如 HashMap，HashSet 等等）
@@ -236,6 +245,7 @@ aa2.hashCode()=205029188
 aa3.hashCode()=112810359
 ```
 
+---
 ## toString方法
 
 1. 默认返回:**全类名**+@+哈希值的十六进制（**全类名 = 包名+类名**）
@@ -276,12 +286,14 @@ aa3.hashCode()=112810359
 	  }
 	}
 	```
-3. Object的 toString
+3. Object 的 toString
 	```java
-	public static String toString(Object o, String nullDefault) {  
-	    return (o != null) ? o.toString() : nullDefault;  
+	public String toString() {  
+	    return getClass().getName() + "@" + Integer.toHexString(hashCode());  
 	}
 	```
+
+---
 ## finalize方法
 
 当垃圾回收器确定不存在该对象的更多引用时，由对象的垃圾回收器调用此方法
@@ -322,3 +334,187 @@ public class Program{
 ```
 
 > 删掉了
+
+但注意，这个方法 java9 开始就不能用了。
+
+---
+## clone 方法
+
+在 Java 中，对象克隆是通过实现 `Cloneable` 接口并重写 `Object.clone()` 方法来实现的。下面我将通过一个完整的案例来展示深浅克隆的实现方式。（下面内容是 AI 生成）
+
+### 1. 浅克隆（Shallow Clone）示例
+
+浅克隆只复制对象本身和其基本类型字段，引用类型的字段仍指向原对象的引用。
+
+```java
+class Person implements Cloneable {
+    private String name;
+    private int age;
+    private Address address; // 引用类型字段
+
+    // 构造方法、getter/setter 省略...
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone(); // 调用Object的clone()方法
+    }
+}
+
+class Address {
+    private String city;
+    private String street;
+    // 构造方法、getter/setter 省略...
+}
+
+public class ShallowCloneDemo {
+    public static void main(String[] args) throws CloneNotSupportedException {
+        Address address = new Address("北京", "长安街");
+        Person original = new Person("张三", 25, address);
+        
+        // 浅克隆
+        Person cloned = (Person) original.clone();
+        
+        System.out.println("原始对象: " + original.getName() + ", " + original.getAddress().getCity());
+        System.out.println("克隆对象: " + cloned.getName() + ", " + cloned.getAddress().getCity());
+        
+        // 修改克隆对象的引用类型字段
+        cloned.getAddress().setCity("上海");
+        
+        System.out.println("修改后原始对象地址: " + original.getAddress().getCity()); // 输出"上海"
+        System.out.println("修改后克隆对象地址: " + cloned.getAddress().getCity());   // 输出"上海"
+    }
+}
+```
+
+​**​输出结果​**​：
+
+```
+原始对象: 张三, 北京
+克隆对象: 张三, 北京
+修改后原始对象地址: 上海
+修改后克隆对象地址: 上海
+```
+
+### 2. 深克隆（Deep Clone）示例
+
+深克隆会复制对象及其所有引用类型字段指向的对象。
+
+#### 实现方式一：递归调用clone()
+
+```java
+class Person implements Cloneable {
+    private String name;
+    private int age;
+    private Address address;
+
+    // 构造方法、getter/setter 省略...
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Person cloned = (Person) super.clone();
+        cloned.address = (Address) address.clone(); // 克隆引用类型字段
+        return cloned;
+    }
+}
+
+class Address implements Cloneable {
+    private String city;
+    private String street;
+    
+    // 构造方法、getter/setter 省略...
+    
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+
+public class DeepCloneDemo {
+    public static void main(String[] args) throws CloneNotSupportedException {
+        Address address = new Address("北京", "长安街");
+        Person original = new Person("张三", 25, address);
+        
+        // 深克隆
+        Person cloned = (Person) original.clone();
+        
+        System.out.println("原始对象: " + original.getName() + ", " + original.getAddress().getCity());
+        System.out.println("克隆对象: " + cloned.getName() + ", " + cloned.getAddress().getCity());
+        
+        // 修改克隆对象的引用类型字段
+        cloned.getAddress().setCity("上海");
+        
+        System.out.println("修改后原始对象地址: " + original.getAddress().getCity()); // 仍为"北京"
+        System.out.println("修改后克隆对象地址: " + cloned.getAddress().getCity());   // 输出"上海"
+    }
+}
+```
+
+#### 实现方式二：通过序列化实现深克隆
+
+```java
+import java.io.*;
+
+class DeepCloneUtil {
+    @SuppressWarnings("unchecked")
+    public static <T extends Serializable> T deepClone(T object) {
+        try {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+            oos.writeObject(object);
+            oos.close();
+            
+            ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            return (T) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException("深克隆失败", e);
+        }
+    }
+}
+
+// Person和Address类需要实现Serializable接口
+class Person implements Serializable {
+    // 同上...
+}
+
+class Address implements Serializable {
+    // 同上...
+}
+
+public class SerializationCloneDemo {
+    public static void main(String[] args) {
+        Address address = new Address("北京", "长安街");
+        Person original = new Person("张三", 25, address);
+        
+        // 通过序列化实现深克隆
+        Person cloned = DeepCloneUtil.deepClone(original);
+        
+        // 测试结果与上面深克隆示例相同
+    }
+}
+```
+
+### 3. 克隆最佳实践
+
+1. ​**​实现Cloneable接口​**​：虽然不实现也能编译通过，但运行时调用clone()会抛出CloneNotSupportedException
+    
+2. ​**​重写clone()方法​**​：将访问修饰符从protected改为public
+    
+3. ​**​深克隆选择​**​：
+    
+    - 简单对象结构：递归调用clone()
+    - 复杂对象结构：序列化方式
+    - 考虑使用第三方库如Apache Commons Lang的SerializationUtils
+4. ​**​替代方案​**​：考虑使用拷贝构造器或静态工厂方法
+    
+
+```java
+// 拷贝构造器示例
+public Person(Person original) {
+    this.name = original.name;
+    this.age = original.age;
+    this.address = new Address(original.address); // Address也需要有拷贝构造器
+}
+```
+
+克隆是创建对象副本的一种方式，但需要谨慎使用，特别是在涉及复杂对象图时。在大多数情况下，拷贝构造器或工厂方法可能是更清晰和安全的选择。

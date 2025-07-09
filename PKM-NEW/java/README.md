@@ -324,7 +324,7 @@
 	* 661~665：网络相关概念；IP；域名，端口号，TCP/IP协议栈，TCP、UDP
 	* 666：INetAddress类
 	* 667~670：TCP编程实践
-* 动力节点补充：[[jvm]]
+* 动力节点补充：[[jvm]]，[[principle]]，[[uml]]
 
 ### JavaWeb
 
