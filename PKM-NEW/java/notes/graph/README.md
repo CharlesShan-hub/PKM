@@ -38,10 +38,6 @@ Branch and Loop
 
 ![[PKM-NEW/java/notes/graph/graph/java-basic-branchs.excalidraw|java-basic-branchs.excalidraw]]
 
-Array
-
-![[PKM-NEW/java/notes/graph/graph/java-basic-array.excalidraw|java-basic-array.excalidraw]]
-
 Scanner
 
 ![[PKM-NEW/java/notes/graph/graph/java-basic-sacnner.excalidraw|java-basic-sacnner.excalidraw]]
@@ -50,7 +46,23 @@ Random
 
 ![[PKM-NEW/java/notes/graph/graph/java-basic-random.excalidraw|java-basic-random.excalidraw]]
 
+### Array
+
+Array
+
+![[PKM-NEW/java/notes/graph/graph/java-basic-array.excalidraw|java-basic-array.excalidraw]]
+
+Arrays
+
+
+
 ### OOP
 
 [[PKM-NEW/java/notes/graph/codes/entity|entity]]
 
+
+### Exception
+
+异常与错误继承关系图
+
+![[exception-drawing.excalidraw]]

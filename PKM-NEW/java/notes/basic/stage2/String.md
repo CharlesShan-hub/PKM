@@ -1,6 +1,9 @@
-## String
+# String
 
 ![[../../../assets/String-drawing| 1000]]
+
+---
+## String
 
 ### 基本概念
 
@@ -15,49 +18,32 @@
     - `String s4 = new String(char[] a, int startindex, int count)` // 通过字符数组的一部分创建
     - `String s5 = new String(bytes[] b)`
     - 还有很多其他的
-5. String 继承了 Serializable接口：String 可以通过网络传输
-6. String 继承了 Comparable接口：String 可以相互比较
+5. String 继承了 `Serializable` 接口：String 可以通过网络传输
+6. String 继承了 `Comparable` 接口：String 可以相互比较
 7. String 是一个 final 类：不能被其他的类继承
-8. String 内部的内容保存在了：`private final byte[] value;`，**所以 String 不可修改，注意，他的不可修改不是值不可修改，而是地址不能修改（value 不能指向新的地址，但是单独字符的内容是可以变换的）**
-	```java
-	// String.java
-	public final class String  
-	    implements java.io.Serializable, Comparable<String>, CharSequence,  
-	               Constable, ConstantDesc {
-	    private final byte[] value;
-	    ...
-	}
-	```
 
-	```java
-	public class StringAndCharArrayExample {
-	    public static void main(String[] args) {
-	        // 字符串的重新赋值
-	        String name = "jack";
-	        System.out.println("Before changing name: " + name);
-	        name = "tom";
-	        System.out.println("After changing name: " + name);
-	
-	        // final 关键字和字符数组的操作
-	        final char[] value = {'a', 'b', 'c'};
-	        char[] v2 = {'t', 'u', 'm'};
-	
-	        // 修改字符数组中的元素
-	        value[0] = 'H';
-	        System.out.println("Modified value array: " + new String(value));
-	
-	        // 尝试重新赋值给 final 关键字修饰的数组（编译错误）
-	        // value = v2; // 这行代码会导致编译错误，因为 final 关键字修饰的数组不能被重新赋值
-	
-	        // 输出结果
-	        System.out.println("v2 array: " + new String(v2));
-	    }
-	}
-	```
+### String 的内存分析
 
-String是 final 的练习
+Java专门在堆中为字符串准备了一个**字符串常量池**。因为字符串使用比较频繁，放在字符串常量池中省去了对象的创建过程，从而提高程序的执行效率。（常量池属于一种缓存技术，缓存技术是提高程序执行效率的重要手段。）
 
-以下语句创建了几个对象？画出内存布局图。
+```java
+// s1是一个引用。保存了对象的内存地址。  
+String s1 = "hello";  
+// s2是一个引用。保存了对象的内存地址。  
+String s2 = "hello";  
+  
+System.out.println(s1 == s2); // true  
+// 因为运行的时候，两个 hello 也因为都是字符串常量所有在内存中其实是同一个内容
+  
+String s3 = "test";  
+String s4 = new String("test");  
+System.out.println(s3 == s4); // false  
+  
+// 比较两个字符串是否相等，靠谱一点的，还是equals方法。别用 ==
+System.out.println(s3.equals(s4)); // true
+```
+
+练习 1。以下语句创建了几个对象？画出内存布局图。
 
 ```java
 String s1 = "hello";
@@ -115,6 +101,7 @@ String a = "Hello";
 String b = "abv";
 String c = a + b;
 ```
+
 这样三个对象，但是注意，c 是指向堆的。
 具体创建的过程如下：
 1. 先创建一个 StringBuilder sb = StringBuilder()
@@ -190,9 +177,63 @@ change函数拿到 str，一开始指向 ex.str。后来因为 String 不能变�
 
 为什么 hsp 没变，因为新的字符串在方法区，原来堆里边的引用对象没有变化。
 
-### 两种创建方式
 
-### 两种创建String对象的区别
+### String不能修改
+
+1. String 内部的内容保存在了：`private final byte[] value;`，**所以 String 不可修改，注意，他的不可修改不是值不可修改，而是地址不能修改（value 不能指向新的地址，但是单独字符的内容是可以变换的）**【面试会问】
+	```java
+	// String.java
+	public final class String  
+		implements java.io.Serializable, Comparable<String>, CharSequence,  
+				   Constable, ConstantDesc {
+		private final byte[] value;
+		...
+	}
+	```
+
+2. 相比之下，后边的`StringBuilder`就把内容保存在了非`final`的`Byte`数组中。
+	```java
+	// AbstractStringBuilder.java
+	abstract sealed class AbstractStringBuilder implements Appendable, CharSequence  
+	    permits StringBuilder, StringBuffer {  
+	    /**  
+	     * The value is used for character storage.     
+	     */    
+	     byte[] value;
+	     ...
+	     }
+	}
+	```
+
+3. Java8之前保存在`private final char[] value;`，Java9 开始保存在`private final byte[] value;`了因为可以**节省空间**。
+
+```java
+public class StringAndCharArrayExample {
+	public static void main(String[] args) {
+		// 字符串的重新赋值
+		String name = "jack";
+		System.out.println("Before changing name: " + name);
+		name = "tom";
+		System.out.println("After changing name: " + name);
+
+		// final 关键字和字符数组的操作
+		final char[] value = {'a', 'b', 'c'};
+		char[] v2 = {'t', 'u', 'm'};
+
+		// 修改字符数组中的元素
+		value[0] = 'H';
+		System.out.println("Modified value array: " + new String(value));
+
+		// 尝试重新赋值给 final 关键字修饰的数组（编译错误）
+		// value = v2; // 这行代码会导致编译错误，因为 final 关键字修饰的数组不能被重新赋值
+
+		// 输出结果
+		System.out.println("v2 array: " + new String(v2));
+	}
+}
+```
+
+### 两种创建方式
 
 在Java中，创建`String`对象有两种主要方式，每种方式在内存管理和性能上有不同的表现。
 
@@ -463,6 +504,7 @@ Hash code: 6c657874
 
 通过这些示例和说明，你应该能够更好地理解和使用 `String.format()` 方法来处理字符串格式化。
 
+---
 ## StringBuffer
 
 ### stringbuffer 是什么
@@ -768,11 +810,10 @@ public class StringBufferEx {
 }
 ```
 
+---
 ## StringBuilder
 
-### StringBuilder 类笔记
-
-#### 基本介绍
+### 基本介绍
 
 1. **描述**：
    - `StringBuilder` 是一个可变的字符序列类。
@@ -784,12 +825,12 @@ public class StringBufferEx {
    - 主要操作是 `append` 和 `insert` 方法。
    - 这些方法可以重载，以接受任意类型的数据。
 
-#### 使用场景
+### 使用场景
 
 - 当需要在单个线程中频繁修改字符串内容时，推荐使用 `StringBuilder`。
 - 由于 `StringBuilder` 不是线程安全的，因此在多线程环境中应使用 `StringBuffer`。
 
-#### 示例代码
+### 示例代码
 
 ```java
 public class StringBuilderExample {
