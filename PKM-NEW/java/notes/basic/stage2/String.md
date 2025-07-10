@@ -68,9 +68,7 @@ s1 = "haha";
 }
 ```
 
-练习 2
-
-创建了几个对象？
+练习 2。创建了几个对象？
 
 ```java
 String a = "hello" + "abc";
@@ -92,9 +90,7 @@ String a = "hello" + "abc";
 }
 ```
 
-练习 3
-
-创建了几个对象
+练习 3。创建了几个对象
 
 ```java
 String a = "Hello";
@@ -107,7 +103,7 @@ String c = a + b;
 1. 先创建一个 StringBuilder sb = StringBuilder()
 2. 执行 sb.append("hello");
 3. sb.append("abc");
-4. String c = sb.toString()
+4. String c = sb.toString();
 5. 最后其实是 c 指向堆中的对象(String) value[] -> 池中 "helloabc"
 
 ```json
@@ -139,21 +135,19 @@ System.out.println(c == d); // false，因为 c 指向 0x88，d 直接指向了�
 
 **❗️重要总结：常量相加，找常量池。变量相加，找堆。**
 
-再看一道题
+练习 4。下面代码输出什么，并说明原因。
 
 ```java
-下面代码输出什么，并说明原因。
 String s1 = "hsped";
 String s2 = "java";
 String s5 = "hspedjava";
-String s6 = (s1 + s2).intern();
+String s6 = (s1 + s2).intern();    // intern代表放到了常量池里边
 System.out.println(s5 == s6);      // true，因为 intern 了，所以又指向常量池了
 System.out.println(s5.equals(s6)); // true
 ```
 
-下一题
+练习 5。下列程序运行的结果是什么，尝试画出内存布局图？
 
-下列程序运行的结果是什么，尝试画出内存布局图？
 ```java
 public class Test1 {
     String str = new String("hsp");
@@ -238,6 +232,7 @@ public class StringAndCharArrayExample {
 在Java中，创建`String`对象有两种主要方式，每种方式在内存管理和性能上有不同的表现。
 
 #### 方式一：直接赋值
+
 ```java
 String s = "hsp";
 ```
@@ -256,9 +251,11 @@ System.out.println(a == b); // true
 ```
 
 #### 方式二：调用构造器
+
 ```java
 String s2 = new String("hsp");
 ```
+
 - **描述**：通过调用`String`类的构造器来创建一个新的字符串对象。
 - **内存管理**：
   - **无论常量池中是否存在相同的字符串，都会在堆内存中创建一个新的字符串对象。**
@@ -269,7 +266,90 @@ String s2 = new String("hsp");
 - **直接赋值**（方式一）**更高效**，因为它利用了常量池来避免重复创建相同的字符串对象，减少了内存的使用。
 - **调用构造器**（方式二）在需要修改字符串内容或需要新对象时使用，但通常不推荐用于创建字符串常量，因为它会增加内存的使用和垃圾回收的负担。
 
-Demo：
+String 常用的构造方法
+
+* `String(char[] value)`：根据字符数组创建一个新的字符串对象。
+* `String(char[] value, int offset, int count)`：根据字符数组的指定部分创建一个新的字符串对象。
+* `String(byte[] bytes)`：根据字节数组创建一个新的字符串对象，默认使用平台默认的字符集进行解码。
+* `String(byte[] bytes, int offset, int length)`：根据字节数组的指定部分创建一个新的字符串对象，默认使用平台默认的字符集进行**解码**。
+* `String(byte[] bytes, Charset charset)`：
+	* 根据字节数组和指定的字符集创建一个新的字符串对象。
+	* new String(bytes, Charset.defaultCharset());
+* `String(byte[] bytes, String charsetName)`：
+	* 根据字节数组和指定的字符集名称创建一个新的字符串对象。
+	* 这是一个解码的过程。你需要提前知道“byte[] bytes”是通过哪个编码方式进行编码得到的。
+	* 如果通过GBK的方式进行编码得到的“byte[] bytes”，调用以上构造方法时采用UTF-8的方式进行解码。就会出现乱码。
+* `String(String original)`：
+	* 通过复制现有字符串创建一个新的字符串对象。
+	* 这个方法被@IntrinsicCandidate标注，这个注解的作用是告诉编译器,该方法或构造函数是一个内在的候选方法,可以被优化和替换为更高效的代码。因此它是**不建议使用**的。
+	* new String(“hello”); 这个代码会让常量池中有一个 “hello”，并且在堆中也有有一个String对象。
+
+```java
+package com.powernode.javase.stringtest;  
+  
+import java.io.UnsupportedEncodingException;  
+import java.nio.charset.Charset;  
+import java.nio.charset.StandardCharsets;  
+  
+/**  
+ * 关于String类的构造方法  
+ */  
+public class StringTest03 {  
+    public static void main(String[] args) throws UnsupportedEncodingException {  
+  
+        // 有一个char[]数组，可以将char[]数组转换成字符串  
+        char[] chars = new char[]{'动','力','节','点'};  
+        // 转换成字符串  
+        String s1 = new String(chars);  
+        System.out.println(s1);  
+  
+        // 将char[]数组的一部分转换成字符串  
+        String s2 = new String(chars, 0, 2);  
+        System.out.println(s2);  
+  
+        // 有一个byte[]数组，可以将byte[]数组转换成字符串  
+        byte[] bytes = {97,98,99,100};  
+        // 将byte[]数组转换成字符串String，是一个解码的过程。（采用的是平台默认的字符编码方式进行的解码。）  
+        String s3 = new String(bytes);  
+        System.out.println(s3);  
+  
+        // 将byte[]数组的一部分转换成字符串（解码的过程，也是采用平台默认的字符集。）  
+        String s4 = new String(bytes, 0, 2);  
+        System.out.println(s4);  
+  
+        // 乱码的本质：在进行编码和解码的时候没有使用同一个字符编码方式。  
+        // 先将字符串转换成byte[]数组（这个过程是一个编码的过程）  
+        // 这里先按照GBK的字符集进行编码。（GBK是简体中文）  
+        //byte[] bs = "动力节点，一家只教授Java的培训机构".getBytes("UTF-8");  
+        byte[] bs = "动力节点，一家只教授Java的培训机构".getBytes(StandardCharsets.UTF_8);  
+  
+        // 将以上的byte[]数组转换成字符串（这个过程是一个解码的过程）  
+        //String s5 = new String(bs, "UTF-8");  
+        String s5 = new String(bs, StandardCharsets.UTF_8);  
+  
+        System.out.println(s5);  
+  
+        // 在不知道字符编码方式的时候，可以动态获取平台的编码方式。（使用平台默认的字符集进行编码）  
+        byte[] bs2 = "动力节点".getBytes(Charset.defaultCharset());  
+  
+        // 使用平台默认的字符集进行解码。  
+        String s6 = new String(bs2, Charset.defaultCharset());  
+  
+        System.out.println(s6);  
+  
+        // 创建一个字符串对象，也是可以这样做的。但不建议了。  
+        // 内在的候选方法，不建议使用了。  
+        // 被@IntrinsicCandidate注解标注了。这个注解是Java16引入的。  
+        //String s7 = new String("STRING"); 
+        // 底层会有两个对象，一个是"STRING"在字符串常量池中。一个是在堆内存中。浪费内存。  
+        String s8 = "STRING";  
+    }  
+}
+```
+
+#### 练习
+
+Demo
 
 ```java
 public class StringCreationExample {
@@ -335,116 +415,116 @@ System.out.println(s1 == s2); // f
 
 Java 中的 `String` 类提供了许多用于字符串操作的方法。以下是一些常用的方法及其案例：
 
-1. `length()` 或 `length()`
+1. `length()`
 
-**描述**：返回字符串的长度。
-
-**案例**：
-```java
-String str = "Hello, World!";
-int length = str.length();
-System.out.println("Length of the string: " + length);
-```
+	**描述**：返回字符串的长度。
+	
+	**案例**：
+	```java
+	String str = "Hello, World!";
+	int length = str.length();
+	System.out.println("Length of the string: " + length);
+	```
 
 2. `charAt(int index)`
 
-**描述**：返回指定索引处的字符。
-
-**案例**：
-```java
-String str = "Hello";
-char firstChar = str.charAt(0);
-System.out.println("First character: " + firstChar);
-```
+	**描述**：返回指定索引处的字符。
+	
+	**案例**：
+	```java
+	String str = "Hello";
+	char firstChar = str.charAt(0);
+	System.out.println("First character: " + firstChar);
+	```
 
 3. `substring(int beginIndex, int endIndex)`
 
-**描述**：返回一个新字符串，它是此字符串的一个子字符串。
-
-**案例**：
-```java
-String str = "Hello, World!";
-String subStr = str.substring(0, 5);
-System.out.println("Substring: " + subStr);
-```
+	**描述**：返回一个新字符串，它是此字符串的一个子字符串。
+	
+	**案例**：
+	```java
+	String str = "Hello, World!";
+	String subStr = str.substring(0, 5);
+	System.out.println("Substring: " + subStr);
+	```
 
 4. `indexOf(String str)` 和 `lastIndexOf(String str)`
 
-**描述**：返回指定子字符串在此字符串中第一次出现的索引。
-
-**案例**：
-```java
-String str = "Hello, World!";
-int index = str.indexOf("World");
-System.out.println("Index of 'World': " + index);
-```
+	**描述**：返回指定子字符串在此字符串中第一次出现的索引。
+	
+	**案例**：
+	```java
+	String str = "Hello, World!";
+	int index = str.indexOf("World");
+	System.out.println("Index of 'World': " + index);
+	```
 
 5. `replace(CharSequence target, CharSequence replacement)`
 
-**描述**：返回一个新的字符串，它是通过用新子字符串替换此字符串中所有出现的给定目标子字符串得到的。
-
-**案例**：
-```java
-String str = "Hello, World!";
-String newStr = str.replace("World", "Java");
-System.out.println("Replaced string: " + newStr);
-```
+	**描述**：返回一个新的字符串，它是通过用新子字符串替换此字符串中所有出现的给定目标子字符串得到的。
+	
+	**案例**：
+	```java
+	String str = "Hello, World!";
+	String newStr = str.replace("World", "Java");
+	System.out.println("Replaced string: " + newStr);
+	```
 
 6. `toUpperCase()` 和 `toLowerCase()`
 
-**描述**：将此字符串转换为大写或小写。
-
-**案例**：
-```java
-String str = "Hello, World!";
-String upperStr = str.toUpperCase();
-String lowerStr = str.toLowerCase();
-System.out.println("Uppercase: " + upperStr);
-System.out.println("Lowercase: " + lowerStr);
-```
+	**描述**：将此字符串转换为大写或小写。
+	
+	**案例**：
+	```java
+	String str = "Hello, World!";
+	String upperStr = str.toUpperCase();
+	String lowerStr = str.toLowerCase();
+	System.out.println("Uppercase: " + upperStr);
+	System.out.println("Lowercase: " + lowerStr);
+	```
 
 7. `trim()`
 
-**描述**：去除字符串两端的空白字符。
-
-**案例**：
-```java
-String str = "   Hello, World!   ";
-String trimmedStr = str.trim();
-System.out.println("Trimmed string: " + trimmedStr);
-```
+	**描述**：去除字符串两端的空白字符。
+	
+	**案例**：
+	```java
+	String str = "   Hello, World!   ";
+	String trimmedStr = str.trim();
+	System.out.println("Trimmed string: " + trimmedStr);
+	```
 
 8. `split(String regex)`
 
-**描述**：根据给定正则表达式的匹配拆分此字符串。
-
-**案例**：
-```java
-String str = "one,two,three";
-String[] parts = str.split(",");
-System.out.println("Split strings:");
-for (String part : parts) {
-    System.out.println(part);
-}
-```
+	**描述**：根据给定正则表达式的匹配拆分此字符串。
+	
+	**案例**：
+	```java
+	String str = "one,two,three";
+	String[] parts = str.split(",");
+	System.out.println("Split strings:");
+	for (String part : parts) {
+	    System.out.println(part);
+	}
+	```
 
 9. `equals(Object anObject)` 和 `equalsIgnoreCase(String anotherString)`
 
-**描述**：比较两个字符串是否相等。
+	**描述**：比较两个字符串是否相等。
+	
+	**案例**：
+	```java
+	String str1 = "Hello";
+	String str2 = "hello";
+	boolean isEqual = str1.equals(str2);
+	boolean isEqualIgnoreCase = str1.equalsIgnoreCase(str2);
+	System.out.println("Equal: " + isEqual);
+	System.out.println("Equal ignoring case: " + isEqualIgnoreCase);
+	```
 
-**案例**：
-```java
-String str1 = "Hello";
-String str2 = "hello";
-boolean isEqual = str1.equals(str2);
-boolean isEqualIgnoreCase = str1.equalsIgnoreCase(str2);
-System.out.println("Equal: " + isEqual);
-System.out.println("Equal ignoring case: " + isEqualIgnoreCase);
-```
-
-这些方法涵盖了字符串的基本操作，包括长度获取、字符访问、子字符串提取、字符串替换、大小写转换、空白去除、字符串分割以及字符串比较等。通过这些方法，可以方便地对字符串进行各种操作。
-
-确实，`String.format()` 是 Java 中处理字符串格式化的一个非常有用的工具。它允许你按照指定的格式来构造字符串，类似于 C 语言中的 `printf` 函数。
+	这些方法涵盖了字符串的基本操作，包括长度获取、字符访问、子字符串提取、字符串替换、大小写转换、空白去除、字符串分割以及字符串比较等。通过这些方法，可以方便地对字符串进行各种操作。
+	
+	确实，`String.format()` 是 Java 中处理字符串格式化的一个非常有用的工具。它允许你按照指定的格式来构造字符串，类似于 C 语言中的 `printf` 函数。
 
 ### `String.format()` 方法
 
@@ -503,6 +583,185 @@ Hash code: 6c657874
 - 从 Java 7 开始，`String.format()` 支持 `Locale` 参数，可以用于实现本地化格式化。
 
 通过这些示例和说明，你应该能够更好地理解和使用 `String.format()` 方法来处理字符串格式化。
+
+### String与正则表达式
+
+* [[re]]
+* [[史上最全正则表达式]]
+
+* String replace(CharSequence target, CharSequence replacement);
+	* 将当前字符串中所有的target替换成replacement，返回一个新的字符串。
+* String replaceAll(String regex, String replacement);
+	* 将当前字符串中所有符合正则表达式的regex替换成replacement。
+* String[] split(String regex);
+	* 将当前字符串以某个正则表达式表示的子字符串进行分割，返回一个字符串数组。
+* boolean matches(String regex);
+	* 判断当前字符串是否符合正则表达式regex。
+
+```java
+package com.powernode.javase.stringtest;  
+  
+import org.junit.jupiter.api.Test;  
+  
+import java.util.ArrayList;  
+import java.util.List;  
+  
+/**  
+ * 测试用例  
+ */  
+public class StringMethodTest {  
+  
+    @Test  
+    public void testMatches(){  
+        // 邮箱地址的正则表达式  
+        String emailRegExp = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";  
+        String email = "dujubin@126.com";  
+  
+        System.out.println(email.matches(emailRegExp));  
+  
+    }  
+  
+    @Test  
+    public void testSplit(){  
+        // 根据正则表达式进行字符串的拆分  
+        // 拆分后返回一个字符串数组  
+        String[] strs = "动1力2节3点4。".split("\\d");  
+        System.out.println(strs.length);  
+        for(String s : strs){  
+            System.out.println(s);  
+        }  
+  
+        String[] ymd = "1970-10-11".split("-");  
+        for(String s : ymd){  
+            System.out.println(s);  
+        }  
+  
+        String data = "name=zhangsan&password=123&email=zhangsan@123.com&gender=男";  
+        String[] params = data.split("&");  
+        for(String param : params) {  
+            //System.out.println(param);  
+            String[] nameAndValue = param.split("=");  
+            for(String s : nameAndValue){  
+                System.out.println(s);  
+            }  
+        }  
+    }  
+}
+```
+
+### 面试题
+
+```java
+package com.powernode.javase.stringtest;  
+  
+import org.junit.jupiter.api.Test;  
+  
+/**  
+ * String类常见的面试题。  
+ */  
+public class StringExam {  
+    @Test  
+    public void test1(){  
+        String s1 = "abc";  
+        String s2 = new String("abc");  
+        System.out.println(s1 == s2); // false  
+        System.out.println(s1.equals(s2)); // true  
+    }  
+  
+    @Test  
+    public void test2(){  
+        // 这种拼接会在编译阶段完成。编译器优化策略。  
+        String s1 = "a" + "b" + "c";  
+        String s2 = "abc";  
+        System.out.println(s1 == s2); // true  
+    }  
+  
+    @Test  
+    public void test3(){  
+        String s1 = "abc";  
+        String s2 = "ab";  
+        String s3 = s2 + "c";  
+        System.out.println(s1 == s3); // false  
+        System.out.println(s1.equals(s3)); // true  
+    }  
+  
+    @Test  
+    public void test4(){  
+        // 问题：创建了几个对象？  
+        // 字符串常量池中1个  
+        String s1 = "a";  
+        // 字符串常量池中1个 ，堆1个。  
+        String s2 = new String("b");  
+        // 堆中2个。（StringBuilder对象，String对象）  
+        String s3 = s1 + s2;  
+    }  
+  
+    @Test  
+    public void test5(){  
+        // 问题：创建了几个对象？  
+        // 6个对象  
+        // 字符串常量池中2个  
+        // StringBuilder1个  
+        // 堆中的String 3个。  
+        String s = new String("a") + new String("b");  
+    }  
+  
+    @Test  
+    public void test6(){  
+        // 这个程序会出现异常吗？如果没有异常，结果是什么？  
+        // 不会出现异常，结果是：nullnull  
+        String s1 = null;  
+        String s2 = s1 + null;  
+        System.out.println(s2);  
+    }  
+  
+    @Test  
+    public void test7(){  
+  
+        String s1 = "ab";  
+  
+        final String s2 = "b";  
+        String s3 = "a" + s2;  
+  
+        // 和这个一样了。  
+        //String s3 = "a" + "b";  
+  
+        System.out.println(s1 == s3);  
+        // 因为final String s2，所以编译阶段还是把"a"和 s2 拼接了
+    }  
+  
+    @Test  
+    public void test8(){  
+  
+        String s1 = "ab";  
+  
+        final String s2 = getB();  
+        String s3 = "a" + s2;  
+  
+        System.out.println(s1 == s3); // false  
+    }  
+
+    @Test  
+    public void test9(){  
+        String s1 = "a1";  
+        String s2 = "a" + 1;  
+        System.out.println(s1 == s2); // true  
+    }  
+  
+    @Test  
+    public void test10(){  
+        String s1 = new String("abc");  
+        System.out.println(s1);  
+  
+        StringBuilder s2 = new StringBuilder("abc");  
+        System.out.println(s2);  
+  
+        // 类型不一样，没有比较的意义。  
+        // 类型不一样，结果一定是false。  
+        System.out.println(s1.equals(s2)); // false  
+    }  
+}
+```
 
 ---
 ## StringBuffer
