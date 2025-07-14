@@ -5,24 +5,262 @@
 ---
 ## String
 
-### 基本概念
+### 🍭 基本概念
 
-1. **String 对象用于保存字符串，也就是一组字符序列**
-2. 字符串常量对象是用双引号括起的字符序列。例如："你好"、"12.97"、"boy"等
-3. **字符串的字符使用 Unicode 字符编码，一个字符（不区分字母还是汉字）占两个字节。**
-4. **String 类较常用构造器（其它看手册）：**
-    
+1. String 对象用于保存字符串，也就是一组字符序列
+2. 字符串常量对象是用双引号括起的字符序列。例如："你好"、"12.97"、"boy"
+3. String 类较常用构造器（其它看手册）：
     - `String s1 = new String();` // 默认构造器，创建一个空字符串
     - `String s2 = new String(String original);` // 通过另一个字符串对象创建
     - `String s3 = new String(char[] a);` // 通过字符数组创建
     - `String s4 = new String(char[] a, int startindex, int count)` // 通过字符数组的一部分创建
     - `String s5 = new String(bytes[] b)`
     - 还有很多其他的
-5. String 继承了 `Serializable` 接口：String 可以通过网络传输
-6. String 继承了 `Comparable` 接口：String 可以相互比较
-7. String 是一个 final 类：不能被其他的类继承
 
-### String 的内存分析
+### ✏️ 源码分析
+
+```java
+// String.java, java9开始
+public final class String  
+	implements java.io.Serializable, Comparable<String>, CharSequence,  
+			   Constable, ConstantDesc {
+	private final byte[] value;
+	...
+}
+```
+
+```java
+// String.java, java8
+public final class String  
+	implements java.io.Serializable, Comparable<String>, CharSequence,  
+			   Constable, ConstantDesc {
+	private final char[] value;
+	private final byte coder;
+	...
+}
+```
+
+1. 内部字符数组的保存
+	1. java9之前：String 内部实现仍然是 `char[]`，字符串的字符使用 **Unicode** 字符编码，**一个字符（不区分字母还是汉字）占两个字节**。
+	2. java9 开始：使用`byte[]`保存字符串，针对 JDK 9 的 String 源码里，为了区别编码方式，追加了一个 coder 字段来区分。Java 会根据字符串的内容自动设置为相应的编码，要么 Latin-1 要么 UTF16。
+	3. 从 `char[]` 到 `byte[]`，最主要的目的是**节省字符串占用的内存空间**。内存占用减少带来的另外一个好处，就是 [GC](https://javabetter.cn/jvm/gc.html) 次数也会减少。
+2. String 继承了 `Serializable` 接口：String 可以通过网络传输
+3. String 继承了 `Comparable` 接口：String 可以相互比较
+4. **String 是一个 final 类**： String 不能被其他的类继承
+5. String 内部存放 **byte/char 数组的对象也是 final**：对象不能被修改，但是对象内部的内容可以被修改
+
+### 🍭 常用方法
+
+1. `substring(int beginIndex, int endIndex)`
+	1. **描述**：返回一个新字符串，它是此字符串的一个子字符串。
+	2. **案例**
+		```java
+		String str = "Hello, World!";
+		String subStr = str.substring(0, 5);
+		System.out.println("Substring: " + subStr);
+		```
+	3. **源码**
+		```java
+		public String substring(int beginIndex) {
+		    // 检查起始索引是否小于 0，如果是，则抛出 StringIndexOutOfBoundsException 异常
+		    if (beginIndex < 0) {
+		        throw new StringIndexOutOfBoundsException(beginIndex);
+		    }
+		    // 计算子字符串的长度
+		    int subLen = value.length - beginIndex;
+		    // 检查子字符串长度是否为负数，如果是，则抛出 StringIndexOutOfBoundsException 异常
+		    if (subLen < 0) {
+		        throw new StringIndexOutOfBoundsException(subLen);
+		    }
+		    // 如果起始索引为 0，则返回原字符串；否则，创建并返回新的字符串
+		    return (beginIndex == 0) ? this : new String(value, beginIndex, subLen);
+		}
+		```
+2. `length()`
+	1. **描述**：返回字符串的长度。
+	2. **案例**
+		```java
+		String str = "Hello, World!";
+		int length = str.length();
+		System.out.println("Length of the string: " + length);
+		```
+3. `charAt(int index)`
+	1. **描述**：返回指定索引处的字符。
+	2. **案例**
+		```java
+		String str = "Hello";
+		char firstChar = str.charAt(0);
+		System.out.println("First character: " + firstChar);
+		```
+4. `indexOf(String str)` 和 `lastIndexOf(String str)`
+	1. **描述**：返回指定子字符串在此字符串中第一次出现的索引。
+	2. **案例**：
+		```java
+		String str = "Hello, World!";
+		int index = str.indexOf("World");
+		System.out.println("Index of 'World': " + index);
+		```
+5. `replace(CharSequence target, CharSequence replacement)`
+	1. **描述**：返回一个新的字符串，它是通过用新子字符串替换此字符串中所有出现的给定目标子字符串得到的。
+	2. **案例**
+		```java
+		String str = "Hello, World!";
+		String newStr = str.replace("World", "Java");
+		System.out.println("Replaced string: " + newStr);
+		```
+6. `toUpperCase()` 和 `toLowerCase()`
+	1. **描述**：将此字符串转换为大写或小写。
+	2. **案例**：
+		```java
+		String str = "Hello, World!";
+		String upperStr = str.toUpperCase();
+		String lowerStr = str.toLowerCase();
+		System.out.println("Uppercase: " + upperStr);
+		System.out.println("Lowercase: " + lowerStr);
+		```
+7. `trim()`
+	1. **描述**：去除字符串两端的空白字符。
+	2. **案例**：
+		```java
+		String str = "   Hello, World!   ";
+		String trimmedStr = str.trim();
+		System.out.println("Trimmed string: " + trimmedStr);
+		```
+8. `split(String regex)`
+	1. **描述**：根据给定正则表达式的匹配拆分此字符串。
+	2. **案例**
+		```java
+		String str = "one,two,three";
+		String[] parts = str.split(",");
+		System.out.println("Split strings:");
+		for (String part : parts) {
+			System.out.println(part);
+		}
+		```
+9. `equals(Object anObject)` 和 `equalsIgnoreCase(String anotherString)`
+	1. **描述**：比较两个字符串是否相等。
+	2. **案例**
+		```java
+		String str1 = "Hello";
+		String str2 = "hello";
+		boolean isEqual = str1.equals(str2);
+		boolean isEqualIgnoreCase = str1.equalsIgnoreCase(str2);
+		System.out.println("Equal: " + isEqual);
+		System.out.println("Equal ignoring case: " + isEqualIgnoreCase);
+		```
+
+### 🍭 `format()` 
+
+**描述**：根据格式字符串（format string）和后续参数来格式化字符串。
+**语法**：
+```java
+String.format(String format, Object... args)
+```
+
+- `format`：格式字符串，其中可以包含普通文本和格式说明符（如 `%d`、`%s` 等）。
+- `args`：一个或多个参数，用于替换格式字符串中的格式说明符。
+- `%s`：字符串
+- `%d` 或 `%i`：十进制整数
+- `%f`：浮点数（默认小数点后6位）
+- `%.2f`：浮点数，保留两位小数
+- `%x` 或 `%X`：十六进制整数
+- `%b` 或 `%B`：二进制整数
+- `%c`：字符
+- `%h`：十六进制哈希码
+
+```java
+public class FormatExample {
+    public static void main(String[] args) {
+        // 格式化字符串
+        String name = "Kimi";
+        int age = 30;
+        double pi = Math.PI;
+
+        // 使用 String.format() 格式化字符串
+        String info = String.format("Name: %s, Age: %d, PI: %.2f", name, age, pi);
+        System.out.println(info);
+
+        // 更多格式化示例
+        String hex = String.format("Hexadecimal: %x", 255);
+        String binary = String.format("Binary: %b", 9);
+        String hash = String.format("Hash code: %h", "example");
+
+        System.out.println(hex);
+        System.out.println(binary);
+        System.out.println(hash);
+    }
+}
+```
+
+```
+Name: Kimi, Age: 30, PI: 3.14
+Hexadecimal: ff
+Binary: 1001
+Hash code: 6c657874
+```
+
+- `String.format()` 方法非常灵活，可以用于各种复杂的格式化需求。
+- 除了基本的数据类型格式化，还可以通过 `%` 后跟字母（如 `%+`、`%-`、`%,` 等）来控制格式化的细节，例如正负号显示、对齐方式、千位分隔符等。
+- 从 Java 7 开始，`String.format()` 支持 `Locale` 参数，可以用于实现本地化格式化。
+
+通过这些示例和说明，你应该能够更好地理解和使用 `String.format()` 方法来处理字符串格式化。
+
+### ✏️ [hashCode()](https://javabetter.cn/string/string-source.html#string-%E7%B1%BB%E7%9A%84-hashcode-%E6%96%B9%E6%B3%95)
+
+每一个字符串都会有一个 hash 值，这个哈希值在很大概率是不会重复的，因此 String 很适合来作为 [HashMap](https://javabetter.cn/collection/hashmap.html)（后面会细讲）的键值。
+
+```java
+// String.java
+private int hash; // 缓存字符串的哈希码
+
+public int hashCode() {
+    int h = hash; // 从缓存中获取哈希码
+    // 如果哈希码未被计算过（即为 0）且字符串不为空，则计算哈希码
+    if (h == 0 && value.length > 0) {
+        char val[] = value; // 获取字符串的字符数组
+
+        // 遍历字符串的每个字符来计算哈希码
+        for (int i = 0; i < value.length; i++) {
+            h = 31 * h + val[i]; // 使用 31 作为乘法因子
+        }
+        hash = h; // 缓存计算后的哈希码
+    }
+    return h; // 返回哈希码
+}
+```
+
+hashCode 方法首先检查是否已经计算过哈希码，如果已经计算过，则直接返回缓存的哈希码。否则，方法将使用一个循环遍历字符串的所有字符，并使用一个乘法和加法的组合计算哈希码。
+
+这种计算方法被称为“31 倍哈希法”。计算完成后，将得到的哈希值存储在 hash 成员变量中，以便下次调用 hashCode 方法时直接返回该值，而不需要重新计算。这是一种缓存优化，称为“惰性计算”。31 倍哈希法的优点在于简单易实现，计算速度快，同时也比较均匀地分布在哈希表中。
+
+**31 倍哈希法（31-Hash）** 是一种简单有效的字符串哈希算法，常用于对字符串进行哈希处理。该算法的基本思想是将字符串中的每个字符乘以一个固定的质数 31 的幂次方，并将它们相加得到哈希值。具体地，假设字符串为 s，长度为 n，则 31 倍哈希值计算公式如下：
+
+```java
+H(s) = (s[0] * 31^(n-1)) + (s[1] * 31^(n-2)) + ... + (s[n-1] * 31^0)
+```
+
+模拟计算Hash
+```java
+public class HashCodeExample {
+    public static void main(String[] args) {
+        String text = "沉默王二";
+        int hashCode = computeHashCode(text);
+        System.out.println("字符串 \"" + text + "\" 的哈希码是: " + hashCode);
+
+        System.out.println("String 的 hashCode " + text.hashCode());
+    }
+
+    public static int computeHashCode(String text) {
+        int h = 0;
+        for (int i = 0; i < text.length(); i++) {
+            h = 31 * h + text.charAt(i);
+        }
+        return h;
+    }
+}
+```
+
+### ✏️ 内存分析
 
 Java专门在堆中为字符串准备了一个**字符串常量池**。因为字符串使用比较频繁，放在字符串常量池中省去了对象的创建过程，从而提高程序的执行效率。（常量池属于一种缓存技术，缓存技术是提高程序执行效率的重要手段。）
 
@@ -410,179 +648,6 @@ String s1 = new String("bcde");
 String s2 = new String("bcde");
 System.out.println(s1 == s2); // f
 ```
-
-### 常用方法
-
-Java 中的 `String` 类提供了许多用于字符串操作的方法。以下是一些常用的方法及其案例：
-
-1. `length()`
-
-	**描述**：返回字符串的长度。
-	
-	**案例**：
-	```java
-	String str = "Hello, World!";
-	int length = str.length();
-	System.out.println("Length of the string: " + length);
-	```
-
-2. `charAt(int index)`
-
-	**描述**：返回指定索引处的字符。
-	
-	**案例**：
-	```java
-	String str = "Hello";
-	char firstChar = str.charAt(0);
-	System.out.println("First character: " + firstChar);
-	```
-
-3. `substring(int beginIndex, int endIndex)`
-
-	**描述**：返回一个新字符串，它是此字符串的一个子字符串。
-	
-	**案例**：
-	```java
-	String str = "Hello, World!";
-	String subStr = str.substring(0, 5);
-	System.out.println("Substring: " + subStr);
-	```
-
-4. `indexOf(String str)` 和 `lastIndexOf(String str)`
-
-	**描述**：返回指定子字符串在此字符串中第一次出现的索引。
-	
-	**案例**：
-	```java
-	String str = "Hello, World!";
-	int index = str.indexOf("World");
-	System.out.println("Index of 'World': " + index);
-	```
-
-5. `replace(CharSequence target, CharSequence replacement)`
-
-	**描述**：返回一个新的字符串，它是通过用新子字符串替换此字符串中所有出现的给定目标子字符串得到的。
-	
-	**案例**：
-	```java
-	String str = "Hello, World!";
-	String newStr = str.replace("World", "Java");
-	System.out.println("Replaced string: " + newStr);
-	```
-
-6. `toUpperCase()` 和 `toLowerCase()`
-
-	**描述**：将此字符串转换为大写或小写。
-	
-	**案例**：
-	```java
-	String str = "Hello, World!";
-	String upperStr = str.toUpperCase();
-	String lowerStr = str.toLowerCase();
-	System.out.println("Uppercase: " + upperStr);
-	System.out.println("Lowercase: " + lowerStr);
-	```
-
-7. `trim()`
-
-	**描述**：去除字符串两端的空白字符。
-	
-	**案例**：
-	```java
-	String str = "   Hello, World!   ";
-	String trimmedStr = str.trim();
-	System.out.println("Trimmed string: " + trimmedStr);
-	```
-
-8. `split(String regex)`
-
-	**描述**：根据给定正则表达式的匹配拆分此字符串。
-	
-	**案例**：
-	```java
-	String str = "one,two,three";
-	String[] parts = str.split(",");
-	System.out.println("Split strings:");
-	for (String part : parts) {
-	    System.out.println(part);
-	}
-	```
-
-9. `equals(Object anObject)` 和 `equalsIgnoreCase(String anotherString)`
-
-	**描述**：比较两个字符串是否相等。
-	
-	**案例**：
-	```java
-	String str1 = "Hello";
-	String str2 = "hello";
-	boolean isEqual = str1.equals(str2);
-	boolean isEqualIgnoreCase = str1.equalsIgnoreCase(str2);
-	System.out.println("Equal: " + isEqual);
-	System.out.println("Equal ignoring case: " + isEqualIgnoreCase);
-	```
-
-	这些方法涵盖了字符串的基本操作，包括长度获取、字符访问、子字符串提取、字符串替换、大小写转换、空白去除、字符串分割以及字符串比较等。通过这些方法，可以方便地对字符串进行各种操作。
-	
-	确实，`String.format()` 是 Java 中处理字符串格式化的一个非常有用的工具。它允许你按照指定的格式来构造字符串，类似于 C 语言中的 `printf` 函数。
-
-### `String.format()` 方法
-
-**描述**：根据格式字符串（format string）和后续参数来格式化字符串。
-
-**语法**：
-```java
-String.format(String format, Object... args)
-```
-
-- `format`：格式字符串，其中可以包含普通文本和格式说明符（如 `%d`、`%s` 等）。
-- `args`：一个或多个参数，用于替换格式字符串中的格式说明符。
-
-- `%s`：字符串
-- `%d` 或 `%i`：十进制整数
-- `%f`：浮点数（默认小数点后6位）
-- `%.2f`：浮点数，保留两位小数
-- `%x` 或 `%X`：十六进制整数
-- `%b` 或 `%B`：二进制整数
-- `%c`：字符
-- `%h`：十六进制哈希码
-
-```java
-public class FormatExample {
-    public static void main(String[] args) {
-        // 格式化字符串
-        String name = "Kimi";
-        int age = 30;
-        double pi = Math.PI;
-
-        // 使用 String.format() 格式化字符串
-        String info = String.format("Name: %s, Age: %d, PI: %.2f", name, age, pi);
-        System.out.println(info);
-
-        // 更多格式化示例
-        String hex = String.format("Hexadecimal: %x", 255);
-        String binary = String.format("Binary: %b", 9);
-        String hash = String.format("Hash code: %h", "example");
-
-        System.out.println(hex);
-        System.out.println(binary);
-        System.out.println(hash);
-    }
-}
-```
-
-```
-Name: Kimi, Age: 30, PI: 3.14
-Hexadecimal: ff
-Binary: 1001
-Hash code: 6c657874
-```
-
-- `String.format()` 方法非常灵活，可以用于各种复杂的格式化需求。
-- 除了基本的数据类型格式化，还可以通过 `%` 后跟字母（如 `%+`、`%-`、`%,` 等）来控制格式化的细节，例如正负号显示、对齐方式、千位分隔符等。
-- 从 Java 7 开始，`String.format()` 支持 `Locale` 参数，可以用于实现本地化格式化。
-
-通过这些示例和说明，你应该能够更好地理解和使用 `String.format()` 方法来处理字符串格式化。
 
 ### String与正则表达式
 
