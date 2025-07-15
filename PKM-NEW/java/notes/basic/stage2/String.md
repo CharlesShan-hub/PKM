@@ -20,21 +20,21 @@
 ### ✏️ 源码分析
 
 ```java
-// String.java, java9开始
-public final class String  
-	implements java.io.Serializable, Comparable<String>, CharSequence,  
-			   Constable, ConstantDesc {
-	private final byte[] value;
-	...
-}
-```
-
-```java
 // String.java, java8
 public final class String  
 	implements java.io.Serializable, Comparable<String>, CharSequence,  
 			   Constable, ConstantDesc {
 	private final char[] value;
+	...
+}
+```
+
+```java
+// String.java, java9开始
+public final class String  
+	implements java.io.Serializable, Comparable<String>, CharSequence,  
+			   Constable, ConstantDesc {
+	private final byte[] value;
 	private final byte coder;
 	...
 }
@@ -47,9 +47,49 @@ public final class String
 2. String 继承了 `Serializable` 接口：String 可以通过网络传输
 3. String 继承了 `Comparable` 接口：String 可以相互比较
 4. **String 是一个 final 类**： String 不能被其他的类继承
-5. String 内部存放 **byte/char 数组的对象也是 final**：对象不能被修改，但是对象内部的内容可以被修改
+5. String 内部存放 **byte/char 数组的对象也是 final**：对象不能被修改，但是对象内部的内容可以被修改（value 不能指向新的地址，但是单独字符的内容是可以变换的）
+	```java
+	public class StringAndCharArrayExample {
+		public static void main(String[] args) {
+			// 字符串的重新赋值
+			String name = "jack";
+			System.out.println("Before changing name: " + name);
+			name = "tom";
+			System.out.println("After changing name: " + name);
+	
+			// final 关键字和字符数组的操作
+			final char[] value = {'a', 'b', 'c'};
+			char[] v2 = {'t', 'u', 'm'};
+	
+			// 修改字符数组中的元素
+			value[0] = 'H';
+			System.out.println("Modified value array: " + new String(value));
+	
+			// 尝试重新赋值给 final 关键字修饰的数组（编译错误）
+			// value = v2; // 这行代码会导致编译错误，因为 final 关键字修饰的数组不能被重新赋值
+	
+			// 输出结果
+			System.out.println("v2 array: " + new String(v2));
+		}
+	}
+	```
+6. 相比之下，后边的`StringBuilder`就把内容保存在了非`final`的`Byte`数组中。
+	```java
+	// AbstractStringBuilder.java
+	abstract sealed class AbstractStringBuilder implements Appendable, CharSequence  
+	    permits StringBuilder, StringBuffer {  
+	    /**  
+	     * The value is used for character storage.     
+	     */    
+	     byte[] value;
+	     ...
+	     }
+	}
+	```
 
-### 🍭 常用方法
+### 常用方法
+
+#### 🍭方法总结
 
 1. `substring(int beginIndex, int endIndex)`
 	1. **描述**：返回一个新字符串，它是此字符串的一个子字符串。
@@ -149,7 +189,7 @@ public final class String
 		System.out.println("Equal ignoring case: " + isEqualIgnoreCase);
 		```
 
-### 🍭 `format()` 
+#### 🍭 `format()` 
 
 **描述**：根据格式字符串（format string）和后续参数来格式化字符串。
 **语法**：
@@ -205,7 +245,7 @@ Hash code: 6c657874
 
 通过这些示例和说明，你应该能够更好地理解和使用 `String.format()` 方法来处理字符串格式化。
 
-### ✏️ [hashCode()](https://javabetter.cn/string/string-source.html#string-%E7%B1%BB%E7%9A%84-hashcode-%E6%96%B9%E6%B3%95)
+#### ✏️ [hashCode()](https://javabetter.cn/string/string-source.html#string-%E7%B1%BB%E7%9A%84-hashcode-%E6%96%B9%E6%B3%95)
 
 每一个字符串都会有一个 hash 值，这个哈希值在很大概率是不会重复的，因此 String 很适合来作为 [HashMap](https://javabetter.cn/collection/hashmap.html)（后面会细讲）的键值。
 
@@ -260,7 +300,9 @@ public class HashCodeExample {
 }
 ```
 
-### ✏️ 内存分析
+### 内存分析
+
+#### ✏️ 常量池
 
 Java专门在堆中为字符串准备了一个**字符串常量池**。因为字符串使用比较频繁，放在字符串常量池中省去了对象的创建过程，从而提高程序的执行效率。（常量池属于一种缓存技术，缓存技术是提高程序执行效率的重要手段。）
 
@@ -281,230 +323,7 @@ System.out.println(s3 == s4); // false
 System.out.println(s3.equals(s4)); // true
 ```
 
-练习 1。以下语句创建了几个对象？画出内存布局图。
-
-```java
-String s1 = "hello";
-s1 = "haha";
-```
-
-```json
-{
-	'栈':{
-		s1: Ox88,//第一句
-		s1: 0x22//第二句后变成了这样
-	},
-	'堆':{
-		0x88: {
-			value: 0x11,
-		}
-	},
-	'常量池':{
-		0x11: "Hello",(第一个对象)
-		0x22: "haha"（第二个对象，都是字符串常量对象）
-	}
-}
-```
-
-练习 2。创建了几个对象？
-
-```java
-String a = "hello" + "abc";
-```
-
-```json
-{
-	'栈':{
-		a: 0x33;
-	},
-	'堆':{
-	},
-	'常量池':{
-		// 0x11: "Hello",
-		// 0x22: "haha",
-		// 上边两个被编译器优化没了，因为他们没有引用指向，不要把编译器当成傻子
-		0x33: "Hellohaha"（只有 1 个对象）
-	}
-}
-```
-
-练习 3。创建了几个对象
-
-```java
-String a = "Hello";
-String b = "abv";
-String c = a + b;
-```
-
-这样三个对象，但是注意，c 是指向堆的。
-具体创建的过程如下：
-1. 先创建一个 StringBuilder sb = StringBuilder()
-2. 执行 sb.append("hello");
-3. sb.append("abc");
-4. String c = sb.toString();
-5. 最后其实是 c 指向堆中的对象(String) value[] -> 池中 "helloabc"
-
-```json
-{
-	'栈':{
-		a: 0x11,
-		b: 0x22,
-		c: 0x88
-	},
-	'堆':{
-		0x88: {
-			value: 0x33,
-		}
-	},
-	'常量池':{
-		0x11: "Hello",
-		0x22: "haha",
-		0x33: "Hellohaha"
-	}
-}
-```
-
-如果后边继续
-
-```java
-String d = "Helloabc";
-System.out.println(c == d); // false，因为 c 指向 0x88，d 直接指向了常量池
-```
-
-**❗️重要总结：常量相加，找常量池。变量相加，找堆。**
-
-练习 4。下面代码输出什么，并说明原因。
-
-```java
-String s1 = "hsped";
-String s2 = "java";
-String s5 = "hspedjava";
-String s6 = (s1 + s2).intern();    // intern代表放到了常量池里边
-System.out.println(s5 == s6);      // true，因为 intern 了，所以又指向常量池了
-System.out.println(s5.equals(s6)); // true
-```
-
-练习 5。下列程序运行的结果是什么，尝试画出内存布局图？
-
-```java
-public class Test1 {
-    String str = new String("hsp");
-    final char[] ch = { 'j', 'a', 'v', 'a' };
-    public void change(String str, char ch[]) {
-        str = "java";
-        ch[0] = 'h';
-    }
-    public static void main(String[] args) {
-        Test1 ex = new Test1();
-        ex.change(ex.str, ex.ch);
-        System.out.print(ex.str + " and ");
-        System.out.println(ex.ch);
-    }
-} // 思考，认真看，仔细想
-```
-
-change函数拿到 str，一开始指向 ex.str。后来因为 String 不能变，所以修改的是 change 的函数指向了常量池中的 “java”并不会更不会影响到 main 栈里边的 ex.str。所以结果为 hsp，hava
-
-为什么 hava 变了呢，因为原来的数组存在堆里边，j 变成了 h。
-
-为什么 hsp 没变，因为新的字符串在方法区，原来堆里边的引用对象没有变化。
-
-
-### String不能修改
-
-1. String 内部的内容保存在了：`private final byte[] value;`，**所以 String 不可修改，注意，他的不可修改不是值不可修改，而是地址不能修改（value 不能指向新的地址，但是单独字符的内容是可以变换的）**【面试会问】
-	```java
-	// String.java
-	public final class String  
-		implements java.io.Serializable, Comparable<String>, CharSequence,  
-				   Constable, ConstantDesc {
-		private final byte[] value;
-		...
-	}
-	```
-
-2. 相比之下，后边的`StringBuilder`就把内容保存在了非`final`的`Byte`数组中。
-	```java
-	// AbstractStringBuilder.java
-	abstract sealed class AbstractStringBuilder implements Appendable, CharSequence  
-	    permits StringBuilder, StringBuffer {  
-	    /**  
-	     * The value is used for character storage.     
-	     */    
-	     byte[] value;
-	     ...
-	     }
-	}
-	```
-
-3. Java8之前保存在`private final char[] value;`，Java9 开始保存在`private final byte[] value;`了因为可以**节省空间**。
-
-```java
-public class StringAndCharArrayExample {
-	public static void main(String[] args) {
-		// 字符串的重新赋值
-		String name = "jack";
-		System.out.println("Before changing name: " + name);
-		name = "tom";
-		System.out.println("After changing name: " + name);
-
-		// final 关键字和字符数组的操作
-		final char[] value = {'a', 'b', 'c'};
-		char[] v2 = {'t', 'u', 'm'};
-
-		// 修改字符数组中的元素
-		value[0] = 'H';
-		System.out.println("Modified value array: " + new String(value));
-
-		// 尝试重新赋值给 final 关键字修饰的数组（编译错误）
-		// value = v2; // 这行代码会导致编译错误，因为 final 关键字修饰的数组不能被重新赋值
-
-		// 输出结果
-		System.out.println("v2 array: " + new String(v2));
-	}
-}
-```
-
-### 两种创建方式
-
-在Java中，创建`String`对象有两种主要方式，每种方式在内存管理和性能上有不同的表现。
-
-#### 方式一：直接赋值
-
-```java
-String s = "hsp";
-```
-- **描述**：这种方式直接将字符串字面量赋值给变量`s`。
-- **内存管理**：
-  - Java虚拟机（JVM）会在常量池中查找是否存在相同的字符串字面量。
-  - 如果常量池中已经存在"hsp"，则直接让变量`s`指向常量池中的这个字符串，不会创建新的对象。
-  - 如果常量池中不存在，则创建一个新的字符串对象，并将其放入常量池，然后让变量`s`指向这个新创建的对象。
-- **性能**：这种方式通常更高效，因为它利用了常量池来避免重复创建相同的字符串对象。
-
-```java
-String a = "java";
-String b = "java";
-System.out.println(a.equals(b)); // true
-System.out.println(a == b); // true
-```
-
-#### 方式二：调用构造器
-
-```java
-String s2 = new String("hsp");
-```
-
-- **描述**：通过调用`String`类的构造器来创建一个新的字符串对象。
-- **内存管理**：
-  - **无论常量池中是否存在相同的字符串，都会在堆内存中创建一个新的字符串对象。**
-  - 这种方式会维护`String`对象的`value`属性，指向新创建的字符数组。
-  - 如果常量池中不存在"hsp"，则创建新对象；如果存在，也会创建新对象，但新对象的内容与常量池中的对象相同。
-- **性能**：这种方式通常不如直接赋值高效，因为它总是创建新的对象，增加了内存的使用和垃圾回收的负担。
-
-- **直接赋值**（方式一）**更高效**，因为它利用了常量池来避免重复创建相同的字符串对象，减少了内存的使用。
-- **调用构造器**（方式二）在需要修改字符串内容或需要新对象时使用，但通常不推荐用于创建字符串常量，因为它会增加内存的使用和垃圾回收的负担。
-
-String 常用的构造方法
+#### 🍭 常用的构造方法
 
 * `String(char[] value)`：根据字符数组创建一个新的字符串对象。
 * `String(char[] value, int offset, int count)`：根据字符数组的指定部分创建一个新的字符串对象。
@@ -585,38 +404,59 @@ public class StringTest03 {
 }
 ```
 
-#### 练习
-
-Demo
+#### ✏️ 创建方式1：直接赋值
 
 ```java
-public class StringCreationExample {
-    public static void main(String[] args) {
-        // 方式一：直接赋值
-        String s = "hsp";
-        System.out.println("s: " + s);
+String s = "hsp";
+```
+- **描述**：这种方式直接将字符串字面量赋值给变量`s`。
+- **内存管理**：
+  - Java虚拟机（JVM）会在常量池中查找是否存在相同的字符串字面量。
+  - 如果常量池中已经存在"hsp"，则直接让变量`s`指向常量池中的这个字符串，不会创建新的对象。
+  - 如果常量池中不存在，则创建一个新的字符串对象，并将其放入常量池，然后让变量`s`指向这个新创建的对象。
+- **性能**：这种方式通常更高效，因为它利用了常量池来避免重复创建相同的字符串对象。
 
-        // 方式二：调用构造器
-        String s2 = new String("hsp");
-        System.out.println("s2: " + s2);
-    }
+```java
+String a = "java";
+String b = "java";
+System.out.println(a.equals(b)); // true
+System.out.println(a == b); // true
+```
+
+#### ✏️ 创建方式2：构造器
+
+```java
+String s2 = new String("hsp");
+```
+
+- **描述**：通过调用`String`类的构造器来创建一个新的字符串对象。
+- **内存管理**：
+  - **无论常量池中是否存在相同的字符串，都会在堆内存中创建一个新的字符串对象。**
+  - 这种方式会维护`String`对象的`value`属性，指向新创建的字符数组。
+  - 如果常量池中不存在"hsp"，则创建新对象；如果存在，也会创建新对象，但新对象的内容与常量池中的对象相同。
+- **性能**：这种方式通常不如直接赋值高效，因为它总是创建新的对象，增加了内存的使用和垃圾回收的负担。
+
+- **直接赋值**（方式一）**更高效**，因为它利用了常量池来避免重复创建相同的字符串对象，减少了内存的使用。
+- **调用构造器**（方式二）在需要修改字符串内容或需要新对象时使用，但通常不推荐用于创建字符串常量，因为它会增加内存的使用和垃圾回收的负担。
+
+练习：以下语句创建了几个对象？画出内存布局图。（两个）
+
+```java
+String s1 = "hello";
+s1 = "haha";
+```
+
+```json
+{
+	'栈':{
+		s1: Ox11,//第一句
+		s1: 0x22//第二句后变成了这样
+	},
+	'常量池':{
+		0x11: "Hello",//(第一个对象)
+		0x22: "haha"//（第二个对象，都是字符串常量对象）
+	}
 }
-```
-
-```
-s: hsp
-s2: hsp
-```
-
-练习
-
-```java
-String a = "hsp"; // a 指向 常量池的 "hsp"
-String b = new String("hsp"); // b 指向堆中对象
-System.out.println(a.equals(b)); // T
-System.out.println(a == b); // F
-System.out.println(a == b.intern()); // intern方法自己先查看API, T
-System.out.println(b == b.intern()); // F
 ```
 
 练习
@@ -649,72 +489,135 @@ String s2 = new String("bcde");
 System.out.println(s1 == s2); // f
 ```
 
-### String与正则表达式
+#### ✏️ 字符串相加
 
-* [[re]]
-* [[史上最全正则表达式]]
-
-* String replace(CharSequence target, CharSequence replacement);
-	* 将当前字符串中所有的target替换成replacement，返回一个新的字符串。
-* String replaceAll(String regex, String replacement);
-	* 将当前字符串中所有符合正则表达式的regex替换成replacement。
-* String[] split(String regex);
-	* 将当前字符串以某个正则表达式表示的子字符串进行分割，返回一个字符串数组。
-* boolean matches(String regex);
-	* 判断当前字符串是否符合正则表达式regex。
+练习：创建了几个对象？
 
 ```java
-package com.powernode.javase.stringtest;  
-  
-import org.junit.jupiter.api.Test;  
-  
-import java.util.ArrayList;  
-import java.util.List;  
-  
-/**  
- * 测试用例  
- */  
-public class StringMethodTest {  
-  
-    @Test  
-    public void testMatches(){  
-        // 邮箱地址的正则表达式  
-        String emailRegExp = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";  
-        String email = "dujubin@126.com";  
-  
-        System.out.println(email.matches(emailRegExp));  
-  
-    }  
-  
-    @Test  
-    public void testSplit(){  
-        // 根据正则表达式进行字符串的拆分  
-        // 拆分后返回一个字符串数组  
-        String[] strs = "动1力2节3点4。".split("\\d");  
-        System.out.println(strs.length);  
-        for(String s : strs){  
-            System.out.println(s);  
-        }  
-  
-        String[] ymd = "1970-10-11".split("-");  
-        for(String s : ymd){  
-            System.out.println(s);  
-        }  
-  
-        String data = "name=zhangsan&password=123&email=zhangsan@123.com&gender=男";  
-        String[] params = data.split("&");  
-        for(String param : params) {  
-            //System.out.println(param);  
-            String[] nameAndValue = param.split("=");  
-            for(String s : nameAndValue){  
-                System.out.println(s);  
-            }  
-        }  
-    }  
+String a = "hello" + "abc";
+```
+
+```json
+{
+	'栈':{
+		a: 0x33;
+	},
+	'堆':{
+	},
+	'常量池':{
+		// 0x11: "Hello",
+		// 0x22: "haha",
+		// 上边两个被编译器优化没了，因为他们没有引用指向，不要把编译器当成傻子
+		0x33: "Hellohaha"（只有 1 个对象）
+	}
 }
 ```
 
-### 面试题
+练习：创建了几个对象
+
+```java
+String a = "Hello";
+String b = "abv";
+String c = a + b;
+```
+
+创建了 5 个对象，其中常量池中有 3 个
+具体创建的过程如下：
+1. 先创建一个 StringBuilder sb = StringBuilder(); // 堆中创建一个 StringBuilder 对象
+2. 执行 sb.append("hello");
+3. sb.append("abc");
+4. String c = sb.toString(); // 这里会创建一个 String 对象
+5. 最后其实是 c 指向堆中的对象(String) value[] -> 池中 "helloabc"
+
+```json
+{
+	'栈':{
+		a: 0x11,
+		b: 0x22,
+		c: 0x88
+	},
+	'堆':{
+		0x88: { // 5
+			value: 0x33,
+		}
+		0x99: StringBuilder sb // 4
+	},
+	'常量池':{
+		0x11: "Hello", // 1
+		0x22: "haha", // 2
+		0x33: "Hellohaha" // 3
+	}
+}
+```
+
+如果后边继续
+
+```java
+String d = "Helloabc";
+System.out.println(c == d); // false，因为 c 指向 0x88，d 直接指向了常量池
+```
+
+练习：创建了几个对象？
+
+```java
+final String s2 = "b";  
+String s3 = "a" + s2;  
+```
+
+还是一个！直接是"ab"，因为 s2 是final 了，所以编译器又可以优化了。
+
+**❗️重要总结：常量相加，找常量池。变量相加，找堆。**
+
+#### ✏️ intern
+
+练习
+
+```java
+String a = "hsp"; // a 指向 常量池的 "hsp"
+String b = new String("hsp"); // b 指向堆中对象
+System.out.println(a.equals(b)); // T
+System.out.println(a == b); // F
+System.out.println(a == b.intern()); // intern方法自己先查看API, T
+System.out.println(b == b.intern()); // F
+```
+
+练习：下面代码输出什么，并说明原因。
+
+```java
+String s1 = "hsped";
+String s2 = "java";
+String s5 = "hspedjava";
+String s6 = (s1 + s2).intern();    // intern代表放到了常量池里边
+System.out.println(s5 == s6);      // true，因为 intern 了，所以又指向常量池了
+System.out.println(s5.equals(s6)); // true
+```
+
+练习：下列程序运行的结果是什么，尝试画出内存布局图？
+
+```java
+public class Test1 {
+    String str = new String("hsp");
+    final char[] ch = { 'j', 'a', 'v', 'a' };
+    public void change(String str, char ch[]) {
+        str = "java";
+        ch[0] = 'h';
+    }
+    public static void main(String[] args) {
+        Test1 ex = new Test1();
+        ex.change(ex.str, ex.ch);
+        System.out.print(ex.str + " and ");
+        System.out.println(ex.ch);
+    }
+} // 思考，认真看，仔细想
+```
+
+change函数拿到 str，一开始指向 ex.str。后来因为 String 不能变，所以修改的是 change 的函数指向了常量池中的 “java”并不会更不会影响到 main 栈里边的 ex.str。所以结果为 hsp，hava
+
+为什么 hava 变了呢，因为原来的数组存在堆里边，j 变成了 h。
+
+为什么 hsp 没变，因为新的字符串在方法区，原来堆里边的引用对象没有变化。
+
+综合面试题
 
 ```java
 package com.powernode.javase.stringtest;  
@@ -828,22 +731,185 @@ public class StringExam {
 }
 ```
 
----
-## StringBuffer
+### 🍭 String与正则表达式
 
-### StringBuffer 是什么
+* [[re]]
+* [[史上最全正则表达式]]
+
+* String replace(CharSequence target, CharSequence replacement);
+	* 将当前字符串中所有的target替换成replacement，返回一个新的字符串。
+* String replaceAll(String regex, String replacement);
+	* 将当前字符串中所有符合正则表达式的regex替换成replacement。
+* String[] split(String regex);
+	* 将当前字符串以某个正则表达式表示的子字符串进行分割，返回一个字符串数组。
+* boolean matches(String regex);
+	* 判断当前字符串是否符合正则表达式regex。
+
+```java
+package com.powernode.javase.stringtest;  
+  
+import org.junit.jupiter.api.Test;  
+  
+import java.util.ArrayList;  
+import java.util.List;  
+  
+/**  
+ * 测试用例  
+ */  
+public class StringMethodTest {  
+  
+    @Test  
+    public void testMatches(){  
+        // 邮箱地址的正则表达式  
+        String emailRegExp = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";  
+        String email = "dujubin@126.com";  
+  
+        System.out.println(email.matches(emailRegExp));  
+  
+    }  
+  
+    @Test  
+    public void testSplit(){  
+        // 根据正则表达式进行字符串的拆分  
+        // 拆分后返回一个字符串数组  
+        String[] strs = "动1力2节3点4。".split("\\d");  
+        System.out.println(strs.length);  
+        for(String s : strs){  
+            System.out.println(s);  
+        }  
+  
+        String[] ymd = "1970-10-11".split("-");  
+        for(String s : ymd){  
+            System.out.println(s);  
+        }  
+  
+        String data = "name=zhangsan&password=123&email=zhangsan@123.com&gender=男";  
+        String[] params = data.split("&");  
+        for(String param : params) {  
+            //System.out.println(param);  
+            String[] nameAndValue = param.split("=");  
+            for(String s : nameAndValue){  
+                System.out.println(s);  
+            }  
+        }  
+    }  
+}
+```
+
+---
+## StringBuffer & StringBuilder
+
+### 🍭 StringBuffer 基本概念
+
+由于[字符串是不可变的](https://javabetter.cn/string/immutable.html)，所以当遇到[字符串拼接](https://javabetter.cn/string/join.html)（尤其是使用`+`号操作符）的时候，就需要考量性能的问题，你不能毫无顾虑地生产太多 String 对象，对珍贵的内存造成不必要的压力。于是 Java 就设计了一个专门用来解决此问题的 StringBuffer 类。
+
+```java
+public final class StringBuffer extends AbstractStringBuilder implements Serializable, CharSequence {
+
+    public StringBuffer() {
+        super(16);
+    }
+    
+    public synchronized StringBuffer append(String str) {
+        super.append(str);
+        return this;
+    }
+
+    public synchronized String toString() {
+        return new String(value, 0, count);
+    }
+
+    // 其他方法
+}
+```
 
 * `StringBuffer`是可变长度的字符序列。可以理解成长度可变的 String
 * `StringBuffer`是一个**容器**
-	```java
-	public final class StringBuffer  
-	    extends AbstractStringBuilder  
-	    implements Appendable, Serializable, Comparable<StringBuffer>, CharSequence  
-	{}
-	```
 * `StringBuffer`的父类`AbstractStringBuilder`里边有一个`char[] value;`这里存放字符串内容。⚠️不是 final 的。另外存放在堆里边而不是常量池了（因为数组在堆里边）。
 
-### AbstractStringBuilder 扩容机制（重点）
+### ✏️ StringBuilder
+
+由于 StringBuffer 操作字符串的方法加了 [`synchronized` 关键字](https://javabetter.cn/thread/synchronized-1.html)进行了同步，主要是考虑到多线程环境下的安全问题，所以如果在非多线程环境下，执行效率就会比较低，因为加了没必要的锁。
+
+于是 Java 就给 StringBuffer “生了个兄弟”，名叫 StringBuilder，说，“孩子，你别管线程安全了，你就在单线程环境下使用，这样效率会高得多，如果要在多线程环境下修改字符串，你到时候可以使用 [`ThreadLocal`](https://javabetter.cn/thread/ThreadLocal.html) 来避免多线程冲突。”
+
+- 当需要在单个线程中频繁修改字符串内容时，推荐使用 `StringBuilder`。
+- 由于 `StringBuilder` 不是线程安全的，因此在多线程环境中应使用 `StringBuffer`。
+
+```java
+public final class StringBuilder extends AbstractStringBuilder
+    implements java.io.Serializable, CharSequence
+{
+    // ...
+
+    public StringBuilder append(String str) {
+        super.append(str);
+        return this;
+    }
+
+    public String toString() {
+        // Create a copy, don't share the array
+        return new String(value, 0, count);
+    }
+
+    // ...
+}
+```
+
+**除了类名不同，方法没有加 synchronized，基本上完全一样。**
+
+实际开发中，StringBuilder 的使用频率也是远高于 StringBuffer，甚至可以这么说，StringBuilder 完全取代了 StringBuffer。
+
+最后看一下他们三个的比较
+
+```java
+public class StringBuilderVsString {
+    public static void main(String[] args) {
+        String text = "";
+        long startTime = 0L;
+        long endTime = 0L;
+
+        // 使用 StringBuffer
+        StringBuffer buffer = new StringBuffer("");
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < 20000; i++) {
+            buffer.append(String.valueOf(i));
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("StringBuffer的执行时间: " + (endTime - startTime));
+
+        // 使用 StringBuilder
+        startTime = System.currentTimeMillis();
+        StringBuilder builder = new StringBuilder("");
+        for (int i = 0; i < 20000; i++) {
+            builder.append(String.valueOf(i));
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("StringBuilder的执行时间: " + (endTime - startTime));
+
+        // 使用 String 进行连接
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < 20000; i++) {
+            text = text + i;
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("String的执行时间: " + (endTime - startTime));
+    }
+}
+```
+
+```bash
+StringBuffer的执行时间: 1
+StringBuilder的执行时间: 0
+String的执行时间: 73
+```
+
+1. 如果字符串存在大量的修改操作，一般使用 StringBuffer 或 StringBuilder
+2. 如果字符串存在大量的修改操作，并在单线程的情况，使用 StringBuilder
+3. 如果字符串存在大量的修改操作，并在多线程的情况，使用 StringBuffer
+4. 如果我们字符串很少修改，被多个对象引用，使用 String，比如配置信息等
+
+### ✏️ AbstractStringBuilder 扩容机制（重点）
 
 > 重点是扩容规则要记住，初始化大小要记住。
 
@@ -877,7 +943,102 @@ stringBuilder.append("abcdef");
 // 50 + max(50+2, 6) = 102 (用了 56)
 ```
 
-### StringBuffer 和 String 的对比
+下面是具体的分析
+
+StringBuilder 初始创建过程会创建大小为 16 的空字符串
+
+```java
+/**
+ * Constructs a string builder with no characters in it and an
+ * initial capacity of 16 characters.
+ */
+public StringBuilder() {
+    super(16);
+}
+```
+
+在调用字符串变量相加的时候结束时，系统会默认调用 StringBuilder 的 toString()
+
+```java
+public String toString() { 
+	return new String(value, 0, count); 
+}
+```
+
+在调用字符串变量相加的时候，会把要相加的内容通过 append() 进行拼接
+
+```java
+public StringBuilder append(String str) {
+    super.append(str);
+    return this;
+}
+```
+
+```java
+public AbstractStringBuilder append(String str) {
+    if (str == null)
+        return appendNull();
+    int len = str.length();
+    // count + len就是 ensureCapacityInternal传入的minimumCapacity
+    ensureCapacityInternal(count + len);
+    str.getChars(0, len, value, count);
+    count += len;
+    return this;
+}
+```
+
+注意如果添加的是null 就真的会添加"null"字符串进去！
+
+```java
+private AbstractStringBuilder appendNull() {  
+    ensureCapacityInternal(count + 4);  
+    int count = this.count;  
+    byte[] val = this.value;  
+    if (isLatin1()) {  
+        val[count++] = 'n';  
+        val[count++] = 'u';  
+        val[count++] = 'l';  
+        val[count++] = 'l';  
+    } else {  
+        count = StringUTF16.putCharsAt(val, count, 'n', 'u', 'l', 'l');  
+    }  
+    this.count = count;  
+    return this;  
+}
+```
+
+如果添加的字符串不是 null，那么就会去查看容量了
+
+```java
+private void ensureCapacityInternal(int minimumCapacity) {
+	// minimumCapacity = append()的 count + len
+    if (minimumCapacity - value.length > 0)
+		// 不够用了，扩容
+        expandCapacity(minimumCapacity);
+}
+
+void expandCapacity(int minimumCapacity) {
+    // 扩容策略：新容量为旧容量的两倍加上 2
+    int newCapacity = value.length * 2 + 2;
+    // 如果新容量小于指定的最小容量，则新容量为指定的最小容量
+    if (newCapacity - minimumCapacity < 0)
+        newCapacity = minimumCapacity;
+    // 如果新容量小于 0，则新容量为 Integer.MAX_VALUE
+    if (newCapacity < 0) {
+        if (minimumCapacity < 0) // overflow
+            throw new OutOfMemoryError();
+        newCapacity = Integer.MAX_VALUE;
+    }
+    // 将字符序列的容量扩容到新容量的大小
+    value = Arrays.copyOf(value, newCapacity);
+}
+```
+
+ 快速记忆
+ 1.  初始化：默认 16，也可以指定
+ 2. append：默认新容量为旧容量的两倍加上 2，如果不够，就是原长度+要加的长度
+
+### 🍭 StringBuffer 和 String 的对比
 
 * String 类
 	- **特性**：`String` 保存的是字符串常量，其值不可更改。
@@ -901,7 +1062,7 @@ stringBuilder.append("abcdef");
 	- `String` 类适合于不需要修改字符串内容的场景，因为其不可变性保证了字符串的安全性。
 	- `StringBuffer` 类适合于需要频繁修改字符串内容的场景，因为它提供了更高的效率。
 
-### 四种构造器
+### 🍭 四种构造器
 
 1. `StringBuffer()`
 	- **描述**：构造一个不带字符的字符串缓冲区，其初始容量为 16 个字符。
@@ -955,7 +1116,7 @@ Kimi
 - 选择合适的构造器可以提高程序的效率，特别是在需要大量字符串操作的情况下。
 - 通过指定初始容量，可以避免多次扩容操作，从而提高性能。
 
-### StringBuffer 与 String 的转换
+### 🍭 StringBuffer 与 String 的转换
 
 在 Java 开发中，经常需要在 `String` 和 `StringBuffer` 之间进行转换。以下是如何实现这些转换的详细说明和示例代码。
 
@@ -1027,7 +1188,7 @@ String from b1: hello
 - `StringBuffer` 是可变的，可以在原有对象上进行修改，适合频繁修改的场景。
 - 通过上述方法，可以在 `String` 和 `StringBuffer` 之间灵活转换，以满足不同的编程需求。
 
-### StringBuffer 的常用方法
+### 🍭 StringBuffer 的常用方法
 
 `StringBuffer` 类提供了多种方法来操作字符串缓冲区。以下是一些常用方法的笔记：
 
@@ -1167,97 +1328,3 @@ public class StringBufferEx {
 }
 ```
 
----
-## StringBuilder
-
-### 基本介绍
-
-1. **描述**：
-   - `StringBuilder` 是一个可变的字符序列类。
-   - 提供了与 `StringBuffer` 兼容的 API，但不保证同步。
-   - 设计为 `StringBuffer` 的一个简易替换，用于字符串缓冲区被单个线程使用时。
-   - 在大多数实现中，`StringBuilder` 比 `StringBuffer` 更快，因为它不需要同步。
-
-2. **主要操作**：
-   - 主要操作是 `append` 和 `insert` 方法。
-   - 这些方法可以重载，以接受任意类型的数据。
-
-### 使用场景
-
-- 当需要在单个线程中频繁修改字符串内容时，推荐使用 `StringBuilder`。
-- 由于 `StringBuilder` 不是线程安全的，因此在多线程环境中应使用 `StringBuffer`。
-
-### 示例代码
-
-```java
-public class StringBuilderExample {
-    public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder("Hello");
-        sb.append(", World!"); // 使用 append 方法添加字符串
-        System.out.println(sb.toString()); // 输出: Hello, World!
-
-        sb.insert(7, "Java"); // 在索引 7 处插入字符串 "Java"
-        System.out.println(sb.toString()); // 输出: Hello, JavaWorld!
-
-        // 重载 append 方法，接受任意类型的数据
-        sb.append(123).append(true).append(45.67);
-        System.out.println(sb.toString()); // 输出: Hello, JavaWorld!123true45.67
-    }
-}
-```
-
-```
-Hello, World!
-Hello, JavaWorld!
-Hello, JavaWorld!123true45.67
-```
-
-
-最后看一下他们三个的比较
-
-```java
-public class StringBuilderVsString {
-    public static void main(String[] args) {
-        String text = "";
-        long startTime = 0L;
-        long endTime = 0L;
-
-        // 使用 StringBuffer
-        StringBuffer buffer = new StringBuffer("");
-        startTime = System.currentTimeMillis();
-        for (int i = 0; i < 20000; i++) {
-            buffer.append(String.valueOf(i));
-        }
-        endTime = System.currentTimeMillis();
-        System.out.println("StringBuffer的执行时间: " + (endTime - startTime));
-
-        // 使用 StringBuilder
-        startTime = System.currentTimeMillis();
-        StringBuilder builder = new StringBuilder("");
-        for (int i = 0; i < 20000; i++) {
-            builder.append(String.valueOf(i));
-        }
-        endTime = System.currentTimeMillis();
-        System.out.println("StringBuilder的执行时间: " + (endTime - startTime));
-
-        // 使用 String 进行连接
-        startTime = System.currentTimeMillis();
-        for (int i = 0; i < 20000; i++) {
-            text = text + i;
-        }
-        endTime = System.currentTimeMillis();
-        System.out.println("String的执行时间: " + (endTime - startTime));
-    }
-}
-```
-
-```bash
-StringBuffer的执行时间: 1
-StringBuilder的执行时间: 0
-String的执行时间: 73
-```
-
-1. 如果字符串存在大量的修改操作，一般使用 StringBuffer 或 StringBuilder
-2. 如果字符串存在大量的修改操作，并在单线程的情况，使用 StringBuilder
-3. 如果字符串存在大量的修改操作，并在多线程的情况，使用 StringBuffer
-4. 如果我们字符串很少修改，被多个对象引用，使用 String，比如配置信息等
