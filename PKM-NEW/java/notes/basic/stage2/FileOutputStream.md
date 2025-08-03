@@ -1,6 +1,6 @@
 # FileOutputStream
 
-写入一个字节
+写入一个字节：`fis.write('a');`
 
 ```java
 package ex_file;
@@ -20,7 +20,7 @@ public class FileExample {
 }
 ```
 
-写入字符串
+写入字符串：`fis.write("Hello World".getBytes());`
 
 ```java
 package ex_file;
@@ -40,7 +40,7 @@ public class FileExample {
 }
 ```
 
-写入字符串并制定从哪里开始写几位
+写入字符串并制定从哪里开始写几位：`fis.write(content,0,5);`
 
 ```java
 package ex_file;  
