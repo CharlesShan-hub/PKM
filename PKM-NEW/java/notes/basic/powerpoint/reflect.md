@@ -934,7 +934,7 @@ public class ReflectTest14 {
         //Class clazz = Class.forName("com.powernode.javase.reflect.User");  
   
     }  
-}
+} 
 ```
 ### 类加载器
 
@@ -986,8 +986,249 @@ public class ReflectTest15 {
 }
 ```
 
+### 双亲委派机制
+
+1. 某个类加载器接收到加载类的任务时，通常委托给“父 类加载”完成加载。
+2. 最“父 类加载器”无法加载时，一级一级向下委托加载任务。
+3. 作用：
+	1. 保护程序的安全。
+	2. 防止类加载重复。
+![[双亲委派.png]]
+
 ---
 ## 反射泛型
 
+1.反射父类的泛型
+```java
+package com.powernode.javase.reflect.generic01;  
+  
+import java.lang.reflect.ParameterizedType;  
+import java.lang.reflect.Type;  
+  
+/**  
+ * 获取父类的泛型信息  
+ */  
+public class Test {  
+    public static void main(String[] args) {  
+        // 获取类  
+        Class<Cat> catClass = Cat.class;  
+  
+        // 获取当前类的父类泛型  
+        Type genericSuperclass = catClass.getGenericSuperclass();  
+        //System.out.println(genericSuperclass instanceof Class);  
+        //System.out.println(genericSuperclass instanceof ParameterizedType);  
+        // 如果父类使用了泛型  
+        if(genericSuperclass instanceof ParameterizedType){  
+            // 转型为参数化类型  
+            ParameterizedType parameterizedType = (ParameterizedType) genericSuperclass;  
+            // 获取泛型数组  
+            Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();  
+            // 遍历泛型数组  
+            for(Type a : actualTypeArguments){  
+                // 获取泛型的具体类型名  
+                System.out.println(a.getTypeName());  
+            }  
+        }  
+    }  
+}
 
+/**  
+ * 在类上定义泛型  
+ * @param <X>  
+ * @param <Y>  
+ * @param <Z>  
+ */  
+class Animal<X, Y, Z> {  
+}
+
+class Cat extends Animal<String, Integer, Double>{  
+}
+```
+2.反射接口的泛型
+```java
+package com.powernode.javase.reflect.generic02;  
+  
+import java.lang.reflect.ParameterizedType;  
+import java.lang.reflect.Type;  
+  
+public class Test {  
+    public static void main(String[] args) {  
+        Class<Mouse> mouseClass = Mouse.class;  
+        // 获取接口上的泛型  
+        Type[] genericInterfaces = mouseClass.getGenericInterfaces();  
+        for (Type g : genericInterfaces) {  
+            // 使用了泛型  
+            if(g instanceof ParameterizedType){  
+                ParameterizedType parameterizedType = (ParameterizedType) g;  
+                Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();  
+                for(Type a : actualTypeArguments){  
+                    System.out.println(a.getTypeName());  
+                }  
+            }  
+        }  
+    }  
+}
+
+public interface Flyable<X, Y> {  
+}
+
+public class Mouse implements Flyable<String, Integer>, Comparable<Mouse>{  
+    @Override  
+    public int compareTo(Mouse o) {  
+        return 0;  
+    }  
+}
+```
+3.反射属性上的泛型
+```java
+package com.powernode.javase.reflect.generic03;  
+  
+import java.lang.reflect.Field;  
+import java.lang.reflect.ParameterizedType;  
+import java.lang.reflect.Type;  
+import java.util.Map;  
+  
+public class Test {  
+    public static void main(String[] args) throws Exception{  
+        // 获取这个类  
+        Class<User> userClass = User.class;  
+        // 获取属性上的泛型，需要先获取到属性  
+        Field mapField = userClass.getDeclaredField("map"); // 获取公开的以及私有的  
+        // 获取这个属性上的泛型  
+        Type genericType = mapField.getGenericType();  
+        // 用泛型了  
+        if(genericType instanceof ParameterizedType){  
+            ParameterizedType parameterizedType = (ParameterizedType) genericType;  
+            Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();  
+            for(Type a : actualTypeArguments){  
+                System.out.println(a.getTypeName());  
+            }  
+        }  
+    }  
+}
+  
+public class User {  
+    private Map<Integer, String> map;  
+}
+```
+4.反射方法参数上的泛型
+```java
+package com.powernode.javase.reflect.generic04;  
+  
+import java.lang.reflect.Method;  
+import java.lang.reflect.ParameterizedType;  
+import java.lang.reflect.Type;  
+import java.util.List; 
+import java.util.Map;
+  
+/**  
+ * 获取方法参数上的泛型信息  
+ */  
+public class Test {  
+    public static void main(String[] args) throws Exception{  
+        // 获取类  
+        Class<MyClass> myClassClass = MyClass.class;  
+  
+        // 获取方法  
+        Method mMethod = myClassClass.getDeclaredMethod("m", List.class, List.class);  
+  
+        // 获取方法参数上的泛型  
+        Type[] genericParameterTypes = mMethod.getGenericParameterTypes();  
+        for(Type g : genericParameterTypes){  
+            // 如果这个参数使用了泛型  
+            if(g instanceof ParameterizedType){  
+                ParameterizedType parameterizedType = (ParameterizedType) g;  
+                Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();  
+                for(Type a : actualTypeArguments){  
+                    System.out.println(a.getTypeName());  
+                }  
+            }  
+        }  
+}
+
+class MyClass {  
+  
+    public Map<Integer, Integer> m(List<String> list, List<Integer> list2){  
+        return null;  
+    }  
+  
+}
+```
+5.反射方法返回值的泛型
+```java
+package com.powernode.javase.reflect.generic04;  
+  
+import java.lang.reflect.Method;  
+import java.lang.reflect.ParameterizedType;  
+import java.lang.reflect.Type;  
+import java.util.List; 
+import java.util.Map;
+  
+/**  
+ * 获取方法参数上的泛型信息  
+ */  
+public class Test {  
+    public static void main(String[] args) throws Exception{  
+        // 获取类  
+        Class<MyClass> myClassClass = MyClass.class;  
+  
+        // 获取方法  
+        Method mMethod = myClassClass.getDeclaredMethod("m", List.class, List.class);  
+  
+        // 获取方法返回值上的泛型  
+        Type genericReturnType = mMethod.getGenericReturnType();  
+        if(genericReturnType instanceof ParameterizedType){  
+            ParameterizedType parameterizedType = (ParameterizedType) genericReturnType;  
+            Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();  
+            for(Type a : actualTypeArguments){  
+                System.out.println(a.getTypeName());  
+            }  
+        }  
+    }  
+}
+
+class MyClass {  
+  
+    public Map<Integer, Integer> m(List<String> list, List<Integer> list2){  
+        return null;  
+    }  
+  
+}
+```
+6.反射构造方法参数上的泛型
+```java
+package com.powernode.javase.reflect.generic05;  
+  
+import java.lang.reflect.Constructor;  
+import java.lang.reflect.ParameterizedType;  
+import java.lang.reflect.Type;  
+import java.util.Map;  
+  
+/**  
+ * 获取构造方法参数的泛型  
+ */  
+public class Test {  
+    public static void main(String[] args) throws Exception{  
+        Class<User> userClass = User.class;  
+        Constructor<User> con = userClass.getDeclaredConstructor(Map.class);  
+        Type[] genericParameterTypes = con.getGenericParameterTypes();  
+        for(Type g :genericParameterTypes){  
+            if(g instanceof ParameterizedType){  
+                ParameterizedType parameterizedType = (ParameterizedType) g;  
+                Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();  
+                for(Type a : actualTypeArguments){  
+                    System.out.println(a.getTypeName());  
+                }  
+            }  
+        }  
+    }  
+}
+
+class User {  
+  
+    public User(Map<String ,Integer> map){  
+    }  
+  
+}
+```
 

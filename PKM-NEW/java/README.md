@@ -230,7 +230,7 @@
 	* 397~401：（重点）抽象类
 	* 402~411：（重点）接口
 	* 412~424：（重点，难点）四种内部类
-* 第 11 章：[[notes/basic/stage2/枚举与注解|枚举与注解]]
+* 第 11 章：[[PKM-NEW/java/notes/basic/stage2/枚举|枚举]]，[[注解]]
 	* 423：枚举引出
 	* 424：自定义类实现枚举
 	* 425：enum 关键字实现枚举
@@ -324,7 +324,7 @@
 	* 661~665：网络相关概念；IP；域名，端口号，TCP/IP协议栈，TCP、UDP
 	* 666：INetAddress类
 	* 667~670：TCP编程实践
-* 动力节点补充：[[jvm]]，[[principle]]，[[uml]]，[[re]]，[[uuid]]，[[PKM-NEW/java/notes/basic/powerpoint/system|system]]
+* 动力节点补充：[[jvm]]，[[principle]]，[[uml]]，[[re]]，[[uuid]]，[[PKM-NEW/java/notes/basic/powerpoint/system|system]]，[[reflect]]
 
 ### JavaWeb
 
