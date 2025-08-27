@@ -1232,3 +1232,299 @@ class User {
 }
 ```
 
+## 反射注解
+
+获取类上的所有注解
+`Annotation[] annotations = clazz.getAnnotations();`
+获取类上指定的某个注解
+`clazz.isAnnotationPresent(AnnotationTest01.class)`
+`AnnotationTest01 an = clazz.getAnnotation(AnnotationTest01.class);`
+获取属性上的所有注解
+`Annotation[] annotations = field.getAnnotations();`
+获取属性上指定的某个注解
+`field.isAnnotationPresent(AnnotationTest02.class)`
+`AnnotationTest02 an = field.getAnnotation(AnnotationTest02.class);`
+获取方法上的所有注解
+`Annotation[] annotations = method.getAnnotations();`
+获取方法上指定的某个注解
+`method.isAnnotationPresent(AnnotationTest02.class)`
+`AnnotationTest02 an = method.getAnnotation(AnnotationTest02.class);`
+
+案例：编写程序扫描一个包下所有的类，凡是被 @Table 注解标注的类都要生成一条建表语句，表名在 @Table 注解中指定。被@Table 标注的类中的属性被 @Column 注解标注，在 @Column注解中描述字段的名称和字段的数据类型。
+
+```java
+package annotation;  
+  
+import java.lang.annotation.ElementType;  
+import java.lang.annotation.Retention;  
+import java.lang.annotation.RetentionPolicy;  
+import java.lang.annotation.Target;  
+  
+/**  
+ * ClassName: Column 
+ * Description: 
+ *          该注解用来标注一个类中的属性，被标注的属性参与建表。  
+ * <p>  
+ * Datetime: 2024/2/1 17:37 
+ * Author: 老杜@动力节点  
+ * Version: 1.0  
+ */
+@Target(ElementType.FIELD)  
+@Retention(RetentionPolicy.RUNTIME)  
+public @interface Column {  
+    /**  
+     * 字段的名字  
+     * @return 字段的名字  
+     */  
+    String name();  
+  
+    /**  
+     * 字段的数据类型  
+     * @return 字段的数据类型  
+     */  
+    String type() default "varchar";  
+}
+```
+
+```java
+package annotation;  
+  
+import java.lang.annotation.ElementType;  
+import java.lang.annotation.Retention;  
+import java.lang.annotation.RetentionPolicy;  
+import java.lang.annotation.Target;  
+  
+/**  
+ * ClassName: Table * Description: 
+ *      被 @Table 注解标注的类，要生成建表语句。  
+ * <p>  
+ * Datetime: 2024/2/1 17:36 
+ * Author: 老杜@动力节点  
+ * Version: 1.0  
+ */
+@Target(ElementType.TYPE)  
+@Retention(RetentionPolicy.RUNTIME)  
+public @interface Table {  
+    /**  
+     * 用来指定表的名字  
+     * @return 表的名字  
+     */  
+    String value();  
+}
+```
+
+```java
+package a;  
+  
+import annotation.Column;  
+import annotation.Table;  
+  
+/**  
+ * ClassName: User 
+ * Description: 
+ * <p> 
+ * Datetime: 2024/2/1 17:39 
+ * Author: 老杜@动力节点  
+ * Version: 1.0  
+ */
+@Table("t_user")  
+public class User {  
+    @Column(name = "uid")  
+    private String userid;  
+    @Column(name = "uname")  
+    private String username;  
+    @Column(name = "pwd")  
+    private String password;  
+    @Column(name = "age", type = "int")  
+    private int age;  
+    private String email;  
+}
+```
+
+```java
+package a.b;  
+  
+import annotation.Column;  
+import annotation.Table;  
+  
+/**  
+ * ClassName: Vip * Description: * <p> * Datetime: 2024/2/1 17:42 * Author: 老杜@动力节点  
+ * Version: 1.0  
+ */@Table("t_vip")  
+public class Vip {  
+    @Column(name = "id")  
+    private String id;  
+    //@Column(name = "name")  
+    private String name;  
+    //@Column(name = "grade")  
+    private String grade;  
+}
+```
+
+```java
+package c;  
+  
+import annotation.Column;  
+import annotation.Table;  
+  
+/**  
+ * ClassName: Customer * Description: * <p> * Datetime: 2024/2/1 17:43 * Author: 老杜@动力节点  
+ * Version: 1.0  
+ */@Table("t_customer")  
+public class Customer {  
+    @Column(name = "cid")  
+    private String cid;  
+    @Column(name = "name")  
+    private String name;  
+    @Column(name = "age", type = "int")  
+    private int age;  
+    @Column(name = "addr")  
+    private String address;  
+}
+```
+
+```java
+package d;  
+  
+import annotation.Column;  
+import annotation.Table;  
+  
+import java.io.File;  
+import java.lang.reflect.Field;  
+  
+/**  
+ * ClassName: Test 
+ * Description: 
+ * <p> 
+ * Datetime: 2024/2/1 17:48 
+ * Author: 老杜@动力节点  
+ * Version: 1.0  
+ */public class Test {  
+  
+    private static String classpathRoot;  
+  
+    private static StringBuilder sb = new StringBuilder();  
+  
+    public static void main(String[] args) {  
+        // 扫描类路径当中所有的文件，找到所有的.class结尾的文件  
+        // 通过.class文件的路径找到对应的全限定类名（全限定类名是带包名的。）  
+        classpathRoot = Thread.currentThread().getContextClassLoader().getResource(".").getPath();  
+        System.out.println("类路径的根：" + classpathRoot);  
+        // 创建File对象  
+        File file = new File(classpathRoot);  
+        // 调用方法来生成建表语句  
+        generateCreateStatement(file);  
+        System.out.println(sb);  
+    }  
+  
+    /**  
+     * 通过这个方法，来生成建表语句  
+     *  
+     * @param file 起初的这个file代表的是类的根目录  
+     */  
+    private static void generateCreateStatement(File file) {  
+        if (file.isFile()) { // file是一个文件的时候，递归结束  
+            System.out.println("处理文件:"+file.getAbsolutePath());  
+            String classFileAbsolutePath = file.getAbsolutePath();  
+            if (classFileAbsolutePath.endsWith(".class")) {  
+                // 程序执行到这里，表示文件一定是一个字节码文件  
+                String className = classFileAbsolutePath.substring(classpathRoot.length(), classFileAbsolutePath.length() - ".class".length()).replace("/", ".");  
+                System.out.println(className);  
+  
+                try {  
+                    // 获取类  
+                    Class<?> clazz = Class.forName(className);  
+                    // 判断类上面是否有@Table注解  
+                    if(clazz.isAnnotationPresent(Table.class)){  
+                        Table tableAnnotation = clazz.getAnnotation(Table.class);  
+                        // 获取到表的名字  
+                        String tableName = tableAnnotation.value();  
+                        System.out.println(tableName);  
+                        sb.append("create table ");  
+                        sb.append(tableName);  
+                        sb.append("(");  
+                        // 获取所有的属性  
+                        Field[] fields = clazz.getDeclaredFields();  
+                        for(Field field : fields){  
+                            // 判断字段上是否存在 @Column 注解  
+                            if(field.isAnnotationPresent(Column.class)){  
+                                Column columnAnnotation = field.getAnnotation(Column.class);  
+                                // 字段名  
+                                String columnName = columnAnnotation.name();  
+                                System.out.println(columnName);  
+                                sb.append(columnName);  
+                                sb.append(" ");  
+                                // 字段的类型  
+                                String columnType = columnAnnotation.type();  
+                                System.out.println(columnType);  
+                                sb.append(columnType);  
+                                sb.append(",");  
+                            }  
+                        }  
+                        // 删除当前sb中的最后一个逗号  
+                        sb.deleteCharAt(sb.length() - 1);  
+                        sb.append(");\n");  
+                    }  
+                } catch (Exception e) {  
+                    throw new RuntimeException(e);  
+                }  
+  
+            }  
+            return;  
+        }  
+        File[] files = file.listFiles();  
+        for (File f : files) {  
+            //System.out.println("开始处理目录或文件:" + f.getAbsolutePath());  
+            generateCreateStatement(f);  
+        }  
+    }  
+}
+```
+
+```txt
+类路径的根：/Users/kimshan/Downloads/javaRes/code/out/production/recursion_reflect_annotation/
+处理文件:/Users/kimshan/Downloads/javaRes/code/out/production/recursion_reflect_annotation/annotation/Table.class
+annotation/Table
+annotation.Table
+处理文件:/Users/kimshan/Downloads/javaRes/code/out/production/recursion_reflect_annotation/annotation/Column.class
+annotation/Column
+annotation.Column
+111
+222
+处理文件:/Users/kimshan/Downloads/javaRes/code/out/production/recursion_reflect_annotation/a/User.class
+a/User
+a.User
+t_user
+uid
+varchar
+uname
+varchar
+pwd
+varchar
+age
+int
+处理文件:/Users/kimshan/Downloads/javaRes/code/out/production/recursion_reflect_annotation/a/b/Vip.class
+a/b/Vip
+a.b.Vip
+t_vip
+id
+varchar
+处理文件:/Users/kimshan/Downloads/javaRes/code/out/production/recursion_reflect_annotation/c/Customer.class
+c/Customer
+c.Customer
+t_customer
+cid
+varchar
+name
+varchar
+age
+int
+addr
+varchar
+处理文件:/Users/kimshan/Downloads/javaRes/code/out/production/recursion_reflect_annotation/d/Test.class
+d/Test
+d.Test
+create table t_user(uid varchar,uname varchar,pwd varchar,age int);
+create table t_vip(id varchar);
+create table t_customer(cid varchar,name varchar,age int,addr varchar);
+```
