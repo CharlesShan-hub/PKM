@@ -17,7 +17,7 @@
     * 3：（可跳过）开发场景：SSM（Spring 、 SpringMVC 、 Mybatis）
     * 4：（可跳过）应用领域：后端、客户端、嵌入式
     * 5：（可跳过）之前的PPT，总结成了笔记
-* 第 2 章：[[notes/basic/stage1/背景介绍|背景介绍]]，[第一个程序](notes/basic/stage1/第一个程序.md)，[反思总结](notes/basic/stage1/反思总结.md)，[[notes/basic/stage1/Dos指令|Dos指令]]
+* 第 2 章：[[notes/basic/stage1/背景介绍|背景介绍]]，[[notes/basic/stage1/第一个程序.md|第一个程序]]，[反思总结](notes/basic/stage1/反思总结.md)，[[notes/basic/stage1/Dos指令|Dos指令]]
     * 6：（可跳过）什么是程序，Hello World
     * 7：（可跳过）Java 历史：sun、gosling、1995、oak、Oracle；SE、EE、ME
     * 8：（可跳过）Java 特性：OOP、GC 强类型、跨平台、解释型语言
@@ -320,7 +320,7 @@
 	* 638~640：Properties
 	* 641~643：作业
 * 第 20 章：（坦克大战项目第三部分）
-* 第 21 章（待续）：[[PKM-NEW/java/notes/basic/stage3/网络|网络]]
+* 第 21 章：[[PKM-NEW/java/notes/basic/stage3/网络|网络]]
 	* 661~665：网络相关概念；IP；域名，端口号，TCP/IP协议栈，TCP、UDP
 	* 666：INetAddress类
 	* 667~670：TCP编程实践

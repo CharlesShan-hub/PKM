@@ -36,13 +36,95 @@ Collections.sort(list, new Comparator<Integer>() {
     }  
 });  
 System.out.println("排序后：" + list);
+```
 
 针对以上对List集合的的“降序”排序操作，除了使用匿名内部类来实现外，还可以使用Lambda表达式来实现，使用Lambda表达式的代码非常优雅，并且还非常的简洁，代码如下：
 
+```java
 // 方式二：使用Lambda表达式来实现  
 List<Integer> list = Arrays.asList(3, 6, 1, 7, 2, 5, 4);  
 Collections.sort(list, (o1, o2) -> o2 - o1);  
 System.out.println("排序后：" + list);
+```
+
+案例
+```java
+package com.powernode.javase.lambda;  
+  
+import java.util.Comparator;  
+import java.util.TreeSet;  
+  
+/**  
+ * ClassName: LambdaTest01 
+ * Description: 先体会一下Java8的新特性：Lambda表达式  
+ * <p>  
+ * Datetime: 2024/2/2 8:38 
+ * Author: 老杜@动力节点  
+ * Version: 1.0  
+ */
+public class LambdaTest01 {  
+    public static void main(String[] args) {  
+        // TreeSet集合中的元素是可以自动排序的。  
+        // TreeSet集合是怎么排序的？ 两种方式  
+        // 第一种方式：如果比较规则固定不变，可以让TreeSet集合中的元素实现java.lang.Comparable接口。  
+        // 第二种方式：创建TreeSet集合的时候，给TreeSet集合传递一个比较器对象，比较器实现java.util.Comparator接口。  
+        // 以下是匿名内部类的方式  
+	    TreeSet<User> users1 = new TreeSet<>(new Comparator<User>() {  
+            @Override            
+            public int compare(User o1, User o2) {                
+	            return o1.getAge() - o2.getAge();            
+	        }        
+	    });
+		
+        TreeSet<User> users2 = new TreeSet<>((User o1, User o2) -> { return o2.getAge() - o1.getAge(); });  
+        TreeSet<User> users3 = new TreeSet<>((o1, o2) ->  o2.getAge() - o1.getAge() );  
+  
+        User user1 = new User(20);  
+        User user2 = new User(30);  
+        User user3 = new User(40);  
+        User user4 = new User(10);  
+  
+        users1.add(user1);  
+        users1.add(user2);  
+        users1.add(user3);  
+        users1.add(user4);  
+        users2.add(user1);  
+        users2.add(user2);  
+        users2.add(user3);  
+        users2.add(user4);  
+        users3.add(user1);  
+        users3.add(user2);  
+        users3.add(user3);  
+        users3.add(user4);  
+  
+        System.out.println(users1);  
+        System.out.println(users2);  
+        System.out.println(users3);  
+    }  
+}  
+  
+class User {  
+    private int age;  
+  
+    public int getAge() {  
+        return age;  
+    }  
+  
+    public void setAge(int age) {  
+        this.age = age;  
+    }  
+  
+    public User(int age) {  
+        this.age = age;  
+    }  
+  
+    @Override  
+    public String toString() {  
+        return "User{" +  
+                "age=" + age +  
+                '}';  
+    }  
+}
 ```
 
 ### 函数式编程思想的概述
@@ -62,7 +144,9 @@ Java从诞生之日起就一直倡导“一切皆对象”，在Java语言中面
 
 ### 如何去理解函数式接口
 
-能够使用Lambda表达式的一个重要依据是必须有相应的函数式接口，所谓的函数式接口，指的就是“一个接口中有且只能有一个抽象方法”。也就是说，如果一个接口只有一个抽象方法，那么该接口就是一个函数式接口。 如果我们在接口上声明了 @FunctionalInterface 注解，那么编译器就会按照函数式接口的定义来要求该接口，也就是该接口中有且只能定义一个抽象方法，如果该接口中定义了多个或0个抽象方法，则程序编译时就会报错。 【示例】定义一个函数式接口
+能够使用Lambda表达式的一个重要依据是必须有相应的函数式接口，所谓的函数式接口，指的就是“一个接口中有且只能有一个抽象方法”。也就是说，如果一个接口只有一个抽象方法，那么该接口就是一个函数式接口。 如果我们在接口上声明了 @FunctionalInterface 注解，那么编译器就会按照函数式接口的定义来要求该接口，也就是该接口中有且只能定义一个抽象方法，如果该接口中定义了多个或0个抽象方法，则程序编译时就会报错。 
+
+【示例】定义一个函数式接口
 
 ```java
 @FunctionalInterface  
@@ -121,13 +205,89 @@ public class Test01 {
         
     - Lambda表达式：编译之后，没有生成一个单独的.class字节码文件。
         
+```java
+package com.powernode.javase.lambda;
 
+/**
+ * ClassName: LambdaTest02
+ * Description:
+ *      Lambda表达式和匿名内部类的区别：
+ *          所需类型不同：
+ *              匿名内部类，可以是抽象类，也可以是接口。
+ *              Lambda表达式，只能是接口。
+ *          使用限制不同：
+ *              Lambda表达式使用的接口中要求有且只有一个抽象方法。
+ *              匿名内部类方式使用的接口可以有多个抽象方法。
+ *          实现原理不同：
+ *              采用匿名内部类的话，编译之后会生成一个.class文件。
+ *              采用Lambda表达式的话，编译之后不会生成单独的.class文件。
+ * <p>
+ * Datetime: 2024/2/2 9:10
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest02 {
+
+    public static void main(String[] args) {
+
+        // 匿名内部类方式（匿名内部类可以是一个抽象类）
+        LambdaTest02.test(new Animal() {
+            @Override
+            public void run() {
+                System.out.println("Animal run....");
+            }
+        });
+
+        // 尝试将上面的代码修改为Lambda表达式方式
+        // 编译报错，原因是：只有接口才可以使用Lambda表达式
+        //LambdaTest02.test(() -> { System.out.println("Animal run...."); });
+
+        // 匿名内部类
+        /*LambdaTest02.doFly(new Flyable() {
+            @Override
+            public void run() {
+                System.out.println("run.....");
+            }
+
+            @Override
+            public void fly() {
+                System.out.println("fly.....");
+            }
+        });*/
+
+        // 尝试使用Lambda表达式
+        // Lambda表达式使用的接口必须是函数式接口。（必须是接口，而且接口中有且只有一个抽象方法。）
+        //LambdaTest02.doFly(() -> { System.out.println("run....."); });
+    }
+
+    public static void test(Animal a){
+        a.run();
+    }
+
+    public static void doFly(Flyable f){
+        f.fly();
+        f.run();
+    }
+}
+
+abstract class Animal{
+    public abstract void run();
+}
+
+interface Flyable {
+    void run();
+    void fly();
+}
+
+
+
+```
 ---
 ## Lambda表达式的使用
 
 ### Lambda表达式的语法
 
-Lambda表达式本质就是一个匿名函数，在函数的语法中包含返回值类型、方法名、形参列表和方法体等，而在Lambda表达式中我们只需要关心形参列表和方法体即可。 在Java语言中，Lambda表达式的语法为“(形参列表) -> {方法体}”，其中“->”为 lambda操作符或箭头操作符，“形参列表”为对应接口实现类中重写方法的形参列表，“方法体”为对应接口实现类中重写方法的方法体。 接下来，我们就以匿名内部类为例，从而将匿名内部类演化为Lambda表达式，代码如下：
+Lambda表达式本质就是一个匿名函数，在函数的语法中包含返回值类型、方法名、形参列表和方法体等，而在Lambda表达式中我们只需要关心形参列表和方法体即可。 在Java语言中，Lambda表达式的语法为`“(形参列表) -> {方法体}”`，其中“->”为 lambda操作符或箭头操作符，“形参列表”为对应接口实现类中重写方法的形参列表，“方法体”为对应接口实现类中重写方法的方法体。 接下来，我们就以匿名内部类为例，从而将匿名内部类演化为Lambda表达式，代码如下：
 
 ```java
 List<Integer> list = Arrays.asList(3, 6, 1, 7, 2, 5, 4);  
@@ -152,6 +312,9 @@ System.out.println("排序后：" + list);
 
 在以上代码中，黄色背景颜色标注的就是重写于Comparator接口中抽象方法的形参列表，而红色背景颜色标注的就是重写方法对应方法体的代码实现。因此Lambda本质上就是去掉了一堆没有意义的代码，只留下核心的代码逻辑，从而让代码看起来更加的简洁且优雅。
 
+```java
+```
+
 ### Lambda表达式的使用
 
 #### Lambda表达式的基本使用
@@ -163,84 +326,127 @@ System.out.println("排序后：" + list);
 情况一：无返回值无参数
 
 ```java
-// 情况一：无返回值无参数  
-interface NoParameterNoReturn {  
-    void test();  
-}  
-​  
-public class Test01 {  
-    public static void main(String[] args) {  
-        // 方式一：使用匿名内部类来实现  
-        NoParameterNoReturn obj1 = new NoParameterNoReturn() {  
-            @Override  
-            public void test() {  
-                System.out.println("无参无返回值");  
-            }  
-        };  
-        obj1.test();  
-​  
-        // 方式二：使用Lambda表达式来实现  
-        NoParameterNoReturn obj2 = () -> {  
-            System.out.println("无参无返回值");  
-        };  
-        obj2.test();  
-    }  
+package com.powernode.javase.lambda;
+
+/**
+ * ClassName: LambdaTest04
+ * Description:
+ *          Lambda表达式的使用：关于无返回值无参数的函数式接口。
+ * <p>
+ * Datetime: 2024/2/2 10:00
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest04 {
+    public static void main(String[] args) {
+        // 匿名内部类方式
+        NoParameterNoReturn npnr = new NoParameterNoReturn() {
+            @Override
+            public void test() {
+                System.out.println("无返回值无参数的test方法执行了。");
+            }
+        };
+        npnr.test();
+
+        // 改成Lambda表达式
+        NoParameterNoReturn npnr2 = () -> { System.out.println("无返回值无参数的test方法执行了。"); };
+        npnr2.test();
+
+        // 精简
+        NoParameterNoReturn npnr3 = () -> System.out.println("无返回值无参数的test方法执行了。");
+        npnr3.test();
+    }
 }
+
+@FunctionalInterface
+interface NoParameterNoReturn {
+    void test();
+}
+
 ```
 
 情况二：无返回值一个参数
 
 ```java
-// 情况二：无返回值一个参数  
-interface OneParameterNoReturn {  
-    void test(int num);  
-}  
-​  
-public class Test01 {  
-    public static void main(String[] args) {  
-        // 方式一：使用匿名内部类来实现  
-        OneParameterNoReturn obj1 = new OneParameterNoReturn() {  
-            @Override  
-            public void test(int num) {  
-                System.out.println("无返回值一个参数 --> " + num);  
-            }  
-        };  
-        obj1.test(10);  
-​  
-        // 方式二：使用Lambda表达式来实现  
-        OneParameterNoReturn obj2 = (int num) -> {  
-            System.out.println("无返回值一个参数 --> " + num);  
-        };  
-        obj2.test(20);  
-    }  
+package com.powernode.javase.lambda;
+
+/**
+ * ClassName: LambdaTest05
+ * Description:
+ *          Lambda表达式的使用：关于无返回值一个参数的函数式接口。
+ * <p>
+ * Datetime: 2024/2/2 10:04
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest05 {
+    public static void main(String[] args) {
+        // 匿名内部类的方式
+        OneParameterNoReturn opnr = new OneParameterNoReturn() {
+            @Override
+            public void test(Integer value) {
+                System.out.println("Integer-->" + value);
+            }
+        };
+        opnr.test(1000);
+
+        // Lambda表达式方式
+        OneParameterNoReturn opnr2 = (Integer value) -> { System.out.println("Integer-->" + value); };
+        opnr2.test(2000);
+
+        // 精简
+        OneParameterNoReturn opnr3 = value -> System.out.println("Integer-->" + value);
+        opnr3.test(2000);
+    }
 }
+
+@FunctionalInterface
+interface OneParameterNoReturn {
+    void test(Integer value);
+}
+
 ```
 
 情况三：无返回值多个参数
 
 ```java
-// 情况三：无返回值多个参数  
-interface MoreParameterNoReturn {  
-    void test(String str1, String str2);  
-}  
-public class Test01 {  
-    public static void main(String[] args) {  
-        // 方式一：使用匿名内部类来实现  
-        MoreParameterNoReturn obj1 = new MoreParameterNoReturn() {  
-            @Override  
-            public void test(String str1, String str2) {  
-                System.out.println(str1 + " : " + str2);  
-            }  
-        };  
-        obj1.test("hello", "world");  
-​  
-        // 方式二：使用Lambda表达式来实现  
-        MoreParameterNoReturn obj2 = (String str1, String str2) -> {  
-            System.out.println(str1 + " : " + str2);  
-        };  
-        obj2.test("你好", "世界");  
-    }  
+package com.powernode.javase.lambda;
+
+/**
+ * ClassName: LambdaTest06
+ * Description:
+ *          Lambda表达式的使用：关于无返回值多个参数的函数式接口。
+ * <p>
+ * Datetime: 2024/2/2 10:06
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest06 {
+    public static void main(String[] args) {
+        // 匿名内部类的方式
+        MoreParameterNoReturn mpnr = new MoreParameterNoReturn() {
+            @Override
+            public void test(Integer value1, Integer value2) {
+                System.out.println(value1 + value2);
+            }
+        };
+        mpnr.test(100, 200);
+
+        // Lambda表达式方式
+        MoreParameterNoReturn mpnr2 = (Integer value1, Integer value2) -> { System.out.println(value1 + value2); };
+        mpnr2.test(300, 400);
+
+        // 精简
+        MoreParameterNoReturn mpnr3 = (value1, value2) -> System.out.println(value1 + value2);
+        mpnr3.test(300, 400);
+    }
 }
+
+@FunctionalInterface
+interface MoreParameterNoReturn {
+    void test(Integer value1, Integer value2);
+}
+
 ```
 
 ##### 有返回值函数接口
@@ -248,85 +454,126 @@ public class Test01 {
 情况一：有返回值无参数
 
 ```java
-// 情况一：有返回值无参数  
-interface NoParameterHasReturn {  
-    int test();  
-}  
-  
-public class Test01 {  
-    public static void main(String[] args) {  
-        // 方式一：使用匿名内部类来实现  
-        NoParameterHasReturn obj1 = new NoParameterHasReturn() {  
-            @Override  
-            public int test() {  
-                return 520;  
-            }  
-        };  
-        System.out.println(obj1.test()); // 输出：520  
-  
-        // 方式二：使用Lambda表达式来实现  
-        NoParameterHasReturn obj2 = () -> {  
-            return 1314;  
-        };  
-        System.out.println(obj2.test()); // 输出：1314  
-    }  
+package com.powernode.javase.lambda;
+
+/**
+ * ClassName: LambdaTest07
+ * Description:
+ *          Lambda表达式的使用：关于有返回值无参数的函数式接口。
+ * <p>
+ * Datetime: 2024/2/2 10:09
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest07 {
+    public static void main(String[] args) {
+        // 匿名内部类的方式
+        NoParameterHasReturn nphr = new NoParameterHasReturn() {
+            @Override
+            public Integer test() {
+                return 300;
+            }
+        };
+        System.out.println(nphr.test());
+
+        // Lambda表达式的方式
+        NoParameterHasReturn nphr2 = () -> { return 500; };
+        System.out.println(nphr2.test());
+
+        // 精简
+        NoParameterHasReturn nphr3 = () -> 500;
+        System.out.println(nphr3.test());
+    }
+}
+
+@FunctionalInterface
+interface NoParameterHasReturn {
+    Integer test();
 }
 ```
 
 情况二：有返回值一个参数
 
 ```java
-// 情况二：有返回值一个参数  
-interface OneParameterHasReturn {  
-    String test(double num);  
-}  
-  
-public class Test01 {  
-    public static void main(String[] args) {  
-        // 方式一：使用匿名内部类来实现  
-        OneParameterHasReturn obj1 = new OneParameterHasReturn() {  
-            @Override  
-            public String test(double num) {  
-                return "传入的小数为：" + num;  
-            }  
-        };  
-        System.out.println(obj1.test(520.0));  
-  
-        // 方式二：使用Lambda表达式来实现  
-        OneParameterHasReturn obj2 = (double num) -> {  
-            return "传入的小数为：" + num;  
-        };  
-        System.out.println(obj2.test(1314.0));  
-    }  
+package com.powernode.javase.lambda;
+
+/**
+ * ClassName: LambdaTest08
+ * Description:
+ *          Lambda表达式的使用：关于有返回值一个参数的函数式接口。
+ * <p>
+ * Datetime: 2024/2/2 10:12
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest08 {
+    public static void main(String[] args) {
+        // 匿名内部类的方式
+        OneParameterHasReturn ophr = new OneParameterHasReturn() {
+            @Override
+            public Integer test(Integer value) {
+                return value * 2;
+            }
+        };
+        System.out.println(ophr.test(100));
+
+        // Lambda表达式的方式
+        OneParameterHasReturn ophr2 = (Integer value) -> { return value * 2; };
+        System.out.println(ophr2.test(200));
+
+        // 精简
+        OneParameterHasReturn ophr3 = value -> value * 2;
+        System.out.println(ophr3.test(200));
+    }
 }
+
+@FunctionalInterface
+interface OneParameterHasReturn {
+    Integer test(Integer value);
+}
+
 ```
 
 情况三：有返回值多个参数
 
 ```java
-// 情况三：有返回值多个参数  
-interface MoreParameterHasReturn {  
-    String test(int num1, int num2);  
-}  
-public class Test01 {  
-    public static void main(String[] args) {  
-        // 方式一：使用匿名内部类来实现  
-        MoreParameterHasReturn obj1 = new MoreParameterHasReturn() {  
-            @Override  
-            public String test(int num1, int num2) {  
-                return "运算的结果为：" + (num1 + num2);  
-            }  
-        };  
-        System.out.println(obj1.test(10, 20));  
-  
-        // 方式二：使用Lambda表达式来实现  
-        MoreParameterHasReturn obj2 = (int num1, int num2) -> {  
-            return "运算的结果为：" + (num1 + num2);  
-        };  
-        System.out.println(obj2.test(20, 30));  
-    }  
+package com.powernode.javase.lambda;
+
+/**
+ * ClassName: LambdaTest09
+ * Description:
+ *          Lambda表达式的使用：关于有返回值多个参数的函数式接口。
+ * <p>
+ * Datetime: 2024/2/2 10:15
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest09 {
+    public static void main(String[] args) {
+        // 匿名内部类方式
+        MoreParameterHasReturn mphr = new MoreParameterHasReturn() {
+            @Override
+            public Integer test(Integer value1, Integer value2) {
+                return value1 + value2;
+            }
+        };
+        System.out.println(mphr.test(1, 2));
+
+        // Lambda表达式的方式
+        MoreParameterHasReturn mphr2 = (Integer value1, Integer value2) -> { return value1 + value2; };
+        System.out.println(mphr2.test(3, 4));
+
+        // 精简
+        MoreParameterHasReturn mphr3 = (a, b) -> a + b;
+        System.out.println(mphr3.test(3, 4));
+
+    }
 }
 
+@FunctionalInterface
+interface MoreParameterHasReturn {
+    Integer test(Integer value1, Integer value2);
+}
 ```
 
 #### Lambda表达式的语法精简
