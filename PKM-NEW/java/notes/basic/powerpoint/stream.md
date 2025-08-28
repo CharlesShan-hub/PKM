@@ -367,7 +367,50 @@ public class StreamAPITest05 {
         // 思路：先筛选，后映射
         // 先filter，然后map
         StudentService.getStudents().stream().filter(student -> student.getGender().equals("男")).map(Student::getName).forEach(System.out::println);
+    }
+}
+```
 
+在Stream接口中，可以实现“将多个集合中的元素映射到同一个流中”，该操作使用了Stream接口提供的`<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);`方法来实现。
+
+【示例】将多个集合中的元素映射到同一个流中
+
+```java
+// 需求：将两个集合中的元素映射到同一个流中
+List<String> list1 = new ArrayList<>();
+list1.add("aa");
+list1.add("bb");
+list1.add("cc");
+
+List<String> list2 = new ArrayList<>();
+list2.add("dd");
+list2.add("ee");
+list2.add("ff");
+
+Stream<List<String>> stream = Stream.of(list1, list2);
+stream.flatMap(List<String>::stream).forEach(System.out::println);
+```
+
+```java
+package com.powernode.javase.stream;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
+
+/**
+ * ClassName: StreamAPITest05
+ * Description:
+ *          Stream的中间操作之：map
+ *          map指的是映射操作，本质上就是：转换操作。
+ * <p>
+ * Datetime: 2024/2/3 9:41
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class StreamAPITest05 {
+    public static void main(String[] args) {
         // 将多个集合中的数据合并到一个流Stream当中
         // flatMap的方法作用是什么？将多个集合中的所有元素全部放到一个Stream中。
         List<Integer> list1 = new ArrayList<>();
@@ -395,41 +438,39 @@ public class StreamAPITest05 {
 }
 ```
 
-在Stream接口中，可以实现“将多个集合中的元素映射到同一个流中”，该操作使用了Stream接口提供的`<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);`方法来实现。
-
-【示例】将多个集合中的元素映射到同一个流中
-
-```java
-// 需求：将两个集合中的元素映射到同一个流中
-List<String> list1 = new ArrayList<>();
-list1.add("aa");
-list1.add("bb");
-list1.add("cc");
-
-List<String> list2 = new ArrayList<>();
-list2.add("dd");
-list2.add("ee");
-list2.add("ff");
-
-Stream<List<String>> stream = Stream.of(list1, list2);
-stream.flatMap(List<String>::stream).forEach(System.out::println);
-```
-
-
 ### 除重（distinct）
 除重（distinct），也就是除去重复的元素，底层使用了hashCode()和equals(Object obj)方法来判断元素是否相等。该操作使用了Stream接口提供的`Stream<T> distinct();`方法来实现。
 【示例】演示除重的操作
 
 ```java
-// 需求：除去重复的元素
-Stream.of(11, 22, 33, 44, 33).distinct().forEach(System.out :: println);
+package com.powernode.javase.stream;
 
-// 需求：除去重复的学生（除重后输出学生对象）
-StudentData.getStudentList().stream().distinct().forEach(System.out :: println);
+import java.util.stream.Stream;
 
-// 需求：除去年龄相同的学生（除重后输出学生年龄）
-// 思路：先映射，后除重
-StudentData.getStudentList().stream().map(Student :: getAge).distinct().forEach(System.out :: println);
+/**
+ * ClassName: StreamAPITest06
+ * Description:
+ *          Stream中间操作之：distinct
+ *          去除重复记录
+ * <p>
+ * Datetime: 2024/2/3 9:55
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class StreamAPITest06 {
+    public static void main(String[] args) {
+        // 除去重复的元素
+        Stream.of(1,1,1,1,1,1,1,2).distinct().forEach(System.out::println);
+
+        // 除去重复的学生（除重后输出学生对象）
+        // 去除重复记录是基于 hashCode + equals方法的。记得重写。
+        StudentService.getStudents().stream().distinct().forEach(System.out::println);
+
+        // 需求：除去年龄相同的学生（除重后输出学生年龄）
+        // 思路：先映射，后除重
+        StudentService.getStudents().stream().map(Student::getAge).distinct().forEach(System.out::println);
+    }
+}
 ```
 ### 排序（sorted）
 排序（sorted），也就是对元素执行“升序”或“降序”的排列操作。在Stream接口中提供了`Stream<T> sorted();`方法，专门用于对元素执行“自然排序”，使用该方法则元素对应的类就必须实现Comparable接口。
@@ -459,6 +500,52 @@ StudentData.getStudentList().stream().sorted((stu1, stu2) -> stu2.getAge() - stu
 StudentData.getStudentList().stream().map(Student :: getAge).sorted(Integer :: compare).forEach(System.out :: println);
 ```
 
+```java
+package com.powernode.javase.stream;
+
+import java.util.Comparator;
+import java.util.stream.Stream;
+
+/**
+ * ClassName: StreamAPITest07
+ * Description:
+ *          Stream中间操作之：sorted
+ *          排序
+ * <p>
+ * Datetime: 2024/2/3 10:02
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class StreamAPITest07 {
+    public static void main(String[] args) {
+        // 需求：对元素执行“升序”排序
+        Stream.of(1,2,3,4,100,0,-1).sorted().forEach(System.out::println);
+        Stream.of("ccc", "bbb", "abc", "aaa").sorted().forEach(System.out::println);
+
+        // 需求：按照学生的年龄执行“升序”排序（排序后输出学生对象）
+        // 注意：这里的排序是对学生对象进行排序，排序规则需要指定，Student实现java.lang.Comparable接口。
+        StudentService.getStudents().stream().sorted().forEach(System.out::println);
+
+        // 需求：按照学生的年龄执行“升序”排序（排序后输出学生年龄）
+        // 先映射，再排序
+        StudentService.getStudents().stream().map(Student::getAge).sorted().forEach(System.out::println);
+
+        System.out.println("==================");
+
+        // 需求：对元素执行“升序”排序
+        Stream.of(10, 20, 30, 18, 15).sorted(Integer::compareTo).forEach(System.out::println);
+
+        // 需求：按照学生的年龄执行“降序”排序（排序后输出学生对象）
+        StudentService.getStudents().stream().sorted((o1,o2) -> o2.getAge() - o1.getAge()).forEach(System.out::println);
+
+        // 需求：按照学生的年龄执行“升序”排序（排序后输出学生年龄）
+        // 先映射，再排序
+        StudentService.getStudents().stream().map(Student::getAge).sorted().forEach(System.out::println);
+        StudentService.getStudents().stream().map(Student::getAge).sorted(Integer::compareTo).forEach(System.out::println);
+    }
+}
+```
+
 ### 合并（concat）
 合并（concat），也就是将两个Stream合并为一个Stream，此处使用Stream接口提供的`public static <T> Stream<T> concat(Stream<? extends T> a, Stream<? extends T> b)`静态方法来实现。
 【示例】将两个Stream合并为一个Stream。
@@ -467,13 +554,55 @@ Stream<String> stream1 = Stream.of("aa", "bb", "cc");
 Stream<String> stream2 = Stream.of("11", "22", "33");
 Stream.concat(stream1, stream2).forEach(System.out :: println);
 ```
+
+```java
+package com.powernode.javase.stream;  
+  
+import java.util.stream.Stream;  
+  
+/**  
+ * ClassName: StreamAPITest08 * Description: *          Stream中间操作之：concat  
+ *          合并。  
+ * <p>  
+ * Datetime: 2024/2/3 10:16 * Author: 老杜@动力节点  
+ * Version: 1.0  
+ */public class StreamAPITest08 {  
+    public static void main(String[] args) {  
+        Stream<Integer> stream1 = Stream.of(1, 2, 3);  
+        Stream<Integer> stream2 = Stream.of(4, 5, 6);  
+  
+        Stream.concat(stream1, stream2).forEach(System.out::println);  
+    }  
+}
+```
 ### 截断和跳过
 跳过（skip），指的就是跳过n个元素开始操作，此处使用Stream接口提供的`Stream<T> skip(long n);`方法来实现。
 截断（limit），指的是截取n个元素的操作，此处使用Stream接口提供的`Stream<T> limit(long maxSize);`方法来实现。
 【示例】从指定位置开始截取n个元素
 ```java
-// 需求：从索引为2的位置开始截取3个元素
-Stream.of(11, 22, 33, 44, 55, 66).skip(2).limit(3).forEach(System.out :: println);
+package com.powernode.javase.stream;
+
+import java.util.stream.Stream;
+
+/**
+ * ClassName: StreamAPITest09
+ * Description:
+ *          Stream中间操作之：skip + limit
+ *          skip 是跳过
+ *          limit 是截取
+ *
+ *          他们两个组合起来可以达到什么效果？
+ *              取集合的一部分。
+ * <p>
+ * Datetime: 2024/2/3 10:19
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class StreamAPITest09 {
+    public static void main(String[] args) {
+        Stream.of(1,2,3,4,5,6,7,8,9,10).skip(3).limit(3).forEach(System.out::println);
+    }
+}
 ```
 
 ---
