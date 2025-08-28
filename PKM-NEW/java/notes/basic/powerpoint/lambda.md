@@ -686,44 +686,110 @@ System.out.println(function3.apply(3.14));
 语法：对象 :: 实例方法 特点：在Lambda表达式的方法体中，通过“对象”来调用指定的某个“实例方法”。 要求：函数式接口中抽象方法的返回值类型和形参列表 与 内部通过对象调用某个实例方法的返回值类型和形参列表 保持一致。 【示例】实例化Consumer接口的实现类对象，并在重写的accept()方法中输出形参的值
 
 ```java
-// 方式一：使用匿名内部类来实现  
-Consumer<String> consumer1 = new Consumer<String>() {  
-    @Override  
-    public void accept(String str) {  
-        System.out.println(str);  
+package com.powernode.javase.lambda;  
+  
+import java.util.function.Supplier;  
+  
+/**  
+ * ClassName: LambdaTest10 * Description: 实例方法引用  
+ *          语法格式：  
+ *              对象::实例方法名  
+ *  
+ *          满足什么条件的时候可以使用实例方法引用？  
+ *              函数式接口中的   返回值类型   和    形参  
+ *              与  
+ *              内部调用的方法的 返回值类型   和    形参  
+ *              一致。  
+ * <p>  
+ * Datetime: 2024/2/2 11:28 
+ * Author: 老杜@动力节点  
+ * Version: 1.0  
+ */
+public class LambdaTest10 {  
+    public static void main(String[] args) {  
+        // 使用生产型接口：Supplier  
+        // 匿名内部类的方式  
+        Teacher teacher = new Teacher("老杜");  
+        Supplier<String> supplier = new Supplier<String>() {  
+            @Override  
+            public String get() {  
+                return teacher.getName();  
+            }  
+        };  
+        System.out.println(supplier.get());  
+  
+        // 以上是否符合“实例方法引用”的条件？  
+        // 先修改为Lambda表达式  
+        Supplier<String> supplier1 = () -> teacher.getName();  
+        System.out.println(supplier1.get());  
+  
+        // 使用“实例方法引用”精简  
+        Supplier<String> supplier2 = teacher::getName;  
+        System.out.println(supplier2.get());  
+  
     }  
-};  
-consumer1.accept("hello world");  
+}  
   
-// 方式二：使用Lambda表达式来实现  
-Consumer<String> consumer2 = str -> System.out.println(str);  
-consumer2.accept("hello world");  
+class Teacher {  
+    private String name;  
   
-// 方式三：使用方法引用来实现  
-Consumer<String> consumer3 = System.out :: println;  
-consumer3.accept("hello world");
+    public Teacher(String name) {  
+        this.name = name;  
+    }  
+  
+    public String getName() {  
+        return name;  
+    }  
+  
+    public void setName(String name) {  
+        this.name = name;  
+    }  
+  
+    @Override  
+    public String toString() {  
+        return "Teacher{" +  
+                "name='" + name + '\'' +  
+                '}';  
+    }  
+}
 ```
 
 【示例】实例化Supplier接口的实现类对象，并在重写方法中返回Teacher对象的姓名
 
 ```java
-Teacher teacher = new Teacher("ande", 18);  
-// 方式一：使用匿名内部类来实现  
-Supplier<String> supplier1 = new Supplier<String>() {  
-    @Override  
-    public String get() {  
-        return teacher.getName();  
-    }  
-};  
-System.out.println(supplier1.get());  
-  
-// 方式二：使用Lambda表达式来实现  
-Supplier<String> supplier2 = () -> teacher.getName();  
-System.out.println(supplier2.get());  
-  
-// 方式三：使用方法引用来实现  
-Supplier<String> supplier3 = teacher :: getName;  
-System.out.println(supplier3.get());
+package com.powernode.javase.lambda;
+
+import java.util.function.Consumer;
+
+/**
+ * ClassName: LambdaTest11
+ * Description: 实例方法引用
+ * <p>
+ * Datetime: 2024/2/2 11:36
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest11 {
+    public static void main(String[] args) {
+        // 匿名内部类的方式
+        // 使用消费型的函数式接口
+        Consumer<String> consumer = new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                System.out.println(s);
+            }
+        };
+        consumer.accept("动力节点");
+
+        // 修改为Lambda表达式
+        Consumer<String> consumer1 = s -> System.out.println(s);
+        consumer1.accept("动力节点");
+
+        // 使用 实例方法引用 精简
+        Consumer<String> consumer2 = System.out::println;
+        consumer2.accept("动力节点");
+    }
+}
 ```
 
 
@@ -734,22 +800,48 @@ System.out.println(supplier3.get());
 【示例】实例化Function接口的实现类对象，并在重写的方法中返回小数取整的结果
 
 ```java
-// 方式一：使用匿名内部类来实现  
-Function<Double, Long> function1 = new Function<Double, Long>() {  
-    @Override  
-    public Long apply(Double aDouble) {  
-        return Math.round(aDouble);  
-    }  
-};  
-System.out.println(function1.apply(3.14));  
-  
-// 方式二：使用Lambda表达式来实现  
-Function<Double, Long> function2 = aDouble -> Math.round(aDouble);  
-System.out.println(function2.apply(3.14));  
-  
-// 方式三：使用方法引用来实现  
-Function<Double, Long> function3 = Math :: round;  
-System.out.println(function3.apply(3.14));
+package com.powernode.javase.lambda;
+
+import java.util.function.Function;
+
+/**
+ * ClassName: LambdaTest12
+ * Description: 静态方法引用
+ *
+ *          语法格式：
+ *              类名::静态方法名
+ *
+ *          条件：
+ *              函数式接口中的方法的     返回值类型     和    形参
+ *              与
+ *              内部调用静态方法的      返回值类型      和    形参
+ *              一致。
+ * <p>
+ * Datetime: 2024/2/2 11:41
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest12 {
+    public static void main(String[] args) {
+        // 匿名内部类方式
+        // 使用转换型函数式接口
+        Function<Double, Long> function = new Function<Double, Long>() {
+            @Override
+            public Long apply(Double value) {
+                return Math.round(value);
+            }
+        };
+        System.out.println(function.apply(3.14));
+
+        // Lambda表达式
+        Function<Double, Long> function2 = value -> Math.round(value);
+        System.out.println(function2.apply(5.67));
+
+        // 静态方法引用改进
+        Function<Double, Long> function3 = Math::round;
+        System.out.println(function3.apply(5.67));
+    }
+}
 ```
 
 ### 特殊方法引用
@@ -757,44 +849,113 @@ System.out.println(function3.apply(3.14));
 语法：类名 :: 实例方法 特点：在Lambda表达式的方法体中，通过方法的第一个形参来调用指定的某个“实例方法”。 要求：把函数式接口中抽象方法的第一个形参作为方法的调用者对象，并且从第二个形参开始（或无参）可以对应到被调用实例方法的参数列表中，并且返回值类型保持一致。 【示例】使用Comparator比较器，来判断两个小数的大小
 
 ```java
-// 方式一：使用匿名内部类来实现  
-Comparator<Double> comparator1 = new Comparator<Double>() {  
-    @Override  
-    public int compare(Double o1, Double o2) {  
-        return o1.compareTo(o2);  
-    }  
-};  
-System.out.println(comparator1.compare(10.0, 20.0));  
-  
-// 方式二：使用Lambda表达式来实现  
-Comparator<Double> comparator2 = (o1, o2) -> o1.compareTo(o2);  
-System.out.println(comparator2.compare(10.0, 20.0));  
-  
-// 方式三：使用方法引用来实现  
-Comparator<Double> comparator3 = Double :: compareTo;  
-System.out.println(comparator3.compare(10.0, 20.0));
+package com.powernode.javase.lambda;
+
+import java.util.Comparator;
+
+/**
+ * ClassName: LambdaTest13
+ * Description: 特殊方法引用
+ *          语法格式：
+ *              类名::实例方法
+ *
+ *          条件：
+ *              1. 函数式接口中抽象方法的第一个参数作为内部方法调用对象。
+ *              2. 从函数式接口的抽象方法的第二参数开始 与 内部调用方法时的参数类型  一致。
+ *              3. 函数式接口中的抽象方法返回值类型  与  内部方法返回值类型  一致。
+ * <p>
+ * Datetime: 2024/2/2 11:52
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest13 {
+    public static void main(String[] args) {
+        // 匿名内部类
+        Comparator<Double> comparator = new Comparator<Double>() {
+            @Override
+            public int compare(Double o1, Double o2) {
+                return o1.compareTo(o2);
+            }
+        };
+        System.out.println(comparator.compare(3.14, 5.6));
+
+        // Lambda表达式
+        Comparator<Double> comparator2 = (o1, o2) -> o1.compareTo(o2);
+        System.out.println(comparator2.compare(3.14, 5.6));
+
+        // 特殊方法引用
+        Comparator<Double> comparator3 = Double::compareTo;
+        System.out.println(comparator3.compare(3.14, 5.6));
+
+    }
+}
+
 ```
 
 需求：实例化Function接口的实现类对象，然后获得传入Teacher对象的姓名。
 
 ```java
-// 方式一：使用匿名内部类来实现  
-Teacher teacher = new Teacher("ande", 18);  
-Function<Teacher, String> function1 = new Function<Teacher, String>() {  
-    @Override  
-    public String apply(Teacher teacher) {  
-        return teacher.getName();  
-    }  
-};  
-System.out.println(function1.apply(teacher));  
-  
-// 方式二：使用Lambda表达式来实现  
-Function<Teacher, String> function2 = e -> e.getName();  
-System.out.println(function2.apply(teacher));  
-  
-// 方式三：使用方法引用来实现  
-Function<Teacher, String > function3 = Teacher :: getName;  
-System.out.println(function3.apply(teacher));
+package com.powernode.javase.lambda;
+
+import java.util.function.Function;
+
+/**
+ * ClassName: LambdaTest14
+ * Description: 特殊方法引用
+ *          语法格式：
+ *              类名::实例方法名
+ * <p>
+ * Datetime: 2024/2/2 14:02
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest14 {
+    public static void main(String[] args) {
+        // 转换型的函数式接口
+        // 匿名内部类
+        Function<Vip, String> function = new Function<Vip, String>() {
+            @Override
+            public String apply(Vip vip) {
+                return vip.getName();
+            }
+        };
+
+        Vip vip = new Vip("老杜");
+        System.out.println(function.apply(vip));
+
+        // Lambda表达式
+        //Function<Vip, String> function2 = (Vip v) -> {return v.getName();};
+        Function<Vip, String> function2 = v -> v.getName();
+        System.out.println(function2.apply(vip));
+
+        // 使用“特殊方法引用”来进行精简
+        Function<Vip, String> function3 = Vip::getName;
+        System.out.println(function3.apply(vip));
+    }
+}
+
+class Vip {
+    private String name;
+
+    @Override
+    public String toString() {
+        return "Vip{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    public Vip(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
 ```
 
 ### 构造方法引用
@@ -802,23 +963,52 @@ System.out.println(function3.apply(teacher));
 语法：类名 :: new 特点：在Lambda表达式的方法体中，返回指定“类名”来创建出来的对象。 要求：创建对象所调用构造方法形参列表 和 函数式接口中的方法的形参列表 保持一致，并且方法的返回值类型和创建对象的类型保持一致。 【示例】实例化Supplier接口的实现类对象，然后调用重写方法返回Teacher对象
 
 ```java
-// 方式一：使用匿名内部类来实现  
-Supplier<Teacher> supplier1 = new Supplier<Teacher>() {  
-    @Override  
-    public Teacher get() {  
-        return new Teacher();  
-    }  
-};  
-System.out.println(supplier1.get());  
-  
-// 方式二：使用Lambda表达式来实现  
-Supplier<Teacher> supplier2 = () -> new Teacher();  
-System.out.println(supplier2.get());  
-  
-// 方式二：使用构造方法引用来实现  
-// 注意：根据重写方法的形参列表，那么此处调用了Teacher类的无参构造方法  
-Supplier<Teacher> supplier3 = Teacher :: new;  
-System.out.println(supplier3.get());
+package com.powernode.javase.lambda;
+
+import java.util.function.Supplier;
+
+/**
+ * ClassName: LambdaTest15
+ * Description: 构造方法引用
+ *      语法格式：
+ *          类名::new
+ *      条件：
+ *          函数式接口中的方法的形式参数列表
+ *          与
+ *          构造方法上的形式参数列表
+ *          一致。
+ *          并且返回值类型相同。
+ * <p>
+ * Datetime: 2024/2/2 14:09
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest15 {
+    public static void main(String[] args) {
+        // 匿名内部类方式
+        // 使用生产型的函数式接口
+        Supplier<Bird> supplier = new Supplier<Bird>() {
+            @Override
+            public Bird get() {
+                return new Bird();
+            }
+        };
+        System.out.println(supplier.get());
+
+        // Lambda表达式
+        Supplier<Bird> supplier1 = () -> new Bird();
+        System.out.println(supplier1.get());
+
+        // 使用    构造方法引用    精简
+        Supplier<Bird> supplier2 = Bird::new;
+        System.out.println(supplier2.get());
+    }
+}
+
+class Bird {
+
+}
+
 ```
 
 【示例】实例化Function接口的实现类对象，然后调用重写方法返回Teacher对象
@@ -848,22 +1038,51 @@ System.out.println(function3.apply("ande"));
 语法：数组类型 :: new 特点：在Lambda表达式的方法体中，创建并返回指定类型的“数组”。 要求：重写的方法有且只有一个整数型的参数，并且该参数就是用于设置数组的空间长度，并且重写方法的返回值类型和创建数组的类型保持一致。 【示例】实例化Function接口的实现类对象，并在重写方法中返回指定长度的int类型数组
 
 ```java
-// 方式一：使用匿名内部类来实  
-Function<Integer, int[]> function1 = new Function<Integer, int[]>() {  
-    @Override  
-    public int[] apply(Integer integer) {  
-        return new int[integer];  
-    }  
-};  
-System.out.println(Arrays.toString(function1.apply(10)));  
-  
-// 方式二：使用Lambda表达式来实现  
-Function<Integer, int[]> function2 = num -> new int[num];  
-System.out.println(Arrays.toString(function2.apply(20)));  
-  
-// 方式三：使用方法引用来实现  
-Function<Integer, int[]> function3 = int[] :: new;  
-System.out.println(Arrays.toString(function3.apply(30)));
+package com.powernode.javase.lambda;
+
+import java.util.Arrays;
+import java.util.function.Function;
+
+/**
+ * ClassName: LambdaTest17
+ * Description: 数组引用
+ *          语法格式：
+ *              数组::new
+ *          条件：
+ *              1. 函数式接口中的方法只有一个整数型参数。
+ *              2. 这个整数型参数正好是数组的长度。
+ *              3. 返回值类型相同。
+ * <p>
+ * Datetime: 2024/2/2 14:18
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest17 {
+    public static void main(String[] args) {
+        // 匿名内部类的方式
+        // 转换型函数式接口
+        Function<Integer, int[]> function = new Function<Integer, int[]>() {
+            @Override
+            public int[] apply(Integer integer) {
+                return new int[integer];
+            }
+        };
+        int[] nums = function.apply(10);
+        System.out.println(Arrays.toString(nums));
+
+        // Lambda表达式
+        Function<Integer, int[]> function1 = length -> new int[length];
+        nums = function1.apply(20);
+        System.out.println(Arrays.toString(nums));
+
+        // 构造方法引用  精简
+        Function<Integer, int[]> function2 = int[]::new;
+        nums = function2.apply(30);
+        System.out.println(Arrays.toString(nums));
+
+    }
+}
+
 ```
 
 ---
@@ -894,9 +1113,11 @@ list.forEach(element -> System.out.println(element));
   
 // 方式三：使用方法引用来实现  
 list.forEach(System.out :: println);
+```
 
 【示例】遍历Set集合中的元素
 
+```java
 List<String> list = Arrays.asList("aa", "bb", "cc", "dd");  
 HashSet<String> hashSet = new HashSet<>(list);  
 // 方式一：使用匿名内部类来实现  
@@ -916,8 +1137,11 @@ hashSet.forEach(element -> System.out.println(element));
 // 方式三：使用方法引用来实现  
 hashSet.forEach(System.out :: println);
 
+```
+
 在Map集合中，提供的forEach()方法的形参为BiConsumer接口，而BiConsumer接口属于两个参数的消费型接口，通过该方法再配合Lambda表达式就可以遍历Map集合中的元素。 【示例】遍历Map集合中的元素
 
+```java
 // 实例化Map集合并添加键值对  
 HashMap<String, String> map = new HashMap<>();  
 map.put("张三", "成都");  
