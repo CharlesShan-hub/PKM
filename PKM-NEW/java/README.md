@@ -2,7 +2,7 @@
 
 ## 内容
 
-### 基础语法
+### JavaSE
 
   > * 基础语法阶段主要按照网课[【零基础 快速学Java】韩顺平 零基础30天学会Java](https://www.bilibili.com/video/BV1fh411y7R8/)学记记录
   > * 本套Java课程为三个阶段，涵盖了Java基础的方方面面。
@@ -326,6 +326,24 @@
 	* 667~670：TCP编程实践
 * 动力节点补充：[[jvm]]，[[principle]]，[[uml]]，[[re]]，[[uuid]]，[[PKM-NEW/java/notes/basic/powerpoint/system|system]]，[[reflect]]，[[lambda]]，[[stream]]
 
+### MySQL
+
+> 按照动力节点内容进行学习，笔记为官方提供的笔记
+
+* MySQL的安装与配置：[[PKM-NEW/java/notes/mysql/安装与配置|安装与配置]]
+* 数据库：创建、查看、删除、备份、恢复：[[PKM-NEW/java/notes/mysql/数据库]]
+* 表：创建、修改、删除：[[PKM-NEW/java/notes/mysql/数据表|数据表]]
+* 数据类型（重点）：[[PKM-NEW/java/notes/mysql/数据类型|数据类型]]
+* CRUD（重点）：[[PKM-NEW/java/notes/mysql/CRUD|CRUD]]
+* 函数（重点）
+* 内连接
+* 外连接
+* 约束
+* 索引
+* 事物
+* [[第01章 数据库概述]]
+* [[第02章 MySQL的安装]]
+* [[第03章 初始化数据]]
 ### JavaWeb
 
 > 主要根据 [【# 全网首发AI+JavaWeb开发入门，Tlias教学管理系统项目】](https://www.bilibili.com/video/BV1yGydYEE3H)进行学习记录
@@ -559,20 +577,6 @@
 * leetcode：代码随想录
 * 中间件：消息队列、 springcloud
 * 八股：mysql+redis 进阶+juc+jvm+计算机基础
-
-## MySQL
-
-* MySQL的安装与配置：[[PKM-NEW/java/notes/mysql/安装与配置|安装与配置]]
-* 数据库：创建、查看、删除、备份、恢复：[[PKM-NEW/java/notes/mysql/数据库]]
-* 表：创建、修改、删除：[[PKM-NEW/java/notes/mysql/数据表|数据表]]
-* 数据类型（重点）：[[PKM-NEW/java/notes/mysql/数据类型|数据类型]]
-* CRUD（重点）：[[PKM-NEW/java/notes/mysql/CRUD|CRUD]]
-* 函数（重点）
-* 内连接
-* 外连接
-* 约束
-* 索引
-* 事物
 
 ## 资源
 
