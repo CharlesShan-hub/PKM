@@ -1,15 +1,16 @@
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=WWfbr&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 简单查询
+
+# DQL
 
 ---
+## 简单查询
 
 查询是SQL语言的核心，用于表达SQL查询的select查询命令是功能最强也是最为复杂的SQL语句，它的作用就是从数据库中检索数据，并将查询结果返回给用户。 select语句由：select子句(查询内容)、from子句(查询对象)、where子句(查询条件)、order by子句(排序方式)、group by子句(分组方式)等组成。查询语句属于SQL语句中的DQL语句，是所有SQL语句中最为复杂也是最重要的语句，所以必须掌握。接下来我们先从简单查询语句开始学习。
-## 查一个字段
 
 ---
+### 查一个字段
 
 查询一个字段说的是：一个表有多列，查询其中的一列。
-语法格式：select 字段名 from 表名;
+语法格式：`select 字段名 from 表名;`
 
 - select和from是关键字，不能随便写
 - **一条SQL语句必须以“;”结尾**
@@ -20,13 +21,58 @@
 ```sql
 select empno from emp; 
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620444005101-f8b17d19-7943-42da-868a-4353bbc39d72.png#averageHue=%230f0e0e&height=364&id=iefCx&originHeight=364&originWidth=331&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12803&status=done&style=shadow&title=&width=331)
+
+```sql
+mysql> select empno from emp; 
++-------+
+| empno |
++-------+
+|  7369 |
+|  7499 |
+|  7521 |
+|  7566 |
+|  7654 |
+|  7698 |
+|  7782 |
+|  7788 |
+|  7839 |
+|  7844 |
+|  7876 |
+|  7900 |
+|  7902 |
+|  7934 |
++-------+
+14 rows in set (0.000 sec)
+```
+
 案例2：查询公司中所有员工姓名
 ```sql
 SELECT ENAME FROM EMP;
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620444051586-c22b328d-726d-43a1-84c5-b61b053e4c76.png#averageHue=%2311100f&height=368&id=t1BP2&originHeight=368&originWidth=323&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15288&status=done&style=shadow&title=&width=323)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=Nooeq&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+```sql
+mysql> select ename from emp;
++--------+
+| ename  |
++--------+
+| SMITH  |
+| ALLEN  |
+| WARD   |
+| JONES  |
+| MARTIN |
+| BLAKE  |
+| CLARK  |
+| SCOTT  |
+| KING   |
+| TURNER |
+| ADAMS  |
+| JAMES  |
+| FORD   |
+| MILLER |
++--------+
+14 rows in set (0.000 sec)
+```
+
 在mysql命令行客户端中，sql语句没有分号是不会执行的：
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620444166592-310dfb98-9eed-43ed-afa5-b479e03e0a79.png#averageHue=%230d0d0c&height=249&id=W3RxL&originHeight=249&originWidth=210&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4063&status=done&style=shadow&title=&width=210)
 末尾加上“;”就执行了：
@@ -38,10 +84,8 @@ SELECT ENAME FROM EMP;
 - [ ] 任务1：查询所有部门名称。
 - [ ] 任务2：查询所有薪资等级。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=Qws7R&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 查多个字段
-
 ---
+### 查多个字段
 
 查询多个字段时，在字段名和字段名之间添加“,”即可。
 语法格式：select 字段名1,字段名2,字段名3 from 表名;
@@ -50,7 +94,7 @@ SELECT ENAME FROM EMP;
 select empno, ename from emp;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620445192077-e454043b-9203-4ca0-83f3-7e7d991187c5.png#averageHue=%2311100f&height=362&id=sYqFg&originHeight=362&originWidth=380&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20812&status=done&style=shadow&title=&width=380)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=KJw7E&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 字段的前后顺序无所谓（只是显示结果列的时候顺序变了）：
 ```sql
 select ename, empno from emp;
@@ -60,12 +104,10 @@ select ename, empno from emp;
 - [ ] 任务1：查询部门编号、部门名称以及位置。
 - [ ] 任务2：查询员工的名字以及工作岗位。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=XEdDY&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 查所有字段
-
 ---
+### 查所有字段
 
-查询所有字段的可以将每个字段都列出来查询，也可以采用“*”来代表所有字段
+查询所有字段的可以将每个字段都列出来查询，也可以采用`*`来代表所有字段
 案例1：查询员工的所有信息
 ```sql
 select * from emp;
@@ -76,21 +118,19 @@ select * from emp;
 select * from dept;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620452731531-c4b03af4-9f9f-46d8-acf5-7132317f89ae.png#averageHue=%23161311&height=186&id=ew3JJ&originHeight=186&originWidth=339&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12122&status=done&style=shadow&title=&width=339)
-采用“*”进行查询存在的缺点：
+采用`*`进行查询存在的缺点：
 
-- select * from dept; 在执行的时候会被解析为 select DEPTNO, DNAME, LOC from dept; 再执行，所以这种效率方面弱一些。
-- 采用“*”的可读性较差，通过“*”很难看出都有哪些具体的字段。
+- `select * from dept;` 在执行的时候会被解析为 `select DEPTNO, DNAME, LOC from dept;` 再执行，所以这种效率方面弱一些。
+- 采用`*`的可读性较差，通过`*`很难看出都有哪些具体的字段。
 
-什么时候使用“*”？
+什么时候使用`*`？
 
 - 这个SQL语句不在项目编码中使用，如果平时自己想快速查看表中所有数据的话，这种写法还是很给力的。
 
 - [ ] 任务1：查询所有的薪资等级以及每个薪资等级的最低工资和最高工资。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=goIwt&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 查询时字段可参与数学运算
-
 ---
+### 查询时字段可参与数学运算
 
 在进行查询操作的时候，字段是可以参与数学运算的，例如加减乘除等。
 案例1：查询每个员工的月薪
@@ -98,7 +138,7 @@ select * from dept;
 select ename, sal from emp;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620453626714-46aed4db-e9fb-49be-a9be-ce9662dbc962.png#averageHue=%2312100f&height=364&id=wOnEt&originHeight=364&originWidth=375&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21162&status=done&style=shadow&title=&width=375)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=FCK1j&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 案例2：查询每个员工的年薪（月薪 * 12）
 ```sql
 select ename, sal * 12 from emp;
@@ -108,10 +148,8 @@ select ename, sal * 12 from emp;
 - [ ] 任务1：查询每个员工月薪加1000之后的月薪
 - [ ] 任务2：查询每个员工月薪加1000之后的年薪
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=NDttf&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 查询时字段可起别名
-
 ---
+### 查询时字段可起别名
 
 我们借用一下之前的SQL语句
 ```sql
@@ -119,7 +157,8 @@ select ename, sal * 12 from emp;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620453661204-ca783845-5f31-49fc-90d8-0f4426598cde.png#averageHue=%2313100f&height=364&id=EQnXg&originHeight=364&originWidth=387&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22636&status=done&style=shadow&title=&width=387)
 以上的查询结果列名“sal * 12”可读性较差，是否可以给查询结果的列名进行重命名呢？
-### as关键字
+
+#### as关键字
 
 - 使用as关键字
 ```sql
@@ -127,8 +166,8 @@ select ename, sal * 12 as yearsal from emp;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620454420847-c739365b-440e-4cf7-b1e2-2bcf6d5cdb8b.png#averageHue=%2312100f&height=372&id=NImNH&originHeight=372&originWidth=473&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25001&status=done&style=shadow&title=&width=473)
 通过as关键字起别名后，查询结果列显示yearsal，可读性增强。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=G4NWU&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 省略as关键字
+
+#### 省略as关键字
 
 - 其实as关键字可以省略，只要使用空格即可
 ```sql
@@ -137,7 +176,8 @@ select ename, sal * 12 yearsal from emp;
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620466356467-fb4612f8-72f6-4506-b2bc-1744846c171d.png#averageHue=%2311100e&height=363&id=XWTbX&originHeight=363&originWidth=464&originalType=binary&ratio=1&rotation=0&showTitle=false&size=24234&status=done&style=shadow&title=&width=464)
 
 - 通过以上测试，得知as可以省略，可以使用空格代替as，但如果别名中有空格呢？
-### 别名中有空格
+
+#### 别名中有空格
 ```sql
 select ename, sal * 12 year sal from emp;
 ```
@@ -149,8 +189,8 @@ select ename, sal * 12 'year sal' from emp;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620467027246-b5cce57e-3ca3-4b3f-9298-a21fc3bb77c3.png#averageHue=%23110f0e&height=744&id=kyi8P&originHeight=744&originWidth=558&originalType=binary&ratio=1&rotation=0&showTitle=false&size=53259&status=done&style=shadow&title=&width=558)
 **在mysql中，字符串既可以使用双引号也可以使用单引号，但还是建议使用单引号，因为单引号属于标准SQL。**
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=V2sJs&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 别名中有中文
+
+#### 别名中有中文
 
 - 如果别名采用中文呢？
 ```sql
@@ -161,10 +201,8 @@ select ename, sal * 12 年薪 from emp;
 
 - [ ] 任务：查询所有员工的信息，要求每个字段名采用中文显示。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=e5sVc&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 条件查询
-
 ---
+## 条件查询
 
 通常在进行查询操作的时候，都是查询符合某些条件的数据，很少将表中所有数据都取出来。怎么取出表的部分数据？需要在查询语句中添加条件进行数据的过滤。常见的过滤条件如下：
 
@@ -188,9 +226,8 @@ select ename, sal * 12 年薪 from emp;
 | not exists |  |
 | like | 模糊查询 |
 
-## 条件查询语法格式
-
 ---
+### 条件查询语法格式
 
 ```sql
 select 
@@ -205,12 +242,10 @@ where
     第二步：再通过where条件过滤
     第三步：最后执行select，查询并将结果展示到控制台
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=WjVQY&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 等于、不等于
-
 ---
+### 等于、不等于
 
-### 等于 =
+#### 等于 =
 判断等量关系，支持多种数据类型，比如：数字、字符串、日期等。
 案例1：查询月薪3000的员工编号及姓名
 ```sql
@@ -242,7 +277,7 @@ where
 	ename = 'ford';
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621907908980-acfef2ac-247a-434a-846d-aebe132c534b.png#averageHue=%23131110&height=255&id=fOGhC&originHeight=255&originWidth=268&originalType=binary&ratio=1&rotation=0&showTitle=false&size=9405&status=done&style=shadow&title=&width=268)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=vKAPe&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 通过测试发现，即使写成小写ford，也是可以查询到结果的，**不过这里需要注意的是：在Oracle数据库当中是查询不到数据的，Oracle的语法要比MySQL的语法严谨。对于SQL语句本身来说是不区分大小写的，但是对于表中真实存储的数据，大写A和小写a还是不一样的，这一点Oracle做的很好。MySQL的语法更随性。另外在Oracle当中，字符串是必须使用单引号括起来的，但在MySQL当中，字符串可以使用单引号，也可以使用双引号**，如下：
 ```sql
 select
@@ -266,8 +301,7 @@ where
 
 - [ ] 任务：查询工资级别是1的最低工资以及最高工资
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=LSu5h&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 不等于 <> 或 !=
+#### 不等于 <> 或 !=
 判断非等量关系，支持字符串、数字、日期类型等。不等号有两种写法，第一种<>，第二种!=，第二种写法和Java程序中的不等号相同，第一种写法比较诡异，不过也很好理解，比如<>3，表示小于3、大于3，就是不等于3。你get到了吗？
 案例1：查询工资不是3000的员工编号、姓名、薪资
 ```sql
@@ -292,12 +326,10 @@ where
 
 - [ ] 任务：查询不在部门编号为10的部门工作的员工信息
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=rXXwQ&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 大于、大于等于、小于、小于等于
-
 ---
+### 大于、大于等于、小于、小于等于
 
-### 大于 >
+#### 大于 >
 案例：找出薪资大于3000的员工姓名、薪资
 ```sql
 select 
@@ -308,8 +340,8 @@ where
   sal > 3000;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621909653019-47b3d57f-3690-46fb-9f47-7906f0fd3245.png#averageHue=%2311100f&height=148&id=k0f1J&originHeight=148&originWidth=514&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8657&status=done&style=shadow&title=&width=514)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=ydNP9&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 大于等于 >=
+
+#### 大于等于 >=
 案例：找出薪资大于等于3000的员工姓名、薪资
 ```sql
 select 
@@ -320,7 +352,7 @@ where
   sal >= 3000;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621909723383-d1a6872b-5790-4d89-875b-e1116ea539cf.png#averageHue=%23110f0e&height=190&id=pnLPe&originHeight=190&originWidth=528&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11463&status=done&style=shadow&title=&width=528)
-### 小于 <
+#### 小于 <
 案例：找出薪资小于3000的员工姓名、薪资
 ```sql
 select 
@@ -331,7 +363,7 @@ where
   sal < 3000;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621909833614-f9d57a1f-1d48-4d14-aaef-83c5bddb89a8.png#averageHue=%23110f0e&height=346&id=Ln9DW&originHeight=346&originWidth=535&originalType=binary&ratio=1&rotation=0&showTitle=false&size=24457&status=done&style=shadow&title=&width=535)
-### 小于等于 <=
+#### 小于等于 <=
 案例：找出薪资小于等于3000的员工姓名、薪资
 ```sql
 select 
@@ -342,10 +374,9 @@ where
   sal <= 3000;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621909895715-9af5ab2f-b445-4b44-a643-fd2a312cac2c.png#averageHue=%23110f0e&height=387&id=ZVSfe&originHeight=387&originWidth=536&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27408&status=done&style=shadow&title=&width=536)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=VCbJ6&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## and
 
 ---
+### and
 
 and表示并且，还有另一种写法：&&
 案例：找出薪资大于等于3000并且小于等于5000的员工姓名、薪资。
@@ -362,10 +393,8 @@ where
 
 - [ ] 任务：找出工资级别为2~4（包含2和4）的最低工资和最高工资。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=XfnXa&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## or
-
 ---
+### or
 
 or表示或者，还有另一种写法：||
 案例：找出工作岗位是MANAGER和SALESMAN的员工姓名、工作岗位
@@ -379,7 +408,7 @@ where
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621910850853-c7030458-0c8f-4040-bc29-c6fa66caca7c.png#averageHue=%23110f0e&height=376&id=tQUI3&originHeight=376&originWidth=492&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22698&status=done&style=shadow&title=&width=492)
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621910943353-4a9fb152-67b9-4044-a2b4-b90a2fbf3f57.png#averageHue=%23110f0e&height=370&id=k83WP&originHeight=370&originWidth=471&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22916&status=done&style=shadow&title=&width=471)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=yWWia&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 注意：这个题目描述中有这样一句话：MANAGER和SALESMAN，有的同学一看到“和”，就直接使用“and”了，因为“和”对应的英文单词是“and”，如果是这样的话，就大错特错了，因为and表示并且，使用and表示工作岗位既是MANAGER又是SALESMAN的员工，这样的员工是不存在的，因为每一个员工只有一个岗位，不可能同时从事两个岗位。所以使用and是查询不到任何结果的。如下
 ```sql
 select 
@@ -393,12 +422,10 @@ where
 
 - [ ] 任务：查询20和30部门的员工信息。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=E82Cs&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## and和or的优先级问题
-
 ---
+### and和or的优先级问题
 
-and和or同时出现时，and优先级较高，会先执行，如果希望or先执行，这个时候需要给or条件添加小括号。另外，以后遇到不确定的优先级时，可以通过添加小括号的方式来解决。对于优先级问题没必要记忆。
+and和or同时出现时，**and优先级较高，会先执行**，如果希望or先执行，这个时候需要给or条件添加小括号。另外，以后遇到不确定的优先级时，可以通过添加小括号的方式来解决。对于优先级问题没必要记忆。
 案例：找出薪资小于1500，并且部门编号是20或30的员工姓名、薪资、部门编号。
 先来看一下错误写法：
 ```sql
@@ -423,10 +450,8 @@ where
 
 - [ ] 任务：找出薪资小于1500的，并且工作岗位是CLERK和SALESMAN的员工姓名、薪资、岗位。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=L1XhP&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## between...and...
-
 ---
+### between...and...
 
 between...and...等同于 >= and <=
 做区间判断的，包含左右两个边界值。
@@ -460,15 +485,13 @@ where
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621914250873-25bff9ba-b4e6-4145-a5f8-9036fba35627.png#averageHue=%23161312&height=169&id=IPUnM&originHeight=169&originWidth=783&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20676&status=done&style=shadow&title=&width=783)
 注意：以上SQL语句中日期需要加上单引号。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=JTZOF&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## is null、is not null
-
 ---
+### is null、is not null
 
 判断某个数据是否为null，不能使用等号，只能使用 is null
 判断某个数据是否不为null，不能使用不等号，只能使用 is not null
 在数据库中null不是一个值，不能用等号和不等号衡量，null代表什么也没有，没有数据，没有值
-### is null
+#### is null
 案例1：找出津贴为空的员工姓名、薪资、津贴。
 ```sql
 select
@@ -490,8 +513,8 @@ where
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621914817611-97c0858b-a248-4a10-9fba-e5152283b553.png#averageHue=%2312100f&height=149&id=p0pLx&originHeight=149&originWidth=247&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5999&status=done&style=shadow&title=&width=247)
 查询不到任何数据，所以判断是否为空，不能用等号。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=Byo2n&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### is not null
+
+#### is not null
 案例2：找出津贴不为空的员工姓名、薪资、津贴
 ```sql
 select
@@ -503,12 +526,10 @@ where
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621914906515-cfd5351e-22bc-4184-b6d5-785f27049020.png#averageHue=%23141210&height=311&id=hC9OP&originHeight=311&originWidth=315&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15140&status=done&style=shadow&title=&width=315)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=pBBB0&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## in、not in
-
 ---
+### in、not in
 
-### in
+#### in
 job in('MANAGER','SALESMAN','CLERK') 等同于 job = 'MANAGER' or job = 'SALESMAN' or job = 'CLERK'
 sal in(1600, 3000, 5000) 等同于 sal = 1600 or sal = 3000 or sal = 5000
 in后面有一个小括号，小括号当中有多个值，值和值之间采用逗号隔开
@@ -547,8 +568,7 @@ where
 
 - [ ] 任务：找出部门编号是10和20的员工编号、姓名。（要求使用两种方案）
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=MHkjM&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### not in
+#### not in
 job not in('MANAGER','SALESMAN') 等同于 job <> 'MANAGER' and job <> 'SALESMAN'
 sal not in(1600, 5000) 等同于 sal <> 1600 and sal <> 5000
 案例：找出工作岗位不是MANAGER和SALESMAN的员工姓名、工作岗位
@@ -575,9 +595,8 @@ where
 
 - [ ] 任务：找出薪资不是1600和3000的员工姓名、薪资。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=zGsfo&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 
-### in、not in 与 NULL
+#### in、not in 与 NULL
 先来看一下emp表中的数据
 ```sql
 select * from emp;
@@ -609,10 +628,8 @@ select * from emp where comm <> NULL and comm <> 300;
 其中NULL的判断不能使用<>，所以comm <> NULL结果是false，由于后面是and，and表示并且，comm <> NULL已经是false了，所以and右边的就没必要运算了，comm <> NULL and comm <> 300的整体运算结果就是false。所以查询不到任何数据。
 通过以上测试得知，**not in是不会自动忽略NULL的**，所以在使用not in的时候一定要提前过滤掉NULL。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=cnDUU&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## in和or的效率比拼
-
 ---
+### in和or的效率比拼
 
 在MySQL当中，如何统计一个SQL语句的执行时长？
 
@@ -706,17 +723,15 @@ D组or和in的执行时间： or的执行时间为：6min 17s     in的执行�
 
 **结论：从上面的测试结果，可以看出如果in和or所在列有索引或者主键的话，or和in没啥差别，执行计划和执行时间都几乎一样。如果in和or所在列没有索引的话，性能差别就很大了。在没有索引的情况下，随着in或者or后面的数据量越多，in的效率不会有太大的下降，但是or会随着记录越多的话性能下降非常厉害，从第三种测试情况中可以很明显地看出了，基本上是指数级增长。因此在给in和or的效率下定义的时候，应该再加上一个条件，就是所在的列是否有索引或者是否是主键。如果有索引或者主键性能没啥差别，如果没有索引，性能差别不是一点点！** 
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=qptNa&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 模糊查询like
-
 ---
+### 模糊查询like
 
 模糊查询又被称为模糊匹配，在实际开发中使用较多，比如：查询公司中所有姓张的，查询岗位中带有经理两个字的职位等等，这些都需要使用模糊查询。
 模糊查询的语法格式如下：
 ```sql
 select .. from .. where 字段 like '通配符表达式';
 ```
-在模糊查询中，通配符主要包括两个：一个是%，一个是下划线_。其中%代表任意多个字符。下划线_代表任意一个字符。
+在模糊查询中，通配符主要包括两个：一个是`%`，一个是下划线`_`。其中`%`代表任意多个字符。下划线`_`代表任意一个字符。
 案例1：查询员工名字以'S'开始的员工姓名
 ```sql
 select ename from emp where ename like 'S%';
@@ -732,7 +747,7 @@ select ename from emp where ename like '%T';
 select ename from emp where ename like '%O%';
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1622001027995-71da44df-e3b1-4e56-a6e2-922a50ccc2b7.png#averageHue=%230f0e0e&height=231&id=Aa56U&originHeight=231&originWidth=632&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13088&status=done&style=shadow&title=&width=632)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=Kl5BB&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 案例4：查询员工名字中第二个字母是'A'的员工姓名
 ```sql
 select ename from emp where ename like '_A%';
@@ -763,32 +778,29 @@ select * from student where name like '%\_%';
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1667523291579-62dc328f-17ef-4e97-a22a-374ade19e797.png#averageHue=%23100f0e&clientId=ud0c47669-2d83-4&from=paste&height=139&id=u14f2fd6c&originHeight=139&originWidth=635&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7682&status=done&style=shadow&taskId=u5f6488c4-25a2-4517-8936-801669b340e&title=&width=635)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=tOgJQ&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 排序操作
-
 ---
+## 排序操作
 
 排序操作很常用，比如查询学员成绩，按照成绩降序排列。排序的SQL语法：
 ```sql
 select .. from .. order by 字段 asc/desc
 ```
-## 单一字段升序
+
+### 单一字段升序
 查询员工的编号、姓名、薪资，按照薪资升序排列。
 ```sql
 select empno,ename,sal from emp order by sal asc;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1667524015631-e1f1b6c3-0a5b-4f04-91d1-7a11df8fc7ff.png#averageHue=%2312100f&clientId=ud0c47669-2d83-4&from=paste&height=490&id=u337ff7e2&originHeight=490&originWidth=697&originalType=binary&ratio=1&rotation=0&showTitle=false&size=40038&status=done&style=shadow&taskId=uc89e7030-c586-4582-bdaa-6b231e3ab16&title=&width=697)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=xJx1t&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 单一字段降序
+### 单一字段降序
 查询员工的编号、姓名、薪资，按照薪资降序排列。
 ```sql
 select empno,ename,sal from emp order by sal desc;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1667524068322-84c1f716-5b7a-4b72-8a41-c0f8ec433d57.png#averageHue=%2311100f&clientId=ud0c47669-2d83-4&from=paste&height=490&id=ub06f2a23&originHeight=490&originWidth=737&originalType=binary&ratio=1&rotation=0&showTitle=false&size=40326&status=done&style=shadow&taskId=ube0d34dc-9629-4733-ac61-e9df253d566&title=&width=737)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=cS1fD&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 默认采用升序
+### 默认采用升序
 查询员工的编号、姓名、薪资，按照薪资升序排列。
 ```sql
 select empno,ename,sal from emp order by sal;
@@ -800,14 +812,14 @@ select empno,ename from emp order by ename;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1667524169552-6abc923e-3638-4a65-ab97-741c22f885fa.png#averageHue=%23110f0e&clientId=ud0c47669-2d83-4&from=paste&height=488&id=ubf5dc2c5&originHeight=488&originWidth=626&originalType=binary&ratio=1&rotation=0&showTitle=false&size=32304&status=done&style=shadow&taskId=uf1ac3bd4-f65a-4d1a-ac9e-a6d5d5b7e8e&title=&width=626)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=CqDmt&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 多个字段排序
+### 多个字段排序
 查询员工的编号、姓名、薪资，按照薪资升序排列，如果薪资相同的，再按照姓名升序排列。
 ```sql
 select empno,ename,sal from emp order by sal asc, ename asc;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1667524337952-bbef44e7-488e-4c3e-9317-1fda80054c92.png#averageHue=%23110f0e&clientId=ud0c47669-2d83-4&from=paste&height=490&id=ud4173d66&originHeight=490&originWidth=813&originalType=binary&ratio=1&rotation=0&showTitle=false&size=40815&status=done&style=shadow&taskId=u231edd4c-d353-41e1-ba19-ebcc71d1d7b&title=&width=813)
-## where和order by的位置
+
+### where和order by的位置
 找出岗位是MANAGER的员工姓名和薪资，按照薪资升序排列。
 ```sql
 select ename,sal from emp where job = 'MANAGER' order by sal asc;
@@ -815,8 +827,8 @@ select ename,sal from emp where job = 'MANAGER' order by sal asc;
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1667524386864-8d24513b-85f9-4f31-9462-4fe094cb0843.png#averageHue=%230f0e0e&clientId=ud0c47669-2d83-4&from=paste&height=233&id=ub579bda3&originHeight=233&originWidth=887&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16318&status=done&style=shadow&taskId=u0fd108a3-5c49-4ec2-843b-b8e4f5861c3&title=&width=887)
 **通过这个例子主要是想告诉大家：where先执行，order by语句是最后执行的。**
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=qfi4f&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# distinct去重
+---
+## distinct去重
 查询工作岗位
 ```sql
 select job from emp;
@@ -838,22 +850,20 @@ select ename, distinct job from emp;
 **当distinct出现后，后面多个字段一定是联合去重的**，我们来做两个练习就知道了：
 练习1：找出公司中所有的工作岗位。
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668570864793-732f34aa-5b7d-4389-b4af-51cbd964215f.png#averageHue=%23100f0e&clientId=u005f32df-cdfa-4&from=paste&height=316&id=ub89f2b22&originHeight=316&originWidth=540&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15489&status=done&style=shadow&taskId=u5dab6bed-8c9b-4ae8-b617-37c86a9d8f2&title=&width=540)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=n5ZcV&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 练习2：找出公司中不同部门的不同工作岗位。
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668570891921-9c547b9b-d20e-4695-9704-051863b5e868.png#averageHue=%23110f0e&clientId=u005f32df-cdfa-4&from=paste&height=429&id=u755429fe&originHeight=429&originWidth=634&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26800&status=done&style=shadow&taskId=ub3689df0-e1a9-40c1-a4e6-1f2f509c001&title=&width=634)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=P2tc2&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 数据处理函数
-
 ---
+## 数据处理函数
 
 关于select语句，我们之前都是这样写：select 字段名 from 表名; 其实，这里的字段名可以看做“变量”，select后面既然可以跟变量，那么可以跟常量吗，尝试一下：
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668568118423-c5b5d189-4d32-41ab-a189-3f155d0d0efa.png#averageHue=%230e0d0d&clientId=u005f32df-cdfa-4&from=paste&height=502&id=uf4590195&originHeight=502&originWidth=866&originalType=binary&ratio=1&rotation=0&showTitle=false&size=24621&status=done&style=shadow&taskId=u9bf03714-2a03-4e7b-98d7-9996316a176&title=&width=866)
 通过以上sql的测试得知，select后面既可以跟变量，又可以跟常量。
 以上三条SQL中前两条中100和'abc'都是常量，最后一条SQL的abc没有添加单引号，它会被当做某个表的字段名，因为没有这个字段所以报错。 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=KpG9f&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 字符串相关
-### 转大写upper和ucase
+
+### 字符串相关
+#### 转大写upper和ucase
 ```sql
 # 查询所有员工名字，以大写形式展现
 select upper(ename) as ename from emp;
@@ -870,8 +880,8 @@ select ucase(ename) as ename from emp;
 select ename, job, sal from emp where upper(ename) = 'SMITH';
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668566360054-6e77882a-21fc-4b6e-9a04-3e0098606db8.png#averageHue=%23100f0e&clientId=u005f32df-cdfa-4&from=paste&height=178&id=uf8993c00&originHeight=178&originWidth=982&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11947&status=done&style=shadow&taskId=u72025ccb-5725-4313-bf7b-3edebed799a&title=&width=982)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=Myp3w&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 转小写lower和lcase
+
+#### 转小写lower和lcase
 **很简单，不再赘述，直接上代码：**
 ```sql
 # 查询员工姓名，以小写形式展现
@@ -880,25 +890,29 @@ select lcase(ename) as ename from emp;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668566699289-0a479f71-ecf4-4a3f-ac4c-8516a4f0fee8.png#averageHue=%230f0e0d&clientId=u005f32df-cdfa-4&from=paste&height=216&id=u0f889bef&originHeight=216&originWidth=646&originalType=binary&ratio=1&rotation=0&showTitle=false&size=9493&status=done&style=shadow&taskId=u5f16833e-e425-424b-a769-1761dd7023f&title=&width=646)
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668566716526-c8fac5f9-7079-4738-a3d1-2a5c3c5e1145.png#averageHue=%230f0e0d&clientId=u005f32df-cdfa-4&from=paste&height=189&id=ue19b9b87&originHeight=189&originWidth=643&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8007&status=done&style=shadow&taskId=u7fc1e3dd-17d7-4f33-b8ed-b88901fb087&title=&width=643)
-### 截取字符串substr
+
+#### 截取字符串substr
 语法：substr('被截取的字符串', 起始下标, 截取长度)
 有两种写法：
 第一种：substr('被截取的字符串', 起始下标, 截取长度)
 第二种：substr('被截取的字符串', 起始下标)，当第三个参数“截取长度”缺失时，截取到字符串末尾
 注意：起始下标从1开始，不是从0开始。（1表示从左侧开始的第一个位置，-1表示从右侧开始的第一个位置。）
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668567142258-6748508c-c3bb-440f-8ad7-c64df6c0028d.png#averageHue=%23100f0e&clientId=u005f32df-cdfa-4&from=paste&height=648&id=u521d5ef0&originHeight=648&originWidth=664&originalType=binary&ratio=1&rotation=0&showTitle=false&size=35242&status=done&style=shadow&taskId=u50bb124d-9e6b-4c8a-b48c-76594e0ec3c&title=&width=664)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=xkp87&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 练习：找出员工名字中第二个字母是A的
 ```sql
 select ename from emp where substr(ename, 2, 1) = 'A';
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668567271612-710d3592-6111-4ab5-97c1-12f809ac7645.png#averageHue=%230f0e0d&clientId=u005f32df-cdfa-4&from=paste&height=254&id=u2313b4ee&originHeight=254&originWidth=854&originalType=binary&ratio=1&rotation=0&showTitle=false&size=14523&status=done&style=shadow&taskId=u8ae9b244-f6d3-441c-89d0-4466eaa73e4&title=&width=854)
-### 获取字符串长度length
+
+#### 获取字符串长度length
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672736218451-70fddda1-2541-4c91-9f39-3f968a6b6e12.png#averageHue=%23100f0f&clientId=uc0e8c595-6b95-4&from=paste&height=167&id=u69789788&originHeight=167&originWidth=525&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7442&status=done&style=shadow&taskId=u39c20cea-67f3-49eb-9d8e-8c548360b72&title=&width=525)
 注意：一个汉字是2个长度。
-### 获取字符的个数char_length
+
+#### 获取字符的个数char_length
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672736125194-177317bd-f65c-4c05-bda7-f58961b78fd7.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=uKcvT&originHeight=168&originWidth=582&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8283&status=done&style=shadow&taskId=u2abebb18-4522-415a-bf80-859153252d1&title=&width=582)
-### 字符串拼接
+
+#### 字符串拼接
 语法：concat('字符串1', '字符串2', '字符串3'....)
 拼接的字符串数量没有限制。
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668569810019-a8c939c4-518d-4ed9-961a-27d4440d13d0.png#averageHue=%2311100f&clientId=u005f32df-cdfa-4&from=paste&height=437&id=u00e5d696&originHeight=437&originWidth=860&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29849&status=done&style=shadow&taskId=ufbffbf88-a2ed-4341-a706-959748e2260&title=&width=860)
@@ -912,8 +926,8 @@ select ename, sal from emp where sal > 3000 || sal < 900;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669780282134-d3a16d8a-e0fc-4744-beff-83b3579f6161.png#averageHue=%230f0f0e&clientId=u6210fc1e-5e54-4&from=paste&height=196&id=uc7e77230&originHeight=196&originWidth=950&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11249&status=done&style=shadow&taskId=u19693054-9222-4df2-899e-3ed69a01a71&title=&width=950)
 mysql中可以使用+进行字符串的拼接吗？不可以，在mysql中+只作加法运算，在进行加法运算时，会将加号两边的数据尽最大的努力转换成数字再求和，如果无法转换成数字，最终运算结果通通是0
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=r5hjr&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 去除字符串前后空白trim
+
+#### 去除字符串前后空白trim
 ```sql
 select concat(trim('    abc    '), 'def');
 ```
@@ -934,44 +948,44 @@ select trim(trailing '0' from '000111000');
 select trim(both '0' from '000111000');
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668570238062-dff388d3-3106-457d-a9ae-819f41821792.png#averageHue=%2311100f&clientId=u005f32df-cdfa-4&from=paste&height=203&id=uca889e8f&originHeight=203&originWidth=678&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10559&status=done&style=shadow&taskId=u39829e4b-560a-42a1-b27c-315e566e9ae&title=&width=678)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=EDgfQ&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 数字相关
-### rand()和rand(x)
+
+### 数字相关
+#### rand()和rand(x)
 rand()生成0到1的随机浮点数。
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669797997130-63b2c8d0-6169-4ee8-9b6b-c3087e9d733b.png#averageHue=%2311100f&clientId=u57006619-2538-4&from=paste&height=432&id=uc1af8ae1&originHeight=432&originWidth=488&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21196&status=done&style=shadow&taskId=uf2b4c16d-fc16-42a5-91c6-c840e24096b&title=&width=488)
 rand(x)生成0到1的随机浮点数，通过指定整数x来确定每次获取到相同的浮点值。
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798044104-7fc0b727-ff91-4d3e-be33-9954d556afe2.png#averageHue=%23121110&clientId=u57006619-2538-4&from=paste&height=431&id=uddf41de3&originHeight=431&originWidth=404&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23014&status=done&style=shadow&taskId=uc8b8c1f9-b44d-4886-8442-9c6d0e0beb7&title=&width=404)
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798069147-75492782-759d-46d9-84c5-a83b3a63594c.png#averageHue=%23121110&clientId=u57006619-2538-4&from=paste&height=431&id=ud22d346e&originHeight=431&originWidth=417&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21817&status=done&style=shadow&taskId=u01cf1b31-7d8b-4bc0-8eba-573138f7c49&title=&width=417)
-### round(x)和round(x,y)四舍五入
+#### round(x)和round(x,y)四舍五入
 round(x) 四舍五入，保留整数位，舍去所有小数
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798450055-e26955bd-ea2d-445a-be98-721b54d3ca35.png#averageHue=%2311100f&clientId=u57006619-2538-4&from=paste&height=427&id=u633ac709&originHeight=427&originWidth=438&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19800&status=done&style=shadow&taskId=u5ae99c90-04bd-47b9-9338-3be2146f355&title=&width=438)
 round(x,y) 四舍五入，保留y位小数
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798534269-9c494800-7878-4ccf-bacc-a8c4cdafbbe6.png#averageHue=%23100f0e&clientId=u57006619-2538-4&from=paste&height=656&id=ub44adc1f&originHeight=656&originWidth=467&originalType=binary&ratio=1&rotation=0&showTitle=false&size=30665&status=done&style=shadow&taskId=u06d2a339-d070-4c04-9d62-a6ca361ad3c&title=&width=467)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=lpAuL&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### truncate(x, y)舍去
+
+#### truncate(x, y)舍去
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798594158-7e51e7a5-27af-4f7f-8021-a751f425a316.png#averageHue=%2311100f&clientId=u57006619-2538-4&from=paste&height=220&id=u7586a0cc&originHeight=220&originWidth=492&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10521&status=done&style=shadow&taskId=u4aea8b0c-2612-4b7c-af22-e5b68687b80&title=&width=492)
 以上SQL表示保留两位小数，剩下的全部舍去。
-### ceil与floor
+#### ceil与floor
 数字处理函数除了以上的之外，还有ceil和floor函数：
 
 - ceil函数：返回大于或等于数值x的最小整数
 - floor函数：返回小于或等于数值x的最大整数
 
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672735932932-f0dfc7de-1f77-4eb0-b6e9-b6c6c2ce7ae3.png#averageHue=%23100f0e&clientId=uc0e8c595-6b95-4&from=paste&height=433&id=ua803b791&originHeight=433&originWidth=402&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13778&status=done&style=shadow&taskId=uf4127f6b-bfd8-454a-8aa8-2e1fec9edab&title=&width=402)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=HydiS&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 空处理
+
+### 空处理
 ifnull(x, y)，空处理函数，当x为NULL时，将x当做y处理。
 ifnull(comm, 0)，表示如果员工的津贴是NULL时当做0处理。
 在SQL语句中，凡是有NULL参与的数学运算，最终的计算结果都是NULL：
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798864111-5cffd59f-d15c-4f6c-a2d8-0b623ec1f16c.png#averageHue=%23100f0e&clientId=u57006619-2538-4&from=paste&height=658&id=ue1cf6783&originHeight=658&originWidth=408&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23225&status=done&style=shadow&taskId=ua42e9e3c-fa93-4f6c-979d-d5444c21108&title=&width=408)
 看这样一个需求：查询每个员工的年薪。（年薪 = (月薪 + 津贴) * 12个月。注意：有的员工津贴comm是NULL。）
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798945415-90bccaa6-1dda-4ebd-bc50-63ab5ba2b89a.png#averageHue=%23100f0e&clientId=u57006619-2538-4&from=paste&height=573&id=u514525d4&originHeight=573&originWidth=850&originalType=binary&ratio=1&rotation=0&showTitle=false&size=36066&status=done&style=shadow&taskId=ubb59ae71-c22d-456f-85bf-df0182998af&title=&width=850)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=qqGmB&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 以上查询结果中显示SMITH等人的年薪是NULL，这是为什么，这是因为SMITH等人的津贴comm是NULL，有NULL参与的数学运算，最终结果都是NULL，显然这个需要空处理，此时就用到了ifnull函数：
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669799067232-4896fa47-5c64-409a-b970-dddc31e06050.png#averageHue=%23100f0e&clientId=u57006619-2538-4&from=paste&height=573&id=u59b02703&originHeight=573&originWidth=982&originalType=binary&ratio=1&rotation=0&showTitle=false&size=42887&status=done&style=shadow&taskId=u063b2776-3482-4b4f-888c-3623426b77b&title=&width=982)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=X7H0g&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 日期和时间相关函数
-### 获取当前日期和时间
+
+### 日期和时间相关函数
+#### 获取当前日期和时间
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672707310711-3115e4af-385c-4565-89c7-25bad76e8a6a.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=162&id=uc379723b&originHeight=162&originWidth=404&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7211&status=done&style=shadow&taskId=uedf1c447-2a71-4f9a-9f96-98b9f249622&title=&width=404)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672707382021-d8d296b7-9d9a-4072-b714-c99da604ac12.png#averageHue=%23151312&clientId=uc0e8c595-6b95-4&from=paste&height=163&id=ua9b22a07&originHeight=163&originWidth=377&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8104&status=done&style=shadow&taskId=u0aa13932-ae31-46ba-94b7-f5cee861153&title=&width=377)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672707469394-4fe3f0fb-ca9e-4484-b939-db716f6ddd38.png#averageHue=%23131211&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=ue97dcb2c&originHeight=168&originWidth=801&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12054&status=done&style=shadow&taskId=uf047d345-596d-4f3c-a996-3d1f6850219&title=&width=801)
@@ -980,15 +994,15 @@ now()和sysdate()的区别：
 - now()：获取的是执行select语句的时刻。
 - sysdate()：获取的是执行sysdate()函数的时刻。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=l9noP&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 获取当前日期
+#### 获取当前日期
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672707770762-e9723219-562f-4a53-9d8a-9055ee80c25d.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=543&id=ufc58343c&originHeight=655&originWidth=440&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29141&status=done&style=shadow&taskId=u707d5711-bda8-4f35-89c5-f39da3e879f&title=&width=365)
 获取当前日期有三种写法，掌握任意一种即可：
 
 - curdate()
 - current_date()
 - current_date
-### 获取当前时间
+
+#### 获取当前时间
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672707856778-8eec2322-c3c8-4ddc-94c4-3e08eea430a8.png#averageHue=%23121010&clientId=uc0e8c595-6b95-4&from=paste&height=653&id=u57a306e4&originHeight=653&originWidth=430&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28651&status=done&style=shadow&taskId=ua03065f0-48bc-43c2-ae47-b77fab8249f&title=&width=430)
 获取档期时间有三种写法，掌握其中一种即可：
 
@@ -996,8 +1010,7 @@ now()和sysdate()的区别：
 - current_time()
 - current_time
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=CDxHw&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 获取单独的年、月、日、时、分、秒
+#### 获取单独的年、月、日、时、分、秒
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672708190559-a1d93032-699d-49dc-87cc-4ccb045bee28.png#averageHue=%23100f0e&clientId=uc0e8c595-6b95-4&from=paste&height=651&id=u5badb85c&originHeight=651&originWidth=456&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28555&status=done&style=shadow&taskId=u742f8377-b4d8-44e9-950d-da020890e07&title=&width=456)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672708242288-89a20209-4ca2-4d1c-a1b0-5ad5f1179841.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=653&id=u7cfcb11b&originHeight=653&originWidth=483&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28868&status=done&style=shadow&taskId=u43769b4b-00e8-4dfb-a085-19858d725f1&title=&width=483)
 注意：这些函数在使用的时候，需要传递一个日期参数给它，它可以获取到你给定的这个日期相关的年、月、日、时、分、秒的信息。
@@ -1005,14 +1018,14 @@ now()和sysdate()的区别：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672713926559-d9c4257b-3536-4124-b4f4-3fd3626a293e.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=u161f961c&originHeight=168&originWidth=438&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7552&status=done&style=shadow&taskId=ub9643e54-a1b4-424f-a2d7-e15c7538b83&title=&width=438)
 一次性提取一个给定日期的“时分秒”部分，可以使用time()函数，例如：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672721340191-9c568184-73b5-4c26-9035-95245016ba4f.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=161&id=u0bb5bc88&originHeight=161&originWidth=428&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7598&status=done&style=shadow&taskId=u09037fc7-e074-481b-bf6a-ccc8fc49cf6&title=&width=428)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=JhMuY&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### date_add函数
+
+#### date_add函数
 date_add函数的作用：给指定的日期添加间隔的时间，从而得到一个新的日期。
 date_add函数的语法格式：date_add(日期, interval expr 单位)，例如：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672709352877-e64de4c0-d776-4e30-908b-4a96c04bc186.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=174&id=ub79687f8&originHeight=174&originWidth=771&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11929&status=done&style=shadow&taskId=u79db77b4-bf0f-41ee-91ba-e6e48424d32&title=&width=771)
 以'2023-01-03'为基准，间隔3天之后的日期：'2023-01-06'
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672709436259-c6d671c6-ccc8-4109-9612-1f178801ef64.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=171&id=ub0dc1d88&originHeight=171&originWidth=778&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11798&status=done&style=shadow&taskId=u06a7162d-aafa-4469-8f12-d3ea81c1f63&title=&width=778)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=flAzu&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 以'2023-01-03'为基准，间隔3个月之后的日期：'2023-04-03'
 详细解释一下这个函数的相关参数：
 
@@ -1053,10 +1066,9 @@ date_add函数的语法格式：date_add(日期, interval expr 单位)，例如�
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672711325140-0a281589-4bc2-4fc8-bd7f-9a5ff180ba71.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=171&id=u186c11d0&originHeight=171&originWidth=1009&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13317&status=done&style=shadow&taskId=u2827b5bf-37d2-486f-9db8-fa8b15ce510&title=&width=1009)
 '3,2'这个应该很好理解，表示3天2个小时之后。'3,2'和day_hour是对应的。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=BfJl7&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### date_format日期格式化函数
+#### date_format日期格式化函数
 将日期转换成具有某种格式的日期字符串，通常用在查询操作当中。（date类型转换成char类型）
-语法格式：date_format(日期, '日期格式')
+语法格式：`date_format(日期, '日期格式')`
 该函数有两个参数：
 
 - 第一个参数：日期。这个参数就是即将要被格式化的日期。类型是date类型。
@@ -1073,8 +1085,8 @@ date_add函数的语法格式：date_add(日期, interval expr 单位)，例如�
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672716928881-badddb77-c670-43f3-8b25-8e2eb4952a04.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=uf1769116&originHeight=168&originWidth=790&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12687&status=done&style=shadow&taskId=u0936983e-6c2d-4e0f-96a9-905426534b9&title=&width=790)
 注意：在mysql当中，默认的日期格式就是：%Y-%m-%d %H:%i:%s，所以当你直接输出日期数据的时候，会自动转换成该格式的字符串：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672717081322-e99bdff0-76df-4fcc-958a-463bf9e65d9d.png#averageHue=%23131110&clientId=uc0e8c595-6b95-4&from=paste&height=164&id=udf0a9e15&originHeight=164&originWidth=369&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7005&status=done&style=shadow&taskId=ua8a7ba31-3b81-427d-8a55-a8a84114389&title=&width=369)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=AePyP&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### str_to_date函数
+
+#### str_to_date函数
 该函数的作用是将char类型的日期字符串转换成日期类型date，通常使用在插入和修改操作当中。（char类型转换成date类型）
 假设有一个学生表t_student，学生有一个生日的字段，类型是date类型：
 ```sql
@@ -1093,27 +1105,26 @@ desc t_student;
 当然，如果你提供的日期字符串格式能够被mysql解析，str_to_date函数是可以省略的，底层会自动调用该函数进行类型转换：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672718807175-8b62c13a-e771-482d-a999-7548501da25e.png#averageHue=%23110f0e&clientId=uc0e8c595-6b95-4&from=paste&height=625&id=u14b85262&originHeight=625&originWidth=1088&originalType=binary&ratio=1&rotation=0&showTitle=false&size=66015&status=done&style=shadow&taskId=uae019b86-851f-4348-962a-a15199adc0f&title=&width=1088)
 如果日期格式符合以上的几种格式，mysql都会自动进行类型转换的。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=qPxdF&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### dayofweek、dayofmonth、dayofyear函数
+
+#### dayofweek、dayofmonth、dayofyear函数
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672719401783-7ea51704-954a-4f96-aa81-3a8da4b34582.png#averageHue=%23110f0e&clientId=uc0e8c595-6b95-4&from=paste&height=665&id=u1a4c7890&originHeight=665&originWidth=685&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39505&status=done&style=shadow&taskId=u36f1ca0f-c525-47e4-8ccf-df5d8210281&title=&width=685)
 dayofweek：一周中的第几天（1~7），周日是1，周六是7。
 dayofmonth：一个月中的第几天（1~31）
 dayofyear：一年中的第几天（1~366）
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=aDRcH&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### last_day函数
+
+#### last_day函数
 获取给定日期所在月的最后一天的日期：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672719572099-bba462b8-da22-42b7-9a40-9c2c545596ef.png#averageHue=%23121010&clientId=uc0e8c595-6b95-4&from=paste&height=163&id=u8cab6ec4&originHeight=163&originWidth=498&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8323&status=done&style=shadow&taskId=ucef40e03-23be-4936-a671-ac674c20438&title=&width=498)
-### datediff函数
+#### datediff函数
 计算两个日期之间所差天数：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672720897012-c5e7e6dd-29de-46b0-b2c1-e1de3e8d6e54.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=169&id=u9b900968&originHeight=169&originWidth=865&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10814&status=done&style=shadow&taskId=ufb6d4060-84b9-44b3-8694-a9cf990bc54&title=&width=865)
 时分秒不算，只计算日期部分相差的天数。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=H86Gm&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### timediff函数
+
+#### timediff函数
 计算两个日期所差时间，例如日期1和日期2所差10:20:30，表示差10小时20分钟30秒。
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672721193551-f65b470a-9060-4010-b172-b34eb1787e55.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=u56a06c8e&originHeight=168&originWidth=987&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11553&status=done&style=shadow&taskId=ua81b206f-eb6b-47b3-ad2a-e4b048fdd31&title=&width=987)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=URBHc&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## if函数
+### if函数
 如果条件为TRUE则返回“YES”，如果条件为FALSE则返回“NO”：
 ```sql
 SELECT IF(500<1000, "YES", "NO");
@@ -1126,8 +1137,8 @@ SELECT IF(500<1000, "YES", "NO");
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672726371265-19128e1a-47cf-46b0-9b80-310d37010535.png#averageHue=%23100f0e&clientId=uc0e8c595-6b95-4&from=paste&height=532&id=u575eb753&originHeight=532&originWidth=1441&originalType=binary&ratio=1&rotation=0&showTitle=false&size=55630&status=done&style=shadow&taskId=uf0e71940-399c-4edf-bd67-14f893e719e&title=&width=1441)
 **上面这个需求也可以使用：case.. when.. then.. when.. then.. else.. end来完成：**
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672726864928-8206091b-3bd3-4f12-b784-173aff775d6f.png#averageHue=%23141210&clientId=uc0e8c595-6b95-4&from=paste&height=724&id=u37fc5544&originHeight=724&originWidth=561&originalType=binary&ratio=1&rotation=0&showTitle=false&size=57934&status=done&style=shadow&taskId=u812c7487-a5f1-4d90-a5bd-891e360d45b&title=&width=561)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=sWtRV&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## cast函数
+
+### cast函数
 cast函数用于将值从一种数据类型转换为表达式中指定的另一种数据类型
 语法：cast(值 as 数据类型)
 例如：cast('2020-10-11' as date)，表示将字符串'2020-10-11'转换成日期date类型。
@@ -1144,13 +1155,13 @@ cast函数用于将值从一种数据类型转换为表达式中指定的另一�
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672737634602-96cdd564-1220-445e-9b18-b3f0a2a55379.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=435&id=ued100771&originHeight=435&originWidth=545&originalType=binary&ratio=1&rotation=0&showTitle=false&size=18617&status=done&style=shadow&taskId=u559bfe74-f2ec-4e05-a37f-2cd08b29cde&title=&width=545)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672737720321-3812fd42-d3a4-4985-96d2-629947d9ce48.png#averageHue=%23111010&clientId=uc0e8c595-6b95-4&from=paste&height=213&id=ua7df14ff&originHeight=213&originWidth=604&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10420&status=done&style=shadow&taskId=u66dc0647-a030-400f-8ec0-b3c2b22a844&title=&width=604)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672737802812-d04d581c-138c-4e4e-97d4-c979558e9b2e.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=170&id=u214f15ff&originHeight=170&originWidth=714&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8572&status=done&style=shadow&taskId=ud2929b4c-8582-4dc3-a2ba-8de75b96e58&title=&width=714)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=zcFrS&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 加密函数
+
+### 加密函数
 md5函数，可以将给定的字符串经过md5算法进行加密处理，字符串经过加密之后会生成一个固定长度32位的字符串，md5加密之后的密文通常是不能解密的：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672737046172-5ee0458a-60c6-4bae-b075-94b7dee440ab.png#averageHue=%23131110&clientId=uc0e8c595-6b95-4&from=paste&height=220&id=u6e900f32&originHeight=220&originWidth=568&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10865&status=done&style=shadow&taskId=uabd2a6f3-e59b-4dac-ba4c-bcc743fafad&title=&width=568)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=ilOoD&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 分组函数
+---
+## 分组函数
 **分组函数的执行原则：先分组，然后对每一组数据执行分组函数。如果没有分组语句group by的话，整张表的数据自成一组。**
 分组函数包括五个：
 
@@ -1160,23 +1171,22 @@ md5函数，可以将给定的字符串经过md5算法进行加密处理，字�
 - sum：求和
 - count：计数
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=AjG5x&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## max
+### max
 **找出员工的最高薪资**
 ```sql
 select max(sal) from emp;
 ```
-## min
+### min
 **找出员工的最低工资**
 ```sql
 select min(sal) from emp;
 ```
-## avg
+### avg
 **计算员工的平均薪资**
 ```sql
 select avg(sal) from emp;
 ```
-## sum
+### sum
 **计算员工的工资和**
 ```sql
 select sum(sal) from emp;
@@ -1186,16 +1196,16 @@ select sum(sal) from emp;
 select sum(comm) from emp;
 ```
 重点：所有的分组函数都是自动忽略NULL的。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=QJCgr&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## count
+
+### count
 **统计员工人数**
 ```sql
 select count(ename) from emp;
 select count(*) from emp;
 select count(1) from emp;
 ```
-count(*)和count(1)的效果一样，统计该组中总记录行数。
-count(ename)统计的是这个ename字段中不为NULL个数总和。
+`count(*)`和`count(1)`的效果一样，统计该组中总记录行数。
+**count(ename)统计的是这个ename字段中不为NULL个数总和。**
 例如：count(comm) 结果是 4，而不是14
 ```sql
 select count(comm) from emp;
@@ -1204,16 +1214,18 @@ select count(comm) from emp;
 ```sql
 select count(distinct job) from emp;
 ```
-## 分组函数组合使用
-select count(*),max(sal),min(sal),avg(sal),sum(sal) from emp;
-## 分组函数注意事项
+
+### 分组函数组合使用
+`select count(*),max(sal),min(sal),avg(sal),sum(sal) from emp;`
+
+### 分组函数注意事项
 **分组函数不能直接使用在where子句当中**
-select ename,job from emp where sal > avg(sal); 这个会报错的
+`select ename,job from emp where sal > avg(sal);` 这个会报错的
 原因：分组的行为是在where执行之后才开始的。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=guJg0&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 分组查询
-## group by
+---
+## 分组查询
+### group by
 按照某个字段分组，或者按照某些字段联合分组。注意：group by的执行是在where之后执行。
 语法：
 group by 字段
@@ -1230,14 +1242,12 @@ select deptno,max(sal) from emp group by deptno;
 ```sql
 select deptno,job,avg(sal) from emp group by deptno,job;
 ```
-
-
 **当select语句中有group by的话，select后面只能跟分组函数或参加分组的字段**
 ```sql
 select ename,deptno,avg(sal) from emp group by deptno; // 这个SQL执行后会报错。
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1676866192155-44d23157-87d0-4a58-a9d5-2641619d74fe.png#averageHue=%23171412&clientId=u417b9e29-4007-4&from=paste&height=140&id=uae74e6b8&originHeight=140&originWidth=1141&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25591&status=done&style=shadow&taskId=u4097c74b-3d21-485a-a74f-1390352d2e3&title=&width=1141)
-## having
+### having
 having写在group by的后面，当你对分组之后的数据不满意，可以继续通过having对分组之后的数据进行过滤。
 where的过滤是在分组前进行过滤。
 使用原则：尽量在where中过滤，实在不行，再使用having。越早过滤效率越高。
@@ -1253,15 +1263,16 @@ select deptno,avg(sal) from emp group by deptno having deptno <> 20; // 不建�
 ```sql
 select deptno,avg(sal) from emp group by deptno having avg(sal) > 2000;
 ```
-## 组内排序
+### 组内排序
 案例：找出每个工作岗位的工资排名在前两名的。
 substring_index函数的使用：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678080182698-009c47d2-eb75-4f67-afaa-874c7904ed45.png#averageHue=%2312100f&clientId=ue32f086e-fc2b-4&from=paste&height=379&id=rhnfq&originHeight=379&originWidth=755&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27939&status=done&style=shadow&taskId=u49228cac-a6a0-4d31-8dbc-abc432cd804&title=&width=755)
 group_concat函数的使用：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678082111760-02413f4e-a8b0-4837-8cb0-3b201151293f.png#averageHue=%23100f0e&clientId=ue32f086e-fc2b-4&from=paste&height=272&id=bhhYI&originHeight=272&originWidth=904&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20533&status=done&style=shadow&taskId=uac8b6d07-c85c-47d4-9724-b29c1e8f927&title=&width=904)
 学习了这两个函数之后，自己可以尝试写出来吗？
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=UeABU&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 总结单表的DQL语句
+
+---
+## 总结单表的DQL语句
 select ...5
 from ...1
 where ...2
@@ -1270,40 +1281,42 @@ having ...4
 order by ...6
 重点掌握一个完整的DQL语句执行顺序。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=aOHbB&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 连接查询
-## 什么是连接查询
+---
+## 连接查询
+### 什么是连接查询
 
 1. 从一张表中查询数据称为单表查询。
 2. 从两张或更多张表中联合查询数据称为多表查询，又叫做连接查询。
-3. 什么时候需要使用连接查询？
-   1. 比如这样的需求：员工表中有员工姓名，部门表中有部门名字，要求查询每个员工所在的部门名字，这个时候就需要连接查询。
-## 连接查询的分类
+3. 什么时候需要使用连接查询？比如这样的需求：员工表中有员工姓名，部门表中有部门名字，要求查询每个员工所在的部门名字，这个时候就需要连接查询。
+
+### 连接查询的分类
 
 1. 根据语法出现的年代进行分类：
-   1. SQL92（这种语法很少用，可以不用学。）
-   2. SQL99（我们主要学习这种语法。）
+	1. SQL92（这种语法很少用，可以不用学。）
+	2. SQL99（我们主要学习这种语法。）
 2. 根据连接方式的不同进行分类：
-   1. 内连接
-      1. 等值连接
-      2. 非等值连接
-      3. 自连接
-   2. 外连接
-      1. 左外连接（左连接）
-      2. 右外连接（右连接）
-   3. 全连接
+	1. 内连接
+		1. 等值连接
+		2. 非等值连接
+		3. 自连接
+	2. 外连接
+		1. 左外连接（左连接）
+		2. 右外连接（右连接）
+	3. 全连接
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=RfJym&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 笛卡尔积现象
+### 笛卡尔积现象
 
-1. 当两张表进行连接查询时，如果没有任何条件进行过滤，最终的查询结果条数是两张表条数的乘积。为了避免笛卡尔积现象的发生，需要添加条件进行筛选过滤。
-2. 需要注意：添加条件之后，虽然避免了笛卡尔积现象，但是匹配的次数没有减少。
-3. 为了SQL语句的可读性，为了执行效率，建议给表起别名。
-## 内连接
-### 什么叫内连接
+1. 🌟什么是笛卡尔积现象：当两张表进行连接查询时，如果没有任何条件进行过滤，**最终的查询结果条数是两张表条数的乘积**。
+2. 为了避免笛卡尔积现象的发生，需要添加条件进行筛选过滤。
+3. 需要注意：添加条件之后，虽然避免了笛卡尔积现象，但是匹配的次数没有减少。
+4. 为了SQL语句的可读性，为了执行效率，建议给表起别名。
+
+### 内连接
+
+#### 什么叫内连接
 ![内连接.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677398804476-afbffad7-7d5a-4318-9e86-a3f8092dfcc8.png#averageHue=%23f7f5f5&clientId=u1be67ea7-0240-4&from=paste&height=233&id=u4f6abf7d&originHeight=233&originWidth=300&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29826&status=done&style=shadow&taskId=u51112874-93e5-4ef2-8366-f78cc265d04&title=&width=300)
 满足条件的记录才会出现在结果集中。
-### 内连接之等值连接
+#### 内连接之等值连接
 连接时，条件为等量关系。
 案例：查询每个员工所在的部门名称，要求显示员工名、部门名。
 ```sql
@@ -1318,8 +1331,8 @@ on
 ```
 注意：inner可以省略。
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677401675659-04e46e96-9f00-4210-8beb-e8148807ae10.png#averageHue=%231a1613&clientId=u1be67ea7-0240-4&from=paste&height=380&id=u91e060d7&originHeight=380&originWidth=258&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15942&status=done&style=shadow&taskId=u2319a8db-57a3-4bcb-a42b-b58c46e0381&title=&width=258)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=clVoK&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 内连接之非等值连接
+
+#### 内连接之非等值连接
 连接时，条件是非等量关系。
 案例：查询每个员工的工资等级，要求显示员工名、工资、工资等级。
 ```sql
@@ -1333,8 +1346,8 @@ on
 	e.sal between s.losal and s.hisal;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677401628377-11f115a0-b961-4e10-b411-97ea04a89035.png#averageHue=%23191613&clientId=u1be67ea7-0240-4&from=paste&height=380&id=u9ef14890&originHeight=380&originWidth=279&originalType=binary&ratio=1&rotation=0&showTitle=false&size=17957&status=done&style=shadow&taskId=u97872f0c-74c1-40ef-b3bb-607697cbe62&title=&width=279)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=ianfB&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 内连接之自连接
+
+#### 内连接之自连接
 连接时，一张表看做两张表，自己和自己进行连接。
 案例：找出每个员工的直属领导，要求显示员工名、领导名。
 ```sql
@@ -1356,17 +1369,17 @@ on
 可以发现连接条件是：e.mgr = l.empno（员工的领导编号=领导的员工编号）
 注意：KING这个员工没有查询出来。如果想将KING也查询出来，需要使用外连接。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=Kz0kN&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 外连接
-### 什么叫外连接
+### 外连接
+
+#### 什么叫外连接
 内连接是满足条件的记录查询出来。也就是两张表的交集。
-外连接是除了满足条件的记录查询出来，再将其中一张表的记录全部查询出来，另一张表如果没有与之匹配的记录，自动模拟出NULL与其匹配。
+外连接是除了满足条件的记录查询出来，再将其中一张表的记录全部查询出来，**另一张表如果没有与之匹配的记录，自动模拟出NULL与其匹配**。
 左外连接：
 ![左连接.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677398828684-41b0bde2-1689-47a4-ae7b-3c5c4fb82ce6.png#averageHue=%23f5e6e4&clientId=u1be67ea7-0240-4&from=paste&height=233&id=ue0f4c04f&originHeight=233&originWidth=300&originalType=binary&ratio=1&rotation=0&showTitle=false&size=42064&status=done&style=shadow&taskId=u3697d149-d9f5-4090-8773-ffb0962ff90&title=&width=300)
 右外连接：
 ![右连接.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677398837026-688ff40f-d74b-4da6-a2e4-9573f5ba1580.png#averageHue=%23f4e6e3&clientId=u1be67ea7-0240-4&from=paste&height=233&id=ua18b1d44&originHeight=233&originWidth=300&originalType=binary&ratio=1&rotation=0&showTitle=false&size=43272&status=done&style=shadow&taskId=u4bb1c6ab-4c51-4fe0-938b-a7950969180&title=&width=300)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=XFps5&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 外连接之左外连接（左连接）
+
+#### 外连接之左外连接（左连接）
 案例：查询所有部门信息，并且找出每个部门下的员工。
 ```sql
 select
@@ -1381,8 +1394,8 @@ on
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677402955987-bdcd956a-8dd4-481b-97de-c785b200e902.png#averageHue=%23171411&clientId=u1be67ea7-0240-4&from=paste&height=408&id=ud8f95a62&originHeight=408&originWidth=470&originalType=binary&ratio=1&rotation=0&showTitle=false&size=36154&status=done&style=shadow&taskId=u3263d663-860e-41a9-b973-50a3be9baa0&title=&width=470)
 注意：outer可以省略。
 任何一个左连接都可以写作右连接。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=PUaJ7&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### 外连接之右外连接（右连接）
+
+#### 外连接之右外连接（右连接）
 还是上面的案例，可以写作右连接。
 ```sql
 select
@@ -1417,9 +1430,9 @@ on
   e.mgr = l.empno;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677403569294-c9688076-61e2-4e33-bb40-06d4307c6b43.png#averageHue=%23171210&clientId=u1be67ea7-0240-4&from=paste&height=386&id=ud80e0755&originHeight=386&originWidth=273&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16908&status=done&style=shadow&taskId=uded0f105-8d51-486b-97fb-acb24822774&title=&width=273)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=t1JJ5&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 
-## 全连接
+
+### 全连接
 什么是全连接？
 MySQL不支持full join。oracle数据库支持。
 ![全连接.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677398846702-4a3f3e0f-16bb-4e00-8015-490dc44d114b.png#averageHue=%23f2d7d2&clientId=u1be67ea7-0240-4&from=paste&height=233&id=u050103a2&originHeight=233&originWidth=300&originalType=binary&ratio=1&rotation=0&showTitle=false&size=51399&status=done&style=shadow&taskId=ued746d97-47c2-46a3-83cd-097182ea146&title=&width=300)
@@ -1439,8 +1452,8 @@ full join
 on 
  c.cid = o.cid;
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=URWP1&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 多张表连接
+
+### 多张表连接
 三张表甚至更多张表如何进行表连接
 案例：找出每个员工的部门，并且要求显示每个员工的薪资等级。
 ```sql
@@ -1459,13 +1472,13 @@ on
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677404511432-b8fe8eb2-c828-4913-8d7c-a7b47a0ee270.png#averageHue=%23171411&clientId=u1be67ea7-0240-4&from=paste&height=381&id=u6047af30&originHeight=381&originWidth=324&originalType=binary&ratio=1&rotation=0&showTitle=false&size=18547&status=done&style=shadow&taskId=uc90c12f6-bdbb-4221-abe5-dcc4e221c96&title=&width=324)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=oPaaH&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 子查询
-## 什么是子查询
+---
+## 子查询
+
+### 什么是子查询
 
 1. select语句中嵌套select语句就叫做子查询。
-2. select语句可以嵌套在哪里？
-   1. where后面、from后面、select后面都是可以的。
+2. select语句可以嵌套在哪里？where后面、from后面、select后面都是可以的。
 
 ```sql
 select ..(select)..
@@ -1473,9 +1486,8 @@ from ..(select)..
 where ..(select)..
 ```
 
+### where后面使用子查询
 
-
-## where后面使用子查询
 案例：找出高于平均薪资的员工姓名和薪资。
 错误的示范：
 ```sql
@@ -1486,27 +1498,31 @@ select ename,sal from emp where sal > avg(sal);
 ```sql
 select ename,sal from emp where sal > (select avg(sal) from emp);
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=L4mS0&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## from后面使用子查询
-小窍门：from后面的子查询可以看做一张临时表。
+
+### from后面使用子查询
+
+小窍门：**from后面的子查询可以看做一张临时表**。
 案例：找出每个部门的平均工资的等级。
 第一步：先找出每个部门平均工资。
 ```sql
 select deptno, avg(sal) avgsal from emp group by deptno;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677477788393-e2525a0a-2092-4a5e-80e7-7f8df04f6a6c.png#averageHue=%23151311&clientId=ud7d035d7-9c64-4&from=paste&height=163&id=u397cf064&originHeight=163&originWidth=303&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5620&status=done&style=shadow&taskId=uc8a5cf34-abe3-446f-9948-e3cedf385f9&title=&width=303)
-第二步：将以上查询结果当做临时表t，t表和salgrade表进行连接查询。条件：t.avgsal between s.losal and s.hisal
+第二步：将以上查询结果当做临时表t，t表和salgrade表进行连接查询。条件：`t.avgsal between s.losal and s.hisal`
 ```sql
 select t.*,s.grade from (select deptno, avg(sal) avgsal from emp group by deptno) t join salgrade s on t.avgsal between s.losal and s.hisal;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677477892811-ef9b366b-82be-4407-86f1-8dfa81492d8c.png#averageHue=%23151311&clientId=ud7d035d7-9c64-4&from=paste&height=162&id=u5d9f4ab4&originHeight=162&originWidth=397&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7422&status=done&style=shadow&taskId=uc90565b7-edc2-43bf-ba54-1e7db925c63&title=&width=397)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=Nae5T&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## select后面使用子查询
+
+### select后面使用子查询
+
 ```sql
 select e.ename,(select d.dname from dept d where e.deptno = d.deptno) as dname from emp e;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678063689524-a204a93a-6454-4ff7-a1c6-ac5229edae91.png#averageHue=%231a1714&clientId=ud9fded62-54bb-4&from=paste&height=428&id=u2b69cf05&originHeight=428&originWidth=276&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16342&status=done&style=shadow&taskId=ua4f4e977-d3e6-4e90-8781-42050638d4a&title=&width=276)
-## exists、not exists
+
+### exists、not exists
+
 在 MySQL 数据库中，EXISTS（存在）用于检查子查询的查询结果行数是否大于0。如果子查询的查询结果行数大于0，则 EXISTS 条件为真。（即存在查询结果则是true。）
 
 主要应用场景：
@@ -1549,6 +1565,38 @@ select * from t_order;
 select * from t_customer c where exists(select * from t_order o where o.customer_id=c.customer_id);
 ```
 
+```sql
+mysql> select * from t_customer c where exists(select * from t_order o where o.customer_id=c.customer_id);
++-------------+---------------+
+| customer_id | customer_name |
++-------------+---------------+
+|           1 | zhangsan      |
+|           2 | lisi          |
++-------------+---------------+
+2 rows in set (0.003 sec)
+
+mysql> select * from t_customer;
++-------------+---------------+
+| customer_id | customer_name |
++-------------+---------------+
+|           1 | zhangsan      |
+|           2 | lisi          |
+|           3 | wangwu        |
++-------------+---------------+
+3 rows in set (0.000 sec)
+mysql> select * from t_order;
+
++----------+-------------+-------------+
+| order_id | order_price | customer_id |
++----------+-------------+-------------+
+|       10 |      1000.0 |           1 |
+|       20 |      2000.0 |           1 |
+|       30 |      3000.0 |           2 |
+|       40 |      4000.0 |           2 |
++----------+-------------+-------------+
+4 rows in set (0.000 sec)
+```
+
 在这个查询语句中，子查询用于检查是否有订单与每个客户相关联。如果子查询返回至少一行，则表示该顾客已经下过订单，并返回此客户的所有信息，否则该顾客将不被包含在结果中。
 
 以下是这个查询语句的执行过程：
@@ -1568,13 +1616,13 @@ select * from t_customer c where not exists(select * from t_order o where o.cust
 在这个查询语句中，如果没有任何与顾客相关联的订单，则 NOT EXISTS 子查询将返回一个空结果集，这时候 WHERE 条件为 true，并将返回所有顾客信息。如果顾客有订单，则 NOT EXISTS 子查询的结果集将不为空，WHERE 条件为 false，则不会返回该顾客的信息。
 
 总之，无论是 EXISTS 还是 NOT EXISTS，都是非常有用的 SQL 工具。可以通过它们来结合子查询来动态过滤查询结果，使 SQL 查询变得更加灵活和高效。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=XvFk9&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## in和exists区别
-IN 和 EXISTS 都是用于关系型数据库查询的操作符。不同之处在于：
 
-1.  IN 操作符是根据指定列表中的值来判断是否满足条件，而 EXISTS 操作符则是根据子查询的结果是否有返回记录集来判断。 
-2.  EXISTS 操作符通常比 IN 操作符更快，尤其是在子查询返回记录数很大的情况下。因为 EXISTS 只需要判断是否存在符合条件的记录，而 IN 操作符需要比对整个列表，因此执行效率相对较低。 
-3.  IN 操作符可同时匹配多个值，而 EXISTS 只能匹配一组条件。 
+### in和exists区别
+IN 和 EXISTS 都是用于关系型数据库查询的操作符。不同之处在于（面试题）：
+
+1.  **IN 操作符**是根据指定列表中的**值**来判断是否满足条件，而 **EXISTS 操作符**则是根据子查询的结果**是否有返回记录集**来判断。 
+2.  **EXISTS 操作符通常比 IN 操作符更快**，尤其是在子查询返回记录数很大的情况下。**因为 EXISTS 只需要判断是否存在符合条件的记录，而 IN 操作符需要比对整个列表**，因此执行效率相对较低。 
+3.  IN 操作符可同时匹配**多个值**，而 EXISTS **只能匹配一组条件**。 
 
 下面是一个简单的示例，用于演示 IN 和 EXISTS 之间的区别。假设我们有两个表 orders 和 products，orders 表中记录了订单信息，products 表中记录了商品信息。现在我们想查询所有“手机”和“平板电脑”这两种商品中，至少有一笔订单销售了 $1000 以上的商品：
 
@@ -1606,23 +1654,28 @@ AND EXISTS (
 ```
 
 总之，IN 和 EXISTS 都是用于条件过滤的操作符，但其实现方式和性能特点都不同，需要根据具体情况进行选择和使用。
-# union&union all
+
+---
+## union&union all
+
 不管是union还是union all都可以将两个查询结果集进行合并。
-union会对合并之后的查询结果集进行去重操作。
-union all是直接将查询结果集合并，不进行去重操作。（union all和union都可以完成的话，优先选择union all，union all因为不需要去重，所以效率高一些。）
+**union**会对合并之后的查询结果集进行**去重操作**。
+union all是直接将查询结果集合并，不进行去重操作。（union all和union都可以完成的话，**优先选择union all**，union all因为不需要去重，所以效率高一些。）
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678078225300-461e069f-0c80-4745-88a7-2969acccd076.png#averageHue=%23141210&clientId=ue32f086e-fc2b-4&from=paste&height=488&id=u46d82364&originHeight=488&originWidth=404&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31584&status=done&style=shadow&taskId=u459bc800-2e1c-4247-866e-b06b0313a0c&title=&width=404)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678078278429-e97f96a1-7429-4b68-8df9-3bda3a890797.png#averageHue=%23151210&clientId=ue32f086e-fc2b-4&from=paste&height=884&id=u2ef6109a&originHeight=884&originWidth=408&originalType=binary&ratio=1&rotation=0&showTitle=false&size=60134&status=done&style=shadow&taskId=u8c39e0b0-c274-46f0-8866-347160e1418&title=&width=408)
+
 案例：查询工作岗位是MANAGER和SALESMAN的员工。
 ```sql
 select ename,sal from emp where job='MANAGER'
 union all
 select ename,sal from emp where job='SALESMAN';
 ```
-以上案例采用or也可以完成，那or和union all有什么区别？考虑走索引优化之类的选择union all，其它选择or。
+以上案例采用or也可以完成，那or和union all有什么区别？**考虑走索引优化之类的选择union all，其它选择or**。
 两个结果集合并时，列数量要相同：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678078078467-89b7ba88-52ae-4e70-b5cc-b4fe4a3daf76.png#averageHue=%2312110f&clientId=ue32f086e-fc2b-4&from=paste&height=101&id=u85e05b84&originHeight=101&originWidth=999&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11813&status=done&style=shadow&taskId=u29bd097d-8994-4842-be9e-3bcb8865687&title=&width=999)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=IRARo&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# limit
+
+---
+## limit
 
 1. limit作用：查询第几条到第几条的记录。通常是因为表中数据量太大，需要分页显示。
 2. limit语法格式：
@@ -1647,10 +1700,11 @@ select ename,sal from emp order by sal desc limit 5;
 第1页：limit 0, 3
 第2页：limit 3, 3
 第3页：limit 6, 3
-第pageNo页：limit (pageNo - 1)*pageSize, pageSize
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=bmktU&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 35个DQL练手题
-## 第1题
+第pageNo页：`limit (pageNo - 1)*pageSize, pageSize`
+
+---
+## 35个DQL练手题
+### 第1题
 
 1. 取得每个部门最高薪水的人员名称
 
@@ -1664,7 +1718,8 @@ select deptno,max(sal) as maxsal from emp group by deptno;
 ```sql
 select e.ename,t.* from emp e join (select deptno,max(sal) as maxsal from emp group by deptno) t on e.deptno = t.deptno and e.sal = t.maxsal;
 ```
-## 第2题
+
+### 第2题
 
 2. 哪些人的薪水在部门的平均薪水之上
    
@@ -1673,12 +1728,13 @@ select e.ename,t.* from emp e join (select deptno,max(sal) as maxsal from emp gr
 select deptno,avg(sal) as avgsal from emp group by deptno;
 ```
 
-第二步：将上面的查询结果当做临时表t，让t和emp e表进行表连接，条件是：t.deptno=e.deptno and e.sal>t.avgsal
+第二步：将上面的查询结果当做临时表t，让t和emp e表进行表连接，条件是：`t.deptno=e.deptno and e.sal>t.avgsal`
 
 ```sql
 select e.ename,e.sal,t.* from emp e join (select deptno,avg(sal) as avgsal from emp group by deptno) t on t.deptno=e.deptno and e.sal>t.avgsal;
 ```
-## 第3题
+
+### 第3题
 
 3. 取得每个部门平均薪水的等级
    
@@ -1692,8 +1748,8 @@ select deptno,avg(sal) as avgsal from emp group by deptno;
 ```sql
 select t.*,s.grade from (select deptno,avg(sal) as avgsal from emp group by deptno) t join salgrade s on t.avgsal between s.losal and s.hisal;
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=p5mdX&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第4题
+
+### 第4题
 
 4. 取得部门中（所有人的）平均的薪水等级
    
@@ -1716,7 +1772,7 @@ on
 group by 
   e.deptno;
 ```
-## 第5题
+### 第5题
 
 5. 不准用组函数（Max），取得最高薪水（给出两种解决方案）
    
@@ -1730,8 +1786,8 @@ select sal from emp order by sal desc limit 1;
 ```sql
 select ename,sal from emp where sal not in(select distinct a.sal from emp a join emp b on a.sal < b.sal);
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=r2oDz&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第6题
+
+### 第6题
 
 6. 取得平均薪水最高的部门的部门编号（至少给出两种解决方案）
    
@@ -1745,7 +1801,7 @@ select deptno,avg(sal) as avgsal from emp group by deptno order by avgsal desc l
 ```sql
 select deptno,avg(sal) as avgsal from emp group by deptno having avg(sal)=(select max(t.avgsal) from (select avg(sal) as avgsal from emp group by deptno) t);
 ```
-## 第7题
+### 第7题
 
 7. 取得平均薪水最高的部门的部门名称
    
@@ -1753,7 +1809,7 @@ select deptno,avg(sal) as avgsal from emp group by deptno having avg(sal)=(selec
 ```sql
 select d.dname,avg(e.sal) as avgsal from emp e join dept d on e.deptno=d.deptno group by d.dname order by avgsal desc limit 1;
 ```
-## 第8题
+### 第8题
 
 8. 求平均薪水的等级最低的部门的部门名称
    
@@ -1773,8 +1829,8 @@ select t.*,s.grade from (select d.dname,avg(e.sal) as avgsal from emp e join dep
 ```sql
 select t.*,s.grade from (select d.dname,avg(e.sal) as avgsal from emp e join dept d on e.deptno = d.deptno group by d.dname) t join salgrade s on t.avgsal between s.losal and s.hisal order by s.grade asc limit 1;
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=gxih5&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第9题
+
+### 第9题
 
 9. 取得比普通员工(员工代码没有在mgr字段上出现的)的最高薪水还要高的领导人姓名
    
@@ -1788,26 +1844,26 @@ select max(sal) from emp where empno not in(select mgr from emp where mgr is not
 ```sql
 select ename,sal from emp where sal > (select max(sal) from emp where empno not in(select mgr from emp where mgr is not null));
 ```
-## 第10题
+### 第10题
 
 10. 取得薪水最高的前五名员工
 ```sql
 select ename,sal from emp order by sal desc limit 5;
 ```
-## 第11题
+### 第11题
 
 11. 取得薪水最高的第六到第十名员工
 ```sql
 select ename,sal from emp order by sal desc limit 5, 5;
 ```
-## 第12题
+### 第12题
 
 12. 取得最后入职的5名员工
 ```sql
 select ename,sal,hiredate from emp order by hiredate desc limit 5;
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=rqjpz&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第13题
+
+### 第13题
 
 13. 取得每个薪水等级有多少员工
 
@@ -1821,58 +1877,58 @@ select e.ename,s.grade from emp e join salgrade s on e.sal between s.losal and s
 ```sql
 select s.grade,count(*) from emp e join salgrade s on e.sal between s.losal and s.hisal group by s.grade;
 ```
-## 第14题
+### 第14题
 
 14. 列出所有员工及领导的姓名
 ```sql
 select e.ename 员工名, l.ename 领导名 from emp e left join emp l on e.mgr = l.empno;
 ```
-## 第15题
+### 第15题
 
 15. 列出受雇日期早于其直接上级的所有员工的编号,姓名,部门名称
 ```sql
 select e.ename 员工名,e.hiredate, l.ename 领导名,l.hiredate,d.dname from emp e join emp l on e.mgr = l.empno join dept d on e.deptno = d.deptno where e.hiredate < l.hiredate;
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=tVRuo&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第16题
+
+### 第16题
 
 16. 列出部门名称和这些部门的员工信息,同时列出那些没有员工的部门
 ```sql
 select d.dname,e.ename,e.sal from dept d left join emp e on d.deptno = e.deptno;
 ```
-## 第17题
+### 第17题
 
 17. 列出至少有5个员工的所有部门
 ```sql
 select deptno, count(*) from emp group by deptno having count(*) >= 5;
 ```
-## 第18题
+### 第18题
 
 18. 列出薪金比"SMITH"多的所有员工信息
 ```sql
 select ename,sal from emp where sal > (select sal from emp where ename = 'SMITH');
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=vMkIU&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第19题
+
+### 第19题
 
 19. 列出所有"CLERK"(办事员)的姓名及其部门名称,部门的人数
 ```sql
 select t1.ename,t1.dname,t2.total from (select e.ename,d.dname,d.deptno from emp e join dept d on e.deptno = d.deptno where e.job = 'CLERK') t1 join (select count(*) as total,deptno  from emp group by deptno) t2 on t1.deptno = t2.deptno;
 ```
-## 第20题
+### 第20题
 
 20. 列出最低薪金大于1500的各种工作及从事此工作的全部雇员人数
 ```sql
 select job,min(sal),count(*) from emp group by job having min(sal)>1500;
 ```
-## 第21题
+### 第21题
 
 21. 列出在部门"SALES"<销售部>工作的员工的姓名,假定不知道销售部的部门编号
 ```sql
 select e.ename,d.dname from emp e join dept d on e.deptno = d.deptno where d.dname='sales';
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=SEvqk&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第22题
+
+### 第22题
 
 22. 列出薪金高于公司平均薪金的所有员工,所在部门,上级领导,雇员的工资等级
 ```sql
@@ -1882,83 +1938,83 @@ join dept d on e.deptno = d.deptno
 join salgrade s on e.sal between s.losal and s.hisal 
 where e.sal > (select avg(sal) from emp);
 ```
-## 第23题
+### 第23题
 
 23. 列出与"SCOTT"从事相同工作的所有员工及部门名称
 ```sql
 select e.ename,d.dname,e.job from emp e join dept d on e.deptno=d.deptno where job=(select job from emp where ename ='scott');
 ```
-## 第24题
+### 第24题
 
 24. 列出薪金等于部门30中员工的薪金的其他员工的姓名和薪金
 ```sql
 select ename,sal,deptno from emp where sal in(select distinct sal from emp where deptno=30) and deptno <> 30;
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=SgqpX&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第25题
+
+### 第25题
 
 25. 列出薪金高于在部门30工作的所有员工的薪金的员工姓名和薪金.部门名称
 ```sql
 select e.ename,e.sal,d.dname from emp e join dept d on e.deptno = d.deptno where sal > (select max(sal) from emp where deptno=30);
 ```
-## 第26题
+### 第26题
 
 26. 列出在每个部门工作的员工数量,平均工资和平均服务期限
 ```sql
 select avg(sal),count(*),deptno,avg(datediff(now(),hiredate)) as avgtime from emp group by deptno;
 ```
-## 第27题
+### 第27题
 
 27. 列出所有员工的姓名、部门名称和工资
 ```sql
 select e.ename,e.sal,d.dname from emp e join dept d on e.deptno = d.deptno;
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=wiyCY&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第28题
+
+### 第28题
 
 28. 列出所有部门的详细信息和人数
 ```sql
 select d.deptno,d.dname,d.loc,count(e.deptno) from emp e right join dept d on e.deptno=d.deptno group by  d.deptno,d.dname,d.loc;
 ```
-## 第29题
+### 第29题
 
 29. 列出各种工作的最低工资及从事此工作的雇员姓名
 ```sql
 select t.job,t.minsal,e.ename from emp e join (select job,min(sal) as minsal from emp group by job) t on e.job=t.job and e.sal=t.minsal;
 ```
-## 第30题
+### 第30题
 
 30. 列出各个部门的MANAGER(领导)的最低薪金
 ```sql
 select deptno,min(sal) from emp where job='MANAGER' group by deptno
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=kU3lu&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第31题
+
+### 第31题
 
 31. 列出所有员工的年工资,按年薪从低到高排序
 ```sql
 select ename,(sal+ifnull(comm,0))*12 as yearsal from emp order by yearsal asc;
 ```
-## 第32题
+### 第32题
 
 32. 求出员工领导的薪水超过3000的员工名称与领导名称
 ```sql
 select e.ename 员工名, l.ename 领导名 from emp e join emp l on e.mgr = l.empno where l.sal>3000;
 ```
-## 第33题
+### 第33题
 
 33. 求出部门名称中,带'S'字符的部门员工的工资合计、部门人数
 ```sql
 select d.dname,ifnull(sum(sal),0) as sumsal,count(e.ename) from emp e right join dept d on e.deptno=d.deptno where d.dname like '%S%' group by d.dname;
 ```
-## 第34题
+### 第34题
 
 34. 给任职日期超过30年的员工加薪10%
 ```sql
 update emp set sal=sal*1.1 where datediff(now(),hiredate)/365 > 30;
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=oteIN&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 第35题
+
+### 第35题
 
 35. 某公司面试题
 
@@ -2027,4 +2083,4 @@ select a.*,b.avgscore from (select s.sno,s.sname,count(sc.scgrade) as num from s
 ```sql
 select sc.sno,s.sname from sc join s on sc.sno=s.sno where sc.cno=1 and sc.sno in(select sno from sc where cno=2);
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=mxe5h&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+

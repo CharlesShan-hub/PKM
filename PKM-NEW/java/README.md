@@ -344,6 +344,7 @@
 * [[第01章 数据库概述]]
 * [[第02章 MySQL的安装]]
 * [[第03章 初始化数据]]
+* [[第04章 查询DQL专题]]
 ### JavaWeb
 
 > 主要根据 [【# 全网首发AI+JavaWeb开发入门，Tlias教学管理系统项目】](https://www.bilibili.com/video/BV1yGydYEE3H)进行学习记录
