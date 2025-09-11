@@ -3,8 +3,8 @@
 ## 资料
 
 * 文档去找mdn： https://developer.mozilla.org/en-US/
-* 综合案例：[[PKM-NEW/java/notes/javaweb/assets/ex_h5c3/main.html|main]]
-* vue案例：[[PKM-NEW/java/notes/javaweb/assets/ex_vue_basic/main.html|main]]
+* 综合案例：[[PKM-NEW/java/notes/oldjavaweb/assets/ex_h5c3/main.html|main]]
+* vue案例：[[PKM-NEW/java/notes/oldjavaweb/assets/ex_vue_basic/main.html|main]]
 
 ## HTML
 

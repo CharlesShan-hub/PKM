@@ -1,4 +1,7 @@
-# 新建用户
+# DBA命令
+
+---
+## 新建用户
 创建一个用户名为java1，密码设置为123的本地用户：
 ```sql
 create user 'java1'@'localhost' identified by '123';
@@ -13,8 +16,9 @@ create user 'java2'@'%' identified by '123';
 ```sql
 select user,host from mysql.user;
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=L1FfU&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 给用户授权
+
+---
+## 给用户授权
 授权语法：grant [权限1，权限2...] on 库名.表名 to '用户名'@'主机名/IP地址';
 给本地用户授权：grant [权限1，权限2...] on 库名.表名 to '用户名'@'localhost';
 给外网用户授权：grant [权限1，权限2...] on 库名.表名 to '用户名'@'%';
@@ -42,9 +46,10 @@ with grant option：
 # with grant option的作用是：java2用户也可以给其他用户授权了。
 grant select,insert,delete,update on *.* to 'java2'@'%' with grant option;
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=SE1yi&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 撤销用户权限
-revoke 权限 on 数据库名.表名 from '用户'@'IP地址';
+
+---
+## 撤销用户权限
+`revoke 权限 on 数据库名.表名 from '用户'@'IP地址';`
 ```sql
 # 撤销本地用户java1的insert、update、delete权限
 revoke insert, update, delete on powernode.* from 'java1'@'localhost'
@@ -56,7 +61,8 @@ revoke insert on powernode.* from 'java2'@'%'
 
 注意：撤销权限时 “数据库名.表名” 不能随便写，要求和授权语句时的 “数据库名.表名” 一致。
 
-# 修改用户的密码
+---
+## 修改用户的密码
 具有管理用户权限的用户才能修改密码，例如root账户可以修改其他账户的密码：
 ```sql
 # 本地用户修改密码
@@ -67,8 +73,9 @@ alter user 'java2'@'%' identified by '456';
 ```
 修改密码后，也需要刷新权限才能生效：flush privileges
 以上是MySQL8版本以后修改用户密码的方式。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=zlA3C&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 修改用户名
+
+---
+## 修改用户名
 ```sql
 rename user '原始用户名'@'localhost' to '新用户名'@'localhost';
 rename user '原始用户名'@'localhost' to '新用户名'@'%';
@@ -77,14 +84,17 @@ rename user 'java1'@'localhost' to 'java11'@'localhost';
 rename user 'java11'@'localhost' to 'java123'@'%';
 ```
 flush privileges;
-# 删除用户
+
+---
+## 删除用户
 ```sql
 drop user 'java123'@'localhost';
 drop user 'java2'@'%';
 ```
 flush privileges;
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=OUoZv&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-# 数据备份
+
+---
+## 数据备份
 
 - 导出数据（请在登录mysql数据库之前进行）
 ```sql
@@ -111,4 +121,4 @@ create  database powernode;
 use powernode;
 source d:/powernode.sql
 ```
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=MMQTP&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+

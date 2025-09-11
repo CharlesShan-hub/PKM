@@ -1,4 +1,4 @@
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=PC9Zj&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+# MySQL客户端工具
 
 1. 对于后端开发人员来说，一个好的MySQL客户端工具可以大大提升开发效率。目前企业中使用最多的是以下三个：
    1. Navicat for MySQL

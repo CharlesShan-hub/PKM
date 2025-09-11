@@ -151,7 +151,7 @@ public class HelloController {
 ---
 ## 整合 MyBatis
 
-我们把👉[[PKM-NEW/java/notes/javaweb/mybatis/introduction|introduction]]，升级成注解开发版本
+我们把👉[[PKM-NEW/java/notes/oldjavaweb/mybatis/introduction|introduction]]，升级成注解开发版本
 
 ### 数据准备
 ```sql

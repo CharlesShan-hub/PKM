@@ -349,13 +349,27 @@
 * [[第06章 三范式]]
 * [[第07章 视图]]
 * [[第08章 事务]]
-* 
+* [[第09章 DBA命令]]
+* [[第10章 MySQL客户端工具]]
+* [[第11章 企业真题]]
+
+### JDBC
+
+> 按照动力节点往年视频学习（百度网盘）
+
+* [[jdbc]]
+
 ### JavaWeb
+
+* [[servlet]]
+* 
+
+### JavaWeb（黑马）
 
 > 主要根据 [【# 全网首发AI+JavaWeb开发入门，Tlias教学管理系统项目】](https://www.bilibili.com/video/BV1yGydYEE3H)进行学习记录
 > 第一部分：前端Web基础（2天）：HTML、CSS、JS、Vue、Ajax/Axios
 
-* 第一部分：前端Web基础（2天）：[[PKM-NEW/java/notes/javaweb/java-h5c3|java-h5c3]]
+* 第一部分：前端Web基础（2天）：[[java-h5c3|java-h5c3]]
 	1. Web开发-导学视频  👌
 	2. Web前端开发初识  👌
 	3. HTML-CSS-入门程序  👌
@@ -386,7 +400,7 @@
 	28. Vue-常用指令-v-model与v-on    👌
 	29. Ajax-入门 👌
 	30. Ajax-案例 👌
-* 第二部分：后端Web基础（4天）：[[PKM-NEW/java/notes/javaweb/maven|maven]]
+* 第二部分：后端Web基础（4天）：[[maven|maven]]
 	31. Maven-课程介绍  👌
 	32. Maven-概述-介绍&安装  👌
 	33. Maven-IDEA集成  👌
@@ -567,9 +581,9 @@
 
 ## Springboot
 
-1. [[PKM-NEW/java/notes/javaweb/springboot/introduction|introduction]]
-2. [[PKM-NEW/java/notes/javaweb/springboot/hello-world|hello-world]]
-3. [[PKM-NEW/java/notes/javaweb/springboot/config|config]]
+1. [[PKM-NEW/java/notes/oldjavaweb/springboot/introduction|introduction]]
+2. [[PKM-NEW/java/notes/oldjavaweb/springboot/hello-world|hello-world]]
+3. [[config|config]]
 
 
 ## 后续内容
