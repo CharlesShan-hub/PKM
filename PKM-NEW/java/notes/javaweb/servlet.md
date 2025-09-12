@@ -155,13 +155,13 @@
       - JAVA_HOME=JDK的根
       - CATALINA_HOME=Tomcat服务器的根
 - 关于Tomcat服务器的目录
-  - bin ： 这个目录是Tomcat服务器的命令文件存放的目录，比如：启动Tomcat，关闭Tomcat等。
-  - conf： 这个目录是Tomcat服务器的配置文件存放目录。（server.xml文件中可以配置端口号，默认Tomcat端口是8080）
-  - lib ：这个目录是Tomcat服务器的核心程序目录，因为Tomcat服务器是Java语言编写的，这里的jar包里面都是class文件。
-  - logs: Tomcat服务器的日志目录，Tomcat服务器启动等信息都会在这个目录下生成日志文件。
-  - temp：Tomcat服务器的临时目录。存储临时文件。
-  - webapps：这个目录当中就是用来存放大量的webapp（web application：web应用）
-  - work：这个目录是用来存放JSP文件翻译之后的java文件以及编译之后的class文件。
+  - **bin** ： 这个目录是Tomcat服务器的命令文件存放的目录，比如：启动Tomcat，关闭Tomcat等。
+  - **conf**： 这个目录是Tomcat服务器的配置文件存放目录。（server.xml文件中可以配置端口号，默认Tomcat端口是8080）
+  - **lib** ：这个目录是Tomcat服务器的核心程序目录，因为Tomcat服务器是Java语言编写的，这里的jar包里面都是class文件。
+  - **logs**: Tomcat服务器的日志目录，Tomcat服务器启动等信息都会在这个目录下生成日志文件。
+  - **temp**：Tomcat服务器的临时目录。存储临时文件。
+  - **webapps**：这个目录当中就是用来存放大量的webapp（web application：web应用）
+  - **work**：这个目录是用来存放JSP文件翻译之后的java文件以及编译之后的class文件。
 
 - 配置Tomcat服务器需要哪些环境变量？
   - JAVA_HOME=JDK的根
@@ -211,9 +211,10 @@
   - 访问这个地址，可以展示一个用户列表页面。但是这个用户列表页面是写死在HTML文件当中的。这种资源我们称为静态资源。怎么能变成动态资源。显然需要连接数据库。
   - 连接数据库需要JDBC程序，也就是说需要编写Java程序连接数据库，数据库中有多少条记录，页面上就显示多少条记录，这种技术被称为动态网页技术。（动态网页技术并不是说页面中有flash动画。动态网页技术是说页面中的数据是动态的，根据数据库中数据的变化而变化。）
 
+---
 ## 对于一个动态的web应用来说，一个请求和响应的过程有多少个角色参与，角色和角色之间有多少个协议
 
-![BS结构系统的通信原理2](D:\course\01-Servlet\文档\BS结构系统的通信原理2.png)
+![[BS结构系统的通信原理2.png]]
 
 - 有哪些角色（在整个BS结构的系统当中，有哪些人参与进去了）
   - 浏览器软件的开发团队（浏览器软件太多了：谷歌浏览器、火狐浏览器、IE浏览器....）
@@ -227,7 +228,7 @@
   - Browser  和   WebServer之间有一套传输协议：HTTP协议。（超文本传输协议。）
   - webapp开发团队  和  DB Server的开发团队之间有一套规范：JDBC规范。
 
-![BS结构系统的角色和协议](D:\course\01-Servlet\文档\BS结构系统的角色和协议.png)
+![[BS结构系统的角色和协议.png]]
 
 - Servlet规范是一个什么规范？
   - 遵循Servlet规范的webapp，这个webapp就可以放在不同的WEB服务器中运行。（因为这个webapp是遵循Servlet规范的。）
@@ -241,6 +242,8 @@
     - 规范了一个合法有效的web应用它的目录结构应该是怎样的。
     - .....
 
+
+---
 ## 开发一个带有Servlet（Java小程序）的webapp（重点）
 
 - 开发步骤是怎样的？
@@ -288,20 +291,20 @@
     - Servlet接口（Servlet.class文件）是Oracle提供的。（最原始的是sun公司提供的。）
     - Servlet接口是JavaEE的规范中的一员。
     - Tomcat服务器实现了Servlet规范，所以Tomcat服务器也需要使用Servlet接口。Tomcat服务器中应该有这个接口，Tomcat服务器的CATALINA_HOME\lib目录下有一个servlet-api.jar，解压这个servlet-api.jar之后，你会看到里面有一个Servlet.class文件。
-    - 重点：从JakartaEE9开始，Servlet接口的全名变了：jakarta.servlet.Servlet
+    - 重点：从JakartaEE9开始，Servlet接口的全名变了：`jakarta.servlet.Servlet`
     - 注意：编写这个Java小程序的时候，java源代码你愿意在哪里就在哪里，位置无所谓，你只需要将java源代码编译之后的class文件放到classes目录下即可。
 
   - 第七步：编译我们编写的HelloServlet
 
     - 重点：你怎么能让你的HelloServlet编译通过呢？配置环境变量CLASSPATH
 
-      CLASSPATH=.;C:\dev\apache-tomcat-10.0.12\lib\servlet-api.jar
+      `CLASSPATH=.;C:\dev\apache-tomcat-10.0.12\lib\servlet-api.jar`
 
     - 思考问题：以上配置的CLASSPATH和Tomcat服务器运行有没有关系？
 
       - 没有任何关系，以上配置这个环境变量只是为了让你的HelloServlet能够正常编译生成class文件。
 
-  - 第八步：将以上编译之后的HelloServlet.class文件拷贝到WEB-INF\classes目录下。
+  - 第八步：将以上编译之后的HelloServlet.class文件拷贝到`WEB-INF\classes`目录下。
 
   - 第九步：在web.xml文件中编写配置信息，让“请求路径”和“Servlet类名”关联在一起。
 
@@ -377,6 +380,7 @@
     - Tomcat服务器通过反射机制，创建com.bjpowernode.servlet.HelloServlet的对象。
     - Tomcat服务器调用com.bjpowernode.servlet.HelloServlet对象的service方法。
 
+---
 ## 关于JavaEE的版本
 
 - JavaEE目前最高版本是 JavaEE8
@@ -389,13 +393,14 @@
 - 如果你之前的项目还是在使用javax.servlet.Servlet，那么你的项目无法直接部署到Tomcat10+版本上。你只能部署到Tomcat9-版本上。在Tomcat9以及Tomcat9之前的版本中还是能够识别javax.servlet这个包。
 
 
-
+---
 ## 解决Tomcat服务器在DOS命令窗口中的乱码问题（控制台乱码）
 
 将CATALINA_HOME/conf/logging.properties文件中的内容修改如下：
 
 java.util.logging.ConsoleHandler.encoding = GBK
 
+---
 ## 向浏览器响应一段HTML代码
 
 ```java
@@ -406,11 +411,13 @@ public void service(ServletRequest request, ServletResponse response){
 }
 ```
 
+---
 ## 在Servlet中连接数据库，怎么做？
 
 - Servlet是Java程序，所以在Servlet中完全可以编写JDBC代码连接数据库。
 - 在一个webapp中去连接数据库，需要将驱动jar包放到WEB-INF/lib目录下。（com.mysql.cj.jdbc.Driver 这个类就在驱动jar包当中。）
 
+---
 ## 在集成开发环境当中开发Servlet程序
 
 - 集成开发工具很多，其中目前使用比较多的是：
@@ -425,7 +432,7 @@ public void service(ServletRequest request, ServletResponse response){
     - 这里新建的是一个普通的JavaSE模块（这里先不要新建Java Enterprise模块）
     - 这个Module自动会被放在javaweb的project下面。
     - 这个Module起名：servlet01
-  - 第三步：让Module变成JavaEE的模块。（让Module变成webapp的模块。符合webapp规范。符合Servlet规范的Module）
+  - 第三步：让Module变成JavaEE的模块。（让Module变成webapp的模块。符合webapp规范。符合Servlet规范的Module） （新版本idea，双击shift然后输入 Add Framework Support）
     - 在Module上点击右键：Add Framework Support...（添加框架支持）
     - 在弹出的窗口中，选择Web Application（选择的是webapp的支持）
     - 选择了这个webapp的支持之后，IDEA会自动给你生成一个符合Servlet规范的webpp目录结构。
@@ -458,8 +465,6 @@ public void service(ServletRequest request, ServletResponse response){
       
   </web-app>
   ```
-
-  
 
   - 第九步：给一个html页面，在HTML页面中编写一个超链接，用户点击这个超链接，发送请求，Tomcat执行后台的StudentServlet。
 
@@ -500,6 +505,9 @@ public void service(ServletRequest request, ServletResponse response){
 
   - 第十二步：打开浏览器，在浏览器地址栏上输入：http://localhost:8080/xmm/student.html
 
+https://blog.csdn.net/huweiliyi/article/details/107637785
+
+---
 ## Servlet对象的生命周期
 
 - 什么是Servlet对象生命周期？
@@ -521,7 +529,7 @@ public void service(ServletRequest request, ServletResponse response){
   - 我们自己new的Servlet对象是不受WEB容器管理的。
   - WEB容器创建的Servlet对象，这些Servlet对象都会被放到一个集合当中（HashMap），只有放到这个HashMap集合中的Servlet才能够被WEB容器管理，自己new的Servlet对象不会被WEB容器管理。（自己new的Servlet对象不在容器当中）
   - web容器底层应该有一个HashMap这样的集合，在这个集合当中存储了Servlet对象和请求路径之间的关系
-  - ![WEB容器中的Map集合](D:\course\01-Servlet\文档\WEB容器中的Map集合.png)
+  - ![[WEB容器中的Map集合.png]]
 
 - 研究：服务器在启动的Servlet对象有没有被创建出来（默认情况下）？
 
