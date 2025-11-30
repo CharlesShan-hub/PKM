@@ -1,6 +1,15 @@
 # Servlet
 
 ---
+## 我学到了啥（小结）
+
+* Servlet配置：tomcat手动配置，idea中配置Servlet配置
+* Servlet接口，GenericServlet接口，Servlet中的方法（构造函数，init，servise，destroy）
+* ServletConfig接口：在web.xml里边配置，并在Servlet实现类中使用
+* ServletContext接口：一个Servlet对象对应一个ServletConfig
+* HttpServlet接口，HttpServletRequest接口，HttpServletResponse接口
+
+---
 ## 关于系统架构
 
 1. 系统架构包括什么形式？
@@ -505,60 +514,159 @@ public void service(ServletRequest request, ServletResponse response){
 
   - 第十二步：打开浏览器，在浏览器地址栏上输入：http://localhost:8080/xmm/student.html
 
-https://blog.csdn.net/huweiliyi/article/details/107637785
+---
+## 我的实践
+
+https://www.jetbrains.com/help/idea/creating-and-running-your-first-jakarta-ee-application.html#run_config
+
+1. idea 首先要创建好maven环境，那个path是到lib，比如`/opt/homebrew/Cellar/maven/3.9.11/libexec/`
+2. 如果遇到奇怪的错误就maven clean一下，然后要maven创建package，要不后边找不到包
+3. idea -> 新建jakarta,maven -> web项目 -> 勾选web
+4. 默认会生成一些东西。下面如果要连接数据库，就写下边的案例
+
+```java
+package com.charles.servlet;  
+  
+import jakarta.servlet.*;  
+import java.io.IOException;  
+import java.sql.Connection;  
+import java.sql.DriverManager;  
+import java.sql.PreparedStatement;  
+import java.sql.ResultSet;  
+  
+public class StudentServlet implements Servlet {  
+  
+    @Override  
+    public void init(ServletConfig servletConfig) throws ServletException {  
+        System.out.println("StudentServlet init");  
+    }  
+  
+    @Override  
+    public ServletConfig getServletConfig() {  
+        return null;  
+    }  
+  
+    @Override  
+    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {  
+        Connection conn = null;  
+        PreparedStatement ps = null;  
+        ResultSet rs = null;  
+        try{  
+            Class.forName("com.mysql.cj.jdbc.Driver");  
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/learnjdbc", "root", "");  
+            ps = conn.prepareStatement("select * from tbl_student");  
+            rs = ps.executeQuery();  
+            while(rs.next()){  
+                System.out.println(rs.getInt(1)+"--"+rs.getString(2)+"--"+rs.getInt(3));  
+            }  
+        }catch (Exception e){  
+            e.printStackTrace();  
+        }finally {  
+            if(conn!=null)  
+                try{  
+                    conn.close();  
+                } catch (Exception e) {  
+                    e.printStackTrace();  
+                }  
+            if(ps!=null)  
+                try{  
+                    ps.close();  
+                } catch (Exception e) {  
+                    e.printStackTrace();  
+                }  
+        }  
+    }  
+  
+    @Override  
+    public String getServletInfo() {  
+        return "";  
+    }  
+  
+    @Override  
+    public void destroy() {  
+  
+    }  
+}
+```
+
+5. 然后去配置连接
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>  
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"  
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"  
+         version="6.0">  
+    <servlet>  
+        <servlet-name>StudentServlet</servlet-name>  
+        <servlet-class>com.charles.servlet.StudentServlet</servlet-class>  
+    </servlet>  
+    <servlet-mapping>  
+        <servlet-name>StudentServlet</servlet-name>  
+        <url-pattern>/student-servlet</url-pattern>  
+    </servlet-mapping>  
+</web-app>
+```
+
+6. 我实在默认生成的jsp后边加入了一行我的链接
+
+```jsp
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>  
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <title>JSP - Hello World</title>  
+</head>  
+<body>  
+<h1><%= "Hello World!" %></h1>  
+<br/>  
+<a href="hello-servlet">Hello Servlet</a>  
+<br/>  
+<a href="student-servlet">Student List</a>  
+</body>  
+</html>
+```
+
+7. 要注意，比如项目名是servlet，浏览器会默认加一个后缀_war_exploded，比如访问：`http://localhost:8080/servlet_war_exploded/student-servlet`
 
 ---
 ## Servlet对象的生命周期
 
-- 什么是Servlet对象生命周期？
-
-  - Servlet对象什么时候被创建。
-  - Servlet对象什么时候被销毁。
-  - Servlet对象创建了几个？
-  - Servlet对象的生命周期表示：一个Servlet对象从出生在最后的死亡，整个过程是怎样的。
-
+* 什么是Servlet对象生命周期？
+	- Servlet对象什么时候被创建。
+	- Servlet对象什么时候被销毁。
+	- Servlet对象创建了几个？
+	- Servlet对象的生命周期表示：一个Servlet对象从出生在最后的死亡，整个过程是怎样的。
 - Servlet对象是由谁来维护的？
-
-  - Servlet对象的创建，对象上方法的调用，对象最终的销毁，Javaweb程序员是无权干预的。
-  - Servlet对象的生命周期是由Tomcat服务器（WEB Server）全权负责的。
-  - Tomcat服务器通常我们又称为：WEB容器。（这个叫法你要知道【WEB Container】）
-  - WEB容器来管理Servlet对象的死活。
-
+	- Servlet对象的创建，对象上方法的调用，对象最终的销毁，Javaweb程序员是无权干预的。
+	- Servlet对象的生命周期是由Tomcat服务器（WEB Server）全权负责的。
+	- Tomcat服务器通常我们又称为：WEB容器。（这个叫法你要知道【WEB Container】）
+	- WEB容器来管理Servlet对象的死活。
 - 思考：我们自己new的Servlet对象受WEB容器的管理吗？
-
-  - 我们自己new的Servlet对象是不受WEB容器管理的。
-  - WEB容器创建的Servlet对象，这些Servlet对象都会被放到一个集合当中（HashMap），只有放到这个HashMap集合中的Servlet才能够被WEB容器管理，自己new的Servlet对象不会被WEB容器管理。（自己new的Servlet对象不在容器当中）
-  - web容器底层应该有一个HashMap这样的集合，在这个集合当中存储了Servlet对象和请求路径之间的关系
-  - ![[WEB容器中的Map集合.png]]
-
+	- 我们自己new的Servlet对象是不受WEB容器管理的。
+	- WEB容器创建的Servlet对象，这些Servlet对象都会被放到一个集合当中（HashMap），只有放到这个HashMap集合中的Servlet才能够被WEB容器管理，自己new的Servlet对象不会被WEB容器管理。（自己new的Servlet对象不在容器当中）
+	- web容器底层应该有一个HashMap这样的集合，在这个集合当中存储了Servlet对象和请求路径之间的关系
+	![[WEB容器中的Map集合.png]]
 - 研究：服务器在启动的Servlet对象有没有被创建出来（默认情况下）？
-
-  - 在Servlet中提供一个无参数的构造方法，启动服务器的时候看看构造方法是否执行。
-  - 经过测试得出结论：默认情况下，服务器在启动的时候Servlet对象并不会被实例化。
-  - 这个设计是合理的。用户没有发送请求之前，如果提前创建出来所有的Servlet对象，必然是耗费内存的，并且创建出来的Servlet如果一直没有用户访问，显然这个Servlet对象是一个废物，没必要先创建。
-
-- 怎么让服务器启动的时候创建Servlet对象呢？
-
-  - 在servlet标签中添加<load-on-startup>子标签，在该子标签中填写整数，越小的整数优先级越高。
-
-  - ```xml
-    <servlet>
-        <servlet-name>aservlet</servlet-name>
-        <servlet-class>com.bjpowernode.javaweb.servlet.AServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>aservlet</servlet-name>
-        <url-pattern>/a</url-pattern>
-    </servlet-mapping>
-    ```
+	- 在Servlet中提供一个无参数的构造方法，启动服务器的时候看看构造方法是否执行。
+	- 经过测试得出结论：默认情况下，**服务器在启动的时候Servlet对象并不会被实例化**。
+	- 这个设计是合理的。用户没有发送请求之前，如果提前创建出来所有的Servlet对象，必然是耗费内存的，并且创建出来的Servlet如果一直没有用户访问，显然这个Servlet对象是一个废物，没必要先创建。
+- 怎么让服务器启动的时候创建Servlet对象呢？在servlet标签中添加`<load-on-startup>`子标签，在该子标签中填写整数，越小的整数优先级越高。
+	```xml
+		<servlet>
+			<servlet-name>aservlet</servlet-name>
+			<servlet-class>com.bjpowernode.javaweb.servlet.AServlet</servlet-class>
+			<load-on-startup>1</load-on-startup>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>aservlet</servlet-name>
+			<url-pattern>/a</url-pattern>
+		</servlet-mapping>
+	```
 
 - Servlet对象生命周期
-
-  - 默认情况下服务器启动的时候AServlet对象并没有被实例化
-
-  - 用户发送第一次请求的时候，控制台输出了以下内容：
-
+	- 默认情况下服务器启动的时候AServlet对象并没有被实例化
+	- 用户发送第一次请求的时候，控制台输出了以下内容：
     ```
     AServlet无参数构造方法执行了
     AServlet's init method execute!
@@ -566,7 +674,6 @@ https://blog.csdn.net/huweiliyi/article/details/107637785
     ```
 
   - 根据以上输出内容得出结论：
-
     - 用户在发送第一次请求的时候Servlet对象被实例化（AServlet的构造方法被执行了。并且执行的是无参数构造方法。）
     - AServlet对象被创建出来之后，Tomcat服务器马上调用了AServlet对象的init方法。（init方法在执行的时候，AServlet对象已经存在了。已经被创建出来了。）
     - 用户发送第一次请求的时候，init方法执行之后，Tomcat服务器马上调用AServlet对象的service方法。
@@ -639,6 +746,7 @@ https://blog.csdn.net/huweiliyi/article/details/107637785
       - 通常在destroy方法当中，进行资源的关闭。马上对象要被销毁了，还有什么没有关闭的，抓紧时间关闭资源。还有什么资源没保存的，抓紧时间保存一下。
 
 
+---
 ## GenericServlet
 
 - 我们编写一个Servlet类直接实现Servlet接口有什么缺点？
@@ -700,13 +808,12 @@ https://blog.csdn.net/huweiliyi/article/details/107637785
       ```
 
 
-
+---
 ## ServletConfig
 
 - 什么是ServletConfig？
-
-  - Servlet对象的配置信息对象。
-  - ServletConfig对象中封装了<servlet></servlet>标签中的配置信息。（web.xml文件中servlet的配置信息）
+	- Servlet对象的配置信息对象。
+	- ServletConfig对象中封装了<servlet></servlet>标签中的配置信息。（web.xml文件中servlet的配置信息）
 
 - 一个Servlet对应一个ServletConfig对象。
 
@@ -727,11 +834,181 @@ https://blog.csdn.net/huweiliyi/article/details/107637785
 
   - 以上方法在Servlet类当中，都可以使用this去调用。因为GenericServlet实现了ServletConfig接口。
 
+默认的配置可以在配置文件中指定
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+    
+    <!-- StudentServlet 配置 -->
+    <servlet>
+        <servlet-name>StudentServlet</servlet-name>
+        <servlet-class>com.charles.servlet.StudentServlet</servlet-class>
+        
+        <!-- 数据库连接配置参数 -->
+        <init-param>
+            <param-name>driver</param-name>
+            <param-value>com.mysql.cj.jdbc.Driver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:mysql://localhost:3306/student_db</param-value>
+        </init-param>
+        <init-param>
+            <param-name>user</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>root1234</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>StudentServlet</servlet-name>
+        <url-pattern>/student-servlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+```
+
+然后调用的时候
+
+```java
+package com.charles.servlet;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class StudentServlet implements Servlet {
+    
+    private static final Logger LOGGER = Logger.getLogger(StudentServlet.class.getName());
+    private ServletConfig servletConfig;
+    
+    @Override
+    public void init(ServletConfig servletConfig) throws ServletException {
+        this.servletConfig = servletConfig;
+        LOGGER.info("StudentServlet initialized");
+        
+        // 加载数据库驱动
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            LOGGER.info("MySQL JDBC Driver loaded successfully");
+        } catch (ClassNotFoundException e) {
+            LOGGER.log(Level.SEVERE, "Failed to load MySQL JDBC Driver", e);
+            throw new ServletException("Failed to load database driver", e);
+        }
+    }
+
+    @Override
+    public ServletConfig getServletConfig() {
+        return this.servletConfig;
+    }
+
+    @Override
+    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+        List<Student> students = new ArrayList<>();
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM tbl_student");
+             ResultSet rs = ps.executeQuery()) {
+            
+            while (rs.next()) {
+                Student student = new Student(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("age")
+                );
+                students.add(student);
+                LOGGER.info("Retrieved student: " + student);
+            }
+            
+            // 这里可以添加将学生数据输出到响应的逻辑
+            response.setContentType("text/plain");
+            response.getWriter().println("Retrieved " + students.size() + " students");
+            
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Database access error", e);
+            throw new ServletException("Database access error", e);
+        }
+    }
+    
+    private Connection getConnection() throws SQLException {
+        // 从web.xml获取配置参数（如果配置了）
+        String url = servletConfig.getInitParameter("url");
+        String user = servletConfig.getInitParameter("user");
+        String password = servletConfig.getInitParameter("password");
+        
+        // 如果没有配置参数，使用默认值
+        if (url == null) url = "jdbc:mysql://localhost:3306/learnjdbc";
+        if (user == null) user = "root";
+        if (password == null) password = "";
+        
+        return DriverManager.getConnection(url, user, password);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "StudentServlet handles student data operations";
+    }
+
+    @Override
+    public void destroy() {
+        LOGGER.info("StudentServlet destroyed");
+    }
+    
+    // 内部Student类
+    private static class Student {
+        private final int id;
+        private final String name;
+        private final int age;
+        
+        public Student(int id, String name, int age) {
+            this.id = id;
+            this.name = name;
+            this.age = age;
+        }
+        
+        @Override
+        public String toString() {
+            return id + "--" + name + "--" + age;
+        }
+    }
+}
+```
+
+---
 ## ServletContext
 
-- 一个Servlet对象对应一个ServletConfig。100个Servlet对象则对应100个ServletConfig对象。
+看这个： https://www.cnblogs.com/LJY-YSWZ/p/17535870.html
 
-- 只要在同一个webapp当中，只要在同一个应用当中，所有的Servlet对象都是共享同一个ServletContext对象的。
+- **一个Servlet对象对应一个ServletConfig**。100个Servlet对象则对应100个ServletConfig对象。
+
+- 只要在**同一个webapp**当中，只要在同一个应用当中，**所有的Servlet对象都是共享同一个ServletContext对象**的。
+
+* 下面方法在Servlet类当中，都可以使用this去调用。因为GenericServlet实现了ServletConfig接口。
+	```java
+	// 通过初始化参数的name获取value
+	public String getInitParameter(String name); 
+	
+	// 获取所有的初始化参数的name
+	public Enumeration<String> getInitParameterNames(); 
+	
+	// 获取ServletContext对象
+	public ServletContext getServletContext(); 
+	
+	// 获取Servlet的name
+	public String getServletName(); 
+	
+	```
 
 - ServletContext对象在服务器启动阶段创建，在服务器关闭的时候销毁。这就是ServletContext对象的生命周期。ServletContext对象是应用级对象。
 
@@ -851,6 +1128,173 @@ https://blog.csdn.net/huweiliyi/article/details/107637785
     - NoSQL数据库。非关系型数据库。缓存数据库。
   - 向ServletContext应用域中存储数据，也等于是将数据存放到缓存cache当中了。
 
+---
+## 我的实验
+
+
+```java
+package com.charles.servlet;  
+  
+import jakarta.servlet.*;  
+import java.io.*;  
+import java.util.*;  
+  
+public class ContextStudentServlet extends GenericServlet {  
+  
+    @Override  
+    public void init() throws ServletException {  
+        super.init();  
+        // 可以在初始化时获取 context-param        ServletContext context = getServletContext();  
+        String appName = context.getInitParameter("app.name");  
+        System.out.println("Application initialized: " + appName);  
+    }  
+  
+    @Override  
+    public void service(ServletRequest request, ServletResponse response)  
+            throws ServletException, IOException {  
+  
+        // 设置响应内容类型  
+        response.setContentType("text/html;charset=UTF-8");  
+        PrintWriter out = response.getWriter();  
+  
+        // 获取 ServletContext        ServletContext context = getServletContext();  
+  
+        out.println("<html><head><title>Context Parameters Demo</title></head><body>");  
+        out.println("<h2>ContextStudentServlet using GenericServlet</h2>");  
+  
+        // 显示 context-param 参数  
+        out.println("<h3>Context Parameters:</h3>");  
+        out.println("<ul>");  
+        out.println("<li>App Name: " + context.getInitParameter("app.name") + "</li>");  
+        out.println("<li>Version: " + context.getInitParameter("app.version") + "</li>");  
+        out.println("<li>Admin Email: " + context.getInitParameter("admin.email") + "</li>");  
+        out.println("<li>Max Students: " + context.getInitParameter("max.students") + "</li>");  
+        out.println("<li>Debug Mode: " + context.getInitParameter("debug.mode") + "</li>");  
+        out.println("</ul>");  
+  
+        // 获取所有 context-param 名称  
+        out.println("<h3>All Context Parameters:</h3>");  
+        out.println("<ul>");  
+        Enumeration<String> paramNames = context.getInitParameterNames();  
+        while (paramNames.hasMoreElements()) {  
+            String paramName = paramNames.nextElement();  
+            String paramValue = context.getInitParameter(paramName);  
+            out.println("<li>" + paramName + " = " + paramValue + "</li>");  
+        }  
+        out.println("</ul>");  
+  
+        // 使用其他 ServletContext 方法  
+        out.println("<h3>Other Context Information:</h3>");  
+        out.println("<ul>");  
+        out.println("<li>Context Path: " + context.getContextPath() + "</li>");  
+        out.println("<li>Server Info: " + context.getServerInfo() + "</li>");  
+        out.println("</ul>");  
+  
+        // 设置和获取属性  
+        context.setAttribute("student.servlet.access.time", new Date());  
+        out.println("<p>Attribute 'student.servlet.access.time' set to: " +  
+                context.getAttribute("student.servlet.access.time") + "</p>");  
+  
+        out.println("</body></html>");  
+    }  
+}
+```
+
+```jsp
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>  
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <title>JSP - Hello World</title>  
+</head>  
+<body>  
+<h1><%= "Hello World!" %></h1>  
+<br/>  
+<a href="hello-servlet">Hello Servlet</a>  
+<br/>  
+<a href="student-servlet">Student List</a>  
+<br/>  
+<a href="config-student-servlet">Config Student List</a>  
+<br/>  
+<a href="context-student-servlet">Context Student List</a>  
+</body>  
+</html>
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>  
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"  
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"  
+         version="6.0">  
+  
+    <!-- Context 初始化参数 -->  
+    <context-param>  
+        <param-name>app.name</param-name>  
+        <param-value>Student Management System</param-value>  
+    </context-param>  
+  
+    <context-param>  
+        <param-name>app.version</param-name>  
+        <param-value>1.0.0</param-value>  
+    </context-param>  
+  
+    <context-param>  
+        <param-name>admin.email</param-name>  
+        <param-value>admin@studentsystem.com</param-value>  
+    </context-param>  
+  
+    <context-param>  
+        <param-name>max.students</param-name>  
+        <param-value>1000</param-value>  
+    </context-param>  
+  
+    <context-param>  
+        <param-name>debug.mode</param-name>  
+        <param-value>true</param-value>  
+    </context-param>  
+  
+    <servlet>  
+        <servlet-name>ContextStudentServlet</servlet-name>  
+        <servlet-class>com.charles.servlet.ContextStudentServlet</servlet-class>  
+    </servlet>  
+  
+    <servlet-mapping>  
+        <servlet-name>ContextStudentServlet</servlet-name>  
+        <url-pattern>/context-student-servlet</url-pattern>  
+    </servlet-mapping>  
+  
+</web-app>
+```
+
+```
+## ContextStudentServlet using GenericServlet
+
+### Context Parameters:
+
+- App Name: Student Management System
+- Version: 1.0.0
+- Admin Email: admin@studentsystem.com
+- Max Students: 1000
+- Debug Mode: true
+
+### All Context Parameters:
+
+- debug.mode = true
+- max.students = 1000
+- admin.email = admin@studentsystem.com
+- app.name = Student Management System
+- app.version = 1.0.0
+
+### Other Context Information:
+
+- Context Path: /servlet_war_exploded
+- Server Info: Apache Tomcat/11.0.11
+
+Attribute 'student.servlet.access.time' set to: Sat Sep 13 14:28:40 CST 2025
+```
+
+---
 ## HTTP协议
 
 - 什么是协议？
@@ -891,10 +1335,10 @@ https://blog.csdn.net/huweiliyi/article/details/107637785
 
   - HTTP的请求协议包括：4部分
 
-    - 请求行
-    - 请求头
-    - 空白行
-    - 请求体
+    - **请求行**
+    - **请求头**
+    - **空白行**
+    - **请求体**
 
   - HTTP请求协议的具体报文：GET请求
 
@@ -989,10 +1433,10 @@ https://blog.csdn.net/huweiliyi/article/details/107637785
 
   - HTTP的响应协议包括：4部分
 
-    - 状态行
-    - 响应头
-    - 空白行
-    - 响应体
+    - **状态行**
+    - **响应头**
+    - **空白行**
+    - **响应体**
 
   - HTTP响应协议的具体报文：
 
@@ -1107,6 +1551,7 @@ https://blog.csdn.net/huweiliyi/article/details/107637785
   - value是什么？
     - 以form表单为例：form表单中input标签的value。
 
+---
 ## 模板方法设计模式
 
 - 什么是设计模式？
@@ -1132,16 +1577,16 @@ https://blog.csdn.net/huweiliyi/article/details/107637785
   - ....
 - 什么是模板方法设计模式？
   - 在模板类的模板方法当中定义核心算法骨架，具体的实现步骤可以延迟到子类当中完成。
-- 模板类通常是一个抽象类，模板类当中的模板方法定义核心算法，这个方法通常是final的（但也可以不是final的）
+- 模板类通常是一个抽象类，模板类当中的模板方法定义核心算法，这个方法通常是**final**的（但也可以不是final的）
 - 模板类当中的抽象方法就是不确定实现的方法，这个不确定怎么实现的事儿交给子类去做。
 
 
-
+---
 ## HttpServlet源码分析
 
 - HttpServlet类是专门为HTTP协议准备的。比GenericServlet更加适合HTTP协议下的开发。
 - HttpServlet在哪个包下？
-  - jakarta.servlet.http.HttpServlet
+  - `jakarta.servlet.http.HttpServlet`
 - 到目前为止我们接触了servlet规范中哪些接口？
   - jakarta.servlet.Servlet  核心接口（接口）
   - jakarta.servlet.ServletConfig Servlet配置信息接口（接口）
@@ -1348,6 +1793,87 @@ public abstract class HttpServlet extends GenericServlet {
   - 第三步：将Servlet类配置到web.xml文件当中。
   - 第四步：准备前端的页面（form表单），form表单中指定请求路径即可。
 
+---
+## 我的实验
+
+使用httpservlet只需要进行简单的配置
+
+```java
+package com.charles.servlet;  
+  
+import jakarta.servlet.ServletException;  
+import jakarta.servlet.http.HttpServlet;  
+import jakarta.servlet.http.HttpServletRequest;  
+import jakarta.servlet.http.HttpServletResponse;  
+import java.io.IOException;  
+import java.io.PrintWriter;  
+  
+public class MyHttpServlet extends HttpServlet {  
+  
+    /**  
+     * 重写service方法，统一处理所有类型的请求  
+     */  
+    @Override  
+    public void service(HttpServletRequest req, HttpServletResponse res)  
+            throws ServletException, IOException {  
+        System.out.println("Service method called for: " + req.getMethod());  
+        // 调用父类的service方法，它会根据HTTP方法类型自动分发到doGet/doPost等方法  
+        super.service(req, res);  
+    }  
+  
+    /**  
+     * 处理GET请求 - 显示登录表单  
+     */  
+    @Override  
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)  
+            throws ServletException, IOException {  
+        resp.setContentType("text/html;charset=UTF-8");  
+        PrintWriter out = resp.getWriter();  
+  
+        out.println("<html>");  
+        out.println("<head><title>用户登录</title></head>");  
+        out.println("<body>");  
+        out.println("<h2>用户登录</h2>");  
+        out.println("<form method='post' action='httpservlet-demo'>");  
+        out.println("用户名: <input type='text' name='username'><br><br>");  
+        out.println("密码: <input type='password' name='password'><br><br>");  
+        out.println("<input type='submit' value='登录'>");  
+        out.println("</form>");  
+        out.println("</body>");  
+        out.println("</html>");  
+    }  
+  
+    /**  
+     * 处理POST请求 - 处理登录表单提交  
+     */  
+    @Override  
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)  
+            throws ServletException, IOException {  
+        resp.setContentType("text/html;charset=UTF-8");  
+        PrintWriter out = resp.getWriter();  
+  
+        // 获取表单参数  
+        String username = req.getParameter("username");  
+        String password = req.getParameter("password");  
+  
+        // 简单验证  
+        if ("admin".equals(username) && "123456".equals(password)) {  
+            out.println("<html><body>");  
+            out.println("<h2>登录成功</h2>");  
+            out.println("<p>欢迎, " + username + "!</p>");  
+            out.println("</body></html>");  
+        } else {  
+            out.println("<html><body>");  
+            out.println("<h2>登录失败</h2>");  
+            out.println("<p>用户名或密码错误!</p>");  
+            out.println("<a href='httpservlet-demo'>重新登录</a>");  
+            out.println("</body></html>");  
+        }  
+    }  
+}
+```
+
+---
 ## 关于一个web站点的欢迎页面
 
 - 什么是一个web站点的欢迎页面？
@@ -1368,8 +1894,8 @@ public abstract class HttpServlet extends GenericServlet {
 
     - ```xml
       <welcome-file-list>
-              <welcome-file>login.html</welcome-file>
-          </welcome-file-list>
+		  <welcome-file>login.html</welcome-file>
+	  </welcome-file-list>
       ```
 
     - 注意：设置欢迎页面的时候，这个路径不需要以“/”开始。并且这个路径默认是从webapp的根下开始查找。
@@ -1477,17 +2003,18 @@ public abstract class HttpServlet extends GenericServlet {
             </welcome-file-list>
         ```
 
-        
 
+---
 ## 关于WEB-INF目录
 
 - 在WEB-INF目录下新建了一个文件：welcome.html
 - 打开浏览器访问：http://localhost:8080/servlet07/WEB-INF/welcome.html 出现了404错误。
 - 注意：放在WEB-INF目录下的资源是受保护的。在浏览器上不能够通过路径直接访问。所以像HTML、CSS、JS、image等静态资源一定要放到WEB-INF目录之外。
 
+---
 ## HttpServletRequest接口详解
 
-- HttpServletRequest是一个接口，全限定名称：jakarta.servlet.http.HttpServletRequest
+- HttpServletRequest是一个接口，全限定名称：`jakarta.servlet.http.HttpServletRequest`
 
 - HttpServletRequest接口是Servlet规范中的一员。
 
