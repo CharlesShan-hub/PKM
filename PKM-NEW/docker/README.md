@@ -2,6 +2,17 @@
 
 ## 介绍
 本模块按照尚硅谷网课与官网教程进行构建
+课程网站： https://www.bilibili.com/video/BV1Zn4y1X7AZ
+
+## 笔记
+
+* docker基础：
+* docker命令：[[order]]
+* docker存储：
+* docker网络
+* docker组成
+* dockerfile
+
 ## 资源
 
 * Docker官网：https://www.docker.com/
