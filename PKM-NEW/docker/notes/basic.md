@@ -6,7 +6,7 @@
 	1. 传统部署：应用之间没有隔离，如果一个应用出现问题，会影响到其他应用。
 	2. 虚拟机部署：每个应用都运行在一个独立的虚拟机上，每个虚拟机都有自己的操作系统，占用系统资源。
 	3. 容器化部署：每个应用都运行在一个独立的容器中，**容器之间共享操作系统内核**。
-	![[/PKM-NEW/docker/assets/three-deployment.jpg]]
+	![three-deployment](../assets/three-deployment.jpg)
 
 2. 启动与验证
 
