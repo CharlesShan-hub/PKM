@@ -11,7 +11,7 @@
 * docker存储：[storage](notes/storage.md)
 * docker网络：[network](notes/network.md)
 * docker集成：[compose](notes/compose.md)
-* dockerfile
+* dockerfile：[dockerfile](notes/dockerfile.md)
 
 ## 资源
 
