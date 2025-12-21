@@ -30,7 +30,7 @@ Java 的包装类是一组特殊的类，它们为 Java 基本数据类型提供
 
 - **值比较**：包装类重写了 `equals()` 和 `hashCode()` 方法，使得可以直接比较两个包装类对象的值是否相等。
 
-- **缓存**：对于常见的数值，如 `Integer` 类，Java 提供了缓存机制，以减少对象创建的开销。例如，`Integer.valueOf(42)` 和 `Integer.valueOf(42)` 会返回相同的对象引用。
+- **缓存**：对于常见的数值，如 `Integer` 类，Java 提供了缓存机制，以减少对象创建的开销。例如，`Integer.valueOf(42)` 和 `Integer.valueOf(42)` 会返回相同的对象引用。👉 https://javabetter.cn/basic-extra-meal/int-cache.html
 
 - **序列化**：包装类实现了 `Serializable` 接口，这意味着它们的实例可以被序列化（转换为字节流）和反序列化（从字节流恢复）。
 
@@ -135,7 +135,7 @@ package com.powernode.javase.integertest;
 ---
 ## 包装类与 String
 
-![[intParse.png]]
+![[resources/intParse.png]]
 
 ### 包装类与 String
 
@@ -376,3 +376,5 @@ System.out.println(i13==i14); //  true
 - `Long`：缓存 -128 到 127。
 - `Character`：缓存 0 到 127。
 - `Boolean`：缓存 `TRUE` 和 `FALSE`。
+
+使用数据类型缓存池可以有效提高程序的性能和节省内存开销，但需要注意的是，在特定的业务场景下，缓存池可能会带来一些问题，例如缓存池中的对象被不同的线程同时修改，导致数据错误等问题。因此，在实际开发中，需要根据具体的业务需求来决定是否使用数据类型缓存池。

@@ -733,8 +733,8 @@ public class StringExam {
 
 ### 🍭 String与正则表达式
 
-* [[re]]
-* [[史上最全正则表达式]]
+* [[../powerpoint/re]]
+* [[../powerpoint/resources/史上最全正则表达式]]
 
 * String replace(CharSequence target, CharSequence replacement);
 	* 将当前字符串中所有的target替换成replacement，返回一个新的字符串。

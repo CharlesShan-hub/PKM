@@ -993,7 +993,7 @@ public class ReflectTest15 {
 3. 作用：
 	1. 保护程序的安全。
 	2. 防止类加载重复。
-![[双亲委派.png]]
+![[resources/双亲委派.png]]
 
 ---
 ## 反射泛型

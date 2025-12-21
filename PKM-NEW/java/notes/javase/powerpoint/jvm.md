@@ -47,7 +47,7 @@ JVM (Java虚拟机)的运行时数据区(Run-Time Data Areas)是Java程序运行
 		- 可能由虚拟机实现者自由实现
 		- 可能出现StackOverflowError和OutOfMemoryError
 
-![[jvm.png]]
+![[resources/jvm.png]]
 
 ---
 ## JVM 实现
@@ -63,7 +63,7 @@ JVM (Java虚拟机)的运行时数据区(Run-Time Data Areas)是Java程序运行
 * 符号引用：类全名，字段全名，方法全名等。
 * 这个时期的永久代和堆是相邻的，使用连续的物理内存，但是内存空间是隔离的。
 * 永久代的垃圾收集是和老年代捆绑在一起的，因此无论谁满了，都会触发永久代和老年代的垃圾收集。
-![[jvm6.png]]
+![[resources/jvm6.png]]
 
 ### JDK7的HotSpot
 
@@ -72,7 +72,7 @@ JDK7的HotSpot，这是一个过渡的版本，该版本相对于JDK6来说，�
 * 字符串常量池转移到堆中了
 * 运行时常量池中的符号引用转移到本地内存了
 
-![[jvm7.png]]
+![[resources/jvm7.png]]
 
 ### JDK8及以后的HotSpot
 
@@ -80,4 +80,4 @@ JDK7的HotSpot，这是一个过渡的版本，该版本相对于JDK6来说，�
 * 将方法区的实现转移到本地内存
 * 将符号引用重新放回运行时常量池
 
-![[jvm8.png]]
+![[resources/jvm8.png]]

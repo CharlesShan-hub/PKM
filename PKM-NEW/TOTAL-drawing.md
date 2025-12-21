@@ -38,7 +38,7 @@ DIP ^vqRhHgW0
 
 [[cpp/README]] ^RB0TCDuZ
 
-[[java/README]] ^AQ2WfGo7
+[[java/assets/README]] ^AQ2WfGo7
 
 [[rust/README]] ^wvDELvYC
 

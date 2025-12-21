@@ -1,0 +1,109 @@
+# 第一个Java程序
+
+---
+
+## Hello World程序
+
+### 基本步骤
+1. **编写代码** - 创建`Hello.java`文件。
+2. **编译** - 使用`javac`命令：`javac ./Hello.java`，生成`Hello.class`字节码文件。
+3. **运行** - 使用`java`命令：`java Hello`。注意：运行时不带`.class`扩展名。
+
+### 编码注意事项
+- 如果代码中包含中文`.java`文件需要保存为**GBK编码**
+
+### 示例代码
+```java
+// Hello.java
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+```
+
+---
+
+## Java源文件结构
+
+### 类声明规则
+1. **一个源文件中最多只能有一个`public`类**
+2. **源文件名必须与`public`类名完全一致**
+3. 可以包含多个非`public`类
+4. 编译后，每个类都会生成对应的`.class`文件
+
+### 多类示例
+```java
+// Hello.java (文件名必须与public类名一致)
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+
+class Dog {
+    int age = 1;
+    String name = "WC";
+    
+    Dog(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+}
+
+class B {
+    Dog myDog = new Dog(10, "aaa");
+    int num;
+}
+```
+
+### main方法的位置
+- `public static void main(String[] args)`可以不在`public`类中
+- 运行时需要指定包含main方法的类名
+
+```java
+// Hello.java
+// 编译：javac Hello.java
+// 运行：java Another
+public class Hello {
+    // 这个类没有main方法
+}
+
+class Another {
+    public static void main(String[] args) {
+        System.out.println("Another World");
+    }
+}
+```
+
+---
+
+## 代码规范
+
+### 阿里巴巴Java开发手册
+- **链接**：[https://pdai.tech/md/dev-spec/code-style/code-style-alibaba.html](https://pdai.tech/md/dev-spec/code-style/code-style-alibaba.html)
+
+### 基本规范建议
+1. **命名规范**
+   - 类名使用大驼峰：`HelloWorld`
+   - 方法名使用小驼峰：`getUserName()`
+   - 常量全大写：`MAX_VALUE`
+
+2. **代码格式**
+   - 使用4个空格缩进（不要用Tab）
+   - 大括号换行风格一致
+   - 适当的空行分隔逻辑块
+
+3. **注释规范**
+   - 公共API必须使用文档注释
+   - 复杂逻辑添加行内注释
+   - 及时更新过时的注释
+
+---
+
+## 总结要点
+
+1. **编译运行**：`javac`编译 → `java`运行
+2. **文件命名**：必须与`public`类名一致
+3. **编码问题**：中文使用GBK编码
+4. **代码规范**：遵循团队或行业标准
