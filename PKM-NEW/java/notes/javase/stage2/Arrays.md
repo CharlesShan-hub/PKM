@@ -1,7 +1,9 @@
 # Arrays
 
+数组专题推荐浏览顺序：[array](../stage1/array.md) 👉 本文 👉 [集合](集合.md)
+
 ---
-## (AI) Java Arrays 类简介
+## Arrays 类简介
 
 Arrays 类是 Java 中 java.util 包提供的一个工具类，主要用于操作数组（如排序、搜索、比较、填充等）。它包含了一系列静态方法，可以方便地对数组进行各种操作。
 
@@ -74,8 +76,6 @@ Arrays 类是 Java 中 java.util 包提供的一个工具类，主要用于操�
 - 所有方法都是静态的，无需创建 Arrays 实例
 - 支持基本类型数组和对象数组
 - 线程安全（因为方法都是无状态的）
-
-Arrays 类是 Java 开发中处理数组的常用工具类，可以大大简化数组操作代码。
 
 ---
 ## toString
@@ -443,7 +443,7 @@ System.out.println(l1.getClass()); // class java.util.Arrays$ArrayList(这个是
 Arrays类课堂练习
 ArrayExercise.java
 案例: 自定义Book类, 里面包含name和price, 按price排序(从大到小)。要求使用两种方式排序，对对象的某个属性排序, 有一个 Book[] books = 5本书对象.
-使用前面学习过的传递实现Comparator接口匿名内部类, 也称为定制排序。[同学们完成这个即可10min]
+使用前面学习过的传递实现Comparator接口匿名内部类, 也称为定制排序。
 ```java
 Book[] books = new Book[4];
 books[0] = new Book("红楼梦", 100);
@@ -536,4 +536,19 @@ class Book{
         return "name: "+name+",price: "+price;  
     }  
 }
+```
+
+通过流的方式简化一下
+```java
+System.out.println("按照价格升序");
+Arrays.sort(books, Comparator.comparingInt(Book::getPrice));
+Arrays.stream(books).forEach(System.out::println);
+
+System.out.println("按照价格降序");
+Arrays.sort(books, Comparator.comparingInt(Book::getPrice).reversed());
+Arrays.stream(books).forEach(System.out::println);
+
+System.out.println("按照名字长度");
+Arrays.sort(books, Comparator.comparingInt(book -> book.getName().length()));
+Arrays.stream(books).forEach(System.out::println);
 ```
