@@ -174,7 +174,7 @@
 	* 245~250：this
 	* 251~261：[[notes/javase/stage1/第七章作业|第七章作业]]
 	* 262：内容梳理
-* 第 8 章：[[../notes/javase/stage1/package|package]]，[[notes/javase/stage1/访问修饰符|访问修饰符]]，[[notes/javase/stage1/封装|封装]]，[[notes/javase/stage1/继承|继承]]，[super](notes/javase/stage1/super.md)，[[notes/javase/stage1/多态|多态]]，[[notes/javase/stage1/Object|Object]]，[[notes/javase/stage1/断点调试]]
+* 第 8 章：[[../notes/javase/stage1/package|package]]，[[../notes/javase/stage1/access-modifiers|access-modifiers]]，[[notes/javase/stage1/封装|封装]]，[[notes/javase/stage1/继承|继承]]，[super](notes/javase/stage1/super.md)，[[notes/javase/stage1/多态|多态]]，[[notes/javase/stage1/Object|Object]]，[[notes/javase/stage1/断点调试]]
 	* 263~271：IDEA软件
 	* 272~277：包
 	* 278~279：（重点）访问修饰符

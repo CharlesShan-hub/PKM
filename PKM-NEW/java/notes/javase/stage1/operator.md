@@ -20,6 +20,29 @@
 - **自增**：`++`
 - **自减**：`--`
 
+### 加号的妙用
+
+- **两边都是数值**：执行加法运算
+  ```java
+  System.out.println(1 + 2); // 输出：3
+  ```
+
+- **char参与运算**：char本质是数值
+  ```java
+  System.out.println('a' + 10); // 97 + 10 = 107
+  ```
+
+- **包含字符串**：执行字符串拼接
+  ```java
+  System.out.println("Hello" + 3); // 输出：Hello3
+  ```
+
+- **运算顺序**：从左到右
+  ```java
+  System.out.println(1 + 2 + "Hello"); // 输出：3Hello
+  System.out.println("Hello" + 1 + 2);  // 输出：Hello12
+  ```
+
 ### 除法运算细节
 
 除法取整

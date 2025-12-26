@@ -1,0 +1,3 @@
+# 自定义starter
+
+在实际开发中，经常会定义一些公共组建，提供给各个团队使用。而在SpringBoot项目中，一般会将这些公共组建封装为SpringBoot的starter。

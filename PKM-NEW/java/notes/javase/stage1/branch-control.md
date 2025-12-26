@@ -117,6 +117,9 @@ switch (n) {
 
 ### 6. switch vs if 选择建议
 - **使用switch**：判断的具体数值不多，且符合**byte、short、int、char、enum、String**六种类型
+	- 最原始：byte，short，int，char，以及对应的包装类。
+	- java5：enum
+	- java7：String
 - **使用if**：区间判断、结果为boolean类型、复杂条件判断
 
 ### 7. Java 12+ 新特性

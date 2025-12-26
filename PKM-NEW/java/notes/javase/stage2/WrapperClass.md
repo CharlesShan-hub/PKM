@@ -233,7 +233,7 @@ public class Main {
 }
 ```
 
-## 面试题
+## 面试题：IntegerCache
 
 下边这个例题很有趣，推荐！
 
@@ -361,12 +361,12 @@ System.out.println(i9==i10); // false，因为 i9 用的缓存，i10 new 了新�
 //示例六
 Integer i11=127;
 int i12=127;
-System.out.println(i11==i12); // true（只要有基本出具类型，就判断值相等）
+System.out.println(i11==i12); // true（只要有基本数据类型，就判断值相等）
 
 //示例七
 Integer i13=128;
 int i14=128;
-System.out.println(i13==i14); //  true 
+System.out.println(i13==i14); //  true （只要有基本数据类型，就判断值相等）
 ```
 
 类似的缓存机制也存在于其他包装类中：

@@ -1,26 +1,26 @@
 # Arrays
 
-数组专题推荐浏览顺序：[array](../stage1/array.md) 👉 本文 👉 [集合](集合.md)
+数组专题推荐浏览顺序：[array](../stage1/array.md) 👉 本文
 
 ---
 ## Arrays 类简介
 
 Arrays 类是 Java 中 java.util 包提供的一个工具类，主要用于操作数组（如排序、搜索、比较、填充等）。它包含了一系列静态方法，可以方便地对数组进行各种操作。
 
-* Arrays.toString()方法：将数组转换成字符串
-* Arrays.deepToString()方法：可以将二维数组转换成字符串
-* Arrays.equals(int[] arr1, int[] arr2)方法：判断两个数组是否相等
-* Arrays.equals(Object[] arr1, Object[] arr2)方法
-* Arrays.deepEquals(Object[] arr1, Object[] arr2)方法：判断两个二维数组是否相等
-* Arrays.sort(int[] arr)方法：基于快速排序算法，适合小型数据量排序。
-* Arrays.sort(String[] arr)方法
-* Arrays.parallelSort(int[] arr)方法：基于分治的归并排序算法，支持多核CPU排序，适合大数据量排序。
-* int binarySearch(int[] arr, int elt)方法：二分法查找
-* Arrays.fill(int[] arr, int data)方法：填充数组
-* Arrays.fill(int[] a, int fromIndex, int toIndex, int val)方法
-* int[] Arrays.copyOf(int[] original, int newLength)方法：数组拷贝
-* int[] Arrays.copyOfRange(int[] original, int from, int to)
-* Arrays.asList(T... data)方法：将一组数据转换成List集合。
+* `Arrays.toString()`方法：将数组转换成字符串
+* `Arrays.deepToString()`方法：可以将二维数组转换成字符串
+* `Arrays.equals(int[] arr1, int[] arr2)`方法：判断两个数组是否相等
+* `Arrays.equals(Object[] arr1, Object[] arr2)`方法
+* `Arrays.deepEquals(Object[] arr1, Object[] arr2)`方法：判断两个二维数组是否相等
+* `Arrays.sort(int[] arr)`方法：基于快速排序算法，适合小型数据量排序。
+* `Arrays.sort(String[] arr)`方法
+* `Arrays.parallelSort(int[] arr)`方法：基于分治的归并排序算法，支持多核CPU排序，适合大数据量排序。
+* `int binarySearch(int[] arr, int elt)`方法：二分法查找
+* `Arrays.fill(int[] arr, int data)`方法：填充数组
+* `Arrays.fill(int[] a, int fromIndex, int toIndex, int val)`方法
+* `int[] Arrays.copyOf(int[] original, int newLength)`方法：数组拷贝
+* `int[] Arrays.copyOfRange(int[] original, int from, int to)`
+* `Arrays.asList(T... data)`方法：将一组数据转换成List集合。
 
 
 ### 主要功能
@@ -80,8 +80,6 @@ Arrays 类是 Java 中 java.util 包提供的一个工具类，主要用于操�
 ---
 ## toString
 
-### toString
-
 比如要输出一个数组，可以循环的输出，也可以用 Arrays
 
 ```java
@@ -140,7 +138,8 @@ System.out.println(Arrays.toString(boolArray));
 // 输出: [true, false, true]
 ```
 
-### deepToString
+---
+## deepToString
 
 `deepToString()` 方法用于将多维数组转换为字符串表示形式，可以正确处理嵌套数组。
 - 专门用于多维数组或对象数组

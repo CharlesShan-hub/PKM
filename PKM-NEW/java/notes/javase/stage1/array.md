@@ -1,5 +1,7 @@
 # Java数组
 
+数组专题推荐浏览顺序：本文 👉 [Arrays](../stage2/Arrays.md)
+
 ---
 
 ## 数组基础
