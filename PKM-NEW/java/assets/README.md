@@ -1,5 +1,10 @@
 # Java
 
+
+【Java最高效学习路线图】（依次向下顺序学习即可） Java基础：[BV1gb42177hm](https://www.bilibili.com/video/BV1gb42177hm/?spm_id_from=333.788.video.desc.click) Javaweb+AI：[BV1yGydYEE3H](https://www.bilibili.com/video/BV1yGydYEE3H/?spm_id_from=333.788.video.desc.click) 苍穹外卖：[BV1TP411v7v6](https://www.bilibili.com/video/BV1TP411v7v6/?spm_id_from=333.788.video.desc.click) AI+若依框架：[BV1pf421B71v](https://www.bilibili.com/video/BV1pf421B71v/?spm_id_from=333.788.video.desc.click) 微服务全套：[BV1S142197x7](https://www.bilibili.com/video/BV1S142197x7/?spm_id_from=333.788.video.desc.click) 学成在线项目：[BV1j8411N7Bm](https://www.bilibili.com/video/BV1j8411N7Bm/?spm_id_from=333.788.video.desc.click) 黑马头条项目：[BV1Qs4y1v7x4](https://www.bilibili.com/video/BV1Qs4y1v7x4/?spm_id_from=333.788.video.desc.click) 23年Java大厂面试：[BV1yT411H7YK](https://www.bilibili.com/video/BV1yT411H7YK/?spm_id_from=333.788.video.desc.click) 学完以上技术，足以支撑找一份好的java开发工作。 如想工作后再提升，还可以点击下面的技术点项目详细学习： MySQL：[BV1Kr4y1i7ru](https://www.bilibili.com/video/BV1Kr4y1i7ru/?spm_id_from=333.788.video.desc.click) JVM：[BV1r94y1b7eS](https://www.bilibili.com/video/BV1r94y1b7eS/?spm_id_from=333.788.video.desc.click) 数据结构与算法上部：[BV1Lv4y1e7HL](https://www.bilibili.com/video/BV1Lv4y1e7HL/?spm_id_from=333.788.video.desc.click) 数据结构与算法下部：[BV1rv4y1H7o6](https://www.bilibili.com/video/BV1rv4y1H7o6/?spm_id_from=333.788.video.desc.click) SSM：[BV1Fi4y1S7ix](https://www.bilibili.com/video/BV1Fi4y1S7ix/?spm_id_from=333.788.video.desc.click) springboot：[BV14z4y1N7pg](https://www.bilibili.com/video/BV14z4y1N7pg/?spm_id_from=333.788.video.desc.click) Spring高级：[BV1P44y1N7QG](https://www.bilibili.com/video/BV1P44y1N7QG/?spm_id_from=333.788.video.desc.click) springcloud：[BV1kH4y1S7wz](https://www.bilibili.com/video/BV1kH4y1S7wz/?spm_id_from=333.788.video.desc.click) Docker：[BV1HP4118797](https://www.bilibili.com/video/BV1HP4118797/?spm_id_from=333.788.video.desc.click) Git：[BV1MU4y1Y7h5](https://www.bilibili.com/video/BV1MU4y1Y7h5/?spm_id_from=333.788.video.desc.click) Maven：[BV1Ah411S7ZE](https://www.bilibili.com/video/BV1Ah411S7ZE/?spm_id_from=333.788.video.desc.click) Dubbo：[BV1VE411q7dX](https://www.bilibili.com/video/BV1VE411q7dX/?spm_id_from=333.788.video.desc.click) Zookeeper：[BV1M741137qY](https://www.bilibili.com/video/BV1M741137qY/?spm_id_from=333.788.video.desc.click) Redis：[BV1cr4y1671t](https://www.bilibili.com/video/BV1cr4y1671t/?spm_id_from=333.788.video.desc.click) MongoDB：[BV1bJ411x7mq](https://www.bilibili.com/video/BV1bJ411x7mq/?spm_id_from=333.788.video.desc.click) RabbitMQ：[BV1mN4y1Z7t9](https://www.bilibili.com/video/BV1mN4y1Z7t9/?spm_id_from=333.788.video.desc.click) RocketMQ：[BV1L4411y7mn](https://www.bilibili.com/video/BV1L4411y7mn/?spm_id_from=333.788.video.desc.click) =============================== 本课程以企业实际应用为切入点，企业怎么用，课程怎么讲，企业用什么，课程讲什么。内容涉及到SpringBoot知识点、参数校验框架Validation，缓存技术redis，认证技术jwt，单元测试junit，数据库框架mybatis。前端主流框架vue基础知识点，axios异步函数库，vue-router路由，pinia状态管理，工程化开发等。课程中包含的大事件案例，完整实现了前端和后端的需求，如果要做毕业设计，参考本课程会非常适合。学完本门课程，针对单体应用的前后端，学员应对起来都能游刃有余。 =============================== 本教程学完请继续下一课程：《苍穹外卖》项目[BV1TP411v7v6](https://www.bilibili.com/video/BV1TP411v7v6/?spm_id_from=333.788.video.desc.click)
+
+
+
 ## 内容
 
 ### JavaSE
@@ -174,7 +179,7 @@
 	* 245~250：this
 	* 251~261：[[notes/javase/stage1/第七章作业|第七章作业]]
 	* 262：内容梳理
-* 第 8 章：[[../notes/javase/stage1/package|package]]，[[../notes/javase/stage1/access-modifiers|access-modifiers]]，[[notes/javase/stage1/封装|封装]]，[[notes/javase/stage1/继承|继承]]，[super](notes/javase/stage1/super.md)，[[notes/javase/stage1/多态|多态]]，[[notes/javase/stage1/Object|Object]]，[[notes/javase/stage1/断点调试]]
+* 第 8 章：[[../notes/javase/stage1/package|package]]，[[../notes/javase/stage1/access-modifiers|access-modifiers]]，[[../notes/javase/stage1/encapsulation|encapsulation]]，[[../notes/javase/stage1/extends|extends]]，[super](notes/javase/stage1/super.md)，[[../notes/javase/stage1/polymorphism|polymorphism]]，[[notes/javase/stage1/Object|Object]]，[[notes/javase/stage1/断点调试]]
 	* 263~271：IDEA软件
 	* 272~277：包
 	* 278~279：（重点）访问修饰符
@@ -218,7 +223,7 @@
 	* 370：房屋查找
 	* 371：查找
 	* 372：总结，[[notes/javase/stage1/第九章作业|第九章作业]]
-* 第 10 章：[[notes/javase/stage2/类变量和类方法|类变量和类方法]]，[[notes/javase/stage2/代码块|代码块]]，[[notes/javase/stage2/设计模式|设计模式]]，[[notes/javase/stage2/final|final]]，[[notes/javase/stage2/抽象类|抽象类]]，[[notes/javase/stage2/interface|interface]]，[[notes/javase/stage2/内部类|内部类]]
+* 第 10 章：[[../notes/javase/stage2/static|static]]，[[notes/javase/stage2/代码块|代码块]]，[[notes/javase/stage2/设计模式|设计模式]]，[[notes/javase/stage2/final|final]]，[[notes/javase/stage2/抽象类|抽象类]]，[[notes/javase/stage2/interface|interface]]，[[notes/javase/stage2/内部类|内部类]]
 	* 373~374：类变量的引出
 	* 375：类变量内存布局
 	* 376~377：类变量的使用与细节

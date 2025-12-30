@@ -1,5 +1,7 @@
 # 变量与数据类型
 
+数据类型专题浏览顺序：本文 👉 [WrapperClass](../stage2/WrapperClass.md)
+
 ---
 
 ## 变量基础

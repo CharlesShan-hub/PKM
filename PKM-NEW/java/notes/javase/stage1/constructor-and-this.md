@@ -89,7 +89,7 @@
   }
   ```
 
-* this本质：其实this和name、age一样，都是成员变量，不过this被隐藏起来了，this存放的是对象自己的地址！
+* **this本质**：其实this和name、age一样，都是成员变量，不过this被隐藏起来了，this存放的是对象自己的地址！
   
 	```java
 	public class Demo{

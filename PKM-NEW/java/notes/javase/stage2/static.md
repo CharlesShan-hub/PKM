@@ -1,5 +1,6 @@
-# 类变量和类方法
+# static
 
+---
 ## 类变量
 
 有一个游乐场，有很多小孩，不停的有小孩进来，求小孩个数。
@@ -28,7 +29,7 @@ class Child{
 } 
 ```
 
-有类变量的版本：不同的对象的变量共享一个数据空间，static 修饰
+有类变量的版本：**不同的对象的变量共享一个数据空间**，static 修饰
 
 ```java
 public class Test{
@@ -82,6 +83,7 @@ class Child{
 
 类变量的生命周期随着类的加载开始，随着类的消亡结束
 
+---
 ## 类方法
 
 类方法（静态方法）：也是 static 修饰，注意 **里边不能用 this 和 super**，静态方法只能访问静态成员
@@ -249,12 +251,13 @@ public class TestPerson {
 }
 ```
 
+---
 ## main
 
 为什么是`public static void main(String[] args)`
 
 * `public`：main 函数是虚拟机调用的，JVM 和 main 不在一个包，也不是继承关系
-* `static`：JVM 调用main 并不需要创建对象
+* `static`：JVM 调用 main 并不需要创建对象
 * `String[] args`：传入的参数列表
 
 因为 main 是 static 的，所以只能调用自己的类的 static 的成员。如果要调用非静态的，就要实例化一个新对象
