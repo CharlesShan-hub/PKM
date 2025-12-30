@@ -70,7 +70,7 @@
 	* 57～58：基础数据类型与字符串相互转换，包装类
 	* 59～60：[[notes/javase/stage1/第三章作业|第三章作业]]
 	* 61：（可跳过）章末总结
-* 第 4 章：[operator](../notes/javase/stage1/operator.md)，[[notes/javase/stage1/标识符规则与规范|标识符规则与规范]]，[keyboard-input](../notes/javase/stage1/keyboard-input.md)，[[notes/javase/stage1/进制|进制]]
+* 第 4 章：[operator](../notes/javase/stage1/operator.md)，[keyboard-input](../notes/javase/stage1/keyboard-input.md)
 	* 62：（可跳过）运算符简介
 	* 63：除法、取摸、++
 	* 64：（重点）i++面试题
@@ -179,7 +179,7 @@
 	* 245~250：this
 	* 251~261：[[notes/javase/stage1/第七章作业|第七章作业]]
 	* 262：内容梳理
-* 第 8 章：[[../notes/javase/stage1/package|package]]，[[../notes/javase/stage1/access-modifiers|access-modifiers]]，[[../notes/javase/stage1/encapsulation|encapsulation]]，[[../notes/javase/stage1/extends|extends]]，[super](notes/javase/stage1/super.md)，[[../notes/javase/stage1/polymorphism|polymorphism]]，[[notes/javase/stage1/Object|Object]]，[[notes/javase/stage1/断点调试]]
+* 第 8 章：[package](../notes/javase/stage1/package.md)，[Access Modifiers](stage1/access-modifiers.md)，[[../notes/javase/stage1/encapsulation|encapsulation]]，[[../notes/javase/stage1/extends|extends]]，[super](notes/javase/stage1/super.md)，[[../notes/javase/stage1/polymorphism|polymorphism]]，[[notes/javase/stage1/Object|Object]]，[[notes/javase/stage1/断点调试]]
 	* 263~271：IDEA软件
 	* 272~277：包
 	* 278~279：（重点）访问修饰符
@@ -223,7 +223,7 @@
 	* 370：房屋查找
 	* 371：查找
 	* 372：总结，[[notes/javase/stage1/第九章作业|第九章作业]]
-* 第 10 章：[[../notes/javase/stage2/static|static]]，[[notes/javase/stage2/代码块|代码块]]，[[notes/javase/stage2/设计模式|设计模式]]，[[notes/javase/stage2/final|final]]，[[notes/javase/stage2/抽象类|抽象类]]，[[notes/javase/stage2/interface|interface]]，[[notes/javase/stage2/内部类|内部类]]
+* 第 10 章：[[../notes/javase/stage2/static|static]]，[[notes/javase/stage2/代码块|代码块]]，[[notes/javase/stage2/设计模式|设计模式]]，[[notes/javase/stage2/final|final]]，[[../notes/javase/stage2/abstract|abstract]]，[[notes/javase/stage2/interface|interface]]，[[notes/javase/stage2/内部类|内部类]]
 	* 373~374：类变量的引出
 	* 375：类变量内存布局
 	* 376~377：类变量的使用与细节
@@ -235,7 +235,7 @@
 	* 397~401：（重点）抽象类
 	* 402~411：（重点）接口
 	* 412~424：（重点，难点）四种内部类
-* 第 11 章：[[notes/javase/stage2/枚举|枚举]]，[[notes/javase/stage2/注解]]
+* 第 11 章：[[../notes/javase/stage2/enum|enum]]，[[notes/javase/stage2/注解]]
 	* 423：枚举引出
 	* 424：自定义类实现枚举
 	* 425：enum 关键字实现枚举

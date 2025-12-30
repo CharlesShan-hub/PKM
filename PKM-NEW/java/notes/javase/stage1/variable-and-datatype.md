@@ -11,6 +11,16 @@
 - **变量声明**：定义变量的类型和名称
 - **变量赋值**：为变量赋予具体的值
 
+### 标识符规则与规范
+* 规则
+	* [Java语言标识符的命名规范(超详细讲解)](https://www.cnblogs.com/qian-fen/p/16963064.html)
+	* 变量名可以包含`$`
+* 规范
+	* 包名：abc.def.ghi
+	* 类/接口：XxxYyyZzz
+	* 变量/函数：xxYyyZzz
+	* 常量名：XXX_YYY_ZZZ
+
 ### 作用域规则
 - 变量在一个作用域内不能重名
 - Java不支持变量遮蔽（与C语言不同）
@@ -302,6 +312,35 @@ Size of boolean array: [Z object internals:
 Instance size: 24 bytes
 Space losses: 0 bytes internal + 2 bytes external = 2 bytes total
 ```
+
+---
+## 进制
+
+| 进制   | 开头    |
+| ---- | ----- |
+| 二进制  | 0b，0B |
+| 十进制  | 无     |
+| 八进制  | 0     |
+| 十六进制 | 0x，0X |
+
+```java
+public class Hello{
+  public static void main(String[] args){
+    int num1 = 0b111;
+    int num2 = 111;
+    int num3 = 0111;
+    int num4 = 0x111;
+    System.out.println("num1:"+num1);//num1:7
+    System.out.println("num2:"+num2);//num2:111
+    System.out.println("num3:"+num3);//num3:73
+    System.out.println("num4:"+num4);//num4:273
+  }
+}
+```
+
+* 进制转换工具
+  * [在线转换工具](https://www.sojson.com/hexconvert.html)
+  * [二、八、十、十六进制之间的转换](http://t.csdn.cn/8WKlz)
 
 ---
 

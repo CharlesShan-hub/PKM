@@ -22,12 +22,14 @@ abstract class Animal{
 class Dog extends Animal{  
     public void eat(){  
         System.out.println("大棒骨🦴");  
-    }}  
+    }
+}  
   
 class Cat extends Animal{  
     public void eat(){  
         System.out.println("小鱼干🐟");  
-    }}
+    }
+}
 ```
 
 ## 细节

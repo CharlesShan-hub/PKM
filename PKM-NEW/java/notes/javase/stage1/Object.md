@@ -3,6 +3,8 @@
 ---
 ## equals方法
 
+### equals方法和==
+
 1. 使用方法：`==`，比较运算符
 2. 既可以判断基本类型，也可以判断引用类型
 3. 判断基本类型的时候判断的是值是否相等
@@ -36,7 +38,8 @@
    System.out.println(a==b); // true
    ```
 
-7. .equals()源码(JDK 17)
+### 一些类的equals源码
+1. .equals()源码(JDK 17)
 
    ```java
    // Object.java
@@ -44,6 +47,7 @@
      return (this == obj);
    }
 	```
+	
 	```java
    // Integer.java
    public boolean equals(Object obj) {
@@ -52,7 +56,8 @@
      }
      return false;
    }
-   	```
+	```
+	
 	```java
    // String.java(jdk17)
    public boolean equals(Object anObject) {
@@ -63,7 +68,8 @@
        && (!COMPACT_STRINGS || this.coder == aString.coder)
        && StringLatin1.equals(value, aString.value);
    }
-   	```
+	```
+	
 	```java
    // String.java(jdk8)
    public boolean equals(Object anObject) {
@@ -80,14 +86,13 @@
            if (v1[i] != v2[i]) return false;
            i++; 
          }
-         return true;//如果两个字符串的所有字符都相等，则返回 true 
-       }
+         return true;//如果两个字符串的所有字符都相等，则返回 true
    	}
    	return false;//如果比较的不是字符串，则直接返回 false 
    }
    ```
 
-8. int 比较
+2. int 比较
 	```java
 	Integer i1 = new Integer(1000);
 	Integer i2 = new Integer(1000);
@@ -99,7 +104,7 @@
 	false
 	true
 	```
-9. 字符串比较案例
+3. 字符串比较案例
 
    ```java
    String str1 = new String("abc");
@@ -113,7 +118,7 @@
 	true
 	```
 
-10. 重写.equal方法
+4. 重写.equal方法
 
 	```java
 	class Person{
@@ -151,7 +156,8 @@
 	}
 	```
 
-11. 练习
+### 自己重写equals
+1. 练习
 
     ```java
     Person p1 = new Person(); 
@@ -181,7 +187,7 @@
     System.out.println(s1==s2); //F
     ```
 
-12. 练习
+2. 练习
 	```java
 	//代码如下 EqualsExercise03.java
 	int it = 65;
@@ -215,6 +221,16 @@
 	System.out.println("str1是否equals str2? " + (str1.equals(str2))); // true
 	System.out.println("hello" == new java.sql.Date()); // false
 	```
+
+### (面试题)为什么重写 equals 时必须重写 hashCode ⽅法？
+
+因为基于哈希的集合类（如 HashMap）需要基于这⼀点来正确存储和查找对象。
+
+具体地说，HashMap 通过对象的哈希码将其存储在不同的“桶”中，当查找对象时，它需要使⽤ key 的哈希码来确定对象在哪个桶中，然后再通过 equals() ⽅法找到对应的对象。
+
+如果重写了 equals() ⽅法⽽没有重写 hashCode() ⽅法，那么被认为相等的对象可能会有不同的哈希码，从⽽导致⽆法在 HashMap 中正确处理这些对象。
+
+具体内容参考[集合](../stage2/集合.md)中的hashmap部分
 
 ---
 ## Hashcode方法
@@ -399,6 +415,8 @@ public class ShallowCloneDemo {
 
 深克隆会复制对象及其所有引用类型字段指向的对象。
 
+👉：[面试题：创建对象有哪⼏种⽅式](../mianshi/new-class.md)
+
 #### 实现方式一：递归调用clone()
 
 ```java
@@ -454,42 +472,49 @@ public class DeepCloneDemo {
 ```java
 import java.io.*;
 
-class DeepCloneUtil {
-    @SuppressWarnings("unchecked")
-    public static <T extends Serializable> T deepClone(T object) {
-        try {
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(bos);
-            oos.writeObject(object);
-            oos.close();
+class Address implements Serializable {
+    private static final long serialVersionUID = 1L;
+    String city;
+    
+    public Address(String city) {
+        this.city = city;
+    }
+}
+
+class Person implements Serializable {
+    private static final long serialVersionUID = 1L;
+    String name;
+    int age;
+    Address address;
+    
+    public Person(String name, int age, Address address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+    
+    public Person deepClone() throws IOException, ClassNotFoundException {
+        try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
+             ObjectOutputStream oos = new ObjectOutputStream(bos)) {
             
-            ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-            ObjectInputStream ois = new ObjectInputStream(bis);
-            return (T) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException("深克隆失败", e);
+            oos.writeObject(this);
+            
+            try (ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+                 ObjectInputStream ois = new ObjectInputStream(bis)) {
+                
+                return (Person) ois.readObject();
+            }
         }
     }
 }
 
-// Person和Address类需要实现Serializable接口
-class Person implements Serializable {
-    // 同上...
-}
-
-class Address implements Serializable {
-    // 同上...
-}
-
-public class SerializationCloneDemo {
-    public static void main(String[] args) {
-        Address address = new Address("北京", "长安街");
-        Person original = new Person("张三", 25, address);
+public class Main {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Address address = new Address("河南省洛阳市");
+        Person person1 = new Person("沉默王二", 18, address);
+        Person person2 = person1.deepClone();
         
-        // 通过序列化实现深克隆
-        Person cloned = DeepCloneUtil.deepClone(original);
-        
-        // 测试结果与上面深克隆示例相同
+        System.out.println(person1.address == person2.address); // false
     }
 }
 ```
@@ -497,17 +522,13 @@ public class SerializationCloneDemo {
 ### 3. 克隆最佳实践
 
 1. ​**​实现Cloneable接口​**​：虽然不实现也能编译通过，但运行时调用clone()会抛出CloneNotSupportedException
-    
 2. ​**​重写clone()方法​**​：将访问修饰符从protected改为public
-    
 3. ​**​深克隆选择​**​：
-    
     - 简单对象结构：递归调用clone()
     - 复杂对象结构：序列化方式
     - 考虑使用第三方库如Apache Commons Lang的SerializationUtils
 4. ​**​替代方案​**​：考虑使用拷贝构造器或静态工厂方法
     
-
 ```java
 // 拷贝构造器示例
 public Person(Person original) {

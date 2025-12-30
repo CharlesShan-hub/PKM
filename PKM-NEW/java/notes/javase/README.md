@@ -15,7 +15,8 @@
 	* [Keyboard Input](stage1/keyboard-input.md)
 	* [Branch Control](stage1/branch-control.md)
 	* [recursion](stage1/recursion.md)
-* OOP
+	* [package](stage1/package.md)
+* OOP Basic
 	* [Introduction for Class and Object](stage1/class-and-object-introduce.md)：引入
 	* [Attributes and Methods](stage1/attributes-and-methods.md)：属性和成员方法
 	* [Constructor and this](stage1/constructor-and-this.md)
@@ -28,6 +29,13 @@
 	* [polymorphism](stage1/polymorphism.md)：多态
 	* [final](stage2/final.md)
 	* [super](stage1/super.md)
+* OOP Advanced
+	* [abstract](stage2/abstract.md)
+	* [interface](stage2/interface.md)
+	* [enum](stage2/enum.md)
+	* [代码块](stage2/代码块.md)
+	* [内部类](stage2/内部类.md)
+	* [reflect](powerpoint/reflect.md)
 * Utils Classes
 	* [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
 	* [WrapperClass](stage2/WrapperClass.md)

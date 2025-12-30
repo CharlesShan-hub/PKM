@@ -34,6 +34,8 @@ Class clazz = Object.class;
 Class clazz = Class.forName("java.lang.Object");
 ```
 
+👉：[面试题：创建对象有哪⼏种⽅式](../mianshi/new-class.md)
+
 ```java
 package com.powernode.javase.reflect;  
   
@@ -1528,3 +1530,4 @@ create table t_user(uid varchar,uname varchar,pwd varchar,age int);
 create table t_vip(id varchar);
 create table t_customer(cid varchar,name varchar,age int,addr varchar);
 ```
+
