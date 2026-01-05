@@ -34,7 +34,8 @@
 - **`dir`** - 列出目录内容（类似Linux的`ls`）
   - 查看指定目录：`dir 绝对路径`
 - **`cd`** - 切换目录
-  - 切换到其他盘：`cd /D 盘符:`（如：`cd /D C:`）
+  - 切换盘符（**重点**）：`盘符:`（如：`D:`）
+  - 跨盘并进入指定目录：`cd /D 绝对路径`（如：`cd /D D:\path`）
 - **`tree`** - 显示目录树
   - 使用案例：[MS-DOS and Windows command line tree command](https://www.computerhope.com/treehlp.htm)
 - **`md`** - 创建目录

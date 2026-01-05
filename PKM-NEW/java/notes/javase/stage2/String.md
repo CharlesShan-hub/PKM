@@ -1,15 +1,16 @@
 # String
 
-![[../../../assets/String-drawing| 1000]]
+![String-drawing|1000](../../../assets/String-drawing.md)
 
 字符串专题阅读顺序：本文 👉 [StringBuilder-and-StringBuffer](StringBuilder-and-StringBuffer.md)
 
 ---
 ## 🍭 基本概念
 
-1. String 对象用于保存字符串，也就是一组字符序列
-2. 字符串常量对象是用双引号括起的字符序列。例如："你好"、"12.97"、"boy"
-3. String 类较常用构造器（其它看手册）：
+1. String 不是 Java 基本数据类型。
+2. String 对象用于保存字符串，也就是一组字符序列。
+3. 字符串常量对象是用双引号括起的字符序列。例如："你好"、"12.97"、"boy"。
+4. String 类较常用构造器（其它看手册）：
     - `String s1 = new String();` // 默认构造器，创建一个空字符串
     - `String s2 = new String(String original);` // 通过另一个字符串对象创建
     - `String s3 = new String(char[] a);` // 通过字符数组创建
@@ -45,8 +46,8 @@ public final class String
 	1. java9之前：String 内部实现仍然是 `char[]`，字符串的字符使用 **Unicode** 字符编码，**一个字符（不区分字母还是汉字）占两个字节**。
 	2. java9 开始：使用`byte[]`保存字符串，针对 JDK 9 的 String 源码里，为了区别编码方式，追加了一个 coder 字段来区分。Java 会根据字符串的内容自动设置为相应的编码，要么 Latin-1 要么 UTF16。
 	3. 从 `char[]` 到 `byte[]`，最主要的目的是**节省字符串占用的内存空间**。内存占用减少带来的另外一个好处，就是 [GC](https://javabetter.cn/jvm/gc.html) 次数也会减少。
-2. String 继承了 `Serializable` 接口：String 可以通过网络传输
-3. String 继承了 `Comparable` 接口：String 可以相互比较
+2. String 继承了 `Serializable` 接口：String 可以序列化，可以通过网络传输
+3. String 继承了 `Comparable` 接口：String 可以相互比较，所以我们别用`==`比较，而是用`compareTo()`方法
 4. **String 是一个 final 类**： String 不能被其他的类继承
 5. String 内部存放 **byte/char 数组的对象也是 final**：对象不能被修改，但是对象内部的内容可以被修改（value 不能指向新的地址，但是单独字符的内容是可以变换的）
 	```java

@@ -1,11 +1,17 @@
 # StringBuffer & StringBuilder
 
+![StringBuilder-StringBuffer-drawing.excalidraw|1000](../../../assets/StringBuilder-StringBuffer-drawing.excalidraw.md)
 字符串专题阅读顺序：[String](String.md)  👉 本文
 
 ---
+## String的缺点
+
+* String 类的对象是**不可变**的。也就是说，⼀旦⼀个 String 对象被创建，它所包含的字符串内容是不可改变的。
+* 每次对 String 对象进⾏修改**操作**（如拼接、替换等，尤其是使用`+`号操作符）实际上都会**⽣成⼀个新的 String 对象**，⽽不是修改原有对象。这可能会导致内存和**性能开销**，尤其是在⼤量字符串操作的情况下。
+
 ## 🍭 StringBuffer 基本概念
 
-由于[字符串是不可变的](https://javabetter.cn/string/immutable.html)，所以当遇到[字符串拼接](https://javabetter.cn/string/join.html)（尤其是使用`+`号操作符）的时候，就需要考量性能的问题，你不能毫无顾虑地生产太多 String 对象，对珍贵的内存造成不必要的压力。于是 Java 就设计了一个专门用来解决此问题的 StringBuffer 类。
+为了对珍贵的内存造成不必要的压力，Java 设计了一个专门用来解决此问题的 `StringBuffer` 类。
 
 ```java
 public final class StringBuffer extends AbstractStringBuilder implements Serializable, CharSequence {
