@@ -19,17 +19,17 @@
 * OOP Basic
 	* [Introduction for Class and Object](stage1/class-and-object-introduce.md)：引入
 	* [Attributes and Methods](stage1/attributes-and-methods.md)：属性和成员方法
-	* [Constructor and this](stage1/constructor-and-this.md)
+	* [Constructor and this](stage1/constructor-and-this.md)：构造器和this
 	* [javabean](heima/javabean.md)：实体类
 	* [static](stage2/static.md)：类变量(静态变量) 与 类方法(静态方法)
-	* [Access Modifiers](stage1/access-modifiers.md)：public protected 缺省 private
 	* [encapsulation](stage1/encapsulation.md)：封装
 	* [extends](stage1/extends.md)：继承
+	* [Access Modifiers](stage1/access-modifiers.md)：public protected 缺省 private
 	* [Object](stage1/Object.md)：所有类都继承了Object
-	* [polymorphism](stage1/polymorphism.md)：多态
-	* [final](stage2/final.md)
 	* [super](stage1/super.md)
+	* [polymorphism](stage1/polymorphism.md)：多态
 * OOP Advanced
+	* [final](stage2/final.md)
 	* [abstract](stage2/abstract.md)
 	* [interface](stage2/interface.md)
 	* [enum](stage2/enum.md)
@@ -37,17 +37,17 @@
 	* [内部类](stage2/内部类.md)
 	* [reflect](powerpoint/reflect.md)
 * Utils Classes
-	* [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
-	* [WrapperClass](stage2/WrapperClass.md)
-	* 
+  * [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
+  * [WrapperClass](stage2/WrapperClass.md)
+  * 
 * Array
-	* [array](stage1/array.md)
-	* [Arrays](stage2/Arrays.md)
+  * [array](stage1/array.md)
+  * [Arrays](stage2/Arrays.md)
 * String
-	* [String](stage2/String.md)
-	* [StringBuilder and StringBuffer](stage2/StringBuilder-and-StringBuffer.md)
+  * [String](stage2/String.md)
+  * [StringBuilder and StringBuffer](stage2/StringBuilder-and-StringBuffer.md)
 * Collection
-	* [集合](stage2/集合.md)
-	* [精通集合](stage2/精通集合.md)
+  * [集合](stage2/集合.md)
+  * [精通集合](stage2/精通集合.md)
 * IO
 * Multi-threading

@@ -1,5 +1,7 @@
 # 封装
 
+浏览顺序：本文 👉 [extends](extends.md) 👉 [polymorphism](polymorphism.md)
+ 
 1. encapsulation
 
 2. 封装：把抽象出来的数据【属性】和对数据的操作【方法】封装在一起，数据被保护在内部，程序的其他部分只有通过被授权的操作【方法】，才能对数据进行访问

@@ -16,10 +16,10 @@
 	* [Java语言标识符的命名规范(超详细讲解)](https://www.cnblogs.com/qian-fen/p/16963064.html)
 	* 变量名可以包含`$`
 * 规范
-	* 包名：abc.def.ghi
-	* 类/接口：XxxYyyZzz
-	* 变量/函数：xxYyyZzz
-	* 常量名：XXX_YYY_ZZZ
+	* 包名：`abc.def.ghi`
+	* 类/接口：`XxxYyyZzz`
+	* 变量/函数：`xxYyyZzz`
+	* 常量名：`XXX_YYY_ZZZ`
 
 ### 作用域规则
 - 变量在一个作用域内不能重名
@@ -349,9 +349,15 @@ public class Hello{
 ### 自动类型转换
 #### 转换方向（从小到大）
 
-byte → short → int → long → float → double
-↑
+```
+byte 
+⬇️
+short 
+⬇️
+int ➡️ long ➡️ float ➡️ double
+⬆️
 char
+```
 
 
 #### 转换规则

@@ -1,20 +1,23 @@
 # static
 
 ---
-## 类变量
+## 类变量（静态变量）
 
 有一个游乐场，有很多小孩，不停的有小孩进来，求小孩个数。
 
-没有类变量的版本
+没有类变量的版本（bad example）
 
 ```java
 public class Test{
 	public static void main(String[] args){
+		int count = 0;
 		Child c1 = new Child("A");
+		count++;
 		Child c2 = new Child("B");
+		count++;
 		Child c3 = new Child("C");
-		System.out.println(Child.count); // 3, 类变量可以用类名直接访问
-		System.out.println(c1.count);    // 3, 不同的对象共享同一个空间
+		count++;
+		System.out.println(count); // 3
 	}
 }
 class Child{
@@ -34,14 +37,11 @@ class Child{
 ```java
 public class Test{
 	public static void main(String[] args){
-		int count = 0;
 		Child c1 = new Child("A");
-		count++;
 		Child c2 = new Child("B");
-		count++;
 		Child c3 = new Child("C");
-		count++;
-		System.out.println(count); // 3
+		System.out.println(Child.count); // 3, 类变量可以用类名直接访问
+		System.out.println(c1.count);    // 3, 不同的对象共享同一个空间
 	}
 }
 class Child{
@@ -50,7 +50,7 @@ class Child{
 	public Child(String name){
 		this.name = name;
 		join();
-		count++;
+		count++; // 这里修改的是类变量
 	}
 	public void join(){
 		System.out.println(name + "加入了游戏");
@@ -84,7 +84,7 @@ class Child{
 类变量的生命周期随着类的加载开始，随着类的消亡结束
 
 ---
-## 类方法
+## 类方法（静态方法）
 
 类方法（静态方法）：也是 static 修饰，注意 **里边不能用 this 和 super**，静态方法只能访问静态成员
 

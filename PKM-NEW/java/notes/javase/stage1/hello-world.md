@@ -28,39 +28,27 @@ public class Hello {
 ## Java源文件结构
 
 ### 类声明规则
-1. **一个源文件中最多只能有一个`public`类**
-2. **源文件名必须与`public`类名完全一致**
+1. 一个源文件中最多只能有一个`public`类
+2. 源文件名必须与`public`类名完全一致
 3. 可以包含多个非`public`类
 4. 编译后，每个类都会生成对应的`.class`文件
 
-### 多类示例
 ```java
-// Hello.java (文件名必须与public类名一致)
+// Hello.java（文件名必须与 public 类名一致）
 public class Hello {
     public static void main(String[] args) {
         System.out.println("Hello World");
     }
 }
 
-class Dog {
-    int age = 1;
-    String name = "WC";
-    
-    Dog(int age, String name) {
-        this.age = age;
-        this.name = name;
-    }
-}
-
-class B {
-    Dog myDog = new Dog(10, "aaa");
-    int num;
+class Another {
+// 可以包含多个非public类
 }
 ```
 
 ### main方法的位置
-- `public static void main(String[] args)`可以不在`public`类中
-- 运行时需要指定包含main方法的类名
+1. `public static void main(String[] args)`可以不在`public`类中
+2. 运行时需要指定包含main方法的类名
 
 ```java
 // Hello.java

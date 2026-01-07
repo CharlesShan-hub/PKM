@@ -2,7 +2,7 @@
 ---
 ## Content
 *  [javase](notes/javase/README.md)
-* 
+* [design pattern](notes/design-pattern/README.md)
 
 ---
 ## Resources

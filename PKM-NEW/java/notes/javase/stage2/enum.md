@@ -1,9 +1,10 @@
 # 枚举
 
 ---
-## 枚举介绍
+## 引入枚举类
 
-创建 Season 对象
+1. 创建 Season 对象
+
 ```java
 package ex_enum;  
   
@@ -43,8 +44,7 @@ class Season{
 }
 ```
 
----
-## 自定义类实现枚举
+2. 自定义类实现枚举
 
 ```java
 package ex_enum;  
@@ -88,8 +88,7 @@ class Season{
 }
 ```
 
----
-## enum 关键字实现枚举
+3. 使用`enum`关键字实现枚举
 
 ```java
 package ex_enum;  
@@ -104,7 +103,8 @@ public class Test {
 }  
   
 enum Season{  
-    // 1. 使用关键字 enum 替代 class    // 2. 定义的对象，使用名称替代  
+    // 1. 使用关键字 enum 替代 class    
+    // 2. 定义的对象，使用名称替代  
     // 3. 把属性定义放到后边  
     // 4. 多个对象使用对象间  
     SPRING("春天","春困"),  
@@ -136,7 +136,8 @@ enum Season{
 }
 ```
 
-enum的细节
+## enum的细节
+
 1. 通过反编译(javap)，可以看到上边的季节类型如下
 	```java
 	// 可以看到这是一个 final 类所以不能有子类了，但是可以弄接口

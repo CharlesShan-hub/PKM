@@ -163,11 +163,12 @@ System.out.println("nextLine(): " + line);
 ```
 
 **示例输入输出**：
-
+```
 输入测试: Hello World
 next(): Hello
 再输入测试: Hello World
 nextLine(): Hello World
+```
 
 
 ### 2. 处理混合输入问题

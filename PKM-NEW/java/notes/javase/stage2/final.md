@@ -3,14 +3,14 @@
 ---
 ## 基本使用
 
-1. 使用了 final 就不能继承了
+1. 使用了 final 的类，就不能继承了
 
 	```java
 	final class A{}  
-	//class B extends A{}
+	//class B extends A{} // 不可以了
 	```
 
-2. 使用了 final 的方法，继承后不能重写
+2. 使用了 final 的方法，子类不能重写
 
 	```java
 	class A{  
@@ -76,7 +76,7 @@
 5. 如果类不是final类，但是含有final方法，则该方法虽然不能重写，但是可以被继承。
 6. 一般来说，如果一个类已经是final类了，就没有必要再将方法修饰成final方法。（final类没有子类，自然没有重写其方法之说）
 7. final不能修饰构造方法(即构造器)
-8. final 和 static 往往搭配使用，效率更高，底层编译器做了优化处理。
+8. （重点）`final` 和 `static` 往往搭配使用，叫做常量，效率更高，底层编译器做了优化处理——进行**宏替换**。
 	```java
 	package ex_final;  
 	  
@@ -104,7 +104,7 @@
 	    }
 	}
 	```
-9. 包装类(Integer, Double, Float, Boolean等都是final), String也是final类。
+9. 包装类(`Integer`,` Double`, `Float`, `Boolean`等都是`final`), `String`也是`final`类。
 
 ---
 ## 练习

@@ -1,5 +1,7 @@
 # 继承
 
+浏览顺序：[encapsulation](encapsulation.md) 👉 本文 👉 [polymorphism](polymorphism.md)
+
 1. 好处：提高代码的复用性
 2. 语法：`class 子类 extends 父类`
 3. 细节 1：不同包的父类的 private 属性不能访问，需要父类提供 getter setter

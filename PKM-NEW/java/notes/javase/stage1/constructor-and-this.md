@@ -34,7 +34,7 @@
   }
   ```
 
-* 不写构造器的时候，一个类在编译的时候也会有构造器！（可以用 javap 指令反编译看）
+* （重要‼️）不写构造器的时候，一个类在编译的时候也会有构造器！（可以用 javap 指令反编译看）
 
   ```java
   public Person{}
@@ -92,7 +92,7 @@
 
 ### this本质
 其实this和name、age一样，都是成员变量，不过this被隐藏起来了，this存放的是对象自己的地址！
-  
+
 ```java
 public class Demo{
 	public static void main(String[] args){
@@ -116,6 +116,24 @@ class Dog{
 	}
 }
 ```
+
+
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Test t = new Test();
+        System.out.println(t.test() == t); // true
+    }
+}
+class Test{
+    public Test test(){
+        return this;
+    }
+}
+```
+
+
 
 ### 构造器与this
 
