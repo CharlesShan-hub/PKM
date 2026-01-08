@@ -7,7 +7,7 @@
 ```java
 class Animal{  
     public void eat(){  
-        System.out.println("这是一个动物，但是不知道吃什么🤷‍♀️");  
+        System.out.println("这是一个动物，但是不知道吃什么🤔");  
     }
 }
 ```
@@ -109,4 +109,4 @@ class Cat extends Animal{
 
 ## 模板设计模式
 
-👉 [[设计模式]]
+👉 [template-pattern](../../design-pattern/template-pattern.md)

@@ -30,9 +30,9 @@
 	* [polymorphism](stage1/polymorphism.md)：多态
 * OOP Advanced
 	* [final](stage2/final.md)
-	* [abstract](stage2/abstract.md)
+	* [abstract](stage2/abstract.md)：抽象类与抽象方法
 	* [interface](stage2/interface.md)
-	* [enum](stage2/enum.md)
+	* [enum](stage2/enum.md)：枚举
 	* [代码块](stage2/代码块.md)
 	* [内部类](stage2/内部类.md)
 	* [reflect](powerpoint/reflect.md)
