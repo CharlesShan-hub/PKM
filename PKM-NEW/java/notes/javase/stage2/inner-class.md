@@ -323,77 +323,134 @@ class CellPhone{
 ---
 ## 成员内部类（实例内部类）
 
-> 妙计：成员内部类是外部类的一个成员，所以叫成员内部类。
+> 妙计：成员内部类是外部类的一个成员（被外部类的对象持有），所以叫成员内部类。
 
 1. 定义的位置：外部类的成员位置
 2. 没有`static`修饰
-
 3. 两种其他外部类获得内部类实例的方法
-   1. `Outer.Inner inner = outer.new Inner();  `
-   2. `Outer.Inner inner = outer.get();  `（get是自己的写的方法）
-
-```java
-package ex_innerclass;  
-  
-public class AnonymousInnerClass {  
-    public static void main(String[] args){  
-        Outer outer = new Outer();  
-  
-        // 1. 通过类的对象调用  
-        Outer.Inner inner = outer.new Inner();  
-        inner.say();  
-        // 要用实例去 new        
-        Outer.Inner i2 = new Outer().new Inner();  
-        new Outer().new Inner().say();  
-  
-        // 2. 通过方法返回  
-        Outer.Inner i3 = outer.get();  
-    }
-}  
-  
-class Outer{ 
-    private int n = 10;  
-    public String name = "张三";  
-  
-    // public class Inner  
-    // protected class Inner    
-    // private class Inner    
-    class Inner {   // 成员内部类可以用各种访问修饰符
-        public void say() {  
-            System.out.println(n);   // 10  
-            System.out.println(name);//张三  
-        }  
-    }    
-    public Inner get(){  
-        return new Inner();  
-    }    
-    public void use(){  
-        Inner i = new Inner();  
-        i.say();  
-    }
-}
-```
+	1. `Outer.Inner inner = outer.new Inner();  `
+	2. `Outer.Inner inner = outer.get();  `（get是自己的写的方法）
+	```java
+	package ex_innerclass;  
+	
+	public class AnonymousInnerClass {  
+	 public static void main(String[] args){  
+	   // 1. 通过类的对象调用,要用实例去 new   
+	   Outer outer = new Outer();   
+	   Outer.Inner inner = outer.new Inner();  
+	   inner.say();  
+	   // 写成一步的方法 
+	   Outer.Inner i2 = new Outer().new Inner();  
+	   new Outer().new Inner().say();  
+	
+	   // 2. 通过方法返回  
+	   Outer.Inner i3 = outer.get();  
+	 }
+	}  
+	
+	class Outer{ 
+	 private int n = 10;  
+	 public String name = "张三";  
+	
+	 // public class Inner  
+	 // protected class Inner    
+	 // private class Inner    
+	 class Inner {   // 成员内部类可以用各种访问修饰符
+	   public void say() {  
+		 System.out.println(n);   // 10  
+		 System.out.println(name);//张三  
+	   }  
+	 }    
+	 public Inner get(){  
+	   return new Inner();  
+	 }    
+	 public void use(){  
+	   Inner i = new Inner();  
+	   i.say();  
+	 }
+	}
+	```
+	
+6. 内部类访问外部内容
+	1. 成员内部类中可以直接访问外部类的静态成员，也可以直接访问外部类的实例成员。
+	1. 成员内部类的实例方法中，可以直接拿到当前寄生的外部类对象：`外部类名.this`
+	```java
+	package ex_inner_class;  
+	
+	public class Test {
+	  public static void main(String[] args) {  
+		Outer outer = new Outer();  
+		outer.test();  
+	  }
+	}
+	
+	class Outer{  
+	  // 外部静态成员
+	  static int a = 1;
+	  // 外部静态成员
+	  static int fa(){
+	    return 2;
+	  }
+	  // 外部实例成员  
+	  int b = 3;
+	  // 外部实例成员  
+	  int fb(){
+	    return 4;
+	  }
+	  // 外部类的一个参数
+	  int hearBeat = 100;
+	  class Inner{ 
+	    // 内部类的一个参数
+	    int hearBeat = 80;
+	    void m1(){  
+	      // 成员内部类中可以直接访问外部类的静态成员
+	      System.out.println(a);    // 1
+	      System.out.println(fa()); // 2
+	      // 成员内部类中可以直接访问外部类的实例成员
+	      System.out.println(b);    // 3
+	      System.out.println(fb()); // 4
+	    }
+	    void m2(){
+				// 方法中的一个参数
+	      int hearBeat = 60;
+	      System.out.println(hearBeat);            // 60
+	      System.out.println(this.hearBeat);       // 80
+	      System.out.println(Outer.this.hearBeat); // 100
+	    }
+	    void test(){  
+	      Outer.Inner i = new Outer.Inner();  
+	      i.m1();// 测试访问外部类属性和方法
+	      i.m2();// 测试获得寄生的外部类的对象
+	    }
+	  }
+	}
+	```
 
 ## 静态内部类
 
-```java
-package ex_innerclass;  
-  
-public class AnonymousInnerClass {  
-    public static void main(String[] args){  
-        Outer.Inner inner = new Outer.Inner();   // <--重点
-        inner.say(); // 19  
-    }  
-}  
-  
-class Outer{  
-    private static int a = 19;  
-    private int b = 20;  
-    public static class Inner{  
-        public static void say(){  
-            System.out.println(a);  
-            //System.out.println(b); 错 静态类只能访问静态成员  
-        }  
-    }
-}
-```
+> 妙计：静态内部类是静态的，所以是外部类本身持有（而不是外部类的对象持有）。
+
+1. 定义的位置：外部类的静态成员，属于外部类自己持有。
+2. 获得内部类实例的方法：`Outer.Inner inner = new Outer.Inner();`
+
+	```java
+	package ex_innerclass;  
+	  
+	public class AnonymousInnerClass {  
+	    public static void main(String[] args){  
+	        Outer.Inner inner = new Outer.Inner();   // <--重点
+	        inner.say(); // 19  
+	    }  
+	}  
+	  
+	class Outer{  
+	    private static int a = 19;  
+	    private int b = 20;  
+	    public static class Inner{  
+	        public static void say(){  
+	            System.out.println(a);  
+	            //System.out.println(b); 错 静态类只能访问静态成员  
+	        }  
+	    }
+	}
+	```
