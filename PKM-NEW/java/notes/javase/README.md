@@ -31,11 +31,11 @@
 * OOP Advanced
 	* [final](stage2/final.md)
 	* [abstract](stage2/abstract.md)：抽象类与抽象方法
-	* [interface](stage2/interface.md)
+	* [interface](stage2/interface.md)：接口
 	* [enum](stage2/enum.md)：枚举
-	* [代码块](stage2/代码块.md)
-	* [内部类](stage2/内部类.md)
-	* [reflect](powerpoint/reflect.md)
+	* [Code Block](stage2/code-block.md)：代码块
+	* [Inner Class](stage2/inner-class.md)：内部类
+	* [reflect](powerpoint/reflect.md)：反射
 * Utils Classes
   * [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
   * [WrapperClass](stage2/WrapperClass.md)

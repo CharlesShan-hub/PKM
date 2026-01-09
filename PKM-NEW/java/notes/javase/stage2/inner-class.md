@@ -1,7 +1,13 @@
 # 内部类
 
-类的五大成员：属性、方法、构造器、代码块、内部类
+---
+## 类的五大成分
 
+1. 成员变量：[attributes-and-methods](../stage1/attributes-and-methods.md)
+2. 构造器：[constructor-and-this](../stage1/constructor-and-this.md)
+3. 方法：[attributes-and-methods](../stage1/attributes-and-methods.md)
+4. 代码块：[code-block](code-block.md)
+5. 内部类：本文
 ---
 ## 概述
 
@@ -69,7 +75,7 @@
 3. 作用域：仅仅在定义它的**方法**或**代码块**中。
 	```java
 	package ex_innerclass;  
-  
+    
 	public class Test {  
 	    public static void main(String[] args){  
 	        Outer outer = new Outer(); // 100  
@@ -317,9 +323,14 @@ class CellPhone{
 ---
 ## 成员内部类（实例内部类）
 
-定义在外部类的成员位置
+> 妙计：成员内部类是外部类的一个成员，所以叫成员内部类。
 
-下边是两种其他外部类获得内部类实例的方法
+1. 定义的位置：外部类的成员位置
+2. 没有`static`修饰
+
+3. 两种其他外部类获得内部类实例的方法
+   1. `Outer.Inner inner = outer.new Inner();  `
+   2. `Outer.Inner inner = outer.get();  `（get是自己的写的方法）
 
 ```java
 package ex_innerclass;  

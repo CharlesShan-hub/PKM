@@ -4,7 +4,7 @@
 ---
 ## 简介
 
-模板模式（Template Pattern）是一种行为设计模式，用于定义一个操作中的算法骨架，而将一些步骤延迟到子类中实现。
+模板模式（Template Pattern）是一种行为设计模式，用于定义一个操作中的算法骨架，而将一些**步骤延迟到子类中实现**。
 
 下面是一个实际的例子：模拟不同类型的咖啡制作过程。
 
@@ -93,11 +93,11 @@ public class TemplatePatternDemo {
 
 这个例子展示了模板模式的关键点：
 
-1. `BeverageMaker` 是抽象模板类，定义了制作饮料的固定流程（prepareBeverage()）
+1. `BeverageMaker` 是抽象模板类，定义了制作饮料的固定流程（`prepareBeverage()`）
 2. 使用 `final` 关键字确保算法骨架不可被子类修改
-3. 公共步骤（boilWater() 和 pourInCup()）在父类中实现
-4. 可变步骤（brew() 和 addCondiments()）声明为抽象方法，由子类实现
-5. 具体类（CoffeeMaker 和 TeaMaker）实现了不同的冲泡和调料添加方式
+3. 公共步骤（`boilWater()` 和 `pourInCup()`）在父类中实现
+4. 可变步骤（`brew()` 和 `addCondiments()`）声明为抽象方法，由子类实现
+5. 具体类（`CoffeeMaker` 和 `TeaMaker`）实现了不同的冲泡和调料添加方式
 
 模板模式的优点：
 - 代码复用：公共步骤在父类中实现，避免重复

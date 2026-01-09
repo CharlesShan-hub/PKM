@@ -223,7 +223,7 @@
 	* 370：房屋查找
 	* 371：查找
 	* 372：总结，[[notes/javase/stage1/第九章作业|第九章作业]]
-* 第 10 章：[[../notes/javase/stage2/static|static]]，[[notes/javase/stage2/代码块|代码块]]，[[notes/javase/stage2/设计模式|设计模式]]，[[notes/javase/stage2/final|final]]，[[../notes/javase/stage2/abstract|abstract]]，[[notes/javase/stage2/interface|interface]]，[[notes/javase/stage2/内部类|内部类]]
+* 第 10 章：[[../notes/javase/stage2/static|static]]，[[../notes/javase/stage2/code-block|code-block]]，[[notes/javase/stage2/设计模式|设计模式]]，[[notes/javase/stage2/final|final]]，[[../notes/javase/stage2/abstract|abstract]]，[[notes/javase/stage2/interface|interface]]，[[../notes/javase/stage2/inner-class|inner-class]]
 	* 373~374：类变量的引出
 	* 375：类变量内存布局
 	* 376~377：类变量的使用与细节

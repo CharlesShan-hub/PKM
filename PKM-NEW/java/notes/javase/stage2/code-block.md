@@ -1,6 +1,15 @@
 # 代码块
 
 ---
+## 类的五大成分
+
+1. 成员变量：[attributes-and-methods](../stage1/attributes-and-methods.md)
+2. 构造器：[constructor-and-this](../stage1/constructor-and-this.md)
+3. 方法：[attributes-and-methods](../stage1/attributes-and-methods.md)
+4. 代码块：本文
+5. 内部类：[inner-class](inner-class.md)
+
+---
 ## 基本语法
 
 ```java
@@ -11,113 +20,114 @@
 
 常用情况：对构造器的补充（代码块在构造器之前进行，可以把不同构造器的共同部分先放在代码块里边提前执行）
 
+代码块的种类
+
+1. 普通代码块/**实例代码块**：每次实例化都要执行一次，如果用类的静态属性和方法，并不会执行普通代码块
+2. static代码块/**静态代码块**：用于对类进行初始化。
+   - **执行时机**：随着类的加载而执行，**并且只会执行一次**。
+   - **对比**：如果是普通代码块，每创建一个对象，就执行一次。
+3. 类什么时候被加载
+   - **创建对象实例时**：使用`new`关键字创建对象时，类会被加载。
+   - **创建子类对象实例**：父类也会被加载。
+   - **使用类的静态成员时**：包括静态属性和静态方法。
+
 ```java
 package ex_block;  
-  
+
 public class Test {  
-    public static void main(String[] args){  
-        PeopleA p1 = new PeopleA(); // Initializing A
-        PeopleA p2 = new PeopleA("Jack"); // Initializing A
-        PeopleB p3 = new PeopleB();  // Initializing B
-        PeopleB p4 = new PeopleB("Jack");  // 不会再输出了
-    }
+  public static void main(String[] args){  
+    PeopleA p1 = new PeopleA(); // Initializing A
+    PeopleA p2 = new PeopleA("Jack"); // Initializing A
+    PeopleB p3 = new PeopleB();  // Initializing B
+    PeopleB p4 = new PeopleB("Jack");  // 不会再输出了
+  }
 }
-  
+
 class PeopleA{  
-    private String name;  
-    // 初始化块，用于在构造器执行之前初始化代码  
-    {  
-        System.out.println("Initializing A");  
-    }    
-    public PeopleA(){}  
-    public PeopleA(String name){  
-        this.name = name;  
-    }
+  private String name;  
+  // 初始化块，用于在构造器执行之前初始化代码  
+  {  
+    System.out.println("Initializing A");  
+  }    
+  public PeopleA(){}  
+  public PeopleA(String name){  
+    this.name = name;  
+  }
 }
-  
+
 class PeopleB{  
-    private String name;  
-    // 初始化块，用于在构造器执行之前初始化代码  
-    static {  
-        System.out.println("Initializing B");  
-    }    
-    public PeopleB(){}  
-    public PeopleB(String name){  
-        this.name = name;  
-    }
+  private String name;  
+  // 初始化块，用于在构造器执行之前初始化代码  
+  static {  
+    System.out.println("Initializing B");  
+  }    
+  public PeopleB(){}  
+  public PeopleB(String name){  
+    this.name = name;  
+  }
 }
 ```
 
-代码块的种类
-1. 普通代码块：每次实例化都要执行一次，如果用类的静态属性和方法，并不会执行普通代码块
-2. static代码块：也称为静态代码块，用于对类进行初始化。
-	- **执行时机**：随着类的加载而执行，**并且只会执行一次**。
-	- **对比**：如果是普通代码块，每创建一个对象，就执行一次。
-3. 类什么时候被加载
-	- **创建对象实例时**：使用`new`关键字创建对象时，类会被加载。
-	- **创建子类对象实例**：父类也会被加载。
-	- **使用类的静态成员时**：包括静态属性和静态方法。
-
 ```java
 package ex_block;  
-  
+
 public class Test {  
-    public static void main(String[] args){  
-        System.out.println("Run Parent static m: ");  
-        Parent.m();  
-        //static block of Parent  
-        //static method of Parent        
-        System.out.println("New Parent: ");  
-        Parent p = new Parent();  
-        // 没有 static block of Parent, 因为在 Parent.m()时就已经执行了静态代码块  
-        //normal block of Parent  
-        System.out.println("Run Parent m2: ");  
-        p.m2();  
-        //method of Parent  
-                  
-System.out.println("Run Child static m: ");  
-        Child.m();  
-        //static block of Child  
-        //static method of Child        
-        System.out.println("New Child: ");  
-        Child c = new Child();  
-        //normal block of Parent  
-        //normal block of Child        
-        System.out.println("Run Child m2: ");  
-        c.m2();  
-        //method of Child  
-  
-    }  
+  public static void main(String[] args){  
+    System.out.println("Run Parent static m: ");  
+    Parent.m();  
+    //static block of Parent  
+    //static method of Parent        
+    System.out.println("New Parent: ");  
+    Parent p = new Parent();  
+    // 没有 static block of Parent, 因为在 Parent.m()时就已经执行了静态代码块  
+    //normal block of Parent  
+    System.out.println("Run Parent m2: ");  
+    p.m2();  
+    //method of Parent  
+
+    System.out.println("Run Child static m: ");  
+    Child.m();  
+    //static block of Child  
+    //static method of Child        
+    System.out.println("New Child: ");  
+    Child c = new Child();  
+    //normal block of Parent  
+    //normal block of Child        
+    System.out.println("Run Child m2: ");  
+    c.m2();  
+    //method of Child  
+
+  }  
 }  
-  
+
 class Parent{  
-    static {  
-        System.out.println("static block of Parent");  
-    }  
-    { 
-	    System.out.println("normal block of Parent");  
-    }  
-    static void m(){  
-        System.out.println("static method of Parent");  
-    } 
-    void m2(){  
-        System.out.println("method of Parent");  
-    }
+  static {  
+    System.out.println("static block of Parent");  
+  }  
+  { 
+    System.out.println("normal block of Parent");  
+  }  
+  static void m(){  
+    System.out.println("static method of Parent");  
+  } 
+  void m2(){  
+    System.out.println("method of Parent");  
+  }
 }  
-  
+
 class Child extends Parent{  
-    static {  
-        System.out.println("static block of Child");  
-    }  
-    {
-	    System.out.println("normal block of Child");  
-    }
-    static void m(){  
-        System.out.println("static method of Child");  
-    }
-    void m2(){  
-        System.out.println("method of Child");  
-    }
+  static {  
+    System.out.println("static block of Child");  
+  }  
+  {
+    System.out.println("normal block of Child");  
+  }
+  static void m(){  
+    System.out.println("static method of Child");  
+  }
+  void m2(){  
+    System.out.println("method of Child");  
+  }
 }
 ```
 
