@@ -23,7 +23,9 @@
 
 ### Lambda表达式的引入
 
-Lambda表达式是JDK1.8的一个新特性，可以取代大部分的匿名内部类，以便写出更优雅的Java代码，尤其在集合的遍历和其他集合操作中，可以极大地优化代码结构。 在以前的学习中，想要实现对List集合的“降序”排序操作，就需要使用匿名内部类来实现，这样的代码非常的复杂和繁琐，代码如下：
+Lambda表达式是**JDK1.8**的一个新特性，可以取代大部分的匿名内部类，以便写出更优雅的Java代码，尤其在集合的遍历和其他集合操作中，可以极大地优化代码结构。
+
+在以前的学习中，想要实现对List集合的“降序”排序操作，就需要使用匿名内部类来实现，这样的代码非常的复杂和繁琐，代码如下：
 
 ```java
 // 方式一：使用匿名内部类来实现  
@@ -37,7 +39,7 @@ Collections.sort(list, new Comparator<Integer>() {
 System.out.println("排序后：" + list);
 ```
 
-针对以上对List集合的的“降序”排序操作，除了使用匿名内部类来实现外，还可以使用Lambda表达式来实现，使用Lambda表达式的代码非常优雅，并且还非常的简洁，代码如下：
+针对以上对List集合的的“降序”排序操作，可以使用Lambda表达式来实现：
 
 ```java
 // 方式二：使用Lambda表达式来实现  
@@ -48,81 +50,63 @@ System.out.println("排序后：" + list);
 
 案例
 ```java
-package com.powernode.javase.lambda;  
-  
-import java.util.Comparator;  
-import java.util.TreeSet;  
-  
-/**  
- * ClassName: LambdaTest01 
- * Description: 先体会一下Java8的新特性：Lambda表达式  
- * <p>  
- * Datetime: 2024/2/2 8:38 
- * Author: 老杜@动力节点  
- * Version: 1.0  
+package ex_array;
+
+import java.util.Comparator;
+import java.util.Arrays;
+import java.util.TreeSet;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+/**
+ * 用户类 - 使用Lombok注解简化代码
  */
-public class LambdaTest01 {  
-    public static void main(String[] args) {  
-        // TreeSet集合中的元素是可以自动排序的。  
-        // TreeSet集合是怎么排序的？ 两种方式  
-        // 第一种方式：如果比较规则固定不变，可以让TreeSet集合中的元素实现java.lang.Comparable接口。  
-        // 第二种方式：创建TreeSet集合的时候，给TreeSet集合传递一个比较器对象，比较器实现java.util.Comparator接口。  
-        // 以下是匿名内部类的方式  
-	    TreeSet<User> users1 = new TreeSet<>(new Comparator<User>() {  
-            @Override            
-            public int compare(User o1, User o2) {                
-	            return o1.getAge() - o2.getAge();            
-	        }        
-	    });
-		
-        TreeSet<User> users2 = new TreeSet<>((User o1, User o2) -> { return o2.getAge() - o1.getAge(); });  
-        TreeSet<User> users3 = new TreeSet<>((o1, o2) ->  o2.getAge() - o1.getAge() );  
-  
-        User user1 = new User(20);  
-        User user2 = new User(30);  
-        User user3 = new User(40);  
-        User user4 = new User(10);  
-  
-        users1.add(user1);  
-        users1.add(user2);  
-        users1.add(user3);  
-        users1.add(user4);  
-        users2.add(user1);  
-        users2.add(user2);  
-        users2.add(user3);  
-        users2.add(user4);  
-        users3.add(user1);  
-        users3.add(user2);  
-        users3.add(user3);  
-        users3.add(user4);  
-  
-        System.out.println(users1);  
-        System.out.println(users2);  
-        System.out.println(users3);  
-    }  
-}  
-  
-class User {  
-    private int age;  
-  
-    public int getAge() {  
-        return age;  
-    }  
-  
-    public void setAge(int age) {  
-        this.age = age;  
-    }  
-  
-    public User(int age) {  
-        this.age = age;  
-    }  
-  
-    @Override  
-    public String toString() {  
-        return "User{" +  
-                "age=" + age +  
-                '}';  
-    }  
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
+class User {
+  private int age;
+}
+
+/**
+ * ClassName: LambdaTest01
+ * Description: 先体会一下Java8的新特性：Lambda表达式
+ * <p>
+ * Datetime: 2024/2/2 8:38
+ * Author: 老杜@动力节点
+ * Version: 1.0
+ */
+public class LambdaTest01 {
+  public static void main(String[] args) {
+    // TreeSet集合中的元素是可以自动排序的。
+    // TreeSet集合是怎么排序的？ 两种方式
+    // 第一种方式：如果比较规则固定不变，可以让TreeSet集合中的元素实现java.lang.Comparable接口。
+    // 第二种方式：创建TreeSet集合的时候，给TreeSet集合传递一个比较器对象，比较器实现java.util.Comparator接口。
+    // 第二种 匿名内部类的方式实现
+    TreeSet<User> users1 = new TreeSet<>(new Comparator<User>() {
+      @Override
+      public int compare(User o1, User o2) {
+        return o1.getAge() - o2.getAge();
+      }
+    });
+    // 第二种 lambda表达式的方式实现
+    TreeSet<User> users2 = new TreeSet<>((User o1, User o2) -> { return o1.getAge() - o2.getAge(); });
+    // 第二种 lambda表达式的简化的方式实现
+    TreeSet<User> users3 = new TreeSet<>((o1, o2) ->  o1.getAge() - o2.getAge() );
+
+    User[] users = new User[]{new User(20),new User(30),new User(40),new User(10)};
+    users1.addAll(Arrays.asList(users));
+    users2.addAll(Arrays.asList(users));
+    users3.addAll(Arrays.asList(users));
+    System.out.println(users1);
+    System.out.println(users2);
+    System.out.println(users3);
+    // 都是 [User(age=10), User(age=20), User(age=30), User(age=40)]
+  }
 }
 ```
 
@@ -130,20 +114,16 @@ class User {
 
 Java从诞生之日起就一直倡导“一切皆对象”，在Java语言中面向对象（OOP）编程就是一切，但是随着Python和Scala等语言的崛起和新技术的挑战，Java也不得不做出调整以便支持更加广泛的技术要求，即Java语言不但支持OOP还支持OOF（面向函数编程）。 JDK1.8引入Lambda表达式之后，Java语言也开始支持函数式编程，但是Lambda表达式不是Java语言最早使用的，目前C++、C#、Python、Scala等语言都支持Lambda表示。
 
-- 面向对象的思想
+- 面向对象的思想：做一件事情，找一个能解决这个事情的对象，然后调用对象的方法，最终完成事情。
   
-    - 做一件事情，找一个能解决这个事情的对象，然后调用对象的方法，最终完成事情。
-    
-- 函数式编程思想
+- 函数式编程思想：只要能获得结果，谁去做的，怎么做的都不重要，重视的是结果，不重视实现过程。
   
-    - 只要能获得结果，谁去做的，怎么做的都不重要，重视的是结果，不重视实现过程。
-      
 
 在函数式编程语言中，函数被当成一等公民对待。在将函数当成一等公民的编程语言中，Lambda表达式的类型是函数，但是Lambda表达式却是一个对象，而不是函数，它们必须依附于一类特别的对象类型，也就是所谓的函数式接口。 简单点说，JDK1.8中的Lambda表达式就是一个函数式接口的实例，这就是Lambda表达式和函数式接口的关系。也就是说，**只要一个对象是函数式接口的实例，那么该对象就可以使用Lambda表达式来表示**。
 
 ### 如何去理解函数式接口
 
-能够使用Lambda表达式的一个重要依据是必须有相应的函数式接口，所谓的函数式接口，指的就是“一个接口中有且只能有一个抽象方法”。也就是说，如果一个接口只有一个抽象方法，那么该接口就是一个函数式接口。 如果我们在接口上声明了 @FunctionalInterface 注解，那么编译器就会按照函数式接口的定义来要求该接口，也就是该接口中有且只能定义一个抽象方法，如果该接口中定义了多个或0个抽象方法，则程序编译时就会报错。 
+能够使用Lambda表达式的一个重要依据是必须有相应的函数式接口，所谓的函数式接口，指的就是“一个接口中有且只能有一个抽象方法”。也就是说，如果一个接口只有一个抽象方法，那么该接口就是一个函数式接口。 如果我们在接口上声明了 `@FunctionalInterface` 注解，那么编译器就会按照函数式接口的定义来要求该接口，也就是该接口中有且只能定义一个抽象方法，如果该接口中定义了多个或0个抽象方法，则程序编译时就会报错。 
 
 【示例】定义一个函数式接口
 
@@ -159,7 +139,7 @@ public interface Flyable {
 }
 ```
 
-另外，从某种意义上来说，只要你保证你的接口中有且只有一个抽象方法，则接口中没有使用 @FunctionalInterface 注解来标注，那么该接口也依旧属于函数式接口。 在以下代码中，Flyable接口中没有使用@FunctionalInterface 注解，但是Flyable接口中只存在一个抽象方法，因此Flyable接口依旧属于函数式接口，那么使用Lambda表达式就可以表示Flyable 接口的实例，代码如下：
+另外，从某种意义上来说，只要你保证你的**接口中有且只有一个抽象方法**，则接口中没有使用 `@FunctionalInterface` 注解来标注，那么该接口也依旧属于函数式接口。 在以下代码中，Flyable接口中没有使用`@FunctionalInterface` 注解，但是`Flyable`接口中只存在一个抽象方法，因此`Flyable`接口依旧属于函数式接口：
 
 ```java
 /**  
@@ -190,7 +170,7 @@ public class Test01 {
   
     - 匿名内部类：可以是接口，抽象类，具体类。
       
-    - Lambda表达式：只能是接口。
+    - Lambda表达式：**只能是接口**。
     
 - 使用限制不同
   
@@ -202,7 +182,7 @@ public class Test01 {
   
     - 匿名内部类：编译之后，会生成一个单独的.class字节码文件。
       
-    - Lambda表达式：编译之后，没有生成一个单独的.class字节码文件。
+    - Lambda表达式：编译之后，**没有生成一个单独的.class字节码文件**。
       
 ```java
 package com.powernode.javase.lambda;
@@ -277,9 +257,6 @@ interface Flyable {
     void run();
     void fly();
 }
-
-
-
 ```
 ---
 ## Lambda表达式的使用
@@ -299,7 +276,7 @@ Collections.sort(list, new Comparator<Integer>() {
 System.out.println("排序后：" + list);
 ```
 
-在以上的匿名内部类中，黄色背景颜色标注的代码都属于不可变的固定代码，而红色背景颜色标注的代码，属于可变的并且是完成该功能的核心代码。因此，将此处的匿名内部类转化为Lambda表达式，我们只需保留红色部分的形参列表和方法体即可，对应的Lambda表达式代码实现如下：
+在以上的匿名内部类对应的Lambda表达式代码实现如下：
 
 ```java
 List<Integer> list = Arrays.asList(3, 6, 1, 7, 2, 5, 4);  
@@ -309,9 +286,12 @@ Collections.sort(list, (Integer o1, Integer o2) -> {
 System.out.println("排序后：" + list);
 ```
 
-在以上代码中，黄色背景颜色标注的就是重写于Comparator接口中抽象方法的形参列表，而红色背景颜色标注的就是重写方法对应方法体的代码实现。因此Lambda本质上就是去掉了一堆没有意义的代码，只留下核心的代码逻辑，从而让代码看起来更加的简洁且优雅。
+最后可以进一步精简Lambda表达式：
 
 ```java
+List<Integer> list = Arrays.asList(3, 6, 1, 7, 2, 5, 4);  
+Collections.sort(list, (o1, o2) -> o2 - o1);  
+System.out.println("排序后：" + list);
 ```
 
 ### Lambda表达式的使用
@@ -393,7 +373,7 @@ public class LambdaTest05 {
         OneParameterNoReturn opnr2 = (Integer value) -> { System.out.println("Integer-->" + value); };
         opnr2.test(2000);
 
-        // 精简
+        // 精简：一个参数时可以省略括号
         OneParameterNoReturn opnr3 = value -> System.out.println("Integer-->" + value);
         opnr3.test(2000);
     }
@@ -435,7 +415,7 @@ public class LambdaTest06 {
         MoreParameterNoReturn mpnr2 = (Integer value1, Integer value2) -> { System.out.println(value1 + value2); };
         mpnr2.test(300, 400);
 
-        // 精简
+        // 精简：多参数，不能省略括号，只能省略数据类型
         MoreParameterNoReturn mpnr3 = (value1, value2) -> System.out.println(value1 + value2);
         mpnr3.test(300, 400);
     }
@@ -682,7 +662,7 @@ System.out.println(function3.apply(3.14));
 
 ### 实例方法引用
 
-语法：对象 :: 实例方法 特点：在Lambda表达式的方法体中，通过“对象”来调用指定的某个“实例方法”。 要求：函数式接口中抽象方法的返回值类型和形参列表 与 内部通过对象调用某个实例方法的返回值类型和形参列表 保持一致。 【示例】实例化Consumer接口的实现类对象，并在重写的accept()方法中输出形参的值
+语法：`对象 :: 实例方法` 特点：在Lambda表达式的方法体中，通过“对象”来调用指定的某个“实例方法”。 要求：函数式接口中抽象方法的返回值类型和形参列表 与 内部通过对象调用某个实例方法的返回值类型和形参列表 保持一致。 【示例】实例化Consumer接口的实现类对象，并在重写的accept()方法中输出形参的值
 
 ```java
 package com.powernode.javase.lambda;  
@@ -794,7 +774,7 @@ public class LambdaTest11 {
 
 ### 静态方法引用
 
-语法：类 :: 静态方法 特点：在Lambda表达式的方法体中，通过“类名”来调用指定的某个“静态方法”。 要求：函数式接口中抽象方法的返回值类型和形参列表 与 内部通过类名调用某个静态方法的返回值类型和形参列表保持一致。
+语法：`类 :: 静态方法` 特点：在Lambda表达式的方法体中，通过“类名”来调用指定的某个“静态方法”。 要求：函数式接口中抽象方法的返回值类型和形参列表 与 内部通过类名调用某个静态方法的返回值类型和形参列表保持一致。
 
 【示例】实例化Function接口的实现类对象，并在重写的方法中返回小数取整的结果
 
@@ -845,7 +825,7 @@ public class LambdaTest12 {
 
 ### 特殊方法引用
 
-语法：类名 :: 实例方法 特点：在Lambda表达式的方法体中，通过方法的第一个形参来调用指定的某个“实例方法”。 要求：把函数式接口中抽象方法的第一个形参作为方法的调用者对象，并且从第二个形参开始（或无参）可以对应到被调用实例方法的参数列表中，并且返回值类型保持一致。 【示例】使用Comparator比较器，来判断两个小数的大小
+语法：`类名 :: 实例方法` 特点：在Lambda表达式的方法体中，通过方法的第一个形参来调用指定的某个“实例方法”。 要求：把函数式接口中抽象方法的第一个形参作为方法的调用者对象，并且从第二个形参开始（或无参）可以对应到被调用实例方法的参数列表中，并且返回值类型保持一致。 【示例】使用Comparator比较器，来判断两个小数的大小
 
 ```java
 package com.powernode.javase.lambda;
@@ -959,7 +939,7 @@ class Vip {
 
 ### 构造方法引用
 
-语法：类名 :: new 特点：在Lambda表达式的方法体中，返回指定“类名”来创建出来的对象。 要求：创建对象所调用构造方法形参列表 和 函数式接口中的方法的形参列表 保持一致，并且方法的返回值类型和创建对象的类型保持一致。 【示例】实例化Supplier接口的实现类对象，然后调用重写方法返回Teacher对象
+语法：`类名 :: new` 特点：在Lambda表达式的方法体中，返回指定“类名”来创建出来的对象。 要求：创建对象所调用构造方法形参列表 和 函数式接口中的方法的形参列表 保持一致，并且方法的返回值类型和创建对象的类型保持一致。 【示例】实例化Supplier接口的实现类对象，然后调用重写方法返回Teacher对象
 
 ```java
 package com.powernode.javase.lambda;
@@ -1034,7 +1014,7 @@ System.out.println(function3.apply("ande"));
 
 ### 数组引用
 
-语法：数组类型 :: new 特点：在Lambda表达式的方法体中，创建并返回指定类型的“数组”。 要求：重写的方法有且只有一个整数型的参数，并且该参数就是用于设置数组的空间长度，并且重写方法的返回值类型和创建数组的类型保持一致。 【示例】实例化Function接口的实现类对象，并在重写方法中返回指定长度的int类型数组
+语法：`数组类型 :: new` 特点：在Lambda表达式的方法体中，创建并返回指定类型的“数组”。 要求：重写的方法有且只有一个整数型的参数，并且该参数就是用于设置数组的空间长度，并且重写方法的返回值类型和创建数组的类型保持一致。 【示例】实例化Function接口的实现类对象，并在重写方法中返回指定长度的int类型数组
 
 ```java
 package com.powernode.javase.lambda;

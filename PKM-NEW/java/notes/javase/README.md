@@ -35,7 +35,7 @@
 	* [enum](stage2/enum.md)：枚举
 	* [Code Block](stage2/code-block.md)：代码块
 	* [Inner Class](stage2/inner-class.md)：内部类
-	* [lambda](powerpoint/lambda.md)：函数式编程
+	* [lambda](powerpoint/lambda.md)：表达式、方法引用
 	* [reflect](powerpoint/reflect.md)：反射
 * Utils Classes
 	* [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
