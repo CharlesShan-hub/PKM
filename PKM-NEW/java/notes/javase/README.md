@@ -2,7 +2,7 @@
 
 * Introduction
 	* [Remember!!](stage1/remember.md)
-	* [Background](stage1/background.md)
+	* [Background](stage1/background.md)：java基础、各个版本变化
 	* [Dos Instruction](stage1/Dos.md)
 	* [Coding](stage1/coding.md)
 	* [Hello World and Basic Java Structure](stage1/hello-world.md)
@@ -35,19 +35,20 @@
 	* [enum](stage2/enum.md)：枚举
 	* [Code Block](stage2/code-block.md)：代码块
 	* [Inner Class](stage2/inner-class.md)：内部类
+	* [lambda](powerpoint/lambda.md)：函数式编程
 	* [reflect](powerpoint/reflect.md)：反射
 * Utils Classes
-  * [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
-  * [WrapperClass](stage2/WrapperClass.md)
-  * 
+	* [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
+	* [WrapperClass](stage2/WrapperClass.md)
+	* [Comparator](heima/Comparator.md)
 * Array
-  * [array](stage1/array.md)
-  * [Arrays](stage2/Arrays.md)
+	* [array](stage1/array.md)
+	* [Arrays](stage2/Arrays.md)
 * String
-  * [String](stage2/String.md)
-  * [StringBuilder and StringBuffer](stage2/StringBuilder-and-StringBuffer.md)
+	* [String](stage2/String.md)
+	* [StringBuilder and StringBuffer](stage2/StringBuilder-and-StringBuffer.md)
 * Collection
-  * [集合](stage2/集合.md)
-  * [精通集合](stage2/精通集合.md)
+	* [集合](stage2/集合.md)
+	* [精通集合](stage2/精通集合.md)
 * IO
 * Multi-threading

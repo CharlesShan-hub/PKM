@@ -1,4 +1,3 @@
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=UoroU&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 # Lambda表达式
 
 ---
@@ -30,7 +29,7 @@ Lambda表达式是JDK1.8的一个新特性，可以取代大部分的匿名内�
 // 方式一：使用匿名内部类来实现  
 List<Integer> list = Arrays.asList(3, 6, 1, 7, 2, 5, 4);  
 Collections.sort(list, new Comparator<Integer>() {  
-    @Override  
+    @Override
     public int compare(Integer o1, Integer o2) {  
         return o2 - o1;  
     }  
@@ -43,7 +42,7 @@ System.out.println("排序后：" + list);
 ```java
 // 方式二：使用Lambda表达式来实现  
 List<Integer> list = Arrays.asList(3, 6, 1, 7, 2, 5, 4);  
-Collections.sort(list, (o1, o2) -> o2 - o1);  
+Collections.sort(list, (o1, o2) -> o2 - o1);
 System.out.println("排序后：" + list);
 ```
 
@@ -132,13 +131,13 @@ class User {
 Java从诞生之日起就一直倡导“一切皆对象”，在Java语言中面向对象（OOP）编程就是一切，但是随着Python和Scala等语言的崛起和新技术的挑战，Java也不得不做出调整以便支持更加广泛的技术要求，即Java语言不但支持OOP还支持OOF（面向函数编程）。 JDK1.8引入Lambda表达式之后，Java语言也开始支持函数式编程，但是Lambda表达式不是Java语言最早使用的，目前C++、C#、Python、Scala等语言都支持Lambda表示。
 
 - 面向对象的思想
-    
+  
     - 做一件事情，找一个能解决这个事情的对象，然后调用对象的方法，最终完成事情。
-        
-- 函数式编程思想
     
+- 函数式编程思想
+  
     - 只要能获得结果，谁去做的，怎么做的都不重要，重视的是结果，不重视实现过程。
-        
+      
 
 在函数式编程语言中，函数被当成一等公民对待。在将函数当成一等公民的编程语言中，Lambda表达式的类型是函数，但是Lambda表达式却是一个对象，而不是函数，它们必须依附于一类特别的对象类型，也就是所谓的函数式接口。 简单点说，JDK1.8中的Lambda表达式就是一个函数式接口的实例，这就是Lambda表达式和函数式接口的关系。也就是说，**只要一个对象是函数式接口的实例，那么该对象就可以使用Lambda表达式来表示**。
 
@@ -188,23 +187,23 @@ public class Test01 {
 ### Lambda和匿名内部类
 
 - 所需类型不同
-    
+  
     - 匿名内部类：可以是接口，抽象类，具体类。
-        
+      
     - Lambda表达式：只能是接口。
-        
+    
 - 使用限制不同
-    
+  
     - 如果接口中有且仅有一个抽象方法，可以使用Lambda表达式，也可以使用匿名内部类。
-        
+      
     - 如果接口中有多个抽象方法，则就只能使用匿名内部类，而不能使用Lambda表达式。
-        
-- 实现原理不同
     
+- 实现原理不同
+  
     - 匿名内部类：编译之后，会生成一个单独的.class字节码文件。
-        
+      
     - Lambda表达式：编译之后，没有生成一个单独的.class字节码文件。
-        
+      
 ```java
 package com.powernode.javase.lambda;
 
@@ -581,13 +580,13 @@ interface MoreParameterHasReturn {
 在以上代码中，虽然Lambda表达式的语法已经很简洁了，但是Lambda表达式的语法格式还可以更加的精简，从而写出更加优雅的代码，但是相应的代码可读性也会变差。 在以下的应用场景中，我们就可以对Lambda表达式的语法进行精简，场景如下：
 
 1. 形参类型可以省略，如果需要省略，则每个形参的类型都要省略。
-    
+   
 2. 如果形参列表中只存在一个形参，那么形参类型和小括号都可以省略。
-    
+   
 3. 如果方法体当中只有一行语句，那么方法体的大括号也可以省略。
-    
+   
 4. 如果方法体中只有一条return语句，那么大括号可以省略，且必须去掉return关键字。
-    
+   
 
 接下来，我们就对以下的Lambda表达式代码进行精简，从而写出更加优雅的代码。
 

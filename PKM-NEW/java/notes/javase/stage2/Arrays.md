@@ -25,48 +25,48 @@ Arrays 类是 Java 中 java.util 包提供的一个工具类，主要用于操�
 
 ### 主要功能
 
-1. ​**​排序​**​：对数组进行排序
-    
+1. **​排序​**​：对数组进行排序
+   
     ```
     int[] numbers = {3, 1, 4, 2};
     Arrays.sort(numbers); // 排序后：[1, 2, 3, 4]
     ```
     
-2. ​**​二分查找​**​：在已排序数组中查找元素
-    
+2. **​二分查找​**​：在已排序数组中查找元素
+   
     ```
     int index = Arrays.binarySearch(numbers, 3); // 返回2
     ```
     
-3. ​**​比较数组​**​：比较两个数组是否相等
-    
+3. **​比较数组​**​：比较两个数组是否相等
+   
     ```
     int[] arr1 = {1, 2, 3};
     int[] arr2 = {1, 2, 3};
     boolean isEqual = Arrays.equals(arr1, arr2); // 返回true
     ```
     
-4. ​**​填充数组​**​：用指定值填充数组
-    
+4. **​填充数组​**​：用指定值填充数组
+   
     ```
     int[] filled = new int[5];
     Arrays.fill(filled, 7); // [7, 7, 7, 7, 7]
     ```
     
-5. ​**​数组转字符串​**​：方便打印数组内容
-    
+5. **​数组转字符串​**​：方便打印数组内容
+   
     ```
     String arrayStr = Arrays.toString(numbers); // "[1, 2, 3, 4]"
     ```
     
-6. ​**​复制数组​**​：复制数组的全部或部分
-    
+6. **​复制数组​**​：复制数组的全部或部分
+   
     ```
     int[] copy = Arrays.copyOf(numbers, numbers.length);
     ```
     
-7. ​**​流操作​**​（Java 8+）：将数组转换为流
-    
+7. **​流操作​**​（Java 8+）：将数组转换为流
+   
     ```
     Arrays.stream(numbers).forEach(System.out::println);
     ```
@@ -216,67 +216,61 @@ System.out.println(Arrays.toString(strs));
 可以通过传入接口 Comparator 来实现自己的排序
 
 ```java
-package ex_commom;  
-  
-import java.util.Arrays;  
-import java.util.Comparator;  
-  
-public class ArrayExample {  
-    public static void main(String[] args) {  
-        Student[] students = new Student[3];  
-        students[0] = new Student(18, 90);  
-        students[1] = new Student(20, 85);  
-        students[2] = new Student(19, 100);  
-        System.out.println("Sort by age");  
-        Arrays.sort(students, new Comparator() {  
-            @Override  
-            public int compare(Object o1, Object o2) {  
-                return ((Student)o1).getAge() - ((Student)o2).getAge();  
-            }  
-        });  
-        System.out.println(students[0]);  
-        System.out.println(students[1]);  
-        System.out.println(students[2]);  
-        //Age: 18, Score90  
-        //Age: 19, Score100        
-        //Age: 20, Score85  
-        System.out.println("Sort by score");  
-        Arrays.sort(students, new Comparator(){  
-            @Override  
-            public int compare(Object o1, Object o2){  
-                return ((Student)o1).getScore() - ((Student)o2).getScore();
-            }  
-        });  
-        System.out.println(students[0]);  
-        System.out.println(students[1]);  
-        System.out.println(students[2]);  
-        //Age: 20, Score85  
-        //Age: 18, Score90        
-        //Age: 19, Score100        
-    }  
-}  
-  
-class Student{  
-    private int age;  
-    private int score;  
-  
-    public Student(int age, int score) {  
-        this.age = age;  
-        this.score = score;  
-    }  
-  
-    public int getAge() {  
-        return age;  
-    }  
-  
-    public int getScore() {  
-        return score;  
-    }  
-  
-    @Override  
-    public String toString() {  
-        return "Age: "+getAge()+", Score"+getScore();  
-    }  
+package ex_array;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Test {
+  public static void main(String[] args) {
+    Student[] students = new Student[3];
+    students[0] = new Student(18, 90);
+    students[1] = new Student(20, 85);
+    students[2] = new Student(19, 100);
+    System.out.println("Sort by age");
+    Arrays.sort(students, new Comparator() {
+      @Override
+      public int compare(Object o1, Object o2) {
+        return ((Student)o1).getAge() - ((Student)o2).getAge();
+      }
+    });
+    System.out.println(students[0]);
+    System.out.println(students[1]);
+    System.out.println(students[2]);
+    //Age: 18, Score90
+    //Age: 19, Score100
+    //Age: 20, Score85
+    System.out.println("Sort by score");
+    Arrays.sort(students, new Comparator(){
+      @Override
+      public int compare(Object o1, Object o2){
+        return ((Student)o1).getScore() - ((Student)o2).getScore();
+      }
+    });
+    System.out.println(students[0]);
+    System.out.println(students[1]);
+    System.out.println(students[2]);
+    //Age: 20, Score85
+    //Age: 18, Score90
+    //Age: 19, Score100
+  }
+}
+
+@Data
+@Getter
+@AllArgsConstructor
+class Student{
+  private int age;
+  private int score;
+
+  @Override
+  public String toString() {
+    return "Age: "+getAge()+", Score: "+getScore();
+  }
 }
 ```
 
@@ -323,12 +317,12 @@ System.out.println(Arrays.toString(data));
 ```
 
 性能考虑
-1. ​**​数据集大小​**​：
+1. **​数据集大小​**​：
     - 小数组（≤ 8192 元素）：`parallelSort()` 可能比 `sort()` 稍慢（由于并行开销）
     - 大数组：`parallelSort()` 通常更快
-2. ​**​处理器核心数​**​：
+2. **​处理器核心数​**​：
     - 核心越多，并行优势越明显
-3. ​**​内存考虑​**​：
+3. **​内存考虑​**​：
     - `parallelSort()` 需要额外的内存空间（约为原数组大小）
 
 ```java

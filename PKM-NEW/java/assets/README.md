@@ -179,7 +179,7 @@
 	* 245~250：this
 	* 251~261：[[notes/javase/stage1/第七章作业|第七章作业]]
 	* 262：内容梳理
-* 第 8 章：[package](../notes/javase/stage1/package.md)，[Access Modifiers](stage1/access-modifiers.md)，[[../notes/javase/stage1/encapsulation|encapsulation]]，[[../notes/javase/stage1/extends|extends]]，[super](notes/javase/stage1/super.md)，[[../notes/javase/stage1/polymorphism|polymorphism]]，[[notes/javase/stage1/Object|Object]]，[[notes/javase/stage1/断点调试]]
+* 第 8 章：[package](../notes/javase/stage1/package.md)，[Access Modifiers](stage1/access-modifiers.md)，[encapsulation](../notes/javase/stage1/encapsulation.md)，[extends](../notes/javase/stage1/extends.md)，[super](notes/javase/stage1/super.md)，[polymorphism](../notes/javase/stage1/polymorphism.md)，[Object](../notes/javase/stage1/Object.md)，[[notes/javase/stage1/断点调试]]
 	* 263~271：IDEA软件
 	* 272~277：包
 	* 278~279：（重点）访问修饰符
@@ -223,7 +223,7 @@
 	* 370：房屋查找
 	* 371：查找
 	* 372：总结，[[notes/javase/stage1/第九章作业|第九章作业]]
-* 第 10 章：[[../notes/javase/stage2/static|static]]，[[../notes/javase/stage2/code-block|code-block]]，[[notes/javase/stage2/设计模式|设计模式]]，[[notes/javase/stage2/final|final]]，[[../notes/javase/stage2/abstract|abstract]]，[[notes/javase/stage2/interface|interface]]，[[../notes/javase/stage2/inner-class|inner-class]]
+* 第 10 章：[static](../notes/javase/stage2/static.md)，[code-block](../notes/javase/stage2/code-block.md)，[[notes/javase/stage2/设计模式|设计模式]]，[final](../notes/javase/stage2/final.md)，[abstract](../notes/javase/stage2/abstract.md)，[interface](../notes/javase/stage2/interface.md)，[inner-class](../notes/javase/stage2/inner-class.md)
 	* 373~374：类变量的引出
 	* 375：类变量内存布局
 	* 376~377：类变量的使用与细节
@@ -235,7 +235,7 @@
 	* 397~401：（重点）抽象类
 	* 402~411：（重点）接口
 	* 412~424：（重点，难点）四种内部类
-* 第 11 章：[[../notes/javase/stage2/enum|enum]]，[[notes/javase/stage2/注解]]
+* 第 11 章：[enum](../../python/library/enum/enum.md)，[[notes/javase/stage2/注解]]
 	* 423：枚举引出
 	* 424：自定义类实现枚举
 	* 425：enum 关键字实现枚举
