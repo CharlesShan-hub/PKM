@@ -44,26 +44,26 @@ public final class StringBuffer extends AbstractStringBuilder implements Seriali
 
 于是 Java 就给 StringBuffer “生了个兄弟”，名叫 StringBuilder，说，“孩子，你别管线程安全了，你就在单线程环境下使用，这样效率会高得多，如果要在多线程环境下修改字符串，你到时候可以使用 [`ThreadLocal`](https://javabetter.cn/thread/ThreadLocal.html) 来避免多线程冲突。”
 
-- 当需要在单个线程中频繁修改字符串内容时，推荐使用 `StringBuilder`。
-- 由于 `StringBuilder` 不是线程安全的，因此在多线程环境中应使用 `StringBuffer`。
+- 当需要在**单个线程**中频繁修改字符串内容时，推荐使用 `StringBuilder`。
+- 由于 `StringBuilder` 不是线程安全的，因此在**多线程环境**中应使用 `StringBuffer`。
 
 ```java
 public final class StringBuilder extends AbstractStringBuilder
-    implements java.io.Serializable, CharSequence
+  implements java.io.Serializable, CharSequence
 {
-    // ...
+  // ...
 
-    public StringBuilder append(String str) {
-        super.append(str);
-        return this;
-    }
+  public StringBuilder append(String str) {
+    super.append(str);
+    return this;
+  }
 
-    public String toString() {
-        // Create a copy, don't share the array
-        return new String(value, 0, count);
-    }
+  public String toString() {
+    // Create a copy, don't share the array
+    return new String(value, 0, count);
+  }
 
-    // ...
+  // ...
 }
 ```
 
@@ -126,7 +126,7 @@ String的执行时间: 73
 > 重点是扩容规则要记住，初始化大小要记住。
 
 1. 初始大小：默认是 **16**，也可以指定初始大小。
-2. 扩容大小：$$space_{new} = space_{old} + \max{(space_{old}+2, need)}$$
+2. 扩容大小：$$ space_{new} = space_{old} + \max{(space_{old}+2, need)} $$
 
 案例一
 
@@ -147,12 +147,12 @@ stringBuilder.append(false);    // 16 + max(16+2, 2) = 34 （用了 18）
 // 创建一个初始化容量是16的StringBuilder对象  
 StringBuilder stringBuilder = new StringBuilder(); // 16
 
-stringBuilder.append("12345678910000000000000000000000000000000000000000"); 
-// 最少需要扩容：34 = max(0, 50 - 16)
-// 16 + max(16+2, 34) = 50 (用了 50)
+stringBuilder.append("12345678910000000000000000000000000000000000000000");
+// 需要扩容：34 = max(old space + 2, need) = max(16 + 2, 50 - 16)
+// new = 16 + max(18, 34) = 50 (用了 50, 还剩 0)
 stringBuilder.append("abcdef");
-// 最少需要扩容：6 = max(0, 56 - 50) 
-// 50 + max(50+2, 6) = 102 (用了 56)
+// 需要扩容：52 = max(50 + 2, 56 - 50) 
+// new = 50 + max(52, 6) = 102 (用了 56)
 ```
 
 下面是具体的分析
@@ -219,7 +219,7 @@ private AbstractStringBuilder appendNull() {
 }
 ```
 
-如果添加的字符串不是 null，那么就会去查看容量了
+查看容量的具体代码如下
 
 ```java
 private void ensureCapacityInternal(int minimumCapacity) {
@@ -261,7 +261,7 @@ void expandCapacity(int minimumCapacity) {
 	    ```java
 	    private final char value[];
 	    ```
-	    
+	
 * StringBuffer 类
 	- **特性**：`StringBuffer` 保存的是字符串变量，其值可以更改。
 	- **内存管理**：`StringBuffer` 的更新实际上可以在原有对象上进行，不需要每次都创建新的对象，因此不需要更新内存地址。
@@ -270,7 +270,7 @@ void expandCapacity(int minimumCapacity) {
 	    ```java
 	    char[] value; // 这个放在堆中
 	    ```
-    
+  
 * 使用场景
 	- `String` 类适合于不需要修改字符串内容的场景，因为其不可变性保证了字符串的安全性。
 	- `StringBuffer` 类适合于需要频繁修改字符串内容的场景，因为它提供了更高的效率。
@@ -296,26 +296,26 @@ void expandCapacity(int minimumCapacity) {
 
 ```java
 public class StringBufferExample {
-    public static void main(String[] args) {
-        // 使用默认构造器
-        StringBuffer sb1 = new StringBuffer();
-        sb1.append("Hello");
-        System.out.println(sb1.toString()); // 输出: Hello
+  public static void main(String[] args) {
+    // 使用默认构造器
+    StringBuffer sb1 = new StringBuffer();
+    sb1.append("Hello");
+    System.out.println(sb1.toString()); // 输出: Hello
 
-        // 使用 CharSequence 构造器
-        CharSequence charSequence = "World";
-        StringBuffer sb2 = new StringBuffer(charSequence);
-        System.out.println(sb2.toString()); // 输出: World
+    // 使用 CharSequence 构造器
+    CharSequence charSequence = "World";
+    StringBuffer sb2 = new StringBuffer(charSequence);
+    System.out.println(sb2.toString()); // 输出: World
 
-        // 使用指定容量构造器
-        StringBuffer sb3 = new StringBuffer(10); // 初始容量为 10
-        sb3.append("Java");
-        System.out.println(sb3.toString()); // 输出: Java
+    // 使用指定容量构造器
+    StringBuffer sb3 = new StringBuffer(10); // 初始容量为 10
+    sb3.append("Java");
+    System.out.println(sb3.toString()); // 输出: Java
 
-        // 使用 String 构造器
-        StringBuffer sb4 = new StringBuffer("Kimi");
-        System.out.println(sb4.toString()); // 输出: Kimi
-    }
+    // 使用 String 构造器
+    StringBuffer sb4 = new StringBuffer("Kimi");
+    System.out.println(sb4.toString()); // 输出: Kimi
+  }
 }
 ```
 

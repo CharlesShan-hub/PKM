@@ -47,8 +47,8 @@
    }
    ```
 
-	* **注意返回类型可以一样，也可以是子类（如下案例，从 Child 变成了 Father）**
-	* **注意访问权限可以一样，也可以变大（如下案例，从 protected 变成了 public）**
+   * **注意返回类型可以一样，也可以是子类（如下案例，从 Child 变成了 Father）**
+   * **注意访问权限可以一样，也可以变大（如下案例，从 protected 变成了 public）**
 
    ```java
    class Father(){}
@@ -74,57 +74,79 @@
    ```
 
 3. 细节比较
-	
-	|            | 方法重载 | 方法重写  |
-	| :--------: | :------: | :-------: |
-	|    位置    |   本类   |   子类    |
-	|   方法名   |   一样   |   一样    |
-	|  形参列表  |   不同   |   相同    |
-	|  返回类型  |  无要求  | 缩小/一样 |
-	| 访问修饰符 |  无要求  | 扩大/一样 |
+
+  |            | 方法重载 | 方法重写  |
+  | :--------: | :------: | :-------: |
+  |    位置    |   本类   |   子类    |
+  |   方法名   |   一样   |   一样    |
+  |  形参列表  |   不同   |   相同    |
+  |  返回类型  |  无要求  | 缩小/一样 |
+  | 访问修饰符 |  无要求  | 扩大/一样 |
 
 4. 案例
-	1.  编写一个 `Person` 类，包括属性（`private` `name`、`age`），构造器、方法 `say`（返回自我介绍的字符串）。
-	2. 在 `main` 中，分别创建 `Person` 和 `Student` 对象，调用 `say` 方法输出自我介绍。
-	3. 编写一个 `Student` 类，继承 `Person` 类，增加 `id`、`score` 属性（`private`），以及构造器，定义 `say` 方法（返回自我介绍的信息）。
+  1.  编写一个 `Person` 类，包括属性（`private` `name`、`age`），构造器、方法 `say`（返回自我介绍的字符串）。
+  2. 在 `main` 中，分别创建 `Person` 和 `Student` 对象，调用 `say` 方法输出自我介绍。
+  3. 编写一个 `Student` 类，继承 `Person` 类，增加 `id`、`score` 属性（`private`），以及构造器，定义 `say` 方法（返回自我介绍的信息）。
+
+  ```java
+  // Test.java
+  package ex_override;  
+  
+  public class Test{  
+    public static void main(String[] args){  
+      Person p = new Person("Peter",18);  
+      Student s = new Student("Jack",20,1000,100);  
+      System.out.println(p.say());  
+      // name = Peter, age = 18  
+      System.out.println(s.say());  
+      // name = Jack, age = 20, id = 1000, score = 100  
+    }  
+  }  
+  
+  class Person{  
+    private String name;  
+    private int age;  
+    public Person(String name, int age){  
+      this.name = name;  
+      this.age = age;  
+    }    public String say(){  
+      return "name = "+name+", age = "+age;  
+    }
+  }  
+  
+  class Student extends Person{  
+    private int id;  
+    private int score;  
+    public Student(String name, int age, int id, int score){  
+      super(name, age);  
+      this.id = id;  
+      this.score = score;  
+    }    @Override  
+    public String say(){  
+      return super.say()+", id = "+id+", score = "+score;  
+    }
+  }
+  ```
+
+5. 调用多个重载的方法，遵循“就近原则”
 
 	```java
-	// Test.java
-	package ex_override;  
-	  
-	public class Test{  
-	    public static void main(String[] args){  
-	        Person p = new Person("Peter",18);  
-	        Student s = new Student("Jack",20,1000,100);  
-	        System.out.println(p.say());  
-	        // name = Peter, age = 18  
-	        System.out.println(s.say());  
-	        // name = Jack, age = 20, id = 1000, score = 100  
-	    }  
+	@Test  
+	public void test2(){  
+	  // 就近原则。  
+	  m(null);  
+	}
+	
+	public void m(Object o){  
+	  System.out.println("Object...");  
 	}  
-	  
-	class Person{  
-	    private String name;  
-	    private int age;  
-	    public Person(String name, int age){  
-	        this.name = name;  
-	        this.age = age;  
-	    }    public String say(){  
-	        return "name = "+name+", age = "+age;  
-	    }}  
-	  
-	class Student extends Person{  
-	    private int id;  
-	    private int score;  
-	    public Student(String name, int age, int id, int score){  
-	        super(name, age);  
-	        this.id = id;  
-	        this.score = score;  
-	    }    @Override  
-	    public String say(){  
-	        return super.say()+", id = "+id+", score = "+score;  
-	    }}
+	public void m(String o){  
+	  System.out.println("String...");  
+	}
+	//答案：会执行m(String o)，因为就近原则。
 	```
+
+
 
 ---
 ## 对象的多态

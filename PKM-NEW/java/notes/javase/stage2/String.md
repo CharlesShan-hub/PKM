@@ -24,21 +24,21 @@
 ```java
 // String.java, java8
 public final class String  
-	implements java.io.Serializable, Comparable<String>, CharSequence,  
-			   Constable, ConstantDesc {
-	private final char[] value;
-	...
+  implements java.io.Serializable, Comparable<String>, CharSequence,  
+Constable, ConstantDesc {
+  private final char[] value;
+  ...
 }
 ```
 
 ```java
 // String.java, java9开始
 public final class String  
-	implements java.io.Serializable, Comparable<String>, CharSequence,  
-			   Constable, ConstantDesc {
-	private final byte[] value;
-	private final byte coder;
-	...
+  implements java.io.Serializable, Comparable<String>, CharSequence,  
+Constable, ConstantDesc {
+  private final byte[] value;
+  private final byte coder;
+  ...
 }
 ```
 
@@ -52,47 +52,47 @@ public final class String
 5. String 内部存放 **byte/char 数组的对象也是 final**：对象不能被修改，但是对象内部的内容可以被修改（value 不能指向新的地址，但是单独字符的内容是可以变换的）
 	```java
 	public class StringAndCharArrayExample {
-		public static void main(String[] args) {
-			// 字符串的重新赋值
-			String name = "jack";
-			System.out.println("Before changing name: " + name);
-			name = "tom";
-			System.out.println("After changing name: " + name);
+	  public static void main(String[] args) {
+	    // 字符串的重新赋值
+	    String name = "jack";
+	    System.out.println("Before changing name: " + name);
+	    name = "tom";
+	    System.out.println("After changing name: " + name);
 	
-			// final 关键字和字符数组的操作
-			final char[] value = {'a', 'b', 'c'};
-			char[] v2 = {'t', 'u', 'm'};
+	    // final 关键字和字符数组的操作
+	    final char[] value = {'a', 'b', 'c'};
+	    char[] v2 = {'t', 'u', 'm'};
 	
-			// 修改字符数组中的元素
-			value[0] = 'H';
-			System.out.println("Modified value array: " + new String(value));
+	    // 修改字符数组中的元素
+	    value[0] = 'H';
+	    System.out.println("Modified value array: " + new String(value));
 	
-			// 尝试重新赋值给 final 关键字修饰的数组（编译错误）
-			// value = v2; // 这行代码会导致编译错误，因为 final 关键字修饰的数组不能被重新赋值
+	    // 尝试重新赋值给 final 关键字修饰的数组（编译错误）
+	    // value = v2; // 这行代码会导致编译错误，因为 final 关键字修饰的数组不能被重新赋值
 	
-			// 输出结果
-			System.out.println("v2 array: " + new String(v2));
-		}
+	    // 输出结果
+	    System.out.println("v2 array: " + new String(v2));
+	  }
 	}
 	```
 6. 相比之下，后边的`StringBuilder`就把内容保存在了非`final`的`Byte`数组中。
 	```java
 	// AbstractStringBuilder.java
 	abstract sealed class AbstractStringBuilder implements Appendable, CharSequence  
-	    permits StringBuilder, StringBuffer {  
+	  permits StringBuilder, StringBuffer {  
 	    /**  
-	     * The value is used for character storage.     
-	     */    
-	     byte[] value;
-	     ...
-	     }
+	       * The value is used for character storage.     
+	       */    
+	    byte[] value;
+	    ...
+	  }
 	}
 	```
 
 ---
 ## 常用方法
 
-### 🍭方法总结
+### 🍭简单方法总结
 
 1. `substring(int beginIndex, int endIndex)`
 	1. **描述**：返回一个新字符串，它是此字符串的一个子字符串。
@@ -248,9 +248,9 @@ Hash code: 6c657874
 
 通过这些示例和说明，你应该能够更好地理解和使用 `String.format()` 方法来处理字符串格式化。
 
-### ✏️ [hashCode()](https://javabetter.cn/string/string-source.html#string-%E7%B1%BB%E7%9A%84-hashcode-%E6%96%B9%E6%B3%95)
+### ✏️ [`hashCode()`](https://javabetter.cn/string/string-source.html#string-%E7%B1%BB%E7%9A%84-hashcode-%E6%96%B9%E6%B3%95)
 
-每一个字符串都会有一个 hash 值，这个哈希值在很大概率是不会重复的，因此 String 很适合来作为 [HashMap](https://javabetter.cn/collection/hashmap.html)（后面会细讲）的键值。
+每一个字符串都会有一个 hash 值，这个哈希值在很大概率是不会重复的，因此 String 很适合来作为 [HashMap](https://javabetter.cn/collection/hashmap.html) 的键值。
 
 ```java
 // String.java
@@ -274,7 +274,7 @@ public int hashCode() {
 
 hashCode 方法首先检查是否已经计算过哈希码，如果已经计算过，则直接返回缓存的哈希码。否则，方法将使用一个循环遍历字符串的所有字符，并使用一个乘法和加法的组合计算哈希码。
 
-这种计算方法被称为“31 倍哈希法”。计算完成后，将得到的哈希值存储在 hash 成员变量中，以便下次调用 hashCode 方法时直接返回该值，而不需要重新计算。这是一种缓存优化，称为“惰性计算”。31 倍哈希法的优点在于简单易实现，计算速度快，同时也比较均匀地分布在哈希表中。
+这种计算方法被称为“31 倍哈希法”。计算完成后，将得到的哈希值存储在 hash 成员变量中，以便下次调用 hashCode 方法时直接返回该值，而不需要重新计算。这是一种缓存优化，称为**“惰性计算”**。31 倍哈希法的优点在于简单易实现，计算速度快，同时也比较均匀地分布在哈希表中。
 
 **31 倍哈希法（31-Hash）** 是一种简单有效的字符串哈希算法，常用于对字符串进行哈希处理。该算法的基本思想是将字符串中的每个字符乘以一个固定的质数 31 的幂次方，并将它们相加得到哈希值。具体地，假设字符串为 s，长度为 n，则 31 倍哈希值计算公式如下：
 
@@ -311,18 +311,18 @@ public class HashCodeExample {
 Java专门在堆中为字符串准备了一个**字符串常量池**。因为字符串使用比较频繁，放在字符串常量池中省去了对象的创建过程，从而提高程序的执行效率。（常量池属于一种缓存技术，缓存技术是提高程序执行效率的重要手段。）
 
 ```java
-// s1是一个引用。保存了对象的内存地址。  
-String s1 = "hello";  
-// s2是一个引用。保存了对象的内存地址。  
-String s2 = "hello";  
-  
-System.out.println(s1 == s2); // true  
+// s1是一个引用。保存了对象的内存地址。
+String s1 = "hello";
+// s2是一个引用。保存了对象的内存地址。
+String s2 = "hello";
+
+System.out.println(s1 == s2); // true
 // 因为运行的时候，两个 hello 也因为都是字符串常量所有在内存中其实是同一个内容
-  
-String s3 = "test";  
-String s4 = new String("test");  
-System.out.println(s3 == s4); // false  
-  
+
+String s3 = "test";
+String s4 = new String("test");
+System.out.println(s3 == s4); // false
+
 // 比较两个字符串是否相等，靠谱一点的，还是equals方法。别用 ==
 System.out.println(s3.equals(s4)); // true
 ```
@@ -342,8 +342,8 @@ System.out.println(s3.equals(s4)); // true
 	* 如果通过GBK的方式进行编码得到的“byte[] bytes”，调用以上构造方法时采用UTF-8的方式进行解码。就会出现乱码。
 * `String(String original)`：
 	* 通过复制现有字符串创建一个新的字符串对象。
-	* 这个方法被@IntrinsicCandidate标注，这个注解的作用是告诉编译器,该方法或构造函数是一个内在的候选方法,可以被优化和替换为更高效的代码。因此它是**不建议使用**的。
-	* new String(“hello”); 这个代码会让常量池中有一个 “hello”，并且在堆中也有有一个String对象。
+	* 这个方法被`@IntrinsicCandidate`标注（Java16引入的），这个注解的作用是告诉编译器,该方法或构造函数是一个内在的候选方法,可以被优化和替换为更高效的代码。因此它是**不建议使用**的。
+	* `new String(“hello”);` <u>这个代码会让常量池中有一个 “hello”，并且在堆中也有有一个String对象</u>。
 
 ```java
 package com.powernode.javase.stringtest;  
@@ -396,14 +396,7 @@ public class StringTest03 {
         // 使用平台默认的字符集进行解码。  
         String s6 = new String(bs2, Charset.defaultCharset());  
   
-        System.out.println(s6);  
-  
-        // 创建一个字符串对象，也是可以这样做的。但不建议了。  
-        // 内在的候选方法，不建议使用了。  
-        // 被@IntrinsicCandidate注解标注了。这个注解是Java16引入的。  
-        //String s7 = new String("STRING"); 
-        // 底层会有两个对象，一个是"STRING"在字符串常量池中。一个是在堆内存中。浪费内存。  
-        String s8 = "STRING";  
+        System.out.println(s6);
     }  
 }
 ```
@@ -416,9 +409,9 @@ String s = "hsp";
 - **描述**：这种方式直接将字符串字面量赋值给变量`s`。
 - **内存管理**：
   - Java虚拟机（JVM）会在常量池中查找是否存在相同的字符串字面量。
-  - 如果常量池中已经存在"hsp"，则直接让变量`s`指向常量池中的这个字符串，不会创建新的对象。
+  - 如果常量池中已经存在"hsp"，则直接让变量`s`指向常量池中的这个字符串，<u>不会创建新的对象</u>。
   - 如果常量池中不存在，则创建一个新的字符串对象，并将其放入常量池，然后让变量`s`指向这个新创建的对象。
-- **性能**：这种方式通常更高效，因为它利用了常量池来避免重复创建相同的字符串对象。
+- **性能**：这种方式通常**更高效**，因为它**利用了常量池来避免重复创建相同的字符串对象**。
 
 ```java
 String a = "java";
@@ -441,7 +434,7 @@ String s2 = new String("hsp");
 - **性能**：这种方式通常不如直接赋值高效，因为它总是创建新的对象，增加了内存的使用和垃圾回收的负担。
 
 - **直接赋值**（方式一）**更高效**，因为它利用了常量池来避免重复创建相同的字符串对象，减少了内存的使用。
-- **调用构造器**（方式二）在需要修改字符串内容或需要新对象时使用，但通常不推荐用于创建字符串常量，因为它会增加内存的使用和垃圾回收的负担。
+- **调用构造器**（方式二）在需要修改字符串内容或需要新对象时使用，但通常**不推荐**用于创建字符串常量，因为它会增加内存的使用和垃圾回收的负担。
 
 练习：以下语句创建了几个对象？画出内存布局图。（两个）
 
@@ -527,10 +520,10 @@ String c = a + b;
 
 创建了 5 个对象，其中常量池中有 3 个
 具体创建的过程如下：
-1. 先创建一个 StringBuilder sb = StringBuilder(); // 堆中创建一个 StringBuilder 对象
-2. 执行 sb.append("hello");
-3. sb.append("abc");
-4. String c = sb.toString(); // 这里会创建一个 String 对象
+1. 先创建一个 `StringBuilder sb = StringBuilder();` // 堆中创建一个 StringBuilder 对象
+2. 执行 `sb.append("hello");`
+3. `sb.append("abc");`
+4. `String c = sb.toString();` // 这里会创建一个 String 对象
 5. 最后其实是 c 指向堆中的对象(String) value[] -> 池中 "helloabc"
 
 ```json
@@ -568,9 +561,9 @@ final String s2 = "b";
 String s3 = "a" + s2;  
 ```
 
-还是一个！直接是"ab"，因为 s2 是final 了，所以编译器又可以优化了。
+还是一个！直接是"ab"，因为 s2 是 final 了，所以编译器又可以优化了。
 
-**❗️重要总结：常量相加，找常量池。变量相加，找堆。**
+> **❗️重要总结：常量相加，找常量池。变量相加，找堆。**
 
 ### ✏️ intern
 
@@ -738,9 +731,8 @@ public class StringExam {
 ---
 ## 🍭 String与正则表达式
 
-* [[../powerpoint/re]]
-* [[../powerpoint/resources/史上最全正则表达式]]
-
+* [re](../powerpoint/re.md)
+* [史上最全正则表达式](../powerpoint/resources/史上最全正则表达式.md)
 * String replace(CharSequence target, CharSequence replacement);
 	* 将当前字符串中所有的target替换成replacement，返回一个新的字符串。
 * String replaceAll(String regex, String replacement);
@@ -752,51 +744,51 @@ public class StringExam {
 
 ```java
 package com.powernode.javase.stringtest;  
-  
+
 import org.junit.jupiter.api.Test;  
-  
+
 import java.util.ArrayList;  
 import java.util.List;  
-  
+
 /**  
  * 测试用例  
  */  
 public class StringMethodTest {  
-  
-    @Test  
-    public void testMatches(){  
-        // 邮箱地址的正则表达式  
-        String emailRegExp = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";  
-        String email = "dujubin@126.com";  
-  
-        System.out.println(email.matches(emailRegExp));  
-  
+
+  @Test  
+  public void testMatches(){  
+    // 邮箱地址的正则表达式  
+    String emailRegExp = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";  
+    String email = "dujubin@126.com";  
+
+    System.out.println(email.matches(emailRegExp));  
+
+  }  
+
+  @Test  
+  public void testSplit(){  
+    // 根据正则表达式进行字符串的拆分  
+    // 拆分后返回一个字符串数组  
+    String[] strs = "动1力2节3点4。".split("\\d");  
+    System.out.println(strs.length);  
+    for(String s : strs){  
+      System.out.println(s);  
     }  
-  
-    @Test  
-    public void testSplit(){  
-        // 根据正则表达式进行字符串的拆分  
-        // 拆分后返回一个字符串数组  
-        String[] strs = "动1力2节3点4。".split("\\d");  
-        System.out.println(strs.length);  
-        for(String s : strs){  
-            System.out.println(s);  
-        }  
-  
-        String[] ymd = "1970-10-11".split("-");  
-        for(String s : ymd){  
-            System.out.println(s);  
-        }  
-  
-        String data = "name=zhangsan&password=123&email=zhangsan@123.com&gender=男";  
-        String[] params = data.split("&");  
-        for(String param : params) {  
-            //System.out.println(param);  
-            String[] nameAndValue = param.split("=");  
-            for(String s : nameAndValue){  
-                System.out.println(s);  
-            }  
-        }  
+
+    String[] ymd = "1970-10-11".split("-");  
+    for(String s : ymd){  
+      System.out.println(s);  
     }  
+
+    String data = "name=zhangsan&password=123&email=zhangsan@123.com&gender=男";  
+    String[] params = data.split("&");  
+    for(String param : params) {  
+      //System.out.println(param);  
+      String[] nameAndValue = param.split("=");  
+      for(String s : nameAndValue){  
+        System.out.println(s);  
+      }  
+    }  
+  }  
 }
 ```

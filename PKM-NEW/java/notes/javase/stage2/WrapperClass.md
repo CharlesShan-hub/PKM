@@ -3,9 +3,11 @@
 ![[../../../assets/wrapper-drawing|1000]]
 
 ---
-## 简介
+## 概述
 
-GPT：帮我总结一下 java 的包装类 ->
+### 简介
+
+GPT：帮我总结一下 java 的包装类 ⬇️
 
 Java 的包装类是一组特殊的类，它们为 Java 基本数据类型提供了对象形式的包装。这些包装类位于 `java.lang` 包中，每个包装类都对应一个基本数据类型。以下是 Java 中的基本数据类型及其对应的包装类：
 
@@ -36,150 +38,55 @@ Java 的包装类是一组特殊的类，它们为 Java 基本数据类型提供
 
 包装类在 Java 集合框架中非常重要，因为集合只能存储对象，而不能直接存储基本数据类型。通过使用包装类，可以在集合中存储基本数据类型的值。
 
----
-## 继承关系
+### 继承关系
 
 ```json
 {
-	'Object':[
-		{
-			'Number implements Serialzable':[
-				'Byte implements Comparable',
-				'Short implements Comparable',
-				'Integer implements Comparable',
-				'Long implements Comparable',
-				'Float implements Comparable',
-				'Double implements Comparable',
-			]
-		},
-		'Character implements Serialzable, Comparable',
-		'Boolean implements Serialzable, Comparable',
-	]
+  'Object':[
+    {
+      'Number implements Serialzable':[
+        'Byte implements Comparable',
+        'Short implements Comparable',
+        'Integer implements Comparable',
+        'Long implements Comparable',
+        'Float implements Comparable',
+        'Double implements Comparable',
+      ]
+    },
+    'Character implements Serialzable, Comparable',
+    'Boolean implements Serialzable, Comparable',
+  ]
 }
 ```
 
----
-## 装箱和拆箱
 
-```java
-package ex_commom;  
-  
-public class BoxingExample {  
-    public static void main(String[] args){  
-        // jdk5 及以前，需要手动的装箱和拆箱  
-        // 手动装箱  
-        Integer i1 = new Integer(100);  // 现在已经被弃用了 jdk9 之后  
-        Integer i2 = Integer.valueOf(200);  
-  
-        // 手动拆箱  
-        int i3 = i1.intValue();  
-  
-        // 自动装箱  
-        Integer i4 = 300;  
-
-		// 自动拆箱
-        int i5 = i4; 
-        int i5 = i4 
-    }  
-}
-```
-
-自动拆箱要注意排空处理
-
-```java
-package com.powernode.javase.integertest;  
-  
-/**  
- * 关于自动装箱和自动拆箱  
- *      1. Java5的新特性。  
- *      2. 自动装箱和自动拆箱属于编译阶段的功能。  
- *      3. 自动装箱：auto boxing  
- *      4. 自动拆箱：auto unboxing  
- *      5. 自动装箱和自动拆箱机制是为了方便写代码而存在的机制。  
- *      6. 装箱：Integer i = new Integer(100);  
- *      7. 拆箱：int num = i.intValue();  
- */
- public class IntegerTest05 {  
-    public static void m1(Integer i){  
-        // 发生自动拆箱  
-        // 注意空指针异常。（注意排除空引用）  
-        if (i != null) {  
-            System.out.println(i + 1);  
-        }  
-    }  
-  
-    public static void main(String[] args) {  
-  
-        // 这个过程其实就发生了自动装箱。  
-        m1(10000);  
-        m1(null);  
-  
-        // 自动装箱  
-        Integer x = 1000; // 程序在编译的时候底层实际上的代码是：Integer x = new Integer(1000);  
-  
-        /*Integer a = 10000;  
-        Integer b = 10000;        
-        System.out.println(a == b); // false（堆当中两个Integer对象，内存地址不同。）*/  
-  
-        // 自动拆箱  
-        int num = x; // 底层实际上会调用：int num = x.intValue();  
-  
-        // 注意空指针：java.lang.NullPointerException  
-        /*x = null;  
-        int num2 = x; // 
-        int num2 = x.intValue();*/  
-    }  
-}
-```
-
----
-## 包装类与 String
-
-![[resources/intParse.png]]
-
-### 包装类与 String
-
-```java
-// 包装类 转 String
-Integer I = 100;  
-//方法 1
-System.out.println(I+"");  
-// 方法 2
-System.out.println(I.toString());  
-// 方法 3
-System.out.println(String.valueOf(I));   // Integer -> int -> String
-
-// String 转包装类  
-String i = "200";  
-// 方法 1
-Integer ia = Integer.parseInt(i);  
-// 方法 2
-Integer ib = new Integer(i);
-```
-
-GPT（常用方法）
-在 Java 中，`Integer` 和 `Character` 是两个重要的包装类，分别用于包装基本数据类型 `int` 和 `char`。它们提供了许多常用方法，方便对整数和字符进行操作。
 
 ### Integer 类的常用方法
-#### 1. **构造方法**
-- `Integer(int value)`：创建一个表示指定 `int` 值的 `Integer` 对象。
+
+1. **构造方法**
+
+- `Integer(int value)`：创建一个表示指定 `int` 值的 `Integer` 对象。（**已经过时**，不要这样用了）
 - `Integer(String s)`：创建一个表示指定 `String` 中的整数值的 `Integer` 对象。如果字符串不能解析为整数，会抛出 `NumberFormatException`。
 
-#### 2. **值转换**
+2. **值转换**
+
 - `int intValue()`：将 `Integer` 对象转换为基本数据类型 `int`。
-- `static Integer valueOf(int i)`：将基本数据类型 `int` 转换为 `Integer` 对象。
+- `static Integer valueOf(int i)`：将基本数据类型 `int` 转换为 `Integer` 对象。（**推荐使用**）
 - `static Integer valueOf(String s)`：将字符串转换为 `Integer` 对象。如果字符串不能解析为整数，会抛出 `NumberFormatException`。
 - `static int parseInt(String s)`：将字符串解析为 `int` 值。如果字符串不能解析为整数，会抛出 `NumberFormatException`。
 
-#### 3. **比较操作**
+3. **比较操作**
+
 - `int compareTo(Integer anotherInteger)`：比较两个 `Integer` 对象的大小。如果当前对象的值小于参数对象的值，返回负整数；相等返回 0；大于返回正整数。
 - `boolean equals(Object obj)`：判断当前 `Integer` 对象是否与指定对象相等。如果指定对象也是 `Integer` 类型且值相等，返回 `true`，否则返回 `false`。
 
-#### 4. **数值范围**
+4. **数值范围**
+
 - `static int MIN_VALUE`：表示 `int` 类型的最小值，即 -2^31。
 - `static int MAX_VALUE`：表示 `int` 类型的最大值，即 2^31 - 1。
 
-#### 5. **其他方法**
+4. **其他方法**
+
 - `String toString()`：返回 `Integer` 对象的字符串表示形式。
 - `static String toString(int i)`：将 `int` 值转换为字符串。
 - `static int bitCount(int i)`：返回指定 `int` 值的二进制表示中 1 的个数。
@@ -187,14 +94,18 @@ GPT（常用方法）
 - `static int rotateRight(int i, int distance)`：将指定 `int` 值的二进制表示向右旋转指定的距离。
 
 ### Character 类的常用方法
-#### 1. **构造方法**
+
+1. **构造方法**
+
 - `Character(char value)`：创建一个表示指定 `char` 值的 `Character` 对象。
 
-#### 2. **值转换**
+2. **值转换**
+
 - `char charValue()`：将 `Character` 对象转换为基本数据类型 `char`。
 - `static Character valueOf(char c)`：将基本数据类型 `char` 转换为 `Character` 对象。
 
-#### 3. **字符判断**
+3. **字符判断**
+
 - `static boolean isDigit(char ch)`：判断指定字符是否是数字字符（0-9）。
 - `static boolean isLetter(char ch)`：判断指定字符是否是字母字符（a-z 或 A-Z）。
 - `static boolean isLetterOrDigit(char ch)`：判断指定字符是否是字母或数字字符。
@@ -202,12 +113,14 @@ GPT（常用方法）
 - `static boolean isLowerCase(char ch)`：判断指定字符是否是小写字母。
 - `static boolean isWhitespace(char ch)`：判断指定字符是否是空白字符（如空格、制表符等）。
 
-#### 4. **字符转换**
+4. **字符转换**
+
 - `static char toUpperCase(char ch)`：将指定字符转换为大写形式。如果字符已经是大写或不是字母，则返回原字符。
 - `static char toLowerCase(char ch)`：将指定字符转换为小写形式。如果字符已经是小写或不是字母，则返回原字符。
 - `static char toTitleCase(char ch)`：将指定字符转换为标题大小写形式。
 
-#### 5. **其他方法**
+5. **其他方法**
+
 - `static int digit(char ch, int radix)`：将指定字符转换为指定进制下的数值。如果字符不是有效的数字字符，返回 -1。
 - `static char forDigit(int digit, int radix)`：将指定的数值转换为指定进制下的字符表示。如果数值超出范围，返回 `\u0000`。
 - `String toString()`：返回 `Character` 对象的字符串表示形式。
@@ -232,6 +145,108 @@ public class Main {
     }
 }
 ```
+
+---
+## 装箱和拆箱
+
+```java
+package ex_commom;  
+
+public class BoxingExample {  
+  public static void main(String[] args){  
+    // jdk5 及以前，需要手动的装箱和拆箱  
+    // 手动装箱  
+    Integer i1 = new Integer(100);  // 现在已经被弃用了 jdk9 之后  
+    Integer i2 = Integer.valueOf(200);  
+
+    // 手动拆箱  
+    int i3 = i1.intValue();  
+
+    // 自动装箱  
+    Integer i4 = 300;  
+
+    // 自动拆箱
+    int i5 = i4; 
+    int i5 = i4 
+  }  
+}
+```
+
+自动拆箱要注意排空处理
+
+```java
+package com.powernode.javase.integertest;  
+
+/**  
+ * 关于自动装箱和自动拆箱  
+ *      1. Java5的新特性。  
+ *      2. 自动装箱和自动拆箱属于编译阶段的功能。  
+ *      3. 自动装箱：auto boxing  
+ *      4. 自动拆箱：auto unboxing  
+ *      5. 自动装箱和自动拆箱机制是为了方便写代码而存在的机制。  
+ *      6. 装箱：Integer i = new Integer(100);  
+ *      7. 拆箱：int num = i.intValue();  
+ */
+public class IntegerTest05 {  
+  public static void m1(Integer i){  
+    // 发生自动拆箱  
+    // 注意空指针异常。（注意排除空引用）  
+    if (i != null) {  
+      System.out.println(i + 1);  
+    }  
+  }  
+
+  public static void main(String[] args) {  
+
+    // 这个过程其实就发生了自动装箱。  
+    m1(10000);  
+    m1(null);  
+
+    // 自动装箱  
+    Integer x = 1000; // 程序在编译的时候底层实际上的代码是：Integer x = new Integer(1000);  
+
+    /*Integer a = 10000;  
+        Integer b = 10000;        
+        System.out.println(a == b); // false（堆当中两个Integer对象，内存地址不同。）*/  
+
+    // 自动拆箱  
+    int num = x; // 底层实际上会调用：int num = x.intValue();  
+
+    // 注意空指针：java.lang.NullPointerException  
+    /*x = null;  
+        int num2 = x; // 
+        int num2 = x.intValue();*/  
+  }  
+}
+```
+
+---
+## 包装类与 String
+
+![intParse](resources/intParse.png)
+
+```java
+// 包装类 转 String
+Integer I = 100;  
+//方法 1
+System.out.println(I+"");  
+// 方法 2
+System.out.println(I.toString());  
+// 方法 3
+System.out.println(String.valueOf(I));   // Integer -> int -> String
+
+// String 转包装类  
+String i = "200";  
+// 方法 1
+Integer ia = Integer.parseInt(i);  
+// 方法 2
+Integer ib = new Integer(i);
+```
+
+GPT（常用方法）
+在 Java 中，`Integer` 和 `Character` 是两个重要的包装类，分别用于包装基本数据类型 `int` 和 `char`。它们提供了许多常用方法，方便对整数和字符进行操作。
+
+---
 
 ## 面试题：IntegerCache
 
@@ -259,7 +274,7 @@ public void method1() {
     Integer j = new Integer(1);
     System.out.println(i == j);//false 不同的对象
 
-    Integer m = 1; // Integer.valueOf(1)
+    Integer m = 1; // 等价于 Integer.valueOf(1)
     Integer n = 1;
     System.out.println(m == n);//true
 

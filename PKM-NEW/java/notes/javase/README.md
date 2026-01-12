@@ -36,19 +36,22 @@
 	* [Code Block](stage2/code-block.md)：代码块
 	* [Inner Class](stage2/inner-class.md)：内部类
 	* [lambda](powerpoint/lambda.md)：表达式、方法引用
-	* [reflect](powerpoint/reflect.md)：反射
+	* [exception](stage2/exception.md)：异常
+	* [generic](stage2/generic.md)：泛型
+	* [Collection](stage2/集合.md)：集合
 * Utils Classes
 	* [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
-	* [WrapperClass](stage2/WrapperClass.md)
+	* [WrapperClass](stage2/WrapperClass.md)：包装类
 	* [Comparator](heima/Comparator.md)
 * Array
-	* [array](stage1/array.md)
-	* [Arrays](stage2/Arrays.md)
+	* [array](stage1/array.md)：数组
+	* [Arrays](stage2/Arrays.md)：⚠️Comparator
 * String
-	* [String](stage2/String.md)
-	* [StringBuilder and StringBuffer](stage2/StringBuilder-and-StringBuffer.md)
-* Collection
-	* [集合](stage2/集合.md)
-	* [精通集合](stage2/精通集合.md)
+	* [String](stage2/String.md)：⚠️内存分布
+	* [StringBuilder and StringBuffer](stage2/StringBuilder-and-StringBuffer.md)：⚠️扩容机制
+* GUI
+	* [Swing](stage2/Swing.md)
 * IO
 * Multi-threading
+* Java Advanced
+	* [reflect](powerpoint/reflect.md)：反射

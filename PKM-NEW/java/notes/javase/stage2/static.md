@@ -276,9 +276,27 @@ public Test{
 
 ## 面试题
 * 简述一下static
-	* 变量：静态变量，类级别变量，所有实例共享同⼀份数据。
-	* ⽅法：静态⽅法，类级别⽅法，与实例⽆关。
-	* 代码块：在类加载时初始化⼀些数据，只执⾏⼀次。[code-block](code-block.md)
-	* 内部类：与外部类绑定但独⽴于外部类实例。[inner-class](inner-class.md)
-	* 导⼊：可以直接访问静态成员，⽆需通过类名引⽤，简化代码书写，但会降低代码可读性
+  * 变量：静态变量，类级别变量，所有实例共享同⼀份数据。
+  * ⽅法：静态⽅法，类级别⽅法，与实例⽆关。
+  * 代码块：在类加载时初始化⼀些数据，只执⾏⼀次。[code-block](code-block.md)
+  * 内部类：与外部类绑定但独⽴于外部类实例。[inner-class](inner-class.md)
+  * 导⼊：可以直接访问静态成员，⽆需通过类名引⽤，简化代码书写，但会降低代码可读性
+
+* 关于加载顺序
+
+	```java
+	  static int a = method();  
+	  
+	  static int b = 10;  
+	  
+	  public static int method(){  
+	    return b;  
+	  }  
+	  
+	  @Test  
+	  public void test3(){  
+	    System.out.println(a); // 0  
+	  }
+	  ```
+  答案：0。因为调用 method 的时候是 a 调用的，这时候 b 还没被初始化，所以是 0。
 

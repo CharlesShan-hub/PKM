@@ -244,7 +244,7 @@
 	* 432~434：注解
 	* 435：（了解就行）元注解
 	* 436~442：[[notes/javase/stage2/第十一章作业|第十一章作业]] 以及内容梳理
-* 第 12 章：[[notes/javase/stage2/异常|异常]]
+* 第 12 章：[[../notes/javase/stage2/exception|exception]]
 	* 443~444：异常处理入门
 	* 445：（重点）异常体系图
 	* 446~452：try catch
@@ -252,7 +252,7 @@
 	* 454：自定义异常
 	* 455：throw 和 throws 对比
 	* 456~458：[[notes/javase/stage2/第十二章作业|第十二章作业]]
-* 第 13 章：[[../notes/javase/stage2/WrapperClass|WrapperClass]]，[[notes/javase/stage2/String|String]]，[[notes/javase/stage2/Math|Math]]，[Arrays](../notes/javase/stage2/Arrays.md)，[[../notes/javase/stage2/BigIntegerBigDecimal]]，[[notes/javase/stage2/日期类|日期类]]
+* 第 13 章：[[../notes/javase/stage2/WrapperClass|WrapperClass]]，[String](../notes/javase/stage2/String.md)，[[notes/javase/stage2/Math|Math]]，[Arrays](../notes/javase/stage2/Arrays.md)，[[../notes/javase/stage2/BigIntegerBigDecimal]]，[[notes/javase/stage2/日期类|日期类]]
 	* 459~464：包装类
 	* 465~473：（重要）String
 	* 474~477：（重要）StringBuffer
@@ -287,14 +287,14 @@
 	* 544：TreeMap
 	* 545~546：Collections 工具类
 	* 547~552：[[notes/javase/stage2/第十四章练习|第十四章练习]]
-* 第 15 章：[[notes/javase/stage2/泛型|泛型]]
+* 第 15 章：[[../notes/javase/stage2/generic|generic]]
 	* 553~554：泛型的引出
 	* 555~559：泛型类型说明
 	* 560~562：自定义泛型
 	* 562~563：自定义泛型方法
 	* 564：泛型的继承和通配符
 	* 565～566：[[notes/javase/stage2/第十五章作业|第十五章作业]]+JUnit
-* 第 16 章：（坦克大战项目第一部分）[[notes/javase/stage2/Swing|Swing]]
+* 第 16 章：（坦克大战项目第一部分）[Swing](../notes/javase/stage2/Swing.md)
 * 第 17 章：[[notes/javase/stage2/线程|线程]]
 	* 589~580：线程与进程的一些概念
 	* 581：线程案例
