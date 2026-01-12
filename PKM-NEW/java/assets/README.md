@@ -223,7 +223,7 @@
 	* 370：房屋查找
 	* 371：查找
 	* 372：总结，[[notes/javase/stage1/第九章作业|第九章作业]]
-* 第 10 章：[static](../notes/javase/stage2/static.md)，[code-block](../notes/javase/stage2/code-block.md)，[[notes/javase/stage2/设计模式|设计模式]]，[final](../notes/javase/stage2/final.md)，[abstract](../notes/javase/stage2/abstract.md)，[interface](../notes/javase/stage2/interface.md)，[inner-class](../notes/javase/stage2/inner-class.md)
+* 第 10 章：[static](../notes/javase/stage2/static.md)，[code-block](../notes/javase/stage2/code-block.md)，[design partten](../notes/design-pattern/README.md)，[final](../notes/javase/stage2/final.md)，[abstract](../notes/javase/stage2/abstract.md)，[interface](../notes/javase/stage2/interface.md)，[inner-class](../notes/javase/stage2/inner-class.md)
 	* 373~374：类变量的引出
 	* 375：类变量内存布局
 	* 376~377：类变量的使用与细节
@@ -244,7 +244,7 @@
 	* 432~434：注解
 	* 435：（了解就行）元注解
 	* 436~442：[[notes/javase/stage2/第十一章作业|第十一章作业]] 以及内容梳理
-* 第 12 章：[[../notes/javase/stage2/exception|exception]]
+* 第 12 章：[exception](../../python/notes/exception.md)
 	* 443~444：异常处理入门
 	* 445：（重点）异常体系图
 	* 446~452：try catch
@@ -252,7 +252,7 @@
 	* 454：自定义异常
 	* 455：throw 和 throws 对比
 	* 456~458：[[notes/javase/stage2/第十二章作业|第十二章作业]]
-* 第 13 章：[[../notes/javase/stage2/WrapperClass|WrapperClass]]，[String](../notes/javase/stage2/String.md)，[[notes/javase/stage2/Math|Math]]，[Arrays](../notes/javase/stage2/Arrays.md)，[[../notes/javase/stage2/BigIntegerBigDecimal]]，[[notes/javase/stage2/日期类|日期类]]
+* 第 13 章：[WrapperClass](../notes/javase/stage2/WrapperClass.md)，[String](../notes/javase/stage2/String.md)，[Math](../notes/javase/stage2/Math.md)，[Arrays](../notes/javase/stage2/Arrays.md)，[BigIntegerBigDecimal](../notes/javase/stage2/BigIntegerBigDecimal.md)，[[notes/javase/stage2/日期类|日期类]]
 	* 459~464：包装类
 	* 465~473：（重要）String
 	* 474~477：（重要）StringBuffer
@@ -287,7 +287,7 @@
 	* 544：TreeMap
 	* 545~546：Collections 工具类
 	* 547~552：[[notes/javase/stage2/第十四章练习|第十四章练习]]
-* 第 15 章：[[../notes/javase/stage2/generic|generic]]
+* 第 15 章：[generic](../notes/javase/stage2/generic.md)
 	* 553~554：泛型的引出
 	* 555~559：泛型类型说明
 	* 560~562：自定义泛型

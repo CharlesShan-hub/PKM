@@ -38,11 +38,12 @@
 	* [lambda](powerpoint/lambda.md)：表达式、方法引用
 	* [exception](stage2/exception.md)：异常
 	* [generic](stage2/generic.md)：泛型
-	* [Collection](stage2/集合.md)：集合
+	* [Collection](heima/Collection.md)：集合
 * Utils Classes
 	* [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
 	* [WrapperClass](stage2/WrapperClass.md)：包装类
 	* [Comparator](heima/Comparator.md)
+	* [Math](stage2/Math.md)
 * Array
 	* [array](stage1/array.md)：数组
 	* [Arrays](stage2/Arrays.md)：⚠️Comparator
