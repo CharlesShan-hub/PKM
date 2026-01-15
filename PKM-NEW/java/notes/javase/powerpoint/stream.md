@@ -190,6 +190,7 @@ System.out.println(stream.isParallel());         // 输出：true
 ```
 在Collection接口中，还专门提供了一个parallelStream()方法，用于获得一个并行流。
 【示例】使用parallelStream()方法获得一个并行流
+
 ```java
 List<String> list = Arrays.asList("aa", "bb", "cc");
 // 创建一个“并行流”Stream对象
@@ -202,6 +203,7 @@ System.out.println(stream.isParallel()); // 输出：true
 ## Stream API的中间操作
 中间操作属于惰式执行，直到执行终止操作才会真正的进行数据的计算，此处调用中间操作只会返回一个标记了该操作的新Stream对象，因此可以进行链式操作。
 在后续的操作中，我们调用StudentData类的getStudentList()静态方法，则就能获得一个存储Student对象的List集合，其代码实现如下：
+
 ```java
 public class StudentData {
     /**
@@ -561,7 +563,8 @@ package com.powernode.javase.stream;
 import java.util.stream.Stream;  
   
 /**  
- * ClassName: StreamAPITest08 * Description: *          Stream中间操作之：concat  
+ * ClassName: StreamAPITest08 * Description: 
+ *          Stream中间操作之：concat  
  *          合并。  
  * <p>  
  * Datetime: 2024/2/3 10:16 * Author: 老杜@动力节点  
@@ -767,11 +770,11 @@ System.out.println(Arrays.toString(stringArray));
 #### 统计（counting/averaging）
 Collectors提供了一系列用于数据统计的静态方法：
 
-1. 计数：counting
-2. 平均值：averagingInt、averagingLong、averagingDouble
-3. 最值：maxBy、minBy
-4. 求和：summingInt、summingLong、summingDouble
-5. 统计以上所有：summarizingInt、summarizingLong、summarizingDouble
+1. 计数：`counting`
+2. 平均值：`averagingInt`、`averagingLong`、`averagingDouble`
+3. 最值：`maxBy`、`minBy`
+4. 求和：`summingInt`、`summingLong`、`summingDouble`
+5. 统计以上所有：`summarizingInt`、`summarizingLong`、`summarizingDouble`
 
 【示例】对学生的年龄进行统计
 ```java

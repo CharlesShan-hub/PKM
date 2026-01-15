@@ -4,7 +4,6 @@
 	* [Remember!!](stage1/remember.md)
 	* [Background](stage1/background.md)：java基础、各个版本变化
 	* [Dos Instruction](stage1/Dos.md)
-	* [Coding](stage1/coding.md)
 	* [Hello World and Basic Java Structure](stage1/hello-world.md)
 	* [Escape Character](stage1/escape-character.md)
 	* [Comment](stage1/comment.md)
@@ -54,6 +53,9 @@
 * GUI
 	* [Swing](stage2/Swing.md)
 * IO
+	* [File](stage2/File.md)：文件
+	* [Coding](stage1/coding.md)：编码
+	* [IO Stream](stage2/io-stream.md)：IO流
 * Multi-threading
 * Java Advanced
-	* [reflect](powerpoint/reflect.md)：反射
+  * [reflect](powerpoint/reflect.md)：反射

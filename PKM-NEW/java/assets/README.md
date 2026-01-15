@@ -304,7 +304,7 @@
 	* 593： synchronized
 	* 594：互斥锁
 * 第 18 章：（坦克大战项目第二部分）
-* 第 19 章：[[notes/javase/stage2/文件|文件]]
+* 第 19 章：[io-stream](../notes/javase/stage2/io-stream.md)
 	* 610~613：File 创建以及常用操作
 	* 614：各种类的关系
 	* 615：FileInputStream
@@ -329,7 +329,7 @@
 	* 661~665：网络相关概念；IP；域名，端口号，TCP/IP协议栈，TCP、UDP
 	* 666：INetAddress类
 	* 667~670：TCP编程实践
-* 动力节点补充：[[notes/javase/powerpoint/jvm]]，[[notes/javase/powerpoint/principle]]，[[notes/javase/powerpoint/uml]]，[[notes/javase/powerpoint/re]]，[[notes/javase/powerpoint/uuid]]，[[notes/javase/powerpoint/system|system]]，[[notes/javase/powerpoint/reflect]]，[[notes/javase/powerpoint/lambda]]，[[notes/javase/powerpoint/stream]]
+* 动力节点补充：[[notes/javase/powerpoint/jvm]]，[[notes/javase/powerpoint/principle]]，[[notes/javase/powerpoint/uml]]，[[notes/javase/powerpoint/re]]，[[notes/javase/powerpoint/uuid]]，[[notes/javase/powerpoint/system|system]]，[reflect](../notes/javase/powerpoint/reflect.md)，[[notes/javase/powerpoint/lambda]]，[stream](../notes/javase/powerpoint/stream.md)
 
 ### MySQL
 
