@@ -39,7 +39,7 @@ Stream API：是跟集合相关的计算操作，强调的是**计算**。
 	* 执行终止操作时，则才会真正执行中间操作，并且并返回一个计算完毕后的结果。
 
 ### Stream API的重要特点
-1. Stream自己不会存储元素，只能对元素进行计算。
+1. Stream自己不会存储元素，**只能对元素进行计算**。
 2. Stream**不会改变数据对象**，反而可能会返回一个持有结果的**新Stream**。
 3. Stream上的操作属于延迟执行，只有等到用户真正需要结果的时候才会执行。
 4. Stream一旦执行了终止操作，则就不能再调用其它中间操作或终止操作了。
@@ -48,7 +48,7 @@ Stream API：是跟集合相关的计算操作，强调的是**计算**。
 ## 创建 Stream的方式
 
 ### 通过Collection接口提供的方法
-通过Collection接口提供的stream()方法来创建Stream流。
+通过`Collection`接口提供的`stream()`方法来创建Stream流。
 ```java
 package com.powernode.javase.stream;
 
@@ -59,7 +59,7 @@ import java.util.stream.Stream;
 /**
  * ClassName: StreamAPITest01
  * Description:
- *          获取Stream流对象的第一种方式：通过Collection接口的stream()方法来获取Stream对象
+ *   获取Stream流对象的第一种方式：通过Collection接口的stream()方法来获取Stream对象
  * <p>
  * Datetime: 2024/2/3 8:53
  * Author: 老杜@动力节点
@@ -89,7 +89,7 @@ public class StreamAPITest01 {
 ```
 
 ### 通过Arrays类提供的方法
-通过Arrays类提供的stream()静态方法来创建Stream流。
+通过`Arrays`类提供的`stream()`静态方法来创建Stream流。
 ```java
 package com.powernode.javase.stream;
 
@@ -129,7 +129,7 @@ public class StreamAPITest02 {
 注意：Stream、IntStream、LongStream和DoubleStream都继承于BaseStream接口。
 
 ### 使用Stream接口提供的方法
-通过Stream接口提供的of(T... values)静态方法来创建Stream流。
+通过`Stream`接口提供的`of(T... values)`静态方法来创建Stream流。
 ```java
 package com.powernode.javase.stream;
 

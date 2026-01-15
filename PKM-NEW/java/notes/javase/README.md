@@ -39,6 +39,7 @@
 	* [exception](stage2/exception.md)：异常
 	* [generic](stage2/generic.md)：泛型
 	* [Collection](heima/Collection.md)：集合
+	* [stream](powerpoint/stream.md)：stream流
 * Utils Classes
 	* [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
 	* [WrapperClass](stage2/WrapperClass.md)：包装类

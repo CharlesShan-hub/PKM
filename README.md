@@ -77,7 +77,7 @@
 
 **全能语言**
 - 🔗[Python](https://docs.python.org/3/)
-- Java
+- [Java](PKM-NEW/java/README.md)
 - C++
 - 🔗[Go](https://go.dev/doc/)
 - 🔗[Swift](https://www.swift.org/)
@@ -91,7 +91,7 @@
 - 🔗[Verilog](https://www.runoob.com/w3cnote/verilog-tutorial.html)
 
 **底层开发**
-- ✏️[C](./KnowledgeMap/计算机科学/C/README.md)
+- ✏️[README](PKM-NEW/c/README.md)
 - 🔗[cmake](https://cmake.org/)
 
 **脚本**
