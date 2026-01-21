@@ -16,72 +16,19 @@
 ### 流的分类
 ![io-drawing|1000](../../../assets/io-drawing.md)
 
-| 分类             | 字节输入流                    | 字节输出流                     | 字符输入流              | 字符输出流              | 节点流/处理流 |
-| -------------- | ------------------------ | ------------------------- | ------------------ | ------------------ | ------- |
-| ​**​抽象基类​**​   | InputStream              | OutputStream              | Reader             | Writer             | （基类）    |
-| ​**​访问文件​**​   | [[FileInputStream]]      | [[FileOutputStream]]      | [[FileReader]]     | [[FileWriter]]     | 节点流     |
-| ​**​访问字节数组​**​ | [[ByteArrayInputStream]] | [[ByteArrayOutputStream]] | CharArrayReader    | CharArrayWriter    | 节点流     |
-| ​**​访问管道​**​   | PipedInputStream         | PipedOutputStream         | PipedReader        | PipedWriter        | 节点流     |
-| ​**​缓冲流​**​    | BufferedInputStream      | BufferedOutputStream      | [[BufferedReader]] | [[BufferedWriter]] | 处理流     |
-| ​**​转换流​**​    | [[InputStreamReader]]    | [[OutputStreamWriter]]    | -                  | -                  | 处理流     |
-| ​**​对象流​**​    | [[ObjectInputStream]]    | [[ObjectOutputStream]]    | -                  | -                  | 处理流     |
-| ​**​抽象基类​**​   | FilterInputStream        | FilterOutputStream        | FilterReader       | FilterWriter       | 处理流（基类） |
-| ​**​打印流​**​    | [[PrintStream]]          | -                         | [[PrintWriter]]    | -                  | 处理流     |
-| ​**​推回输入流​**​  | PushbackInputStream      | -                         | PushbackReader     | -                  | 处理流     |
-| ​**​特殊流​**​    | [[DataInputStream]]      | [[DataOutputStream]]      | StringReader       | StringWriter       | 节点流     |
-
-📌 字节流（Byte Streams） InputStream 体系
-
-| 类名                     | 用途说明          |
-| ---------------------- | ------------- |
-| [[FileInputStream]]    | **从文件读取字节**   |
-| `PipedInputStream`     | 管道流（线程通信）     |
-| [[ObjectInputStream]]  | **反序列化对象**    |
-| `ByteArrayInputStream` | 从字节数组读取       |
-| `SequenceInputStream`  | 合并多个输入流       |
-| `BufferedInputStream`  | **带缓冲区的输入流**  |
-| `FilterInputStream`    | 过滤流的基类（装饰器模式） |
-| `DigestInputStream`    | 计算摘要的输入流      |
-| `DataInputStream`      | 读取基本数据类型      |
-
-📌 字节流（Byte Streams）OutputStream 体系
-
-| 类名                       | 用途说明               |
-| ------------------------ | ------------------ |
-| [[FileOutputStream]]     | 写入字节到文件            |
-| `PipedOutputStream`      | 管道输出流              |
-| [[ObjectOutputStream]]   | 序列化对象              |
-| `ByteArrayOutputStream`  | 写入字节数组             |
-| [[BufferedOutputStream]] | 带缓冲区的输出流           |
-| `FilterOutputStream`     | 过滤输出流的基类           |
-| `DigestOutputStream`     | 计算摘要的输出流           |
-| `DataOutputStream`       | 写入基本数据类型           |
-| [[PrintStream]]          | 格式化输出（如System.out） |
-
-📌 字符流（Character Streams）Reader 体系
-
-| 类名                    | 用途说明       |
-| --------------------- | ---------- |
-| [[InputStreamReader]] | 字节流→字符流的桥梁 |
-| [[FileReader]]        | 文件字符输入流    |
-| [[BufferedReader]]    | 带缓冲的字符读取   |
-| `CharArrayReader`     | 从字符数组读取    |
-| `FilterReader`        | 过滤字符流的基类   |
-| `PipedReader`         | 管道字符流      |
-| `StringReader`        | 从字符串读取     |
-
-📌 字符流（Character Streams）Writer 体系
-
-| 类名                     | 用途说明       |
-| ---------------------- | ---------- |
-| [[OutputStreamWriter]] | 字符流→字节流的桥梁 |
-| [[FileWriter]]         | 文件字符输出流    |
-| [[BufferedWriter]]     | 带缓冲的字符写入   |
-| `CharArrayWriter`      | 写入字符数组     |
-| `FilterWriter`         | 过滤字符输出流的基类 |
-| `PipedWriter`          | 管道字符输出流    |
-| [[PrintWriter]]        | 格式化字符输出    |
-| `StringWriter`         | 写入字符串缓冲区   |
+|       分类       |                      字节输入流                      |                       字节输出流                       |                字符输入流                |                字符输出流                | 节点流/处理流 |
+| :------------: | :---------------------------------------------: | :-----------------------------------------------: | :---------------------------------: | :---------------------------------: | :-----: |
+|  ​**​抽象基类​**​  |                   InputStream                   |                   OutputStream                    |               Reader                |               Writer                |  （基类）   |
+|  ​**​访问文件​**​  |      [FileInputStream](FileInputStream.md)      |      [FileOutputStream](FileOutputStream.md)      |     [FileReader](FileReader.md)     |     [FileWriter](FileWriter.md)     |   节点流   |
+| ​**​访问字节数组​**​ | [ByteArrayInputStream](ByteArrayInputStream.md) | [ByteArrayOutputStream](ByteArrayOutputStream.md) |           CharArrayReader           |           CharArrayWriter           |   节点流   |
+|  ​**​访问管道​**​  |                PipedInputStream                 |                 PipedOutputStream                 |             PipedReader             |             PipedWriter             |   节点流   |
+|  ​**​缓冲流​**​   |               BufferedInputStream               |               BufferedOutputStream                | [BufferedReader](BufferedReader.md) | [BufferedWriter](BufferedWriter.md) |   处理流   |
+|  ​**​转换流​**​   |    [InputStreamReader](InputStreamReader.md)    |    [OutputStreamWriter](OutputStreamWriter.md)    |                  -                  |                  -                  |   处理流   |
+|  ​**​对象流​**​   |    [ObjectInputStream](ObjectInputStream.md)    |    [ObjectOutputStream](ObjectOutputStream.md)    |                  -                  |                  -                  |   处理流   |
+|  ​**​抽象基类​**​  |                FilterInputStream                |                FilterOutputStream                 |            FilterReader             |            FilterWriter             | 处理流（基类） |
+|  ​**​打印流​**​   |          [PrintStream](PrintStream.md)          |                         -                         |    [PrintWriter](PrintWriter.md)    |                  -                  |   处理流   |
+| ​**​推回输入流​**​  |               PushbackInputStream               |                         -                         |           PushbackReader            |                  -                  |   处理流   |
+|  ​**​特殊流​**​   |      [DataInputStream](DataInputStream.md)      |      [DataOutputStream](DataOutputStream.md)      |            StringReader             |            StringWriter             |   节点流   |
 
 ---
 ## 🍭 标准输入输出

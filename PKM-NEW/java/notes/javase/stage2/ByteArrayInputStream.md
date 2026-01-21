@@ -1,245 +1,97 @@
 # ByteArrayInputStream
 
-[[ByteArrayOutputStream]]
+`ByteArrayInputStream` 是 Java I/O 体系中**字节输入流（InputStream）**的子类，专门用于从内存中的**字节数组**读取数据。
 
-* ByteArrayInputStream和ByteArrayOutputStream都是内存操作流，不需要打开和关闭文件等操作。这些流是非常常用的，可以将它们看作开发中的常用工具，能够方便地读写字节数组、图像数据等内存中的数据。
-* ByteArrayInputStream和ByteArrayOutputStream都是节点流。
-* ByteArrayOutputStream，将数据写入到内存中的字节数组当中。
-* ByteArrayInputStream，读取内存中某个字节数组中的数据。
+## 介绍
+1. 🏅核心特性
+
+   | 特性 | 说明 |
+   | :--- | :--- |
+   | **继承关系** | `java.io.InputStream` → `java.io.ByteArrayInputStream` |
+   | **数据来源** | 内存中的**字节数组（byte array）** |
+   | **资源管理** | `close()` 方法无效（空实现），调用后仍可继续使用，无需关闭 |
+   | **线程安全** | 主要是同步的 |
+
+2. 🔑核心API
+
+   | 分类 | API | 说明 |
+   | :--- | :--- | :--- |
+   | **构造器** | `ByteArrayInputStream(byte[] buf)` | 使用整个数组作为数据源 |
+   | | `ByteArrayInputStream(byte[] buf, int offset, int length)` | 使用数组的一部分 |
+   | **常用方法** | `int read()` | 读取下一个字节 |
+   | | `int read(byte[] b, int off, int len)` | 读取多个字节到目标数组 |
+   | | `int available()` | 返回剩余可读字节数 |
+   | | `void reset()` | 重置到流的起始位置（支持重复读取） |
+
+3. ✅ 适用场景
+   1. **数据回放**：多次读取同一段内存数据（支持 `mark/reset`）。
+   2. **测试驱动**：在单元测试中模拟 `InputStream` 输入源，无需依赖真实文件。
+   3. **反序列化**：从网络或数据库获取的字节数据中恢复对象（配合 `ObjectInputStream`）。
+
+4. ❌ 不适用场景
+   1. **大文件处理**：需将文件全量加载到内存数组才能创建流，消耗大量内存。
+
+5. `ByteArrayInputStream`和`FileInputStream`的区别
+	
+	| 特性/维度 | **ByteArrayInputStream** | **FileInputStream** |
+	|-----------|-------------------------|----------------------|
+	| **继承关系** | `ByteArrayInputStream` → `InputStream` | `FileInputStream` → `InputStream` |
+	| **数据源** | 内存中的字节数组 | 磁盘上的文件 |
+	| **物理位置** | 内存 | 磁盘文件系统 |
+	| **性能** | ⚡ **极快**（内存操作，纳米级） | ⏳ **较慢**（I/O操作，毫秒级） |
+	| **线程安全** | ❌ 非线程安全 | ✅ 通常是线程安全的 |
+	| **可重复读取** | ✅ 支持（通过 `reset()`） | ❌ 不支持（需重新打开） |
+	| **标记支持** | ✅ 支持 `mark()`/`reset()` | ❌ 通常不支持 |
+	| **资源管理** | 🔄 可关闭但非必需 | 🔐 **必须关闭**（系统资源） |
+	| **异常处理** | 较少I/O异常 | 较多I/O异常（文件不存在、权限等） |
+
+## 代码示例
+
+### 1. 基本读取
+从内存数组中读取数据。
 
 ```java
-package com.powernode.javase.io;  
-  
-import java.io.ByteArrayOutputStream;  
-  
-/**  
- * java.io.ByteArrayOutputStream：向内存中的字节数组写数据。  
- */  
-public class ByteArrayOutputStreamTest01 {  
-    public static void main(String[] args) {  
-  
-        // ByteArrayOutputStream的基本用法。  
-        ByteArrayOutputStream baos = new ByteArrayOutputStream(); //节点流  
-  
-        // 开始写  
-        baos.write(1);  
-        baos.write(2);  
-        baos.write(3);  
-  
-        // 怎么获取内存中的哪个byte[]数组呢？  
-        byte[] byteArray = baos.toByteArray();  
-        for (byte b : byteArray){  
-            System.out.println(b);  
-        }  
-    }  
+import java.io.ByteArrayInputStream;
+
+public class BasicRead {
+    public static void main(String[] args) {
+        byte[] source = "Hello World".getBytes();
+        
+        // 创建内存输入流
+        ByteArrayInputStream bais = new ByteArrayInputStream(source);
+        
+        int data;
+        while ((data = bais.read()) != -1) {
+            System.out.print((char) data);
+        }
+        // close() 无效，无需调用
+    }
 }
 ```
 
-根据装饰器原理，我们可以进行自由的组合，多个包装流可以叠加使用
+### 2. 重复读取 (Mark/Reset)
+演示 `ByteArrayInputStream` 支持的重置功能。
 
 ```java
-package com.powernode.javase.io;  
-  
-import java.io.ByteArrayInputStream;  
-import java.io.ByteArrayOutputStream;  
-import java.io.ObjectInputStream;  
-import java.io.ObjectOutputStream;  
-import java.util.Date;  
-  
-/**  
- * 了解了装饰器设计模式之后，我们就知道了，包装流和节点流是可以随意组合的。  
- * ObjectOutputStream（包装流）和ByteArrayOutputStream（节点流）进行组合。  
- */  
-public class ByteArrayOutputStreamTest02 {  
-    public static void main(String[] args) throws Exception{  
-  
-        // 节点流  
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();  
-        // 包装流  
-        ObjectOutputStream oos = new ObjectOutputStream(baos);  
-  
-        // 开始写  
-        oos.writeInt(100);  
-        oos.writeBoolean(false);  
-        oos.writeDouble(3.14);  
-        oos.writeUTF("动力节点");  
-        oos.writeObject(new Date());  
-  
-        // 使用了包装流就需要手动刷新一下。  
-        oos.flush();  
-  
-        // 获取内存中的大byte数组  
-        byte[] byteArray = baos.toByteArray();  
-        /*for(byte b : byteArray){  
-            System.out.println(b);        }*/  
-        // 使用ByteArrayInputStream将上面这个byte数组恢复。  
-        // 读的过程，读内存中的大byte数组。  
-        // 节点流  
-        ByteArrayInputStream bais = new ByteArrayInputStream(byteArray);  
-        // 包装流  
-        ObjectInputStream ois = new ObjectInputStream(bais);  
-  
-        // 开始读  
-        System.out.println(ois.readInt());  
-        System.out.println(ois.readBoolean());  
-        System.out.println(ois.readDouble());  
-        System.out.println(ois.readUTF());  
-        System.out.println(ois.readObject());  
-    }  
+import java.io.ByteArrayInputStream;
+
+public class RepeatRead {
+    public static void main(String[] args) {
+        byte[] source = {10, 20, 30};
+        ByteArrayInputStream bais = new ByteArrayInputStream(source);
+
+        // 第一次读取
+        System.out.println("First read: " + bais.read()); // 10
+        System.out.println("Second read: " + bais.read()); // 20
+
+        // 重置到开头
+        bais.reset(); 
+        
+        // 再次读取
+        System.out.println("Read after reset: " + bais.read()); // 10
+    }
 }
 ```
 
-可以使用ByteArrayOutputStream进行对象的深克隆
-
-```java
-package com.powernode.javase.io.clone;  
-  
-import java.io.Serial;  
-import java.io.Serializable;  
-  
-public class User implements Serializable {  
-  
-    @Serial  
-    private static final long serialVersionUID = -4947432823777553977L;  
-  
-    private String name;  
-    private int age;  
-    private Address addr;  
-  
-    public User() {  
-    }  
-  
-    public User(String name, int age, Address addr) {  
-        this.name = name;  
-        this.age = age;  
-        this.addr = addr;  
-    }  
-  
-    public String getName() {  
-        return name;  
-    }  
-  
-    public void setName(String name) {  
-        this.name = name;  
-    }  
-  
-    public int getAge() {  
-        return age;  
-    }  
-  
-    public void setAge(int age) {  
-        this.age = age;  
-    }  
-  
-    public Address getAddr() {  
-        return addr;  
-    }  
-  
-    public void setAddr(Address addr) {  
-        this.addr = addr;  
-    }  
-  
-    @Override  
-    public String toString() {  
-        return "User{" +  
-                "name='" + name + '\'' +  
-                ", age=" + age +  
-                ", addr=" + addr +  
-                '}';  
-    }  
-}
-```
-
-```java
-package com.powernode.javase.io.clone;  
-  
-import java.io.Serial;  
-import java.io.Serializable;  
-  
-public class Address implements Serializable {  
-  
-    @Serial  
-    private static final long serialVersionUID = -4947432823777553978L;  
-  
-    private String city;  
-    private String street;  
-  
-    public Address() {  
-    }  
-  
-    public Address(String city, String street) {  
-        this.city = city;  
-        this.street = street;  
-    }  
-  
-    public String getCity() {  
-        return city;  
-    }  
-  
-    public void setCity(String city) {  
-        this.city = city;  
-    }  
-  
-    public String getStreet() {  
-        return street;  
-    }  
-  
-    public void setStreet(String street) {  
-        this.street = street;  
-    }  
-  
-    @Override  
-    public String toString() {  
-        return "Address{" +  
-                "city='" + city + '\'' +  
-                ", street='" + street + '\'' +  
-                '}';  
-    }  
-}
-```
-
-```java
-package com.powernode.javase.io.clone;  
-  
-import java.io.ByteArrayInputStream;  
-import java.io.ByteArrayOutputStream;  
-import java.io.ObjectInputStream;  
-import java.io.ObjectOutputStream;  
-  
-/**  
- * 使用ByteArrayOutputStream和ByteArrayInputStream直接复制的对象就是一个深克隆。  
- */  
-public class DeepCloneTest {  
-    public static void main(String[] args) throws Exception{  
-        // 准备对象  
-        Address addr = new Address("北京", "朝阳");  
-        User user = new User("zhangsan", 20, addr);  
-  
-        // 将Java对象写到一个byte数组中。  
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();  
-        ObjectOutputStream oos = new ObjectOutputStream(baos);  
-  
-        oos.writeObject(user);  
-  
-        oos.flush();  
-  
-        // 从byte数组中读取数据恢复java对象  
-        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());  
-        ObjectInputStream ois = new ObjectInputStream(bais);  
-  
-        // 这就是哪个经过深拷贝之后的新对象  
-        User user2 = (User) ois.readObject();  
-  
-        user2.getAddr().setCity("南京");  
-  
-        System.out.println(user);  
-        System.out.println(user2);  
-    }  
-}
-```
-
-目前深拷贝的方案
-
-* 调用Object的clone方法，默认是浅克隆，需要深克隆的话，就需要重写clone方法。
-* 可以通过序列化和反序列化完成对象的克隆。
-* 也可以通过ByteArrayInputStream和ByteArrayOutputStream完成深克隆。
+### 3. 结合对象流
+参见 [ByteArrayOutputStream.md](ByteArrayOutputStream.md) 中的“对象深克隆”示例，`ByteArrayInputStream` 常作为反序列化的输入源。
