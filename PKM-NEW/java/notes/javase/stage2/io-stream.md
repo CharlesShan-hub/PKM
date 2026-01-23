@@ -184,7 +184,7 @@ public class SystemOutTest {
 	```java
 	import java.io.*;
 	import java.util.Properties;
-
+	
 	public class PropertiesExample {
 	    public static void main(String[] args) {
 	        String filePath = "/Users/kimshan/Public/project/javanote/out/production/javanote/assets/config.properties";

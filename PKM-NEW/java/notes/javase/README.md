@@ -56,6 +56,8 @@
 	* [File](stage2/File.md)：文件
 	* [Coding](stage1/coding.md)：编码
 	* [IO Stream](stage2/io-stream.md)：IO流
+	* [Commons IO](heima/common-io.md)：第三方IO工具
 * Multi-threading
+	* [multiy-threading](stage2/multiy-threading.md)：多线程
 * Java Advanced
   * [reflect](powerpoint/reflect.md)：反射

@@ -295,7 +295,7 @@
 	* 564：泛型的继承和通配符
 	* 565～566：[[notes/javase/stage2/第十五章作业|第十五章作业]]+JUnit
 * 第 16 章：（坦克大战项目第一部分）[Swing](../notes/javase/stage2/Swing.md)
-* 第 17 章：[[notes/javase/stage2/线程|线程]]
+* 第 17 章：[[../notes/javase/stage2/multiy-threading|线程]]
 	* 589~580：线程与进程的一些概念
 	* 581：线程案例
 	* 582~586：线程两种创建方式
