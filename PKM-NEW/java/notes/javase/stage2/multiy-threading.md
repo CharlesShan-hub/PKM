@@ -29,108 +29,204 @@ public class CPUNumber {
 
 ---
 
-## 线程实现
+## 线程创建
 
-### 1. Thread
+### 继承`Thread`类
 
-1. 编写一个类继承Thread，重写run方法。
-2. 创建线程对象：Thread t = new MyThread();
-3. 启动线程：t.start();
+1. 编写一个类继承`Thread`，重写`run()`。
+2. 创建线程对象：`Thread t = new MyThread();`
+3. 启动线程：`t.start();`
 
 ```java
-package ex_thread;  
-  
-public class Example {  
-    public static void main(String[] args) {  
-        Cat cat = new Cat();  
-        cat.start();  
-  
-        for(int i=0; i<10; i++) {  
-            System.out.println("主线程"+i);  
-            try {  
-                Thread.sleep(100);  
-            } catch (InterruptedException e) {  
-                throw new RuntimeException(e);  
-            }        
-        }    
+package ex_thread;
+
+public class Master {
+  public static void main(String[] args) {
+    Cat cat = new Cat();
+    cat.start();
+    for(int i=0; i<5; i++) {
+      System.out.println("主人在撸猫");
+      ThraadUtils.sleep(100);
     }
-}  
-  
-class Cat extends Thread {  
-    @Override  
-    public void run() {  
-        for(int i=0; i<10; i++) {  
-            System.out.println("我是一只小猫咪"+Thread.currentThread().getName()); 
-            try {  
-                Thread.sleep(100);  
-            } catch (InterruptedException e) {  
-                throw new RuntimeException(e);  
-            }        
-        }    
+  }
+}
+
+class Cat extends Thread {
+  @Override
+  public void run() {
+    for(int i=0; i<5; i++) {
+      System.out.println("喵喵 "+Thread.currentThread().getName());
+      ThraadUtils.sleep(100);
     }
-}  
-  
-//主线程0  
-//我是一只小猫咪Thread-0  
-//我是一只小猫咪Thread-0  
-//主线程1  
-//主线程2  
-//我是一只小猫咪Thread-0  
-//主线程3  
-//我是一只小猫咪Thread-0  
-//我是一只小猫咪Thread-0  
-//主线程4  
-//我是一只小猫咪Thread-0  
-//主线程5  
-//我是一只小猫咪Thread-0  
-//主线程6  
-//我是一只小猫咪Thread-0  
-//主线程7  
-//主线程8  
-//我是一只小猫咪Thread-0  
-//主线程9  
-//我是一只小猫咪Thread-0
+  }
+}
+
+class ThraadUtils{
+  public static void sleep(long millis) {
+    try {
+      Thread.sleep(millis);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+
+//主人在撸猫
+//喵喵 Thread-0
+//喵喵 Thread-0
+//主人在撸猫
+//喵喵 Thread-0
+//主人在撸猫
+//主人在撸猫
+//喵喵 Thread-0
+//喵喵 Thread-0
+//主人在撸猫
 ```
 
-### 2. Runable 接口
+### 实现`Runable`接口
 
-因为有的时候一个类已经继承了其他的类，不能再继承 Thread 类了。
+如果一个类已经继承了其他的类，不能再继承 `Thread` 类了。
 
-1. 编写一个类实现Runnable接口，实现run方法。
-2. 创建线程对象：Thread t = new Thread(new MyRunnable());
-3. 启动线程：t.start();
+1. 编写一个类实现`Runnable`接口，实现`run()`。
+2. 创建线程对象：`Thread t = new Thread(new MyRunnable());`
+3. 启动线程：`t.start();`
 
 ```java
-package ex_thread;  
-  
-public class Thread02 {  
-    public static void main(String[] args) {  
-        Dog dog = new Dog();  
-        Thread t1 = new Thread(dog);  
-        t1.start();  
+package ex_thread;
+
+public class Master {
+  public static void main(String[] args) {
+    //Cat cat = new Cat();
+    //Thread thread = new Thread(cat);
+    //thread.start();
+    Thread cat = new Thread(new Cat());
+    cat.start();
+  }
+}
+
+class Cat implements Runnable {
+  @Override
+  public void run() {
+    for(int i=0; i<5; i++) {
+      System.out.println("喵喵 "+Thread.currentThread().getName());
+      ThraadUtils.sleep(100);
     }
-}  
-  
-class Dog implements Runnable {  
-    @Override  
-    public void run() {  
-        for(int i=0; i<10; i++) {  
-            System.out.println("Woof!"+Thread.currentThread().getName());  
-            try{  
-                Thread.sleep(1000);  
-            }catch (InterruptedException e) {  
-                e.printStackTrace();  
-            }
-        }    
+  }
+}
+
+class ThraadUtils{
+  public static void sleep(long millis) {
+    try {
+      Thread.sleep(millis);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
     }
+  }
 }
 ```
 
 这里底层使用了静态代理模式
 
-### jconsole
+### 实现`Callable`接口
 
-终端输入 jconsole，可以查看进程
+继承`Thread`类和实现`Runable`接口都无法内容，而实现`Callable`接口可以实现这种需求。
+
+1. 定义一个类实现`Callable`接口，重写`call()`，封装要做的事情，和要放回的数据。
+2. 把`Callable`类型的对象封装成`FutureTask`（线程任务对象）。
+
+3. `futureTask.get()`会等待线程执行完再获取返回值。
+
+```java
+package ex_thread;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
+public class Master {
+  public static void main(String[] args) throws ExecutionException, InterruptedException {
+    //Callable<String> callable = new Cat();
+    //FutureTask<String> futureTask = new FutureTask<>(callable);
+    FutureTask<String> futureTask = new FutureTask<>(new Cat());
+    Thread cat = new Thread(futureTask);
+    cat.start();
+    System.out.println(futureTask.get()); // 获取返回值
+  }
+}
+
+class Cat implements Callable {
+  @Override
+  public String call() {
+    for(int i=0; i<5; i++) {
+      System.out.println("喵喵 "+Thread.currentThread().getName());
+      ThraadUtils.sleep(100);
+    }
+    return "小猫跑走了";
+  }
+}
+
+class ThraadUtils{
+  public static void sleep(long millis) {
+    try {
+      Thread.sleep(millis);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+
+//喵喵 Thread-0
+//喵喵 Thread-0
+//喵喵 Thread-0
+//喵喵 Thread-0
+//喵喵 Thread-0
+//小猫跑走了
+```
+
+### 线程池
+
+```java
+package com.powernode.javase.thread25;  
+
+import java.util.concurrent.ExecutorService;  
+import java.util.concurrent.Executors;  
+
+/**  
+ * 创建线程的第四种方式：使用线程池技术。  
+ * 线程池本质上就是一个缓存：cache  
+ * 一般都是服务器在启动的时候，初始化线程池，  
+ * 也就是说服务器在启动的时候，创建N多个线程对象，  
+ * 直接放到线程池中，需要使用线程对象的时候，直接从线程池中获取。  
+ */  
+public class ThreadTest {  
+  public static void main(String[] args) {  
+
+    // 创建一个线程池对象（线程池中有3个线程）  
+    ExecutorService executorService = Executors.newFixedThreadPool(3);  
+
+    // 将任务交给线程池（你不需要触碰到这个线程对象，你只需要将要处理的任务交给线程池即可。）  
+    executorService.submit(new Runnable() {  
+      @Override  
+      public void run() {  
+        for (int i = 0; i < 10; i++) {  
+          System.out.println(Thread.currentThread().getName() + "--->" + i);  
+        }  
+      }  
+    });  
+    executorService.submit(new Runnable() {  
+      @Override  
+      public void run() {  
+        for (int i = 0; i < 10; i++) {  
+          System.out.println(Thread.currentThread().getName() + "--->" + i);  
+        }  
+      }  
+    });  
+
+    // 最后记得关闭线程池  
+    executorService.shutdown();  
+  }  
+}
+```
 
 ### 为什么是 start 不是 run
 
@@ -140,38 +236,70 @@ class Dog implements Runnable {
 // Thread.java
 
 public synchronized void start() {  
-    /**  
-     * This method is not invoked for the main method thread or "system"     * group threads created/set up by the VM. Any new functionality added     * to this method in the future may have to also be added to the VM.     *     * A zero status value corresponds to state "NEW".     */    if (threadStatus != 0)  
-        throw new IllegalThreadStateException();  
-  
-    /* Notify the group that this thread is about to be started  
-     * so that it can be added to the group's list of threads     * and the group's unstarted count can be decremented. */    group.add(this);  
-  
-    boolean started = false;  
+  /**  
+     * This method is not invoked for the main method thread or "system"     
+     * group threads created/set up by the VM. Any new functionality added     
+     * to this method in the future may have to also be added to the VM.     
+     *     
+     * A zero status value corresponds to state "NEW".     
+     */    
+  if (threadStatus != 0)  
+    throw new IllegalThreadStateException();  
+
+  /* Notify the group that this thread is about to be started  
+     * so that it can be added to the group's list of threads     
+     * and the group's unstarted count can be decremented. */    
+  group.add(this);  
+
+  boolean started = false;  
+  try {  
+    start0();  
+    started = true;  
+  } finally {  
     try {  
-        start0();  
-        started = true;  
-    } finally {  
-        try {  
-            if (!started) {  
-                group.threadStartFailed(this);  
-            }        } catch (Throwable ignore) {  
-            /* do nothing. If start0 threw a Throwable then  
-              it will be passed up the call stack */        }  
-    }
+      if (!started) {  
+        group.threadStartFailed(this);  
+      }        
+    } catch (Throwable ignore) {  
+      /* do nothing. If start0 threw a Throwable then  
+              it will be passed up the call stack */        
+    }  
+  }
 }
 ```
 
 `start0()`才是真正的实现了多线程的方法！
 
-### 线程名称管理
+---
+
+## 线程方法
+
+### 常用api
+
+| 方法/构造器                                   | 说明                                                   |
+| --------------------------------------------- | ------------------------------------------------------ |
+| **常用方法**                                  |                                                        |
+| `public void run()`                           | 线程的任务方法                                         |
+| `public void start()`                         | 启动线程                                               |
+| `public String getName()`                     | 获取当前线程的名称，线程名称默认是 Thread-索引         |
+| `public void setName(String name)`            | 为线程设置名称                                         |
+| `public static Thread currentThread()`        | 获取当前执行的线程对象                                 |
+| `public static void sleep(long time)`         | 让当前执行的线程休眠多少毫秒后，再继续执行             |
+| `public final void join()`                    | 让调用当前这个方法的线程先执行完                       |
+| **常见构造器**                                |                                                        |
+| `public Thread()`                             | 创建新线程对象                                         |
+| `public Thread(String name)`                  | 创建新线程对象，并指定线程名称                         |
+| `public Thread(Runnable target)`              | 创建新线程对象，使用指定的 Runnable 对象               |
+| `public Thread(Runnable target, String name)` | 创建新线程对象，使用指定的 Runnable 对象并指定线程名称 |
+
+### 名称管理
 
 * **`setName(String name)`**  ：设置线程名称，与参数`name`相同。  
 * **`getName()`**  ：功能：返回当前线程的名称。  
 
 ```java
 package com.powernode.javase.thread01;  
-  
+
 /**  
  * 关于线程中常用方法：  
  *      实例方法：  
@@ -181,48 +309,52 @@ package com.powernode.javase.thread01;
  *          static Thread currentThread(); 获取当前线程对象的引用。  
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-  
-        // 获取当前线程对象  
-        Thread mainThread = Thread.currentThread();  
-  
-        // 获取当前线程的名字  
-        System.out.println("主线程的名字：" + mainThread.getName()); // 主线程的名字：main  
+  public static void main(String[] args) {  
 
-		// 默认的名字  
-        Thread t1 = new MyThread();  
-        t1.start();  //分支线程的名字：Thread-0
-  
-        // 创建线程时指定名字  
-        Thread t2 = new MyThread("tt");  
-        t2.start();  // 分支线程的名字：tt 
-  
-        // 后期修改名字
-        Thread t3 = new MyThread("tt1");  
-        t3.setName("t1");  
-        t3.start();  // 分支线程的名字：t1
-    }  
+    // 获取当前线程对象  
+    Thread mainThread = Thread.currentThread();  
+
+    // 获取当前线程的名字  
+    System.out.println("主线程的名字：" + mainThread.getName()); // 主线程的名字：main  
+
+    // 默认的名字  
+    Thread t1 = new MyThread();  
+    t1.start();  //分支线程的名字：Thread-0
+
+    // 创建线程时指定名字  
+    Thread t2 = new MyThread("tt");  
+    t2.start();  // 分支线程的名字：tt 
+
+    // 后期修改名字
+    Thread t3 = new MyThread("tt1");  
+    t3.setName("t1");  
+    t3.start();  // 分支线程的名字：t1
+  }  
 }  
-  
+
 class MyThread extends Thread{  
-  
-    public MyThread(String threadName){  
-        super(threadName);  
-    }  
-	
-	public MyThread(){  
-        super();  
-    }  
-  
-    @Override  
-    public void run() {  
-        // 获取当前线程对象  
-        Thread t = Thread.currentThread();  
-        // 获取当前线程对象的名字  
-        System.out.println("分支线程的名字：" + t.getName()); 
-    }  
+
+  public MyThread(String threadName){  
+    super(threadName);  
+  }
+
+  public MyThread(){  
+    super();  
+  }  
+
+  @Override  
+  public void run() {  
+    // 获取当前线程对象  
+    Thread t = Thread.currentThread();  
+    // 获取当前线程对象的名字  
+    System.out.println("分支线程的名字：" + t.getName()); 
+  }  
 }
 ```
+
+### jconsole工具
+
+终端输入 jconsole，可以查看进程
 
 ---
 ## 用户线程与守护线程
@@ -230,21 +362,21 @@ class MyThread extends Thread{
 ### 概念
 
 1. 用户线程（User Thread）
-	- ​**别名**：工作线程
-	- ​**生命周期**：
+	- **别名**：工作线程
+	- **生命周期**：
 		- 当线程任务执行完成时终止
 		- 可通过通知方式主动结束
-	- ​**特点**：JVM会等待所有用户线程执行完毕才退出
+	- **特点**：JVM会等待所有用户线程执行完毕才退出
 
 2. 守护线程（Daemon Thread）
-	- ​**核心作用**：为用户线程提供辅助服务
-	- ​**生命周期**：
+	- **核心作用**：为用户线程提供辅助服务
+	- **生命周期**：
 		- 随用户线程终止而自动结束
 		- 当所有用户线程结束时立即销毁
-	- ​**设置方法**：`thread.setDaemon(true)`
+	- **设置方法**：`thread.setDaemon(true)`
 
 3. 典型守护线程示例
-	- ​**垃圾回收线程（GC Thread）​**
+	- **垃圾回收线程（GC Thread）​**
 		- 持续监控内存状态
 		- 用户线程运行时在后台自动回收资源
 
@@ -547,7 +679,7 @@ class MyRunnable implements Runnable {
 ```
 
 面试题
- 
+
 ```java
 package com.powernode.javase.thread03;  
   
@@ -771,13 +903,13 @@ class MyRunnable implements Runnable {
     }  
 }
 ```
- 
+
 ### join(实例方法)
-- ​**作用**：强制优先执行插队线程
-- ​**特点**：
+- **作用**：强制优先执行插队线程
+- **特点**：
 	- 插队线程必须完全执行完毕
 	- 调用线程会等待插队线程完成
-- ​**使用场景**：需要确保某个线程优先完成时
+- **使用场景**：需要确保某个线程优先完成时
 
 join也可以指定join的时间，就是只把CPU让给某个进程最多一段时间
 
@@ -846,13 +978,13 @@ class MyThread extends Thread {
 ```
 
 练习
-1. ​**主线程任务**：
+1. **主线程任务**：
    - 每隔1秒输出"hi"
    - 共输出10次
 2. **子线程触发条件**：
    - 当主线程输出到第5次"hi"时
    - 启动一个实现`Runnable`接口的子线程
-3. ​**子线程任务**：
+3. **子线程任务**：
    - 每隔1秒输出"hello"
    - 输出满10次后自动退出
 4. **线程后续**：
@@ -981,11 +1113,11 @@ class MyThread extends Thread {
 ```
 
 ### yield(让位)
-- ​**作用**：让出CPU资源，允许其他线程执行
-- ​**特点**：
+- **作用**：让出CPU资源，允许其他线程执行
+- **特点**：
 	- 礼让时间不确定
 	- 不保证礼让一定成功
-- ​**使用场景**：当线程不需要占用全部CPU资源时
+- **使用场景**：当线程不需要占用全部CPU资源时
 
 ```java
 package ex_thread;  
@@ -1098,45 +1230,51 @@ class MyThread extends Thread {
 package ex_thread;
 
 public class Ticket {
-    public static void main(String[] args) {
-        new ThreadTicket("窗口1").start();
-        new ThreadTicket("窗口2").start();
-        new ThreadTicket("窗口3").start();
-    }
+  public static void main(String[] args) {
+    new ThreadTicket("窗口1").start();
+    new ThreadTicket("窗口2").start();
+    new ThreadTicket("窗口3").start();
+  }
 }
 
 class ThreadTicket extends Thread {
-    private static int ticket = 300; // 让多个线程共享票数  
-    
-    public ThreadTicket(String name) {
-        super(name);
+  private static int ticket = 300; // 让多个线程共享票数  
+
+  public ThreadTicket(String name) {
+    super(name);
+  }
+
+  // 没有使用锁
+  public boolean sell() {
+    if (ticket <= 0) {
+      System.out.println("已卖完");
+      return false;
+    } else {
+      ThraadUtils.sleep(50);
+      System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
+      return true;
     }
-    
-    // 使用静态同步方法，使用类锁
-    public boolean sell() {
-        if (ticket <= 0) {
-            System.out.println("已卖完");
-            return false;
-        } else {
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
-            return true;
-        }
+  }
+
+  @Override
+  public void run() {
+    System.out.println(getName() + "开始售票");
+    while (true) {
+      if (!sell()) {
+        break;
+      }
     }
-    
-    @Override
-    public void run() {
-        System.out.println(getName() + "开始售票");
-        while (true) {
-            if (!sell()) {
-                break;
-            }
-        }
+  }
+}
+
+class ThraadUtils{
+  public static void sleep(long millis) {
+    try {
+      Thread.sleep(millis);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
     }
+  }
 }
 ```
 
@@ -1158,7 +1296,8 @@ class ThreadTicket extends Thread {
 线程同步：一些敏感数据在同一时刻不能被多个线程同时访问。也就是说，当有一个线程进行访存时，其他线程不能同时进行访存。
 我们需要引入`synchronized`来对卖票的方法进行同步。
 
-​**​类锁的两种实现方式​**​
+**​类锁的两种实现方式​**​
+
 - `static synchronized`方法
 - `synchronized(ClassName.class)`代码块
 
@@ -1168,45 +1307,51 @@ class ThreadTicket extends Thread {
 package ex_thread;
 
 public class Ticket {
-    public static void main(String[] args) {
-        new ThreadTicket("窗口1").start();
-        new ThreadTicket("窗口2").start();
-        new ThreadTicket("窗口3").start();
-    }
+  public static void main(String[] args) {
+    new ThreadTicket("窗口1").start();
+    new ThreadTicket("窗口2").start();
+    new ThreadTicket("窗口3").start();
+  }
 }
 
 class ThreadTicket extends Thread {
-    private static int ticket = 300; // 让多个线程共享票数  
-    
-    public ThreadTicket(String name) {
-        super(name);
+  private static int ticket = 300; // 让多个线程共享票数  
+
+  public ThreadTicket(String name) {
+    super(name);
+  }
+
+  // 使用静态同步方法，使用类锁
+  public static synchronized boolean sell() {
+    if (ticket <= 0) {
+      System.out.println("已卖完");
+      return false;
+    } else {
+      ThraadUtils.sleep(50);
+      System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
+      return true;
     }
-    
-    // 使用静态同步方法，使用类锁
-    public static synchronized boolean sell() {
-        if (ticket <= 0) {
-            System.out.println("已卖完");
-            return false;
-        } else {
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
-            return true;
-        }
+  }
+
+  @Override
+  public void run() {
+    System.out.println(getName() + "开始售票");
+    while (true) {
+      if (!sell()) {
+        break;
+      }
     }
-    
-    @Override
-    public void run() {
-        System.out.println(getName() + "开始售票");
-        while (true) {
-            if (!sell()) {
-                break;
-            }
-        }
+  }
+}
+
+class ThraadUtils{
+  public static void sleep(long millis) {
+    try {
+      Thread.sleep(millis);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
     }
+  }
 }
 ```
 
@@ -1216,47 +1361,53 @@ class ThreadTicket extends Thread {
 package ex_thread;
 
 public class Ticket {
-    public static void main(String[] args) {
-        new ThreadTicket("窗口1").start();
-        new ThreadTicket("窗口2").start();
-        new ThreadTicket("窗口3").start();
-    }
+  public static void main(String[] args) {
+    new ThreadTicket("窗口1").start();
+    new ThreadTicket("窗口2").start();
+    new ThreadTicket("窗口3").start();
+  }
 }
 
 class ThreadTicket extends Thread {
-    private static int ticket = 300; // 让多个线程共享票数  
-    
-    public ThreadTicket(String name) {
-        super(name);
+  private static int ticket = 300; // 让多个线程共享票数  
+
+  public ThreadTicket(String name) {
+    super(name);
+  }
+
+  public boolean sell() {
+    // `static`只能修饰方法，不能修饰代码块
+    synchronized(ThreadTicket.class){
+      if (ticket <= 0) {
+        System.out.println("已卖完");
+        return false;
+      } else {
+        ThraadUtils.sleep(50);
+        System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
+        return true;
+      }
     }
-    
-    public boolean sell() {
-	    // `static`只能修饰方法，不能修饰代码块​
-        synchronized(ThreadTicket.class){
-	        if (ticket <= 0) {
-	            System.out.println("已卖完");
-	            return false;
-	        } else {
-	            try {
-	                Thread.sleep(50);
-	            } catch (InterruptedException e) {
-	                e.printStackTrace();
-	            }
-	            System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
-	            return true;
-	        }
-        }
+  }
+
+  @Override
+  public void run() {
+    System.out.println(getName() + "开始售票");
+    while (true) {
+      if (!sell()) {
+        break;
+      }
     }
-    
-    @Override
-    public void run() {
-        System.out.println(getName() + "开始售票");
-        while (true) {
-            if (!sell()) {
-                break;
-            }
-        }
+  }
+}
+
+class ThraadUtils{
+  public static void sleep(long millis) {
+    try {
+      Thread.sleep(millis);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
     }
+  }
 }
 ```
 
@@ -1277,22 +1428,28 @@ class ThreadTicket extends Thread {
 
 使用线程同步机制，来保证多线程并发环境下的数据安全问题：  
  1. 线程同步的本质是：线程排队执行就是同步机制。  
- 2. 语法格式：  
-     synchronized(必须是需要排队的这几个线程共享的对象){  
-         // 需要同步的代码  
-     }  
-     “必须是需要排队的这几个线程共享的对象” 这个必须选对了。  
-     这个如果选错了，可能会无故增加同步的线程数量，导致效率降低。  
- 3. 原理是什么？  
-     synchronized(obj){  
-         // 同步代码块  
-     }  
-     假设obj是t1 t2两个线程共享的。  
+ 2. 语法格式： 
+
+     ```java
+     synchronized(必须是需要排队的这几个线程共享的对象){
+         // 需要同步的代码
+     }
+     ```
+
+     “必须是需要排队的这几个线程共享的对象” 这个必须选对了。这个如果选错了，可能会无故增加同步的线程数量，导致效率降低。
+ 3. 原理是什么？
+
+     ```java
+     synchronized(obj){
+         // 同步代码块
+     }
+     ```
+ 4. 假设obj是t1 t2两个线程共享的。  
      t1和t2执行这个代码的时候，一定是有一个先抢到了CPU时间片。一定是有先后顺序的。  
      假设t1先抢到了CPU时间片。t1线程找共享对象obj的对象锁，找到之后，则占有这把锁。只要能够占有obj对象的对象锁，就有权利进入同步代码块执行代码。  
      当t1线程执行完同步代码块之后，会释放之前占有的对象锁（归还锁）。  
      同样，t2线程抢到CPU时间片之后，也开始执行，也会去找共享对象obj的对象锁，但由于t1线程占有这把锁，t2线程只能在同步代码块之外等待。  
- 4. 注意同步代码块的范围，不要无故扩大同步的范围，同步代码块范围越小，效率越高。
+ 5. 注意同步代码块的范围，不要无故扩大同步的范围，同步代码块范围越小，效率越高。
 
 | 特性           | `static synchronized`(类锁) | `synchronized`(实例锁) |
 | ------------ | ------------------------- | ------------------- |
@@ -1307,44 +1464,44 @@ class ThreadTicket extends Thread {
 package ex_thread;
 
 public class Ticket {
-    public static void main(String[] args) {
-        new ThreadTicket("窗口1").start();
-        new ThreadTicket("窗口2").start();
-        new ThreadTicket("窗口3").start();
-    }
+  public static void main(String[] args) {
+    new ThreadTicket("窗口1").start();
+    new ThreadTicket("窗口2").start();
+    new ThreadTicket("窗口3").start();
+  }
 }
 
 class ThreadTicket extends Thread {
-    private static int ticket = 300; // 让多个线程共享票数  
-    
-    public ThreadTicket(String name) {
-        super(name);
+  private static int ticket = 300; // 让多个线程共享票数  
+
+  public ThreadTicket(String name) {
+    super(name);
+  }
+
+  public synchronized boolean sell() {
+    if (ticket <= 0) {
+      System.out.println("已卖完");
+      return false;
+    } else {
+      try {
+        Thread.sleep(50);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+      System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
+      return true;
     }
-    
-    public synchronized boolean sell() {
-        if (ticket <= 0) {
-            System.out.println("已卖完");
-            return false;
-        } else {
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
-            return true;
-        }
+  }
+
+  @Override
+  public void run() {
+    System.out.println(getName() + "开始售票");
+    while (true) {
+      if (!sell()) {
+        break;
+      }
     }
-    
-    @Override
-    public void run() {
-        System.out.println(getName() + "开始售票");
-        while (true) {
-            if (!sell()) {
-                break;
-            }
-        }
-    }
+  }
 }
 ```
 
@@ -1364,46 +1521,46 @@ class ThreadTicket extends Thread {
 package ex_thread;
 
 public class Ticket {
-    public static void main(String[] args) {
-        new ThreadTicket("窗口1").start();
-        new ThreadTicket("窗口2").start();
-        new ThreadTicket("窗口3").start();
-    }
+  public static void main(String[] args) {
+    new ThreadTicket("窗口1").start();
+    new ThreadTicket("窗口2").start();
+    new ThreadTicket("窗口3").start();
+  }
 }
 
 class ThreadTicket extends Thread {
-    private static int ticket = 300; // 让多个线程共享票数  
-    
-    public ThreadTicket(String name) {
-        super(name);
-    }
-    
-    public boolean sell() {
-	    synchronized(this){
-	        if (ticket <= 0) {
-	            System.out.println("已卖完");
-	            return false;
-	        } else {
-	            try {
-	                Thread.sleep(50);
-	            } catch (InterruptedException e) {
-	                e.printStackTrace();
-	            }
-	            System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
-	            return true;
-	        }
-	    }
-    }
-    
-    @Override
-    public void run() {
-        System.out.println(getName() + "开始售票");
-        while (true) {
-            if (!sell()) {
-                break;
-            }
+  private static int ticket = 300; // 让多个线程共享票数  
+
+  public ThreadTicket(String name) {
+    super(name);
+  }
+
+  public boolean sell() {
+    synchronized(this){
+      if (ticket <= 0) {
+        System.out.println("已卖完");
+        return false;
+      } else {
+        try {
+          Thread.sleep(50);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
         }
+        System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
+        return true;
+      }
     }
+  }
+
+  @Override
+  public void run() {
+    System.out.println(getName() + "开始售票");
+    while (true) {
+      if (!sell()) {
+        break;
+      }
+    }
+  }
 }
 ```
 
@@ -1433,42 +1590,42 @@ new Thread(ticket, "窗口3").start();
 
 ```java
 public class Ticket {
-    public static void main(String[] args) {
-	    ThreadTicket ticket = new ThreadTicket();  
-        new Thread(ticket, "窗口1").start(); 
-        new Thread(ticket, "窗口2").start(); 
-        new Thread(ticket, "窗口3").start();
-    }
+  public static void main(String[] args) {
+    ThreadTicket ticket = new ThreadTicket();  
+    new Thread(ticket, "窗口1").start(); 
+    new Thread(ticket, "窗口2").start(); 
+    new Thread(ticket, "窗口3").start();
+  }
 }
 
 class ThreadTicket extends Thread {  
-    private static int ticket = 300; // 让多个线程共享票数  
-  
-    public boolean sell(){  
-        synchronized(this) {
-	        if (ticket <= 0) {  
-	            System.out.println("已卖完");  
-	            return false;  
-	        }else{  
-	            try{  
-	                Thread.sleep(50);  
-	            }catch (InterruptedException e){  
-	                e.printStackTrace();  
-	            }            
-	            System.out.println(Thread.currentThread().getName()+"售出一张票, 还剩余"+ --ticket);  
-	            return true;  
-	        }   
-        } 
+  private static int ticket = 300; // 让多个线程共享票数  
+
+  public boolean sell(){  
+    synchronized(this) {
+      if (ticket <= 0) {  
+        System.out.println("已卖完");  
+        return false;  
+      }else{  
+        try{  
+          Thread.sleep(50);  
+        }catch (InterruptedException e){  
+          e.printStackTrace();  
+        }            
+        System.out.println(Thread.currentThread().getName()+"售出一张票, 还剩余"+ --ticket);  
+        return true;  
+      }   
+    } 
+  }    
+  @Override  
+  public void run() {  
+    System.out.println("Start");  
+    while (true) {  
+      if(!sell()){  
+        break;  
+      }        
     }    
-    @Override  
-    public void run() {  
-        System.out.println("Start");  
-        while (true) {  
-            if(!sell()){  
-                break;  
-            }        
-        }    
-    }
+  }
 }
 ```
 
@@ -1522,53 +1679,53 @@ class ThreadTicket extends Thread {
 
 ```java
 package ex_thread;  
-  
+
 public class DeadClock {  
-    public static void main(String[] args) {  
-        new DeadClockThread(true).start();  
-        new DeadClockThread(false).start();  
-        // Thread-12  
-        // Thread-01    
-    }  
+  public static void main(String[] args) {  
+    new DeadClockThread(true).start();  
+    new DeadClockThread(false).start();  
+    // Thread-12  
+    // Thread-01    
+  }  
 }  
-  
+
 class DeadClockThread extends Thread{  
-    static Object o1 = new Object();  
-    static Object o2 = new Object();  
-    boolean flag = true;  
-  
-    public DeadClockThread(boolean flag){  
-        this.flag = flag;  
-    }  
-    
-    @Override  
-    public void run() {  
-        if(flag){  
-            synchronized (o1) {  
-                System.out.println(Thread.currentThread().getName()+"1");  
-                try {  
-                    Thread.sleep(10000);  
-                } catch (InterruptedException e) {  
-                    throw new RuntimeException(e);  
-                }                
-                synchronized (o2) {  
-                    System.out.println(Thread.currentThread().getName()+"2");  
-                }            
-            }        
-        }else{  
-            synchronized (o2) {  
-                System.out.println(Thread.currentThread().getName()+"2");  
-                try {  
-                    Thread.sleep(10000);  
-                } catch (InterruptedException e) {  
-                    throw new RuntimeException(e);  
-                }                
-                synchronized (o1) {  
-                    System.out.println(Thread.currentThread().getName()+"1");  
-                }            
-            }        
-        }   
-    }
+  static Object o1 = new Object();  
+  static Object o2 = new Object();  
+  boolean flag = true;  
+
+  public DeadClockThread(boolean flag){  
+    this.flag = flag;  
+  }  
+
+  @Override  
+  public void run() {  
+    if(flag){  
+      synchronized (o1) {  
+        System.out.println(Thread.currentThread().getName()+"1");  
+        try {  
+          Thread.sleep(10000);  
+        } catch (InterruptedException e) {  
+          throw new RuntimeException(e);  
+        }                
+        synchronized (o2) {  
+          System.out.println(Thread.currentThread().getName()+"2");  
+        }            
+      }        
+    }else{  
+      synchronized (o2) {  
+        System.out.println(Thread.currentThread().getName()+"2");  
+        try {  
+          Thread.sleep(10000);  
+        } catch (InterruptedException e) {  
+          throw new RuntimeException(e);  
+        }                
+        synchronized (o1) {  
+          System.out.println(Thread.currentThread().getName()+"1");  
+        }            
+      }        
+    }   
+  }
 }
 ```
 
@@ -1587,7 +1744,7 @@ class DeadClockThread extends Thread{
 
 ```java
 package com.powernode.javase.thread21;  
-  
+
 /*  
 题目描述：两个线程交替输出  
 t1-->1  
@@ -1632,64 +1789,64 @@ t2-->14
  *      共享对象.notify(); 调用之后效果是什么？唤醒优先级最高的等待线程。如果优先级一样，则随机唤醒一个。  
  *      共享对象.notifyAll(); 调用之后效果是什么？唤醒所有在该共享对象上等待的线程。  
  */  
-  
+
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        // 共享对象  
-        MyRunnable mr = new MyRunnable();  
-  
-        // 两个线程  
-        Thread t1 = new Thread(mr);  
-        Thread t2 = new Thread(mr);  
-  
-        t1.setName("t1");  
-        t2.setName("t2");  
-  
-        t1.start();  
-        t2.start();  
-    }  
+  public static void main(String[] args) {  
+    // 共享对象  
+    MyRunnable mr = new MyRunnable();  
+
+    // 两个线程  
+    Thread t1 = new Thread(mr);  
+    Thread t2 = new Thread(mr);  
+
+    t1.setName("t1");  
+    t2.setName("t2");  
+
+    t1.start();  
+    t2.start();  
+  }  
 }  
-  
+
 class MyRunnable implements Runnable {  
-  
-    // 实例变量，多线程共享的。  
-    private int count = 0;  
-  
-    //private Object obj = new Object();  
-  
-    @Override  
-    public void run() {  
-        while(true){  
-            synchronized (this){  
-            //synchronized (obj) {  
-  
-                // 记得唤醒t1线程  
-                // t2线程执行过程中把t1唤醒了。但是由于t2仍然占用对象锁，所以即使t1醒了，也不会往下执行。  
-                this.notify();  
-                //obj.notify();  
-  
-                if(count >= 100) break;  
-                // 模拟延迟  
-                try {  
-                    Thread.sleep(50);  
-                } catch (InterruptedException e) {  
-                    e.printStackTrace();  
-                }  
-                // 程序执行到这里count一定是小于100  
-                System.out.println(Thread.currentThread().getName() + "-->" + (++count));  
-  
-                try {  
-                    // 让其中一个线程等待，这个等待的线程可能是t1，也可能是t2  
-                    // 假设是t1线程等待。  
-                    // t1线程进入无期限的等待，并且等待的时候，不占用对象锁。  
-                    this.wait();  
-                    //obj.wait();  
-                } catch (InterruptedException e) {  
-                    e.printStackTrace();  
-                }  
-            }  
+
+  // 实例变量，多线程共享的。  
+  private int count = 0;  
+
+  //private Object obj = new Object();  
+
+  @Override  
+  public void run() {  
+    while(true){  
+      synchronized (this){  
+        //synchronized (obj) {  
+
+        // 记得唤醒t1线程  
+        // t2线程执行过程中把t1唤醒了。但是由于t2仍然占用对象锁，所以即使t1醒了，也不会往下执行。  
+        this.notify();  
+        //obj.notify();  
+
+        if(count >= 100) break;  
+        // 模拟延迟  
+        try {  
+          Thread.sleep(50);  
+        } catch (InterruptedException e) {  
+          e.printStackTrace();  
         }  
+        // 程序执行到这里count一定是小于100  
+        System.out.println(Thread.currentThread().getName() + "-->" + (++count));  
+
+        try {  
+          // 让其中一个线程等待，这个等待的线程可能是t1，也可能是t2  
+          // 假设是t1线程等待。  
+          // t1线程进入无期限的等待，并且等待的时候，不占用对象锁。  
+          this.wait();  
+          //obj.wait();  
+        } catch (InterruptedException e) {  
+          e.printStackTrace();  
+        }  
+      }  
     }  
+  }  
 }
 ```
 
@@ -1697,8 +1854,8 @@ class MyRunnable implements Runnable {
 
 ```java
 package com.powernode.javase.thread22;  
-  
- /* 新题目：  
+
+/* 新题目：  
  * t1-->A 
  * t2-->B 
  * t3-->C 
@@ -1711,94 +1868,94 @@ package com.powernode.javase.thread22;
  * t3-->C  
  */  
 public class ThreadTest {  
-  
-    // 共享对象（t1 t2 t3线程共享的一个对象，都去争夺这一把锁）  
-    private static final Object lock = new Object();  
-    // 给一个初始值，这个初始值表示第一次输出的时候，t1先输出。  
-    private static boolean t1Output = true;  
-    private static boolean t2Output = false;  
-    private static boolean t3Output = false;  
-  
-    public static void main(String[] args) {  
-        // 创建三个线程  
-  
-        // t1线程：负责输出A  
-        new Thread(new Runnable() {  
-            @Override  
-            public void run() {  
-                synchronized (lock){  
-                    for (int i = 0; i < 10; i++) {  
-                        while(!t1Output){ // 只要不是t1线程输出  
-                            try {  
-                                lock.wait();  
-                            } catch (InterruptedException e) {  
-                                throw new RuntimeException(e);  
-                            }  
-                        }  
-                        // 程序到这里说明：该t1线程输出了，并且t1线程被唤醒了。  
-                        System.out.println(Thread.currentThread().getName() + " ---> A");  
-                        // 该布尔标记的值  
-                        t1Output = false;  
-                        t2Output = true;  
-                        t3Output = false;  
-                        // 唤醒所有线程  
-                        lock.notifyAll();  
-                    }  
-                }  
+
+  // 共享对象（t1 t2 t3线程共享的一个对象，都去争夺这一把锁）  
+  private static final Object lock = new Object();  
+  // 给一个初始值，这个初始值表示第一次输出的时候，t1先输出。  
+  private static boolean t1Output = true;  
+  private static boolean t2Output = false;  
+  private static boolean t3Output = false;  
+
+  public static void main(String[] args) {  
+    // 创建三个线程  
+
+    // t1线程：负责输出A  
+    new Thread(new Runnable() {  
+      @Override  
+      public void run() {  
+        synchronized (lock){  
+          for (int i = 0; i < 10; i++) {  
+            while(!t1Output){ // 只要不是t1线程输出  
+              try {  
+                lock.wait();  
+              } catch (InterruptedException e) {  
+                throw new RuntimeException(e);  
+              }  
             }  
-        }).start();  
-  
-        // t2线程：负责输出B  
-        new Thread(new Runnable() {  
-            @Override  
-            public void run() {  
-                synchronized (lock){  
-                    for (int i = 0; i < 10; i++) {  
-                        while(!t2Output){  
-                            try {  
-                                lock.wait();  
-                            } catch (InterruptedException e) {  
-                                throw new RuntimeException(e);  
-                            }  
-                        }  
-                        System.out.println(Thread.currentThread().getName() + " ---> B");  
-                        // 该布尔标记的值  
-                        t1Output = false;  
-                        t2Output = false;  
-                        t3Output = true;  
-                        // 唤醒所有线程  
-                        lock.notifyAll();  
-                    }  
-                }  
+            // 程序到这里说明：该t1线程输出了，并且t1线程被唤醒了。  
+            System.out.println(Thread.currentThread().getName() + " ---> A");  
+            // 该布尔标记的值  
+            t1Output = false;  
+            t2Output = true;  
+            t3Output = false;  
+            // 唤醒所有线程  
+            lock.notifyAll();  
+          }  
+        }  
+      }  
+    }).start();  
+
+    // t2线程：负责输出B  
+    new Thread(new Runnable() {  
+      @Override  
+      public void run() {  
+        synchronized (lock){  
+          for (int i = 0; i < 10; i++) {  
+            while(!t2Output){  
+              try {  
+                lock.wait();  
+              } catch (InterruptedException e) {  
+                throw new RuntimeException(e);  
+              }  
             }  
-        }).start();  
-  
-        // t3线程：负责输出C  
-        new Thread(new Runnable() {  
-            @Override  
-            public void run() {  
-                synchronized (lock){  
-                    for (int i = 0; i < 10; i++) {  
-                        while(!t3Output){  
-                            try {  
-                                lock.wait();  
-                            } catch (InterruptedException e) {  
-                                throw new RuntimeException(e);  
-                            }  
-                        }  
-                        System.out.println(Thread.currentThread().getName() + " ---> C");  
-                        // 该布尔标记的值  
-                        t1Output = true;  
-                        t2Output = false;  
-                        t3Output = false;  
-                        // 唤醒所有线程  
-                        lock.notifyAll();  
-                    }  
-                }  
+            System.out.println(Thread.currentThread().getName() + " ---> B");  
+            // 该布尔标记的值  
+            t1Output = false;  
+            t2Output = false;  
+            t3Output = true;  
+            // 唤醒所有线程  
+            lock.notifyAll();  
+          }  
+        }  
+      }  
+    }).start();  
+
+    // t3线程：负责输出C  
+    new Thread(new Runnable() {  
+      @Override  
+      public void run() {  
+        synchronized (lock){  
+          for (int i = 0; i < 10; i++) {  
+            while(!t3Output){  
+              try {  
+                lock.wait();  
+              } catch (InterruptedException e) {  
+                throw new RuntimeException(e);  
+              }  
             }  
-        }).start();  
-  
-    }  
+            System.out.println(Thread.currentThread().getName() + " ---> C");  
+            // 该布尔标记的值  
+            t1Output = true;  
+            t2Output = false;  
+            t3Output = false;  
+            // 唤醒所有线程  
+            lock.notifyAll();  
+          }  
+        }  
+      }  
+    }).start();  
+
+  }  
 }
 ```
 
@@ -1806,149 +1963,149 @@ public class ThreadTest {
 
 ```java
 package com.powernode.javase.thread2_2;  
-  
+
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        new Thread(new MyThread(0,1, false),"A").start();  
-        new Thread(new MyThread(1,2, false),"B").start();  
-        new Thread(new MyThread(2,0, true),"C").start();  
-    }  
+  public static void main(String[] args) {  
+    new Thread(new MyThread(0,1, false),"A").start();  
+    new Thread(new MyThread(1,2, false),"B").start();  
+    new Thread(new MyThread(2,0, true),"C").start();  
+  }  
 }  
-  
+
 class MyThread implements Runnable{  
-    private static final Object obj = new Object();  
-    public static int maxCount = 10;  
-    public static int count = 1;  
-    public static int currentThreadId = 0;  
-    public int nextThreadId = 1;  
-    public boolean isLast = false;  
-    public int threadId;  
-    public MyThread(int threadId, int nextThreadId, boolean isLast){  
-        this.threadId = threadId;  
-        this.nextThreadId = nextThreadId;  
-        this.isLast = isLast;  
-    }  
-    @Override  
-    public void run() {  
-//        System.out.println(Thread.currentThread().getName() + "启动");  
-        while(true){  
-            synchronized(obj){  
-                while(currentThreadId != threadId){  
-//                    System.out.println(Thread.currentThread().getName() + "等待");  
-                    try {  
-                        obj.wait();  
-                    } catch (InterruptedException e) {  
-                        e.printStackTrace();  
-                    }  
-                }  
-                currentThreadId = nextThreadId;  
-                if(isLast){  
-                    count++;  
-                }  
-                obj.notifyAll();  
-                if(count <= maxCount){  
-                    System.out.println(Thread.currentThread().getName() + " -> " + count);  
-                }else{  
-                    break;  
-                }  
-            }  
+  private static final Object obj = new Object();  
+  public static int maxCount = 10;  
+  public static int count = 1;  
+  public static int currentThreadId = 0;  
+  public int nextThreadId = 1;  
+  public boolean isLast = false;  
+  public int threadId;  
+  public MyThread(int threadId, int nextThreadId, boolean isLast){  
+    this.threadId = threadId;  
+    this.nextThreadId = nextThreadId;  
+    this.isLast = isLast;  
+  }  
+  @Override  
+  public void run() {  
+    //        System.out.println(Thread.currentThread().getName() + "启动");  
+    while(true){  
+      synchronized(obj){  
+        while(currentThreadId != threadId){  
+          //                    System.out.println(Thread.currentThread().getName() + "等待");  
+          try {  
+            obj.wait();  
+          } catch (InterruptedException e) {  
+            e.printStackTrace();  
+          }  
         }  
+        currentThreadId = nextThreadId;  
+        if(isLast){  
+          count++;  
+        }  
+        obj.notifyAll();  
+        if(count <= maxCount){  
+          System.out.println(Thread.currentThread().getName() + " -> " + count);  
+        }else{  
+          break;  
+        }  
+      }  
     }  
+  }  
 }
 ```
 
 然后gpt的帮助下，进一步封装了一下
 ```java
 package com.powernode.javase.thread2_2;  
-  
+
 import java.util.ArrayList;  
 import java.util.List;  
-  
+
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        ThreadFactory factory = new ThreadFactory(3, 10); // 3个线程，打印到10  
-        factory.startThreads();  
-    }  
+  public static void main(String[] args) {  
+    ThreadFactory factory = new ThreadFactory(3, 10); // 3个线程，打印到10  
+    factory.startThreads();  
+  }  
 }  
-  
+
 class ThreadFactory {  
-    private final Object lock = new Object();  
-    private final List<OrderedThread> threads = new ArrayList<>();  
-    private final int maxCount;  
-    private int count = 1;  
-    private int currentThreadId = 0;  
-  
-    public ThreadFactory(int threadCount, int maxCount) {  
-        this.maxCount = maxCount;  
-        initializeThreads(threadCount);  
+  private final Object lock = new Object();  
+  private final List<OrderedThread> threads = new ArrayList<>();  
+  private final int maxCount;  
+  private int count = 1;  
+  private int currentThreadId = 0;  
+
+  public ThreadFactory(int threadCount, int maxCount) {  
+    this.maxCount = maxCount;  
+    initializeThreads(threadCount);  
+  }  
+
+  private void initializeThreads(int threadCount) {  
+    // 创建线程并设置执行顺序  
+    for (int i = 0; i < threadCount; i++) {  
+      int nextThreadId = (i + 1) % threadCount;  
+      boolean isLast = (i == threadCount - 1);  
+      threads.add(new OrderedThread(i, nextThreadId, isLast));  
     }  
-  
-    private void initializeThreads(int threadCount) {  
-        // 创建线程并设置执行顺序  
-        for (int i = 0; i < threadCount; i++) {  
-            int nextThreadId = (i + 1) % threadCount;  
-            boolean isLast = (i == threadCount - 1);  
-            threads.add(new OrderedThread(i, nextThreadId, isLast));  
-        }  
+  }  
+
+  public void startThreads() {  
+    // 启动所有线程  
+    for (int i = 0; i < threads.size(); i++) {  
+      new Thread(threads.get(i), String.valueOf((char)('A' + i))).start();  
     }  
-  
-    public void startThreads() {  
-        // 启动所有线程  
-        for (int i = 0; i < threads.size(); i++) {  
-            new Thread(threads.get(i), String.valueOf((char)('A' + i))).start();  
-        }  
+  }  
+
+  class OrderedThread implements Runnable {  
+    private final int threadId;  
+    private final int nextThreadId;  
+    private final boolean isLast;  
+
+    public OrderedThread(int threadId, int nextThreadId, boolean isLast) {  
+      this.threadId = threadId;  
+      this.nextThreadId = nextThreadId;  
+      this.isLast = isLast;  
     }  
-  
-    class OrderedThread implements Runnable {  
-        private final int threadId;  
-        private final int nextThreadId;  
-        private final boolean isLast;  
-  
-        public OrderedThread(int threadId, int nextThreadId, boolean isLast) {  
-            this.threadId = threadId;  
-            this.nextThreadId = nextThreadId;  
-            this.isLast = isLast;  
-        }  
-  
-        @Override  
-        public void run() {  
-            while (true) {  
-                synchronized (lock) {  
-                    // 检查是否完成所有打印  
-                    if (count > maxCount) {  
-                        lock.notifyAll();  
-                        break;  
-                    }  
-  
-                    // 等待轮到当前线程执行  
-                    while (currentThreadId != threadId) {  
-                        try {  
-                            lock.wait();  
-                            // 被唤醒后再次检查是否完成  
-                            if (count > maxCount) {  
-                                return;  
-                            }  
-                        } catch (InterruptedException e) {  
-                            Thread.currentThread().interrupt();  
-                            return;  
-                        }  
-                    }  
-  
-                    // 执行打印  
-                    System.out.println(Thread.currentThread().getName() + " -> " + count);  
-  
-                    // 更新状态  
-                    currentThreadId = nextThreadId;  
-                    if (isLast) {  
-                        count++;  
-                    }  
-  
-                    // 唤醒其他线程  
-                    lock.notifyAll();  
-                }  
+
+    @Override  
+    public void run() {  
+      while (true) {  
+        synchronized (lock) {  
+          // 检查是否完成所有打印  
+          if (count > maxCount) {  
+            lock.notifyAll();  
+            break;  
+          }  
+
+          // 等待轮到当前线程执行  
+          while (currentThreadId != threadId) {  
+            try {  
+              lock.wait();  
+              // 被唤醒后再次检查是否完成  
+              if (count > maxCount) {  
+                return;  
+              }  
+            } catch (InterruptedException e) {  
+              Thread.currentThread().interrupt();  
+              return;  
             }  
+          }  
+
+          // 执行打印  
+          System.out.println(Thread.currentThread().getName() + " -> " + count);  
+
+          // 更新状态  
+          currentThreadId = nextThreadId;  
+          if (isLast) {  
+            count++;  
+          }  
+
+          // 唤醒其他线程  
+          lock.notifyAll();  
         }  
+      }  
     }  
+  }  
 }
 ```
 
@@ -1959,76 +2116,76 @@ class ThreadFactory {
 
 ```java
 package com.powernode.javase.thread23;  
-  
+
 import java.util.concurrent.locks.ReentrantLock;  
-  
+
 class SingletonTest {  
-  
-    // 静态变量  
-    private static Singleton s1;  
-    private static Singleton s2;  
-  
-    public static void main(String[] args) {  
-  
-        // 获取某个类。这是反射机制中的内容。  
-        /*Class stringClass = String.class;  
+
+  // 静态变量  
+  private static Singleton s1;  
+  private static Singleton s2;  
+
+  public static void main(String[] args) {  
+
+    // 获取某个类。这是反射机制中的内容。  
+    /*Class stringClass = String.class;  
         Class singletonClass = Singleton.class;        Class dateClass = java.util.Date.class;*/  
-        // 创建线程对象t1  
-        Thread t1 = new Thread(new Runnable() {  
-            @Override  
-            public void run() {  
-                s1 = Singleton.getSingleton();  
-            }  
-        });  
-  
-        // 创建线程对象t2  
-        Thread t2 = new Thread(new Runnable() {  
-            @Override  
-            public void run() {  
-                s2 = Singleton.getSingleton();  
-            }  
-        });  
-  
-        // 启动线程  
-        t1.start();  
-        t2.start();  
-  
-        try {  
-            t1.join();  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        try {  
-            t2.join();  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-  
-        // 判断这两个Singleton对象是否一样。  
-        System.out.println(s1);  
-        System.out.println(s2);  
-        System.out.println(s1 == s2);  
-  
+    // 创建线程对象t1  
+    Thread t1 = new Thread(new Runnable() {  
+      @Override  
+      public void run() {  
+        s1 = Singleton.getSingleton();  
+      }  
+    });  
+
+    // 创建线程对象t2  
+    Thread t2 = new Thread(new Runnable() {  
+      @Override  
+      public void run() {  
+        s2 = Singleton.getSingleton();  
+      }  
+    });  
+
+    // 启动线程  
+    t1.start();  
+    t2.start();  
+
+    try {  
+      t1.join();  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+    try {  
+      t2.join();  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
+    }  
+
+    // 判断这两个Singleton对象是否一样。  
+    System.out.println(s1);  
+    System.out.println(s2);  
+    System.out.println(s1 == s2);  
+
+  }  
 }  
-  
+
 /**  
  * 懒汉式单例模式  
  */  
 public class Singleton {  
-    private static Singleton singleton;  
-  
-    private Singleton() {  
-        System.out.println("构造方法执行了！");  
-    }  
-  
-    // 非线程安全的。  
-    // 构造方法执行了！  
-    // 构造方法执行了！  
-    // com.powernode.javase.thread23.Singleton@5b480cf9  
-    // com.powernode.javase.thread23.Singleton@6f496d9f    
-    // false    
-    /*public static Singleton getSingleton() {        
+  private static Singleton singleton;  
+
+  private Singleton() {  
+    System.out.println("构造方法执行了！");  
+  }  
+
+  // 非线程安全的。  
+  // 构造方法执行了！  
+  // 构造方法执行了！  
+  // com.powernode.javase.thread23.Singleton@5b480cf9  
+  // com.powernode.javase.thread23.Singleton@6f496d9f    
+  // false    
+  /*public static Singleton getSingleton() {        
 	    if (singleton == null) {            
 		    try {                
 			    Thread.sleep(2000);            
@@ -2039,13 +2196,13 @@ public class Singleton {
 		}        
 		return singleton;    
 	}*/  
-	
-    // 线程安全的：第一种方案（同步方法），找类锁。  
-    // 构造方法执行了！  
-    // com.powernode.javase.thread23.Singleton@5b480cf9  
-    // com.powernode.javase.thread23.Singleton@5b480cf9    
-    // true    
-    /*public static synchronized Singleton getSingleton() {        
+
+  // 线程安全的：第一种方案（同步方法），找类锁。  
+  // 构造方法执行了！  
+  // com.powernode.javase.thread23.Singleton@5b480cf9  
+  // com.powernode.javase.thread23.Singleton@5b480cf9    
+  // true    
+  /*public static synchronized Singleton getSingleton() {        
 	     if (singleton == null) {            
 		    try {                
 			     Thread.sleep(2000);            
@@ -2056,13 +2213,13 @@ public class Singleton {
 		}        
 		return singleton;    
 	}*/  
-	
-    // 线程安全的：第二种方案（同步代码块），找的类锁  
-    // 构造方法执行了！  
-    //com.powernode.javase.thread23.Singleton@5b480cf9  
-    //com.powernode.javase.thread23.Singleton@5b480cf9    
-    //true    
-    /*public static Singleton getSingleton() {        
+
+  // 线程安全的：第二种方案（同步代码块），找的类锁  
+  // 构造方法执行了！  
+  //com.powernode.javase.thread23.Singleton@5b480cf9  
+  //com.powernode.javase.thread23.Singleton@5b480cf9    
+  //true    
+  /*public static Singleton getSingleton() {        
 	    // 这里有一个知识点是反射机制中的内容。可以获取某个类。  
         synchronized (Singleton.class){            
         if (singleton == null) {               
@@ -2076,23 +2233,23 @@ public class Singleton {
 		}        
 		return singleton;    
 	}*/  
-	
-    // 线程安全的：这个方案对上一个方案进行优化，提升效率。  
-    public static Singleton getSingleton() {  
-        if(singleton == null){            
-	        synchronized (Singleton.class){                
-		        if (singleton == null) {                    
-			        try {                        
-				        Thread.sleep(2000);                    
-				    } catch (InterruptedException e) {                        
-					    throw new RuntimeException(e);                    
-					}                    
-					singleton = new Singleton();                
-				}            
-			}        
-		}        
-	return singleton;    
-	}
+
+  // 线程安全的：这个方案对上一个方案进行优化，提升效率。  
+  public static Singleton getSingleton() {  
+    if(singleton == null){            
+      synchronized (Singleton.class){                
+        if (singleton == null) {                    
+          try {                        
+            Thread.sleep(2000);                    
+          } catch (InterruptedException e) {                        
+            throw new RuntimeException(e);                    
+          }                    
+          singleton = new Singleton();                
+        }            
+      }        
+    }        
+    return singleton;    
+  }
 }
 ```
 
@@ -2100,203 +2257,98 @@ public class Singleton {
 
 ```java
 package com.powernode.javase.thread23;  
-  
+
 import java.util.concurrent.locks.ReentrantLock;  
-  
+
 class SingletonTest {  
-  
-    // 静态变量  
-    private static Singleton s1;  
-    private static Singleton s2;  
-  
-    public static void main(String[] args) {  
-  
-        // 获取某个类。这是反射机制中的内容。  
-        /*Class stringClass = String.class;  
+
+  // 静态变量  
+  private static Singleton s1;  
+  private static Singleton s2;  
+
+  public static void main(String[] args) {  
+
+    // 获取某个类。这是反射机制中的内容。  
+    /*Class stringClass = String.class;  
         Class singletonClass = Singleton.class;        Class dateClass = java.util.Date.class;*/  
-        // 创建线程对象t1  
-        Thread t1 = new Thread(new Runnable() {  
-            @Override  
-            public void run() {  
-                s1 = Singleton.getSingleton();  
-            }  
-        });  
-  
-        // 创建线程对象t2  
-        Thread t2 = new Thread(new Runnable() {  
-            @Override  
-            public void run() {  
-                s2 = Singleton.getSingleton();  
-            }  
-        });  
-  
-        // 启动线程  
-        t1.start();  
-        t2.start();  
-  
-        try {  
-            t1.join();  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        try {  
-            t2.join();  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-  
-        // 判断这两个Singleton对象是否一样。  
-        System.out.println(s1);  
-        System.out.println(s2);  
-        System.out.println(s1 == s2);  
-  
+    // 创建线程对象t1  
+    Thread t1 = new Thread(new Runnable() {  
+      @Override  
+      public void run() {  
+        s1 = Singleton.getSingleton();  
+      }  
+    });  
+
+    // 创建线程对象t2  
+    Thread t2 = new Thread(new Runnable() {  
+      @Override  
+      public void run() {  
+        s2 = Singleton.getSingleton();  
+      }  
+    });  
+
+    // 启动线程  
+    t1.start();  
+    t2.start();  
+
+    try {  
+      t1.join();  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+    try {  
+      t2.join();  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
+    }  
+
+    // 判断这两个Singleton对象是否一样。  
+    System.out.println(s1);  
+    System.out.println(s2);  
+    System.out.println(s1 == s2);  
+
+  }  
 }  
-  
+
 /**  
  * 懒汉式单例模式  
  */  
 public class Singleton {  
-    private static Singleton singleton;  
-  
-    private Singleton() {  
-        System.out.println("构造方法执行了！");  
-    }  
+  private static Singleton singleton;  
 
-    // 使用Lock来实现线程安全  
-    // Lock是接口，从JDK5开始引入的。  
-    // Lock接口下有一个实现类：可重入锁（ReentrantLock）  
-    // 注意：要想使用ReentrantLock达到线程安全，假设要让t1 t2 t3线程同步，就需要让t1 t2 t3共享同一个lock。  
-    // Lock 和 synchronized 哪个好？Lock更好。为什么？因为更加灵活。  
-    private static final ReentrantLock lock = new ReentrantLock();  
-  
-    public static Singleton getSingleton() {  
-        if(singleton == null){  
-  
-            try {  
-                // 加锁  
-                lock.lock();  
-                if (singleton == null) {  
-                    try {  
-                        Thread.sleep(2000);  
-                    } catch (InterruptedException e) {  
-                        throw new RuntimeException(e);  
-                    }  
-                    singleton = new Singleton();  
-                }  
-            } finally {  
-                // 解锁（需要100%保证解锁，怎么办？finally）  
-                lock.unlock();  
-            }  
-  
+  private Singleton() {  
+    System.out.println("构造方法执行了！");  
+  }  
+
+  // 使用Lock来实现线程安全  
+  // Lock是接口，从JDK5开始引入的。  
+  // Lock接口下有一个实现类：可重入锁（ReentrantLock）  
+  // 注意：要想使用ReentrantLock达到线程安全，假设要让t1 t2 t3线程同步，就需要让t1 t2 t3共享同一个lock。  
+  // Lock 和 synchronized 哪个好？Lock更好。为什么？因为更加灵活。  
+  private static final ReentrantLock lock = new ReentrantLock();  
+
+  public static Singleton getSingleton() {  
+    if(singleton == null){  
+
+      try {  
+        // 加锁  
+        lock.lock();  
+        if (singleton == null) {  
+          try {  
+            Thread.sleep(2000);  
+          } catch (InterruptedException e) {  
+            throw new RuntimeException(e);  
+          }  
+          singleton = new Singleton();  
         }  
-        return singleton;  
+      } finally {  
+        // 解锁（需要100%保证解锁，怎么办？finally）  
+        lock.unlock();  
+      }  
+
     }  
-}
-```
-
-### Callable接口
-
-这样可以获取线程返回值
-
-```java
-package com.powernode.javase.thread24;  
-  
-import java.util.concurrent.Callable;  
-import java.util.concurrent.ExecutionException;  
-import java.util.concurrent.FutureTask;  
-  
-/**  
- * 实现线程的第三种方式：实现Callable接口，实现call方法。  
- * 这种方式实现的线程，是可以获取到线程返回值的。  
- */  
-public class ThreadTest {  
-    public static void main(String[] args) {  
-        // 创建“未来任务”对象  
-        FutureTask<Integer> task = new FutureTask<>(new Callable<Integer>() {  
-            @Override  
-            public Integer call() throws Exception {  
-                // 处理业务......  
-                Thread.sleep(1000 * 5);  
-                return 1;  
-            }  
-        });  
-  
-        // 创建线程对象  
-        Thread t = new Thread(task);  
-        t.setName("t");  
-  
-        // 启动线程  
-        t.start();  
-  
-        try {  
-            // 获取“未来任务”线程的返回值  
-            // 阻塞当前线程，等待“未来任务”结束并返回值。  
-            // 拿到返回值，当前线程的阻塞才会解除。继续执行。  
-            Integer i = task.get();  
-            System.out.println(i);  
-        } catch (Exception e) {  
-            e.printStackTrace();  
-        }  
-    }  
-}  
-  
-/*class MyRunnable implements Runnable {  
-    @Override    
-    public void run() {  
-    }
-}
-  
-class MyThread extends Thread {  
-    @Override    
-    public void run() {  
-    }
-}
-*/
-```
-
-### 线程池
-
-```java
-package com.powernode.javase.thread25;  
-  
-import java.util.concurrent.ExecutorService;  
-import java.util.concurrent.Executors;  
-  
-/**  
- * 创建线程的第四种方式：使用线程池技术。  
- * 线程池本质上就是一个缓存：cache  
- * 一般都是服务器在启动的时候，初始化线程池，  
- * 也就是说服务器在启动的时候，创建N多个线程对象，  
- * 直接放到线程池中，需要使用线程对象的时候，直接从线程池中获取。  
- */  
-public class ThreadTest {  
-    public static void main(String[] args) {  
-  
-        // 创建一个线程池对象（线程池中有3个线程）  
-        ExecutorService executorService = Executors.newFixedThreadPool(3);  
-  
-        // 将任务交给线程池（你不需要触碰到这个线程对象，你只需要将要处理的任务交给线程池即可。）  
-        executorService.submit(new Runnable() {  
-            @Override  
-            public void run() {  
-                for (int i = 0; i < 10; i++) {  
-                    System.out.println(Thread.currentThread().getName() + "--->" + i);  
-                }  
-            }  
-        });  
-        executorService.submit(new Runnable() {  
-            @Override  
-            public void run() {  
-                for (int i = 0; i < 10; i++) {  
-                    System.out.println(Thread.currentThread().getName() + "--->" + i);  
-                }  
-            }  
-        });  
-  
-        // 最后记得关闭线程池  
-        executorService.shutdown();  
-    }  
+    return singleton;  
+  }  
 }
 ```
 
@@ -2304,108 +2356,108 @@ public class ThreadTest {
 ## 练习
 
 ### 练习一
-1. ​**线程启动**  
+1. **线程启动**  
 	- 在`main`方法中同时启动两个线程
-2. ​**线程1任务**  
+2. **线程1任务**  
 	   - 循环生成并打印0-100的随机整数  
 	   - 输出格式示例：`Thread-1: 42`
-3. ​**线程2任务**  
+3. **线程2任务**  
 	   - 监听键盘输入  
 	   - 当检测到输入字符`Q`时（不区分大小写）  
 	   - 立即终止线程1的执行
 	```java
 	package ex_chapter16;  
-	  
+	
 	import java.util.Scanner;  
-	  
+	
 	public class Ex01 {  
-	    public static void main(String[] args){  
-	        T1 t1 = new T1();  
-	        t1.start();  
-	        new T2(t1).start();  
-	    }
+	  public static void main(String[] args){  
+	    T1 t1 = new T1();  
+	    t1.start();  
+	    new T2(t1).start();  
+	  }
 	}  
-	  
+	
 	class T1 extends Thread{  
-	    private boolean loop = true;  
-	  
-	    @Override  
-	    public void run() {  
-	        while(loop){  
-	            System.out.println((int)(Math.random()*100+1));  
-	            try {  
-	                Thread.sleep(1000);  
-	            } catch (InterruptedException e) {  
-	                throw new RuntimeException(e);  
-	            }        
-	        }    
-	    }  
-	    public void setLoop(boolean loop) {  
-	        this.loop = loop;  
-	    }
+	  private boolean loop = true;  
+	
+	  @Override  
+	  public void run() {  
+	    while(loop){  
+	      System.out.println((int)(Math.random()*100+1));  
+	      try {  
+	        Thread.sleep(1000);  
+	      } catch (InterruptedException e) {  
+	        throw new RuntimeException(e);  
+	      }        
+	    }    
+	  }  
+	  public void setLoop(boolean loop) {  
+	    this.loop = loop;  
+	  }
 	}  
-	  
+	
 	class T2 extends Thread{  
-	    T1 t1;  
-	  
-	    public T2(T1 t){  
-	        this.t1 = t;  
-	    }  
-	    @Override  
-	    public void run() {  
-	        Scanner scanner = new Scanner(System.in);  
-	        while(true){  
-	            System.out.println("请输入指令，q 表示退出");  
-	            if(scanner.nextLine().charAt(0) == 'q'){  
-	                t1.setLoop(false);  
-	                System.out.println("结束");  
-	                break;  
-	            }        
-	        }    
-	    }
+	  T1 t1;  
+	
+	  public T2(T1 t){  
+	    this.t1 = t;  
+	  }  
+	  @Override  
+	  public void run() {  
+	    Scanner scanner = new Scanner(System.in);  
+	    while(true){  
+	      System.out.println("请输入指令，q 表示退出");  
+	      if(scanner.nextLine().charAt(0) == 'q'){  
+	        t1.setLoop(false);  
+	        System.out.println("结束");  
+	        break;  
+	      }        
+	    }    
+	  }
 	}
 	```
 
 ### 练习二
-1. ​**初始条件**  
+1. **初始条件**  
    - 共享银行卡余额：`10000`元  
    - 两个用户线程同时操作该账户  
-1. ​**取款规则**  
+1. **取款规则**  
    - 每次固定取款：`1000`元  
    - 当余额 `< 1000` 时停止取款  
-1. ​**同步要求**  
+1. **同步要求**  
    - 必须保证线程安全  
    - 禁止出现超额取款（余额不能为负）  
 	```java
 	package ex_chapter16;  
-	  
+	
 	public class Ex02 {  
-	    public static void main(String[] args) {  
-	        Bank bank = new Bank();  
-	        new Thread(bank).start();  
-	        new Thread(bank).start();  
-	    }
+	  public static void main(String[] args) {  
+	    Bank bank = new Bank();  
+	    new Thread(bank).start();  
+	    new Thread(bank).start();  
+	  }
 	}  
-	  
+	
 	class Bank extends Thread{  
-	    private static int balance = 10000;  
-	  
-	    @Override  
-	    public void run() {  
-	        while(true) {  
-	            synchronized (this) {  
-	                if (balance <= 0)  
-	                    break;  
-	                balance -= 1000;  
-	                System.out.println(Thread.currentThread().getName() + "取钱后，余额=" + balance);  
-	            }            
-	            try {  
-	                Thread.sleep(100);  
-	            } catch (InterruptedException e) {  
-	                throw new RuntimeException(e);  
-	            }        
-	        }    
-	    }
+	  private static int balance = 10000;  
+	
+	  @Override  
+	  public void run() {  
+	    while(true) {  
+	      synchronized (this) {  
+	        if (balance <= 0)  
+	          break;  
+	        balance -= 1000;  
+	        System.out.println(Thread.currentThread().getName() + "取钱后，余额=" + balance);  
+	      }            
+	      try {  
+	        Thread.sleep(100);  
+	      } catch (InterruptedException e) {  
+	        throw new RuntimeException(e);  
+	      }        
+	    }    
+	  }
 	}
 	```
 	```txt
@@ -2425,37 +2477,37 @@ public class ThreadTest {
 
 ```java
 package com.powernode.javase.thread03;  
-  
+
 /**  
  * 关于sleep的面试题：以下程序中，是main线程休眠5秒，还是分支线程休眠5秒？  
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        MyThread t = new MyThread();  
-        t.setName("t");  
-        t.start();  
-  
-        try {  
-            // 这行代码并不是让t线程睡眠，而是让当前线程睡眠。  
-            // 当前线程是main线程。  
-            t.sleep(1000 * 5); // 等同于：Thread.sleep(1000 * 5);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-  
-        for (int i = 0; i < 100; i++) {  
-            System.out.println(Thread.currentThread().getName() + "===>" + i);  
-        }  
+  public static void main(String[] args) {  
+    MyThread t = new MyThread();  
+    t.setName("t");  
+    t.start();  
+
+    try {  
+      // 这行代码并不是让t线程睡眠，而是让当前线程睡眠。  
+      // 当前线程是main线程。  
+      t.sleep(1000 * 5); // 等同于：Thread.sleep(1000 * 5);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+
+    for (int i = 0; i < 100; i++) {  
+      System.out.println(Thread.currentThread().getName() + "===>" + i);  
+    }  
+  }  
 }  
-  
+
 class MyThread extends Thread {  
-    @Override  
-    public void run(){  
-        for (int i = 0; i < 100; i++) {  
-            System.out.println(Thread.currentThread().getName() + "===>" + i);  
-        }  
+  @Override  
+  public void run(){  
+    for (int i = 0; i < 100; i++) {  
+      System.out.println(Thread.currentThread().getName() + "===>" + i);  
     }  
+  }  
 }
 ```
 
@@ -2470,58 +2522,58 @@ package com.powernode.javase.thread16;
  * https://www.bilibili.com/video/BV1p7421N7XT?p=76
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        MyClass mc = new MyClass();  
-        Thread t1 = new Thread(new MyRunnable(mc));  
-        Thread t2 = new Thread(new MyRunnable(mc));  
-  
-        t1.setName("t1");  
-        t2.setName("t2");  
-  
-        t1.start();  
-        try {  
-            Thread.sleep(1000);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        t2.start();  
+  public static void main(String[] args) {  
+    MyClass mc = new MyClass();  
+    Thread t1 = new Thread(new MyRunnable(mc));  
+    Thread t2 = new Thread(new MyRunnable(mc));  
+
+    t1.setName("t1");  
+    t2.setName("t2");  
+
+    t1.start();  
+    try {  
+      Thread.sleep(1000);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+    t2.start();  
+  }  
 }  
-  
+
 class MyRunnable implements Runnable {  
-  
-    private MyClass mc;  
-  
-    public MyRunnable(MyClass mc) {  
-        this.mc = mc;  
+
+  private MyClass mc;  
+
+  public MyRunnable(MyClass mc) {  
+    this.mc = mc;  
+  }  
+
+  @Override  
+  public void run() {  
+    if("t1".equals(Thread.currentThread().getName())){  
+      mc.m1();  
     }  
-  
-    @Override  
-    public void run() {  
-        if("t1".equals(Thread.currentThread().getName())){  
-            mc.m1();  
-        }  
-        if("t2".equals(Thread.currentThread().getName())){  
-            mc.m2();  
-        }  
+    if("t2".equals(Thread.currentThread().getName())){  
+      mc.m2();  
     }  
+  }  
 }  
-  
+
 class MyClass {  
-    public synchronized void m1(){  
-        System.out.println("m1 begin");  
-        try {  
-            Thread.sleep(1000 * 5);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        System.out.println("m1 over");  
+  public synchronized void m1(){  
+    System.out.println("m1 begin");  
+    try {  
+      Thread.sleep(1000 * 5);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
-  
-    public void m2(){  
-        System.out.println("m2 begin");  
-        System.out.println("m2 over");  
-    }  
+    System.out.println("m1 over");  
+  }  
+
+  public void m2(){  
+    System.out.println("m2 begin");  
+    System.out.println("m2 over");  
+  }  
 }
 ```
 
@@ -2536,58 +2588,58 @@ package com.powernode.javase.thread15;
  * https://www.bilibili.com/video/BV1p7421N7XT?p=77
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        MyClass mc = new MyClass();  
-        Thread t1 = new Thread(new MyRunnable(mc));  
-        Thread t2 = new Thread(new MyRunnable(mc));  
-  
-        t1.setName("t1");  
-        t2.setName("t2");  
-  
-        t1.start();  
-        try {  
-            Thread.sleep(1000);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        t2.start();  
+  public static void main(String[] args) {  
+    MyClass mc = new MyClass();  
+    Thread t1 = new Thread(new MyRunnable(mc));  
+    Thread t2 = new Thread(new MyRunnable(mc));  
+
+    t1.setName("t1");  
+    t2.setName("t2");  
+
+    t1.start();  
+    try {  
+      Thread.sleep(1000);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+    t2.start();  
+  }  
 }  
-  
+
 class MyRunnable implements Runnable {  
-  
-    private MyClass mc;  
-  
-    public MyRunnable(MyClass mc) {  
-        this.mc = mc;  
+
+  private MyClass mc;  
+
+  public MyRunnable(MyClass mc) {  
+    this.mc = mc;  
+  }  
+
+  @Override  
+  public void run() {  
+    if("t1".equals(Thread.currentThread().getName())){  
+      mc.m1();  
     }  
-  
-    @Override  
-    public void run() {  
-        if("t1".equals(Thread.currentThread().getName())){  
-            mc.m1();  
-        }  
-        if("t2".equals(Thread.currentThread().getName())){  
-            mc.m2();  
-        }  
+    if("t2".equals(Thread.currentThread().getName())){  
+      mc.m2();  
     }  
+  }  
 }  
-  
+
 class MyClass {  
-    public synchronized void m1(){  
-        System.out.println("m1 begin");  
-        try {  
-            Thread.sleep(1000 * 5);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        System.out.println("m1 over");  
+  public synchronized void m1(){  
+    System.out.println("m1 begin");  
+    try {  
+      Thread.sleep(1000 * 5);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
-  
-    public synchronized void m2(){  
-        System.out.println("m2 begin");  
-        System.out.println("m2 over");  
-    }  
+    System.out.println("m1 over");  
+  }  
+
+  public synchronized void m2(){  
+    System.out.println("m2 begin");  
+    System.out.println("m2 over");  
+  }  
 }
 ```
 
@@ -2595,65 +2647,65 @@ class MyClass {
 
 ```java
 package com.powernode.javase.thread17;  
-  
+
 /**  
  * 线程同步机制的面试题：分析以下程序 m2 方法在执行的时候，需要等待 m1 方法的结束吗？  
  *      不需要，因为对象锁是两个对象
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        MyClass mc1 = new MyClass();  
-        MyClass mc2 = new MyClass();  
-        Thread t1 = new Thread(new MyRunnable(mc1));  
-        Thread t2 = new Thread(new MyRunnable(mc2));  
-  
-        t1.setName("t1");  
-        t2.setName("t2");  
-  
-        t1.start();  
-        try {  
-            Thread.sleep(1000);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        t2.start();  
+  public static void main(String[] args) {  
+    MyClass mc1 = new MyClass();  
+    MyClass mc2 = new MyClass();  
+    Thread t1 = new Thread(new MyRunnable(mc1));  
+    Thread t2 = new Thread(new MyRunnable(mc2));  
+
+    t1.setName("t1");  
+    t2.setName("t2");  
+
+    t1.start();  
+    try {  
+      Thread.sleep(1000);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+    t2.start();  
+  }  
 }  
-  
+
 class MyRunnable implements Runnable {  
-  
-    private MyClass mc;  
-  
-    public MyRunnable(MyClass mc) {  
-        this.mc = mc;  
+
+  private MyClass mc;  
+
+  public MyRunnable(MyClass mc) {  
+    this.mc = mc;  
+  }  
+
+  @Override  
+  public void run() {  
+    if("t1".equals(Thread.currentThread().getName())){  
+      mc.m1();  
     }  
-  
-    @Override  
-    public void run() {  
-        if("t1".equals(Thread.currentThread().getName())){  
-            mc.m1();  
-        }  
-        if("t2".equals(Thread.currentThread().getName())){  
-            mc.m2();  
-        }  
+    if("t2".equals(Thread.currentThread().getName())){  
+      mc.m2();  
     }  
+  }  
 }  
-  
+
 class MyClass {  
-    public synchronized void m1(){  
-        System.out.println("m1 begin");  
-        try {  
-            Thread.sleep(1000 * 5);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        System.out.println("m1 over");  
+  public synchronized void m1(){  
+    System.out.println("m1 begin");  
+    try {  
+      Thread.sleep(1000 * 5);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
-  
-    public synchronized void m2(){  
-        System.out.println("m2 begin");  
-        System.out.println("m2 over");  
-    }  
+    System.out.println("m1 over");  
+  }  
+
+  public synchronized void m2(){  
+    System.out.println("m2 begin");  
+    System.out.println("m2 over");  
+  }  
 }
 ```
 
@@ -2661,7 +2713,7 @@ class MyClass {
 
 ```java
 package com.powernode.javase.thread18;  
-  
+
 /**  
  * 线程同步机制的面试题：分析以下程序 m2 方法在执行的时候，需要等待 m1 方法的结束吗？  
  *      需要等待。因为是类锁。
@@ -2673,58 +2725,58 @@ package com.powernode.javase.thread18;
  * 实例方法上添加synchronized，实际上是为了保证实例变量的安全。  
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        MyClass mc1 = new MyClass();  
-        MyClass mc2 = new MyClass();  
-        Thread t1 = new Thread(new MyRunnable(mc1));  
-        Thread t2 = new Thread(new MyRunnable(mc2));  
-  
-        t1.setName("t1");  
-        t2.setName("t2");  
-  
-        t1.start();  
-        try {  
-            Thread.sleep(1000);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        t2.start();  
+  public static void main(String[] args) {  
+    MyClass mc1 = new MyClass();  
+    MyClass mc2 = new MyClass();  
+    Thread t1 = new Thread(new MyRunnable(mc1));  
+    Thread t2 = new Thread(new MyRunnable(mc2));  
+
+    t1.setName("t1");  
+    t2.setName("t2");  
+
+    t1.start();  
+    try {  
+      Thread.sleep(1000);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+    t2.start();  
+  }  
 }  
-  
+
 class MyRunnable implements Runnable {  
-  
-    private MyClass mc;  
-  
-    public MyRunnable(MyClass mc) {  
-        this.mc = mc;  
+
+  private MyClass mc;  
+
+  public MyRunnable(MyClass mc) {  
+    this.mc = mc;  
+  }  
+
+  @Override  
+  public void run() {  
+    if("t1".equals(Thread.currentThread().getName())){  
+      mc.m1();  
     }  
-  
-    @Override  
-    public void run() {  
-        if("t1".equals(Thread.currentThread().getName())){  
-            mc.m1();  
-        }  
-        if("t2".equals(Thread.currentThread().getName())){  
-            mc.m2();  
-        }  
+    if("t2".equals(Thread.currentThread().getName())){  
+      mc.m2();  
     }  
+  }  
 }  
-  
+
 class MyClass {  
-    public static synchronized void m1(){  
-        System.out.println("m1 begin");  
-        try {  
-            Thread.sleep(1000 * 5);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        System.out.println("m1 over");  
+  public static synchronized void m1(){  
+    System.out.println("m1 begin");  
+    try {  
+      Thread.sleep(1000 * 5);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
-  
-    public static synchronized void m2(){  
-        System.out.println("m2 begin");  
-        System.out.println("m2 over");  
-    }  
+    System.out.println("m1 over");  
+  }  
+
+  public static synchronized void m2(){  
+    System.out.println("m2 begin");  
+    System.out.println("m2 over");  
+  }  
 }
 ```
