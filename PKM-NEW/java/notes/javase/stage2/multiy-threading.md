@@ -1,4 +1,5 @@
 # 多线程
+
 ---
 ## 基本概念
 
@@ -27,9 +28,14 @@ public class CPUNumber {
 }
 ```
 
----
 
+---
 ## 线程创建
+
+> 1. 继承`Thread`类，重写`run`方法。
+> 2. 实现`Runable`接口，重写`run`方法，`Thread t = new Thread(new MyRunnable());`
+> 3. 实现`Callable`接口，重写`call`方法并返回数据，`Thread t = new Thread(new FutureTask(new MyCallable()));`
+> 4. 线程池，`executorService.submit(new MyRunnable());`
 
 ### 继承`Thread`类
 
@@ -133,7 +139,6 @@ class ThraadUtils{
 
 1. 定义一个类实现`Callable`接口，重写`call()`，封装要做的事情，和要放回的数据。
 2. 把`Callable`类型的对象封装成`FutureTask`（线程任务对象）。
-
 3. `futureTask.get()`会等待线程执行完再获取返回值。
 
 ```java
@@ -361,19 +366,15 @@ class MyThread extends Thread{
 
 ### 概念
 
-1. 用户线程（User Thread）
-	- **别名**：工作线程
-	- **生命周期**：
-		- 当线程任务执行完成时终止
-		- 可通过通知方式主动结束
-	- **特点**：JVM会等待所有用户线程执行完毕才退出
+| 特性 | 用户线程（User Thread） | 守护线程（Daemon Thread） |
+| :--- | :--- | :--- |
+| **别名** | 工作线程 | - |
+| **核心作用** | 执行业务逻辑 | 为用户线程提供辅助服务 |
+| **生命周期** | 当线程任务执行完成时终止，或可通过通知方式主动结束 | 随用户线程终止而自动结束，当所有用户线程结束时立即销毁 |
+| **JVM退出影响** | JVM会等待所有用户线程执行完毕才退出 | 不会阻止JVM退出 |
+| **设置方法** | - | `thread.setDaemon(true)` |
+| **典型应用** | 业务逻辑处理 | 垃圾回收线程（GC Thread）、日志监控等后台服务 |
 
-2. 守护线程（Daemon Thread）
-	- **核心作用**：为用户线程提供辅助服务
-	- **生命周期**：
-		- 随用户线程终止而自动结束
-		- 当所有用户线程结束时立即销毁
-	- **设置方法**：`thread.setDaemon(true)`
 
 3. 典型守护线程示例
 	- **垃圾回收线程（GC Thread）​**
@@ -405,7 +406,7 @@ public class Deamon {
             Thread.sleep(100);  
         }   
     }
-}  
+}
   
 class MyDeamon extends Thread{  
     @Override  
@@ -444,7 +445,7 @@ class MyDeamon extends Thread{
 
 ```java
 package com.powernode.javase.thread07;  
-  
+
 /**  
  * 1. 在Java语言中，线程被分为两大类：  
  *      第一类：用户线程（非守护线程）  
@@ -456,43 +457,44 @@ package com.powernode.javase.thread07;
  *  
  * 4. 如何将一个线程设置为守护线程？  
  *      t.setDaemon(true);  
- */public class ThreadTest {  
-    public static void main(String[] args) {  
-        MyThread myThread = new MyThread();  
-        myThread.setName("t");  
-  
-        // 在启动线程之前，设置线程为守护线程  
-        myThread.setDaemon(true);  
-  
-        myThread.start();  
-  
-        // 10s结束！  
-        // main线程中，main线程是一个用户线程。  
-        for (int i = 0; i < 10; i++) {  
-            System.out.println(Thread.currentThread().getName() + "===>" + i);  
-            try {  
-                Thread.sleep(1000);  
-            } catch (InterruptedException e) {  
-                throw new RuntimeException(e);  
-            }  
-        }  
-  
+ */
+public class ThreadTest {  
+  public static void main(String[] args) {  
+    MyThread myThread = new MyThread();  
+    myThread.setName("t");  
+
+    // 在启动线程之前，设置线程为守护线程  
+    myThread.setDaemon(true);  
+
+    myThread.start();  
+
+    // 10s结束！  
+    // main线程中，main线程是一个用户线程。  
+    for (int i = 0; i < 10; i++) {  
+      System.out.println(Thread.currentThread().getName() + "===>" + i);  
+      try {  
+        Thread.sleep(1000);  
+      } catch (InterruptedException e) {  
+        throw new RuntimeException(e);  
+      }  
     }  
+
+  }  
 }  
-  
+
 class MyThread extends Thread {  
-    @Override  
-    public void run() {  
-        int i = 0;  
-        while(true){  
-            System.out.println(Thread.currentThread().getName() + "===>" + (++i));  
-            try {  
-                Thread.sleep(1000);  
-            } catch (InterruptedException e) {  
-                throw new RuntimeException(e);  
-            }  
-        }  
+  @Override  
+  public void run() {  
+    int i = 0;  
+    while(true){  
+      System.out.println(Thread.currentThread().getName() + "===>" + (++i));  
+      try {  
+        Thread.sleep(1000);  
+      } catch (InterruptedException e) {  
+        throw new RuntimeException(e);  
+      }  
     }  
+  }  
 }
 ```
 
@@ -1178,7 +1180,7 @@ main9
 
 ```java
 package com.powernode.javase.thread11;  
-  
+
 /**  
  * 关于JVM的调度：  
  *      1. 让位  
@@ -1188,31 +1190,31 @@ package com.powernode.javase.thread11;
  *      5. 只能保证大方向上的，大概率，到了某个点让位一次。  
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        Thread t1 = new MyThread();  
-        t1.setName("t1");  
-  
-        Thread t2 = new MyThread();  
-        t2.setName("t2");  
-  
-        t1.start();  
-        t2.start();  
-    }  
+  public static void main(String[] args) {  
+    Thread t1 = new MyThread();  
+    t1.setName("t1");  
+
+    Thread t2 = new MyThread();  
+    t2.setName("t2");  
+
+    t1.start();  
+    t2.start();  
+  }  
 }  
-  
+
 class MyThread extends Thread {  
-    @Override  
-    public void run() {  
-        for (int i = 0; i < 500; i++) {  
-            if(Thread.currentThread().getName().equals("t1") && i % 10 == 0){  
-                System.out.println(Thread.currentThread().getName() + "让位了，此时的i下标是：" + i);  
-                // 当前线程让位，这个当前线程一定是t1  
-                // t1会让位一次  
-                Thread.yield();  
-            }  
-            System.out.println(Thread.currentThread().getName() + "==>" + i);  
-        }  
+  @Override  
+  public void run() {  
+    for (int i = 0; i < 500; i++) {  
+      if(Thread.currentThread().getName().equals("t1") && i % 10 == 0){  
+        System.out.println(Thread.currentThread().getName() + "让位了，此时的i下标是：" + i);  
+        // 当前线程让位，这个当前线程一定是t1  
+        // t1会让位一次  
+        Thread.yield();  
+      }  
+      System.out.println(Thread.currentThread().getName() + "==>" + i);  
     }  
+  }  
 }
 ```
 
@@ -1220,11 +1222,18 @@ class MyThread extends Thread {
 
 ## 锁
 
-我们使用一个卖票的案例，引出锁的应用。
+我们使用下边的售票案例中的方法名称：
+
+| 特性   | 类锁                                             | 实例锁                                     |
+| ------ | ------------------------------------------------ | ------------------------------------------ |
+| 方法   | `static synchronized`                            | `synchronized`                             |
+|        | `public static synchronized boolean sell(){...}` | `public synchronized boolean sell() {...}` |
+| 代码块 | `synchronized(ClassName.class)`                  | `synchronized(this)`                       |
+|        | `synchronized(ThreadTicket.class){...}`          | `synchronized(this){...}`                  |
 
 ### 没有加锁
 
-假设有一个售票系统，三个售票窗口同时出售300张票。如果没有适当的同步机制，多个线程（窗口）可能会同时访问和修改剩余的票数，导致数据不一致的问题。
+我们使用一个卖票的案例，引出锁的应用。假设有一个售票系统，三个售票窗口同时出售300张票。如果没有适当的同步机制，多个线程（窗口）可能会同时访问和修改剩余的票数，导致数据不一致的问题。
 
 ```java
 package ex_thread;
@@ -1432,7 +1441,7 @@ class ThraadUtils{
 
      ```java
      synchronized(必须是需要排队的这几个线程共享的对象){
-         // 需要同步的代码
+       // 需要同步的代码
      }
      ```
 
@@ -1441,7 +1450,7 @@ class ThraadUtils{
 
      ```java
      synchronized(obj){
-         // 同步代码块
+       // 同步代码块
      }
      ```
  4. 假设obj是t1 t2两个线程共享的。  
@@ -2128,8 +2137,11 @@ class SingletonTest {
   public static void main(String[] args) {  
 
     // 获取某个类。这是反射机制中的内容。  
-    /*Class stringClass = String.class;  
-        Class singletonClass = Singleton.class;        Class dateClass = java.util.Date.class;*/  
+    /*
+      Class stringClass = String.class;
+      Class singletonClass = Singleton.class;
+      Class dateClass = java.util.Date.class;
+    */  
     // 创建线程对象t1  
     Thread t1 = new Thread(new Runnable() {  
       @Override  
@@ -2269,8 +2281,11 @@ class SingletonTest {
   public static void main(String[] args) {  
 
     // 获取某个类。这是反射机制中的内容。  
-    /*Class stringClass = String.class;  
-        Class singletonClass = Singleton.class;        Class dateClass = java.util.Date.class;*/  
+    /*
+      Class stringClass = String.class;
+      Class singletonClass = Singleton.class;
+      Class dateClass = java.util.Date.class;
+    */  
     // 创建线程对象t1  
     Thread t1 = new Thread(new Runnable() {  
       @Override  

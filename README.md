@@ -72,10 +72,11 @@
 - 高级变换
 - 密码学
 
-
 **[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 编程/标记语言/语法格式**
 
 **全能语言**
+
+* [C](PKM-NEW/c/README.md)
 - 🔗[Python](https://docs.python.org/3/)
 - [Java](PKM-NEW/java/README.md)
 - C++
@@ -196,7 +197,6 @@
 **艺术设计**
 
 - [音乐](./KnowledgeMap/艺术设计/README.md)（测试中）
-
 
 **生活**
 

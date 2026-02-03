@@ -1,20 +1,19 @@
 # Javase
 
 * Introduction
-	* [Remember!!](stage1/remember.md)
+	* [Remember!!](stage1/remember.md)：备忘录
 	* [Background](stage1/background.md)：java基础、各个版本变化
-	* [Dos Instruction](stage1/Dos.md)
+	* [Dos Instruction](stage1/Dos.md)：Dos命令
 	* [Hello World and Basic Java Structure](stage1/hello-world.md)
-	* [Escape Character](stage1/escape-character.md)
-	* [Comment](stage1/comment.md)
+	* [Escape Character](stage1/escape-character.md)：转义字符
+	* [Comment](stage1/comment.md)：注释
 * Basic (before oop)
-	* [package](stage1/package.md)
-	* [Variable and Datatype](stage1/variable-and-datatype.md)
-	* [operator](stage1/operator.md)
-	* [Keyboard Input](stage1/keyboard-input.md)
-	* [Branch Control](stage1/branch-control.md)
-	* [recursion](stage1/recursion.md)
-	* [package](stage1/package.md)
+	* [package](stage1/package.md)：包
+	* [Variable and Datatype](stage1/variable-and-datatype.md)：变量与数据类型
+	* [operator](stage1/operator.md)：操作符
+	* [Keyboard Input](stage1/keyboard-input.md)：键盘输入
+	* [Branch Control](stage1/branch-control.md)：分支结构
+	* [recursion](stage1/recursion.md)：递归
 * OOP Basic
 	* [Introduction for Class and Object](stage1/class-and-object-introduce.md)：引入
 	* [Attributes and Methods](stage1/attributes-and-methods.md)：属性和成员方法
@@ -40,10 +39,10 @@
 	* [Collection](heima/Collection.md)：集合
 	* [stream](powerpoint/stream.md)：stream流
 * Utils Classes
-	* [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)
+	* [BigInteger and BigDecimal](stage2/BigIntegerBigDecimal.md)：大数运算
 	* [WrapperClass](stage2/WrapperClass.md)：包装类
-	* [Comparator](heima/Comparator.md)
-	* [Math](stage2/Math.md)
+	* [Comparator](heima/Comparator.md)：比较器
+	* [Math](stage2/Math.md)：数学类
 * Array
 	* [array](stage1/array.md)：数组
 	* [Arrays](stage2/Arrays.md)：⚠️Comparator
@@ -58,6 +57,6 @@
 	* [IO Stream](stage2/io-stream.md)：IO流
 	* [Commons IO](heima/common-io.md)：第三方IO工具
 * Multi-threading
-	* [multiy-threading](stage2/multiy-threading.md)：多线程
+	* [Multiy Threading](stage2/multiy-threading.md)：多线程
 * Java Advanced
   * [reflect](powerpoint/reflect.md)：反射

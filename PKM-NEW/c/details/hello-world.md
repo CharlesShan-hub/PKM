@@ -3,7 +3,7 @@
 	```c
 	// first.c
 	#include <stdio.h>
-	int main(void)           /* a simple program             */
+	int main(void)          /* a simple program             */
 	{
 		int num;             /* define a variable called num */
 		num = 1;             /* assign a value to num        */
@@ -16,7 +16,7 @@
 	}
 	```
 2. 流程
-	![[../assets/c-workflows-drawing|1000]]
+	![c-workflows-drawing|1000](../assets/c-workflows-drawing.md)
 3. 编译（在类Unix系统中，我们使用 `cc`）
 	* 如果直接执行 `cc first.c` 会生成 `a.out`
 	* 指定输出文件的名字要用 `-o`，比如 `cc -o first first.c`，会得到科执行文件 `first`

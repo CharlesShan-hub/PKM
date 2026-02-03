@@ -5,6 +5,7 @@
 
 ![[../assets/stdio-drawing|1000]]
 
+---
 ## Functions
 
 ### printf
@@ -135,11 +136,11 @@ int main(void)
 
 ### scanf
 
-scanf() 最不常用，因为他容易卡住。最好用 getchar()或者fgets()吧。
+`scanf()` 最不常用，因为他容易卡住。最好用 `getchar()` 或者 `fgets()` 吧。
 
-scanf 与 printf 两点不一样
-* 变量前要加&
-* double 的转换说明是 lf 而不是 f
+`scanf` 与 `printf` 两点不一样
+* 变量前要加`&`
+* `double` 的转换说明是 `lf` 而不是 `f`
 
 Demo
 
@@ -436,6 +437,7 @@ char *s_gets(char *st, int n)
 ```
 
 
+---
 ## Reference
 
 \[1] [https://www.runoob.com/cprogramming/c-function-fflush.html](https://www.runoob.com/cprogramming/c-function-fflush.html)

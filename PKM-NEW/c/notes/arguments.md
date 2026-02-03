@@ -1,13 +1,11 @@
 # Arguments
 
 ---
-
 ## Overview
 
-![[../assets/argument-drawing|1000]]
+![argument-drawing|1000](../assets/argument-drawing.md)
 
 ---
-
 ## Operater
 
 ![[../assets/operater-drawing|1000]]
@@ -35,7 +33,7 @@
 ### 逻辑运算符
 
 * 与或非：`&&`，`||`，`！`
-* [[../library/iso646|👉 iso646]]
+* 👉 [iso646](../library/iso646.md)
 
 ### 其他运算符
 
@@ -64,7 +62,6 @@
 所以不要写这样的代码！
 
 ***
-
 ## Expression and Argument
 
 C语言的六种语句
@@ -94,7 +91,6 @@ C语言的六种语句
   * 比如：，`y = (4+x++) + (6+x++)`，其中`4+x++`就不是一个完整表达式。因为程序无法保证x 在`4+x++`之后不再变化。
 
 ***
-
 ## Loop
 
 ### while
@@ -138,7 +134,6 @@ for(;condition;)
 另外可以用逗号插入多个内容在一个语句里：`for(int i=1,j=2; i+j<100; i++,j++)`
 
 ***
-
 ## Branch
 
 ### if, else
@@ -185,7 +180,6 @@ break和 continue 都是针对本轮循环
 * 如果没有 break 就会进入下一个代码块，可以利用这个特性，制作多重标签：[[../details/switch-example2|👉案例]]
 
 ***
-
 ## Jump
 
 ### goto

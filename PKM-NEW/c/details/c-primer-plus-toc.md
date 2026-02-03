@@ -2,7 +2,7 @@
 
 
 * [x] 第一章 概览
-	1. C语言的起源：✅[[history]]
+	1. C语言的起源：✅[history](history.md)
 	2. 使用C语言的理由：❌比较基础
 		1. 设计特性
 		2. 高效性
@@ -12,7 +12,7 @@
 		6. 缺点
 	3. C语言的发展方向：❌比较基础
 	4. 计算机工作的基本原理：❌比较基础
-	5. 高级计算机语言和编译器：✅[[PKM-NEW/c/details/hello-world]]
+	5. 高级计算机语言和编译器：✅[hello-world](hello-world.md)
 	6. 使用C语言的7个步骤：❌比较基础
 		1. 第1步：定义程序目标
 		2. 第2步：设计程序
@@ -22,14 +22,14 @@
 		6. 第6步：测试和调试程序
 		7. 第7步：维护和修改程序
 		8. 总结
-	7. 编程机制：✅ [[../notes/background|background]]
+	7. 编程机制：✅ [background](../notes/background.md)
 		1. 目标代码文件，可执行文件和库
 		2. UNIX 系统
 		3. Linux 系统
 		4. 集成开发环境 (Windows 系统下)
 		5. IBM PC的DOS编译器
 		6. Macintosh上的C
-	8. 语言标准：✅[[history]]
+	8. 语言标准：✅ [history](history.md)
 		1. 第1个 ANSI/ISO C 标准
 		2. C99 标准
 	9. 本书的组织结构：❌跳过
@@ -40,13 +40,13 @@
 	12. 复习题：❌跳过
 	13. 编程练习：❌跳过
 * [x] 第2章 C语言概述
-	1. C语言的一个简单实例：✅[[PKM-NEW/c/details/hello-world]]
-	2. 实例说明：✅[[PKM-NEW/c/details/hello-world]]
+	1. C语言的一个简单实例：✅ [hello-world](hello-world.md)
+	2. 实例说明：✅ [hello-world](hello-world.md)
 		1. 第一遍 快速简介
 		2. 第二遍 程序细节
-	3. 一个简单程序的结构：✅[[PKM-NEW/c/details/hello-world]]
-	4. 使程序可读的技巧：✅[[PKM-NEW/c/details/hello-world]]
-	5. 更进一步：✅[[PKM-NEW/c/details/hello-world]]
+	3. 一个简单程序的结构：✅ [hello-world](hello-world.md)
+	4. 使程序可读的技巧：✅ [hello-world](hello-world.md)
+	5. 更进一步：✅ [hello-world](hello-world.md)
 		1. 说明
 		2. 多个声明
 		3. 乘法
@@ -64,23 +64,23 @@
 * [x] 第3章 数据和C
 	1. 示例程序：❌比较基础
 	2. 变量与常量数据：❌比较基础
-	3. 数据：数据类型关键字：✅[[../notes/basic-data-type|basic-data-type]]
+	3. 数据：数据类型关键字：✅ [basic-data-type](../notes/basic-data-type.md)
 		1. 整数类型与浮点数类型
 		2. 整数
 		3. 浮点数
-	4. C数据类型：✅[[../notes/basic-data-type|basic-data-type]]
+	4. C数据类型：✅ [basic-data-type](../notes/basic-data-type.md)
 		1. int类型
 		2. 其他整数类型
 		3. 使用字符：char类型
-		4. \_Bool类型
-		5. 可移植的类型:：inttypes.h
+		4. \_Bool类型：✅ [stdbool](../library/stdbool.md)
+		5. 可移植的类型:：✅ [inttypes](../library/inttypes.md)
 		6. float、double和long double类型
 		7. 复数和虚数类型
 		8. 其他类型
 		9. 类型大小
-	5. 使用数据类型：✅[[../notes/basic-data-type|basic-data-type]]
-	6. 参数和易犯的错误：✅[[../notes/basic-data-type|basic-data-type]]
-	7. 另一个例子：转义序列：✅[[../notes/basic-data-type|basic-data-type]]
+	5. 使用数据类型：✅ [basic-data-type](../notes/basic-data-type.md)
+	6. 参数和易犯的错误：✅ [basic-data-type](../notes/basic-data-type.md)
+	7. 另一个例子：转义序列：✅ [basic-data-type](../notes/basic-data-type.md)
 		1. 过程分析
 		2. 刷新输出
 	8. 关键概念
@@ -88,10 +88,10 @@
 	10. 复习题
 	11. 编程练习
 * [ ] 第四章 字符串和格式化输入/输出
-	1. 前导程序
+	1. 前导程序：❌ 比较基础
 	2. 字符串简介
-		1. char数组类型和空字符
-		2. 使用字符串
+		1. char数组类型和空字符：✅ [string](../notes/string.md)
+		2. 使用字符串：✅ [stdio](../library/stdio.md)，其中的printf和scanf
 		3. strlen()函数
 	3. 常量和C预处理器
 		1. const修饰符

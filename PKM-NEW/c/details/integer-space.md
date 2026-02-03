@@ -1,5 +1,7 @@
 不同的 int 在不同电脑中占用字节数不同，这也就代表了不同电脑的某种 int 可以表示的范围不同。
 
+下面代码可以查看自己电脑不同类型整数所占字节数：
+
 ```c
 #include <stdio.h>
 
@@ -19,7 +21,7 @@ int main(){
   int e;
   unsigned f;
   unsigned int g;
-  
+
   printf("sizeof int = %luB\n", sizeof(e));
   printf("sizeof unsigned = %luB\n", sizeof(f));
   printf("sizeof unsigned int = %luB\n\n", sizeof(g));

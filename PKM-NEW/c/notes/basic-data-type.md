@@ -16,7 +16,7 @@
 	|  有符号   | `short`,<br>`short int` | `int` | `long`,<br>`long int` | `long long`,<br>`long long int`  |
 	|  无符号   | `unsigned short`,<br>`unsigned short int` | `unsigned`,<br>`unsigned int` | `unsigned long`,<br>`unsigned long int` | `unsigned long long`,<br>`unsigned long long int`  |
 
-	[[../details/integer-space|👉 查看自己电脑不同类型整数所占字节数]]
+	👉 [查看自己电脑不同类型整数所占字节数](../details/integer-space)
 
 2. 字面量与前缀：一个具体写在程序中的数字叫做字面量，加前缀用来表示不同的进制
 
@@ -27,7 +27,7 @@
 	|八进制（Octal）|`0101`|`0`,（数字 0️⃣，不是字母 O）|
 	| 十六进制（Hexadecimal）|`0x41`|`0x`，`0X`|
 
-	 [[../details/carry-system|👉 C语言进制案例与细节]]
+	 👉 [C语言进制案例与细节](../details/carry-system)
 
 3. 打印与后缀：为字面量加入后缀，来代表它是不同的整数类型
 	
@@ -41,14 +41,13 @@
 	|`long long`|`%lld`|`0x41LL`|`0101LL`|`65LL`|
 	|`unsigned long long`|`%llu`|`0x41ULL`|`0101ULL`|`65ULL`|
 
-	[[../details/integer-represent-char|👉 使用整数来表示字符]]
+	👉 [使用整数来表示字符](../details/integer-represent-char)
 
 4. 辅助工具
 
-	* 各种整型的声明： [[../library/stdint|👉 stdint]]
-	* 各种整型的 printf：[[../library/inttypes|👉 inttypes]]
-	* 各种整型的最值：[[../library/limit|👉 limit]]
-
+	* 各种整型的声明： 👉 [stdint](../library/stdint.md)
+	* 各种整型的 printf：👉 [inttypes](../library/inttypes.md)
+	* 各种整型的最值：👉 [limit](../library/limit.md)
 
 ### 1.2. char
 
@@ -77,16 +76,13 @@
 	| `\0oo` | 八进制值（oo必须是有效的八进制数，即每个o可表示0\~7中的一个数）   |
 	| `\xhh` | 十六进制值（hh必须是有效的十六进制数，即每个h可表示0\~f中的一个数） |
 
-
 ### 1.3. \_Bool
 
 * C99添加了布尔类型，占用 1bit。 我们可以直接就使用`_Bool`
-* 也可以通过引入`stdbool.h`来使用`bool`
-* [[../library/stdbool|👉 stdbool.h]]
-
+* 也可以通过引入`stdbool.h`来使用`bool`，`true`代表1，`false`代表0
+* 👉 [stdbool](../library/stdbool.md)
 
 ---
-
 ## 2. Decimal
 
 ### 2.1. float, double, long double
@@ -143,33 +139,32 @@
 
 	```c
 	#include <stdio.h>
-
+	
 	int main() {
 	
-	    printf("%f\n",2.0e20); // 200000000000000000000.000000
-	    
-	    float a = 2.0e20;
-	    printf("%f\n",a); // 200000004008175468544.000000
+	  printf("%f\n",2.0e20); // 200000000000000000000.000000
 	
-	    float b = a + 1;
-	    printf("%f\n",b); // 200000004008175468544.000000
-	    
-	    a = b - 2.0e20;
-	    printf("%f\n",a); // 4008175468544.000000
+	  float a = 2.0e20;
+	  printf("%f\n",a); // 200000004008175468544.000000
 	
-	    return 0;
+	  float b = a + 1;
+	  printf("%f\n",b); // 200000004008175468544.000000
+	
+	  a = b - 2.0e20;
+	  printf("%f\n",a); // 4008175468544.000000
+	
+	  return 0;
 	}
 	```
-
 
 ### 2.2. Complex, Imaginary
 
 * C99
-  * 复数：float \_Complex, double \_Complex, long double \_Complex
-  * 虚数：float \_Imaginary, double \_Imaginary, long double \_Imaginary
-* [[../library/complex|complex.h]]
-  * 复数：float complex, double complex, long double complex
-  * 虚数：I, float imaginary, double imaginary, long double imaginary
+  * 复数：`float _Complex`, `double _Complex`, `long double _Complex`
+  * 虚数：`float _Imaginary`, `double _Imaginary`, `long double _Imaginary`
+* [complex.h](../library/complex.md)
+  * 复数：`float complex`, `double complex`, `long double complex`
+  * 虚数：`I`, `float imaginary`, `double imaginary`, `long double imaginary`
 
 ---
 
