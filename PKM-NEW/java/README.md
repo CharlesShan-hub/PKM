@@ -1,7 +1,7 @@
 # Java RoadMap
 ---
 ## Content
-*  [javase](notes/javase/README.md)
+* [javase](notes/javase/README.md)
 * [design pattern](notes/design-pattern/README.md)
 
 ---

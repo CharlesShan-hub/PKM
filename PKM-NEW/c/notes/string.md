@@ -36,8 +36,10 @@
 	        printf("%c", array1[i]); // Hello
 	    for (int i = 0; i < strlen(array2); i++)
 	        printf("%c", array2[i]); // World
+	    // 字符串数组不能递增
 	    // for (int i = 0; i < strlen(array1); i++)
 	    //     printf("%c", *array1++); // Wrong!!
+	    // 指向字符串的指针可以递增
 	    for (int i = 0; i < strlen(array2); i++)
 	        printf("%c", *array2++); // World
 	    return 0;
@@ -79,7 +81,7 @@
 ---
 ## 字符串相关的库
 
-* [[../library/stdio|👉 stdio]]
+* 👉 [stdio](../library/stdio.md)
 	* 输入
 	  * `printf()`
 	  * `gets()`：读取整行（包括空格），不检查字符串长度。不要用
@@ -91,7 +93,7 @@
 	  * `fputs()`：不会自动换行
 	* 格式化
 	  * `sprintf()`
-* [[../library/string|👉 string]]
+* 👉 [string](../library/string.md)
 	* `strlen()`
 	* `strcat()`, `strncat()`
 	* `strcmp()`, `strncmp()`

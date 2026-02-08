@@ -1,4 +1,5 @@
 # Hello World
+
 1. Hello World 程序
 	```c
 	// first.c
@@ -20,7 +21,7 @@
 3. 编译（在类Unix系统中，我们使用 `cc`）
 	* 如果直接执行 `cc first.c` 会生成 `a.out`
 	* 指定输出文件的名字要用 `-o`，比如 `cc -o first first.c`，会得到科执行文件 `first`
-	* [[../details/cc|👉 cc命令简介]]
+	* 👉 [cc命令简介](cc.md)
 4. `int main(void)`是标准形式，如果写`main()`或者`void main()`，也可以成功编译但不推荐。
 5. 关键字（keyword）：C 语言保留的不能做其他用途的词，比如`int`。
 6. 标识符（identifier）：一个变量、函数或其他实体的名称，比如`int num`的`num`。标识符的组成是小写字母、大写字母、数字和下划线，并且第1个字符必须是字符或下划线，不能是数字。

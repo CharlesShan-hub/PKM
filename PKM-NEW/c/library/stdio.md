@@ -115,10 +115,10 @@ int main(void)
     double weight = 242.5;
 
     printf("Enter a field width:\n");
-    scanf("%d", &#x26;width);
+    scanf("%d", &width);
     printf("The number is :%*d:\n", width, number);
     printf("Now enter a width and a precision:\n");
-    scanf("%d %d", &#x26;width, &#x26;precision);
+    scanf("%d %d", &width, &precision);
     printf("Weight = %*.*f\n", width, precision, weight);
     printf("Done!\n");
 
@@ -146,7 +146,7 @@ Demo
 
 ```c
 // input.c -- when to use &#x26;
-#include &#x3C;stdio.h>
+#include <stdio.h>
 int main(void)
 {
     int age;      // variable
@@ -225,7 +225,7 @@ int main(void)
 
 ```c
 /* echo_eof.c -- repeats input to end of file */
-#include &#x3C;stdio.h>
+#include <stdio.h>
 int main(void)
 {
     int ch;

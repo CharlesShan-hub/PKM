@@ -9,7 +9,8 @@
 ---
 ## Hello World
 
-* 👉 [Hello World 代码与编译运行](../details/hello-world|)
+* 👉 [Hello World 代码与编译运行](../details/hello-world)
+* 👉 [cc命令简介](cc.md)
 
 ---
 ## Work Pipeline
