@@ -1,28 +1,27 @@
 # Markdown
 
+---
 ## Overview
 
-John Gruber于2004年创建了一种轻量级标记语言 Markdown，用于使用纯文本编辑器创建格式化文本。主要设计目标是**可读性**，即语言可以按原样阅读，而不会看起来像是用标签或格式化指令标记的，不像用“更重”的标记语言格式化的文本，例如RTF，HTML。Gruber避免在Markdown中使用花括号，以非正式地将它们保留给特定于实现的扩展。\[1]
-
-![[assets/markdown-syntex-drawing|1000]]
+John Gruber于2004年创建了一种轻量级标记语言 Markdown，用于使用纯文本编辑器创建格式化文本。主要设计目标是**可读性**，即语言可以按原样阅读，而不会看起来像是用标签或格式化指令标记的，不像用"更重"的标记语言格式化的文本，例如RTF，HTML。Gruber避免在Markdown中使用花括号，以非正式地将它们保留给特定于实现的扩展。\[1]
+![assets/markdown-syntex-drawing|1000](assets/markdown-syntex-drawing.md)
 
 下面是各种 markdown 语法汇总：
 
 * 原生语法
-	* [[notes/simple|👉 markdown 常用语法总结]]
-	* [[notes/markdown-syntex|👉 markdown 语法详细总结]]
-	* [[notes/formula|👉 markdown 公式细节语法]]
+	* 👉 [markdown 常用语法总结](notes/simple.md)
+	* 👉 [markdown 语法详细总结](notes/markdown-syntex.md)
+	* 👉 [markdown 公式细节语法](notes/formula.md)
 	* [🔗 公式整理](https://1024th.github.io/MathJax_Tutorial_CN/#/)
 	* [🔗 如何用LaTeX打出各种箭头](https://zhuanlan.zhihu.com/p/263896738)
 * 编辑器扩展
-	* [[notes/typora|👉 typora 扩展 markdown 语法（流程图等）]]
+	* 👉 [typora 扩展 markdown 语法（流程图等）](notes/typora.md)
 	* [🔗 Typora官方介绍](https://support.typora.io/Draw-Diagrams-With-Markdown/)
 	* [🔗 mermaid](https://mermaid-js.github.io/mermaid/#/)
 	* [🔗 标签-shields](https://shields.io/)
 
-markdown 语言的目标是使人们能够“使用易于阅读和编写的纯文本格式进行编写，并选择将其转换为结构有效的XHTML（或HTML）。从2012年开始，包括Jeff Atwood和John MacFarlane在内的一群人发起了Atwood所说的标准化工作。下图[2]是markdown渲染过程。
-
-![[assets/render-workflow-drawing|1000]]
+markdown 语言的目标是使人们能够"使用易于阅读和编写的纯文本格式进行编写，并选择将其转换为结构有效的XHTML（或HTML）。从2012年开始，包括Jeff Atwood和John MacFarlane在内的一群人发起了Atwood所说的标准化工作。下图[2]是markdown渲染过程。
+![assets/render-workflow-drawing|1000](assets/render-workflow-drawing.md)
 
 人们总结了 markdown 转其他标记语言的工具列表\[3]。其中 commonmark\[4] 是一个持续更新的很好的转换的实现标准。
 
@@ -50,7 +49,7 @@ markdown 语言的目标是使人们能够“使用易于阅读和编写的纯�
 * [R Markdown](https://rmarkdown.rstudio.com/)
   * 更强调了代码运行能力，有点像 python 的 jupyter notebook
   * 也可以转换成 html 以外的更多的文件格式，《R for data science》就是它生成的。
-
+---
 ## Resources
 
 * awesome-markdown\[5]：markdown的库，服务，编辑器，工具，备忘录等
@@ -67,4 +66,3 @@ markdown 语言的目标是使人们能够“使用易于阅读和编写的纯�
 6. [闯关式教程](https://www.markdowntutorial.com/)
 7. [markdown 中文官网](https://markdown.com.cn/)
 8. [freecodecamp 上的 github markdown 优秀帖子](https://www.freecodecamp.org/news/github-flavored-markdown-syntax-examples/)
-

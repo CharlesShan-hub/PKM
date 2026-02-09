@@ -3,33 +3,34 @@
 ---
 ## Overview
 
-![[PKM-NEW/dip/assets/dip-image-drawing|1000]]
+![PKM-NEW/dip/assets/dip-image-drawing|1000](PKM-NEW/dip/assets/dip-image-drawing.md)
 
 ***
-## Image
+## Basic Concepts
+### Image
 
 * 图像就是数组，每个像素点的颜色是响应值。
-* skimage 库中的data模块有很多预设的图片：[[../../python/library/skimage/data|👉 data]]
+* skimage 库中的data模块有很多预设的图片：👉 [data](../../python/library/skimage/data.md)
 
-## Sampling
+### Sampling
 
 * 采样：从连续信号到离散信号。
-* 通过不同尺寸的灰度图像，展示不同采样对图片的影响：[[PKM-NEW/dip/details/image-sampling|👉 image-sampling]]
-	![[PKM-NEW/dip/assets/sampling.png]]
+* 通过不同尺寸的灰度图像，展示不同采样对图片的影响：👉 [image-sampling](PKM-NEW/dip/details/image-sampling.md)
+	![PKM-NEW/dip/assets/sampling.png](PKM-NEW/dip/assets/sampling.png)
 
-## Quantization
+### Quantization
 
 * 量化：用多少比特代表每个像素的颜色。
-* 不同量化级别对图片颜色的影响：[[PKM-NEW/dip/details/image-quantization|👉 image-quantization]]
-	![[PKM-NEW/dip/assets/quantization.png]]
+* 不同量化级别对图片颜色的影响：👉 [image-quantization](PKM-NEW/dip/details/image-quantization.md)
+	![PKM-NEW/dip/assets/quantization.png](PKM-NEW/dip/assets/quantization.png)
 
-## Neighbor
+### Neighbor
 
 * 4 邻域(上下左右)
 * D 邻域(四个角)
 * 8 邻域(4+D)
 
-## Distance
+### Distance
 
 $(x,y)$与$(s,t)$的距离：
 

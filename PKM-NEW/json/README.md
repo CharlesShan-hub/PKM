@@ -1,6 +1,7 @@
 
 # JSON
 
+---
 ## JSON and variations
 
 * Humanized
@@ -26,6 +27,7 @@
 	* Python：[[../python/library/json|json]]
 	* JS：[[notes/json-js|json-js]]
 
+---
 ## Schema
 
 * [[notes/json-schema|json-schema]]

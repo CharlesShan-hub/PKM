@@ -12,153 +12,31 @@
 
 ### 颜色直方图
 
-1. 一般颜色直方图：某个色彩通道的直方图。
+> 全局累加直方图与主色调直方图在 google 都搜不到！也没有别人的代码实现，这两个特征的真实性有待考察！
 
-![[PKM-NEW/dip/assets/image (32).png]]
-<figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
-
-<details>
-
-<summary>Code</summary>
-
-```python
-from skimage import exposure,data
-from matplotlib import pyplot as plt
-
-image =data.coffee()
-
-hist_r=exposure.histogram(image[:,:,0],nbins=256)
-hist_g=exposure.histogram(image[:,:,1],nbins=256)
-hist_b=exposure.histogram(image[:,:,2],nbins=256)
-
-plt.subplot(1, 4, 1)
-plt.imshow(image, cmap='gray')
-plt.title('Original Image')
-plt.axis('off')
-
-plt.subplot(1, 4, 2)
-plt.plot(hist_r[1], hist_r[0], color='red')
-plt.title('Hist of R')
-
-plt.subplot(1, 4, 3)
-plt.plot(hist_g[1], hist_g[0], color='green')
-plt.title('Hist of G')
-
-plt.subplot(1, 4, 4)
-plt.plot(hist_b[1], hist_b[0], color='blue')
-plt.title('Hist of B')
-
-plt.tight_layout()
-plt.show()
-```
-
-</details>
-
-2. 全局累加直方图：当图像中的特征并不能取遍所有可取值时，**统计直方图中会出现一些零值**。这些零值的出现会对相似性度量的计算带来影响，从而使得相似性度量并不能正确反映图像之间的颜色差别。
-
-![[PKM-NEW/dip/assets/image (34).png]]
-<figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
-
-```python
-from skimage import data, exposure
-from matplotlib import pyplot as plt
-import numpy as np
-
-# image = exposure.equalize_hist(data.chelsea())
-image = data.cat()
-
-bins = np.arange(256)
-hist_r,bins=np.histogram(image[:,:,0], bins=bins, density=False)
-hist_g,_=np.histogram(image[:,:,1], bins=bins, density=False)
-hist_b,_=np.histogram(image[:,:,2], bins=bins, density=False)
-hist_add=(hist_r+hist_g+hist_b)
-
-plt.subplot(2, 5, 1)
-plt.imshow(image, cmap='gray')
-plt.title('Original Image')
-plt.axis('off')
-
-plt.subplot(2, 5, 2)
-plt.plot(bins[:-1], hist_r, color='red')
-plt.title('Hist of R')
-
-plt.subplot(2, 5, 3)
-plt.plot(bins[:-1], hist_g, color='green')
-plt.title('Hist of G')
-
-plt.subplot(2, 5, 4)
-plt.plot(bins[:-1], hist_b, color='blue')
-plt.title('Hist of B')
-
-plt.subplot(2, 5, 5)
-plt.plot(bins[:-1], hist_add, color='gray')
-plt.title('Hist of Added')
-
-image = exposure.equalize_hist(image)
-image = (255.0*np.array(image)).astype(np.uint8)
-
-bins = np.arange(256)
-hist_r,bins=np.histogram(image[:,:,0], bins=bins, density=False)
-hist_g,_=np.histogram(image[:,:,1], bins=bins, density=False)
-hist_b,_=np.histogram(image[:,:,2], bins=bins, density=False)
-hist_add=(hist_r+hist_g+hist_b)
-
-plt.subplot(2, 5, 6)
-plt.imshow(image, cmap='gray')
-plt.title('Histed Image')
-plt.axis('off')
-
-plt.subplot(2, 5, 7)
-plt.bar(bins[:-1], hist_r, color='red')
-plt.title('Hist of R')
-
-plt.subplot(2, 5, 8)
-plt.bar(bins[:-1], hist_g, color='green')
-plt.title('Hist of G')
-
-plt.subplot(2, 5, 9)
-plt.bar(bins[:-1], hist_b, color='blue')
-plt.title('Hist of B')
-
-plt.subplot(2, 5, 10)
-plt.bar(bins[:-1], hist_add, color='gray')
-plt.title('Hist of Added')
-
-plt.tight_layout()
-plt.show()
-```
-
-3. 主色调直方图
-
-在一幅图像中，不同颜色值出现的概率不尽相同，且通常情况下少数几种颜色就能涵盖整幅图像的主色调。基于该思想，主色调直方图法会计算出图像中每种颜色出现的频率，选择出现频率最高的几种颜色并将其作为主色调。使用主色调直方图并不会降低颜色直方图匹配的效果，反而会抑制图像非主要成分的噪声，降低噪声对图像匹配的影响。
-
-{% hint style="warning" %}
-全局累加直方图与主色调直方图在 google 都搜不到！也没有别人的代码实现，这两个特征的真实性有待考察！
-{% endhint %}
+1. 一般颜色直方图：某个色彩通道的直方图。👉 [代码](../details/hist1.md)
+	![hist1](../assets/hist1.png)
+2. 全局累加直方图：当图像中的特征并不能取遍所有可取值时，**统计直方图中会出现一些零值**。这些零值的出现会对相似性度量的计算带来影响，从而使得相似性度量并不能正确反映图像之间的颜色差别。👉 [代码](../details/hist2.md)
+	![hist2](../assets/hist2.png)
+3. 主色调直方图：在一幅图像中，不同颜色值出现的概率不尽相同，且通常情况下少数几种颜色就能涵盖整幅图像的主色调。基于该思想，主色调直方图法会计算出图像中每种颜色出现的频率，选择出现频率最高的几种颜色并将其作为主色调。使用主色调直方图并不会降低颜色直方图匹配的效果，反而会抑制图像非主要成分的噪声，降低噪声对图像匹配的影响。
 
 ### 颜色矩
 
-一阶矩可以表征该颜色通道的平均响应强度
+> $p_{ij}$表示数字图像$P$的第$i$个图像通道的第$j$个像素的像素值，$N$表示图像中像素的个数。
 
+一阶矩可以表征该颜色通道的平均响应强度
 $$
 \mu_i = \frac{1}{N}\sum_{j=1}^NP_{ij}
 $$
-
 二阶矩可以表示该颜色通道的响应方差
-
 $$
 \sigma_i = [\frac{1}{N}\sum_{j=1}^N(P_{ij}-\mu_i)^2]^\frac{1}{2}
 $$
-
 三阶矩可以表征该颜色通道数据分布的偏移度
-
 $$
 s_i = [\frac{1}{N}\sum_{j=1}^N(P_{ij}-\mu_i)^3]^\frac{1}{3}
 $$
 
-{% hint style="info" %}
-$$p_{ij}$$表示数字图像P的第i个图像通道的第j个像素的像素值，N表示图像中像素的个数
-{% endhint %}
 
 <details>
 
@@ -266,10 +144,6 @@ $$
 ![[PKM-NEW/dip/assets/image (36).png]]
 <figure><img src="../../.gitbook/assets/image (36).png" alt="" width="563"><figcaption></figcaption></figure>
 
-<details>
-
-<summary>Code</summary>
-
 ```python
 import numpy as np
 from skimage.data import coffee
@@ -325,8 +199,6 @@ plt.subplot(1,2,2)
 plt.imshow(np.log(cgram+1))# 看不清，所以用 log 减少一下像素亮度差异
 plt.show()
 ```
-
-</details>
 
 ***
 
