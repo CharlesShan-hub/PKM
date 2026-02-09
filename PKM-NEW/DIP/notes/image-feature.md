@@ -7,40 +7,36 @@
 ![[PKM-NEW/dip/assets/image-feature-drawing|1000]]
 
 ***
-
 ## Color
 
 ### 颜色直方图
 
 > 全局累加直方图与主色调直方图在 google 都搜不到！也没有别人的代码实现，这两个特征的真实性有待考察！
 
-1. 一般颜色直方图：某个色彩通道的直方图。👉 [代码](../details/hist1.md)
+1. **一般颜色直方图**：<u>某个色彩通道的直方图</u>。👉 [代码](../details/hist1.md)
 	![hist1](../assets/hist1.png)
-2. 全局累加直方图：当图像中的特征并不能取遍所有可取值时，**统计直方图中会出现一些零值**。这些零值的出现会对相似性度量的计算带来影响，从而使得相似性度量并不能正确反映图像之间的颜色差别。👉 [代码](../details/hist2.md)
+2. **全局累加直方图**：<u>对普通颜色直方图的多个色彩通道求和</u>。当图像中的特征并不能取遍所有可取值时，**统计直方图中会出现一些零值**。这些零值的出现会对相似性度量的计算带来影响，从而使得相似性度量并不能正确反映图像之间的颜色差别。👉 [代码](../details/hist2.md)
 	![hist2](../assets/hist2.png)
-3. 主色调直方图：在一幅图像中，不同颜色值出现的概率不尽相同，且通常情况下少数几种颜色就能涵盖整幅图像的主色调。基于该思想，主色调直方图法会计算出图像中每种颜色出现的频率，选择出现频率最高的几种颜色并将其作为主色调。使用主色调直方图并不会降低颜色直方图匹配的效果，反而会抑制图像非主要成分的噪声，降低噪声对图像匹配的影响。
+3. **主色调直方图**：在一幅图像中，不同颜色值出现的概率不尽相同，且通常情况下少数几种颜色就能涵盖整幅图像的主色调。基于该思想，主色调直方图法会<u>计算出图像中每种颜色出现的频率，选择出现频率最高的几种颜色并将其作为主色调</u>。使用主色调直方图并不会降低颜色直方图匹配的效果，反而会抑制图像非主要成分的噪声，降低噪声对图像匹配的影响。👉 [代码](../details/hist3.md)
+	![hist3](../assets/hist3.png)
+	![hist3_2](../assets/hist3_2.png)
 
 ### 颜色矩
 
 > $p_{ij}$表示数字图像$P$的第$i$个图像通道的第$j$个像素的像素值，$N$表示图像中像素的个数。
 
-一阶矩可以表征该颜色通道的平均响应强度
-$$
-\mu_i = \frac{1}{N}\sum_{j=1}^NP_{ij}
-$$
-二阶矩可以表示该颜色通道的响应方差
-$$
-\sigma_i = [\frac{1}{N}\sum_{j=1}^N(P_{ij}-\mu_i)^2]^\frac{1}{2}
-$$
-三阶矩可以表征该颜色通道数据分布的偏移度
-$$
-s_i = [\frac{1}{N}\sum_{j=1}^N(P_{ij}-\mu_i)^3]^\frac{1}{3}
-$$
+1. **一阶矩**：表征该颜色通道的平均响应强度$$
+\mu_i = \frac{1}{N}\sum_{j=1}^NP_{ij}$$
+2. **二阶矩**：表示该颜色通道的响应方差$$
+\sigma_i = [\frac{1}{N}\sum_{j=1}^N(P_{ij}-\mu_i)^2]^\frac{1}{2}$$
+3. **三阶矩**：表征该颜色通道数据分布的偏移度$$
+s_i = [\frac{1}{N}\sum_{j=1}^N(P_{ij}-\mu_i)^3]^\frac{1}{3}$$
 👉 [简介与python代码实现](../details/color-moments.md)
 
 ### 颜色集
 
-颜色集又可以称为颜色索引集，其是对图像颜色直方图的一种近似。（其实我看就是对颜色直方图进行一遍筛选。）
+> 颜色集又可以称为颜色索引集，其是对<u>图像颜色直方图的一种近似</u>。
+> （其实我看就是对颜色直方图进行一遍筛选。）
 
 方案一：通过颜色直方图
 
@@ -89,7 +85,6 @@ $$
 ![color-correlogram](../assets/color-correlogram.png)
 
 ***
-
 ## Texture
 
 ![[PKM-NEW/dip/assets/image (37).png]]
@@ -107,75 +102,10 @@ $$
 
 要理解 2D 的自相关函数还是先看看一维的自相关函数。自相关函数代表了一个信号移动一些距离，和自己是相像的程度！
 
-![[PKM-NEW/dip/assets/image (96).png]]
-<figure><img src="../../.gitbook/assets/image (96).png" alt=""><figcaption><p>参考了[5]，但不一样</p></figcaption></figure>
+下图参考了[5]，但不一样。👉 [代码](../details/autocorrelation-function.md)
+![image](../assets/autocorrelation-function.png)
 
-<details>
-
-<summary>Code</summary>
-
-```python
-import statsmodels.api as sm
-import matplotlib.pyplot as plt
-import numpy as np
-
-# 定义正弦波函数
-def sin_wave(t):
-    return np.sin(2*np.pi*t)
-
-# 生成时间序列
-t = np.arange(0, np.pi, 0.005)
-
-# 添加噪声
-noise = np.random.normal(0, 0.2, len(t))
-
-# 合并信号和噪声
-signal = sin_wave(t)
-signal_with_noise = signal + noise
-
-# Calculate autocorrelations
-acf_res1 = sm.tsa.acf(signal,nlags=len(signal))
-acf_res2 = sm.tsa.acf(signal_with_noise,nlags=len(signal))
-
-# 绘制带有噪声的正弦波
-plt.figure(figsize=(15, 4))
-plt.subplot(1,4,1)
-plt.plot(t, signal, label='Signal')
-plt.title('Sinusoidal Signal sin(2πt)')
-plt.xlabel('Time')
-plt.ylabel('Amplitude')
-plt.grid(True)
-
-plt.subplot(1,4,2)
-plt.plot(t, acf_res1)
-plt.title('Autocorrelation Plot')
-plt.xlabel('Time')
-plt.ylabel('Autocorrelation')
-plt.grid(True)
-
-plt.subplot(1,4,3)
-plt.plot(t, signal_with_noise, label='Signal with Noise')
-plt.title('Sinusoidal Signal with Noise')
-plt.xlabel('Time')
-plt.ylabel('Amplitude')
-plt.grid(True)
-
-plt.subplot(1,4,4)
-plt.plot(t, acf_res2)
-plt.title('Autocorrelation Plot')
-plt.xlabel('Time')
-plt.ylabel('Autocorrelation')
-plt.grid(True)
-plt.show()
-```
-
-</details>
-
-接下来就是图像的自相关函数：
-
-{% hint style="info" %}
-注意下面的公式 range 是matlab 对图像的索引，所以从 1 开始，如果用 Python就要再减一
-{% endhint %}
+接下来就是图像的自相关函数（注意下面的公式 range 是matlab 对图像的索引，所以从 1 开始，如果用 Python就要再减一）：
 
 $$
 ho(x,y)=\frac{\frac{1}{(N_i-\left|x\right|)(N_j-\left|y\right|)}\sum_{i}\sum_{j}I(i,j)I(i+x,j+y)}{\frac{1}{N_i N_j}\sum_{i=1}^{N_i}\sum_{j=1}^{N_j}I(i,j)^2}
