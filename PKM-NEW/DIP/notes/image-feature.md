@@ -36,64 +36,13 @@ $$
 $$
 s_i = [\frac{1}{N}\sum_{j=1}^N(P_{ij}-\mu_i)^3]^\frac{1}{3}
 $$
-
-
-<details>
-
-<summary>Code</summary>
-
-```python
-from skimage import data
-import numpy as np
-from scipy import stats
-image=data.coffee()
-#求 RGB图像的颜色矩特征，共9 维特征
-#定义3×3 数组，分别对RGB图像的3个通道求均值、方差、偏移量
-features=np.zeros(shape=(3,3))
-#遍历图像的3个通道
-for k in range(image.shape[2]):
-    #求均值
-    mu=np.mean(image[:,:,k])
-    #求方差
-    delta=np.std(image[:,:,k])
-    #求偏移量
-    skew=np.mean(stats.skew(image[:,:,k]))
-    features[0,k]=mu
-    features[1,k]=delta
-    features[2,k]=skew
-print(features) 
-# [[158.5690875   85.794025    51.48475   ]
-#  [ 62.97286712  60.95810371  52.93569362]
-#  [ -0.71812328   0.53207991   1.36080834]]
-```
-
-</details>
-
-<details>
-
-<summary>颜色矩有什么用（GPT）</summary>
-
-颜色矩在图像处理领域中扮演着重要的角色，它们被用来描述和量化图像的颜色分布。以下是颜色矩的一些主要用途：
-
-1. **颜色特征提取**：颜色矩可以作为图像的特征提取方法，用于描述图像颜色的空间分布和强度变化。通过计算图像中不同颜色通道（如红色、绿色、蓝色等）的均值、方差、熵等统计量，可以得到一组具有代表性的颜色特征向量。这些特征向量可以用来表示图像的颜色模式，从而进行图像分类、检索和分析。
-2. **图像去噪**：在图像去噪过程中，颜色矩可以帮助区分噪声和有用信号。例如，高斯噪声通常会在整个图像上均匀分布，而真实图像中的颜色模式则往往呈现出特定的结构。因此，可以使用颜色矩来检测这种结构，并通过去除与结构无关的噪声成分来提高图像的质量。
-3. **图像增强**：颜色矩也可以用于图像增强。通过调整图像中各颜色通道的亮度、对比度和饱和度，可以改善图像的可视性和可读性。例如，可以通过增加图像中某些颜色通道的权重来强调其重要性，从而使图像中的特定区域或特征更加突出。
-4. **图像压缩**：在图像压缩过程中，颜色矩可以帮助减少数据的冗余度。通过编码图像中常见的颜色模式，可以将图像转换为一种更紧凑的形式。这样，即使在压缩后，仍然能够恢复出高质量的图像。
-5. **图像风格迁移**：在图像风格迁移任务中，颜色矩可以作为目标风格的描述符。通过比较源图像和目标图像的颜色矩，可以指导风格转换过程，使得生成的图像更接近目标风格。
-6. **图像识别与理解**：在图像识别和理解任务中，颜色矩可以作为机器学习模型的输入特征。例如，在物体识别任务中，颜色矩可以用来描述物体的颜色特征，从而帮助模型更好地识别和分类物体。
-7. **艺术创作**：艺术家和设计师也可以利用颜色矩来进行艺术创作。通过分析和理解图像中的颜色模式，可以创造出更具视觉吸引力和情感表达力的作品。 总之，颜色矩是一种强大的图像处理工具，它可以在多种不同的应用场景中发挥作用，从图像去噪、增强到风格迁移和艺术创作，展示了其在图像处理领域的广泛适用性。
-
-</details>
+👉 [简介与python代码实现](../details/color-moments.md)
 
 ### 颜色集
 
-颜色集又可以称为颜色索引集，其是对图像颜色直方图的一种近似。
+颜色集又可以称为颜色索引集，其是对图像颜色直方图的一种近似。（其实我看就是对颜色直方图进行一遍筛选。）
 
 方案一：通过颜色直方图
-
-{% hint style="info" %}
-其实我看就是对颜色直方图进行一遍筛选。
-{% endhint %}
 
 1. 将图像从RGB颜色空间转换到HSV颜色空间等视觉均衡的颜色空间，并将颜色空间量化为若干个边长均等的小立方体；
 2. 使用基于色彩的自动分割技术将图像划分为若干个子区域；
@@ -114,99 +63,34 @@ $$
 
 ### 颜色聚合向量
 
-{% hint style="info" %}
-颜色集，是对颜色直方图的筛选。颜色聚合向量，是表示颜色间的关系，代表颜色的变化。
-{% endhint %}
+> 颜色集，是对颜色直方图的筛选。颜色聚合向量，是表示颜色间的关系，代表颜色的变化。
 
 颜色聚合向量是在颜色直方图的基础之上做的进一步运算。**其核心思想是将属于颜色直方图的每个颜色量化区间的像素分为两部分，如果该颜色量化区间中的某些像素占据的连续区域的面积大于指定阈值，则将该区域内的像素作为聚合像素，否则作为非聚合像素**。
 
-颜色聚合向量可表示为<(α1,β1),,(αn,βn)>，其中αi与βi分别代表颜色直方图的第i个颜色量化区间中的聚合像素和非聚合像素的数量。颜色聚合向量除了包含颜色频率信息外，也包含颜色的部分空间分布信息，因此其可以获得比颜色直方图更好的表示效果。颜色聚合向量算法的步骤如下。
+颜色聚合向量可表示为$<(α1,β1),,(αn,βn)>$，其中$αi$与$βi$分别代表颜色直方图的第i个颜色量化区间中的聚合像素和非聚合像素的数量。颜色聚合向量除了包含颜色频率信息外，也包含颜色的部分空间分布信息，因此其可以获得比颜色直方图更好的表示效果。颜色聚合向量算法的步骤如下。
 
 1\. 量化：颜色聚合向量算法的第一步与求普通的颜色直方图类似，即对图像进行量化处理。一般采用均匀量化处理方法，量化的目标是使图像中只保留有限个颜色区间。
 
 2\. 连通区域划分针对重新量化后的像素值矩阵，根据像素间的连通性把图像划分成若干个连通区域。
 
-3\. 判断聚合性统计每个连通区域中的像素数目，根据设定的阈值判断该区域中的像素是聚合的，还是非聚合，得出每个颜色区间中聚合像素和非聚合像素的数量αi和βi。
+3\. 判断聚合性统计每个连通区域中的像素数目，根据设定的阈值判断该区域中的像素是聚合的，还是非聚合，得出每个颜色区间中聚合像素和非聚合像素的数量$αi$和$βi$。
 
-4\. 聚合向量形成图像的聚合向量可以表示为〈(α1,β1),,(αn,βn)〉。
+4\. 聚合向量形成图像的聚合向量可以表示为$〈(α1,β1),,(αn,βn)〉$。
 
 ### 颜色相关图
 
-{% hint style="info" %}
-颜色相关图 = 颜色聚合向量 + 位置信息
-{% endhint %}
+> 颜色相关图 = 颜色聚合向量 + 位置信息
 
-颜色相关图是图像颜色分布的另外一种表达方式。颜色相关图不仅可以显示像素在图像中的占比，也可以反映不同颜色对间的空间位置的相关性。颜色相关图利用颜色对间的相对距离分布来描述空间位置信息。
+颜色相关图是图像颜色分布的另外一种表达方式。颜色相关图不仅可以显示像素在图像中的占比，也可以反映不同颜色对间的空间位置的相关性。颜色相关图利用颜色对间的相对距离分布来描述空间位置信息。👉 [代码](../details/color-correlogram.md)
 
 $$
 \gamma_{i,j}^{(k)}=\underset{p_1\in I_{(i)}, p_2\in I}{\operatorname{P}}[p_2\in I_{(j)}\mid |p_1-p_2|=k]
 $$
-![[PKM-NEW/dip/assets/image (36).png]]
-<figure><img src="../../.gitbook/assets/image (36).png" alt="" width="563"><figcaption></figcaption></figure>
-
-```python
-import numpy as np
-from skimage.data import coffee
-from matplotlib import pyplot as plt
-def isValid(X, Y, point):
-    """
-    判断某个像素是否超出图像空间范围
-    """
-    if point[0] < 0 or point[0] >= X:
-        return False
-    if point[1] < 0 or point[1] >= Y:
-        return False
-    return True
-def getNeighbors(X, Y, x, y, dist):
-    """
-    Find pixel neighbors according to various distances
-    """
-    cn1 = (x + dist, y + dist)
-    cn2 = (x + dist, y)
-    cn3 = (x + dist, y - dist)
-    cn4 = (x, y - dist)
-    cn5 = (x - dist, y - dist)
-    cn6 = (x - dist, y)
-    cn7 = (x - dist, y + dist)
-    cn8 = (x, y + dist)
-    points = (cn1, cn2, cn3, cn4, cn5, cn6, cn7, cn8)
-    Cn = []
-    for i in points:
-        if isValid(X, Y, i):
-            Cn.append(i)
-    return Cn
-def corrlogram(image,dist):
-    XX,YY,tt=image.shape
-    cgram=np.zeros((256,256),dtype=np.uint32)
-    for x in range(XX):
-        for y in range(YY):
-            for t in range(tt):
-                color_i=image[x,y,t]
-                neighbors_i=getNeighbors(XX,YY,x,y,dist)
-                for j in neighbors_i:
-                    j0=j[0]
-                    j1=j[1]
-                    color_j=image[j0,j1,t]
-                    cgram[color_i,color_j]=cgram[color_i,color_j]+1
-    return cgram
-
-image=coffee()
-dist=4
-cgram=corrlogram(image,dist)
-plt.subplot(1,2,1)
-plt.imshow(cgram)
-plt.subplot(1,2,2)
-plt.imshow(np.log(cgram+1))# 看不清，所以用 log 减少一下像素亮度差异
-plt.show()
-```
+![color-correlogram](../assets/color-correlogram.png)
 
 ***
 
 ## Texture
-
-<details>
-
-<summary>Overview</summary>
 
 ![[PKM-NEW/dip/assets/image (37).png]]
 <img src="../../.gitbook/assets/image (37).png" alt="数字图像处理—图像纹理特征[1]" data-size="original">播客中的图片\[1]
@@ -216,7 +100,6 @@ plt.show()
 
 [https://github.com/cgreen259/Texture-Toolbox](https://github.com/cgreen259/Texture-Toolbox)
 
-</details>
 
 ### 统计纹理分析方法
 
