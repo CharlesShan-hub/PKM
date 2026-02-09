@@ -1,9 +1,9 @@
-
 # Preprocessor Directives
 
+---
 ## 预处理器指令
 
-所有的预处理器指令（GPT）
+> 所有的预处理器指令（GPT）
 
 C语言的预处理器（Preprocessor）是一段特殊的代码处理程序，它负责在编译器实际编译源代码之前对源代码进行处理。预处理器指令以井号 `#` 开头，并且它们不是C语言语句的一部分，而是被编译器识别并执行的指令。以下是一些常用的C语言预处理器指令：
 
@@ -11,7 +11,7 @@ C语言的预处理器（Preprocessor）是一段特殊的代码处理程序，�
 2. `#include_next`：与 `#include` 类似，但优先级较低，只在没有 `#include` 指令时才会被处理。
 3. `#include_alias`：为 `#include` 指令提供一个别名。
 4. `#include_guard`：使用 `#ifndef` 和 `#define` 宏来保护头文件，防止重复包含。
-5. **`#define`**：宏定义指令，用于定义一个宏，它会在编译时被替换。
+5. **`#define`**：宏定义指令，用于定义一个宏，它会在**编译时被替换**。
 6. **`#undef`**：取消宏定义，用于删除之前用 `#define` 定义的宏。
 7. **`#if`**：条件编译指令，如果指定的条件为真，则编译随后的代码。
 8. **`#elif`**：条件编译指令，如果之前的 `#if` 条件为假，且该 `#elif` 条件为真，则编译随后的代码。
@@ -33,7 +33,7 @@ C语言的预处理器（Preprocessor）是一段特殊的代码处理程序，�
 22. `#message`：指令，用于在编译时生成一个消息，通常用于调试。
 23. `#assert`：指令，用于在编译时检查一个表达式是否为真，如果为假，则生成一个错误信息。
 
-
+---
 ## `#define`
 
 `#define`
@@ -68,9 +68,6 @@ int main(void)
 // TWO: OW
 ```
 
-
-
-
 `#define`(注意)
 
 注意长段的空格或者注释会编译成一个空格
@@ -79,7 +76,6 @@ int main(void)
 #define SIX 2*3
 #define SIX 2 * 3 // 这两样是不一样的！
 ```
-
 
 `#define`(函数)
 
@@ -122,8 +118,6 @@ int main(void)
 // After incrementing, x is 7.
 ```
 
-
-
 `#define`(井号)
 
 ```c
@@ -147,7 +141,7 @@ int main(void)
 ```
 
 
-`#dehine`(x2, x3, x4, ....)
+`#define`(x2, x3, x4, ....)
 
 ```c
 // glue.c -- use the ## operator
@@ -167,7 +161,6 @@ int main(void)
 }
 
 ```
-
 
 变参宏
 
@@ -193,9 +186,7 @@ int main(void)
 // Message 2: x = 48.00, y = 6.9282
 ```
 
-
-
-
+---
 ## `#include`
 
 Demo
@@ -206,6 +197,7 @@ Demo
 #include "/usr/biff/p.h" // 绝对路径
 ```
 
+---
 ## `#undef`、`#ifdef`、`#ifndef`、`#else`、`#endif`
 
  取消定义
@@ -278,6 +270,7 @@ char * s_gets(char * st, int n);
 
 ```
 
+---
 ## `#if`, `#elif`, `#else`
 
 demo
@@ -305,8 +298,7 @@ demo
     #include "general.h"
 ```
 
-</details>
-
+---
 ## 预定宏
 
 <table><thead><tr><th width="179">宏</th><th>含义</th></tr></thead><tbody><tr><td><strong>DATE</strong></td><td>预处理的日期（"Mmm dd yyyy"形式的字符串常量，如Nov 23 2013）</td></tr><tr><td><strong>FILE</strong></td><td>表示当前源代码文件名的字符串字面量</td></tr><tr><td><strong>LINE</strong></td><td>表示当前源代码文件中行号的整型常量</td></tr><tr><td><strong>STDC</strong></td><td>设置为1时，表明实现遵循C标准</td></tr><tr><td><strong>STDC_HOSTED</strong></td><td>本机环境设置为1；否则设置为0</td></tr><tr><td><strong>STDC_VERSION</strong></td><td>支持C99标准，设置为199901L；支持C11标准，设置为201112L</td></tr><tr><td><strong>TIME</strong></td><td>翻译代码的时间，格式为“hh:mm:ss”</td></tr></tbody></table>
@@ -349,13 +341,14 @@ void why_me()
 // (base) kimshan@Mac
 ```
 
-
+---
 ## `#line`、`#error`
 
 `#line`可以重置行号和文件名
 
 `#error`，这个需要 C11
 
+---
 ## `#pragma`
 
 `#pragma` 有什么用(GPT)
@@ -368,7 +361,7 @@ void why_me()
 4. **指定段或函数属性**：在Windows平台上，可以使用#pragma来指定DLL导出的函数和数据。
 5. **消息输出**：`#pragma message("`string`")` 可以让编译器输出自定义的消息到屏幕上。 不同的编译器可能支持不同的#pragma指令，因此在使用时需要参考具体的编译器文档。
 
-
+---
 ## 泛型（C11）
 
 Demo
@@ -403,7 +396,7 @@ int main(void)
 // other
 ```
 
-
+---
 ## 内联函数（C99）
 
 普通函数通过堆栈调用。内联函数会把调用的地方替换成函数内容
@@ -427,6 +420,7 @@ int main() {
 
 在这个例子中，`add` 函数被声明为 `inline`，这意味着编译器会在每次调用 `add` 函数时，直接将 `add` 函数的代码插入到调用点，而不是生成一个函数调用。这通常会提高程序的运行效率，特别是当函数体较小时。
 
+---
 ## 问题集锦
 
 1. define 和 const 的区别：`#define`会在编译的时候替换，`const`不会。
