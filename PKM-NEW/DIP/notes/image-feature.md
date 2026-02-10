@@ -38,24 +38,20 @@ s_i = [\frac{1}{N}\sum_{j=1}^N(P_{ij}-\mu_i)^3]^\frac{1}{3}$$
 > 颜色集又可以称为颜色索引集，其是对<u>图像颜色直方图的一种近似</u>。
 > （其实我看就是对颜色直方图进行一遍筛选。）
 
-方案一：通过颜色直方图
-
-1. 将图像从RGB颜色空间转换到HSV颜色空间等视觉均衡的颜色空间，并将颜色空间量化为若干个边长均等的小立方体；
-2. 使用基于色彩的自动分割技术将图像划分为若干个子区域；
-3. 使用颜色量化空间中的某个颜色分类索引每个子区域，以将图像表示为一个二进制的颜色索引集。
-
-最简单的颜色集可以通过在颜色直方图的基础上设置阈值形成。如给定某一颜色值m，给定其阈值τm，由颜色直方图生成颜色集c可表示为：
-
-$$
+1. 方案一：通过颜色直方图
+	1. 步骤
+		1. 将图像从RGB颜色空间转换到HSV颜色空间等视觉均衡的颜色空间，并将颜色空间量化为若干个边长均等的小立方体；
+		2. 使用基于色彩的自动分割技术将图像划分为若干个子区域；
+		3. 使用颜色量化空间中的某个颜色分类索引每个子区域，以将图像表示为一个二进制的颜色索引集。
+	2. 最简单的颜色集可以通过在颜色直方图的基础上设置阈值形成。如给定某一颜色值m，给定其阈值τm，由颜色直方图生成颜色集c可表示为：$$
 c[m]=\begin{cases}1&h[m]≥\tau_m\\0&others\end{cases}
 $$
-
-方案二：通过色彩空间变换再量化来减少颜色
-
-1. 像素矢量表示对于RGB空间中的任意图像，它的每个像素均可表示为一个矢量\[插图]=(r,g,b)，其中r、g、b分别代表红、绿、蓝颜色分量。
-2. 颜色空间转换通过变换运算T将图像变换到一个与人视觉一致的颜色空间\[插图]，即\[插图]。
-3. 颜色集索引采用量化器（QM）对\[插图]重新量化，使得视觉上明显不同的颜色对应不同的颜色集，并将颜色集映射成索引m。
-4. 颜色集表示设BM是M维的二值空间，在该空间中每个轴对应唯一的索引m。一个颜色集就是BM二值空间中的一个二维矢量，它表示对颜色{m}的选择，即颜色m出现时，c\[m]=1，否则c\[m]=0。
+	![color-set](../assets/color-set.png) 👉 [代码](../details/color-set.md)
+2. 方案二：通过色彩空间变换再量化来减少颜色
+	1. 像素矢量表示对于RGB空间中的任意图像，它的每个像素均可表示为一个矢量\[插图]=(r,g,b)，其中r、g、b分别代表红、绿、蓝颜色分量。
+	2. 颜色空间转换通过变换运算T将图像变换到一个与人视觉一致的颜色空间\[插图]，即\[插图]。
+	3. 颜色集索引采用量化器（QM）对\[插图]重新量化，使得视觉上明显不同的颜色对应不同的颜色集，并将颜色集映射成索引m。
+	4. 颜色集表示设BM是M维的二值空间，在该空间中每个轴对应唯一的索引m。一个颜色集就是BM二值空间中的一个二维矢量，它表示对颜色{m}的选择，即颜色m出现时，c\[m]=1，否则c\[m]=0。
 
 ### 颜色聚合向量
 
@@ -118,67 +114,8 @@ $$
 | x<0, y≥0  | \[1-x, Ni] | \[1, Nj-y] |
 | x<0, y<0  | \[1-x, Ni] | \[1-y, Nj] |
 
-![[PKM-NEW/dip/assets/image (40).png]]
-<figure><img src="../../.gitbook/assets/image (40).png" alt=""><figcaption><p>为了增强可视化效果，图2 中间我扣下了一部分</p></figcaption></figure>
 
-<details>
-
-<summary>Code</summary>
-
-```python
-from skimage import data
-import matplotlib.pyplot as plt
-import numpy as np
-
-def calculate(image):
-    # 创建一个与图像大小相同的零矩阵
-    (Ni, Nj) = image.shape
-    corr_mat = np.zeros(image.shape)
-    
-    # 遍历图像中的每个像素点
-    assert(image.shape[0]%2 == 1)
-    assert(image.shape[1]%2 == 1)
-    half = int(image.shape[1]/2)
-    for _x in range(image.shape[0]):
-        for _y in range(image.shape[1]):
-            # 计算公式中的参数
-            x = _x - half # 因为公式里边的 x 和 y 是 matlab 的
-            y = _y - half # 所以要从 1 开始
-            si = 1 if x>= 0 else 1-x
-            ei = Ni-x if x>=0 else Ni
-            sj = 1 if y>=0 else 1-y
-            ej = Nj-y if y>=0 else Nj
-
-            # 计算 rho
-            a = (Ni-np.abs(x))*(Nj-np.abs(y))
-            b = Ni*Nj
-            c = np.sum(image[si-1:ei,sj-1:ej] * image[si-1+x:ei+x,sj-1+y:ej+y])
-            d = np.sum(image[:Ni,:Nj]**2)
-            corr_mat[_x, _y] = (c*b)/(d*a)
-    
-    # 返回自相关函数
-    return corr_mat
-
-# image = data.brick()[:400:2,:400:2][:-1,:-1] # Quicker
-image = data.brick()[:-1,:-1]
-plt.subplot(1,4,1)
-plt.imshow(image,cmap='gray')
-plt.subplot(1,4,2)
-corr_mat = calculate(image)
-# corr_mat[99,99] = 1.17  # Quicker
-corr_mat[255,255] = 1.17 # Just For Vis
-plt.imshow(corr_mat,cmap='gray')
-
-image = data.checkerboard()[:-1,:-1]
-plt.subplot(1,4,3)
-plt.imshow(image,cmap='gray')
-plt.subplot(1,4,4)
-corr_mat = calculate(image)
-plt.imshow(corr_mat,cmap='gray')
-plt.show()
-```
-
-</details>
+![autocorrelation-function2](../assets/autocorrelation-function2.png) 👉 [代码](../details/autocorrelation-function2.md)
 
 <details>
 
@@ -404,110 +341,13 @@ $$
 \begin{aligned} &x'=x\cos(\theta)+y\sin(\theta),\ &y'=-x\sin(\theta)+y\cos(\theta). \end{aligned}
 $$
 
-![[PKM-NEW/dip/assets/image (100).png]]
-<figure><img src="../../.gitbook/assets/image (100).png" alt="" width="375"><figcaption></figcaption></figure>
-
-<details>
-
-<summary>Code</summary>
-
-```python
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy import ndimage as ndi
-from skimage import data
-from skimage.filters import gabor_kernel
-
-def compute_feats(image, kernels):
-    feats = np.zeros((len(kernels), 2), dtype=np.double)
-    for k, kernel in enumerate(kernels):
-        filtered = ndi.convolve(image, kernel, mode='wrap')
-        feats[k, 0] = filtered.mean()
-        feats[k, 1] = filtered.var()
-    return feats
-def match(feats, ref_feats):
-    min_error = np.inf
-    min_i = None
-    for i in range(ref_feats.shape[0]):
-        error = np.sum((feats - ref_feats[i, :])**2)
-        if error < min_error:
-            min_error = error
-            min_i = i
-    return min_i
-# 准备Gabor卷积核
-kernels = []
-for theta in range(4):
-    theta = theta / 4. * np.pi
-    for sigma in (1, 3):
-        for frequency in (0.05, 0.25):
-            kernel = np.real(gabor_kernel(frequency, theta=theta,sigma_x=sigma, sigma_y=sigma))
-            kernels.append(kernel)
-shrink = (slice(0, None, 3), slice(0, None, 3))
-brick = data.brick().astype(np.float64)
-grass = data.grass().astype(np.float64)
-checkerboard = data.checkerboard().astype(np.float64)
-# brick = data.load('brick.png')[shrink]
-# grass = img_as_float(data.load('grass.png'))[shrink]
-# wall = img_as_float(data.load('rough-wall.png'))[shrink]
-# image_names = ('砖块', '草地', '墙壁')
-image_names = ('brick','grass','checkerboard')
-# images = (brick, grass, wall)
-images = [brick, grass, checkerboard]
-# 准备参考特征
-ref_feats = np.zeros((3, len(kernels), 2), dtype=np.double)
-ref_feats[0, :, :] = compute_feats(brick, kernels)
-ref_feats[1, :, :] = compute_feats(grass, kernels)
-ref_feats[2, :, :] = compute_feats(checkerboard, kernels)
-
-def power(image, kernel):
-    # Normalize images for better comparison. 05
-    image = (image - image.mean()) / image.std()
-    return np.sqrt(ndi.convolve(image, np.real(kernel), mode='wrap')**2 +ndi.convolve(image, np.imag(kernel), mode='wrap')**2)
-# Plot a selection of the filter bank kernels and their responses.
-results = []
-kernel_params = []
-for theta in (0, 1):
-    theta = theta / 4. * np.pi
-    for frequency in (0.1, 0.4):
-        kernel = gabor_kernel(frequency, theta=theta)
-        params  = 'theta=%d,\nfrequency=%.2f'  % (theta * 180 / np.pi, frequency)
-        kernel_params.append(params)
-        # Save kernel and the power image for each image
-        results.append((kernel, [power(img, kernel) for img in images]))
-fig, axes = plt.subplots(nrows=5, ncols=4, figsize=(5, 6))
-plt.gray()
-fig.suptitle('Image responses for Gabor filter kernels', fontsize=12)
-axes[0][0].axis('off')
-# Plot original images
-for label, img, ax in zip(image_names, images, axes[0][1:]):
-    ax.imshow(img)
-    ax.set_title(label, fontsize=9)
-    ax.axis('off')
-for label, (kernel, powers), ax_row in zip(kernel_params, results, axes[1:]):
-    # Plot Gabor kernel
-    ax = ax_row[0]
-    ax.imshow(np.real(kernel), interpolation='nearest')
-    ax.set_xlabel(label, fontsize=7)
-    ax.set_xticks([])
-    ax.set_yticks([])
-    # Plot Gabor responses with the contrast normalized for each filter
-    vmin = min([np.min(item) for item in powers])
-    vmax = max([np.max(item) for item in powers])
-    for patch, ax in zip(powers, ax_row[1:]):
-        ax.imshow(patch, vmin=vmin, vmax=vmax)
-        ax.axis('off')
-plt.show()
-```
-
-</details>
+![gabor](../assets/gabor.png) 👉 [代码](../details/gabor.md)
 
 ### 局部二值模式
 
 （Local Binary Pattern, BLP）
 
-{% hint style="info" %}
-通过中心像素与相邻像素的亮度区别，体现出了亮度变换，也就是梯度。
-{% endhint %}
+> 通过中心像素与相邻像素的亮度区别，体现出了亮度变换，也就是梯度。
 
 基本的LBP算子：3×3的矩形块，有1个中心像素和8个邻域像素分别对应9个灰度值。以中心像素的灰度值为阈值，将其邻域的8个灰度值与阈值比较，大于中心灰度值的像素用1表示，反之用0表示。
 

@@ -65,6 +65,5 @@
 ***
 ## Resources and Reference
 
-https://www.bilibili.com/video/BV1U34y1G7wa
-
-https://www.youtube.com/watch?v=nJlZT5AE9zY
+* https://www.bilibili.com/video/BV1U34y1G7wa
+* https://www.youtube.com/watch?v=nJlZT5AE9zY

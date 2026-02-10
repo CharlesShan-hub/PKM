@@ -14,7 +14,6 @@
 ### 哈夫曼编码
 
 扫描各种颜色的像素出现的概率，然后按照概率大小组成哈夫曼编码。（个人感觉意义不大）
-
 <figure><img src="../../.gitbook/assets/image (106).png" alt="" width="563"><figcaption></figcaption></figure>
 
 <details>
