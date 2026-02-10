@@ -5,7 +5,7 @@
 ---
 ## 方法的多态
 
-方法重载和方法重写也是多态，叫做方法的多态
+**方法重载**和**方法重写**也是多态，叫做方法的多态
 
 1. Overload，方法重载
 
@@ -29,8 +29,8 @@
    }
    ```
 
-2. Override，方法重写/覆盖（**需要名称、返回类型和参数都一样才能叫 Override**）
-
+2. Override，方法重写/覆盖
+   **需要名称、返回类型和参数都一样才能叫 Override**
    **注意⚠️：方法重写前两个字是“方法”，属性是不能重写的**
 
    ```java
@@ -74,59 +74,58 @@
    ```
 
 3. 细节比较
-
-  |            | 方法重载 | 方法重写  |
-  | :--------: | :------: | :-------: |
-  |    位置    |   本类   |   子类    |
-  |   方法名   |   一样   |   一样    |
-  |  形参列表  |   不同   |   相同    |
-  |  返回类型  |  无要求  | 缩小/一样 |
-  | 访问修饰符 |  无要求  | 扩大/一样 |
-
+	
+	|            | 方法重载 | 方法重写  |
+	| :--------: | :------: | :-------: |
+	|    位置    |   本类   |   子类    |
+	|   方法名   |   一样   |   一样    |
+	|  形参列表  |   不同   |   相同    |
+	|  返回类型  |  无要求  | 缩小/一样 |
+	| 访问修饰符 |  无要求  | 扩大/一样 |
 4. 案例
-  1.  编写一个 `Person` 类，包括属性（`private` `name`、`age`），构造器、方法 `say`（返回自我介绍的字符串）。
-  2. 在 `main` 中，分别创建 `Person` 和 `Student` 对象，调用 `say` 方法输出自我介绍。
-  3. 编写一个 `Student` 类，继承 `Person` 类，增加 `id`、`score` 属性（`private`），以及构造器，定义 `say` 方法（返回自我介绍的信息）。
-
-  ```java
-  // Test.java
-  package ex_override;  
-  
-  public class Test{  
-    public static void main(String[] args){  
-      Person p = new Person("Peter",18);  
-      Student s = new Student("Jack",20,1000,100);  
-      System.out.println(p.say());  
-      // name = Peter, age = 18  
-      System.out.println(s.say());  
-      // name = Jack, age = 20, id = 1000, score = 100  
-    }  
-  }  
-  
-  class Person{  
-    private String name;  
-    private int age;  
-    public Person(String name, int age){  
-      this.name = name;  
-      this.age = age;  
-    }    public String say(){  
-      return "name = "+name+", age = "+age;  
-    }
-  }  
-  
-  class Student extends Person{  
-    private int id;  
-    private int score;  
-    public Student(String name, int age, int id, int score){  
-      super(name, age);  
-      this.id = id;  
-      this.score = score;  
-    }    @Override  
-    public String say(){  
-      return super.say()+", id = "+id+", score = "+score;  
-    }
-  }
-  ```
+	1.  编写一个 `Person` 类，包括属性（`private` `name`、`age`），构造器、方法 `say`（返回自我介绍的字符串）。
+	2. 在 `main` 中，分别创建 `Person` 和 `Student` 对象，调用 `say` 方法输出自我介绍。
+	3. 编写一个 `Student` 类，继承 `Person` 类，增加 `id`、`score` 属性（`private`），以及构造器，定义 `say` 方法（返回自我介绍的信息）。
+	```java
+	// Test.java
+	package ex_override;  
+	
+	public class Test{  
+	  public static void main(String[] args){  
+	    Person p = new Person("Peter",18);  
+	    Student s = new Student("Jack",20,1000,100);  
+	    System.out.println(p.say());  
+	    // name = Peter, age = 18  
+	    System.out.println(s.say());  
+	    // name = Jack, age = 20, id = 1000, score = 100  
+	  }  
+	}  
+	
+	class Person{  
+	  private String name;  
+	  private int age;  
+	  public Person(String name, int age){  
+	    this.name = name;  
+	    this.age = age;  
+	  }    public String say(){  
+	    return "name = "+name+", age = "+age;  
+	  }
+	}  
+	
+	class Student extends Person{  
+	  private int id;  
+	  private int score;  
+	  public Student(String name, int age, int id, int score){  
+	    super(name, age);  
+	    this.id = id;  
+	    this.score = score;  
+	  }    
+	  @Override  
+	  public String say(){  
+	    return super.say()+", id = "+id+", score = "+score;  
+	  }
+	}
+	```
 
 5. 调用多个重载的方法，遵循“就近原则”
 
@@ -156,49 +155,49 @@
 1. 没有多态的世界。主人需要为宠物吃饭，有好多饭，好多宠物。
 	```java
 	package ex_poly;  
-	  
+	
 	public class Test{  
-	    public static void main(String[] args){  
-	        Person p = new Person("Peter");  
-	        System.out.println(p.feed(new Cat(), new Fish()));  
-	        // Peter feed Fish to Cat  
-	        System.out.println(p.feed(new Dog(), new Meat()));  
-	        // Peter feed Dog to Meat  
-	    }  
+	  public static void main(String[] args){  
+	    Person p = new Person("Peter");  
+	    System.out.println(p.feed(new Cat(), new Fish()));  
+	    // Peter feed Fish to Cat  
+	    System.out.println(p.feed(new Dog(), new Meat()));  
+	    // Peter feed Dog to Meat  
+	  }  
 	}  
-	  
+	
 	class Person{  
-	    private String name;  
-	    public Person(String name) {  
-	        this.name = name;  
-	    }    
-	    public String feed(Cat c, Fish f){  
-	        return name+" feed "+f+" to "+c;  
-	    }    
-	    public String feed(Dog d, Meat m){  
-	        return name+" feed "+d+" to "+m;  
-	    }
+	  private String name;  
+	  public Person(String name) {  
+	    this.name = name;  
+	  }    
+	  public String feed(Cat c, Fish f){  
+	    return name+" feed "+f+" to "+c;  
+	  }    
+	  public String feed(Dog d, Meat m){  
+	    return name+" feed "+d+" to "+m;  
+	  }
 	}  
-	  
+	
 	class Animal{  
 	}  
 	class Cat extends Animal{  
-	    public String toString(){return "Cat";}  
+	  public String toString(){return "Cat";}  
 	}  
 	class Dog extends Animal{  
-	    public String toString(){return "Dog";}  
+	  public String toString(){return "Dog";}  
 	}  
 	class Pig extends Animal{  
-	    public String toString(){return "Pig";}  
+	  public String toString(){return "Pig";}  
 	}  
-	  
+	
 	class Food{  
 	}  
 	class Fish extends Food{  
-	    public String toString(){return "Fish";}  
+	  public String toString(){return "Fish";}  
 	}  
 	class Meat extends Food{  
-	    public String toString(){return "Meat";}  
+	  public String toString(){return "Meat";}  
 	}
 	```
 
@@ -209,40 +208,40 @@
 	4. **编译类型**看定义时 `=` 号的左边，运行类型看 `=` 号的右边
 	```java
 	public class PolyObject {
-	    public static void main(String[] args) {
-	        // 体验对象多态特点
+	  public static void main(String[] args) {
+	    // 体验对象多态特点
 	
-	        // animal 编译类型就是 Animal，运行类型 Dog
-	        Animal animal = new Dog();
-	        // 因为运行时，执行到改行时，animal 运行类型是 Dog，所以 cry 就是 Dog 的 cry
-	        animal.cry(); // 小狗汪汪叫
+	    // animal 编译类型就是 Animal，运行类型 Dog
+	    Animal animal = new Dog();
+	    // 因为运行时，执行到改行时，animal 运行类型是 Dog，所以 cry 就是 Dog 的 cry
+	    animal.cry(); // 小狗汪汪叫
 	
-	        // animal 编译类型 Animal，运行类型就是 Cat
-	        animal = new Cat();
-	        animal.cry(); // 小猫喵喵叫
-	    }
+	    // animal 编译类型 Animal，运行类型就是 Cat
+	    animal = new Cat();
+	    animal.cry(); // 小猫喵喵叫
+	  }
 	}
 	
 	// 动物基类
 	abstract class Animal {
-	    // 抽象方法，具体动物类需要实现
-	    abstract void cry();
+	  // 抽象方法，具体动物类需要实现
+	  abstract void cry();
 	}
 	
 	// 狗类继承自动物类
 	class Dog extends Animal {
-	    @Override
-	    void cry() {
-	        System.out.println("小狗汪汪叫");
-	    }
+	  @Override
+	  void cry() {
+	    System.out.println("小狗汪汪叫");
+	  }
 	}
 	
 	// 猫类继承自动物类
 	class Cat extends Animal {
-	    @Override
-	    void cry() {
-	        System.out.println("小猫喵喵叫");
-	    }
+	  @Override
+	  void cry() {
+	    System.out.println("小猫喵喵叫");
+	  }
 	}
 	
 	```

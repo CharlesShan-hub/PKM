@@ -17,10 +17,10 @@ Gamma变换（幂次变换）：用于改变亮度。👉 [代码](../details/ga
 
 直方图就是图片中不同颜色的占比，是一个统计量。
 
-直方图均衡化的步骤：👉 [代码](../details/histograms-equization.md)
+直方图均衡化的步骤：
 
 1. 求**概率密度函数**（Probability Density Function, PDF），也就是直方图。
 2. 求**累积分布函数**（Cumulative Distribution Function, CDF）。类似从概率密度函数求概率分布函数。$$cdf[t] = \sum_0^tp[t]$$
 3. 累计概率的 0 到 1，就是颜色的 0 到 1。
 
-![histograms-equization](../assets/histograms-equization.png)
+![histograms-equization](../assets/histograms-equization.png) 👉 [代码](../details/histograms-equization.md)

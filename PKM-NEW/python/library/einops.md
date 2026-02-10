@@ -44,21 +44,21 @@
 		8. **pack**: 将多个张量打包成一个更大的张量，通常用于批处理操作。
 		9. **unpack**: 将一个打包的张量解包回多个单独的张量。 
   3. 为各种框架提供实现：`layers`文件夹
-  	4. `__init__.py`：提供了底层的 class RearrangeMixin，class ReduceMixin
-  	5. `_einmix.py`：提供了一个混合器类，用于在深度学习框架中实现 **EinMix** 层，该层可以简化多维张量的混合操作，并自动处理权重和偏差张量的初始化和管理。这个类需要在特定的深度学习框架中进一步实现。
-  	6. `flax.py`：为 flax 框架提供了三个自定义层：Rearrange、Reduce 和 EinMix
-  	7. `oneflow.py`：为 oneflow 框架提供了三个自定义层
-  	8. `tensorflow.py`：为 tensorflow 框架提供了三个自定义层
-  	9. `chainer.py`：为 chainer 框架提供了三个自定义层
-  	10. `keras.py`：为 keras 框架提供了三个自定义层
-  	11. `paddle.py`：为 paddle 框架提供了三个自定义层
-  	12. `torch.py`：为 pytorch 框架提供了三个自定义层
-  413. 持作用的底层操作
-  	14. `parsing.py`：这些类和方法是 einops 库内部用于解析和处理张量操作表达式的工具。它们使得用户能够使用简洁的字符串表达式来指定复杂的张量操作，例如重新排列、重塑和组合轴。
-  	15. `array_api.py`：一个说明文件，和`einops.py`很多代码相同。
-  	16. `_torch_specific.py`：支持与 PyTorch 的 JIT 编译兼容。
-  	17. `_backends.py`：各种实现的后端。【我感觉这个才是这个库的精髓，他把不同的框架的 tensor 都抽象起来了，在实现具体功能的时候各种逻辑只需要写一遍】
- 5.18. 再加入的功能：`experimental`文件夹
+	1. `__init__.py`：提供了底层的 class RearrangeMixin，class ReduceMixin
+	2. `_einmix.py`：提供了一个混合器类，用于在深度学习框架中实现 **EinMix** 层，该层可以简化多维张量的混合操作，并自动处理权重和偏差张量的初始化和管理。这个类需要在特定的深度学习框架中进一步实现。
+	3. `flax.py`：为 flax 框架提供了三个自定义层：Rearrange、Reduce 和 EinMix
+	4. `oneflow.py`：为 oneflow 框架提供了三个自定义层
+	5. `tensorflow.py`：为 tensorflow 框架提供了三个自定义层
+	6. `chainer.py`：为 chainer 框架提供了三个自定义层
+	7. `keras.py`：为 keras 框架提供了三个自定义层
+	8. `paddle.py`：为 paddle 框架提供了三个自定义层
+	9. `torch.py`：为 pytorch 框架提供了三个自定义层
+4. 持作用的底层操作
+	1. `parsing.py`：这些类和方法是 einops 库内部用于解析和处理张量操作表达式的工具。它们使得用户能够使用简洁的字符串表达式来指定复杂的张量操作，例如重新排列、重塑和组合轴。
+	2. `array_api.py`：一个说明文件，和`einops.py`很多代码相同。
+	3. `_torch_specific.py`：支持与 PyTorch 的 JIT 编译兼容。
+	4. `_backends.py`：各种实现的后端。【我感觉这个才是这个库的精髓，他把不同的框架的 tensor 都抽象起来了，在实现具体功能的时候各种逻辑只需要写一遍】
+5. 再加入的功能：`experimental`文件夹
 
 ---
 ## APIs
