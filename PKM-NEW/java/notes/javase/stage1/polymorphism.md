@@ -5,75 +5,17 @@
 ---
 ## 方法的多态
 
-**方法重载**和**方法重写**也是多态，叫做方法的多态
+> **方法重载**和**方法重写**也是多态，叫做方法的多态
 
-1. Overload，方法重载
-
-   ```java
-   class Cat{
-     int age;
-     String name;
-     Cat(){
-       this.Cat(0,"Default");
-     }
-     Cat(int age){
-       this.Cat(age,"Default");
-     }
-     Cat(String name){
-       this.Cat(0,name);
-     }
-     Cat(int age, String name){
-       this.age = age;
-       this.name = name;
-     }
-   }
-   ```
-
-2. Override，方法重写/覆盖
-   **需要名称、返回类型和参数都一样才能叫 Override**
-   **注意⚠️：方法重写前两个字是“方法”，属性是不能重写的**
-
-   ```java
-   class People{
-     public void say(){
-       System.out.println("I love sleep!");
-     }
-   }
-   class Student extends People{
-     @Override
-     public void say(){
-       System.out.println("I LOVE STUDY!");
-     }
-   }
-   ```
-
-   * **注意返回类型可以一样，也可以是子类（如下案例，从 Child 变成了 Father）**
-   * **注意访问权限可以一样，也可以变大（如下案例，从 protected 变成了 public）**
-
-   ```java
-   class Father(){}
-   class Child extends Father(){}
-   
-   class People{
-     protected Father hello(){
-       return ...
-     }
-   }
-   class Student extends Father{
-     @Override
-     public Child hello{
-       return ...
-     }
-     
-     // 从 Father 到 Child, 返回到类越缩越小
-     // 这么想，爸爸的理想是“有出息”，儿子的理想是当公务员，越来越具体了
-     
-     // 从 protected 到 public, 返回类型越扩越大
-     // 这么想，富豪爸爸的钱都留给儿子（父亲的钱只能儿子访问），儿子拿钱投身伟大事业（儿子的钱大家都能访问）
-   }
-   ```
-
-3. 细节比较
+1. **方法重载**（`Overload`）👉 [overload-detail](../../../details/overload-detail.md)
+	1. 同一个类中，多个同名方法存在，单要求形参不同
+2. **方法重写**/覆盖（`Override`）👉 [override-detail](../../../details/override-detail.md)
+	1. 需要名称、返回类型和参数都一样
+	2. 注意⚠️：方法重写前两个字是“方法”，<u>属性是不能重写的</u>
+	3. 返回类型可以一样，也可以是子类
+	4. 访问权限可以一样，也可以变大
+	5. 调用多个重载的方法，遵循“就近原则”
+3. 比较
 	
 	|            | 方法重载 | 方法重写  |
 	| :--------: | :------: | :-------: |
@@ -82,75 +24,11 @@
 	|  形参列表  |   不同   |   相同    |
 	|  返回类型  |  无要求  | 缩小/一样 |
 	| 访问修饰符 |  无要求  | 扩大/一样 |
-4. 案例
-	1.  编写一个 `Person` 类，包括属性（`private` `name`、`age`），构造器、方法 `say`（返回自我介绍的字符串）。
-	2. 在 `main` 中，分别创建 `Person` 和 `Student` 对象，调用 `say` 方法输出自我介绍。
-	3. 编写一个 `Student` 类，继承 `Person` 类，增加 `id`、`score` 属性（`private`），以及构造器，定义 `say` 方法（返回自我介绍的信息）。
-	```java
-	// Test.java
-	package ex_override;  
-	
-	public class Test{  
-	  public static void main(String[] args){  
-	    Person p = new Person("Peter",18);  
-	    Student s = new Student("Jack",20,1000,100);  
-	    System.out.println(p.say());  
-	    // name = Peter, age = 18  
-	    System.out.println(s.say());  
-	    // name = Jack, age = 20, id = 1000, score = 100  
-	  }  
-	}  
-	
-	class Person{  
-	  private String name;  
-	  private int age;  
-	  public Person(String name, int age){  
-	    this.name = name;  
-	    this.age = age;  
-	  }    public String say(){  
-	    return "name = "+name+", age = "+age;  
-	  }
-	}  
-	
-	class Student extends Person{  
-	  private int id;  
-	  private int score;  
-	  public Student(String name, int age, int id, int score){  
-	    super(name, age);  
-	    this.id = id;  
-	    this.score = score;  
-	  }    
-	  @Override  
-	  public String say(){  
-	    return super.say()+", id = "+id+", score = "+score;  
-	  }
-	}
-	```
-
-5. 调用多个重载的方法，遵循“就近原则”
-
-	```java
-	@Test  
-	public void test2(){  
-	  // 就近原则。  
-	  m(null);  
-	}
-	
-	public void m(Object o){  
-	  System.out.println("Object...");  
-	}  
-	public void m(String o){  
-	  System.out.println("String...");  
-	}
-	//答案：会执行m(String o)，因为就近原则。
-	```
-
-
 
 ---
 ## 对象的多态
 
-对象的多态，是重点
+> 对象的多态，是重点。
 
 1. 没有多态的世界。主人需要为宠物吃饭，有好多饭，好多宠物。
 	```java

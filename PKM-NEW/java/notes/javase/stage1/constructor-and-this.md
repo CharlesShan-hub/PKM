@@ -29,7 +29,6 @@
       age = _age;
       name = _name;
     }
-    
     public Person(int _age){
       age = _age;
     }

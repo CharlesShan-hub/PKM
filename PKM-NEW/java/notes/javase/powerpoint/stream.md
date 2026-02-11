@@ -3,14 +3,6 @@
 ---
 ## 主要内容
 
-1. Stream API的概述
-2. 创建Stream的方式
-3. Stream的中间操作
-4. Stream的终止操作
-
----
-## 学习目标
-
 | **知识点** | **要求** |
 | --- | --- |
 | Stream API的概述 | 理解 |
@@ -26,9 +18,9 @@
 使用Stream API对集合数据进行操作，就类似于使用SQL执行的数据库查询，也可以使用Stream API来并行执行的操作。简而言之，Stream API提供了一种高效且易于使用的处理数据的方式。
 
 ### Stream和Collection的区别
-Collection：是静态的内存数据结构，强调的是**数据**。
-Stream API：是跟集合相关的计算操作，强调的是**计算**。
-总结：Collection面向的是内存，存储在内存中；StreamAPI面向的是CPU，通过CPU来计算。
+> Collection面向的是内存，存储在内存中；StreamAPI面向的是CPU，通过CPU来计算。
+* Collection：是静态的内存数据结构，强调的是**数据**。
+* Stream API：是跟集合相关的计算操作，强调的是**计算**。
 
 ### Stream API的操作步骤
 1. 第一步：创建Stream

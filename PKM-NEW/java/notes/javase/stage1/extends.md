@@ -4,8 +4,7 @@
 
 1. 好处：提高代码的复用性
 2. 语法：`class 子类 extends 父类`
-3. 细节 1：不同包的父类的 private 属性不能访问，需要父类提供 getter setter
-4. 细节 2：子类会调用父类的构造器
+3. 子类会调用父类的构造器
 	```java
 	// Test.java
 	package ex_extend;  
@@ -53,10 +52,10 @@
 	}
 	```
 
-5. `super`和`this`一样，也需要在第一行，所以和两个只能二选一
-6. java 所有的类都是 Object 的子类
-7. java 只能继承一个父类
-8. 案例
+4. `super`和`this`一样，也需要在第一行，所以和两个只能二选一
+5. java 所有的类都是 Object 的子类
+6. java 只能继承一个父类
+7. 案例
 
 ```java
 class A{
