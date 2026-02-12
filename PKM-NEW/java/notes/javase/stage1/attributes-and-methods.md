@@ -302,6 +302,69 @@ System.out.println("z2.age="+z2.age); //2
 > 方法重载和方法重写怎么区分？（我的理解）重载是 load，是不同的载入，同时存在了多份。重写是 write(ride)，之前的没了，变成了新的。
 
 ---
+## 构造器
+
+1. 构造器的作用：**初始化对象**，在创建对象时被自动调用，用于设置对象的初始状态（如给属性赋值）。
+	```java
+	public class program{
+		public static void main(String args[]){
+		  // 构造器可以进行方法重载
+		  // 构造器不能有返回值
+		  Person p1 = new Person();
+		  Person p2 = new Person(18,"Carl");
+		  Person p3 = new Person(22);
+		  System.out.println(p1.age); // 1
+		  System.out.println(p2.age); // 18
+		  System.out.println(p3.age); // 22
+		}
+	}
+	class Person{
+		int age;
+		String name;
+		public Person(){
+		  age = 1;
+		}
+		public Person(int _age, String _name){
+		  age = _age;
+		  name = _name;
+		}
+		public Person(int _age){
+		  age = _age;
+		}
+	}
+	```
+2. （重要‼️）不写构造器的时候，一个类在编译的时候也会有构造器！（可以用 javap 指令反编译看）
+	```java
+	public Person{}
+	
+	// 但是编译的时候会生成默认的构造器：
+	public Person{
+		Person(){} // <- 默认构造器
+	}
+	
+	// 但是当用户写了构造器之后，默认构造器就没了，就不能再直接new Person();了，除非显示的写出来Person(){}
+	```
+3. 对象创建流程的分析（面试题）
+	```java
+	class Person{
+		int age = 90;
+		String name;
+		Person(String n, int a){
+			name = n;
+			age = a;
+		}
+	}
+	```
+  4. 构造器搭配[this](this.md)可以写出更优雅的代码；
+  5. 下面是执行`Person p = new Person("小倩",20);`的流程
+	  1. 在「方法区」加载「类信息(Person类)」
+	  2. 在「堆」开辟空间，比如「0x1122」，里边有age和name两个字段，
+	  3. age默认是0，name默认是null，这一步是「隐式初始化」
+	  4. 进行「显式初始化」，age赋值成90
+	  5. 运行「构造函数」，age赋值成20，name赋值成0x1133，0x1133是常量池中保存name的位置的地址，该地址保存名字“小倩”
+	  6. 最后把0x1122赋值到「栈」里边的p变量，p是对象的引用
+
+---
 ## 作用域
 
 |        |   全局变量    |   局部变量   |

@@ -4,7 +4,7 @@
 ## 类的五大成分
 
 1. 成员变量：[attributes-and-methods](../stage1/attributes-and-methods.md)
-2. 构造器：[constructor-and-this](../stage1/constructor-and-this.md)
+2. 构造器：[attributes-and-methods](../stage1/attributes-and-methods.md)
 3. 方法：[attributes-and-methods](../stage1/attributes-and-methods.md)
 4. 代码块：[code-block](code-block.md)
 5. 内部类：本文

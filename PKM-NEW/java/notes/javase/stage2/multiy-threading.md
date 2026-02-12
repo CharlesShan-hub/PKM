@@ -38,200 +38,30 @@ public class CPUNumber {
 > 4. 线程池，`executorService.submit(new MyRunnable());`
 
 ### 继承`Thread`类
-
+👉 [thread-impl-01](../../../details/thread-impl-01.md)
 1. 编写一个类继承`Thread`，重写`run()`。
 2. 创建线程对象：`Thread t = new MyThread();`
 3. 启动线程：`t.start();`
 
-```java
-package ex_thread;
-
-public class Master {
-  public static void main(String[] args) {
-    Cat cat = new Cat();
-    cat.start();
-    for(int i=0; i<5; i++) {
-      System.out.println("主人在撸猫");
-      ThraadUtils.sleep(100);
-    }
-  }
-}
-
-class Cat extends Thread {
-  @Override
-  public void run() {
-    for(int i=0; i<5; i++) {
-      System.out.println("喵喵 "+Thread.currentThread().getName());
-      ThraadUtils.sleep(100);
-    }
-  }
-}
-
-class ThraadUtils{
-  public static void sleep(long millis) {
-    try {
-      Thread.sleep(millis);
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-}
-
-//主人在撸猫
-//喵喵 Thread-0
-//喵喵 Thread-0
-//主人在撸猫
-//喵喵 Thread-0
-//主人在撸猫
-//主人在撸猫
-//喵喵 Thread-0
-//喵喵 Thread-0
-//主人在撸猫
-```
-
 ### 实现`Runable`接口
 
-如果一个类已经继承了其他的类，不能再继承 `Thread` 类了。
+👉 [thread-impl-02](../../../details/thread-impl-02.md)，如果一个类已经继承了其他的类，不能再继承 `Thread` 类了。这里底层使用了**静态代理模式**。
 
 1. 编写一个类实现`Runnable`接口，实现`run()`。
 2. 创建线程对象：`Thread t = new Thread(new MyRunnable());`
 3. 启动线程：`t.start();`
 
-```java
-package ex_thread;
-
-public class Master {
-  public static void main(String[] args) {
-    //Cat cat = new Cat();
-    //Thread thread = new Thread(cat);
-    //thread.start();
-    Thread cat = new Thread(new Cat());
-    cat.start();
-  }
-}
-
-class Cat implements Runnable {
-  @Override
-  public void run() {
-    for(int i=0; i<5; i++) {
-      System.out.println("喵喵 "+Thread.currentThread().getName());
-      ThraadUtils.sleep(100);
-    }
-  }
-}
-
-class ThraadUtils{
-  public static void sleep(long millis) {
-    try {
-      Thread.sleep(millis);
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-}
-```
-
-这里底层使用了静态代理模式
-
 ### 实现`Callable`接口
 
-继承`Thread`类和实现`Runable`接口都无法内容，而实现`Callable`接口可以实现这种需求。
+👉 [thread-impl-03](../../../details/thread-impl-03.md)，继承`Thread`类和实现`Runable`接口都无法内容，而实现`Callable`接口可以实现这种需求。
 
 1. 定义一个类实现`Callable`接口，重写`call()`，封装要做的事情，和要放回的数据。
 2. 把`Callable`类型的对象封装成`FutureTask`（线程任务对象）。
 3. `futureTask.get()`会等待线程执行完再获取返回值。
 
-```java
-package ex_thread;
-
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-
-public class Master {
-  public static void main(String[] args) throws ExecutionException, InterruptedException {
-    //Callable<String> callable = new Cat();
-    //FutureTask<String> futureTask = new FutureTask<>(callable);
-    FutureTask<String> futureTask = new FutureTask<>(new Cat());
-    Thread cat = new Thread(futureTask);
-    cat.start();
-    System.out.println(futureTask.get()); // 获取返回值
-  }
-}
-
-class Cat implements Callable {
-  @Override
-  public String call() {
-    for(int i=0; i<5; i++) {
-      System.out.println("喵喵 "+Thread.currentThread().getName());
-      ThraadUtils.sleep(100);
-    }
-    return "小猫跑走了";
-  }
-}
-
-class ThraadUtils{
-  public static void sleep(long millis) {
-    try {
-      Thread.sleep(millis);
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-}
-
-//喵喵 Thread-0
-//喵喵 Thread-0
-//喵喵 Thread-0
-//喵喵 Thread-0
-//喵喵 Thread-0
-//小猫跑走了
-```
-
 ### 线程池
 
-```java
-package com.powernode.javase.thread25;  
-
-import java.util.concurrent.ExecutorService;  
-import java.util.concurrent.Executors;  
-
-/**  
- * 创建线程的第四种方式：使用线程池技术。  
- * 线程池本质上就是一个缓存：cache  
- * 一般都是服务器在启动的时候，初始化线程池，  
- * 也就是说服务器在启动的时候，创建N多个线程对象，  
- * 直接放到线程池中，需要使用线程对象的时候，直接从线程池中获取。  
- */  
-public class ThreadTest {  
-  public static void main(String[] args) {  
-
-    // 创建一个线程池对象（线程池中有3个线程）  
-    ExecutorService executorService = Executors.newFixedThreadPool(3);  
-
-    // 将任务交给线程池（你不需要触碰到这个线程对象，你只需要将要处理的任务交给线程池即可。）  
-    executorService.submit(new Runnable() {  
-      @Override  
-      public void run() {  
-        for (int i = 0; i < 10; i++) {  
-          System.out.println(Thread.currentThread().getName() + "--->" + i);  
-        }  
-      }  
-    });  
-    executorService.submit(new Runnable() {  
-      @Override  
-      public void run() {  
-        for (int i = 0; i < 10; i++) {  
-          System.out.println(Thread.currentThread().getName() + "--->" + i);  
-        }  
-      }  
-    });  
-
-    // 最后记得关闭线程池  
-    executorService.shutdown();  
-  }  
-}
-```
+👉 [thread-impl-04](../../../details/thread-impl-04.md)
 
 ### 为什么是 start 不是 run
 
@@ -301,61 +131,7 @@ public synchronized void start() {
 
 * **`setName(String name)`**  ：设置线程名称，与参数`name`相同。  
 * **`getName()`**  ：功能：返回当前线程的名称。  
-
-```java
-package com.powernode.javase.thread01;  
-
-/**  
- * 关于线程中常用方法：  
- *      实例方法：  
- *          String getName();  获取线程对象的名字  
- *          void setName(String threadName); 修改线程的名字  
- *      静态方法：  
- *          static Thread currentThread(); 获取当前线程对象的引用。  
- */  
-public class ThreadTest {  
-  public static void main(String[] args) {  
-
-    // 获取当前线程对象  
-    Thread mainThread = Thread.currentThread();  
-
-    // 获取当前线程的名字  
-    System.out.println("主线程的名字：" + mainThread.getName()); // 主线程的名字：main  
-
-    // 默认的名字  
-    Thread t1 = new MyThread();  
-    t1.start();  //分支线程的名字：Thread-0
-
-    // 创建线程时指定名字  
-    Thread t2 = new MyThread("tt");  
-    t2.start();  // 分支线程的名字：tt 
-
-    // 后期修改名字
-    Thread t3 = new MyThread("tt1");  
-    t3.setName("t1");  
-    t3.start();  // 分支线程的名字：t1
-  }  
-}  
-
-class MyThread extends Thread{  
-
-  public MyThread(String threadName){  
-    super(threadName);  
-  }
-
-  public MyThread(){  
-    super();  
-  }  
-
-  @Override  
-  public void run() {  
-    // 获取当前线程对象  
-    Thread t = Thread.currentThread();  
-    // 获取当前线程对象的名字  
-    System.out.println("分支线程的名字：" + t.getName()); 
-  }  
-}
-```
+👉 [thread-name](../../../details/thread-name.md)
 
 ### jconsole工具
 
@@ -374,7 +150,6 @@ class MyThread extends Thread{
 | **JVM退出影响** | JVM会等待所有用户线程执行完毕才退出 | 不会阻止JVM退出 |
 | **设置方法** | - | `thread.setDaemon(true)` |
 | **典型应用** | 业务逻辑处理 | 垃圾回收线程（GC Thread）、日志监控等后台服务 |
-
 
 3. 典型守护线程示例
 	- **垃圾回收线程（GC Thread）​**

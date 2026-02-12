@@ -141,7 +141,7 @@
 	* 182~183：二维数组细节
 	* 184~188：[[notes/javase/stage1/第六章作业|第六章作业]]
 	* 189：内容梳理
-* 第 7 章：[class-and-object-introduce](../notes/javase/stage1/class-and-object-introduce.md) ，[attributes-and-methods](../notes/javase/stage1/attributes-and-methods.md)，[recursion](../notes/javase/stage1/recursion.md)，[constructor-and-this](../notes/javase/stage1/constructor-and-this.md)
+* 第 7 章：[class-and-object-introduce](../notes/javase/stage1/class-and-object-introduce.md) ，[attributes-and-methods](../notes/javase/stage1/attributes-and-methods.md)，[recursion](../notes/javase/stage1/recursion.md)，[this](../notes/javase/stage1/this.md)
 	* 190：（可跳过）鼓励
 	* 191：（可跳过）类与对象的引出
 	* 192：（可跳过）类与对象的概述

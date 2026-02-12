@@ -17,10 +17,10 @@
 * OOP Basic
 	* [Introduction for Class and Object](stage1/class-and-object-introduce.md)：引入
 	* [Attributes and Methods](stage1/attributes-and-methods.md)：属性和成员方法
-	* [Constructor and this](stage1/constructor-and-this.md)：构造器和this
+	* [this](stage1/this.md)
 	* [encapsulation](stage1/encapsulation.md)：封装，javabean
 	* [static](stage2/static.md)：类变量(静态变量) 与 类方法(静态方法)
-	* [extends](stage1/extends.md)：继承
+	* [extends](stage1/extends.md)：继承，super
 	* [Access Modifiers](stage1/access-modifiers.md)：public protected 缺省 private
 	* [Object](stage1/Object.md)：所有类都继承了Object
 	* [super](stage1/super.md)
