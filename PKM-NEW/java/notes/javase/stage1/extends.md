@@ -9,5 +9,5 @@
 	1. [this](this.md)
 	2. this案例：👉 [extends-demo-03](../../../details/extends-demo-03.md)
 	3. super案例：👉 [extends-demo-04](../../../details/extends-demo-04.md)
-5. java 所有的类都是 `Object` 的子类
+5. java 所有的类都是 [Object](Object.md) 的子类
 6. java 只能继承一个父类

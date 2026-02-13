@@ -65,45 +65,7 @@ public class CPUNumber {
 
 ### 为什么是 start 不是 run
 
-因为 run 就是一个普通的方法。直接调用 run 并没有启用多线程
-
-```java
-// Thread.java
-
-public synchronized void start() {  
-  /**  
-     * This method is not invoked for the main method thread or "system"     
-     * group threads created/set up by the VM. Any new functionality added     
-     * to this method in the future may have to also be added to the VM.     
-     *     
-     * A zero status value corresponds to state "NEW".     
-     */    
-  if (threadStatus != 0)  
-    throw new IllegalThreadStateException();  
-
-  /* Notify the group that this thread is about to be started  
-     * so that it can be added to the group's list of threads     
-     * and the group's unstarted count can be decremented. */    
-  group.add(this);  
-
-  boolean started = false;  
-  try {  
-    start0();  
-    started = true;  
-  } finally {  
-    try {  
-      if (!started) {  
-        group.threadStartFailed(this);  
-      }        
-    } catch (Throwable ignore) {  
-      /* do nothing. If start0 threw a Throwable then  
-              it will be passed up the call stack */        
-    }  
-  }
-}
-```
-
-`start0()`才是真正的实现了多线程的方法！
+在[Thread.java 源码](../../../details/thread-start-source.md)中， run 就是一个普通的方法。直接调用 run 并没有启用多线程，`start0()`才是真正的实现了多线程的方法！
 
 ---
 
@@ -136,6 +98,79 @@ public synchronized void start() {
 ### jconsole工具
 
 终端输入 jconsole，可以查看进程
+
+---
+## 锁
+
+> 我们使用一个卖票的案例，引出锁的应用。
+
+线程同步：一些敏感数据在同一时刻不能被多个线程同时访问。也就是说，当有一个线程进行访存时，其他线程不能同时进行访存。我们需要引入`synchronized`来对卖票的方法进行同步。
+
+|              | 类锁                                               | 实例锁                                        |
+| ------------ | ------------------------------------------------ | ------------------------------------------ |
+| 同步方法         | `static synchronized`                            | `synchronized`                             |
+|              | `public static synchronized boolean sell(){...}` | `public synchronized boolean sell() {...}` |
+| 同步代码块        | `synchronized(ClassName.class)`                  | `synchronized(this)`                       |
+|              | `synchronized(ThreadTicket.class){...}`          | `synchronized(this){...}`                  |
+| ​**​作用范围​**​ | 全局，所有实例共享                                        | 仅当前实例有效                                    |
+| ​**​适用场景​**​ | 静态变量/静态方法                                        | 实例变量/实例方法                                  |
+| ​**​线程安全​**​ | ✅ 所有线程同一把锁                                       | ❌ 每个线程不同锁                                  |
+
+### 没有加锁
+
+假设有一个售票系统，三个售票窗口同时出售5张票。如果没有适当的同步机制，多个线程（窗口）可能会同时访问和修改剩余的票数，导致数据不一致的问题。
+
+👉 [thread-lock-01](../../../details/thread-lock-01.md)
+### 类锁
+
+**​类锁的两种实现方式​**：如果整个方法都需要同步，用第一种；如果只需要同步方法中的部分代码，用第二种。​
+
+- `static synchronized`方法
+	-  `public boolean sell()` 变成了 `public static synchronized boolean sell()`（唯一的改变）
+	- 👉 [thread-lock-02](../../../details/thread-lock-02.md)
+- `synchronized(ClassName.class)`代码块
+	- 使用`synchronized(ClassName.class)`对代码块
+	- 👉 [thread-lock-03](../../../details/thread-lock-03.md)
+
+### 实例锁
+
+1. 语法
+	```java
+	synchronized(需要排队的线程共享的对象){
+		// 需要同步的代码
+	}
+	```
+2. 原理：假设`obj`是`t1`, `t2`两个线程共享的。`t1`和`t2`执行这个代码的时候，一定是有一个先抢到了CPU时间片。假设`t1`先抢到了CPU时间片。`t1`线程找共享对象`obj`的对象锁，找到之后，则占有这把锁。只要能够占有`obj`对象的对象锁，就有权利进入同步代码块执行代码。 当`t1`线程执行完同步代码块之后，会释放之前占有的对象锁（归还锁）。 同样，`t2`线程抢到CPU时间片之后，也开始执行，也会去找共享对象`obj`的对象锁，但由于`t1`线程占有这把锁，`t2`线程只能在同步代码块之外等待。  
+	```java
+	synchronized(obj){
+		// 同步代码块
+	}
+	```
+3. 注意同步代码块的范围，不要无故扩大同步的范围，同步代码块范围越小，效率越高。
+4. `obj`需要是线程共享的对象，如果不是就会失效，👉 [thread-lock-04](../../../details/thread-lock-04.md)
+5. 重新改成同一个对象上锁，👉 [thread-lock-05](../../../details/thread-lock-05.md)
+
+### 死锁问题
+
+两个线程互相等待对方释放锁，结果谁都动不了。👉 [thread-lock-dead](../../../details/thread-lock-dead.md)
+
+| 操作              | 是否释放锁 | 线程状态          | 风险等级   |
+| --------------- | ----- | ------------- | ------ |
+| sleep()/yield() | ❌     | TIMED_WAITING | ⭐⭐     |
+| suspend()       | ❌     | SUSPENDED     | ⚠️⚠️⚠️ |
+| wait()          | ✅     | WAITING       | ⭐      |
+
+### 懒汉式单例模式安全问题
+
+1. 两个线程同时创建单例，结果创建了**两个不同的对象**，破坏了单例。👉 [thread-singleton-01](../../../details/thread-singleton-01.md)
+2. 采用类锁：👉 [thread-singleton-02](../../../details/thread-singleton-02.md)
+3. 采用实例锁：👉 [thread-singleton-03](../../../details/thread-singleton-03.md)
+### Lock
+
+1. `Lock`是接口，从JDK5开始引入的。  
+2. `Lock`接口下有一个实现类：可重入锁（`ReentrantLock`）  
+3. `Lock` 和 `synchronized` 哪个好？`Lock`更好。为什么？因为更加灵活。  
+4. 使用`Lock`解决懒汉式单例模式安全问题：👉 [thread-lock-lock](../../../details/thread-lock-lock.md)
 
 ---
 ## 用户线程与守护线程
@@ -994,532 +1029,6 @@ class MyThread extends Thread {
 ```
 
 ---
-
-## 锁
-
-我们使用下边的售票案例中的方法名称：
-
-| 特性   | 类锁                                             | 实例锁                                     |
-| ------ | ------------------------------------------------ | ------------------------------------------ |
-| 方法   | `static synchronized`                            | `synchronized`                             |
-|        | `public static synchronized boolean sell(){...}` | `public synchronized boolean sell() {...}` |
-| 代码块 | `synchronized(ClassName.class)`                  | `synchronized(this)`                       |
-|        | `synchronized(ThreadTicket.class){...}`          | `synchronized(this){...}`                  |
-
-### 没有加锁
-
-我们使用一个卖票的案例，引出锁的应用。假设有一个售票系统，三个售票窗口同时出售300张票。如果没有适当的同步机制，多个线程（窗口）可能会同时访问和修改剩余的票数，导致数据不一致的问题。
-
-```java
-package ex_thread;
-
-public class Ticket {
-  public static void main(String[] args) {
-    new ThreadTicket("窗口1").start();
-    new ThreadTicket("窗口2").start();
-    new ThreadTicket("窗口3").start();
-  }
-}
-
-class ThreadTicket extends Thread {
-  private static int ticket = 300; // 让多个线程共享票数  
-
-  public ThreadTicket(String name) {
-    super(name);
-  }
-
-  // 没有使用锁
-  public boolean sell() {
-    if (ticket <= 0) {
-      System.out.println("已卖完");
-      return false;
-    } else {
-      ThraadUtils.sleep(50);
-      System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
-      return true;
-    }
-  }
-
-  @Override
-  public void run() {
-    System.out.println(getName() + "开始售票");
-    while (true) {
-      if (!sell()) {
-        break;
-      }
-    }
-  }
-}
-
-class ThraadUtils{
-  public static void sleep(long millis) {
-    try {
-      Thread.sleep(millis);
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-}
-```
-
-```txt
-....
-窗口1售出一张票, 还剩余3 
-窗口2售出一张票, 还剩余2 
-窗口3售出一张票, 还剩余1 
-窗口1售出一张票, 还剩余0 
-已卖完 
-窗口2售出一张票, 还剩余-1 
-已卖完 
-窗口3售出一张票, 还剩余-2 
-已卖完
-```
-
-### 类锁
-
-线程同步：一些敏感数据在同一时刻不能被多个线程同时访问。也就是说，当有一个线程进行访存时，其他线程不能同时进行访存。
-我们需要引入`synchronized`来对卖票的方法进行同步。
-
-**​类锁的两种实现方式​**​
-
-- `static synchronized`方法
-- `synchronized(ClassName.class)`代码块
-
-下边案例唯一的改变就是 `public boolean sell()` 变成了 `public static synchronized boolean sell()`
-
-```java
-package ex_thread;
-
-public class Ticket {
-  public static void main(String[] args) {
-    new ThreadTicket("窗口1").start();
-    new ThreadTicket("窗口2").start();
-    new ThreadTicket("窗口3").start();
-  }
-}
-
-class ThreadTicket extends Thread {
-  private static int ticket = 300; // 让多个线程共享票数  
-
-  public ThreadTicket(String name) {
-    super(name);
-  }
-
-  // 使用静态同步方法，使用类锁
-  public static synchronized boolean sell() {
-    if (ticket <= 0) {
-      System.out.println("已卖完");
-      return false;
-    } else {
-      ThraadUtils.sleep(50);
-      System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
-      return true;
-    }
-  }
-
-  @Override
-  public void run() {
-    System.out.println(getName() + "开始售票");
-    while (true) {
-      if (!sell()) {
-        break;
-      }
-    }
-  }
-}
-
-class ThraadUtils{
-  public static void sleep(long millis) {
-    try {
-      Thread.sleep(millis);
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-}
-```
-
-这个案例使用`synchronized(ClassName.class)`对代码块进行上锁。
-
-```java
-package ex_thread;
-
-public class Ticket {
-  public static void main(String[] args) {
-    new ThreadTicket("窗口1").start();
-    new ThreadTicket("窗口2").start();
-    new ThreadTicket("窗口3").start();
-  }
-}
-
-class ThreadTicket extends Thread {
-  private static int ticket = 300; // 让多个线程共享票数  
-
-  public ThreadTicket(String name) {
-    super(name);
-  }
-
-  public boolean sell() {
-    // `static`只能修饰方法，不能修饰代码块
-    synchronized(ThreadTicket.class){
-      if (ticket <= 0) {
-        System.out.println("已卖完");
-        return false;
-      } else {
-        ThraadUtils.sleep(50);
-        System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
-        return true;
-      }
-    }
-  }
-
-  @Override
-  public void run() {
-    System.out.println(getName() + "开始售票");
-    while (true) {
-      if (!sell()) {
-        break;
-      }
-    }
-  }
-}
-
-class ThraadUtils{
-  public static void sleep(long millis) {
-    try {
-      Thread.sleep(millis);
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-}
-```
-
-```txt
-窗口3售出一张票, 还剩余4 
-窗口3售出一张票, 还剩余3 
-窗口3售出一张票, 还剩余2 
-窗口3售出一张票, 还剩余1 
-窗口3售出一张票, 还剩余0 
-已卖完 
-已卖完 
-已卖完
-```
-
-选择哪种方式取决于你的具体需求：如果整个方法都需要同步，用第一种；如果只需要同步方法中的部分代码，用第二种。
-
-### 实例锁
-
-使用线程同步机制，来保证多线程并发环境下的数据安全问题：  
- 1. 线程同步的本质是：线程排队执行就是同步机制。  
- 2. 语法格式： 
-
-     ```java
-     synchronized(必须是需要排队的这几个线程共享的对象){
-       // 需要同步的代码
-     }
-     ```
-
-     “必须是需要排队的这几个线程共享的对象” 这个必须选对了。这个如果选错了，可能会无故增加同步的线程数量，导致效率降低。
- 3. 原理是什么？
-
-     ```java
-     synchronized(obj){
-       // 同步代码块
-     }
-     ```
- 4. 假设obj是t1 t2两个线程共享的。  
-     t1和t2执行这个代码的时候，一定是有一个先抢到了CPU时间片。一定是有先后顺序的。  
-     假设t1先抢到了CPU时间片。t1线程找共享对象obj的对象锁，找到之后，则占有这把锁。只要能够占有obj对象的对象锁，就有权利进入同步代码块执行代码。  
-     当t1线程执行完同步代码块之后，会释放之前占有的对象锁（归还锁）。  
-     同样，t2线程抢到CPU时间片之后，也开始执行，也会去找共享对象obj的对象锁，但由于t1线程占有这把锁，t2线程只能在同步代码块之外等待。  
- 5. 注意同步代码块的范围，不要无故扩大同步的范围，同步代码块范围越小，效率越高。
-
-| 特性           | `static synchronized`(类锁) | `synchronized`(实例锁) |
-| ------------ | ------------------------- | ------------------- |
-| ​**​锁对象​**​  | `ClassName.class`         | `this`(当前对象实例)      |
-| ​**​作用范围​**​ | 全局，所有实例共享                 | 仅当前实例有效             |
-| ​**​适用场景​**​ | 静态变量/静态方法                 | 实例变量/实例方法           |
-| ​**​线程安全​**​ | ✅ 所有线程同一把锁                | ❌ 每个线程不同锁           |
-
-我们发现，使用实例锁对`sell`方法或者售卖的代码块进行上锁，程序又失效了。
-
-```java
-package ex_thread;
-
-public class Ticket {
-  public static void main(String[] args) {
-    new ThreadTicket("窗口1").start();
-    new ThreadTicket("窗口2").start();
-    new ThreadTicket("窗口3").start();
-  }
-}
-
-class ThreadTicket extends Thread {
-  private static int ticket = 300; // 让多个线程共享票数  
-
-  public ThreadTicket(String name) {
-    super(name);
-  }
-
-  public synchronized boolean sell() {
-    if (ticket <= 0) {
-      System.out.println("已卖完");
-      return false;
-    } else {
-      try {
-        Thread.sleep(50);
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
-      System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
-      return true;
-    }
-  }
-
-  @Override
-  public void run() {
-    System.out.println(getName() + "开始售票");
-    while (true) {
-      if (!sell()) {
-        break;
-      }
-    }
-  }
-}
-```
-
-```txt
-窗口2售出一张票, 还剩余3 
-窗口3售出一张票, 还剩余2 
-窗口1售出一张票, 还剩余1 
-窗口2售出一张票, 还剩余0 
-已卖完 
-窗口3售出一张票, 还剩余-1 
-已卖完 
-窗口1售出一张票, 还剩余-2 
-已卖完
-```
-
-```java
-package ex_thread;
-
-public class Ticket {
-  public static void main(String[] args) {
-    new ThreadTicket("窗口1").start();
-    new ThreadTicket("窗口2").start();
-    new ThreadTicket("窗口3").start();
-  }
-}
-
-class ThreadTicket extends Thread {
-  private static int ticket = 300; // 让多个线程共享票数  
-
-  public ThreadTicket(String name) {
-    super(name);
-  }
-
-  public boolean sell() {
-    synchronized(this){
-      if (ticket <= 0) {
-        System.out.println("已卖完");
-        return false;
-      } else {
-        try {
-          Thread.sleep(50);
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
-        System.out.println(Thread.currentThread().getName() + "售出一张票, 还剩余" + --ticket);
-        return true;
-      }
-    }
-  }
-
-  @Override
-  public void run() {
-    System.out.println(getName() + "开始售票");
-    while (true) {
-      if (!sell()) {
-        break;
-      }
-    }
-  }
-}
-```
-
-```txt
-窗口1售出一张票, 还剩余2 
-窗口2售出一张票, 还剩余2 
-窗口3售出一张票, 还剩余1 
-窗口1售出一张票, 还剩余0 
-窗口2售出一张票, 还剩余-1 
-已卖完 
-已卖完 
-窗口3售出一张票, 还剩余-2 
-已卖完
-```
-
-所以我们需要对同一个对象上锁才可以成功！
-
-注意下边的调用方法进行了更换，要使用
-```java
-ThreadTicket ticket = new ThreadTicket("窗口");  
-new Thread(ticket, "窗口1").start(); 
-new Thread(ticket, "窗口2").start(); 
-new Thread(ticket, "窗口3").start();
-```
-
-完整代码如下
-
-```java
-public class Ticket {
-  public static void main(String[] args) {
-    ThreadTicket ticket = new ThreadTicket();  
-    new Thread(ticket, "窗口1").start(); 
-    new Thread(ticket, "窗口2").start(); 
-    new Thread(ticket, "窗口3").start();
-  }
-}
-
-class ThreadTicket extends Thread {  
-  private static int ticket = 300; // 让多个线程共享票数  
-
-  public boolean sell(){  
-    synchronized(this) {
-      if (ticket <= 0) {  
-        System.out.println("已卖完");  
-        return false;  
-      }else{  
-        try{  
-          Thread.sleep(50);  
-        }catch (InterruptedException e){  
-          e.printStackTrace();  
-        }            
-        System.out.println(Thread.currentThread().getName()+"售出一张票, 还剩余"+ --ticket);  
-        return true;  
-      }   
-    } 
-  }    
-  @Override  
-  public void run() {  
-    System.out.println("Start");  
-    while (true) {  
-      if(!sell()){  
-        break;  
-      }        
-    }    
-  }
-}
-```
-
-**三个 Thread 操作的是同一个对象！这样才能成功的锁上**，所以就算传入的是别的，比如 object，也可以，只要他们是一个对象
-
-```java
-public class Ticket {
-    public static void main(String[] args) {
-	    ThreadTicket ticket = new ThreadTicket();  
-        new Thread(ticket, "窗口1").start(); 
-        new Thread(ticket, "窗口2").start(); 
-        new Thread(ticket, "窗口3").start();
-    }
-}
-
-class ThreadTicket extends Thread {  
-    private static int ticket = 300; // 让多个线程共享票数  
-    private Object obj = new Object(); // <- 这样
-  
-    public boolean sell(){  
-        synchronized(obj) { // <- 这样
-	        if (ticket <= 0) {  
-	            System.out.println("已卖完");  
-	            return false;  
-	        }else{  
-	            try{  
-	                Thread.sleep(50);  
-	            }catch (InterruptedException e){  
-	                e.printStackTrace();  
-	            }            
-	            System.out.println(Thread.currentThread().getName()+"售出一张票, 还剩余"+ --ticket);  
-	            return true;  
-	        }   
-        } 
-    }
-    @Override  
-    public void run() {  
-        System.out.println("Start");  
-        while (true) {  
-            if(!sell()){  
-                break;  
-            }        
-        }    
-    }
-}
-```
-
-最后，我们的`synchronized(this)`如果是对一个方法整体进行同步，那么就可以等价于对方法进行`synchronized`并且共享对象就是`this`
-
-### 死锁
-
-```java
-package ex_thread;  
-
-public class DeadClock {  
-  public static void main(String[] args) {  
-    new DeadClockThread(true).start();  
-    new DeadClockThread(false).start();  
-    // Thread-12  
-    // Thread-01    
-  }  
-}  
-
-class DeadClockThread extends Thread{  
-  static Object o1 = new Object();  
-  static Object o2 = new Object();  
-  boolean flag = true;  
-
-  public DeadClockThread(boolean flag){  
-    this.flag = flag;  
-  }  
-
-  @Override  
-  public void run() {  
-    if(flag){  
-      synchronized (o1) {  
-        System.out.println(Thread.currentThread().getName()+"1");  
-        try {  
-          Thread.sleep(10000);  
-        } catch (InterruptedException e) {  
-          throw new RuntimeException(e);  
-        }                
-        synchronized (o2) {  
-          System.out.println(Thread.currentThread().getName()+"2");  
-        }            
-      }        
-    }else{  
-      synchronized (o2) {  
-        System.out.println(Thread.currentThread().getName()+"2");  
-        try {  
-          Thread.sleep(10000);  
-        } catch (InterruptedException e) {  
-          throw new RuntimeException(e);  
-        }                
-        synchronized (o1) {  
-          System.out.println(Thread.currentThread().getName()+"1");  
-        }            
-      }        
-    }   
-  }
-}
-```
-
-| 操作              | 是否释放锁 | 线程状态          | 风险等级   |
-| --------------- | ----- | ------------- | ------ |
-| sleep()/yield() | ❌     | TIMED_WAITING | ⭐⭐     |
-| suspend()       | ❌     | SUSPENDED     | ⚠️⚠️⚠️ |
-| wait()          | ✅     | WAITING       | ⭐      |
-
----
 ## 线程通信
 
 * wait
@@ -1889,255 +1398,6 @@ class ThreadFactory {
         }  
       }  
     }  
-  }  
-}
-```
-
----
-## 懒汉式单例模式安全问题
-
-### synchronized
-
-```java
-package com.powernode.javase.thread23;  
-
-import java.util.concurrent.locks.ReentrantLock;  
-
-class SingletonTest {  
-
-  // 静态变量  
-  private static Singleton s1;  
-  private static Singleton s2;  
-
-  public static void main(String[] args) {  
-
-    // 获取某个类。这是反射机制中的内容。  
-    /*
-      Class stringClass = String.class;
-      Class singletonClass = Singleton.class;
-      Class dateClass = java.util.Date.class;
-    */  
-    // 创建线程对象t1  
-    Thread t1 = new Thread(new Runnable() {  
-      @Override  
-      public void run() {  
-        s1 = Singleton.getSingleton();  
-      }  
-    });  
-
-    // 创建线程对象t2  
-    Thread t2 = new Thread(new Runnable() {  
-      @Override  
-      public void run() {  
-        s2 = Singleton.getSingleton();  
-      }  
-    });  
-
-    // 启动线程  
-    t1.start();  
-    t2.start();  
-
-    try {  
-      t1.join();  
-    } catch (InterruptedException e) {  
-      throw new RuntimeException(e);  
-    }  
-    try {  
-      t2.join();  
-    } catch (InterruptedException e) {  
-      throw new RuntimeException(e);  
-    }  
-
-    // 判断这两个Singleton对象是否一样。  
-    System.out.println(s1);  
-    System.out.println(s2);  
-    System.out.println(s1 == s2);  
-
-  }  
-}  
-
-/**  
- * 懒汉式单例模式  
- */  
-public class Singleton {  
-  private static Singleton singleton;  
-
-  private Singleton() {  
-    System.out.println("构造方法执行了！");  
-  }  
-
-  // 非线程安全的。  
-  // 构造方法执行了！  
-  // 构造方法执行了！  
-  // com.powernode.javase.thread23.Singleton@5b480cf9  
-  // com.powernode.javase.thread23.Singleton@6f496d9f    
-  // false    
-  /*public static Singleton getSingleton() {        
-	    if (singleton == null) {            
-		    try {                
-			    Thread.sleep(2000);            
-			} catch (InterruptedException e) {                
-				throw new RuntimeException(e);            
-			}            
-			singleton = new Singleton();        
-		}        
-		return singleton;    
-	}*/  
-
-  // 线程安全的：第一种方案（同步方法），找类锁。  
-  // 构造方法执行了！  
-  // com.powernode.javase.thread23.Singleton@5b480cf9  
-  // com.powernode.javase.thread23.Singleton@5b480cf9    
-  // true    
-  /*public static synchronized Singleton getSingleton() {        
-	     if (singleton == null) {            
-		    try {                
-			     Thread.sleep(2000);            
-			} catch (InterruptedException e) {                
-				throw new RuntimeException(e);            
-			}            
-			singleton = new Singleton();        
-		}        
-		return singleton;    
-	}*/  
-
-  // 线程安全的：第二种方案（同步代码块），找的类锁  
-  // 构造方法执行了！  
-  //com.powernode.javase.thread23.Singleton@5b480cf9  
-  //com.powernode.javase.thread23.Singleton@5b480cf9    
-  //true    
-  /*public static Singleton getSingleton() {        
-	    // 这里有一个知识点是反射机制中的内容。可以获取某个类。  
-        synchronized (Singleton.class){            
-        if (singleton == null) {               
-	        try {                    
-		        Thread.sleep(2000);                
-		    } catch (InterruptedException e) {                    
-			    throw new RuntimeException(e);                
-			}                
-				singleton = new Singleton();            
-			}        
-		}        
-		return singleton;    
-	}*/  
-
-  // 线程安全的：这个方案对上一个方案进行优化，提升效率。  
-  public static Singleton getSingleton() {  
-    if(singleton == null){            
-      synchronized (Singleton.class){                
-        if (singleton == null) {                    
-          try {                        
-            Thread.sleep(2000);                    
-          } catch (InterruptedException e) {                        
-            throw new RuntimeException(e);                    
-          }                    
-          singleton = new Singleton();                
-        }            
-      }        
-    }        
-    return singleton;    
-  }
-}
-```
-
-### Lock
-
-```java
-package com.powernode.javase.thread23;  
-
-import java.util.concurrent.locks.ReentrantLock;  
-
-class SingletonTest {  
-
-  // 静态变量  
-  private static Singleton s1;  
-  private static Singleton s2;  
-
-  public static void main(String[] args) {  
-
-    // 获取某个类。这是反射机制中的内容。  
-    /*
-      Class stringClass = String.class;
-      Class singletonClass = Singleton.class;
-      Class dateClass = java.util.Date.class;
-    */  
-    // 创建线程对象t1  
-    Thread t1 = new Thread(new Runnable() {  
-      @Override  
-      public void run() {  
-        s1 = Singleton.getSingleton();  
-      }  
-    });  
-
-    // 创建线程对象t2  
-    Thread t2 = new Thread(new Runnable() {  
-      @Override  
-      public void run() {  
-        s2 = Singleton.getSingleton();  
-      }  
-    });  
-
-    // 启动线程  
-    t1.start();  
-    t2.start();  
-
-    try {  
-      t1.join();  
-    } catch (InterruptedException e) {  
-      throw new RuntimeException(e);  
-    }  
-    try {  
-      t2.join();  
-    } catch (InterruptedException e) {  
-      throw new RuntimeException(e);  
-    }  
-
-    // 判断这两个Singleton对象是否一样。  
-    System.out.println(s1);  
-    System.out.println(s2);  
-    System.out.println(s1 == s2);  
-
-  }  
-}  
-
-/**  
- * 懒汉式单例模式  
- */  
-public class Singleton {  
-  private static Singleton singleton;  
-
-  private Singleton() {  
-    System.out.println("构造方法执行了！");  
-  }  
-
-  // 使用Lock来实现线程安全  
-  // Lock是接口，从JDK5开始引入的。  
-  // Lock接口下有一个实现类：可重入锁（ReentrantLock）  
-  // 注意：要想使用ReentrantLock达到线程安全，假设要让t1 t2 t3线程同步，就需要让t1 t2 t3共享同一个lock。  
-  // Lock 和 synchronized 哪个好？Lock更好。为什么？因为更加灵活。  
-  private static final ReentrantLock lock = new ReentrantLock();  
-
-  public static Singleton getSingleton() {  
-    if(singleton == null){  
-
-      try {  
-        // 加锁  
-        lock.lock();  
-        if (singleton == null) {  
-          try {  
-            Thread.sleep(2000);  
-          } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-          }  
-          singleton = new Singleton();  
-        }  
-      } finally {  
-        // 解锁（需要100%保证解锁，怎么办？finally）  
-        lock.unlock();  
-      }  
-
-    }  
-    return singleton;  
   }  
 }
 ```
