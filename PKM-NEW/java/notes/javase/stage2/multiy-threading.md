@@ -61,8 +61,7 @@ public class CPUNumber {
 
 ### 线程池
 
-👉 [thread-impl-04](../../../details/thread-impl-04.md)
-
+👉 [thread-impl-04](../../../details/thread-impl-04.md)，线程池本质上就是一个缓存：cache 。一般都是服务器在启动的时候，初始化线程池，也就是说服务器在启动的时候，创建N多个线程对象，直接放到线程池中，需要使用线程对象的时候，直接从线程池中获取。 
 ### 为什么是 start 不是 run
 
 在[Thread.java 源码](../../../details/thread-start-source.md)中， run 就是一个普通的方法。直接调用 run 并没有启用多线程，`start0()`才是真正的实现了多线程的方法！
@@ -106,15 +105,15 @@ public class CPUNumber {
 
 线程同步：一些敏感数据在同一时刻不能被多个线程同时访问。也就是说，当有一个线程进行访存时，其他线程不能同时进行访存。我们需要引入`synchronized`来对卖票的方法进行同步。
 
-|              | 类锁                                               | 实例锁                                        |
-| ------------ | ------------------------------------------------ | ------------------------------------------ |
-| 同步方法         | `static synchronized`                            | `synchronized`                             |
-|              | `public static synchronized boolean sell(){...}` | `public synchronized boolean sell() {...}` |
-| 同步代码块        | `synchronized(ClassName.class)`                  | `synchronized(this)`                       |
-|              | `synchronized(ThreadTicket.class){...}`          | `synchronized(this){...}`                  |
-| ​**​作用范围​**​ | 全局，所有实例共享                                        | 仅当前实例有效                                    |
-| ​**​适用场景​**​ | 静态变量/静态方法                                        | 实例变量/实例方法                                  |
-| ​**​线程安全​**​ | ✅ 所有线程同一把锁                                       | ❌ 每个线程不同锁                                  |
+|                | 类锁                                             | 实例锁                                     |
+| -------------- | ------------------------------------------------ | ------------------------------------------ |
+| **同步方法**   | `static synchronized`                            | `synchronized`                             |
+|                | `public static synchronized boolean sell(){...}` | `public synchronized boolean sell() {...}` |
+| **同步代码块** | `synchronized(ClassName.class)`                  | `synchronized(this)`                       |
+|                | `synchronized(ThreadTicket.class){...}`          | `synchronized(this){...}`                  |
+| 作用范围​​       | 全局，所有实例共享                               | 仅当前实例有效                             |
+| 适用场景       | 静态变量/静态方法                                | 实例变量/实例方法                          |
+| 线程安全​​       | ✅ 所有线程同一把锁                               | ❌ 每个线程不同锁                           |
 
 ### 没有加锁
 
@@ -140,7 +139,7 @@ public class CPUNumber {
 		// 需要同步的代码
 	}
 	```
-2. 原理：假设`obj`是`t1`, `t2`两个线程共享的。`t1`和`t2`执行这个代码的时候，一定是有一个先抢到了CPU时间片。假设`t1`先抢到了CPU时间片。`t1`线程找共享对象`obj`的对象锁，找到之后，则占有这把锁。只要能够占有`obj`对象的对象锁，就有权利进入同步代码块执行代码。 当`t1`线程执行完同步代码块之后，会释放之前占有的对象锁（归还锁）。 同样，`t2`线程抢到CPU时间片之后，也开始执行，也会去找共享对象`obj`的对象锁，但由于`t1`线程占有这把锁，`t2`线程只能在同步代码块之外等待。  
+2. 原理：假设`obj`是`t1`, `t2`两个线程共享的。`t1`和`t2`执行这个代码的时候，一定是有一个先抢到了CPU时间片。假设`t1`先抢到了CPU时间片。`t1`线程找共享对象`obj`的对象锁，找到之后，则占有这把锁。只要能够占有`obj`对象的对象锁，就有权利进入同步代码块执行代码。 当`t1`线程执行完同步代码块之后，会释放之前占有的对象锁（归还锁）。 同样，`t2`线程抢到CPU时间片之后，也开始执行，也会去找共享对象`obj`的对象锁，但由于`t1`线程占有这把锁，`t2`线程只能在同步代码块之外等待。
 	```java
 	synchronized(obj){
 		// 同步代码块
@@ -175,7 +174,7 @@ public class CPUNumber {
 ---
 ## 用户线程与守护线程
 
-### 概念
+### 概念与案例
 
 | 特性 | 用户线程（User Thread） | 守护线程（Daemon Thread） |
 | :--- | :--- | :--- |
@@ -186,200 +185,25 @@ public class CPUNumber {
 | **设置方法** | - | `thread.setDaemon(true)` |
 | **典型应用** | 业务逻辑处理 | 垃圾回收线程（GC Thread）、日志监控等后台服务 |
 
-3. 典型守护线程示例
-	- **垃圾回收线程（GC Thread）​**
-		- 持续监控内存状态
-		- 用户线程运行时在后台自动回收资源
-
-4. 关键区别对比
-
-| 特性        | 用户线程               | 守护线程               |
-|------------|-----------------------|-----------------------|
-| 终止条件    | 任务完成/主动通知      | 随用户线程结束自动终止 |
-| JVM退出影响 | 会阻止JVM退出          | 不会阻止JVM退出        |
-| 典型应用    | 业务逻辑处理           | GC/日志监控等后台服务  |
-
-### 案例
-
-案例1
-
-```java
-package ex_thread;  
-  
-public class Deamon {  
-    public static void main(String[] args) throws InterruptedException {  
-        MyDeamon myDeamon = new MyDeamon();  
-        myDeamon.setDaemon(true);  
-        myDeamon.start();  
-        for(int i=0; i<5; i++){  
-            System.out.println("宝强在工作...");  
-            Thread.sleep(100);  
-        }   
-    }
-}
-  
-class MyDeamon extends Thread{  
-    @Override  
-    public void run() {  
-        while(true){  
-            System.out.println("马蓉和宋喆在开心聊天~~");  
-            try{  
-                Thread.sleep(50);  
-            }catch(InterruptedException e){  
-                e.printStackTrace();  
-            }        
-        }    
-    }
-}  
- 
-//马蓉和宋喆在开心聊天~~  
-//宝强在工作...  
-//马蓉和宋喆在开心聊天~~  
-//马蓉和宋喆在开心聊天~~  
-//宝强在工作...  
-//马蓉和宋喆在开心聊天~~  
-//宝强在工作...  
-//马蓉和宋喆在开心聊天~~  
-//马蓉和宋喆在开心聊天~~  
-//宝强在工作...  
-//马蓉和宋喆在开心聊天~~  
-//马蓉和宋喆在开心聊天~~  
-//宝强在工作...  
-//马蓉和宋喆在开心聊天~~  
-//马蓉和宋喆在开心聊天~~  
-//  
-//Process finished with exit code 0
-```
-
-案例2
-
-```java
-package com.powernode.javase.thread07;  
-
-/**  
- * 1. 在Java语言中，线程被分为两大类：  
- *      第一类：用户线程（非守护线程）  
- *      第二类：守护线程（后台线程）  
- *  
- * 2. 在JVM当中，有一个隐藏的守护线程一直在守护者，它就是GC线程。  
- *  
- * 3. 守护线程的特点：所有的用户线程结束之后，守护线程自动退出/结束。  
- *  
- * 4. 如何将一个线程设置为守护线程？  
- *      t.setDaemon(true);  
- */
-public class ThreadTest {  
-  public static void main(String[] args) {  
-    MyThread myThread = new MyThread();  
-    myThread.setName("t");  
-
-    // 在启动线程之前，设置线程为守护线程  
-    myThread.setDaemon(true);  
-
-    myThread.start();  
-
-    // 10s结束！  
-    // main线程中，main线程是一个用户线程。  
-    for (int i = 0; i < 10; i++) {  
-      System.out.println(Thread.currentThread().getName() + "===>" + i);  
-      try {  
-        Thread.sleep(1000);  
-      } catch (InterruptedException e) {  
-        throw new RuntimeException(e);  
-      }  
-    }  
-
-  }  
-}  
-
-class MyThread extends Thread {  
-  @Override  
-  public void run() {  
-    int i = 0;  
-    while(true){  
-      System.out.println(Thread.currentThread().getName() + "===>" + (++i));  
-      try {  
-        Thread.sleep(1000);  
-      } catch (InterruptedException e) {  
-        throw new RuntimeException(e);  
-      }  
-    }  
-  }  
-}
-```
+* 典型守护线程示例——**垃圾回收线程（GC Thread）​**，持续监控内存状态，用户线程运行时在后台自动回收资源。
+* 案例1：堂吉诃德的冒险 [thread-deamon-01](../../../details/thread-deamon-01.md)
+* 案例2：王宝强和马蓉的故事 [thread-deamon-02](../../../details/thread-deamon-02.md)
+* 案例3：没有故事背景的简单案例 [thread-deamon-03](../../../details/thread-deamon-03.md)
 
 ### 定时器
 
-```java
-package com.powernode.javase.thread08;  
-  
-import java.text.SimpleDateFormat;  
-import java.util.Date;  
-import java.util.Timer;  
-import java.util.TimerTask;  
-  
-/**  
- * 1. JDK中提供的定时任务：  
- *      java.util.Timer         定时器  
- *      java.util.TimerTask     定时任务  
- * 2. 定时器 + 定时任务：可以帮我们在程序中完成：每间隔多久执行一次某段程序。  
- * 3. Timer的构造方法：  
- *      Timer()  
- *      Timer(boolean isDaemon) isDaemon是true表示该定时器是一个守护线程。  
- */  
-public class ThreadTest {  
-    public static void main(String[] args) throws Exception{  
-        // 创建定时器对象（本质上就是一个线程）  
-        // 如果这个定时器执行的任务是一个后台任务，是一个守护任务，建议将其定义为守护线程。  
-        Timer timer = new Timer(true);  
-  
-        // 指定定时任务  
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
-        Date firstTime = sdf.parse("2024-01-27 10:22:00");  
-        //timer.schedule(new LogTimerTask(), firstTime, 1000);  
-  
-  
-        // 匿名内部类的方式  
-        timer.schedule(new TimerTask() {  
-            int count = 0;  
-            @Override  
-            public void run() {  
-                // 执行任务  
-                Date now = new Date();  
-                String strTime = sdf.format(now);  
-                System.out.println(strTime + ": " + count++);  
-            }  
-        }, firstTime, 1000 * 5);  
-  
-  
-        for (int i = 0; i < 10; i++) {  
-            Thread.sleep(1000);  
-        }  
-    }  
-}
-
-/**  
- * 定时任务类：专门记录日期的定时任务类。  
- */  
-class LogTimerTask extends TimerTask {  
-  
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");  
-    int count = 0;  
-  
-    @Override  
-    public void run() {  
-        // 执行任务  
-        Date now = new Date();  
-        String strTime = sdf.format(now);  
-        System.out.println(strTime + ": " + count++);  
-    }  
-}
-```
-
+- `java.util.Timer`：定时器，本质是一个线程
+	- `Timer()`：创建用户线程定时器
+	* `Timer(boolean isDaemon)`：`isDaemon=true`创建守护线程定时器
+	* `timer.schedule(task, firstTime, interval)`：安排定时任务
+	    - `task`：要执行的任务（TimerTask子类）
+	    - `firstTime`：首次执行时间
+	    - `interval`：重复执行间隔（毫秒）
+- `java.util.TimerTask`：定时任务，需要继承并实现`run()`方法
+* 👉 [thread-timer](../../../details/thread-timer.md)
 
 ---
-
- ## 线程的生命周期
+## 线程的生命周期
 
 ### 六种状态
 
@@ -392,45 +216,14 @@ class LogTimerTask extends TimerTask {
 * 阻塞状态（BLOCKED）：遇到锁之后变成阻塞状态
 * 死亡状态（TERMINATED）
 
-| 方法            | 作用场景                         | 备注                          |  
-|-----------------|----------------------------------|-------------------------------|  
-| `start()`       | 启动新线程                       | 异步执行`run()`中的逻辑       |  
-| `run()`         | 定义线程任务                     | 直接调用相当于普通方法        |  
-| `sleep()`       | 线程暂停                         | 不释放锁，可能抛`InterruptedException` |  
-| `interrupt()`   | 请求终止线程                     | 需线程自身检查中断标志        |  
+| 方法            | 作用场景   | 备注                             |
+| ------------- | ------ | ------------------------------ |
+| `start()`     | 启动新线程  | 异步执行`run()`中的逻辑                |
+| `run()`       | 定义线程任务 | 直接调用相当于普通方法                    |
+| `sleep()`     | 线程暂停   | 不释放锁，可能抛`InterruptedException` |
+| `interrupt()` | 请求终止线程 | 需线程自身检查中断标志                    |
 
-一个查看 java 线程状态的案例
-
-```java
-package ex_thread;  
-  
-public class State {  
-    public static void main(String[] args) throws InterruptedException {  
-        T t = new T();  
-        System.out.println(t.getName()+"  "+t.getState()); // NEW
-        t.start();  
-        while(Thread.State.TERMINATED != t.getState()) {  
-            System.out.println(t.getName()+"  "+t.getState());  
-            Thread.sleep(10);  
-        }  
-        System.out.println(t.getName()+"  "+t.getState());  
-    }
-}  
-  
-class T extends Thread{  
-    @Override  
-    public void run() {  
-        for(int i=0; i<5; i++){  
-            System.out.println(Thread.currentThread().getName()+i);  
-            try {  
-                Thread.sleep(5);  
-            } catch (InterruptedException e) {  
-                throw new RuntimeException(e);  
-            }        
-        }    
-    }
-}
-```
+使用`getState()`一个查看 java 线程状态的案例：👉 [thread-state](../../../details/thread-state.md)
 
 ### sleep(静态方法)
 
@@ -438,7 +231,7 @@ sleep的使用案例和介绍，注意：休眠时**不释放锁**。
 
 ```java
 package com.powernode.javase.thread02;  
-  
+
 /**  
  * 关于线程的sleep方法：  
  *      1. static void sleep(long millis)  
@@ -453,40 +246,40 @@ package com.powernode.javase.thread02;
  *      5. sleep方法可以模拟每隔固定的时间调用一次程序。  
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        try {  
-            // 让当前线程睡眠5秒  
-            // 这段代码出现在主线程中，所以当前线程就是主线程  
-            // 让主线程睡眠5秒  
-            Thread.sleep(1000 * 5);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-  
-        for (int i = 0; i < 10; i++) {  
-            System.out.println(Thread.currentThread().getName() + "->" + i);  
-        }  
-  
-        // 启动线程  
-        Thread t = new Thread(new MyRunnable());  
-        t.setName("t");  
-        t.start();  
+  public static void main(String[] args) {  
+    try {  
+      // 让当前线程睡眠5秒  
+      // 这段代码出现在主线程中，所以当前线程就是主线程  
+      // 让主线程睡眠5秒  
+      Thread.sleep(1000 * 5);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+
+    for (int i = 0; i < 10; i++) {  
+      System.out.println(Thread.currentThread().getName() + "->" + i);  
+    }  
+
+    // 启动线程  
+    Thread t = new Thread(new MyRunnable());  
+    t.setName("t");  
+    t.start();  
+  }  
 }  
-  
+
 class MyRunnable implements Runnable {  
-  
-    @Override  
-    public void run(){  
-        for (int i = 0; i < 10; i++) {  
-            System.out.println(Thread.currentThread().getName() + "->" + i);  
-            try {  
-                Thread.sleep(1000);  
-            } catch (InterruptedException e) {  
-                throw new RuntimeException(e);  
-            }  
-        }  
+
+  @Override  
+  public void run(){  
+    for (int i = 0; i < 10; i++) {  
+      System.out.println(Thread.currentThread().getName() + "->" + i);  
+      try {  
+        Thread.sleep(1000);  
+      } catch (InterruptedException e) {  
+        throw new RuntimeException(e);  
+      }  
     }  
+  }  
 }
 ```
 
@@ -494,37 +287,37 @@ class MyRunnable implements Runnable {
 
 ```java
 package com.powernode.javase.thread03;  
-  
+
 /**  
  * 关于sleep的面试题：以下程序中，是main线程休眠5秒，还是分支线程休眠5秒？  
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        MyThread t = new MyThread();  
-        t.setName("t");  
-        t.start();  
-  
-        try {  
-            // 这行代码并不是让t线程睡眠，而是让当前线程睡眠。  
-            // 当前线程是main线程。  
-            t.sleep(100); // 等同于：Thread.sleep(100);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-  
-        for (int i = 0; i < 5; i++) {  
-            System.out.println(Thread.currentThread().getName() + "===>" + i);  
-        }  
+  public static void main(String[] args) {  
+    MyThread t = new MyThread();  
+    t.setName("t");  
+    t.start();  
+
+    try {  
+      // 这行代码并不是让t线程睡眠，而是让当前线程睡眠。  
+      // 当前线程是main线程。  
+      t.sleep(100); // 等同于：Thread.sleep(100);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+
+    for (int i = 0; i < 5; i++) {  
+      System.out.println(Thread.currentThread().getName() + "===>" + i);  
+    }  
+  }  
 }  
-  
+
 class MyThread extends Thread {  
-    @Override  
-    public void run(){  
-        for (int i = 0; i < 5; i++) {  
-            System.out.println(Thread.currentThread().getName() + "===>" + i);  
-        }  
+  @Override  
+  public void run(){  
+    for (int i = 0; i < 5; i++) {  
+      System.out.println(Thread.currentThread().getName() + "===>" + i);  
     }  
+  }  
 }
 ```
 
@@ -532,86 +325,86 @@ class MyThread extends Thread {
 
 ```java
 package com.powernode.javase.thread04;  
-  
+
 /**  
  * 怎么中断一个线程的睡眠。（怎么解除线程因sleep导致的阻塞，让其开始抢夺CPU时间片。）  
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        // 创建线程对象并启动  
-        Thread t = new Thread(new Runnable() {  
-            @Override  
-            public void run() {  
-                System.out.println(Thread.currentThread().getName() + "===> begin");  
-                try {  
-                    // 睡眠一年  
-                    Thread.sleep(1000 * 60 * 60 * 24 * 365);  
-                } catch (InterruptedException e) {  
-                    // 打印异常信息  
-                    //e.printStackTrace();  
-                    System.out.println("知道了，这就起床！");  
-                }  
-                // 睡眠一年之后，起来干活了  
-                System.out.println(Thread.currentThread().getName() + " do some!");  
-            }  
-        });  
-  
-        // 启动线程  
-        t.start();  
-  
-        // 主线程  
-        // 要求：5秒之后，睡眠的Thread-0线程起来干活  
+  public static void main(String[] args) {  
+    // 创建线程对象并启动  
+    Thread t = new Thread(new Runnable() {  
+      @Override  
+      public void run() {  
+        System.out.println(Thread.currentThread().getName() + "===> begin");  
         try {  
-            Thread.sleep(5 * 1000);  
+          // 睡眠一年  
+          Thread.sleep(1000 * 60 * 60 * 24 * 365);  
         } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
+          // 打印异常信息  
+          //e.printStackTrace();  
+          System.out.println("知道了，这就起床！");  
         }  
-        // Thread-0起来干活了。  
-        // 这行代码的作用是终止 t 线程的睡眠。  
-        // interrupt方法是一个实例方法。  
-        // 以下代码含义：t线程别睡了。  
-        // 底层实现原理是利用了：异常处理机制。  
-        // 当调用这个方法的时候，如果t线程正在睡眠，必然会抛出：InterruptedException，然后捕捉异常，终止睡眠。  
-        t.interrupt();  
-  
+        // 睡眠一年之后，起来干活了  
+        System.out.println(Thread.currentThread().getName() + " do some!");  
+      }  
+    });  
+
+    // 启动线程  
+    t.start();  
+
+    // 主线程  
+    // 要求：5秒之后，睡眠的Thread-0线程起来干活  
+    try {  
+      Thread.sleep(5 * 1000);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+    // Thread-0起来干活了。  
+    // 这行代码的作用是终止 t 线程的睡眠。  
+    // interrupt方法是一个实例方法。  
+    // 以下代码含义：t线程别睡了。  
+    // 底层实现原理是利用了：异常处理机制。  
+    // 当调用这个方法的时候，如果t线程正在睡眠，必然会抛出：InterruptedException，然后捕捉异常，终止睡眠。  
+    t.interrupt();  
+
+  }  
 }
 ```
 
 ```java
 package ex_thread;  
-  
+
 public class Int {  
-    public static void main(String[] args) {  
-        People people = new People();  
-        people.setName("Charles");  
-        people.setPriority(Thread.MIN_PRIORITY);  
-        people.start();  
-        try {  
-            Thread.sleep(5000);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }        
-        people.interrupt();  
-    }
+  public static void main(String[] args) {  
+    People people = new People();  
+    people.setName("Charles");  
+    people.setPriority(Thread.MIN_PRIORITY);  
+    people.start();  
+    try {  
+      Thread.sleep(5000);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
+    }        
+    people.interrupt();  
+  }
 }  
-  
+
 class People extends Thread {  
-    @Override  
-    public void run() {  
-        for (int i = 0; i < 10; i++) {  
-            System.out.println(Thread.currentThread().getName()+"在吃包子"+i);  
-        }        
-        System.out.println(Thread.currentThread().getName()+"开始休息");  
-        try {  
-            Thread.sleep(20000);  
-        } catch (InterruptedException e) {  
-            System.out.println(Thread.currentThread().getName()+"的休息被中断");  
-        }        
-        for (int i = 0; i < 10; i++) {  
-            System.out.println(Thread.currentThread().getName()+"在继续吃包子"+i);  
-        }    
-    }
+  @Override  
+  public void run() {  
+    for (int i = 0; i < 10; i++) {  
+      System.out.println(Thread.currentThread().getName()+"在吃包子"+i);  
+    }        
+    System.out.println(Thread.currentThread().getName()+"开始休息");  
+    try {  
+      Thread.sleep(20000);  
+    } catch (InterruptedException e) {  
+      System.out.println(Thread.currentThread().getName()+"的休息被中断");  
+    }        
+    for (int i = 0; i < 10; i++) {  
+      System.out.println(Thread.currentThread().getName()+"在继续吃包子"+i);  
+    }    
+  }
 }
 ```
 
@@ -621,42 +414,42 @@ stop是不能成功终止线程
 
 ```java
 package com.powernode.javase.thread05;  
-  
+
 /**  
  * 一个线程 t 一直在正常的运行，如何终止 t 线程的执行！！！！  
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        Thread t = new Thread(new MyRunnable());  
-        t.setName("t");  
-        t.start();  
-  
-        // 5秒之后，t线程停止！  
-        try {  
-            Thread.sleep(5000);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-        // 终止线程t的执行。  
-        // 从java2开始就不建议使用了，因为这种方式是强行终止线程。容易导致数据丢失。  
-        // 没有保存的数据，在内存中的数据一定会因为此方式导致丢失。  
-        t.stop();  
+  public static void main(String[] args) {  
+    Thread t = new Thread(new MyRunnable());  
+    t.setName("t");  
+    t.start();  
+
+    // 5秒之后，t线程停止！  
+    try {  
+      Thread.sleep(5000);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+    // 终止线程t的执行。  
+    // 从java2开始就不建议使用了，因为这种方式是强行终止线程。容易导致数据丢失。  
+    // 没有保存的数据，在内存中的数据一定会因为此方式导致丢失。  
+    t.stop();  
+  }  
 }  
-  
+
 class MyRunnable implements Runnable {  
-  
-    @Override  
-    public void run() {  
-        for (int i = 0; i < 10; i++) {  
-            try {  
-                Thread.sleep(1000);  
-            } catch (InterruptedException e) {  
-                throw new RuntimeException(e);  
-            }  
-            System.out.println(Thread.currentThread().getName() + "===>" + i);  
-        }  
+
+  @Override  
+  public void run() {  
+    for (int i = 0; i < 10; i++) {  
+      try {  
+        Thread.sleep(1000);  
+      } catch (InterruptedException e) {  
+        throw new RuntimeException(e);  
+      }  
+      System.out.println(Thread.currentThread().getName() + "===>" + i);  
     }  
+  }  
 }
 ```
 
@@ -664,55 +457,55 @@ class MyRunnable implements Runnable {
 
 ```java
 package com.powernode.javase.thread06;  
-  
+
 /**  
  * 如何合理的，正常的方式终止一个线程的执行？  
  *      一般我们在实际开发中会使用打标记的方式，来终止一个线程的执行。  
  */  
 public class ThreadTest {  
-    public static void main(String[] args) {  
-        // 创建线程  
-        MyRunnable mr = new MyRunnable();  
-        Thread t = new Thread(mr);  
-        t.setName("t");  
-        // 启动线程  
-        t.start();  
-  
-        // 5秒之后终止线程t的执行  
-        try {  
-            Thread.sleep(5000);  
-        } catch (InterruptedException e) {  
-            throw new RuntimeException(e);  
-        }  
-  
-        //终止线程t的执行。  
-        mr.run = false;  
+  public static void main(String[] args) {  
+    // 创建线程  
+    MyRunnable mr = new MyRunnable();  
+    Thread t = new Thread(mr);  
+    t.setName("t");  
+    // 启动线程  
+    t.start();  
+
+    // 5秒之后终止线程t的执行  
+    try {  
+      Thread.sleep(5000);  
+    } catch (InterruptedException e) {  
+      throw new RuntimeException(e);  
     }  
+
+    //终止线程t的执行。  
+    mr.run = false;  
+  }  
 }  
-  
+
 class MyRunnable implements Runnable {  
-    /**  
+  /**  
      * 是否继续执行的标记。  
      * true表示：继续执行。  
      * false表示：停止执行。  
      */  
-    boolean run = true;  
-  
-    @Override  
-    public void run() {  
-        for (int i = 0; i < 10; i++) {  
-            if(run){  
-                System.out.println(Thread.currentThread().getName() + "==>" + i);  
-                try {  
-                    Thread.sleep(1000);  
-                } catch (InterruptedException e) {  
-                    throw new RuntimeException(e);  
-                }  
-            }else{  
-                return;  
-            }  
+  boolean run = true;  
+
+  @Override  
+  public void run() {  
+    for (int i = 0; i < 10; i++) {  
+      if(run){  
+        System.out.println(Thread.currentThread().getName() + "==>" + i);  
+        try {  
+          Thread.sleep(1000);  
+        } catch (InterruptedException e) {  
+          throw new RuntimeException(e);  
         }  
+      }else{  
+        return;  
+      }  
     }  
+  }  
 }
 ```
 
@@ -727,7 +520,7 @@ join也可以指定join的时间，就是只把CPU让给某个进程最多一段
 
 ```java
 package com.powernode.javase.thread09;  
-  
+
 /**  
  * 线程合并  
  *      1. 调用join()方法完成线程合并。  
@@ -745,47 +538,47 @@ package com.powernode.javase.thread09;
  *          第四：sleep方法的阻塞解除条件？时间过去了。 join方法的阻塞解除条件？调用join方法的那个线程结束了。  
  */  
 public class ThreadTest {  
-    public static void main(String[] args) throws InterruptedException {  
-        Thread t = new MyThread();  
-        t.setName("t");  
-        t.start();  
-  
-        System.out.println("main begin");  
-  
-        // 合并线程  
-        // t合并到main线程中。  
-        // main线程受到阻塞（当前线程受到阻塞）  
-        // t线程继续执行，直到t线程结束。main线程阻塞解除（当前线程阻塞解除）。  
-        //t.join();  
-  
-        // join方法也可以有参数，参数是毫秒。  
-        // 以下代码表示 t 线程合并到 当前线程，合并时长 10 毫秒  
-        // 阻塞当前线程 10 毫秒  
-        //t.join(10);  
-  
-        // 调用这个方法，是想让当前线程受阻10秒  
-        // 但不一定，如果在指定的阻塞时间内，t线程结束了。当前线程阻塞也会解除。  
-        t.join(1000 * 10);  
-  
-        // 当前线程休眠10秒。  
-        //Thread.sleep(1000 * 10);  
-  
-        // 主线程  
-        for (int i = 0; i < 10; i++) {  
-            System.out.println(Thread.currentThread().getName() + "==>" + i);  
-        }  
-  
-        System.out.println("main over");  
+  public static void main(String[] args) throws InterruptedException {  
+    Thread t = new MyThread();  
+    t.setName("t");  
+    t.start();  
+
+    System.out.println("main begin");  
+
+    // 合并线程  
+    // t合并到main线程中。  
+    // main线程受到阻塞（当前线程受到阻塞）  
+    // t线程继续执行，直到t线程结束。main线程阻塞解除（当前线程阻塞解除）。  
+    //t.join();  
+
+    // join方法也可以有参数，参数是毫秒。  
+    // 以下代码表示 t 线程合并到 当前线程，合并时长 10 毫秒  
+    // 阻塞当前线程 10 毫秒  
+    //t.join(10);  
+
+    // 调用这个方法，是想让当前线程受阻10秒  
+    // 但不一定，如果在指定的阻塞时间内，t线程结束了。当前线程阻塞也会解除。  
+    t.join(1000 * 10);  
+
+    // 当前线程休眠10秒。  
+    //Thread.sleep(1000 * 10);  
+
+    // 主线程  
+    for (int i = 0; i < 10; i++) {  
+      System.out.println(Thread.currentThread().getName() + "==>" + i);  
     }  
+
+    System.out.println("main over");  
+  }  
 }  
-  
+
 class MyThread extends Thread {  
-    @Override  
-    public void run() {  
-        for (int i = 0; i < 10; i++) {  
-            System.out.println(Thread.currentThread().getName() + "==>" + i);  
-        }  
+  @Override  
+  public void run() {  
+    for (int i = 0; i < 10; i++) {  
+      System.out.println(Thread.currentThread().getName() + "==>" + i);  
     }  
+  }  
 }
 ```
 
@@ -805,36 +598,36 @@ class MyThread extends Thread {
 
 ```java
 package ex_thread;  
-  
+
 public class Ex02 {  
-    public static void main(String[] args) throws InterruptedException {  
-        Thread thread = new Thread(new Child());  
-  
-        for(int i = 0;i < 10;i++){  
-            System.out.println("hi"+i);  
-            Thread.sleep(1000);  
-            if(i == 5){  
-                thread.start();  
-                thread.join();  
-            }        
-        }  
-    }
+  public static void main(String[] args) throws InterruptedException {  
+    Thread thread = new Thread(new Child());  
+
+    for(int i = 0;i < 10;i++){  
+      System.out.println("hi"+i);  
+      Thread.sleep(1000);  
+      if(i == 5){  
+        thread.start();  
+        thread.join();  
+      }        
+    }  
+  }
 }  
-  
+
 class Child implements Runnable {  
-    @Override  
-    public void run(){  
-        for(int i=0;i<10;i++){  
-            System.out.println("hello"+i);  
-            try{  
-                Thread.sleep(50);  
-            }catch(InterruptedException e){  
-                e.printStackTrace();  
-            }        
-        }    
-    }
+  @Override  
+  public void run(){  
+    for(int i=0;i<10;i++){  
+      System.out.println("hello"+i);  
+      try{  
+        Thread.sleep(50);  
+      }catch(InterruptedException e){  
+        e.printStackTrace();  
+      }        
+    }    
+  }
 }  
-  
+
 //hi0  
 //hi1  
 //hi2  
@@ -873,7 +666,7 @@ class Child implements Runnable {
 
 ```java
 package com.powernode.javase.thread10;  
-  
+
 /**  
  * 关于线程生命周期中的JVM调度：  
  *      1. 优先级  
@@ -882,45 +675,45 @@ package com.powernode.javase.thread10;
  *      4. 默认情况下，一个线程的优先级是 5.  
  *      5. 最低是1，最高是10.  
  */
- public class ThreadTest {  
-    public static void main(String[] args) {  
-        
-        System.out.println("最低优先级：" + Thread.MIN_PRIORITY);  
-        System.out.println("最高优先级：" + Thread.MAX_PRIORITY);  
-        System.out.println("默认优先级：" + Thread.NORM_PRIORITY);  
-  
-        // 获取main线程的优先级  
-        Thread mainThread = Thread.currentThread();  
-        System.out.println("main线程的优先级：" + mainThread.getPriority()); // 5  
-  
-        // 设置优先级  
-        mainThread.setPriority(Thread.MAX_PRIORITY);  
-        System.out.println("main线程的优先级：" + mainThread.getPriority()); // 10
-          
-  
-        // 创建两个线程  
-        Thread t1 = new MyThread();  
-        t1.setName("biiiiiiiiig");  
-  
-        Thread t2 = new MyThread();  
-        t2.setName("small");  
-  
-        t1.setPriority(Thread.MAX_PRIORITY);  
-        t2.setPriority(Thread.MIN_PRIORITY);  
-  
-        t1.start();  
-        t2.start();  
-    }  
+public class ThreadTest {  
+  public static void main(String[] args) {  
+
+    System.out.println("最低优先级：" + Thread.MIN_PRIORITY);  
+    System.out.println("最高优先级：" + Thread.MAX_PRIORITY);  
+    System.out.println("默认优先级：" + Thread.NORM_PRIORITY);  
+
+    // 获取main线程的优先级  
+    Thread mainThread = Thread.currentThread();  
+    System.out.println("main线程的优先级：" + mainThread.getPriority()); // 5  
+
+    // 设置优先级  
+    mainThread.setPriority(Thread.MAX_PRIORITY);  
+    System.out.println("main线程的优先级：" + mainThread.getPriority()); // 10
+
+
+    // 创建两个线程  
+    Thread t1 = new MyThread();  
+    t1.setName("biiiiiiiiig");  
+
+    Thread t2 = new MyThread();  
+    t2.setName("small");  
+
+    t1.setPriority(Thread.MAX_PRIORITY);  
+    t2.setPriority(Thread.MIN_PRIORITY);  
+
+    t1.start();  
+    t2.start();  
+  }  
 } 
-  
+
 class MyThread extends Thread {  
-    @Override  
-    public void run() {  
-        for (int i = 0; i < 1000; i++) {  
-            System.out.println(Thread.currentThread().getName() + "==>" + i);  
-            
-        }  
+  @Override  
+  public void run() {  
+    for (int i = 0; i < 1000; i++) {  
+      System.out.println(Thread.currentThread().getName() + "==>" + i);  
+
     }  
+  }  
 }
 ```
 
@@ -933,33 +726,33 @@ class MyThread extends Thread {
 
 ```java
 package ex_thread;  
-  
+
 public class Yield{  
-    public static void main(String[] args) throws InterruptedException{  
-        T1 t1 = new T1();  
-        t1.start();  
-        for(int i=0;i<10;i++){  
-            System.out.println(Thread.currentThread().getName()+i);  
-            Thread.sleep(100);  
-            if(i == 5){  
-                t1.join();  
-            }        
-        }    
-    }
+  public static void main(String[] args) throws InterruptedException{  
+    T1 t1 = new T1();  
+    t1.start();  
+    for(int i=0;i<10;i++){  
+      System.out.println(Thread.currentThread().getName()+i);  
+      Thread.sleep(100);  
+      if(i == 5){  
+        t1.join();  
+      }        
+    }    
+  }
 }  
-  
+
 class T1 extends Thread{  
-    @Override  
-    public void run() {  
-        for(int i=0;i<10;i++){  
-            System.out.println(Thread.currentThread().getName()+i);  
-            try{  
-                Thread.sleep(100);  
-            }catch(InterruptedException e){  
-                throw new RuntimeException(e);  
-            }        
-        }    
-    }
+  @Override  
+  public void run() {  
+    for(int i=0;i<10;i++){  
+      System.out.println(Thread.currentThread().getName()+i);  
+      try{  
+        Thread.sleep(100);  
+      }catch(InterruptedException e){  
+        throw new RuntimeException(e);  
+      }        
+    }    
+  }
 }
 ```
 
@@ -1280,11 +1073,11 @@ class MyThread implements Runnable{
   }  
   @Override  
   public void run() {  
-    //        System.out.println(Thread.currentThread().getName() + "启动");  
+    //  System.out.println(Thread.currentThread().getName() + "启动");  
     while(true){  
       synchronized(obj){  
         while(currentThreadId != threadId){  
-          //                    System.out.println(Thread.currentThread().getName() + "等待");  
+          // System.out.println(Thread.currentThread().getName() + "等待");  
           try {  
             obj.wait();  
           } catch (InterruptedException e) {  

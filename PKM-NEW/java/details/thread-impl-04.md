@@ -16,28 +16,28 @@ public class ThreadTest {
   public static void main(String[] args) {  
 
     // 创建一个线程池对象（线程池中有3个线程）  
-    ExecutorService executorService = Executors.newFixedThreadPool(3);  
+    ExecutorService executorService = Executors.newFixedThreadPool(3);
 
     // 将任务交给线程池（你不需要触碰到这个线程对象，你只需要将要处理的任务交给线程池即可。）  
-    executorService.submit(new Runnable() {  
-      @Override  
-      public void run() {  
-        for (int i = 0; i < 10; i++) {  
-          System.out.println(Thread.currentThread().getName() + "--->" + i);  
-        }  
-      }  
-    });  
-    executorService.submit(new Runnable() {  
-      @Override  
-      public void run() {  
-        for (int i = 0; i < 10; i++) {  
-          System.out.println(Thread.currentThread().getName() + "--->" + i);  
-        }  
-      }  
-    });  
+    executorService.submit(new Runnable() {
+      @Override
+      public void run() {
+        for (int i = 0; i < 10; i++) {
+          System.out.println(Thread.currentThread().getName() + "--->" + i);
+        }
+      }
+    });
+    executorService.submit(new Runnable() {
+      @Override
+      public void run() {
+        for (int i = 0; i < 10; i++) {
+          System.out.println(Thread.currentThread().getName() + "--->" + i);
+        }
+      }
+    });
 
-    // 最后记得关闭线程池  
-    executorService.shutdown();  
+    // 最后记得关闭线程池
+    executorService.shutdown();
   }  
 }
 ```
