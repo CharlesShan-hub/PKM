@@ -235,7 +235,7 @@
 	* 397~401：（重点）抽象类
 	* 402~411：（重点）接口
 	* 412~424：（重点，难点）四种内部类
-* 第 11 章：[enum](../../python/library/enum/enum.md)，[[notes/javase/stage2/注解]]
+* 第 11 章：[enum](../../../pkm/ai/python/library/enum/enum.md)，[[../notes/javase/stage2/annotation]]
 	* 423：枚举引出
 	* 424：自定义类实现枚举
 	* 425：enum 关键字实现枚举
@@ -244,7 +244,7 @@
 	* 432~434：注解
 	* 435：（了解就行）元注解
 	* 436~442：[[notes/javase/stage2/第十一章作业|第十一章作业]] 以及内容梳理
-* 第 12 章：[exception](../../python/notes/exception.md)
+* 第 12 章：[exception](../../../pkm/ai/python/notes/exception.md)
 	* 443~444：异常处理入门
 	* 445：（重点）异常体系图
 	* 446~452：try catch
@@ -252,7 +252,7 @@
 	* 454：自定义异常
 	* 455：throw 和 throws 对比
 	* 456~458：[[notes/javase/stage2/第十二章作业|第十二章作业]]
-* 第 13 章：[WrapperClass](../notes/javase/stage2/WrapperClass.md)，[String](../notes/javase/stage2/String.md)，[Math](../notes/javase/stage2/Math.md)，[Arrays](../notes/javase/stage2/Arrays.md)，[BigIntegerBigDecimal](../notes/javase/stage2/BigIntegerBigDecimal.md)，[[notes/javase/stage2/日期类|日期类]]
+* 第 13 章：[WrapperClass](../notes/javase/stage2/WrapperClass.md)，[String](../notes/javase/stage2/String.md)，[Math](../notes/javase/stage2/Math.md)，[Arrays](../notes/javase/stage2/Arrays.md)，[BigIntegerBigDecimal](../notes/javase/stage2/BigIntegerBigDecimal.md)，[[../notes/javase/stage2/date|date]]
 	* 459~464：包装类
 	* 465~473：（重要）String
 	* 474~477：（重要）StringBuffer
@@ -295,7 +295,7 @@
 	* 564：泛型的继承和通配符
 	* 565～566：[[notes/javase/stage2/第十五章作业|第十五章作业]]+JUnit
 * 第 16 章：（坦克大战项目第一部分）[Swing](../notes/javase/stage2/Swing.md)
-* 第 17 章：[[../notes/javase/stage2/multiy-threading|线程]]
+* 第 17 章：[multiy-threading](../notes/javase/stage2/multiy-threading.md)
 	* 589~580：线程与进程的一些概念
 	* 581：线程案例
 	* 582~586：线程两种创建方式
@@ -325,11 +325,11 @@
 	* 638~640：Properties
 	* 641~643：作业
 * 第 20 章：（坦克大战项目第三部分）
-* 第 21 章：[[notes/javase/stage3/网络|网络]]
+* 第 21 章：[[../notes/javase/stage3/network|network]]
 	* 661~665：网络相关概念；IP；域名，端口号，TCP/IP协议栈，TCP、UDP
 	* 666：INetAddress类
 	* 667~670：TCP编程实践
-* 动力节点补充：[[notes/javase/powerpoint/jvm]]，[[notes/javase/powerpoint/principle]]，[[notes/javase/powerpoint/uml]]，[[notes/javase/powerpoint/re]]，[[notes/javase/powerpoint/uuid]]，[[notes/javase/powerpoint/system|system]]，[reflect](../notes/javase/powerpoint/reflect.md)，[[notes/javase/powerpoint/lambda]]，[stream](../notes/javase/powerpoint/stream.md)
+* 动力节点补充：[[notes/javase/powerpoint/jvm]]，[[notes/javase/powerpoint/principle]]，[[notes/javase/powerpoint/uml]]，[[notes/javase/powerpoint/re]]，[[notes/javase/powerpoint/uuid]]，[[../notes/javase/powerpoint/System|System]]，[reflect](../notes/javase/powerpoint/reflect.md)，[[notes/javase/powerpoint/lambda]]，[stream](../notes/javase/powerpoint/stream.md)
 
 ### MySQL
 
@@ -580,8 +580,8 @@
 196. Docker-核心-自定义镜像  
 197. Docker-核心-网络  
 198. Docker-部署-服务端&前端部署  
-199. Docker-部署-DockerCompose  
-200. Web开发-完结  
+199. Docker-部署-DockerCompose
+200. Web开发-完结
 
 ### Springboot
 

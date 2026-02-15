@@ -3,20 +3,75 @@
 
 ![image text](./resources/title_small.webp)
 
-* 理论学习
-	* [Computer Network](KnowledgeMap/计算机科学/计算机网络/README.md)
-	* [Data Structure](KnowledgeMap/计算机科学/数据结构/README.md)
-	* [Computer Organization](KnowledgeMap/计算机科学/计算机组成原理/README.md)
-	* [Operation System](KnowledgeMap/计算机科学/操作系统/README.md)
-	* [Digital Image Processing](PKM-NEW/dip/README.md)
-* 编程语言
-	* [C](PKM-NEW/c/README.md)
-	- [Python](PKM-NEW/python/README.md)
-	- [Java](PKM-NEW/java/README.md)
-* 技术工具
-	* [Markdown](PKM-NEW/markdown/README.md)
-	* [JSON](PKM-NEW/json/README.md)
-
+* 💻 Practise
+	* Backend
+		* java
+			* [javase](PKM-NEW/java/notes/javase/README.md)
+			* [Design Pattern](PKM-NEW/java/notes/design-pattern/README.md)
+		* database
+			* sql
+			* [jdbc](PKM-NEW/java/notes/jdbc/jdbc.md)
+			* redis
+			* MongoDB
+			* zookeeper
+		* javaweb
+			* Spring
+			* MyBatis
+			* MyBatisPlus
+			* SpringBoot
+		* middleware
+			* RabbitMQ
+			* RocketMQ
+			* Elasticsearch
+		* microservices
+			* SpringCloud
+		* devops
+			* [git](pkm/backend/devops/git/README.md)
+			* maven
+			* [docker](pkm/backend/devops/docker/README.md)
+			* k8s
+			* [linux](pkm/backend/devops/linux/README.md)
+		* tools
+			* [markdown](pkm/backend/tools/markdown/README.md)
+			* [json](pkm/backend/tools/json/README.md)
+			* [yaml](pkm/backend/tools/yaml/README.md)
+			* [Regular Expression](pkm/backend/tools/regular-expression/README.md)
+	* Frontend
+		* vue
+		* [electron](pkm/frontend/electron/README.md)
+	* Artificial Intelligence
+		* [Python](pkm/ai/python/README.md)
+		* [Machine Learning](pkm/ai/machine-learning/README.md)
+		* [Knowledge Graph](pkm/ai/knowledge-graph/README.md)
+	* Embedded
+		* [c](pkm/embedded/c/README.md)
+		* [cpp](pkm/embedded/cpp/README.md)
+		* [rust](pkm/embedded/rust/README.md)
+		* [esp8266](pkm/embedded/esp8266/README.md)
+	* Others
+		* [minecraft](pkm/others/minecraft/README.md)
+		* [ethereum](pkm/others/ethereum/README.md)
+		* [Vehicle Diagnostics](pkm/others/vehicle-diagnostics/README.md)
+* 📖 Theory
+	* Math
+		* [Probability](pkm/math/probability/README.md)
+		* [Calculus](pkm/math/calculus/README.md)
+		* [Linear Algebra](pkm/math/linear-algebra/README.md)
+	* Computer Science
+		* [Computer Network](pkm/theory/computer-network/README.md)
+		* [Data Structure](pkm/theory/data-structure/README.md)
+		* [Computer Organization](pkm/theory/computer-organization/README.md)
+		* [Operation System](pkm/theory/operation-system/README.md)
+		* [Digital Image Processing](pkm/theory/digital-image-processing/README.md)
+* 🎨 Hobbies and Life
+	* Life Skill
+		* [Driving License](pkm/hobbies/life-skill/driving-license/README.md)
+	* Humanities
+		* [Modern China](pkm/hobbies/humanities/modern-china/README.md)
+		* [Mao Zedong Thought](pkm/hobbies/humanities/mao-zedong-thought/README.md)
+		* [Ideological Cultivation](pkm/hobbies/humanities/ideological-cultivation/README.md)
+		* [Marxism](pkm/hobbies/humanities/marxism/README.md)
+		* [Social Psychology](pkm/hobbies/humanities/social-psychology/README.md)
 ---
 Todo
 * dip更多的滤波器，从飞书上边弄下来

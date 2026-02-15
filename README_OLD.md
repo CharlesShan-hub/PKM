@@ -14,12 +14,12 @@
 
 **[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 基础理论/专题**
 
-- 🌟[计算机组成原理](./KnowledgeMap/计算机科学/计算机组成原理/README.md)
+- 🌟[计算机组成原理](pkm/theory/computer-organization/README.md)
 - 🐦[计算机体系结构](./KnowledgeMap/计算机科学/计算机体系结构/README.md)
-- 🌟[操作系统](./KnowledgeMap/计算机科学/操作系统/README.md)
-- 🗃[数据库](./KnowledgeMap/计算机科学/数据库/README.md)
-- 💎[计算机网络](./KnowledgeMap/计算机科学/计算机网络/README.md)
-- 🌟[数据结构](./KnowledgeMap/计算机科学/数据结构/README.md)
+- 🌟[操作系统](pkm/theory/operation-system/README.md)
+- 🗃[数据库](PKM-NEW/数据库/README.md)
+- 💎[计算机网络](pkm/theory/computer-network/README.md)
+- 🌟[数据结构](pkm/theory/data-structure/README.md)
 - 模拟电路
 - 数字电路
 - 数字系统设计
@@ -76,8 +76,8 @@
 
 **全能语言**
 
-* [C](PKM-NEW/c/README.md)
-- [Python](PKM-NEW/python/README.md)
+* [C](pkm/embedded/c/README.md)
+- [Python](pkm/ai/python/README.md)
 - [Java](PKM-NEW/java/README.md)
 - C++
 - 🔗[Go](https://go.dev/doc/)
@@ -92,7 +92,7 @@
 - 🔗[Verilog](https://www.runoob.com/w3cnote/verilog-tutorial.html)
 
 **底层开发**
-- ✏️[c](PKM-NEW/c/README.md)
+- ✏️[c](pkm/embedded/c/README.md)
 - 🔗[cmake](https://cmake.org/)
 
 **脚本**
@@ -122,9 +122,9 @@
 - 🔗[Solidity](https://solidity-cn.readthedocs.io/zh/develop/)
 
 **标记**
-- ⭐️[JSON](PKM-NEW/json/README.md)
+- ⭐️[JSON](pkm/backend/tools/json/README.md)
 - ✏️[YAML](./KnowledgeMap/计算机科学/YAML/README.md)
-- ⭐️[Markdown](PKM-NEW/markdown/README.md)
+- ⭐️[Markdown](pkm/backend/tools/markdown/README.md)
 - 🔗[HTML](https://www.runoob.com/html/html5-intro.html)
 - 🔗[CSS](https://www.runoob.com/css3/css3-tutorial.html)
 - 🔗[toml](https://toml.io/cn/)
@@ -143,14 +143,14 @@
 
 **[计算机科学](./KnowledgeMap/计算机科学/README.md)** **—— 软件与技术**
 
-- ⭐️[以太坊](./KnowledgeMap/计算机科学/以太坊/README.md)
+- ⭐️[以太坊](pkm/others/ethereum/README.md)
 - 🔗[Arduino](https://www.arduino.cn/thread-1066-1-1.html)
-- ✏️[ESP8266](./KnowledgeMap/计算机科学/ESP8266/README.md)
+- ✏️[ESP8266](pkm/embedded/esp8266/README.md)
 - ✏️[Git](./KnowledgeMap/计算机科学/Git/README.md)
 - ✏️[Vue](./KnowledgeMap/计算机科学/Vue/README.md)
 - ✏️[AI](./KnowledgeMap/计算机科学/AI/README.md)
 - ✏️[Pytorch](./KnowledgeMap/计算机科学/Pytorch/README.md)
-- ✏️[Minecraft](./KnowledgeMap/计算机科学/Minecraft/README.md)
+- ✏️[Minecraft](pkm/others/minecraft/README.md)
 - ✏️[PS](./KnowledgeMap/计算机科学/PS/README.md)
 - Nginx
 - docker
@@ -165,9 +165,9 @@
 
 **[数学](./KnowledgeMap/数学/README.md)**
 
-- ⭐️[高等数学](./KnowledgeMap/数学/高等数学/README.md)
-- ✏️[线性代数](./KnowledgeMap/数学/线性代数/README.md)
-- ✏️[概率论与数理统计](./KnowledgeMap/数学/概率论与数理统计/README.md)
+- ⭐️[高等数学](pkm/math/calculus/README.md)
+- ✏️[线性代数](pkm/math/linear-algebra/README.md)
+- ✏️[概率论与数理统计](pkm/math/probability/README.md)
 - 抽象代数
 
 
@@ -175,13 +175,13 @@
 
 - 西方哲学史
 - 中国哲学史
-- ⭐️[马克思主义原理](./KnowledgeMap/文史哲/马克思主义原理/README.md)
-- ⭐️[毛泽东思想](./KnowledgeMap/文史哲/毛泽东思想和中国特色社会主义理论体系概论/README.md)
-- ⭐️[中国特色社会主义理论体系概论](./KnowledgeMap/文史哲/毛泽东思想和中国特色社会主义理论体系概论/README.md)
-- ⭐️[近代史纲要](./KnowledgeMap/文史哲/近代史纲要/README.md)
-- ⭐️[思想道德修养](./KnowledgeMap/文史哲/思想道德修养/README.md)
+- ⭐️[马克思主义原理](pkm/hobbies/humanities/marxism/README.md)
+- ⭐️[毛泽东思想](pkm/hobbies/humanities/mao-zedong-thought/README.md)
+- ⭐️[中国特色社会主义理论体系概论](pkm/hobbies/humanities/mao-zedong-thought/README.md)
+- ⭐️[近代史纲要](pkm/hobbies/humanities/modern-china/README.md)
+- ⭐️[思想道德修养](pkm/hobbies/humanities/ideological-cultivation/README.md)
 - 英语
-- ✏️[社会心理学](./KnowledgeMap/文史哲/社会心理学/README.md)
+- ✏️[社会心理学](pkm/hobbies/humanities/social-psychology/README.md)
 - ⭐️[弗兰肯斯坦](./KnowledgeMap/读书/弗兰肯斯坦/README.md)
 
 
@@ -200,7 +200,7 @@
 
 **生活**
 
-- [驾照考试](./KnowledgeMap/生活/驾照考试/README.md)
+- [驾照考试](pkm/hobbies/life-skill/driving-license/README.md)
 
 
 * 🗃：专题
@@ -244,33 +244,7 @@
    2. 会兼顾哲学史，但不是重点。
    3. 文科与哲学都归纳于文史哲目录中。
 4. “**艺术**是衣服”。
-   1. PKM艺术部分为画龙点睛部分，作用是锦上添花，而不是雪中送炭。
-
-
-
-## 零碎专题
-
-**正则表达式**
-- [正则表达式博客](https://zhuanlan.zhihu.com/p/58110403)
-- [正则表达式可视化](https://regexper.com/)
-- [正则表达式可视化2](https://blog.robertelder.org/regular-expression-visualizer/)
-
-**设计模式**
-- 待补充
-Matlab资源：[公众号](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3NDc0NzQzMg==&action=getalbum&album_id=2393156468570226689&scene=173&from_msgid=2247485413&from_itemidx=1&count=3&nolastread=1#wechat_redirect)
-
-人工智能相关框架梳理：
-
-* Python
-  * tensorflow：
-    * 官网：https://www.tensorflow.org/overview/?hl=zh-cn
-  * keras
-    * tensorflow的进一步封装
-    * 官网：https://keras.io/getting_started/
-  * 
-* Java
-* Julia
-* JS
+   5. PKM艺术部分为画龙点睛部分，作用是锦上添花，而不是雪中送炭。
 
 ## 项目逻辑
 
