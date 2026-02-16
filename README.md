@@ -10,7 +10,7 @@
 			* [Design Pattern](pkm/backend/java/design-pattern/README.md)
 		* database
 			* sql
-			* [jdbc](PKM-NEW/java/notes/jdbc/jdbc.md)
+			* [jdbc](pkm/backend/database/jdbc/jdbc.md)
 			* redis
 			* MongoDB
 			* zookeeper
@@ -27,7 +27,7 @@
 			* SpringCloud
 		* devops
 			* [git](pkm/backend/devops/git/README.md)
-			* maven
+			* [maven](pkm/backend/devops/maven/maven.md)
 			* [docker](pkm/backend/devops/docker/README.md)
 			* k8s
 			* [linux](pkm/backend/devops/linux/README.md)

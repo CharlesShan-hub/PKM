@@ -362,7 +362,7 @@
 
 > 按照动力节点往年视频学习（百度网盘）
 
-* [[jdbc]]
+* [[../../../pkm/backend/database/jdbc/jdbc]]
 
 ### JavaWeb
 
@@ -404,7 +404,7 @@
 	28. Vue-常用指令-v-model与v-on    👌
 	29. Ajax-入门 👌
 	30. Ajax-案例 👌
-* 第二部分：后端Web基础（4天）：[[maven|maven]]
+* 第二部分：后端Web基础（4天）：[[../../../pkm/backend/devops/maven/maven|maven]]
 	31. Maven-课程介绍  👌
 	32. Maven-概述-介绍&安装  👌
 	33. Maven-IDEA集成  👌
