@@ -6,23 +6,23 @@
 * 💻 Practise
 	* Backend
 		* java
-			* [javase](PKM-NEW/java/notes/javase/README.md)
-			* [Design Pattern](PKM-NEW/java/notes/design-pattern/README.md)
+			* [javase](pkm/backend/java/javase/README.md)
+			* [Design Pattern](pkm/backend/java/design-pattern/README.md)
 		* database
 			* sql
 			* [jdbc](PKM-NEW/java/notes/jdbc/jdbc.md)
 			* redis
 			* MongoDB
 			* zookeeper
-		* javaweb
+		* java web
 			* Spring
 			* MyBatis
 			* MyBatisPlus
-			* SpringBoot
+			* [SpringBoot](pkm/backend/javaweb/springboot/README.md)
 		* middleware
 			* RabbitMQ
 			* RocketMQ
-			* Elasticsearch
+			* ElasticSearch
 		* microservices
 			* SpringCloud
 		* devops
@@ -61,7 +61,8 @@
 		* [Computer Network](pkm/theory/computer-network/README.md)
 		* [Data Structure](pkm/theory/data-structure/README.md)
 		* [Computer Organization](pkm/theory/computer-organization/README.md)
-		* [Operation System](pkm/theory/operation-system/README.md)
+		* [Operating System](pkm/theory/operating-system/README.md)
+		* [DataBase](pkm/theory/database/README.md)
 		* [Digital Image Processing](pkm/theory/digital-image-processing/README.md)
 * 🎨 Hobbies and Life
 	* Life Skill
@@ -75,3 +76,6 @@
 ---
 Todo
 * dip更多的滤波器，从飞书上边弄下来
+
+## Resources
+* [Java 全栈知识体系](https://pdai.tech/)

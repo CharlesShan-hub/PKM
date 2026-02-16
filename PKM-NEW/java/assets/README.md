@@ -22,7 +22,7 @@
     * 3：（可跳过）开发场景：SSM（Spring 、 SpringMVC 、 Mybatis）
     * 4：（可跳过）应用领域：后端、客户端、嵌入式
     * 5：（可跳过）之前的PPT，总结成了笔记
-* 第 2 章：[background](../notes/javase/stage1/background.md)，[hello-world](../notes/javase/stage1/hello-world.md)，[remember](../notes/javase/stage1/remember.md)，[Dos](../notes/javase/stage1/Dos.md)
+* 第 2 章：[background](../../../pkm/backend/java/javase/notes/stage1/background.md)，[hello-world](../../../pkm/backend/java/javase/notes/stage1/hello-world.md)，[remember](../../../pkm/backend/java/javase/notes/stage1/remember.md)，[Dos](../../../pkm/backend/java/javase/notes/stage1/Dos.md)
     * 6：（可跳过）什么是程序，Hello World
     * 7：（可跳过）Java 历史：sun、gosling、1995、oak、Oracle；SE、EE、ME
     * 8：（可跳过）Java 特性：OOP、GC 强类型、跨平台、解释型语言
@@ -45,9 +45,9 @@
     * 28：（可跳过）Dos：dir 、cd（切换盘）
     * 29：（可跳过）Dos：tree 、cls 
     * 30：（可跳过）Dos：exit 、 md 、 rd 、 del 、 type 、 copy、 echo、 move
-    * 31~32：（可跳过）[[notes/javase/stage1/第二章作业|第二章作业]]
+    * 31~32：（可跳过）[[../../../pkm/backend/java/javase/notes/stage1/第二章作业|第二章作业]]
     * 33：（可跳过）内容梳理
-* 第 3 章：[variable-and-datatype](../notes/javase/stage1/variable-and-datatype.md)，[package](../notes/javase/stage1/package.md)，[coding](../notes/javase/stage1/coding.md)
+* 第 3 章：[variable-and-datatype](../../../pkm/backend/java/javase/notes/stage1/variable-and-datatype.md)，[package](../../../pkm/backend/java/javase/notes/stage1/package.md)，[coding](../../../pkm/backend/java/javase/notes/stage1/coding.md)
 	* 34：（可跳过）变量原理：类型、名称、值
 	* 35：（可跳过）变量概念：声明、赋值
 	* 36：（可跳过）变量入门：int 、 double 、char 、 String 初识
@@ -59,18 +59,18 @@
 	* 42：（可跳过）浮点类型：float 、 double
 	* 43：浮点数细节：字面量默认是 double
 	* 44：浮点数细节： 0.3 陷阱，不要对小数做相等判断
-	* 45：JavaAPI文档：[[../notes/javase/stage1/package|package]]
+	* 45：JavaAPI文档：[[../../../pkm/backend/java/javase/notes/stage1/package|package]]
 	* 46：（可跳过）char 可以放汉字，一些 sublime 快捷键
 	* 47：字符型细节：ascii 码，char 就是数字 可以直接运算
-	* 48：字符类型的本质：还是char 就是数字，[coding](../notes/javase/stage1/coding.md)
+	* 48：字符类型的本质：还是char 就是数字，[coding](../../../pkm/backend/java/javase/notes/stage1/coding.md)
 	* 49：（可跳过）复习编码
 	* 50：（可跳过）布尔类型，不能用0 或非 0 代表布尔
 	* 51：（重点）自动类型转换
 	* 52～56：强制类型转换+练习
 	* 57～58：基础数据类型与字符串相互转换，包装类
-	* 59～60：[[notes/javase/stage1/第三章作业|第三章作业]]
+	* 59～60：[[../../../pkm/backend/java/javase/notes/stage1/第三章作业|第三章作业]]
 	* 61：（可跳过）章末总结
-* 第 4 章：[operator](../notes/javase/stage1/operator.md)，[keyboard-input](../notes/javase/stage1/keyboard-input.md)
+* 第 4 章：[operator](../../../pkm/backend/java/javase/notes/stage1/operator.md)，[keyboard-input](../../../pkm/backend/java/javase/notes/stage1/keyboard-input.md)
 	* 62：（可跳过）运算符简介
 	* 63：除法、取摸、++
 	* 64：（重点）i++面试题
@@ -86,7 +86,7 @@
 	* 80：运算符优先级（不用特别的背）
 	* 81~83：（可跳过）标识符规则和规范：[[notes/javase/stage1/标识符规则与规范|标识符规则与规范]]
 	* 84：（可跳过）关键字、保留字
-	* 85：（重要）键盘输入：[[../notes/javase/stage1/keyboard-input|keyboard-input]]
+	* 85：（重要）键盘输入：[[../../../pkm/backend/java/javase/notes/stage1/keyboard-input|keyboard-input]]
 	* 86：（重要）进制：[[notes/javase/stage1/进制|进制]]
 	* 87～89：（可跳过）二、八、十六进制转十进制
 	* 90～92：（可跳过）十进制转二、八、十六进制
@@ -95,9 +95,9 @@
 	* 97：位运算思考题
 	* 98：原码、补码、反码
 	* 99～100：（重点）位运算详解
-	* 101：[[notes/javase/stage1/第四章作业|第四章作业]]
+	* 101：[[../../../pkm/backend/java/javase/notes/stage1/第四章作业|第四章作业]]
 	* 102：第三章总结
-* 第 5 章：[branch-control](../notes/javase/stage1/branch-control.md)
+* 第 5 章：[branch-control](../../../pkm/backend/java/javase/notes/stage1/branch-control.md)
 	* 103：顺序控制
 	* 104~113：if 与 if-else，级联 if else，嵌套分支
 	* 114~116：switch基础用法和案例
@@ -114,9 +114,9 @@
 	* 137~142：（重点）break，标签
 	* 143~145：（重点）continue，标签
 	* 146：return
-	* 147~152：[[notes/javase/stage1/第五章作业|第五章作业]]
+	* 147~152：[[../../../pkm/backend/java/javase/notes/stage1/第五章作业|第五章作业]]
 	* 153：总结
-* 第 6 章：[array](../notes/javase/stage1/array.md)，[[notes/javase/stage1/排序|排序]]，[[notes/javase/stage1/查找|查找]]
+* 第 6 章：[array](../../../pkm/backend/java/javase/notes/stage1/array.md)，[[../../../pkm/backend/java/javase/notes/stage1/排序|排序]]，[[../../../pkm/backend/java/javase/notes/stage1/查找|查找]]
 	* 154：（可跳过）感慨
 	* 155：（可跳过）数组的必要性
 	* 156：（可跳过）数组的快速入门
@@ -139,9 +139,9 @@
 	* 180：（可跳过）二维数组练习
 	* 181：（重点）杨辉三角
 	* 182~183：二维数组细节
-	* 184~188：[[notes/javase/stage1/第六章作业|第六章作业]]
+	* 184~188：[[../../../pkm/backend/java/javase/notes/stage1/第六章作业|第六章作业]]
 	* 189：内容梳理
-* 第 7 章：[class-and-object-introduce](../notes/javase/stage1/class-and-object-introduce.md) ，[attributes-and-methods](../notes/javase/stage1/attributes-and-methods.md)，[recursion](../notes/javase/stage1/recursion.md)，[this](../notes/javase/stage1/this.md)
+* 第 7 章：[class-and-object-introduce](../../../pkm/backend/java/javase/notes/stage1/class-and-object-introduce.md) ，[attributes-and-methods](../../../pkm/backend/java/javase/notes/stage1/attributes-and-methods.md)，[recursion](../../../pkm/backend/java/javase/notes/stage1/recursion.md)，[this](../../../pkm/backend/java/javase/notes/stage1/this.md)
 	* 190：（可跳过）鼓励
 	* 191：（可跳过）类与对象的引出
 	* 192：（可跳过）类与对象的概述
@@ -177,9 +177,9 @@
 	* 239~243：构造器
 	* 244：（重点）对象创建流程解析
 	* 245~250：this
-	* 251~261：[[notes/javase/stage1/第七章作业|第七章作业]]
+	* 251~261：[[../../../pkm/backend/java/javase/notes/stage1/第七章作业|第七章作业]]
 	* 262：内容梳理
-* 第 8 章：[package](../notes/javase/stage1/package.md)，[Access Modifiers](stage1/access-modifiers.md)，[encapsulation](../notes/javase/stage1/encapsulation.md)，[extends](../notes/javase/stage1/extends.md)，[super](notes/javase/stage1/super.md)，[polymorphism](../notes/javase/stage1/polymorphism.md)，[Object](../notes/javase/stage1/Object.md)，[[notes/javase/stage1/断点调试]]
+* 第 8 章：[package](../../../pkm/backend/java/javase/notes/stage1/package.md)，[Access Modifiers](../../../pkm/backend/java/javase/notes/stage1/access-modifiers.md)，[encapsulation](../../../pkm/backend/java/javase/notes/stage1/encapsulation.md)，[extends](../../../pkm/backend/java/javase/notes/stage1/extends.md)，[super](../../../pkm/backend/java/javase/notes/stage1/super.md)，[polymorphism](../../../pkm/backend/java/javase/notes/stage1/polymorphism.md)，[Object](../../../pkm/backend/java/javase/notes/stage1/Object.md)，[[../../../pkm/backend/java/javase/notes/stage1/断点调试]]
 	* 263~271：IDEA软件
 	* 272~277：包
 	* 278~279：（重点）访问修饰符
@@ -208,7 +208,7 @@
 	* 326：Object.finalize()
 	* 327~333：断点调试
 	* 334~341：零钱通程序
-	* 342~359：[[notes/javase/stage1/第八章作业|第八章作业]]
+	* 342~359：[[../../../pkm/backend/java/javase/notes/stage1/第八章作业|第八章作业]]
 * 第 9 章：（房屋出租系统）
 	* 360：加油打气
 	* 361：需求
@@ -222,8 +222,8 @@
 	* 369：退出确认
 	* 370：房屋查找
 	* 371：查找
-	* 372：总结，[[notes/javase/stage1/第九章作业|第九章作业]]
-* 第 10 章：[static](../notes/javase/stage2/static.md)，[code-block](../notes/javase/stage2/code-block.md)，[design partten](../notes/design-pattern/README.md)，[final](../notes/javase/stage2/final.md)，[abstract](../notes/javase/stage2/abstract.md)，[interface](../notes/javase/stage2/interface.md)，[inner-class](../notes/javase/stage2/inner-class.md)
+	* 372：总结，[[../../../pkm/backend/java/javase/notes/stage1/第九章作业|第九章作业]]
+* 第 10 章：[static](../../../pkm/backend/java/javase/notes/stage2/static.md)，[code-block](../../../pkm/backend/java/javase/notes/stage2/code-block.md)，[design partten](../../../pkm/backend/java/design-pattern/README.md)，[final](../../../pkm/backend/java/javase/notes/stage2/final.md)，[abstract](../../../pkm/backend/java/javase/notes/stage2/abstract.md)，[interface](../../../pkm/backend/java/javase/notes/stage2/interface.md)，[inner-class](../../../pkm/backend/java/javase/notes/stage2/inner-class.md)
 	* 373~374：类变量的引出
 	* 375：类变量内存布局
 	* 376~377：类变量的使用与细节
@@ -235,7 +235,7 @@
 	* 397~401：（重点）抽象类
 	* 402~411：（重点）接口
 	* 412~424：（重点，难点）四种内部类
-* 第 11 章：[enum](../../../pkm/ai/python/library/enum/enum.md)，[[../notes/javase/stage2/annotation]]
+* 第 11 章：[enum](../../../pkm/ai/python/library/enum/enum.md)，[[../../../pkm/backend/java/javase/notes/stage2/annotation]]
 	* 423：枚举引出
 	* 424：自定义类实现枚举
 	* 425：enum 关键字实现枚举
@@ -243,7 +243,7 @@
 	* 427~431：enum 案例
 	* 432~434：注解
 	* 435：（了解就行）元注解
-	* 436~442：[[notes/javase/stage2/第十一章作业|第十一章作业]] 以及内容梳理
+	* 436~442：[[../../../pkm/backend/java/javase/notes/stage2/第十一章作业|第十一章作业]] 以及内容梳理
 * 第 12 章：[exception](../../../pkm/ai/python/notes/exception.md)
 	* 443~444：异常处理入门
 	* 445：（重点）异常体系图
@@ -251,8 +251,8 @@
 	* 453：throws
 	* 454：自定义异常
 	* 455：throw 和 throws 对比
-	* 456~458：[[notes/javase/stage2/第十二章作业|第十二章作业]]
-* 第 13 章：[WrapperClass](../notes/javase/stage2/WrapperClass.md)，[String](../notes/javase/stage2/String.md)，[Math](../notes/javase/stage2/Math.md)，[Arrays](../notes/javase/stage2/Arrays.md)，[BigIntegerBigDecimal](../notes/javase/stage2/BigIntegerBigDecimal.md)，[[../notes/javase/stage2/date|date]]
+	* 456~458：[[../../../pkm/backend/java/javase/notes/stage2/第十二章作业|第十二章作业]]
+* 第 13 章：[WrapperClass](../../../pkm/backend/java/javase/notes/stage2/WrapperClass.md)，[String](../../../pkm/backend/java/javase/notes/stage2/String.md)，[Math](../../../pkm/backend/java/javase/notes/stage2/Math.md)，[Arrays](../../../pkm/backend/java/javase/notes/stage2/Arrays.md)，[BigIntegerBigDecimal](../../../pkm/backend/java/javase/notes/stage2/BigIntegerBigDecimal.md)，[[../../../pkm/backend/java/javase/notes/stage2/date|date]]
 	* 459~464：包装类
 	* 465~473：（重要）String
 	* 474~477：（重要）StringBuffer
@@ -262,8 +262,8 @@
 	* 485：System
 	* 486：大数表示
 	* 487~492：日期
-	* 493~497：[[notes/javase/stage2/第十三章作业|第十三章作业]]
-* 第 14 章：[[notes/javase/stage2/集合|集合]]
+	* 493~497：[[../../../pkm/backend/java/javase/notes/stage2/第十三章作业|第十三章作业]]
+* 第 14 章：[[../../../pkm/backend/java/javase/notes/stage2/集合|集合]]
 	* 498~499：（背下来）集合的框架图
 	* 500：Collection 接口
 	* 501~503：迭代器（iterator）与增强 for 的方式遍历Collection
@@ -286,16 +286,16 @@
 	* 543：TreeSet
 	* 544：TreeMap
 	* 545~546：Collections 工具类
-	* 547~552：[[notes/javase/stage2/第十四章练习|第十四章练习]]
-* 第 15 章：[generic](../notes/javase/stage2/generic.md)
+	* 547~552：[[../../../pkm/backend/java/javase/notes/stage2/第十四章练习|第十四章练习]]
+* 第 15 章：[generic](../../../pkm/backend/java/javase/notes/stage2/generic.md)
 	* 553~554：泛型的引出
 	* 555~559：泛型类型说明
 	* 560~562：自定义泛型
 	* 562~563：自定义泛型方法
 	* 564：泛型的继承和通配符
-	* 565～566：[[notes/javase/stage2/第十五章作业|第十五章作业]]+JUnit
-* 第 16 章：（坦克大战项目第一部分）[Swing](../notes/javase/stage2/Swing.md)
-* 第 17 章：[multiy-threading](../notes/javase/stage2/multiy-threading.md)
+	* 565～566：[[../../../pkm/backend/java/javase/notes/stage2/第十五章作业|第十五章作业]]+JUnit
+* 第 16 章：（坦克大战项目第一部分）[Swing](../../../pkm/backend/java/javase/notes/stage2/Swing.md)
+* 第 17 章：[multiy-threading](../../../pkm/backend/java/javase/notes/stage2/multiy-threading.md)
 	* 589~580：线程与进程的一些概念
 	* 581：线程案例
 	* 582~586：线程两种创建方式
@@ -304,7 +304,7 @@
 	* 593： synchronized
 	* 594：互斥锁
 * 第 18 章：（坦克大战项目第二部分）
-* 第 19 章：[io-stream](../notes/javase/stage2/io-stream.md)
+* 第 19 章：[io-stream](../../../pkm/backend/java/javase/notes/stage2/io-stream.md)
 	* 610~613：File 创建以及常用操作
 	* 614：各种类的关系
 	* 615：FileInputStream
@@ -325,11 +325,11 @@
 	* 638~640：Properties
 	* 641~643：作业
 * 第 20 章：（坦克大战项目第三部分）
-* 第 21 章：[[../notes/javase/stage3/network|network]]
+* 第 21 章：[[../../../pkm/backend/java/javase/notes/stage3/network|network]]
 	* 661~665：网络相关概念；IP；域名，端口号，TCP/IP协议栈，TCP、UDP
 	* 666：INetAddress类
 	* 667~670：TCP编程实践
-* 动力节点补充：[[notes/javase/powerpoint/jvm]]，[[notes/javase/powerpoint/principle]]，[[notes/javase/powerpoint/uml]]，[[notes/javase/powerpoint/re]]，[[notes/javase/powerpoint/uuid]]，[[../notes/javase/powerpoint/System|System]]，[reflect](../notes/javase/powerpoint/reflect.md)，[[notes/javase/powerpoint/lambda]]，[stream](../notes/javase/powerpoint/stream.md)
+* 动力节点补充：[[../../../pkm/backend/java/javase/notes/powerpoint/jvm]]，[[../../../pkm/backend/java/javase/notes/powerpoint/principle]]，[[../../../pkm/backend/java/javase/notes/powerpoint/uml]]，[[../../../pkm/backend/java/javase/notes/powerpoint/re]]，[[../../../pkm/backend/java/javase/notes/powerpoint/uuid]]，[[../../../pkm/backend/java/javase/notes/powerpoint/System|System]]，[reflect](../../../pkm/backend/java/javase/notes/powerpoint/reflect.md)，[[../../../pkm/backend/java/javase/notes/powerpoint/lambda]]，[stream](../../../pkm/backend/java/javase/notes/powerpoint/stream.md)
 
 ### MySQL
 
@@ -585,10 +585,10 @@
 
 ### Springboot
 
-1. [[PKM-NEW/java/notes/springboot/introduction|introduction]]
-2. [[PKM-NEW/java/notes/springboot/hello-world|hello-world]]
+1. [[../../../pkm/backend/javaweb/springboot/introduction|introduction]]
+2. [[../../../pkm/backend/javaweb/springboot/hello-world|hello-world]]
 3. 
-4. [[config|config]]
+4. [[../../../pkm/backend/javaweb/springboot/config|config]]
 
 
 ## 后续内容

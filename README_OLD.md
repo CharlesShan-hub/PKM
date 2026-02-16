@@ -16,7 +16,7 @@
 
 - 🌟[计算机组成原理](pkm/theory/computer-organization/README.md)
 - 🐦[计算机体系结构](./KnowledgeMap/计算机科学/计算机体系结构/README.md)
-- 🌟[操作系统](pkm/theory/operation-system/README.md)
+- 🌟[操作系统](pkm/theory/operating-system/README.md)
 - 🗃[数据库](PKM-NEW/数据库/README.md)
 - 💎[计算机网络](pkm/theory/computer-network/README.md)
 - 🌟[数据结构](pkm/theory/data-structure/README.md)
