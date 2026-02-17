@@ -22,7 +22,12 @@ $$
 ---
 ## 降噪/平滑
 
-### Box
+### Median
+
+中值滤波是一种基于统计的非线性滤波，它是椒盐噪声的“特效药”。👉 [代码](../details/median.md)
+![mean](../assets/median.png)
+
+### Box / Average / Local Mean
 
 均值滤波器（盒式滤波器），就是某个“方块”内的像素求均值。👉 [代码](../details/box.md)
 
@@ -32,9 +37,44 @@ $$
 
 ![image](../assets/box.png)
 
+### Percentile Mean
+
+百分数均值滤波。计算局部区域内排在指定百分位数范围内的像素值的均值，对图像中的离群值更具鲁棒性。而普通的均值滤波则简单地计算局部区域内所有像素值的平均值，对所有像素值一视同仁，可能对包含离群值的图像较为敏感。👉 [代码](../details/mean-percentile.md)
+
+![mean-percentile](../assets/mean-percentile.png)
+
+### Laplace
+
+Laplacian 核与均值滤波核完全不同。Laplacian 是**二阶微分算子**，用于边缘检测，其核心思想是计算中心像素与周围像素的差异。👉 [代码](../details/laplace.md)
+
+Laplacian 核是离散拉普拉斯算子的近似：
+$$
+\nabla^2 f \approx f(x+1,y) + f(x-1,y) + f(x,y+1) + f(x,y-1) - 4f(x,y)
+$$
+
+对于 3×3 核，这对应**四邻域**形式。**八邻域**形式额外加上了对角线方向的贡献。
+
+1. 四邻域 Laplacian（不考虑对角线）
+$$
+k = \begin{bmatrix}
+0 & -1 & 0 \\
+-1 & 4 & -1 \\
+0 & -1 & 0
+\end{bmatrix}
+$$
+
+2. 八邻域 Laplacian（考虑对角线）
+$$
+k = \begin{bmatrix}
+-1 & -1 & -1 \\
+-1 & 8 & -1 \\
+-1 & -1 & -1
+\end{bmatrix}
+$$
+
 ### Gaussian
 
-Box 太平均了，边缘损失严重，为了提升“保边”效果，进行高斯加权平均。👉 [代码](../details/gaussian.md)
+Box 还是太平均了，边缘损失严重，为了提升“保边”效果，进行高斯加权。👉 [代码](../details/gaussian.md)
 
 $$
 G(x,y)=\frac{1}{2\pi\sigma^2}e^{-\frac{x^2+y^2}{2\sigma^2}}
@@ -44,10 +84,12 @@ W(i,j) = \frac{G(i,j)}{\sum_{i=-a}^{a}\sum_{i=-b}^{b}G(i,j)}
 $$
 ![gaussian](../assets/gaussian.png)
 
-### Mean
+### Bilateral
 
-以上滤波器均为线性滤波，而中值滤波是一种基于统计的非线性滤波，它是椒盐噪声的“特效药”。👉 [代码](../details/mean.md)
-![mean](../assets/mean.png)
+双边滤波是一种**非线性、边缘保持**的平滑滤波器。它结合了**空间邻近度**和**像素值相似度**两个权重，在平滑图像的同时能有效保留边缘。[bilateral](../details/bilateral.md)
+
+* 传统高斯滤波只考虑**空间距离**：离中心越近的像素权重越大。  
+* 双边滤波在此基础上增加了**像素值相似度**：与中心像素值越相似的像素权重越大。
 
 ---
 ## 边缘/锐化
@@ -93,4 +135,8 @@ G = \begin{bmatrix} -1 & -1 & -1 \\ -1 & 8 & -1 \\ -1 & -1 & -1 \end{bmatrix}
 $$
 另外，可以把边缘加到原图上得到锐化图像。👉 [代码](../details/laplacian.md)
 
-![image](../assets/laplacian.png)
+![image](../assets/laplacian01.png)
+![laplacian02](../assets/laplacian02.png)
+
+---
+

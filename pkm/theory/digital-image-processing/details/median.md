@@ -1,4 +1,4 @@
-![image](../assets/mean.png)
+![image](../assets/median.png)
 
 ```python
 from matplotlib import pyplot as plt
