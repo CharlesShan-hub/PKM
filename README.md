@@ -9,7 +9,7 @@
 			* [javase](pkm/backend/java/javase/README.md)
 			* [Design Pattern](pkm/backend/java/design-pattern/README.md)
 		* database
-			* sql
+			* [mysql](pkm/backend/database/mysql/README.md)
 			* [jdbc](pkm/backend/database/jdbc/jdbc.md)
 			* redis
 			* MongoDB
@@ -49,8 +49,8 @@
 		* [rust](pkm/embedded/rust/README.md)
 		* [esp8266](pkm/embedded/esp8266/README.md)
 	* Others
-		* [minecraft](pkm/others/minecraft/README.md)
-		* [ethereum](pkm/others/ethereum/README.md)
+		* [Minecraft](pkm/others/minecraft/README.md)
+		* [Ethereum](pkm/others/ethereum/README.md)
 		* [Vehicle Diagnostics](pkm/others/vehicle-diagnostics/README.md)
 * 📖 Theory
 	* Math

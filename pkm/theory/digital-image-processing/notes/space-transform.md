@@ -86,10 +86,39 @@ $$
 
 ### Bilateral
 
-双边滤波是一种**非线性、边缘保持**的平滑滤波器。它结合了**空间邻近度**和**像素值相似度**两个权重，在平滑图像的同时能有效保留边缘。[bilateral](../details/bilateral.md)
+双边滤波是一种**非线性、边缘保持**的平滑滤波器。它结合了**空间邻近度**和**像素值相似度**两个权重，在平滑图像的同时能有效保留边缘。详细介绍：👉 [bilateral](../details/bilateral.md)
 
 * 传统高斯滤波只考虑**空间距离**：离中心越近的像素权重越大。  
 * 双边滤波在此基础上增加了**像素值相似度**：与中心像素值越相似的像素权重越大。
+
+对于像素位置 $(x, y)$，双边滤波的输出为：
+
+$$
+I_{\text{filtered}}(x, y) = \frac{1}{W_p} \sum_{i=-a}^{a} \sum_{j=-b}^{b} I(x+i, y+j) \cdot w_s(i, j) \cdot w_r(i, j)
+$$
+
+其中：
+1. **空间权重**（高斯核）：
+   $$
+   w_s(i, j) = \exp\left(-\frac{i^2 + j^2}{2\sigma_s^2}\right)
+   $$
+2. **值域权重**（基于像素强度差异）：
+   $$
+   w_r(i, j) = \exp\left(-\frac{\|I(x+i, y+j) - I(x, y)\|^2}{2\sigma_r^2}\right)
+   $$
+3. **归一化因子**：
+   $$
+   W_p = \sum_{i=-a}^{a} \sum_{j=-b}^{b} w_s(i, j) \cdot w_r(i, j)
+   $$
+
+### Weighted Least Squares
+
+### Guided Filter
+
+### Rolling Guidance Filter
+
+### L0-minimization
+
 
 ---
 ## 边缘/锐化

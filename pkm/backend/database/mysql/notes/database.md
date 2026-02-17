@@ -2,7 +2,7 @@
 
 ## 三层结构
 
-![[PKM-NEW/java/notes/mysql/assets/db-overview.excalidraw|1000]]
+![[../assets/db-overview.excalidraw|1000]]
 
 ## 数据库的创建
 ```sql

@@ -3,13 +3,10 @@
 ## 概述
 
 双边滤波是一种**非线性、边缘保持**的平滑滤波器。它结合了**空间邻近度**和**像素值相似度**两个权重，在平滑图像的同时能有效保留边缘。
-
-## 核心思想
-
-传统高斯滤波只考虑**空间距离**：离中心越近的像素权重越大。  
-双边滤波在此基础上增加了**像素值相似度**：与中心像素值越相似的像素权重越大。
-
-这样，在平滑均匀区域时，它像高斯滤波；但在边缘处，由于像素值差异大，权重会自动降低，从而保护边缘不被模糊。
+* 传统高斯滤波只考虑**空间距离**：离中心越近的像素权重越大。  
+* 双边滤波在此基础上增加了**像素值相似度**：与中心像素值越相似的像素权重越大。这样，在平滑均匀区域时，它像高斯滤波；但在边缘处，由于像素值差异大，权重会自动降低，从而保护边缘不被模糊。
+![bilateral-kernel01](../assets/bilateral-kernel01.png)
+![bilateral-kernel02](../assets/bilateral-kernel02.png)
 
 ## 数学公式
 
@@ -42,7 +39,6 @@ $$
 
 ## 代码实现
 
-<smtcmp_block filename="pkm/theory/digital-image-processing/details/bilateral.md" language="markdown">
 ![bilateral](../assets/bilateral.png)
 
 ```python
@@ -197,7 +193,7 @@ for idx, sigma_r in enumerate([10, 30, 60]):
 plt.tight_layout()
 plt.show()
 ```
-</smtcmp_block>
+
 
 ## 特点与应用
 

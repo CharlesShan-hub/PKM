@@ -335,28 +335,28 @@
 
 > 按照动力节点内容进行学习，笔记为官方提供的笔记
 
-* MySQL的安装与配置：[[PKM-NEW/java/notes/mysql/安装与配置|安装与配置]]
-* 数据库：创建、查看、删除、备份、恢复：[[PKM-NEW/java/notes/mysql/数据库]]
-* 表：创建、修改、删除：[[PKM-NEW/java/notes/mysql/数据表|数据表]]
-* 数据类型（重点）：[[PKM-NEW/java/notes/mysql/数据类型|数据类型]]
-* CRUD（重点）：[[PKM-NEW/java/notes/mysql/CRUD|CRUD]]
+* MySQL的安装与配置：[[../../../pkm/backend/database/mysql/notes/install|install]]
+* 数据库：创建、查看、删除、备份、恢复：[[../../../pkm/backend/database/mysql/notes/database]]
+* 表：创建、修改、删除：[[../../../pkm/backend/database/mysql/notes/sheet|sheet]]
+* 数据类型（重点）：[[../../../pkm/backend/database/mysql/notes/datatype|datatype]]
+* CRUD（重点）：[[../../../pkm/backend/database/mysql/notes/CRUD|CRUD]]
 * 函数（重点）
 * 内连接
 * 外连接
 * 约束
 * 索引
 * 事物
-* [[第01章 数据库概述]]
-* [[第02章 MySQL的安装]]
-* [[第03章 初始化数据]]
-* [[第04章 查询DQL专题]]
-* [[第05章 表相关]]
-* [[第06章 三范式]]
-* [[第07章 视图]]
-* [[第08章 事务]]
-* [[第09章 DBA命令]]
-* [[第10章 MySQL客户端工具]]
-* [[第11章 企业真题]]
+* [[../../../pkm/backend/database/mysql/notes/第01章 数据库概述]]
+* [[../../../pkm/backend/database/mysql/notes/第02章 MySQL的安装]]
+* [[../../../pkm/backend/database/mysql/notes/第03章 初始化数据]]
+* [[../../../pkm/backend/database/mysql/notes/第04章 查询DQL专题]]
+* [[../../../pkm/backend/database/mysql/notes/第05章 表相关]]
+* [[../../../pkm/backend/database/mysql/notes/第06章 三范式]]
+* [[../../../pkm/backend/database/mysql/notes/第07章 视图]]
+* [[../../../pkm/backend/database/mysql/notes/第08章 事务]]
+* [[../../../pkm/backend/database/mysql/notes/第09章 DBA命令]]
+* [[../../../pkm/backend/database/mysql/notes/第10章 MySQL客户端工具]]
+* [[../../../pkm/backend/database/mysql/notes/第11章 企业真题]]
 
 ### JDBC
 
