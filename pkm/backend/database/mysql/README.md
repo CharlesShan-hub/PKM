@@ -6,9 +6,10 @@
 * 概述：[overview](notes/overview.md)
 * 数据库系统（安装、本地/远程登录）：[install-login](notes/install-login.md)
 * 数据库：创建、查看、删除、备份、恢复：[database](notes/database.md)
-* 数据表：创建、修改、删除：[tables](notes/tables.md)
-* 数据类型（重点）：[datatype](notes/datatype.md)
-* CRUD（重点）：[CRUD](notes/CRUD.md)
+* 数据表：创建、修改、删除：[ddl](notes/ddl.md)
+* 数据类型：[datatype](notes/datatype.md)
+* 数据操作：[dml](notes/dml.md)
+* 数据查询：[dql](notes/dql.md)
 * 函数（重点）
 * 内连接
 * 外连接
@@ -17,7 +18,6 @@
 * 事物
 
 * [powerpoint-init-data](details/powerpoint-init-data.md)
-* [第04章 查询DQL专题](notes/第04章%20查询DQL专题.md)
 * [第05章 表相关](notes/第05章%20表相关.md)
 * [第06章 三范式](notes/第06章%20三范式.md)
 * [第07章 视图](notes/第07章%20视图.md)

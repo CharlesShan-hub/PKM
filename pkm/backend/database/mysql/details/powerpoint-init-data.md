@@ -4,6 +4,8 @@
 
 为了方便后面内容的学习，老师提前准备了表以及表中的测试数据，以下是建表并且初始化数据的sql脚本
 ```sql
+CREATE DATABASE IF NOT EXISTS bjpowernode;
+USE bjpowernode;
 DROP TABLE IF EXISTS EMP;
 DROP TABLE IF EXISTS DEPT;
 DROP TABLE IF EXISTS SALGRADE;
@@ -65,13 +67,20 @@ commit;
 	- 第二步：创建数据库bjpowernode（如果之前已经创建就不需要再创建了）：create database bjpowernode;
 	- 第三步：使用数据库bjpowernode：use bjpowernode;
 	- 第四步：source命令执行sql脚本，注意：source命令后面是sql脚本文件的绝对路径。
-
-        ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620435073900-d9e19c5e-9b0e-4d09-a3ee-74471ec9ebb8.png#averageHue=%2315110f&height=225&id=EfIUK&originHeight=225&originWidth=444&originalType=binary&ratio=1&rotation=0&showTitle=false&size=18044&status=done&style=shadow&title=&width=444)
-
-   - 第五步：查看是否初始化成功，执行：show tables;
-
-        ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620435161519-44d66617-3323-4834-8f57-5db6cc4c8cf3.png#averageHue=%23151312&height=170&id=ir680&originHeight=170&originWidth=253&originalType=binary&ratio=1&rotation=0&showTitle=false&size=6666&status=done&style=shadow&title=&width=253)
-
+	- 第五步：查看是否初始化成功，执行：show tables;
+		```shell
+		mysql> use bjpowernode;
+		Database changed
+		mysql> show tables;
+		+-----------------------+
+		| Tables_in_bjpowernode |
+		+-----------------------+
+		| DEPT                  |
+		| EMP                   |
+		| SALGRADE              |
+		+-----------------------+
+		3 rows in set (0.002 sec)
+		````
 - 使用其他的mysql客户端工具也可以执行sql脚本，比如navicat。使用source命令执行sql脚本的优点：**可支持大文件**。
 
 ---
@@ -84,7 +93,44 @@ emp dept salgrade三张表分别存储什么信息
 - salgrade：工资等级信息
 
 查看表结构：desc或describe，语法格式：desc或describe +表名
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620441048844-4e9e7687-f9a2-4014-a014-f5a2c267b422.png#averageHue=%23131110&height=620&id=tvTgE&originHeight=620&originWidth=547&originalType=binary&ratio=1&rotation=0&showTitle=false&size=49182&status=done&style=shadow&title=&width=547)
+```shell
+mysql> desc DEPT;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DEPTNO | int         | NO   | PRI | NULL    |       |
+| DNAME  | varchar(14) | YES  |     | NULL    |       |
+| LOC    | varchar(13) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.005 sec)
+
+
+mysql> desc EMP;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| EMPNO    | int         | NO   | PRI | NULL    |       |
+| ENAME    | varchar(10) | YES  |     | NULL    |       |
+| JOB      | varchar(9)  | YES  |     | NULL    |       |
+| MGR      | int         | YES  |     | NULL    |       |
+| HIREDATE | date        | YES  |     | NULL    |       |
+| SAL      | double(7,2) | YES  |     | NULL    |       |
+| COMM     | double(7,2) | YES  |     | NULL    |       |
+| DEPTNO   | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+8 rows in set (0.004 sec)
+
+
+mysql> desc SALGRADE;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| GRADE | int  | YES  |     | NULL    |       |
+| LOSAL | int  | YES  |     | NULL    |       |
+| HISAL | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.002 sec)
+```
 以上的结果展示的不是表中的数据，而是表的结构。
 
 - Field是字段名
@@ -115,60 +161,7 @@ emp dept salgrade三张表分别存储什么信息
 
 对于以上表结构要提前了解，后面学习的内容需要你马上反应出：哪个字段是什么意思。
 查看一下表中的数据，来加深一下印象（以下SQL语句会在后面课程中学习）：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620442749316-53eb0de4-bc2f-4af4-b6fa-a39eafc5265e.png#averageHue=%23131110&height=779&id=KVYzM&originHeight=779&originWidth=744&originalType=binary&ratio=1&rotation=0&showTitle=false&size=86015&status=done&style=shadow&title=&width=744)
-
-```bash
-mysql> use power;
-Reading table information for completion of table and column names
-You can turn off this feature to get a quicker startup with -A
-
-Database changed
-mysql> show tables;
-+-----------------+
-| Tables_in_power |
-+-----------------+
-| DEPT            |
-| EMP             |
-| SALGRADE        |
-+-----------------+
-3 rows in set (0.002 sec)
-
-mysql> desc dept;
-+--------+-------------+------+-----+---------+-------+
-| Field  | Type        | Null | Key | Default | Extra |
-+--------+-------------+------+-----+---------+-------+
-| DEPTNO | int         | NO   | PRI | NULL    |       |
-| DNAME  | varchar(14) | YES  |     | NULL    |       |
-| LOC    | varchar(13) | YES  |     | NULL    |       |
-+--------+-------------+------+-----+---------+-------+
-3 rows in set (0.149 sec)
-
-mysql> select * from dept;
-+--------+------------+----------+
-| DEPTNO | DNAME      | LOC      |
-+--------+------------+----------+
-|     10 | ACCOUNTING | NEW YORK |
-|     20 | RESEARCH   | DALLAS   |
-|     30 | SALES      | CHICAGO  |
-|     40 | OPERATIONS | BOSTON   |
-+--------+------------+----------+
-4 rows in set (0.001 sec)
-
-mysql> desc emp;
-+----------+-------------+------+-----+---------+-------+
-| Field    | Type        | Null | Key | Default | Extra |
-+----------+-------------+------+-----+---------+-------+
-| EMPNO    | int         | NO   | PRI | NULL    |       |
-| ENAME    | varchar(10) | YES  |     | NULL    |       |
-| JOB      | varchar(9)  | YES  |     | NULL    |       |
-| MGR      | int         | YES  |     | NULL    |       |
-| HIREDATE | date        | YES  |     | NULL    |       |
-| SAL      | double(7,2) | YES  |     | NULL    |       |
-| COMM     | double(7,2) | YES  |     | NULL    |       |
-| DEPTNO   | int         | YES  |     | NULL    |       |
-+----------+-------------+------+-----+---------+-------+
-8 rows in set (0.003 sec)
-
+```shell
 mysql> select * from emp;
 +-------+--------+-----------+------+------------+---------+---------+--------+
 | EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |

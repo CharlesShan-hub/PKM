@@ -1,205 +1,315 @@
 
 # DQL
+> 数据查询语言（Data **Query** Language, DQL）是SQL语言中，负责进行数据查询而不会对数据本身进行修改的语句。查询是SQL语言的核心，用于表达SQL查询的`select`查询命令是功能最强也是最为复杂的SQL语句，它的作用就是从数据库中检索数据，并将查询结果返回给用户。 select语句由：select子句(查询内容)、from子句(查询对象)、where子句(查询条件)、order by子句(排序方式)、group by子句(分组方式)等组成。
+> 本章案例的数据初始化：[powerpoint-init-data](../details/powerpoint-init-data.md)
 
 ---
-## 简单查询
+## `SELECT`, `FROM`, `AS`
 
-查询是SQL语言的核心，用于表达SQL查询的select查询命令是功能最强也是最为复杂的SQL语句，它的作用就是从数据库中检索数据，并将查询结果返回给用户。 select语句由：select子句(查询内容)、from子句(查询对象)、where子句(查询条件)、order by子句(排序方式)、group by子句(分组方式)等组成。查询语句属于SQL语句中的DQL语句，是所有SQL语句中最为复杂也是最重要的语句，所以必须掌握。接下来我们先从简单查询语句开始学习。
-
----
 ### 查一个字段
 
 查询一个字段说的是：一个表有多列，查询其中的一列。
-语法格式：`select 字段名 from 表名;`
+```sql
+select 字段名 from 表名;
+```
 
-- select和from是关键字，不能随便写
+- `select`和`from`是关键字，不能随便写
 - **一条SQL语句必须以“;”结尾**
 - **对于SQL语句来说，大小写都可以**
 - 字段名和表名属于标识符，按照表的实际情况填写，不知道字段名的，可以使用desc命令查看表结构
+* 案例：查询公司中所有员工编号/员工姓名 [select-01](../details/select-01.md)
 
-案例1：查询公司中所有员工编号
-```sql
-select empno from emp; 
-```
-
-```sql
-mysql> select empno from emp; 
-+-------+
-| empno |
-+-------+
-|  7369 |
-|  7499 |
-|  7521 |
-|  7566 |
-|  7654 |
-|  7698 |
-|  7782 |
-|  7788 |
-|  7839 |
-|  7844 |
-|  7876 |
-|  7900 |
-|  7902 |
-|  7934 |
-+-------+
-14 rows in set (0.000 sec)
-```
-
-案例2：查询公司中所有员工姓名
-```sql
-SELECT ENAME FROM EMP;
-```
-
-```sql
-mysql> select ename from emp;
-+--------+
-| ename  |
-+--------+
-| SMITH  |
-| ALLEN  |
-| WARD   |
-| JONES  |
-| MARTIN |
-| BLAKE  |
-| CLARK  |
-| SCOTT  |
-| KING   |
-| TURNER |
-| ADAMS  |
-| JAMES  |
-| FORD   |
-| MILLER |
-+--------+
-14 rows in set (0.000 sec)
-```
-
-在mysql命令行客户端中，sql语句没有分号是不会执行的：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620444166592-310dfb98-9eed-43ed-afa5-b479e03e0a79.png#averageHue=%230d0d0c&height=249&id=W3RxL&originHeight=249&originWidth=210&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4063&status=done&style=shadow&title=&width=210)
-末尾加上“;”就执行了：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620444251765-5d3f1b6c-a491-4382-92a8-8ebb31a40b45.png#averageHue=%230e0d0d&height=236&id=AdNxg&originHeight=236&originWidth=943&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16079&status=done&style=shadow&title=&width=943)
-以上sql虽然以分号结尾之后执行了，但是报错了，错误信息显示：语法错误。
-假设一个SQL语句在书写过程中出错了，怎么终止这条SQL呢？\c
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620444994820-7b03fb95-5097-418c-bc6f-75e3613c7d17.png#averageHue=%2312100f&height=74&id=DCv3D&originHeight=74&originWidth=168&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2131&status=done&style=shadow&title=&width=168)
-
-- [ ] 任务1：查询所有部门名称。
-- [ ] 任务2：查询所有薪资等级。
-
----
 ### 查多个字段
 
 查询多个字段时，在字段名和字段名之间添加“,”即可。
-语法格式：select 字段名1,字段名2,字段名3 from 表名;
-案例1：查询员工编号以及员工姓名。
 ```sql
-select empno, ename from emp;
+select 字段名1,字段名2,字段名3 from 表名;
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620445192077-e454043b-9203-4ca0-83f3-7e7d991187c5.png#averageHue=%2311100f&height=362&id=sYqFg&originHeight=362&originWidth=380&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20812&status=done&style=shadow&title=&width=380)
 
-字段的前后顺序无所谓（只是显示结果列的时候顺序变了）：
-```sql
-select ename, empno from emp;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620445262526-49d81087-7e1b-44f2-afe7-e8bad59dc21d.png#averageHue=%2312100f&height=367&id=Na24p&originHeight=367&originWidth=368&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20595&status=done&style=shadow&title=&width=368)
+* 字段的前后顺序无所谓（只是显示结果列的时候顺序变了）
+* 案例：[select-02](../details/select-02.md)
 
-- [ ] 任务1：查询部门编号、部门名称以及位置。
-- [ ] 任务2：查询员工的名字以及工作岗位。
-
----
 ### 查所有字段
 
 查询所有字段的可以将每个字段都列出来查询，也可以采用`*`来代表所有字段
-案例1：查询员工的所有信息
 ```sql
-select * from emp;
+select * from 表名;
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620446156182-c5776f47-0d54-45e1-b0a6-af8196b3cbcd.png#averageHue=%23191613&height=365&id=LwKfy&originHeight=365&originWidth=734&originalType=binary&ratio=1&rotation=0&showTitle=false&size=57245&status=done&style=shadow&title=&width=734)
-案例2：查询所有部门信息
-```sql
-select * from dept;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620452731531-c4b03af4-9f9f-46d8-acf5-7132317f89ae.png#averageHue=%23161311&height=186&id=ew3JJ&originHeight=186&originWidth=339&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12122&status=done&style=shadow&title=&width=339)
-采用`*`进行查询存在的缺点：
 
-- `select * from dept;` 在执行的时候会被解析为 `select DEPTNO, DNAME, LOC from dept;` 再执行，所以这种效率方面弱一些。
-- 采用`*`的可读性较差，通过`*`很难看出都有哪些具体的字段。
+* 采用`*`进行查询存在的缺点：
+	- `select * from dept;` 在执行的时候会被解析为 `select DEPTNO, DNAME, LOC from dept;` 再执行，所以这种效率方面弱一些。
+	- 采用`*`的可读性较差，通过`*`很难看出都有哪些具体的字段。
+- 什么时候使用`*`：这个SQL语句不在项目编码中使用，更常用语平时自己想快速查看表中所有数据。
+- 案例：查询部门表所有信息 [select-03](../details/select-03.md)
 
-什么时候使用`*`？
-
-- 这个SQL语句不在项目编码中使用，如果平时自己想快速查看表中所有数据的话，这种写法还是很给力的。
-
-- [ ] 任务1：查询所有的薪资等级以及每个薪资等级的最低工资和最高工资。
-
----
 ### 查询时字段可参与数学运算
 
-在进行查询操作的时候，字段是可以参与数学运算的，例如加减乘除等。
-案例1：查询每个员工的月薪
+在进行查询操作的时候，字段是可以参与数学运算的，例如**加减乘除**等。
 ```sql
-select ename, sal from emp;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620453626714-46aed4db-e9fb-49be-a9be-ce9662dbc962.png#averageHue=%2312100f&height=364&id=wOnEt&originHeight=364&originWidth=375&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21162&status=done&style=shadow&title=&width=375)
-
-案例2：查询每个员工的年薪（月薪 * 12）
-```sql
+-- 比如年薪 = 月薪 * 12
 select ename, sal * 12 from emp;
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620453661204-ca783845-5f31-49fc-90d8-0f4426598cde.png#averageHue=%2313100f&height=364&id=Zkjv2&originHeight=364&originWidth=387&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22636&status=done&style=shadow&title=&width=387)
+* 完整案例：查询每个员工的年薪（月薪 * 12），月薪加1000之后的月薪，月薪加1000之后的年薪。[select-04](../details/select-04.md)
 
-- [ ] 任务1：查询每个员工月薪加1000之后的月薪
-- [ ] 任务2：查询每个员工月薪加1000之后的年薪
-
----
 ### 查询时字段可起别名
 
-我们借用一下之前的SQL语句
+结果列名`sal * 12`可读性较差，是否可以给查询结果的列名进行重命名呢？
 ```sql
-select ename, sal * 12 from emp;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620453661204-ca783845-5f31-49fc-90d8-0f4426598cde.png#averageHue=%2313100f&height=364&id=EQnXg&originHeight=364&originWidth=387&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22636&status=done&style=shadow&title=&width=387)
-以上的查询结果列名“sal * 12”可读性较差，是否可以给查询结果的列名进行重命名呢？
-
-#### as关键字
-
-- 使用as关键字
-```sql
+-- 使用as关键字
 select ename, sal * 12 as yearsal from emp;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620454420847-c739365b-440e-4cf7-b1e2-2bcf6d5cdb8b.png#averageHue=%2312100f&height=372&id=NImNH&originHeight=372&originWidth=473&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25001&status=done&style=shadow&title=&width=473)
-通过as关键字起别名后，查询结果列显示yearsal，可读性增强。
-
-#### 省略as关键字
-
-- 其实as关键字可以省略，只要使用空格即可
-```sql
+-- 省略as关键字
 select ename, sal * 12 yearsal from emp;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620466356467-fb4612f8-72f6-4506-b2bc-1744846c171d.png#averageHue=%2311100e&height=363&id=XWTbX&originHeight=363&originWidth=464&originalType=binary&ratio=1&rotation=0&showTitle=false&size=24234&status=done&style=shadow&title=&width=464)
-
-- 通过以上测试，得知as可以省略，可以使用空格代替as，但如果别名中有空格呢？
-
-#### 别名中有空格
-```sql
-select ename, sal * 12 year sal from emp;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620466540145-98adb10e-15a2-46df-9179-7e41ae1fc322.png#averageHue=%2313110f&height=87&id=LnbYI&originHeight=87&originWidth=946&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12503&status=done&style=shadow&title=&width=946)
-可以看出，执行报错了，说语法有问题，这是为什么？分析一下：SQL语句编译器在检查该语句的时候，在year后面遇到了空格，会继续找from关键字，但year后面不是from关键字，所以编译器报错了。怎么解决这个问题？记住：如果别名中有空格的话，可以将这个别名使用双引号或者单引号将其括起来。
-```sql
+-- 空格需要用引号包围
 select ename, sal * 12 "year sal" from emp;
 select ename, sal * 12 'year sal' from emp;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620467027246-b5cce57e-3ca3-4b3f-9298-a21fc3bb77c3.png#averageHue=%23110f0e&height=744&id=kyi8P&originHeight=744&originWidth=558&originalType=binary&ratio=1&rotation=0&showTitle=false&size=53259&status=done&style=shadow&title=&width=558)
-**在mysql中，字符串既可以使用双引号也可以使用单引号，但还是建议使用单引号，因为单引号属于标准SQL。**
-
-#### 别名中有中文
-
-- 如果别名采用中文呢？
-```sql
+-- 中文
 select ename, sal * 12 年薪 from emp;
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620467760618-b5df74f5-c8ee-4e39-88a9-e10fde59bb56.png#averageHue=%2311100e&height=373&id=AsiUs&originHeight=373&originWidth=445&originalType=binary&ratio=1&rotation=0&showTitle=false&size=24025&status=done&style=shadow&title=&width=445)
-**别名是中文是可以的，但是对于低版本的mysql来说会报错，需要添加双引号或单引号。**我们当前使用的mysql版本是：8.0.24
+* 在mysql中，字符串既可以使用双引号也可以使用单引号，但还是建议使用单引号，因为单引号属于标准SQL。
+* 别名是中文是可以的，但是对于低版本的mysql来说会报错，需要添加双引号或单引号。(8.0是可以支持的)
 
-- [ ] 任务：查询所有员工的信息，要求每个字段名采用中文显示。
+---
+## `WHERE` 
+
+### 条件查询语法格式
+
+```sql
+select 
+  ...
+from
+  ...
+where
+  过滤条件;
+```
+过滤条件放在where子句当中，以上语句的执行顺序是：
+* 第一步：先执行from
+* 第二步：再通过where条件过滤
+* 第三步：最后执行select，查询并将结果展示到控制台
+
+---
+## `ORDER BY`
+
+---
+## `DISTINCT`
+
+---
+## `GROUP UP`
+
+# 老韩部分
+
+## Read
+
+### 单表查询
+
+```sql
+SELECT [DISTINCT] column1, column2, ...
+FROM table_name;
+```
+* DISTINCT 可以去重
+* 可以指定列名，也可以指定`*`，表示所有列
+
+比较运算符
+
+| 运算符                  | 说明              | 示例                            |
+| -------------------- | --------------- | ----------------------------- |
+| `>`, `<`, `<=`, `>=` | 大于、小于、小于等于、大于等于 | `WHERE salary > 5000`         |
+| `=`                  | 等于              | `WHERE name = '张三'`           |
+| `<>`, `!=`           | 不等于             | `WHERE status <> 1`           |
+| `BETWEEN...AND...`   | 在某个区间范围内        | `WHERE age BETWEEN 18 AND 30` |
+| `IN(set)`            | 在指定值列表中         | `WHERE id IN (1, 3, 5)`       |
+| `LIKE 'pattern'`     | 模糊匹配            | `WHERE name LIKE '张%'`        |
+| `NOT LIKE`           | 不匹配模式           | `WHERE name NOT LIKE '%测试%'`  |
+| `IS NULL`            | 判断是否为空          | `WHERE email IS NULL`         |
+逻辑运算符
+
+|运算符|说明|示例|
+|---|---|---|
+|`AND`|多个条件同时成立|`WHERE age > 18 AND gender = '男'`|
+|`OR`|多个条件任一成立|`WHERE status = 1 OR status = 3`|
+|`NOT`|条件不成立|`WHERE NOT(deleted = 1)`|
+
+案例
+
+```sql
+CREATE TABLE student (
+    id INT NOT NULL DEFAULT 1,
+    name VARCHAR(20) NOT NULL DEFAULT '',
+    chinese FLOAT NOT NULL DEFAULT 0.0,
+    english FLOAT NOT NULL DEFAULT 0.0,
+    math FLOAT NOT NULL DEFAULT 0.0
+);
+
+INSERT INTO student(id, name, chinese, english, math) VALUES
+(1, '韩顺平', 89, 78, 90),
+(2, '张飞', 67, 98, 56),
+(3, '宋江', 87, 78, 77),
+(4, '关羽', 88, 98, 90),
+(5, '赵云', 82, 84, 67),
+(6, '欧阳锋', 55, 85, 45),
+(7, '黄蓉', 75, 65, 30);
+```
+
+
+```sql
+-- 查询的时候可以进行运算
+SELECT `name`, (english+chinese+math) FROM student;
+
+-- 查询的时候可以给列名一个别名
+SELECT `name` as `姓名`, (english+chinese+math) as `总分` FROM student;
+
+-- 大于
+SELECT `name` as `姓名`, (english+chinese+math) as `总分` 
+	FROM student
+	WHERE (english+chinese+math) > 250;
+
+-- AND
+SELECT `name` as `姓名`, (english+chinese+math) as `总分`
+	FROM student
+	WHERE chinese > 80 AND english > 60;
+
+-- LIKE（比如名字以韩开头的）
+SELECT `name` as `姓名`, (english+chinese+math) as `总分`
+	FROM student
+	WHERE `name` LIKE '韩%';
+
+-- 在某个集合里边
+SELECT `name` as `姓名`, (english+chinese+math) as `总分`
+	FROM student
+	WHERE english in (80, 82, 84);
+
+-- 升序排序（默认）
+SELECT `name`, `english`, `chinese`, `math`
+	FROM student
+	ORDER BY english 
+	-- 或者 ORDER BY english ASC;   
+
+-- 降序
+SELECT `name`, `english`, `chinese`, `math`
+	FROM student
+	ORDER BY english DESC;
+```
+
+### 统计函数
+
+```sql
+-- COUNT (及格的同学)
+SELECT COUNT(*) FROM student
+	WHERE chinese >= 60 AND english >= 60 AND math >= 60;
+
+-- COUNT (所有的分数取值，主要是为了演示COUNT的用法, 会排除为NULL，但不会去重)
+SELECT COUNT(`english`) FROM student;
+SELECT COUNT(DISTINCT english) FROM student; -- 这样就去重了
+-- SUM（英语总分）
+SELECT SUM(english) FROM student;
+-- AVG（英语平均分）
+SELECT AVG(english) FROM student;
+-- MAX（英语最高分）
+SELECT MAX(english) FROM student;
+-- MIN（英语最低分）
+SELECT MIN(english) FROM student;
+```
+
+### 分组查询：GROUP BY 与 HAVING
+
+```sql
+-- 创建部门表 (dept) 并插入数据
+CREATE TABLE dept (
+    deptnum MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,  /* 部门编号 */
+    dname VARCHAR(20) NOT NULL DEFAULT "",          /* 部门名称 */
+    loc VARCHAR(13) NOT NULL DEFAULT ""             /* 部门位置 */
+);
+
+INSERT INTO dept VALUES
+(10, 'ACCOUNTING', 'NEW YORK'),
+(20, 'RESEARCH', 'DALLAS'),
+(30, 'SALES', 'CHICAGO'),
+(40, 'OPERATIONS', 'BOSTON');
+
+-- 创建雇员表 (emp) 并插入数据
+CREATE TABLE emp (
+    empno MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,    /* 雇员编号 */
+    ename VARCHAR(20) NOT NULL DEFAULT "",          /* 雇员姓名 */
+    job VARCHAR(9) NOT NULL DEFAULT "",             /* 工作职位 */
+    mgr MEDIUMINT UNSIGNED,                        /* 上级编号 */
+    hiredate DATE NOT NULL,                         /* 入职时间 */
+    sal DECIMAL(7,2) NOT NULL,                      /* 薪水 */
+    comm DECIMAL(7,2),                              /* 红利 */
+    deptnum MEDIUMINT UNSIGNED NOT NULL DEFAULT 0   /* 部门编号 */
+);
+
+INSERT INTO emp VALUES
+(7369, 'SMITH', 'CLERK', 7902, '1990-12-17', 800.00, NULL, 20),
+(7499, 'ALLEN', 'SALESMAN', 7698, '1991-2-20', 1600.00, 300.00, 30),
+(7521, 'WARD', 'SALESMAN', 7698, '1991-2-22', 1250.00, 500.00, 30),
+(7566, 'JONES', 'MANAGER', 7839, '1991-2-22', 2975.00, NULL, 20),
+(7698, 'BLAKE', 'MANAGER', 7839, '1991-5-1', 2850.00, NULL, 30),
+(7768, 'CLARK', 'MANAGER', 7839, '1991-6-9', 2450.00, NULL, 10),
+(7788, 'SCOTT', 'ANALYST', 7566, '1997-4-19', 3000.00, NULL, 20),
+(7839, 'KING', 'PRESIDENT', NULL, '1991-11-17', 5000.00, NULL, 10),
+(7844, 'TURNER', 'SALESMAN', 7698, '1991-9-8', 1500.00, NULL, 30),
+(7900, 'JAMES', 'CLERK', 7698, '1991-12-3', 950.00, NULL, 30),
+(7902, 'FORD', 'ANALYST', 7566, '1991-12-3', 3000.00, NULL, 20),
+(7934, 'MILLER', 'CLERK', 7782, '1992-1-23', 1300.00, NULL, 10);
+
+-- 工资级别表 (salgrade)
+CREATE TABLE salgrade (
+    grade MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,  /* 工资级别 */
+    losal DECIMAL(17,2) NOT NULL,                /* 该级别的最低工资 */
+    hisal DECIMAL(17,2) NOT NULL                  /* 该级别的最高工资 */
+);
+INSERT INTO salgrade VALUES (1, 700, 1200);
+INSERT INTO salgrade VALUES (2, 1201, 1400);
+INSERT INTO salgrade VALUES (3, 1401, 2000);
+INSERT INTO salgrade VALUES (4, 2001, 3000);
+INSERT INTO salgrade VALUES (5, 3001, 9999);
+```
+
+```sql
+-- 查询每个部门的平均工资和最高工资，并按照部门编号升序排序
+SELECT AVG(sal), MAX(sal), deptnum FROM emp
+	GROUP BY deptnum
+	ORDER BY deptnum;
+
+-- 查询每个部门的平均工资和最高工资，并按照部门编号升序排序，并且只保留平均工资大于2000的部门
+SELECT AVG(sal), MAX(sal), deptnum FROM emp
+	GROUP BY deptnum
+	HAVING AVG(sal) > 2000
+	ORDER BY deptnum;   
+
+-- 更好的办法：HAVING可以使用别名，提高效率
+SELECT AVG(sal) as avg_sal, MAX(sal), deptnum FROM emp
+	GROUP BY deptnum
+	HAVING avg_sal > 2000
+	ORDER BY deptnum;
+```
+
+### 字符串函数
+
+| 函数                | 语法                                      | 功能描述                         |
+| ----------------- | --------------------------------------- | ---------------------------- |
+| ​**​CHARSET​**​   | `CHARSET(str)`                          | 返回字符串的字符集                    |
+| ​**​CONCAT​**​    | `CONCAT(string2[,…])`                   | 连接多个字符串                      |
+| ​**​INSTR​**​     | `INSTR(string, substring)`              | 返回子串在字符串中出现的位置(从1开始)，未找到则返回0 |
+| ​**​UCASE​**​     | `UCASE(string2)`                        | 将字符串转换为大写                    |
+| ​**​LCASE​**​     | `LCASE(string2)`                        | 将字符串转换为小写                    |
+| ​**​LEFT​**​      | `LEFT(string2, length)`                 | 从字符串左侧截取指定长度的字符              |
+| ​**​LENGTH​**​    | `LENGTH(string)`                        | 返回字符串的字节长度                   |
+| ​**​REPLACE​**​   | `REPLACE(str, search_str, replace_str)` | 在字符串中用新字符串替换所有匹配的子串          |
+| ​**​STRCMP​**​    | `STRCMP(string1, string2)`              | 逐字符比较两个字符串的大小(返回-1,0,1)      |
+| ​**​SUBSTRING​**​ | `SUBSTRING(str, position[, length])`    | 从指定位置开始截取指定长度的字符(位置从1开始)     |
+| ​**​LTRIM​**​     | `LTRIM(string2)`                        | 去除字符串前端的空格                   |
+| ​**​RTRIM​**​     | `RTRIM(string2)`                        | 去除字符串后端的空格                   |
+| ​**​TRIM​**​      | `TRIM(string2)`                         | 去除字符串两端空格                    |
+
+```sql
+SELECT CHARSET('数据库') AS charset_result;
+-- 结果(取决于数据库设置): utf8mb4 或 utf8
+
+
+```
+
+# 老韩结束
+
 
 ---
 ## 条件查询
@@ -225,22 +335,6 @@ select ename, sal * 12 年薪 from emp;
 | exists |  |
 | not exists |  |
 | like | 模糊查询 |
-
----
-### 条件查询语法格式
-
-```sql
-select 
-  ...
-from
-  ...
-where
-  过滤条件;
-```
-过滤条件放在where子句当中，以上语句的执行顺序是：
-    第一步：先执行from
-    第二步：再通过where条件过滤
-    第三步：最后执行select，查询并将结果展示到控制台
 
 ---
 ### 等于、不等于

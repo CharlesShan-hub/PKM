@@ -5,6 +5,7 @@
 ![[../assets/db-overview.excalidraw|1000]]
 
 ## 数据库的创建
+
 ```sql
 -- 创建数据库
 CREATE DATABASE [IF NOT EXISTS] db_name

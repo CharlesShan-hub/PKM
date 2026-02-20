@@ -79,6 +79,18 @@
 * 查看当前mysql版本
 	* 登陆后：`select version();`（sql）
 	* 登陆前：`mysql --version`（bash）
+* 假设一个SQL语句在书写过程中出错了，怎么终止这条SQL呢？`control + c`
+* 运行脚本文件（.sql）
+	* **方法一：在 MySQL 命令行中执行**
+		```sql
+		source /path/to/your/file.sql;
+		```
+		* 或者使用简写：`\. /path/to/your/file.sql`
+	* **方法二：在系统命令行中执行**
+		```bash
+		mysql -u username -p database_name < /path/to/your/file.sql
+		```
+		* 示例：`mysql -uroot -p mydb < /Users/charles/data.sql`
 ---
 ## 登录MySQL
 

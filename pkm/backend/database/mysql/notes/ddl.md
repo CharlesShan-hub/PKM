@@ -1,4 +1,5 @@
-# 数据表
+# DDL
+>    数据定义语言 (Data **Definition** Language, DDL) 是SQL语言集中，负责数据结构定义与数据库对象定义的语言，由CREATE、ALTER与DROP三个语法所组成，最早是由 Codasyl (Conference on Data Systems Languages) 数据模型开始，现在被纳入 SQL 指令中作为其中一个子集。
 
 ---
 ## 数据库表的概述
