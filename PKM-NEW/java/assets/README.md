@@ -335,9 +335,9 @@
 
 > 按照动力节点内容进行学习，笔记为官方提供的笔记
 
-* MySQL的安装与配置：[[../../../pkm/backend/database/mysql/notes/install|install]]
+* MySQL的安装与配置：[[../../../pkm/backend/database/mysql/notes/install-login|install-login]]
 * 数据库：创建、查看、删除、备份、恢复：[[../../../pkm/backend/database/mysql/notes/database]]
-* 表：创建、修改、删除：[[../../../pkm/backend/database/mysql/notes/sheet|sheet]]
+* 表：创建、修改、删除：[[../../../pkm/backend/database/mysql/notes/tables|tables]]
 * 数据类型（重点）：[[../../../pkm/backend/database/mysql/notes/datatype|datatype]]
 * CRUD（重点）：[[../../../pkm/backend/database/mysql/notes/CRUD|CRUD]]
 * 函数（重点）
@@ -346,9 +346,9 @@
 * 约束
 * 索引
 * 事物
-* [[../../../pkm/backend/database/mysql/notes/第01章 数据库概述]]
-* [[../../../pkm/backend/database/mysql/notes/第02章 MySQL的安装]]
-* [[../../../pkm/backend/database/mysql/notes/第03章 初始化数据]]
+* [[../../../pkm/backend/database/mysql/notes/overview]]
+* [[../../../pkm/backend/database/mysql/notes/install-login]]
+* [[../../../pkm/backend/database/mysql/details/powerpoint-init-data]]
 * [[../../../pkm/backend/database/mysql/notes/第04章 查询DQL专题]]
 * [[../../../pkm/backend/database/mysql/notes/第05章 表相关]]
 * [[../../../pkm/backend/database/mysql/notes/第06章 三范式]]

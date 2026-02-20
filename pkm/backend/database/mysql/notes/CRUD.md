@@ -61,20 +61,20 @@ SELECT [DISTINCT] column1, column2, ...
 FROM table_name;
 ```
 * DISTINCT 可以去重
-* 可以指定列名，也可以指定*，表示所有列
+* 可以指定列名，也可以指定`*`，表示所有列
 
 比较运算符
 
-|运算符|说明|示例|
-|---|---|---|
-|`>`, `<`, `<=`, `>=`|大于、小于、小于等于、大于等于|`WHERE salary > 5000`|
-|`=`|等于|`WHERE name = '张三'`|
-|`<>`, `!=`|不等于|`WHERE status <> 1`|
-|`BETWEEN...AND...`|在某个区间范围内|`WHERE age BETWEEN 18 AND 30`|
-|`IN(set)`|在指定值列表中|`WHERE id IN (1, 3, 5)`|
-|`LIKE 'pattern'`|模糊匹配|`WHERE name LIKE '张%'`|
-|`NOT LIKE`|不匹配模式|`WHERE name NOT LIKE '%测试%'`|
-|`IS NULL`|判断是否为空|`WHERE email IS NULL`|
+| 运算符                  | 说明              | 示例                            |
+| -------------------- | --------------- | ----------------------------- |
+| `>`, `<`, `<=`, `>=` | 大于、小于、小于等于、大于等于 | `WHERE salary > 5000`         |
+| `=`                  | 等于              | `WHERE name = '张三'`           |
+| `<>`, `!=`           | 不等于             | `WHERE status <> 1`           |
+| `BETWEEN...AND...`   | 在某个区间范围内        | `WHERE age BETWEEN 18 AND 30` |
+| `IN(set)`            | 在指定值列表中         | `WHERE id IN (1, 3, 5)`       |
+| `LIKE 'pattern'`     | 模糊匹配            | `WHERE name LIKE '张%'`        |
+| `NOT LIKE`           | 不匹配模式           | `WHERE name NOT LIKE '%测试%'`  |
+| `IS NULL`            | 判断是否为空          | `WHERE email IS NULL`         |
 逻辑运算符
 
 |运算符|说明|示例|

@@ -1,78 +1,4 @@
 # 初始化数据
-
----
-## MySQL命令行基本命令
-
-1. 列出当前数据库管理系统中有哪些数据库。
-```sql
-show databases;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620402104809-379ae418-d997-4758-9a02-45bbfad7178e.png#averageHue=%23151311&height=162&id=eQifD&originHeight=162&originWidth=220&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5485&status=done&style=shadow&title=&width=220)
-
-2. 创建数据库，起名bjpowernode。
-```sql
-create database bjpowernode;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620402231403-ddd2c76f-3b9f-4477-9504-502328fe64fc.png#averageHue=%2317110f&height=262&id=WUuwT&originHeight=262&originWidth=341&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13990&status=done&style=shadow&title=&width=341)
-
-3.  使用bjpowernode数据库。
-```sql
-use bjpowernode;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620402295297-4dbb2d54-4210-44c9-bc8f-c887327bfb8c.png#averageHue=%23151210&height=66&id=QOLYt&originHeight=66&originWidth=232&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3275&status=done&style=shadow&title=&width=232)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=WWfbr&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-
-4. 查看当前用的是哪个数据库。
-```sql
-select database();
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620402349349-2786c9cb-8683-4d17-bd26-c73a7b451847.png#averageHue=%23131110&height=130&id=aq6GB&originHeight=130&originWidth=268&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5590&status=done&style=shadow&title=&width=268)
-
-5.  查看当前数据库中有哪些表。
-```sql
-show tables;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620402397890-84d73980-1046-4e83-b6cb-bdcc68ba7b57.png#averageHue=%23151210&height=53&id=qqu40&originHeight=53&originWidth=207&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2593&status=done&style=shadow&title=&width=207)
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620402645490-1cd5d42e-5735-4c0a-8723-e4fb81c96b8a.png#averageHue=%23100f0e&height=461&id=fFKCv&originHeight=461&originWidth=516&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23780&status=done&style=shadow&title=&width=516)
-
-6.  删除数据库bjpowernode。
-```sql
-drop database bjpowernode;
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620402497021-d7ff9bf3-3c9a-4c9c-bc5d-f5dece31188f.png#averageHue=%2312110f&height=242&id=MeI71&originHeight=242&originWidth=363&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12799&status=done&style=shadow&title=&width=363)
-
-7. 退出mysql
-   1. exit
-   2. quit
-   3. ctrl + c
-8. 查看当前mysql版本
-```sql
-select version();
-```
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620468380301-0c326efb-a538-4271-b75d-ff5add0e453a.png#averageHue=%23121110&height=142&id=az14k&originHeight=142&originWidth=279&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5365&status=done&style=shadow&title=&width=279)
-还可以使用mysql.exe命令来查看版本信息（在没有登录mysql之前使用）：mysql --version
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620468207568-77aa05ff-8d65-47f6-b90d-2c176893a52f.png#averageHue=%2313110f&height=59&id=Ialy0&originHeight=59&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&size=6797&status=done&style=shadow&title=&width=624)
-
----
-## 数据库表的概述
-
-| name | age | gender |
-| --- | --- | --- |
-| 张三 | 20 | 男 |
-| 李四 | 22 | 女 |
-
-- 以上就是数据库表格的直观展示形式。
-- 表格英文单词table。
-- 表是数据库存储数据的基本单元，数据库存储数据的时候，是将数据存储在表对象当中的。为什么将数据存储在表中呢？因为表存储数据非常直观。
-- 任何一张表都有行和列：
-   - 行：记录（一行就是一条数据）
-   - 列：字段（name字段、age字段、gender字段）
-- 每个字段包含以下属性：
-   - 字段名：name、age、gender都是字段的名字
-   - 字段的数据类型：每个字段都有数据类型，比如：字符类型、数字类型、日期类型
-   - 字段的数据长度：每个字段有可能会有长度的限制
-   - 字段的约束：比如某些字段要求该字段下的数据不能重复、不能为空等，用来保证表格中数据合法有效
-
 ---
 ## 初始化测试数据
 
@@ -135,10 +61,10 @@ commit;
 - 你入职的时候，项目一般都是进展了一部分，多数情况下你进项目组的时候数据库的表以及数据都是有的，项目经理第一天可能会给你一个较大的sql脚本文件，你需要执行这个脚本文件来初始化你的本地数据库。（当然，也有可能数据库是共享的。）
 - 创建文件：bjpowernode.sql，把以上SQL语句全部复制到sql脚本文件中。
 - 执行SQL脚本文件，初始化数据库
-   - 第一步：命令窗口登录mysql
-   - 第二步：创建数据库bjpowernode（如果之前已经创建就不需要再创建了）：create database bjpowernode;
-   - 第三步：使用数据库bjpowernode：use bjpowernode;
-   - 第四步：source命令执行sql脚本，注意：source命令后面是sql脚本文件的绝对路径。
+	- 第一步：命令窗口登录mysql
+	- 第二步：创建数据库bjpowernode（如果之前已经创建就不需要再创建了）：create database bjpowernode;
+	- 第三步：使用数据库bjpowernode：use bjpowernode;
+	- 第四步：source命令执行sql脚本，注意：source命令后面是sql脚本文件的绝对路径。
 
         ![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620435073900-d9e19c5e-9b0e-4d09-a3ee-74471ec9ebb8.png#averageHue=%2315110f&height=225&id=EfIUK&originHeight=225&originWidth=444&originalType=binary&ratio=1&rotation=0&showTitle=false&size=18044&status=done&style=shadow&title=&width=444)
 
@@ -170,22 +96,22 @@ emp dept salgrade三张表分别存储什么信息
 对以上表结构进行解释说明：
 
 - emp表
-   - empno：员工编号，int类型（整数），不能为空，主键（主键后期学习约束时会进行说明）
-   - ename：员工姓名，varchar类型（字符串）
-   - job：工作岗位，varchar类型
-   - mgr：上级领导编号，int类型
-   - hiredate：雇佣日期，date类型（日期类型）
-   - sal：月薪，double类型（带有浮点的数字）
-   - comm：补助津贴，double类型
-   - deptno：部门编号，int类型
+	- empno：员工编号，int类型（整数），不能为空，主键（主键后期学习约束时会进行说明）
+	- ename：员工姓名，varchar类型（字符串）
+	- job：工作岗位，varchar类型
+	- mgr：上级领导编号，int类型
+	- hiredate：雇佣日期，date类型（日期类型）
+	- sal：月薪，double类型（带有浮点的数字）
+	- comm：补助津贴，double类型
+	- deptno：部门编号，int类型
 - dept表
-   - deptno：部门编号，int类型，主键
-   - dname：部门名称，varchar类型
-   - loc：位置，varchar类型
+	- deptno：部门编号，int类型，主键
+	- dname：部门名称，varchar类型
+	- loc：位置，varchar类型
 - salgrade表
-   - grade：等级，int类型
-   - losal：最低工资，int类型
-   - hisal：最高工资，int类型
+	- grade：等级，int类型
+	- losal：最低工资，int类型
+	- hisal：最高工资，int类型
 
 对于以上表结构要提前了解，后面学习的内容需要你马上反应出：哪个字段是什么意思。
 查看一下表中的数据，来加深一下印象（以下SQL语句会在后面课程中学习）：
