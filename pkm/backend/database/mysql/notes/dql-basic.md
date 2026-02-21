@@ -285,20 +285,11 @@ SELECT CHARSET('数据库') AS charset_result;
 **分组函数的执行原则：先分组，然后对每一组数据执行分组函数。如果没有分组语句group by的话，整张表的数据自成一组。**
 
 分组函数包括五个：
-
-  
-
 - max：最大值
-
 - min：最小值
-
 - avg：平均值
-
 - sum：求和
-
 - count：计数
-
-  
 
 ### max
 
