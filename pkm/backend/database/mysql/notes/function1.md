@@ -4,26 +4,37 @@
 
 ## 字符串相关
 
-| 函数          | 语法                            | 说明                                   |
-| ----------- | ----------------------------- | ------------------------------------ |
-| **大小写转换**   |                               | [string-01](../details/string-01.md) |
-| UPPER       | `UPPER(str)`                  | 将字符串转换为大写                            |
-| UCASE       | `UCASE(str)`                  | 将字符串转换为大写（同UPPER）                    |
-| LOWER       | `LOWER(str)`                  | 将字符串转换为小写                            |
-| LCASE       | `LCASE(str)`                  | 将字符串转换为小写（同LOWER）                    |
-| **字符串截取**   |                               | [string-02](../details/string-02.md) |
-| SUBSTR      | `SUBSTR(str, start, length)`  | 从指定位置截取指定长度的字符串                      |
-|             | `SUBSTR(str, start)`          | 从指定位置截取到字符串末尾                        |
-| **字符串长度**   |                               | [string-03](../details/string-03.md) |
-| LENGTH      | `LENGTH(str)`                 | 返回字符串的字节长度（汉字2字节）                    |
-| CHAR_LENGTH | `CHAR_LENGTH(str)`            | 返回字符串的字符个数                           |
-| **字符串拼接**   |                               | [string-04](../details/string-04.md) |
-| CONCAT      | `CONCAT(str1, str2, ...)`     | 连接多个字符串                              |
-| **去除空白**    |                               | [string-05](../details/string-05.md) |
-| TRIM        | `TRIM(str)`                   | 去除字符串前后空白                            |
-|             | `TRIM(LEADING 'x' FROM str)`  | 去除前缀字符                               |
-|             | `TRIM(TRAILING 'x' FROM str)` | 去除后缀字符                               |
-|             | `TRIM(BOTH 'x' FROM str)`     | 去除前后字符                               |
+
+| 函数            | 语法                                      | 说明                                   |
+| ------------- | --------------------------------------- | ------------------------------------ |
+| **大小写转换**     |                                         | [string-01](../details/string-01.md) |
+| UPPER         | `UPPER(str)`                            | 将字符串转换为大写                            |
+| UCASE         | `UCASE(str)`                            | 将字符串转换为大写（同UPPER）                    |
+| LOWER         | `LOWER(str)`                            | 将字符串转换为小写                            |
+| LCASE         | `LCASE(str)`                            | 将字符串转换为小写（同LOWER）                    |
+| **字符串截取**     |                                         | [string-02](../details/string-02.md) |
+| SUBSTR        | `SUBSTR(str, start, length)`            | 从指定位置截取指定长度的字符串                      |
+|               | `SUBSTR(str, start)`                    | 从指定位置截取到字符串末尾                        |
+| ​​SUBSTRING​​ | `SUBSTRING(str, position[, length])`    | 从指定位置开始截取指定长度的字符(位置从1开始)             |
+| ​​LEFT​       | `LEFT(string, length)`                  | 从字符串左侧截取指定长度的字符                      |
+| **字符串长度**     |                                         | [string-03](../details/string-03.md) |
+| LENGTH        | `LENGTH(str)`                           | 返回字符串的字节长度（汉字2字节）                    |
+| CHAR_LENGTH   | `CHAR_LENGTH(str)`                      | 返回字符串的字符个数                           |
+| **字符串拼接**     |                                         | [string-04](../details/string-04.md) |
+| CONCAT        | `CONCAT(str1, str2, ...)`               | 连接多个字符串                              |
+| **去除空白**      |                                         | [string-05](../details/string-05.md) |
+| TRIM          | `TRIM(str)`                             | 去除字符串前后空白                            |
+|               | `TRIM(LEADING 'x' FROM str)`            | 去除前缀字符                               |
+|               | `TRIM(TRAILING 'x' FROM str)`           | 去除后缀字符                               |
+|               | `TRIM(BOTH 'x' FROM str)`               | 去除前后字符                               |
+| ​​LTRIM​​     | `LTRIM(string)`                         | 去除字符串前端的空格                           |
+| ​​RTRIM​​     | `RTRIM(string)`                         | 去除字符串后端的空格                           |
+| **字符集**       |                                         |                                      |
+| ​​CHARSET​​   | `CHARSET(str)`                          | 返回字符串的字符集                            |
+| **查找比较替换**    |                                         |                                      |
+| ​​INSTR​​     | `INSTR(string, substring)`              | 返回子串在字符串中出现的位置(从1开始)，未找到则返回0         |
+| ​​REPLACE​​   | `REPLACE(str, search_str, replace_str)` | 在字符串中用新字符串替换所有匹配的子串                  |
+| ​​STRCMP​​    | `STRCMP(string1, string2)`              | 逐字符比较两个字符串的大小(返回-1,0,1)              |
 
 
 ## 数字相关

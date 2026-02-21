@@ -349,7 +349,7 @@
 * [[../../../pkm/backend/database/mysql/notes/overview]]
 * [[../../../pkm/backend/database/mysql/notes/install-login]]
 * [[../../../pkm/backend/database/mysql/details/powerpoint-init-data]]
-* [[../../../pkm/backend/database/mysql/notes/dql-basic]]
+* [[../../../pkm/backend/database/mysql/notes/dql-single]]
 * [[../../../pkm/backend/database/mysql/notes/第05章 表相关]]
 * [[../../../pkm/backend/database/mysql/notes/第06章 三范式]]
 * [[../../../pkm/backend/database/mysql/notes/第07章 视图]]
