@@ -1,0 +1,33 @@
+查询员工的编号、姓名、薪资，按照薪资升序排列。
+
+```sql
+select empno,ename,sal from emp
+ORDER BY sal;
+```
+
+```sql
+-- 结果一样
+select empno,ename,sal from emp ORDER BY sal asc;
+```
+
+```bash
++-------+--------+---------+
+| empno | ename  | sal     |
++-------+--------+---------+
+|  7369 | SMITH  |  800.00 |
+|  7900 | JAMES  |  950.00 |
+|  7876 | ADAMS  | 1100.00 |
+|  7521 | WARD   | 1250.00 |
+|  7654 | MARTIN | 1250.00 |
+|  7934 | MILLER | 1300.00 |
+|  7844 | TURNER | 1500.00 |
+|  7499 | ALLEN  | 1600.00 |
+|  7782 | CLARK  | 2450.00 |
+|  7698 | BLAKE  | 2850.00 |
+|  7566 | JONES  | 2975.00 |
+|  7788 | SCOTT  | 3000.00 |
+|  7902 | FORD   | 3000.00 |
+|  7839 | KING   | 5000.00 |
++-------+--------+---------+
+14 rows in set (0.001 sec)
+```

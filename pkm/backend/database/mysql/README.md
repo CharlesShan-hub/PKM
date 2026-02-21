@@ -9,8 +9,8 @@
 * 数据表：创建、修改、删除：[ddl](notes/ddl.md)
 * 数据类型：[datatype](notes/datatype.md)
 * 数据操作：[dml](notes/dml.md)
-* 数据查询：[dql](notes/dql.md)
-* 函数（重点）
+* 数据查询基础：[dql-basic](notes/dql-basic.md)
+* 数据处理函数：[function](notes/function.md)
 * 内连接
 * 外连接
 * 约束
