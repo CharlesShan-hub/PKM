@@ -10,7 +10,8 @@
 * 数据类型：[datatype](notes/datatype.md)
 * 数据操作：[dml](notes/dml.md)
 * 数据查询基础：[dql-basic](notes/dql-basic.md)
-* 数据处理函数：[function](notes/function.md)
+	* 单行处理函数（数据处理函数）：[function1](notes/function1.md)
+	* 多行处理函数：[function2](notes/function2.md)
 * 内连接
 * 外连接
 * 约束
