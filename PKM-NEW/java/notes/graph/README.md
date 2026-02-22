@@ -65,4 +65,4 @@ Arrays
 
 异常与错误继承关系图
 
-![[exception-drawing.excalidraw]]
+![exception-drawing.excalidraw](exception-drawing.excalidraw)

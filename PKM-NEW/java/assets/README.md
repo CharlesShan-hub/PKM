@@ -335,28 +335,6 @@
 
 > 按照动力节点内容进行学习，笔记为官方提供的笔记
 
-* MySQL的安装与配置：[[../../../pkm/backend/database/mysql/notes/install-login|install-login]]
-* 数据库：创建、查看、删除、备份、恢复：[[../../../pkm/backend/database/mysql/notes/database]]
-* 表：创建、修改、删除：[[../../../pkm/backend/database/mysql/notes/ddl|ddl]]
-* 数据类型（重点）：[[../../../pkm/backend/database/mysql/notes/datatype|datatype]]
-* CRUD（重点）：[[../../../pkm/backend/database/mysql/notes/dml|dml]]
-* 函数（重点）
-* 内连接
-* 外连接
-* 约束
-* 索引
-* 事物
-* [[../../../pkm/backend/database/mysql/notes/overview]]
-* [[../../../pkm/backend/database/mysql/notes/install-login]]
-* [[../../../pkm/backend/database/mysql/details/powerpoint-init-data]]
-* [[../../../pkm/backend/database/mysql/notes/dql-single]]
-* [[../../../pkm/backend/database/mysql/notes/第05章 表相关]]
-* [[../../../pkm/backend/database/mysql/notes/第06章 三范式]]
-* [[../../../pkm/backend/database/mysql/notes/第07章 视图]]
-* [[../../../pkm/backend/database/mysql/notes/第08章 事务]]
-* [[../../../pkm/backend/database/mysql/notes/第09章 DBA命令]]
-* [[../../../pkm/backend/database/mysql/notes/第10章 MySQL客户端工具]]
-* [[../../../pkm/backend/database/mysql/notes/第11章 企业真题]]
 
 ### JDBC
 

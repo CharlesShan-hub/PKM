@@ -1,5 +1,5 @@
 # 数据库
-2026.02.15
+2026.02.21
 
 ## 学习路线
 
@@ -9,6 +9,10 @@
 * [ADVANCED DATABASE SYSTEMS](https://15721.courses.cs.cmu.edu/spring2024/)
 * [SPECIAL TOPICS IN DATABASE SYSTEMS](https://15799.courses.cs.cmu.edu/spring2025)
 * [MULTIMEDIA DATABASES AND DATA MINING](https://15799.courses.cs.cmu.edu/spring2025/)
+
+曾经的看书笔记（一点点）
+1. [introduction](notes/introduction.md)：数据库的组成和基本概念
+2. [Introduction-to-the-relational-model](notes/Introduction-to-the-relational-model.md)：关系数据库——基本概念
 
 ## 经验贴
 
