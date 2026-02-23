@@ -9,6 +9,7 @@
 * ddl
 	* 数据表：创建、修改、删除：[ddl](notes/ddl.md)
 	* 数据类型：[datatype](notes/datatype.md)
+	* 三范式：[3nf](notes/3nf.md)
 * dml
 	* 数据操作：[dml](notes/dml.md)
 	* 约束：[constraint](notes/constraint.md)
@@ -20,15 +21,11 @@
 		* 内连接、外连接：[join](notes/join.md)
 		* 子查询：[sub-query](notes/sub-query.md)
 		* dql练习：[dql-exercise](notes/dql-exercise.md)
-* 
+* 视图：[view](notes/view.md)
+* 事物：[transactions](notes/transactions.md)
 * 索引
-* 事物
 
-* [第06章 三范式](notes/第06章%20三范式.md)
-* [第07章 视图](notes/第07章%20视图.md)
-* [第08章 事务](notes/第08章%20事务.md)
 * [第09章 DBA命令](notes/第09章%20DBA命令.md)
-* [第10章 MySQL客户端工具](notes/第10章%20MySQL客户端工具.md)
 * [第11章 企业真题](notes/第11章%20企业真题.md)
 
 ## 资料

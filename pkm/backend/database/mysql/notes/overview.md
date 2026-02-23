@@ -54,3 +54,4 @@
 * navicat：我喜欢用这个，比较权威
 	* 可以去这里下载： https://www.macwk.com/
 * SQLyog: 字体可以放大，老韩推荐
+* [client](../details/client.md)
