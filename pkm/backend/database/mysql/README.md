@@ -9,7 +9,9 @@
 * ddl
 	* 数据表：创建、修改、删除：[ddl](notes/ddl.md)
 	* 数据类型：[datatype](notes/datatype.md)
-* dml（数据操作）：[dml](notes/dml.md)
+* dml
+	* 数据操作：[dml](notes/dml.md)
+	* 约束：[constraint](notes/constraint.md)
 * dql
 	* 单表查询：[dql-single](notes/dql-single.md)
 		* 单行处理函数（数据处理函数）：[function1](notes/function1.md)
@@ -18,12 +20,10 @@
 		* 内连接、外连接：[join](notes/join.md)
 		* 子查询：[sub-query](notes/sub-query.md)
 		* dql练习：[dql-exercise](notes/dql-exercise.md)
-* 约束
 * 
 * 索引
 * 事物
 
-* [第05章 表相关](notes/第05章%20表相关.md)
 * [第06章 三范式](notes/第06章%20三范式.md)
 * [第07章 视图](notes/第07章%20视图.md)
 * [第08章 事务](notes/第08章%20事务.md)
