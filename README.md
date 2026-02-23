@@ -76,6 +76,7 @@
 ---
 Todo
 * dip更多的滤波器，从飞书上边弄下来
+* sql-dql练习题
 
 ## Resources
 * [Java 全栈知识体系](https://pdai.tech/)

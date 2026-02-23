@@ -38,10 +38,24 @@ CREATE TABLE table_name (
 * `COLLATE utf8_general_ci`：指定表的排序规则为 utf8_general_ci。
 * `ENGINE=InnoDB`：指定表的存储引擎为 InnoDB，这是 MySQL 的默认引擎。
 
+例如：创建学生表
+```sql
+create table t_student(
+	no int,
+	name varchar(32),
+	gender char(1) default '男'
+);
+```
+
 ### 删除表
 ```sql
-DROP TABLE table_name;
+drop table 表名;
 ```
+或者
+```sql
+drop table if exists 表名;
+```
+判断是否存在这个表，如果存在则删除。避免不存在时的报错。
 
 ### 查看数据库有哪些表
 ```sql

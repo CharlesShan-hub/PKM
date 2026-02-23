@@ -6,16 +6,18 @@
 * 概述：[overview](notes/overview.md)
 * 数据库系统（安装、本地/远程登录）：[install-login](notes/install-login.md)
 * 数据库：创建、查看、删除、备份、恢复：[database](notes/database.md)
-* 数据表：创建、修改、删除：[ddl](notes/ddl.md)
-* 数据类型：[datatype](notes/datatype.md)
-* 数据操作：[dml](notes/dml.md)
-* 单表查询：[dql-single](notes/dql-single.md)
-	* 单行处理函数（数据处理函数）：[function1](notes/function1.md)
-	* 多行处理函数（分组函数）：[function2](notes/function2.md)
-* 多表查询
-	* 内连接、外连接：[join](notes/join.md)
-	* 子查询：[sub-query](notes/sub-query.md)
-	* dql练习：[dql-exercise](notes/dql-exercise.md)
+* ddl
+	* 数据表：创建、修改、删除：[ddl](notes/ddl.md)
+	* 数据类型：[datatype](notes/datatype.md)
+* dml（数据操作）：[dml](notes/dml.md)
+* dql
+	* 单表查询：[dql-single](notes/dql-single.md)
+		* 单行处理函数（数据处理函数）：[function1](notes/function1.md)
+		* 多行处理函数（分组函数）：[function2](notes/function2.md)
+	* 多表查询
+		* 内连接、外连接：[join](notes/join.md)
+		* 子查询：[sub-query](notes/sub-query.md)
+		* dql练习：[dql-exercise](notes/dql-exercise.md)
 * 约束
 * 
 * 索引
