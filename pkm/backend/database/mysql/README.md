@@ -14,12 +14,13 @@
 	* 多行处理函数（分组函数）：[function2](notes/function2.md)
 * 多表查询
 	* 内连接、外连接：[join](notes/join.md)
+	* 子查询：[sub-query](notes/sub-query.md)
 	* dql练习：[dql-exercise](notes/dql-exercise.md)
 * 约束
+* 
 * 索引
 * 事物
 
-* [powerpoint-init-data](details/powerpoint-init-data.md)
 * [第05章 表相关](notes/第05章%20表相关.md)
 * [第06章 三范式](notes/第06章%20三范式.md)
 * [第07章 视图](notes/第07章%20视图.md)
