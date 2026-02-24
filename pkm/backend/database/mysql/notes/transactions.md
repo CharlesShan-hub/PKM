@@ -20,172 +20,90 @@
 4. **持久性**（Durability）：持久性是指⼀个事务⼀旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。
 
 ---
-## 演示MySQL事务
+## 使用MySQL事务
 
 * 在dos命令窗口中开启MySQL事务：start transaction; 或者：begin;
 * 回滚事务：rollback; 
 * 提交事务：commit;
 只要执行以上的rollback或者commit，事务都会结束。
-MySQL默认情况下采用的事务机制是：自动提交。所谓自动提交就是只要执行一条DML语句则提交一次。
+MySQL默认情况下采用的事务机制是：**自动提交**。所谓自动提交就是只要执行一条DML语句则提交一次。
 
 ---
 ## 事务隔离级别
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1679213953232-4c17a795-8b1f-45d2-907b-c5c16aff672d.png#averageHue=%23e6e3e1&clientId=u5f51673a-a60a-4&from=paste&height=203&id=ue588be16&originHeight=203&originWidth=788&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16611&status=done&style=shadow&taskId=uca6fc90a-5745-4c38-aa5b-62e77ac8997&title=&width=788)
-**隔离级别从低到高排序：读未提交 < 读提交 < 可重复读 < 串行化**
-**不同隔离级别会存在不同的现象，现象按照严重性从高到低排序：脏读 > 不可重复读 > 幻读**
+### 介绍
 
-### 查看与设置隔离级别
-mysql默认的隔离级别：可重复读（REPEATABLE READ）。
+|          隔离级别          |   脏读   | 不可重复读  |   幻读   |
+| :--------------------: | :----: | :----: | :----: |
+| 读未提交（read uncommitted） | **存在** | **存在** | **存在** |
+|  读提交（read committed）   |  不存在   | **存在** | **存在** |
+| 可重复读（repeatable read）  |  不存在   |  不存在   | **存在** |
+|   串行化（serializable）    |  不存在   |  不存在   |  不存在   |
 
-- 查看当前会话的隔离级别：select @@transaction_isolation;
-- 查看全局的隔离级别：select @@gobal.transaction_isolation;
+* 隔离级别从低到高排序：读未提交 < 读提交 < 可重复读 < 串行化
+* 不同隔离级别会存在不同的现象，现象按照严重性从高到低排序：脏读 > 不可重复读 > 幻读
 
-设置事务隔离级别：
+### 查看与设置
 
-- 会话级：set session transaction isolation level read committed;
-- 全局级：set global transaction isolation level read committed;
+查看隔离级别
+* mysql默认的隔离级别：可重复读（REPEATABLE READ）
+- 查看当前会话的隔离级别
+	 ```sql
+	 select @@transaction_isolation;
+	 ```
+- 查看全局的隔离级别
+	```sql
+	select @@gobal.transaction_isolation;
+	```
+
+设置事务隔离级别
+- 会话级
+	```sql
+	set session transaction isolation level read committed;
+	````
+- 全局级
+	```sql
+	set global transaction isolation level read committed;
+	```
+
 ### 不同现象
-#### 脏读
-指的是一个事务读取了另一个事务尚未提交的数据，即读取了另一个事务中的脏数据（Dirty Data）。在此情况下，如果另一个事务回滚了或者修改了这些数据，那么读取这些脏数据的事务所处理的数据就是不准确的。
-#### 不可重复读
-指在一个事务内，多次读取同一个数据行，得到的结果可能是不一样的。这是由于其他事务对数据行做出了修改操作，导致数据的不一致性。
-#### 幻读
-指在事务执行过程中，前后两次相同的查询条件得到的结果集不一致，可能会变多或变少。
+
+1. 脏读：指的是一个事务读取了另一个事务尚未提交的数据，即读取了另一个事务中的脏数据（Dirty Data）。在此情况下，如果另一个事务回滚了或者修改了这些数据，那么读取这些脏数据的事务所处理的数据就是不准确的。（<u>简单来讲：A事务读了B事务没有提交的数据。</u>）
+2. 不可重复读：指在一个事务内，多次读取同一个数据行，得到的结果可能是不一样的。这是由于其他事务对数据行做出了修改操作，导致数据的不一致性。（<u>简单来讲：A事务查询记录张三，B事务执行update张三成为李四，并且commit，A事务再查询这个记录变成了李四。</u>）
+3. 幻读：指在事务执行过程中，前后两次相同的查询条件得到的结果集不一致，可能会变多或变少。（<u>简单来讲：A事务执行`select...from...where 3~5`，得到n条数据。B事务执行insert到3-5中间，commit。A事务再执行查到了n+1条。</u>）
+
 ### 隔离级别
-#### 读未提交（READ UNCOMMITTED）
-A事务与B事务，A事务可以读取到B事务未提交的数据。这是最低的隔离级别。几乎两个事务之间没有隔离。这种隔离级别是一种理论层面的，在实际的数据库产品中，没有从这个级别起步的。
-当事务隔离级别是读未提交时，三种现象都存在：脏读，不可重复读，幻读。
-我们可以开启两个DOS命令窗口，模拟两个事务，演示一下这种隔离级别。三种现象中最严重的是脏读，我们只需要演示脏读问题即可，因为存在脏读的话，就一定存在不可重复读和幻读问题。
 
-将全局事务隔离级别设置为：READ UNCOMMITTED
-```sql
-set global transaction isolation level read uncommitted;
-```
-
-开启两个DOS命令窗口来模拟两个事务：A事务与B事务。
-
-| **A事务** | **B事务** |
-| --- | --- |
-| mysql> use powernode |   |
-|   | mysql> use powernode |
-| mysql> start transaction; |   |
-|   | mysql> start transaction; |
-| mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709003498399-02e4239e-9064-4437-b331-8358459f8fd5.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=191&id=u3b49db14&originHeight=191&originWidth=291&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4424&status=done&style=shadow&taskId=ub68d2077-9c02-449a-9055-5854c835313&title=&width=291) |   |
-|   | mysql> insert into a values(4); |
-| mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709003545498-a496e1be-74fd-4e63-9ef0-d6e21b88a7cd.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=217&id=uebb288b9&originHeight=217&originWidth=289&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4600&status=done&style=shadow&taskId=ubb205019-9e90-432c-ab0e-6eb163886d5&title=&width=289) |   |
-
-通过以上测试，可以看到，A事务读取到了B事务还没有提交的数据。这种现象就是脏读。
-#### 读提交（READ COMMITTED）
-A事务与B事务，A事务可以读取到B事务提交之后的数据。Oracle数据库默认的就是这种隔离级别。
-
-将数据库的全局事务隔离级别设置为读提交：READ COMMITTED
-```sql
-set global transaction isolation level read committed;
-```
-
-演示：
-
-| **A事务** | **B事务** |
-| --- | --- |
-| mysql> use powernode |  |
-|  | mysql> use powernode |
-| mysql> start transaction; |  |
-|  | mysql> start transaction; |
-| mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709003985270-00489f1c-e135-4bd6-aa08-84cdddf6f007.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=191&id=u5d9d9ed4&originHeight=191&originWidth=289&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4388&status=done&style=shadow&taskId=ub714d0fd-c9f2-48d8-9130-c4b0827471a&title=&width=289) |  |
-|  | mysql> insert into a values(4); |
-| mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709003985270-00489f1c-e135-4bd6-aa08-84cdddf6f007.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=191&id=yl5zF&originHeight=191&originWidth=289&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4388&status=done&style=shadow&taskId=ub714d0fd-c9f2-48d8-9130-c4b0827471a&title=&width=289) |  |
-|  | mysql> commit; |
-| mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709004165277-dac7bc73-55ba-4034-bd48-b975689ffb41.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=214&id=ucc8e1eca&originHeight=214&originWidth=298&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4626&status=done&style=shadow&taskId=u2cac7a44-ba45-4bd7-86c2-2d280c9de57&title=&width=298) |  |
-
-通过以上测试看出，A事务只能读取到B事务提交之后的数据。这种隔离级别解决了脏读问题，但肯定是存在不可重复读和幻读问题。因为只要事务B进行了增删改操作之后并提交了，事务A读取到的数据肯定是不同的。即：不可重复读和幻读都存在。
-#### 可重复读（REPEATABLE READ）
-这个隔离级别是MySQL数据库默认的。
-A事务和B事务，A事务开启后，读取了某一条记录，然后B事务对这条记录进行修改并提交，A事务读取到的还是修改前的数据。这种隔离级别称为可重复读。
-
-将数据库全局隔离级别修改为可重复读：
-```sql
-set global transaction isolation level repeatable read;
-```
-
-演示：
-
-| **A事务** | **B事务** |
-| --- | --- |
-| mysql> use powernode |  |
-|  | mysql> use powernode |
-| mysql> start transaction; |  |
-|  | mysql> start transaction; |
-| mysql> select empno,ename,sal from emp where empno=7369;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709005877270-b84cdf55-866b-4b3b-b575-46552dfb84c0.png#averageHue=%23151312&clientId=u0fbbe02e-04ac-4&from=paste&height=109&id=u9a905011&originHeight=109&originWidth=344&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5276&status=done&style=shadow&taskId=u85710df6-3409-4242-a3d5-92ea27f7fc2&title=&width=344) |  |
-|  | mysql> update emp set ename='SMITH',sal=8000 where empno=7369; |
-|  | mysql> commit; |
-| mysql> select empno,ename,sal from emp where empno=7369;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709005948358-4f23bd69-d6ed-4963-a349-ba35ecc61dc0.png#averageHue=%23151311&clientId=u0fbbe02e-04ac-4&from=paste&height=145&id=ub810f157&originHeight=145&originWidth=336&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7381&status=done&style=shadow&taskId=ud25e00ad-83dc-4fa2-9858-de459ea77f8&title=&width=336) |  |
-
-通过以上测试得知：当事务隔离级别设置为可重复读时，避免了不可重复读问题。
-
-那么在MySQL当中，当事务隔离级别设置为可重复读时，能够避免幻读问题吗？测试一下：
-
-| **事务A** | **事务B** |
-| --- | --- |
-| mysql> use powernode |  |
-|  | mysql> use powernode |
-| mysql> start transaction; |  |
-|  | mysql> start transaction; |
-| mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709006316610-12c48e73-e894-49dc-8dfd-32f8d13ec991.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=218&id=ud9dadda5&originHeight=218&originWidth=298&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4645&status=done&style=shadow&taskId=ua4e22c07-45ef-467a-9a47-c66b5a21472&title=&width=298) |  |
-|  | mysql> insert into a values(5); |
-|  | mysql> commit; |
-| mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709006362804-0579079b-e054-4299-b1ab-6c16a68875f0.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=218&id=u4c4264a7&originHeight=218&originWidth=297&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4643&status=done&style=shadow&taskId=ua8b9a51a-306e-4b30-afdf-c88138fa2a7&title=&width=297) |  |
-
-通过以上测试得知：**当事务隔离级别设置为可重复读时，也避免了幻读问题。是完全避免了幻读问题吗？并不是。**请看以下测试：
-
-| **事务A** | **事务B** |
-| --- | --- |
-| mysql> use powernode |  |
-|  | mysql> use powernode |
-| mysql> start transaction; |  |
-|  | mysql> start transaction; |
-| mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709006612649-1614f4b7-446f-487d-9c1b-000a7e5589d3.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=241&id=ud98016d5&originHeight=241&originWidth=288&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4986&status=done&style=shadow&taskId=u400d7356-cb23-442b-bf41-3a6c7851f3a&title=&width=288) |  |
-|  | mysql> insert into a values(6); |
-|  | mysql> commit; |
-| mysql> select * from a **for update;**
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709006674069-b52a691f-2cc1-4721-bf23-0451f4bb7535.png#averageHue=%230e0d0d&clientId=u0fbbe02e-04ac-4&from=paste&height=269&id=uaeabeaf9&originHeight=269&originWidth=295&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5453&status=done&style=shadow&taskId=u127a2aaf-fd6d-421c-be74-3f50b8fa988&title=&width=295) |  |
-
-通过以上测试得知：**当事务隔离级别设置为可重复读，MySQL会尽最大努力避免幻读问题，但这种隔离级别无法完全避免幻读问题。**
-#### 串行化（SERIALIZABLE）
-这种隔离级别最高，避免了所有的问题，缺点是效率低，因为这种隔离级别会导致事务排队处理，不支持并发。
-
-设置数据库全局隔离级别为串行化：
-```sql
-set global transaction isolation level serializable;
-```
-
-演示：
-
-| **事务A** | **事务B** |
-| --- | --- |
-| mysql> use powernode |   |
-|   | mysql> use powernode |
-| mysql> start transaction; |   |
-|   | mysql> start transaction; |
-| mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709013080885-bf7ad024-3bdd-4497-997b-1bdc2c81a7da.png#averageHue=%230e0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=262&id=u98eae3de&originHeight=262&originWidth=292&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5406&status=done&style=shadow&taskId=u7fd54c94-2d24-4710-a2f2-4eb6a0f50ad&title=&width=292) |   |
-| mysql> insert into a values(7); |   |
-|   | mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709013571200-5bfdf9a5-8238-4601-92b7-5eacbd2de16f.png#averageHue=%230e0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=122&id=ubd8c88a4&originHeight=122&originWidth=284&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2887&status=done&style=shadow&taskId=u18918bf7-edf5-48f1-95c0-21c1e7ae7e7&title=&width=284) |
-| mysql> commit; |   |
-|   | ![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709013621752-5b81823b-362d-4cdc-8b49-f941eebd827f.png#averageHue=%230e0d0d&clientId=u0fbbe02e-04ac-4&from=paste&height=288&id=ufcf1f12d&originHeight=288&originWidth=297&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5866&status=done&style=shadow&taskId=u385c19ee-7e7d-43de-8d5d-e9cee03e4e4&title=&width=297) |
-
-通过以上测试得知：当事务隔离级别设置为串行化时，事务只能排队执行，不支持并发。
+1. 读未提交（READ UNCOMMITTED）
+	* A事务与B事务，A事务可以读取到B事务未提交的数据。这是最低的隔离级别。几乎两个事务之间没有隔离。这种隔离级别是一种理论层面的，在实际的数据库产品中，没有从这个级别起步的。
+	* 当事务隔离级别是读未提交时，三种现象都存在：脏读，不可重复读，幻读。
+	* 将全局事务隔离级别设置为：READ UNCOMMITTED
+		```sql
+		set global transaction isolation level read uncommitted;
+		```
+	* 案例：[trans-01](../details/trans-01.md)
+2. 读提交（READ COMMITTED）
+	* A事务与B事务，A事务可以读取到B事务提交之后的数据。Oracle数据库默认的就是这种隔离级别。
+	* 将数据库的全局事务隔离级别设置为读提交：READ COMMITTED
+		```sql
+		set global transaction isolation level read committed;
+		```
+	* 案例：[trans-02](../details/trans-02.md)
+3. 可重复读（REPEATABLE READ）
+	* 这个隔离级别是MySQL数据库默认的。
+	* A事务和B事务，A事务开启后，读取了某一条记录，然后B事务对这条记录进行修改并提交，A事务读取到的还是修改前的数据。这种隔离级别称为可重复读。
+	* 将数据库全局隔离级别修改为可重复读：
+		```sql
+		set global transaction isolation level repeatable read;
+		```
+	* 案例：[trans-03](../details/trans-03.md)
+4. 串行化（SERIALIZABLE）
+	* 这种隔离级别最高，避免了所有的问题，缺点是效率低，因为这种隔离级别会导致事务排队处理，不支持并发。
+	* 设置数据库全局隔离级别为串行化：
+		```sql
+		set global transaction isolation level serializable;
+		```
+	* [trans-04](../details/trans-04.md)
 
 ### 可重复读的幻读问题
 在上面讲解过程中我提到，MySQL默认的隔离级别可重复读，在很大程度上避免了幻读问题（并不能完全解决），那么它是如何解决幻读问题的呢，解决方案包括两种：
