@@ -44,6 +44,7 @@
 	* [Math](notes/stage2/Math.md)：数学类
 	* [Date](notes/stage2/date.md)：日期类
 	* [System](notes/powerpoint/System.md)：系统类
+	* [Random](notes/others/Random.md)：随机数
 * Array
 	* [array](notes/stage1/array.md)：数组
 	* [Arrays](notes/stage2/Arrays.md)：⚠️Comparator

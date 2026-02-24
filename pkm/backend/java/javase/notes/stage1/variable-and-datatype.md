@@ -2,6 +2,8 @@
 
 数据类型专题浏览顺序：本文 👉 [WrapperClass](../stage2/WrapperClass.md)
 
+![java-basic-basicdatatype.excalidraw|1000](../../assets/java-basic-basicdatatype.excalidraw.md)
+
 ---
 
 ## 变量基础

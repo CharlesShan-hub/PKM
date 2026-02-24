@@ -1,5 +1,7 @@
 # 字符编码
 
+![java-basic-code.excalidraw|1000](../../assets/java-basic-code.excalidraw.md)
+
 ---
 
 ## 主要编码标准

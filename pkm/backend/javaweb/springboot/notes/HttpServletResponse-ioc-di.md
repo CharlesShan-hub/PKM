@@ -1,28 +1,5 @@
 # Web基础知识
 
-## SpringBoot Web入门
-
-写一个Controller类
-```java
-package com.charles.server;  
-  
-import org.springframework.web.bind.annotation.RequestMapping;  
-import org.springframework.web.bind.annotation.RestController;  
-  
-@RestController  
-public class HelloController {  
-    @RequestMapping("/hello")  
-    public String hello(String name) {  
-        System.out.println("HelloController.hello()");  
-        return "Hello " + name;  
-    }
-}
-```
-
-然后在浏览器访问：http://localhost:8081/hello?name=heima，就会返回 Hello heima
-
-指定接口的方法： https://www.cnblogs.com/baby123/p/11381171.html
-
 ## HTTP协议
 
 1. 不需要手动去解析HTTP协议，SpringBoot已经帮我们解析好了

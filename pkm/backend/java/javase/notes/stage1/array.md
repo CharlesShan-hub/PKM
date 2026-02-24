@@ -8,6 +8,8 @@
 
 ### 数组初始化方式
 
+![java-basic-array.excalidraw|500](../../assets/java-basic-array.excalidraw.md)
+
 1. **方式1**：直接初始化
    ```java
    double[] hens = {3, 5, 1, 3.4, 2, 50};

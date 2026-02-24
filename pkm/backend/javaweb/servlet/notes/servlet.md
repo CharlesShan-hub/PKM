@@ -223,7 +223,7 @@
 ---
 ## 对于一个动态的web应用来说，一个请求和响应的过程有多少个角色参与，角色和角色之间有多少个协议
 
-![[BS结构系统的通信原理2.png]]
+![[../assets/BS结构系统的通信原理2.png]]
 
 - 有哪些角色（在整个BS结构的系统当中，有哪些人参与进去了）
   - 浏览器软件的开发团队（浏览器软件太多了：谷歌浏览器、火狐浏览器、IE浏览器....）
@@ -237,7 +237,7 @@
   - Browser  和   WebServer之间有一套传输协议：HTTP协议。（超文本传输协议。）
   - webapp开发团队  和  DB Server的开发团队之间有一套规范：JDBC规范。
 
-![[BS结构系统的角色和协议.png]]
+![[../assets/BS结构系统的角色和协议.png]]
 
 - Servlet规范是一个什么规范？
   - 遵循Servlet规范的webapp，这个webapp就可以放在不同的WEB服务器中运行。（因为这个webapp是遵循Servlet规范的。）
@@ -646,7 +646,7 @@ public class StudentServlet implements Servlet {
 	- 我们自己new的Servlet对象是不受WEB容器管理的。
 	- WEB容器创建的Servlet对象，这些Servlet对象都会被放到一个集合当中（HashMap），只有放到这个HashMap集合中的Servlet才能够被WEB容器管理，自己new的Servlet对象不会被WEB容器管理。（自己new的Servlet对象不在容器当中）
 	- web容器底层应该有一个HashMap这样的集合，在这个集合当中存储了Servlet对象和请求路径之间的关系
-	![[WEB容器中的Map集合.png]]
+	![[../assets/WEB容器中的Map集合.png]]
 - 研究：服务器在启动的Servlet对象有没有被创建出来（默认情况下）？
 	- 在Servlet中提供一个无参数的构造方法，启动服务器的时候看看构造方法是否执行。
 	- 经过测试得出结论：默认情况下，**服务器在启动的时候Servlet对象并不会被实例化**。

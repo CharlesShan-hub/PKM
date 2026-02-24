@@ -1,6 +1,8 @@
 # 背景介绍
 
 ## 版本
+
+![java-basic-version.excalidraw](../../assets/java-basic-version.excalidraw.md)
 - LTS（长期支持）：Java 8、Java 11、Java 17
 - Java 8、JDK 8、JDK 1.8 是同一个版本
 - [Java 版本特性总结（官网）](https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html)
@@ -9,6 +11,8 @@
 - 新版本更新详细内容：[java_new](../powerpoint/java_new.md)
 
 ## 类型
+
+![java-basic-branch.excalidraw](../../assets/java-basic-branch.excalidraw.md)
 - Java SE（标准版）
 - Java EE（企业版）
 - Java ME（小型版）
@@ -31,6 +35,8 @@
 - Sublime Text
 
 ## JVM、JRE、JDK
+
+![java-basic-core.excalidraw](../../assets/java-basic-core.excalidraw.md)
 - JVM（Java Virtual Machine）：虚拟机
 - JRE（Java Runtime Environment）= JVM + Java 核心库；运行 class 文件需要安装 JRE
 - JDK（Java Development Kit）= JRE + 开发工具（如 javac）；开发者安装 JDK 即可

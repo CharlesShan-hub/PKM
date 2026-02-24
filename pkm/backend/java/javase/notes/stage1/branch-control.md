@@ -1,5 +1,7 @@
 # Java控制结构
 
+![java-basic-branchs.excalidraw|1000](../../assets/java-basic-branchs.excalidraw.md)
+
 ---
 
 ## 顺序控制

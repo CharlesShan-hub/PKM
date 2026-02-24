@@ -10,6 +10,8 @@
 ---
 ## @SpringBootApplication
 
+### 源码分析
+
 ```java
 @SpringBootApplication  
 public class SpringbootApplication {  
@@ -52,6 +54,76 @@ public @interface SpringBootApplication {
 	* Spring Boot 的自动配置机制是其核心特性之一，它通过智能地检测类路径和配置文件，自动完成组件的初始化和管理。具体来说，当 Spring Boot 应用启动时，它会扫描类路径下存在的类以及 `application.properties`（或 `application.yml`）中的配置项。例如，如果检测到类路径中有 `SqlSessionFactory`类，或者配置文件中设置了数据源相关信息，Spring Boot 就会认为当前项目使用了 MyBatis 框架，并自动初始化 MyBatis 相关的 Bean（如 `SqlSessionFactoryBean`、`MapperScannerConfigurer`等），然后将这些 Bean 注册到 IoC 容器中进行统一管理。这种机制极大地减少了开发人员手动编写 XML 或 Java 配置的工作，真正实现了“约定优于配置”的开发理念，让开发者更专注于业务逻辑而非环境搭建。
 	* 通过SpringApplication.run可以返回上下文对象：`ConfigurableBootstrapContext context = (ConfigurableBootstrapContext) SpringApplication.run(SpringbootApplication.class, args);`
 * `@ComponentScan`
+
+### 主要参数
+
+`@ComponentScan` 有几个重要的参数可以配置：
+
+1. ​**​basePackages / value​**​: 指定要扫描的基础包
+    
+    ```
+    @ComponentScan(basePackages = "com.example")
+    @ComponentScan({"com.example", "com.other"}) // value 的简写
+    ```
+    
+2. ​**​basePackageClasses​**​: 通过类来指定扫描的基础包
+    
+    ```
+    @ComponentScan(basePackageClasses = {SomeClass.class, AnotherClass.class})
+    ```
+    
+3. ​**​includeFilters​**​: 包含特定的组件类型
+    
+    ```
+    @ComponentScan(includeFilters = @Filter(type = FilterType.ANNOTATION, classes = CustomAnnotation.class))
+    ```
+    
+4. ​**​excludeFilters​**​: 排除特定的组件类型
+    
+    ```
+    @ComponentScan(excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = Controller.class))
+    ```
+    
+5. ​**​useDefaultFilters​**​: 是否使用默认过滤器（默认为 true）
+    
+    ```
+    @ComponentScan(useDefaultFilters = false)
+    ```
+    
+### 使用场景示例
+
+1. 扫描多个包
+
+```java
+@SpringBootApplication
+@ComponentScan(basePackages = {"com.example.main", "com.example.utils"})
+public class MyApplication {
+    // ...
+}
+```
+
+2. 排除特定组件
+
+```java
+@SpringBootApplication
+@ComponentScan(excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = {Service.class}))
+public class MyApplication {
+    // ...
+}
+```
+
+3. 自定义过滤器
+
+```java
+@SpringBootApplication
+@ComponentScan(
+    includeFilters = @Filter(type = FilterType.CUSTOM, classes = MyTypeFilter.class),
+    useDefaultFilters = false
+)
+public class MyApplication {
+    // ...
+}
+```
 
 ---
 ## Bean注册

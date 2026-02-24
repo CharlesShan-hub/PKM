@@ -1,5 +1,7 @@
 # Java运算符
 
+![java-basic-operator.excalidraw|1000](../../assets/java-basic-operator.excalidraw.md)
+
 ---
 
 ## 运算符分类概览

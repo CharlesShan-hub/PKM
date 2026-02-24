@@ -1,5 +1,7 @@
 # Java注释
 
+![java-basic-comment.excalidraw|1000](../../assets/java-basic-comment.excalidraw.md)
+* 极简案例：[comment-detail](../../details/comment-detail.md)
 ---
 
 ## 注释的作用

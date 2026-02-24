@@ -1,5 +1,7 @@
 # Java键盘输入
 
+![java-basic-sacnner.excalidraw|1000](../../assets/java-basic-sacnner.excalidraw.md)
+
 ---
 
 ## 快速入门
