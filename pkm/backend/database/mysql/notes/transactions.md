@@ -83,7 +83,8 @@ MySQL默认情况下采用的事务机制是：**自动提交**。所谓自动�
 		```
 	* 案例：[trans-01](../details/trans-01.md)
 2. 读提交（READ COMMITTED）
-	* A事务与B事务，A事务可以读取到B事务提交之后的数据。Oracle数据库默认的就是这种隔离级别。
+	* A事务与B事务，A事务可以读取到B事务提交之后的数据。
+	* Oracle数据库默认的就是这种隔离级别。
 	* 将数据库的全局事务隔离级别设置为读提交：READ COMMITTED
 		```sql
 		set global transaction isolation level read committed;
@@ -103,60 +104,26 @@ MySQL默认情况下采用的事务机制是：**自动提交**。所谓自动�
 		```sql
 		set global transaction isolation level serializable;
 		```
-	* [trans-04](../details/trans-04.md)
+	* 案例：[trans-04](../details/trans-04.md)
 
 ### 可重复读的幻读问题
-在上面讲解过程中我提到，MySQL默认的隔离级别可重复读，在很大程度上避免了幻读问题（并不能完全解决），那么它是如何解决幻读问题的呢，解决方案包括两种：
 
-- 针对**快照读**（普通 select 语句），是**通过 MVCC 方式解决了幻读**，因为可重复读隔离级别下，事务执行过程中看到的数据，一直跟这个事务启动时看到的数据是一致的，即使中途有其他事务插入了一条数据，是查询不出来这条数据的，所以就很好的避免了幻读问题。
-- 针对**当前读**（select ... for update 等语句），是**通过 next-key lock（记录锁+间隙锁）方式解决了幻读**，因为当执行 select ... for update 语句的时候，会加上 next-key lock，如果有其他事务在 next-key lock 锁范围内插入了一条记录，那么这个插入语句就会被阻塞，无法成功插入，所以就很好的避免了幻读问题。
-#### 快照读是如何解决幻读的
-什么是快照读？普通的select语句都是采用的快照读。顾名思义：在整个事务的处理过程中，执行相同的一个select语句时，每次都是读取的快照。（快照指的是固定的某个时刻的数据，就像现实世界中的拍照一样，把那个美好的时刻留下来）。也就是说，当事务隔离级别是可重复读，并且执行的select语句是一个普通的select语句时，都会采用快照读的方式读取数据，底层实现原理是：
+在上面讲解过程中提到，MySQL默认的隔离级别可重复读，在很大程度上避免了幻读问题（并不能完全解决），那么它是如何解决幻读问题的呢，解决方案包括两种。
+1. 针对**快照读**（普通 select 语句），是**通过 MVCC 方式解决了幻读**，因为可重复读隔离级别下，事务执行过程中看到的数据，一直跟这个事务启动时看到的数据是一致的，即使中途有其他事务插入了一条数据，是查询不出来这条数据的，所以就很好的避免了幻读问题。
+	- 什么是快照读？普通的select语句都是采用的快照读。顾名思义：在整个事务的处理过程中，执行相同的一个select语句时，每次都是读取的快照。（快照指的是固定的某个时刻的数据，就像现实世界中的拍照一样，把那个美好的时刻留下来）。也就是说，当事务隔离级别是可重复读，并且执行的select语句是一个普通的select语句时，都会采用快照读的方式读取数据。
+	* 底层实现原理是：底层由 MVCC（多版本并发控制）实现，实现的方式是开始事务后，在执行第一个查询语句后，会创建一个 Read View，后续的查询语句利用这个 Read View，通过这个 Read View 就可以在 undo log 版本链找到事务开始时的数据，所以事务过程中每次查询的数据都是一样的，即使中途有其他事务插入了新纪录，是查询不出来这条数据的，所以就很好的避免了幻读问题。
+	* 演示：[快照读](../details/快照读.md)
+2. 针对**当前读**（select ... for update 等语句），是通过 **next-key lock** （**记录锁**+**间隙锁**） 方式解决了幻读，因为当执行 select ... for update 语句的时候，会加上 next-key lock，如果有其他事务在 next-key lock 锁范围内插入了一条记录，那么这个插入语句就会被阻塞，无法成功插入，所以就很好的避免了幻读问题。
+	* 当前读，顾名思义：每一次都读取最新的数据。当前读包括：update、delete、insert、select...for update。这个很好理解，因为增删改的时候都要基于最新的数据进行增删改。
+	* 而select...for update原理是：对查询范围内的数据进行加锁，不允许其它事务对这个范围内的数据进行增删改。也就是说这个select语句范围内的数据是不允许并发的，只能排队执行，从而避免幻读问题。
+	* select...for update加的锁叫做：**next-key lock**（面试要说）。**我们可以称其为：间隙锁 + 记录锁。间隙锁用来保证在锁定的范围内不允许insert操作。记录锁用来保证在锁定的范围内不允许delete和update操作。**
+	* 演示：[当前读](../details/当前读.md)
 
-- **底层由 MVCC（多版本并发控制）实现，实现的方式是开始事务后，在执行第一个查询语句后，会创建一个 Read View，后续的查询语句利用这个 Read View，通过这个 Read View 就可以在 undo log 版本链找到事务开始时的数据，所以事务过程中每次查询的数据都是一样的，即使中途有其他事务插入了新纪录，是查询不出来这条数据的，所以就很好的避免了幻读问题。**
+### 出现幻读的两种情况
 
-演示：
-
-| **事务A**                   | **事务B**                   |
-| ------------------------- | ------------------------- |
-| mysql> use powernode      |                           |
-|                           | mysql> use powernode      |
-| mysql> start transaction; |                           |
-|                           | mysql> start transaction; |
-|                           |                           |
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709006316610-12c48e73-e894-49dc-8dfd-32f8d13ec991.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=218&id=mdmNA&originHeight=218&originWidth=298&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4645&status=done&style=shadow&taskId=ua4e22c07-45ef-467a-9a47-c66b5a21472&title=&width=298) |  |
-|  | mysql> insert into a values(5); |
-|  | mysql> commit; |
-| mysql> select * from a; //快照读
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709006362804-0579079b-e054-4299-b1ab-6c16a68875f0.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=218&id=sxE0q&originHeight=218&originWidth=297&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4643&status=done&style=shadow&taskId=ua8b9a51a-306e-4b30-afdf-c88138fa2a7&title=&width=297) |  |
-
-#### 当前读是如何解决幻读的
-当前读，顾名思义：每一次都读取最新的数据。当前读包括：update、delete、insert、select...for update。这个很好理解，因为增删改的时候都要基于最新的数据进行增删改。
-而select...for update原理是：对查询范围内的数据进行加锁，不允许其它事务对这个范围内的数据进行增删改。也就是说这个select语句范围内的数据是不允许并发的，只能排队执行，从而避免幻读问题。
-select...for update加的锁叫做：**next-key lock**（面试要说）。**我们可以称其为：间隙锁 + 记录锁。间隙锁用来保证在锁定的范围内不允许insert操作。记录锁用来保证在锁定的范围内不允许delete和update操作。**
-
-假如有这样的数据：
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709020549539-138b4715-5526-45df-8db2-65d05b393ba1.png#averageHue=%23fbfafa&clientId=u0fbbe02e-04ac-4&from=paste&height=100&id=u99c5080d&originHeight=100&originWidth=137&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1043&status=done&style=shadow&taskId=u5dc4d53d-1b0b-4c0d-9c33-a1e5e7f2afb&title=&width=137)
-SQL语句是这样写的：
-```sql
-select * from a where id between 2 and 4 for update;
-```
-那么id在[2-4]区间的所有记录行被锁定，不能插入3是通过间隙锁来搞定的。不能修改或删除2和4是通过记录锁来搞定的。
-
-演示：
-
-| **事务A** | **事务B** |
-| --- | --- |
-| mysql> use powernode |  |
-|  | mysql> use powernode |
-| mysql> start transaction; |  |
-|  | mysql> start transaction; |
-| mysql> select * from a where id between 2 and 4 for update; // 当前读 |  |
-|  | ![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709020966550-4d8580bc-d1f4-48c9-b7e3-26be1acf1bd2.png#averageHue=%23100f0e&clientId=u0fbbe02e-04ac-4&from=paste&height=82&id=u8e7603b6&originHeight=82&originWidth=395&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3402&status=done&style=shadow&taskId=u2b45bd7b-d1f9-4e07-8579-11c81f9f062&title=&width=395) |
-
-#### 出现幻读的两种情况
 在同一个事务处理过程中，如果前后两次都采用快照读，或者都采用当前读，则不会出现幻读问题。如果第一次使用快照读，后面使用了当前读，则会出现幻读问题。
-##### 第一种产生幻读的场景
+
+#### 第一种产生幻读的场景
 A事务与B事务。在A事务中第一次查询使用快照读，B事务插入数据。然后在A事务中第二次查询使用当前读。则会产生幻读现象。
 演示：
 
@@ -173,7 +140,7 @@ A事务与B事务。在A事务中第一次查询使用快照读，B事务插入�
 | mysql> select * from a for update; // 产生了幻读
 ![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709021386345-1b47e39d-98e6-42de-bf33-1652ed601c21.png#averageHue=%230f0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=213&id=uaadf86ec&originHeight=213&originWidth=303&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4605&status=done&style=shadow&taskId=u18140f69-1a56-44c7-9d4f-83517e41e56&title=&width=303) |  |
 
-##### 第二种产生幻读的场景
+#### 第二种产生幻读的场景
 事务A与事务B，在事务A中第一次查询使用快照读，在事务B中插入一条数据，然后在事务A中更新事务B插入的那条记录，最后在事务A中再次使用快照读。则会发生幻读现象。
 
 | **事务A** | **事务B** |

@@ -1,18 +1,37 @@
-
-演示：
-
-| **事务A** | **事务B** |
-| --- | --- |
-| mysql> use powernode |   |
-|   | mysql> use powernode |
-| mysql> start transaction; |   |
-|   | mysql> start transaction; |
-| mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709013080885-bf7ad024-3bdd-4497-997b-1bdc2c81a7da.png#averageHue=%230e0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=262&id=u98eae3de&originHeight=262&originWidth=292&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5406&status=done&style=shadow&taskId=u7fd54c94-2d24-4710-a2f2-4eb6a0f50ad&title=&width=292) |   |
-| mysql> insert into a values(7); |   |
-|   | mysql> select * from a;
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709013571200-5bfdf9a5-8238-4601-92b7-5eacbd2de16f.png#averageHue=%230e0e0d&clientId=u0fbbe02e-04ac-4&from=paste&height=122&id=ubd8c88a4&originHeight=122&originWidth=284&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2887&status=done&style=shadow&taskId=u18918bf7-edf5-48f1-95c0-21c1e7ae7e7&title=&width=284) |
-| mysql> commit; |   |
-|   | ![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709013621752-5b81823b-362d-4cdc-8b49-f941eebd827f.png#averageHue=%230e0d0d&clientId=u0fbbe02e-04ac-4&from=paste&height=288&id=ufcf1f12d&originHeight=288&originWidth=297&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5866&status=done&style=shadow&taskId=u385c19ee-7e7d-43de-8d5d-e9cee03e4e4&title=&width=297) |
-
-通过以上测试得知：当事务隔离级别设置为串行化时，事务只能排队执行，不支持并发。
+1. 初始化，设置隔离级别，开启事务
+	```sql
+	-- session1
+	use bjpowernode;
+	drop table if exists test_trans;
+	create table test_trans(
+		id int,
+		name varchar(32)
+	);
+	set session transaction isolation level serializable;
+	start transaction;
+	```
+	```sql
+	-- session2
+	use bjpowernode;
+	set session transaction isolation level serializable;
+	start transaction;
+	```
+2. 第二个事务进行insert，然后commit，第一个事务可以select不到新纪录，但是xxx
+	```sql
+	-- session1
+	select * from test_trans; -- 这里可以看到什么都没有
+	-- 必须要先select这一下，建立快照
+	```
+	```sql
+	-- session2
+	insert into test_trans values(1, 'trans2');
+	commit; -- 会看到这个窗口卡住了，因为不能并行
+	```
+	```sql
+	-- session1
+	select * from test_trans; -- 这里现在也是看不到内容了，避免不可重复读
+	select * from test_trans for update; -- 也看不到了，避免了幻读
+	commit; -- 这时候可以看到tran2的commit也提交了
+	select * from test_trans; -- 这时才能看到insert的内容。
+	```
+	通过以上测试得知：当事务隔离级别设置为串行化时，事务只能排队执行，不支持并发。

@@ -3,7 +3,7 @@
 	```sql
 	-- session1
 	use bjpowernode;
-	drop table if exist test_trans;
+	drop table if exists test_trans;
 	create table test_trans(
 		id int,
 		name varchar(32)

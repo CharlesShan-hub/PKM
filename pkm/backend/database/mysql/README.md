@@ -24,8 +24,7 @@
 * 视图：[view](notes/view.md)
 * 事物：[transactions](notes/transactions.md)
 * 索引
-
-* [第09章 DBA命令](notes/第09章%20DBA命令.md)
+* DBA命令：[dba](notes/dba.md)
 * [第11章 企业真题](notes/第11章%20企业真题.md)
 
 ## 资料
