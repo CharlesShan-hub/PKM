@@ -340,7 +340,7 @@
 
 > 按照动力节点往年视频学习（百度网盘）
 
-* [[../../../database/jdbc/jdbc]]
+* [[../../../database/jdbc/hsp-jdbc]]
 
 ### JavaWeb
 

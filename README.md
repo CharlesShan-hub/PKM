@@ -10,7 +10,7 @@
 			* [Design Pattern](pkm/backend/java/design-pattern/README.md)
 		* database
 			* [mysql](pkm/backend/database/mysql/README.md)
-			* [jdbc](pkm/backend/database/jdbc/jdbc.md)
+			* [JDBC](pkm/backend/database/jdbc/README.md)
 			* redis
 			* MongoDB
 			* zookeeper
@@ -18,7 +18,7 @@
 			* [Servlet](pkm/backend/javaweb/servlet/README.md)
 			* [Spring](pkm/backend/javaweb/spring/README.md)
 			* [MyBatis](pkm/backend/javaweb/mybatis/README.md)
-			* MyBatisPlus
+			* [MyBatisPlus](pkm/backend/javaweb/mybatisplus/README.md)
 			* [SpringBoot](pkm/backend/javaweb/springboot/README.md)
 		* middleware
 			* RabbitMQ

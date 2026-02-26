@@ -1,24 +1,6 @@
 # JDBC
 
 ---
-## 概述
-
-1. JDBC（Java DataBase Connectivity）就是Java数据库连接，即一套使用Java语言来操作数据库的编程接口，也可以认为是一组规范。
-2. 早期SUN公司的天才们想编写一套可以连接天下所有数据库的API，但是当他们刚刚开始时就发现这是不可完成的任务，因为各个厂商的数据库服务器差异太大了。后来SUN开始与数据库厂商们讨论，最终得出的结论是，由SUN提供一套访问数据库的规范（就是一组接口），并提供连接数据库的协议标准，然后各个数据库厂商会遵循SUN的规范提供一套访问自己公司的数据库服务器的API出现。SUN提供的规范命名为JDBC，而各个厂商提供的，遵循了JDBC规范的，可以访问自己数据库的API被称之为驱动！
-3. JDBC是接口，而JDBC驱动才是接口的实现，没有驱动无法完成数据库连接！每个数据库厂商都有自己的驱动，用来连接自己公司的数据库。
-4. JDBC API
-   1. 提供者：Sun公司
-   2. 内容：供程序员调用的接口与类，集成在java.sql和javax.sql包中，如
-      1. DriverManager类，管理各种不同的JDBC驱动
-      2. Connection接口，用于连接数据库
-      3. Statement接口，用于执行SQL语句
-      4. ResultSet接口，用于处理查询结果集
-5. JDBC 驱动
-   1. 提供者：各个数据库厂商
-   2. 内容：遵循JDBC规范的数据库驱动，用于连接数据库服务器
-6. SUN公司是规范制定者，制定了规范JDBC（连接数据库规范），数据库厂商微软、甲骨文等分别提供实现JDBC接口的驱动jar包，程序员学习JDBC规范来应用这些jar包里的类。
-
----
 ## JDBC操作数据库的步骤
 
 ### 加载数据库驱动
@@ -303,7 +285,8 @@ import java.util.Collection;
 /**  
  * 数据库JDBC的工具类，用于维护连接对象  
  *  
- */class Utils {  
+ */
+ class Utils {  
     private static String DRIVER_CLASS_NAME="com.mysql.cj.jdbc.Driver";  
     private static String URL="jdbc:mysql://localhost:3306/learnjdbc";  
     private static String USERNAME="root";  

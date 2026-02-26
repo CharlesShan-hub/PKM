@@ -23,12 +23,9 @@
 * Stream API：是跟集合相关的计算操作，强调的是**计算**。
 
 ### Stream API的操作步骤
-1. 第一步：创建Stream
-	* 通过数据源（如：集合、数组等）来获取一个Stream对象 。
-2. 第二步：中间操作
-	* 对数据源的数据进行处理，该操作会返回一个Stream对象，因此可以进行链式操作。
-3. 第三步：终止操作
-	* 执行终止操作时，则才会真正执行中间操作，并且并返回一个计算完毕后的结果。
+1. 第一步，创建Stream：通过数据源（如：集合、数组等）来获取一个Stream对象 。
+2. 第二步，中间操作：对数据源的数据进行处理，该操作会返回一个Stream对象，因此可以进行链式操作。
+3. 第三步，终止操作：执行终止操作时，则才会真正执行中间操作，并且并返回一个计算完毕后的结果。
 
 ### Stream API的重要特点
 1. Stream自己不会存储元素，**只能对元素进行计算**。
@@ -93,7 +90,7 @@ import java.util.stream.Stream;
 /**
  * ClassName: StreamAPITest02
  * Description:
- *          获取Stream对象的第二种方式：通过Arrays数组工具类的stream()方法。
+ *   获取Stream对象的第二种方式：通过Arrays数组工具类的stream()方法。
  * <p>
  * Datetime: 2024/2/3 8:59
  * Author: 老杜@动力节点
@@ -130,7 +127,7 @@ import java.util.stream.Stream;
 /**
  * ClassName: StreamAPITest03
  * Description:
- *          获取Stream对象的第三种方式：使用Stream接口本身的of(可变长度参数)方法
+ *   获取Stream对象的第三种方式：使用Stream接口本身的of(可变长度参数)方法
  * <p>
  * Datetime: 2024/2/3 9:03
  * Author: 老杜@动力节点
@@ -396,8 +393,8 @@ import java.util.stream.Stream;
 /**
  * ClassName: StreamAPITest05
  * Description:
- *          Stream的中间操作之：map
- *          map指的是映射操作，本质上就是：转换操作。
+ *    Stream的中间操作之：map
+ *    map指的是映射操作，本质上就是：转换操作。
  * <p>
  * Datetime: 2024/2/3 9:41
  * Author: 老杜@动力节点
@@ -787,7 +784,6 @@ System.out.println(sum);
 IntSummaryStatistics collect = list.stream().collect(Collectors.summarizingInt(Student::getAge));
 System.out.println(collect);
 ```
-
 #### 分组（groupingBy）
 分组（groupingBy），将Stream按条件分为两个Map，比如按照学生年龄分为两个Map集合。
 【示例】按照学生性别分为两个Map集合
