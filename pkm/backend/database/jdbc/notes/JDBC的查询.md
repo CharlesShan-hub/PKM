@@ -14,7 +14,6 @@ ResultSet 的遍历是基于 JDBC 的流式处理机制的，即一行一行地�
 
 需要注意的是，在使用完 ResultSet 对象之后，需要及时关闭它，以释放数据库资源并避免潜在的内存泄漏问题。否则，如果在多个线程中打开了多个 ResultSet 对象，并且没有正确关闭它们的话，可能会导致数据库连接过多，从而影响系统的稳定性和性能。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=acVGP&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 ## 通过列索引获取数据（以String类型获取）
 需求：获取t_user表中所有数据，在控制台打印输出每一行的数据。
 ```sql
@@ -160,7 +159,6 @@ if(conn != null){
 ```
 ResultSet最终也是需要关闭的。**先关闭ResultSet，再关闭Statement，最后关闭Connection**。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=O8j9i&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 ## 通过列名获取数据（以String类型获取）
 获取当前行的数据，不仅可以通过列下标获取，还可以通过查询结果的列名来获取，通常这种方式是被推荐的，因为可读性好。
 例如这样的SQL：
@@ -252,7 +250,6 @@ public class JDBCTest10 {
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702540685314-fa65fdea-6aad-4781-99fa-c007955b5b3f.png#averageHue=%23191613&clientId=u858f9b9d-17d9-4&from=paste&height=225&id=ua4405eca&originHeight=225&originWidth=1042&originalType=binary&ratio=1&rotation=0&showTitle=false&size=40887&status=done&style=shadow&taskId=ub13101ac-bd74-45a7-81db-f89d783e604&title=&width=1042)
 提示name列是不存在的。所以一定是根据查询结果中的列名来获取，而不是表中原始的列名。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=InE0y&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 ## 以指定的类型获取数据
 前面的程序可以看到，不管数据库表中是什么数据类型，都以String类型返回。当然，也能以指定类型返回。
 使用PowerDesigner再设计一张商品表：t_product，使用Navicat for MySQL工具准备数据如下：
@@ -338,7 +335,6 @@ public class JDBCTest11 {
 执行结果如下：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702541874721-10c9a4f2-370f-4ce4-985e-6cf8da2e3ffb.png#averageHue=%23131110&clientId=u858f9b9d-17d9-4&from=paste&height=122&id=ue711ac2d&originHeight=122&originWidth=522&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11018&status=done&style=shadow&taskId=u241eaa77-525f-4fbd-9bdd-9a7523caff4&title=&width=522)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=SE92d&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 ## 获取结果集的元数据信息（了解）
 ResultSetMetaData 是一个接口，用于描述 ResultSet 中的元数据信息，即查询结果集的结构信息，例如查询结果集中包含了哪些列，每个列的数据类型、长度、标识符等。
 
@@ -423,7 +419,6 @@ public class JDBCTest12 {
 
 在上面的代码中，我们首先创建了一个 Statement 对象，然后执行了一条 SQL 查询语句，生成了一个 ResultSet 对象。接下来，我们通过 ResultSet 对象的 getMetaData() 方法获取了 ResultSetMetaData 对象，进而获取了查询结果中列的信息并进行输出。需要注意的是，在进行列信息的获取时，列的编号从 1 开始计算。该示例代码将获取查询结果集中所有列名、数据类型以及长度等信息。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=iCiM1&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 # 获取新增行的主键值
 有很多表的主键字段值都是自增的，在某些特殊的业务环境下，当我们插入了新数据后，希望能够获取到这条新数据的主键值，应该如何获取呢？
 在 JDBC 中，如果要获取插入数据后的主键值，可以使用 Statement 接口的 executeUpdate() 方法的重载版本，该方法接受一个额外的参数，用于指定是否需要获取自动生成的主键值。然后，通过以下两个步骤获取插入数据后的主键值：
@@ -508,7 +503,6 @@ public class JDBCTest13 {
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702543887747-8bfa21c9-e7b4-49c9-8dec-dbca00a645a7.png#averageHue=%23dcb26c&clientId=ucecc8983-3edd-4&from=paste&height=164&id=uf79fbdbf&originHeight=164&originWidth=572&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13072&status=done&style=none&taskId=u91dfc8c2-3fff-4213-8df9-ef9c0ad88f7&title=&width=572)
 以上代码中，我们将 Statement.RETURN_GENERATED_KEYS 传递给 executeUpdate() 方法，以指定需要获取插入的主键值。然后，通过调用 Statement 对象的 getGeneratedKeys() 方法获取包含插入的主键值的 ResultSet 对象，通过 ResultSet 对象获取主键值。需要注意的是，在使用 Statement 对象的 getGeneratedKeys() 方法获取自动生成的主键值时，主键值的获取方式具有一定的差异，需要根据不同的数据库种类和版本来进行调整。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=lNBXU&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 # 使用IDEA工具编写JDBC程序
 ## 创建空的工程并设置JDK
 创建一个空的工程：mypro
@@ -525,7 +519,6 @@ public class JDBCTest13 {
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702892712096-c8781789-2ea6-485e-8c43-9902923e7f48.png#averageHue=%232d3137&clientId=ud3d1e1b0-846a-4&from=paste&height=330&id=udd8c3bab&originHeight=330&originWidth=709&originalType=binary&ratio=1&rotation=0&showTitle=false&size=44439&status=done&style=none&taskId=u8ff7c0d2-4376-4ed5-9543-9e9fc343ccc&title=&width=709)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702892635936-a0bd4576-c3ab-46d3-aa4f-83a5f93900c2.png#averageHue=%232c2f33&clientId=ud3d1e1b0-846a-4&from=paste&height=695&id=ubdc6b663&originHeight=695&originWidth=785&originalType=binary&ratio=1&rotation=0&showTitle=false&size=74639&status=done&style=none&taskId=u875b1e61-44de-4488-b79b-8690efbe73b&title=&width=785)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=wZv37&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 ## 将驱动加入到CLASSPATH
 在模块jdbc下创建一个目录：lib
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702892792110-ddd13f59-bb68-4c4f-b3bc-83bf2bcbc49c.png#averageHue=%232e3239&clientId=ud3d1e1b0-846a-4&from=paste&height=264&id=uec6b76f7&originHeight=264&originWidth=695&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39130&status=done&style=none&taskId=u9dd72139-6520-4abc-bc55-2a8b3712b4a&title=&width=695)
@@ -539,7 +532,6 @@ public class JDBCTest13 {
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702892903594-755ad190-065b-449e-ac8c-ed8a1afa76c0.png#averageHue=%232c2f34&clientId=ud3d1e1b0-846a-4&from=paste&height=741&id=u3f61102d&originHeight=741&originWidth=527&originalType=binary&ratio=1&rotation=0&showTitle=false&size=59956&status=done&style=none&taskId=uf36d3bed-fd35-47d2-bf52-26a97da11b5&title=&width=527)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702893616221-646481b5-e342-4a65-8be3-584c4eaa858a.png#averageHue=%232c3038&clientId=u9a05de91-3647-4&from=paste&height=200&id=u9d34df03&originHeight=200&originWidth=427&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16406&status=done&style=none&taskId=u35217463-4c16-49b8-a1fe-57f37473c17&title=&width=427)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=EPMYm&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 ## 编写JDBC程序
 新建软件包：com.powernode.jdbc
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702893004185-0ff79250-22f1-4153-9be6-07a52d8a55cd.png#averageHue=%232d3034&clientId=ud3d1e1b0-846a-4&from=paste&height=69&id=u7a92b1b5&originHeight=69&originWidth=332&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4465&status=done&style=none&taskId=u0678840b-8a8b-4bbf-9af6-95330314c2c&title=&width=332)
@@ -637,4 +629,3 @@ password=123456
 执行结果如下：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702893658315-fbe8119e-9ab0-40ba-99f1-9d5b68e8866b.png#averageHue=%2322252b&clientId=u9a05de91-3647-4&from=paste&height=147&id=u156fff41&originHeight=147&originWidth=183&originalType=binary&ratio=1&rotation=0&showTitle=false&size=6497&status=done&style=none&taskId=u7e57202d-6b7d-4e58-8f00-4b9d0124e83&title=&width=183)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=Da6Z0&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)

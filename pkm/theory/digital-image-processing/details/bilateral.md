@@ -39,8 +39,6 @@ $$
 
 ## 代码实现
 
-![bilateral](../assets/bilateral.png)
-
 ```python
 from matplotlib import pyplot as plt
 import skimage.data as data

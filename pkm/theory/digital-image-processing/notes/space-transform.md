@@ -43,35 +43,6 @@ $$
 
 ![mean-percentile](../assets/mean-percentile.png)
 
-### Laplace
-
-Laplacian 核与均值滤波核完全不同。Laplacian 是**二阶微分算子**，用于边缘检测，其核心思想是计算中心像素与周围像素的差异。👉 [代码](../details/laplace.md)
-
-Laplacian 核是离散拉普拉斯算子的近似：
-$$
-\nabla^2 f \approx f(x+1,y) + f(x-1,y) + f(x,y+1) + f(x,y-1) - 4f(x,y)
-$$
-
-对于 3×3 核，这对应**四邻域**形式。**八邻域**形式额外加上了对角线方向的贡献。
-
-1. 四邻域 Laplacian（不考虑对角线）
-$$
-k = \begin{bmatrix}
-0 & -1 & 0 \\
--1 & 4 & -1 \\
-0 & -1 & 0
-\end{bmatrix}
-$$
-
-2. 八邻域 Laplacian（考虑对角线）
-$$
-k = \begin{bmatrix}
--1 & -1 & -1 \\
--1 & 8 & -1 \\
--1 & -1 & -1
-\end{bmatrix}
-$$
-
 ### Gaussian
 
 Box 还是太平均了，边缘损失严重，为了提升“保边”效果，进行高斯加权。👉 [代码](../details/gaussian.md)
@@ -115,6 +86,9 @@ $$
 
 ### Guided Filter
 
+引导滤波（Guided Filter）的核心思想是利用一张引导图（Guidance Image）来指导对输入图像的滤波过程。它假设输出图像在局部窗口内是引导图的线性变换，从而在平滑噪声的同时，能更好地保持引导图所提供的边缘结构。[guided-filter](../details/guided-filter.md)
+![guided](../assets/guided.png)
+
 ### Rolling Guidance Filter
 
 ### L0-minimization
@@ -153,14 +127,26 @@ $$
 
 ### Laplacian
 
-Sobel 和 Robert 把 3x3 或者 2x2 的区域当成一个大像素，算这个像素内部的梯度。Laplacian 换了一个角度，找一个 3x3 的区域，算这个区域中心往外的梯度。另外，实践中，尝尝采用中心权重为正的形式，虽然按照梯度公式中心应该是负。
-
+Sobel 和 Robert 把 3x3 或者 2x2 的区域当成一个大像素，算这个像素内部的梯度。Laplacian 换了一个角度，找一个 3x3 的区域，算这个区域中心往外的梯度。另外，实践中，尝尝采用中心权重为正的形式，虽然按照梯度公式中心应该是负。Laplacian 核是离散拉普拉斯算子的近似：
 $$
-G = \begin{bmatrix} 0 & -1 & 0 \\ -1 & 4 & -1 \\ 0 & -1 & 0 \end{bmatrix}
+\nabla^2 f \approx f(x+1,y) + f(x-1,y) + f(x,y+1) + f(x,y-1) - 4f(x,y)
 $$
-或者加上四个对角线方向
+对于 3×3 核，这对应**四邻域**形式。**八邻域**形式额外加上了对角线方向的贡献。
+1. 四邻域 Laplacian（不考虑对角线）
 $$
-G = \begin{bmatrix} -1 & -1 & -1 \\ -1 & 8 & -1 \\ -1 & -1 & -1 \end{bmatrix}
+k = \begin{bmatrix}
+0 & -1 & 0 \\
+-1 & 4 & -1 \\
+0 & -1 & 0
+\end{bmatrix}
+$$
+2. 八邻域 Laplacian（考虑对角线）
+$$
+k = \begin{bmatrix}
+-1 & -1 & -1 \\
+-1 & 8 & -1 \\
+-1 & -1 & -1
+\end{bmatrix}
 $$
 另外，可以把边缘加到原图上得到锐化图像。👉 [代码](../details/laplacian.md)
 
