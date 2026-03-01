@@ -84,15 +84,27 @@ $$
 
 ### Weighted Least Squares
 
+（2008 ACM TOG）WLS将图像分解为基底层（大尺度强度变化）和细节层（小尺度细节），进而提出了一种基于加权最小二乘法（Weighted Least Squares, WLS）的新方法。[wls](../details/wls.md)
+
+![wls](../assets/wls.png)
+
 ### Guided Filter
 
-引导滤波（Guided Filter）的核心思想是利用一张引导图（Guidance Image）来指导对输入图像的滤波过程。它假设输出图像在局部窗口内是引导图的线性变换，从而在平滑噪声的同时，能更好地保持引导图所提供的边缘结构。[guided-filter](../details/guided-filter.md)
-![guided](../assets/guided.png)
+（2009 CVPR）引导滤波（Guided Filter）的核心思想是利用一张引导图（Guidance Image）来指导对输入图像的滤波过程。它假设输出图像在局部窗口内是引导图的线性变换，从而在平滑噪声的同时，能更好地保持引导图所提供的边缘结构。[guided-filter](../details/guided-filter.md)
 
-### Rolling Guidance Filter
+![guided](../assets/guided.png)
 
 ### L0-minimization
 
+（2011 SIGGRAPH Asia）通过增加过渡的陡峭程度来锐化主要边缘。该框架利用 L0 梯度最小化，以结构-稀疏性管理的方式全局控制产生多少非零梯度来近似显著结构。与其他边缘保留平滑方法不同，我们的方法不依赖于局部特征，而是全局定位重要边缘。[l0](../details/l0.md)
+
+![l0-2d](../assets/l0-2d.png)
+
+### Rolling Guidance Filter
+
+（2014 ECCV）第一步中按照对图像结构的尺度的定义，我们使用合适强度的高斯滤波器将小尺度的边缘完全抹平。此时图像的大尺度边缘也会被平滑。因此在第二步中需要恢复大尺度的边缘结构。然后以上两步进行迭代。[rolling-guidance-filter](../details/rolling-guidance-filter.md)
+
+![rgf](../assets/rgf.png)
 
 ---
 ## 边缘/锐化
@@ -152,6 +164,3 @@ $$
 
 ![image](../assets/laplacian01.png)
 ![laplacian02](../assets/laplacian02.png)
-
----
-

@@ -2,7 +2,8 @@
 ---
 ## 资料
 
-* 官网：https://kaiminghe.github.io/eccv10/index.html
+* 官网（现在没了）：https://kaiminghe.github.io/eccv10/index.html
+* copy的github：https://github.com/accessify/guided-filter
 * 论文翻译：https://blog.csdn.net/studyeboy/article/details/121137028
 * wiki：https://en.wikipedia.org/wiki/Guided_filter
 * 大佬笔记：https://www.zhihu.com/question/26949096/answer/2910776043
