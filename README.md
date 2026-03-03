@@ -77,7 +77,11 @@
 		* [Social Psychology](pkm/hobbies/humanities/social-psychology/README.md)
 ---
 Todo
-* sql-dql练习题
+* sql-事务
+* sql-存储过程
+* sql-存储索引
+* sql-索引
+* sql-优化
 
 ## Resources
 * [Java 全栈知识体系](https://pdai.tech/)
