@@ -7,255 +7,204 @@
 
 取得每个部门最高薪水的人员名称
 
-```sql
-
-```
-
-
-
-
-
-
-
-
-
-
-
-第一步：取得每个部门最高薪水
-
-```sql
-
-select deptno,max(sal) as maxsal from emp group by deptno;
-
-```
-
-  
-
-第二步：将上面第一步的查询结果当做一张临时表t，进行表连接，条件是：t.deptno=e.deptno and t.maxsal=e.sal
-
-  
-
-```sql
-
-select e.ename,t.* from emp e join (select deptno,max(sal) as maxsal from emp group by deptno) t on e.deptno = t.deptno and e.sal = t.maxsal;
-
-```
-
-  
+1. 首先获得每个部门编号，作为临时表t
+	```sql
+	select deptno, max(sal) as maxsal from emp group by deptno;
+	```
+2. join 员工表
+	```sql
+	select 
+		e.ename, e.sal, e.deptno
+	from 
+		emp e
+	join
+		(select deptno, max(sal) as maxsal from emp group by deptno) t 
+	on
+		e.deptno = t.deptno and e.sal = t.maxsal;
+	```
 
 ### 第2题
 
-  
+哪些人的薪水在部门的平均薪水之上
 
-2. 哪些人的薪水在部门的平均薪水之上
-
-第一步：取得每个部门的平均薪水
-
-```sql
-
-select deptno,avg(sal) as avgsal from emp group by deptno;
-
-```
-
-  
-
-第二步：将上面的查询结果当做临时表t，让t和emp e表进行表连接，条件是：`t.deptno=e.deptno and e.sal>t.avgsal`
-
-  
-
-```sql
-
-select e.ename,e.sal,t.* from emp e join (select deptno,avg(sal) as avgsal from emp group by deptno) t on t.deptno=e.deptno and e.sal>t.avgsal;
-
-```
-
-  
+1. 先获得每个部门平均薪水作为临时表t
+	```sql
+	select deptno, avg(sal) avgsal from emp group by deptno;
+	```
+2. join 员工表
+	```sql
+	select
+		e.ename, sal, avgsal
+	from
+		emp e
+	join
+		(select deptno, avg(sal) avgsal from emp group by deptno) t
+	where
+		e.sal > t.avgsal and e.deptno = t.deptno;
+	```
 
 ### 第3题
 
-  
+取得每个部门平均薪水的等级
 
-3. 取得每个部门平均薪水的等级
-
-第一步：取得每个部门的平均薪水
-
-```sql
-
-select deptno,avg(sal) as avgsal from emp group by deptno;
-
-```
-
-  
-
-第二步：将上面的查询结果当做临时表t，然后t和salgrade s表进行连接，条件是：t.avgsal between s.losal and s.hisal
-
-  
-
-```sql
-
-select t.*,s.grade from (select deptno,avg(sal) as avgsal from emp group by deptno) t join salgrade s on t.avgsal between s.losal and s.hisal;
-
-```
-
-  
+1. 先获得每个部门平均薪水作为临时表t
+	```sql
+	select deptno, avg(sal) avgsal from emp group by deptno;
+	```
+2. join 薪水登记表
+	```sql
+	select
+		t.*, s.grade
+	from 
+		salgrade s
+	join
+		(select deptno, avg(sal) avgsal from emp group by deptno) t
+	where 
+		t.avgsal between s.losal and s.hisal;
+	```
 
 ### 第4题
 
-  
+取得部门中（所有人的）平均的薪水等级
 
-4. 取得部门中（所有人的）平均的薪水等级
-
-第一步：找出每个人的薪水等级
-
-```sql
-
-select e.ename,e.sal,s.grade from emp e join salgrade s on e.sal between s.losal and s.hisal;
-
-```
-
-  
-
-第二步：在上面的查询结果当中继续按照部门编号进行分组，求平均值。（不需要将上面的查询结果当做临时表，继续基于它进行分组即可。）
-
-  
-
-```sql
-
-select
-
-e.deptno,avg(s.grade)
-
-from
-
-emp e
-
-join
-
-salgrade s
-
-on
-
-e.sal between s.losal and s.hisal
-
-group by
-
-e.deptno;
-
-```
+1. 得到每个人的薪水等级
+	```sql
+	select e.ename, e.sal, s.grade from emp e join salgrade s on e.sal between s.losal and s.hisal;
+	```
+2. 在上面的查询结果当中继续按照部门编号进行分组，求平均值。（不需要将上面的查询结果当做临时表，继续基于它进行分组即可。）
+	```sql
+	select e.deptno, avg(s.grade) from emp e join salgrade s on e.sal between s.losal and s.hisal group by deptno;
+	```
 
 ### 第5题
 
-  
-
-5. 不准用组函数（Max），取得最高薪水（给出两种解决方案）
+不准用组函数（Max），取得最高薪水（给出两种解决方案）
 
 第一种方案：按照薪资降序排列，取第一个。
-
 ```sql
-
-select sal from emp order by sal desc limit 1;
-
+select ename,sal from emp order by sal desc limit 1;
 ```
-
-  
-
-第二种方案：采用表的自连接方式。
-
-  
-
+第二种方案：采用表的自连接方式。（这种自连接方法在**小数据集**上可能还能接受，但在**生产环境或大数据集**中**绝对不要使用**。它只是为了展示“不用组函数”的一种思路，实际开发中应使用 `MAX()` 或 `ORDER BY ... LIMIT`。）
 ```sql
-
 select ename,sal from emp where sal not in(select distinct a.sal from emp a join emp b on a.sal < b.sal);
-
 ```
-
-  
 
 ### 第6题
 
-  
-
-6. 取得平均薪水最高的部门的部门编号（至少给出两种解决方案）
+取得平均薪水最高的部门的部门编号（至少给出两种解决方案）
 
 第一种方案：降序排列取第一个
-
 ```sql
-
-select deptno,avg(sal) as avgsal from emp group by deptno order by avgsal desc limit 1;
-
+select
+	deptno,avg(sal) as avgsal
+from 
+	emp
+group by
+	deptno
+order by 
+	avgsal desc
+limit 1;
 ```
-
-  
-
 第二种方案：max函数
-
-  
-
 ```sql
-
-select deptno,avg(sal) as avgsal from emp group by deptno having avg(sal)=(select max(t.avgsal) from (select avg(sal) as avgsal from emp group by deptno) t);
-
+select
+	deptno,avg(sal) as avgsal
+from
+	emp
+group by
+	deptno
+having
+	avg(sal)=(select max(t.avgsal) from (select avg(sal) as avgsal from emp group by deptno) t);
 ```
 
 ### 第7题
 
-  
-
-7. 取得平均薪水最高的部门的部门名称
+取得平均薪水最高的部门的部门名称
 
 比上面的题目多一个表连接，和dept表连接，按照部门名称进行分组。
 
-```sql
-
-select d.dname,avg(e.sal) as avgsal from emp e join dept d on e.deptno=d.deptno group by d.dname order by avgsal desc limit 1;
-
-```
+1. 每个部门的平均薪水
+	```sql
+	select avg(sal) avgsal from emp group by deptno;
+	```
+2. 取得平均薪水最高的部门
+	```sql
+	select 
+		avg(sal) avgsal
+	from
+		emp
+	group by
+		deptno 
+	order by
+		avgsal desc
+	limit 1;
+	```
+3. join部门表得到名称
+	```sql
+	select
+		d.dname,avg(e.sal) as avgsal
+	from
+		emp e
+	join
+		dept d
+	on
+		e.deptno=d.deptno
+	group by
+		d.dname
+	order by
+		avgsal desc
+	limit 1;
+	```
 
 ### 第8题
 
-  
+求平均薪水的等级最低的部门的部门名称
 
-8. 求平均薪水的等级最低的部门的部门名称
-
-第一步：求每个部门的平均薪水
-
+1. 求每个部门的编号和平均薪水
 ```sql
-
-select d.dname,avg(e.sal) as avgsal from emp e join dept d on e.deptno = d.deptno group by d.dname;
-
+select deptno, avg(sal) as avgsal from emp group by deptno;
+```
+2. 求每个部门的编号、平均薪水等级
+```sql
+select
+	t.deptno, s.grade
+from
+	salgrade s
+join
+	(select deptno, avg(sal) as avgsal from emp group by deptno) t
+on
+	t.avgsal between s.losal and s.hisal;
+```
+3. 得到最小的等级(`min(s.grade)`)
+```sql
+select min(sp.grade) from salgrade sp join (select deptno, avg(sal) as avgsal from emp group by deptno) tp on tp.avgsal between sp.losal and sp.hisal;
+```
+4. 找等级相等的部门名称
+```sql
+select
+	d.dname, s.grade
+from
+	salgrade s
+join
+	(select deptno, avg(sal) as avgsal from emp group by deptno) t
+on
+	t.avgsal between s.losal and s.hisal
+join
+	dept d
+on
+	d.deptno = t.deptno
+where
+	s.grade = (select min(sp.grade) from salgrade sp join (select deptno, avg(sal) as avgsal from emp group by deptno) tp on tp.avgsal between sp.losal and sp.hisal);
 ```
 
-  
-
-第二步：求每个部门的平均薪水等级（将以上的执行结果当做临时表t，t和salgrade s表进行连接，条件：t.avgsal between .s.losal and s.hisal）
-
-  
-
+这个是他原来的写法，并不能处理并列倒数第一的情况
 ```sql
-
-select t.*,s.grade from (select d.dname,avg(e.sal) as avgsal from emp e join dept d on e.deptno = d.deptno group by d.dname) t join salgrade s on t.avgsal between s.losal and s.hisal;
-
-```
-
-  
-
-第三步：找到最低的部门名称（以上结果继续按照grade进行升序，然后limit 1）
-
-  
-
-```sql
-
 select t.*,s.grade from (select d.dname,avg(e.sal) as avgsal from emp e join dept d on e.deptno = d.deptno group by d.dname) t join salgrade s on t.avgsal between s.losal and s.hisal order by s.grade asc limit 1;
-
 ```
-
-  
 
 ### 第9题
 
-  
-
-9. 取得比普通员工(员工代码没有在mgr字段上出现的)的最高薪水还要高的领导人姓名
+取得比普通员工(员工代码没有在mgr字段上出现的)的最高薪水还要高的领导人姓名
 
 第一步：找出所有的普通员工的最高薪水
 
