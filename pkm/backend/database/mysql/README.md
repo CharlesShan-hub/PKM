@@ -23,13 +23,13 @@
 		* 内连接、外连接：[join](notes/join.md)
 		* 子查询：[sub-query](notes/sub-query.md)
 		* dql练习：[dql-exercise](notes/dql-exercise.md)
+* sql初级综合练习： [第11章 企业真题](notes/第11章%20企业真题.md)
 * 视图：[view](notes/view.md)
 * 事物：[transactions](notes/transactions.md)
 * 存储过程：[第1章 存储过程](notes/第1章%20存储过程.md)
 * 存储索引：[第2章 存储引擎](notes/第2章%20存储引擎.md)
 * 索引：[第3章 索引](notes/第3章%20索引.md)
 * 优化：[第4章 MySQL优化](notes/第4章%20MySQL优化.md)
-* [第11章 企业真题](notes/第11章%20企业真题.md)
 
 ## 资料
 
