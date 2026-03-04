@@ -19,11 +19,12 @@
 	* 单表查询：[dql-single](notes/dql-single.md)
 		* 单行处理函数（数据处理函数）：[function1](notes/function1.md)
 		* 多行处理函数（分组函数）：[function2](notes/function2.md)
+		* mysql窗口函数：[window](notes/window.md)
 	* 多表查询
 		* 内连接、外连接：[join](notes/join.md)
 		* 子查询：[sub-query](notes/sub-query.md)
 		* dql练习：[dql-exercise](notes/dql-exercise.md)
-* sql初级综合练习： [第11章 企业真题](notes/第11章%20企业真题.md)
+* sql初级综合练习： [企业真题](notes/企业真题.md)
 * 视图：[view](notes/view.md)
 * 事物：[transactions](notes/transactions.md)
 * 存储过程：[第1章 存储过程](notes/第1章%20存储过程.md)
