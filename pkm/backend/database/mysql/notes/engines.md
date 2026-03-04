@@ -1,4 +1,8 @@
-# 存储引擎概述
+# 存储引擎
+
+---
+## 存储引擎概述
+
 MySQL存储引擎决定了数据在磁盘上的存储方式和访问方式。不同的存储引擎实现了不同的存储和检索算法，因此它们在处理和管理数据的方式上存在差异。
 
 MySQL常见的存储引擎包括InnoDB、MyISAM、Memory、Archive等。每个存储引擎都有自己的特点和适用场景。
@@ -11,7 +15,9 @@ MySQL常见的存储引擎包括InnoDB、MyISAM、Memory、Archive等。每个�
 
 选择适合的存储引擎可以提高MySQL的性能和效率，并且根据应用需求来合理选择存储引擎可以提供更好的数据管理和查询功能。
 
-# MySQL支持哪些存储引擎
+---
+## MySQL支持哪些存储引擎
+
 使用`show engines \G;`命令可以查看所有的存储引擎：
 ```java
 *************************** 1. row ***************************
@@ -95,8 +101,48 @@ Transactions: NULL
 `Support`是`Yes`的表示支持该存储引擎。当前MySQL的版本是`8.0.33`
 MySQL默认的存储引擎是：`InnoDB`
 
-# 指定和修改存储引擎
-## 指定存储引擎
+
+我的结果
+```shell
+mysql> show engines;
+
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
+
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
+
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+
+11 rows in set (0.000 sec)
+```
+
+---
+## 指定和修改存储引擎
+
+### 指定存储引擎
 在MySQL中，你可以在创建表时指定使用的存储引擎。通过在CREATE TABLE语句中使用ENGINE关键字，你可以指定要使用的存储引擎。
 
 以下是指定存储引擎的示例：
@@ -109,7 +155,7 @@ CREATE TABLE my_table (column1 INT, column2 VARCHAR(50)) ENGINE = InnoDB;
 
 如果你不显式指定存储引擎，MySQL将使用默认的存储引擎。默认情况下，MySQL 8的默认存储引擎是InnoDB。
 
-## 修改存储引擎
+### 修改存储引擎
 在MySQL中，你可以通过ALTER TABLE语句修改表的存储引擎。下面是修改存储引擎的示例：
 
 ```sql
@@ -127,27 +173,29 @@ ALTER TABLE my_table ENGINE = MyISAM;
 
 总而言之，修改存储引擎需要谨慎进行，且需要考虑到可能的影响和风险。建议在进行修改之前进行适当的测试和备份。
 
-# 常用的存储引擎及适用场景
+---
+## 常用的存储引擎及场景
+
 在实际开发中，以下存储引擎是比较常用的：
 
 1.  InnoDB：
-   1. MySQL默认的事务型存储引擎
-   2. 支持ACID事务
-   3. 具有较好的并发性能和数据完整性
-   4. 支持行级锁定。
-   5. 适用于大多数应用场景，尤其是需要事务支持的应用。 
+	1. MySQL默认的事务型存储引擎
+	2. 支持ACID事务
+	3. 具有较好的并发性能和数据完整性
+	4. 支持行级锁定。
+	5. 适用于大多数应用场景，尤其是需要事务支持的应用。 
 2.  MyISAM：
-   1. 是MySQL早期版本中常用的存储引擎
-   2. 支持全文索引和表级锁定
-   3. 不支持事务
-   4. 由于其简单性和高性能，在某些特定的应用场景中会得到广泛应用，如**读密集**的应用。 
+	1. 是MySQL早期版本中常用的存储引擎
+	2. 支持全文索引和表级锁定
+	3. 不支持事务
+	4. 由于其简单性和高性能，在某些特定的应用场景中会得到广泛应用，如**读密集**的应用。 
 3.  MEMORY：
-   1. 称为HEAP，是将表存储在内存中的存储引擎
-   2. 具有非常高的读写性能，但数据会在服务器重启时丢失。
-   3. 适用于需要快速读写的临时数据集、缓存和临时表等场景。 
+	1. 称为HEAP，是将表存储在内存中的存储引擎
+	2. 具有非常高的读写性能，但数据会在服务器重启时丢失。
+	3. 适用于需要快速读写的临时数据集、缓存和临时表等场景。 
 4.  CSV：
-   1. 将数据以纯文本格式存储的存储引擎
-   2. 适用于需要处理和导入/导出CSV格式数据的场景。 
+	1. 将数据以纯文本格式存储的存储引擎
+	2. 适用于需要处理和导入/导出CSV格式数据的场景。 
 5.  ARCHIVE：
-   1. 将数据高效地进行压缩和存储的存储引擎
-   2. 适用于需要长期存储大量历史数据且不经常查询的场景。 
+	1. 将数据高效地进行压缩和存储的存储引擎
+	2. 适用于需要长期存储大量历史数据且不经常查询的场景。 
