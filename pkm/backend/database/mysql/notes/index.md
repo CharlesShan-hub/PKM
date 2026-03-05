@@ -1,12 +1,20 @@
-# 什么是索引
-索引是一种能够提高检索（查询）效率的提前排好序的数据结构。例如：书的目录就是一种索引机制。索引是解决SQL慢查询的一种方式。
+# 索引
 
-# 索引的创建和删除
-## 主键会自动添加索引
-主键字段会自动添加索引，不需要程序员干涉，主键字段上的索引被称为`主键索引`
-## unique约束的字段自动添加索引
-unique约束的字段也会自动添加索引，不需要程序员干涉，这种字段上添加的索引称为`唯一索引`
-## 给指定的字段添加索引
+> 索引是一种能够提高检索（查询）效率的提前排好序的数据结构。例如：书的目录就是一种索引机制。索引是解决SQL慢查询的一种方式。
+
+---
+## 索引的创建和删除
+
+### 主键会自动添加索引
+
+**主键字段会自动添加索引**，不需要程序员干涉，主键字段上的索引被称为`主键索引`
+
+### unique约束的字段自动添加索引
+
+**unique约束的字段会自动添加索引**，不需要程序员干涉，这种字段上添加的索引称为`唯一索引
+`
+### 给指定的字段添加索引
+
 建表时添加索引：
 ```sql
 CREATE TABLE emp (
@@ -26,33 +34,40 @@ ALTER TABLE emp ADD INDEX idx_name (name);
 create index idx_name on emp(name);
 ```
 
-## 删除指定字段上的索引
+### 删除指定字段上的索引
+
 ```sql
 ALTER TABLE emp DROP INDEX idx_name;
 ```
-## 查看某张表上添加了哪些索引
+
+### 查看某张表上添加了哪些索引
+
 ```sql
 show index from 表名;
 ```
 
-# 索引的分类
+---
+## 索引的分类
+
 不同的`存储引擎`有不同的索引类型和实现：
 
 - 按照数据结构分类：
-   - B+树 索引（mysql的InnoDB存储引擎采用的就是这种索引）采用 B+树  的数据结构
-   - Hash 索引（仅 `memory` 存储引擎支持）：采用  哈希表  的数据结构
+	- B+树 索引（mysql的InnoDB存储引擎采用的就是这种索引）采用 B+树  的数据结构
+	- Hash 索引（仅 `memory` 存储引擎支持）：采用  哈希表  的数据结构
 - 按照物理存储分类：
-   - 聚集索引：索引和表中数据在一起，数据存储的时候就是按照索引顺序存储的。一张表只能有一个聚集索引。
-   - 非聚集索引：索引和表中数据是分开的，索引是独立于表空间的，一张表可以有多个非聚集索引。
+	- 聚集索引：索引和表中数据在一起，数据存储的时候就是按照索引顺序存储的。一张表只能有一个聚集索引。
+	- 非聚集索引：索引和表中数据是分开的，索引是独立于表空间的，一张表可以有多个非聚集索引。
 - 按照字段特性分类：
-   - 主键索引（primary key）
-   - 唯一索引（unique）
-   - 普通索引（index）
-   - 全文索引（fulltext：仅 `InnoDB和MyISAM` 存储引擎支持）
+	- 主键索引（primary key）
+	- 唯一索引（unique）
+	- 普通索引（index）
+	- 全文索引（fulltext：仅 `InnoDB`和`MyISAM` 存储引擎支持）
 - 按照字段个数分类：
-   - 单列索引、联合索引（也叫复合索引、组合索引）
+	- 单列索引、联合索引（也叫复合索引、组合索引）
 
-# MySQL索引采用了B+树数据结构
+---
+## MySQL索引采用了B+树数据结构
+
 常见的树相关的数据结构包括：
 
 - 二叉树
@@ -61,33 +76,35 @@ show index from 表名;
 - B+树
 
 区别：树的高度不同。树的高度越低，性能越高。这是因为每一个节点都是一次I/O
-## 二叉树
+
+### 二叉树
 有这样一张表
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692335600473-ad5b7cde-e554-47ab-b42f-58168c989893.png#averageHue=%23f2f1ed&clientId=ua5acc0fc-19f8-4&from=paste&height=441&id=u5cc24e34&originHeight=441&originWidth=339&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3982&status=done&style=shadow&taskId=u77e1a6e5-6e8f-4634-93e0-83a562d38d4&title=&width=339)
+![tree01](../assets/tree01.png)
 如果不给id字段添加索引，默认进行全表扫描，假设查询id=10的数据，那至少要进行10次磁盘IO。效率低。可以给id字段添加索引，假设该索引使用了二叉树这种数据结构，这个二叉树是这样的（**推荐一个数据结构可视化网站Data Structure Visualizations，是旧金山大学（USFCA）的一个网站**）：[https://www.cs.usfca.edu/~galles/visualization/Algorithms.html](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692336231981-96990a24-7475-48a4-ba48-decb2ec2c187.png#averageHue=%23ffffff&clientId=ua5acc0fc-19f8-4&from=paste&height=332&id=uac007731&originHeight=332&originWidth=344&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16469&status=done&style=shadow&taskId=ubbc87a88-ba88-4fb3-b41a-8b64f2254d2&title=&width=344)
+![tree02](../assets/tree02.png)
 如果这个时候要找id=10的数据，需要的IO次数是？4次。效率显著提升了。
 但是MySQL并没有直接使用这种普通的二叉树，这种普通二叉树在`数据极端`的情况下，效率较低。比如下面的数据：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692336431647-e5bb092a-7858-478b-add5-d4c5fa15deb0.png#averageHue=%23f2f1ee&clientId=ua5acc0fc-19f8-4&from=paste&height=441&id=u3b726904&originHeight=441&originWidth=339&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3789&status=done&style=shadow&taskId=ua2ac59c3-fe8c-4a82-b75a-f816e66b541&title=&width=339)
+![tree03](../assets/tree03.png)
 如果给id字段添加索引，并且该索引底层使用了普通二叉树，这棵树会是这样的：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692336585274-554cb4fd-3d32-4785-89c9-e23bce8739ac.png#averageHue=%23ffffff&clientId=ua5acc0fc-19f8-4&from=paste&height=480&id=u6374ad1c&originHeight=480&originWidth=304&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19184&status=done&style=shadow&taskId=u400302da-6c48-46d2-b8ae-d72f2654b84&title=&width=304)
+![tree04](../assets/tree04.png)
 你虽然使用了二叉树，但这更像一个链表。查找效率等同于链表查询O(n)【**查找算法的时间复杂度是线性的**】。查找效率极低。
 因此对于MySQL来说，它并没有选择这种数据结构作为索引。
 
-## 红黑树（自平衡二叉树）
+### 红黑树（自平衡二叉树）
 通过自旋平衡规则进行旋转，子节点会自动分叉为2个分支，从而减少树的高度，当数据有序插入时比二叉树数据检索性能更好。
 例如有以下数据
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692336431647-e5bb092a-7858-478b-add5-d4c5fa15deb0.png#averageHue=%23f2f1ee&clientId=ua5acc0fc-19f8-4&from=paste&height=441&id=T4nMk&originHeight=441&originWidth=339&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3789&status=done&style=shadow&taskId=ua2ac59c3-fe8c-4a82-b75a-f816e66b541&title=&width=339)
+![tree05](../assets/tree05.png)
 给id字段添加索引，并且该索引使用了`红黑树`数据结构，那么会是这样：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692337568497-9cec3d01-cb4b-4b9f-85a5-763315fc1953.png#averageHue=%23f7f5f5&clientId=ua5acc0fc-19f8-4&from=paste&height=301&id=ub8076d75&originHeight=301&originWidth=572&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16097&status=done&style=shadow&taskId=u6a5b156c-5849-4f84-8637-8ceb1493fa3&title=&width=572)
+![tree06](../assets/tree06.png)
 如果查找id=10的数据，磁盘IO次数为：5次。效率比普通二叉树要高一些。
 
 但是如果数据量庞大，例如500万条数据，也会导致树的高度很高，磁盘IO次数仍然很多，查询效率也会比较低。
 
 因此MySQL并没有使用红黑树这种数据结构作为索引。
 
-## B Trees（B树）
+### B Trees（B树）
+
 B Trees首先是一个`自平衡`的。
 B Trees每个节点下的子节点数量 > 2。
 B Trees每个节点中也不是存储单个数据，可以存储多个数据。
@@ -104,72 +121,77 @@ B Trees分支的数量不是2，是大于2，具体是多少个分支，由`阶`
 
 采用B Trees，你会发现相同的数据量，**B Tree 树的高度更低**。磁盘IO次数更少。
 3阶的B Trees：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692341860428-41d05ad9-1a6a-46ca-b3ae-0a411999152b.png#averageHue=%23e1b333&clientId=ua5acc0fc-19f8-4&from=paste&height=369&id=ufaaa8101&originHeight=369&originWidth=777&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22246&status=done&style=shadow&taskId=u48c7b5a4-1c35-4aa0-bf37-0ce70bc7900&title=&width=777)
+![tree07](../assets/tree07.png)
 **假设id字段添加了索引，并且采用了B Trees数据结构，查找id=10的数据，只需要3次磁盘IO。**
 4阶的B Trees：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692341965676-a9d34529-7b4d-45e3-baf3-4714a65bd0e4.png#averageHue=%23dab647&clientId=ua5acc0fc-19f8-4&from=paste&height=365&id=u0b3b3d12&originHeight=365&originWidth=714&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21314&status=done&style=shadow&taskId=ue7257cf7-b625-45e1-8c39-b375bcb124d&title=&width=714)
+![tree08](../assets/tree08.png)
 
 更加详细的存储是这样的，请看下图：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692346278862-ee20dcee-9b4e-4678-a777-9e782601958a.png#averageHue=%23f2f1ed&clientId=ua5acc0fc-19f8-4&from=paste&height=401&id=u93e4ec03&originHeight=401&originWidth=339&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3456&status=done&style=shadow&taskId=ude17afd1-355c-4635-a3c5-bad9b042a86&title=&width=339)
-![未命名文件.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692344122602-a45b07fe-c85a-42c2-9a20-008b2ad5002c.png#averageHue=%23060604&clientId=ua5acc0fc-19f8-4&from=paste&height=574&id=u72a034da&originHeight=574&originWidth=976&originalType=binary&ratio=1&rotation=0&showTitle=false&size=47609&status=done&style=shadow&taskId=udfbf426f-5485-495e-ab7e-f84b3af809f&title=&width=976)
+![tree09](../assets/tree09.png)
+![tree10](../assets/tree10.png)
 在B Trees中，每个节点不仅存储了`索引值`，还存储该索引值对应的`数据行`。
 并且每个节点中的p1 p2 p3是指向下一个节点的指针。
 
 B Trees数据结构存在的缺点是：不适合做区间查找，对于区间查找效率较低。假设要查id在[3~7]之间的，需要查找的是3,4,5,6,7。那么查这每个索引值都需要从头节点开始。
 因此MySQL使用了B+ Trees解决了这个问题。
 
-## B+ Trees（B+ 树）
+### B+ Trees（B+ 树）
+
 B+ Trees 相较于 B Trees改进了哪些？
 
 - B+树将数据都存储在叶子节点中。并且叶子节点之间使用链表连接，这样很适合范围查询。
 - B+树的非叶子节点上只有索引值，没有数据，所以非叶子节点可以存储更多的索引值，这样让B+树更矮更胖，提高检索效率。
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692347138609-6544b852-3198-4920-ab3c-95a41e80802a.png#averageHue=%23dbb746&clientId=ua5acc0fc-19f8-4&from=paste&height=387&id=u8399423e&originHeight=387&originWidth=715&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20505&status=done&style=shadow&taskId=u68bcb07a-b13f-43e9-b4ca-299d948207d&title=&width=715)
+![tree11](../assets/tree11.png)
 
 假设有这样一张表：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692346967611-4a60f469-aa1d-4244-90e3-129d7ea36fb4.png#averageHue=%23f2f1ec&clientId=ua5acc0fc-19f8-4&from=paste&height=321&id=u3498f1b7&originHeight=321&originWidth=339&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2712&status=done&style=shadow&taskId=u7a6b4b7c-8f23-4baf-a93b-1c7b0c922d4&title=&width=339)
+![tree12](../assets/tree12.png)
 B+ Trees方式存储的话如下图所示：
-![未命名文件 (1).png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692349477753-ce686f45-052c-4935-9212-5edf0f73149f.png#averageHue=%23060604&clientId=ua5acc0fc-19f8-4&from=paste&height=605&id=u5c2e3e09&originHeight=605&originWidth=1189&originalType=binary&ratio=1&rotation=0&showTitle=false&size=53656&status=done&style=shadow&taskId=ubbc8ad77-4829-41f1-b628-6d554d4e9ca&title=&width=1189)
+![tree13](../assets/tree13.png)
 
-**经典面试题：**mysql为什么选择B+树作为索引的数据结构，而不是B树？
+**经典面试题：mysql为什么选择B+树作为索引的数据结构，而不是B树？**
 
 1. 非叶子节点上可以存储更多的键值，阶数可以更大，更矮更胖，磁盘IO次数少，数据查询效率高。
 2. 所有数据都是有序存储在叶子节点上，让范围查找，分组查找效率更高。
 3. 数据页之间、数据记录之间采用链表链接，让升序降序更加方便操作。
 
-**经典面试题：**如果一张表没有主键索引，那还会创建B+树吗？
-当一张表没有主键索引时，默认会使用一个隐藏的内置的聚集索引（clustered index）。这个聚集索引是基于表的物理存储顺序构建的，通常是使用B+树来实现的。
+**经典面试题：如果一张表没有主键索引，那还会创建B+树吗？**
 
-# 其他索引及相关调优
-## Hash索引
+当一张表没有主键索引时，默认会使用一个**隐藏的内置的聚集索引（clustered index）**。这个聚集索引是基于表的物理存储顺序构建的，通常是使用B+树来实现的。
+
+---
+## 其他索引及相关调优
+
+### Hash索引
 支持Hash索引的存储引擎有：
 
 - InnoDB（不支持手动创建Hash索引，系统会自动维护一个`自适应的Hash索引`）
-   - 对于InnoDB来说，即使手动指定了某字段采用Hash索引，最终`show index from 表名`的时候，还是`BTREE`。
+	- 对于InnoDB来说，即使手动指定了某字段采用Hash索引，最终`show index from 表名`的时候，还是`BTREE`。
 - Memory（支持Hash索引）
 
 Hash索引底层的数据结构就是哈希表。一个数组，数组中每个元素是链表。和java中HashMap一样。哈希表中每个元素都是key value结构。key存储`索引值`，value存储`行指针`。
 
 原理如下：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692401422670-6fb725df-8901-480c-9838-021bd25cc726.png#averageHue=%23dfe5ea&clientId=u333d438f-7a08-4&from=paste&height=163&id=u6c1061c9&originHeight=163&originWidth=343&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2027&status=done&style=shadow&taskId=uffe4a02c-c002-4dea-84e4-4db3b72d4df&title=&width=343)
+![index01](../assets/index01.png)
 如果name字段上添加了Hash索引idx_name
 
 Hash索引长这个样子：
-![无标题.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692401394351-b98f716f-7f04-4e57-823b-68fefc98b8d2.png#averageHue=%23f6f5f5&clientId=u333d438f-7a08-4&from=paste&height=425&id=u4a59ca3c&originHeight=425&originWidth=855&originalType=binary&ratio=1&rotation=0&showTitle=false&size=14698&status=done&style=shadow&taskId=uf7b3196f-9d55-44e8-8dc7-2cdea15acd8&title=&width=855)
+![index02](../assets/index02.png)
 
 检索原理：假设 name='孙行者'。通过哈希算法将'孙行者'转换为数组下标，通过下标找链表，在链表上遍历找到孙行者的行指针。
 
-注意：不同的字符串，经过哈希算法得到的数组下标可能相同，这叫做哈希碰撞/哈希冲突。【不过，好的哈希算法应该具有很低的碰撞概率。常用的哈希算法如MD5、SHA-1、SHA-256等都被设计为尽可能减少碰撞的发生。】
+注意：不同的字符串，经过哈希算法得到的数组下标可能相同，这叫做哈希碰撞/哈希冲突。(不过，好的哈希算法应该具有很低的碰撞概率。常用的哈希算法如MD5、SHA-1、SHA-256等都被设计为尽可能减少碰撞的发生。)
 
 Hash索引优缺点：
 
 - 优点：只能用在等值比较中，效率很高。例如：name='孙悟空'
 - 缺点：不支持排序，不支持范围查找。
 
-## 聚集索引和非聚集索引
+### 聚集索引和非聚集索引
+
 按照数据的物理存储方式不同，可以将索引分为聚集索引（聚簇索引）和非聚集索引（非聚簇索引）。
 
-存储引擎是InnoDB的，主键上的索引属于聚集索引。
+存储引擎是**InnoDB**的，**主键上的索引属于聚集索引**。
 存储引擎是MyISAM的，任意字段上的索引都是非聚集索引。
 
 InnoDB的物理存储方式：当创建一张表t_user，并使用InnoDB存储引擎时，会在硬盘上生成这样一个文件：
@@ -183,42 +205,44 @@ MyISAM的物理存储方式：当创建一张表t_user，并使用MyISAM存储�
 - t_user.MYI （表索引）
 - t_user.frm （表结构）
 
-**注意：从MySQL8.0开始，不再生成frm文件了，引入了数据字典，用数据字典来统一存储表结构信息，例如：**
+**注意：从MySQL8.0开始，不再生成frm文件了，引入了数据字典，用数据字典来统一存储表结构信息，例如**
 
-- **information_schema.TABLES （表包含了数据库中所有表的信息，例如表名、数据库名、引擎类型等）**
-- **information_schema.COLUMNS（表包含了数据库中所有表的列信息，例如列名、数据类型、默认值等）**
+- information_schema.TABLES （表包含了数据库中所有表的信息，例如表名、数据库名、引擎类型等）
+- information_schema.COLUMNS（表包含了数据库中所有表的列信息，例如列名、数据类型、默认值等）
 
 聚集索引的原理图：（B+树，叶子节点上存储了索引值 + 数据）
-![未命名文件 (1).png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692349477753-ce686f45-052c-4935-9212-5edf0f73149f.png#averageHue=%23060604&clientId=ua5acc0fc-19f8-4&from=paste&height=605&id=JUQl2&originHeight=605&originWidth=1189&originalType=binary&ratio=1&rotation=0&showTitle=false&size=53656&status=done&style=shadow&taskId=ubbc8ad77-4829-41f1-b628-6d554d4e9ca&title=&width=1189)
+![index03](../assets/index03.png)
 
 非聚集索引的原理图：（B+树，叶子节点上存储了索引值 + 行指针）
-![未命名文件 (1).png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692414826853-a7b1c060-26c2-43c0-ba55-6ac983e67fdb.png#averageHue=%23fafafa&clientId=u333d438f-7a08-4&from=paste&height=1046&id=udf365233&originHeight=1046&originWidth=1918&originalType=binary&ratio=1&rotation=0&showTitle=false&size=52927&status=done&style=shadow&taskId=u5823f2f1-08db-4fc0-be56-fd8859e9d33&title=&width=1918)
+![index04](../assets/index04.png)
 
 聚集索引的优点和缺点：
 
 1. 优点：聚集索引将数据存储在索引树的叶子节点上。可以减少一次查询，因为查询索引树的同时可以获取数据。
 2. 缺点：对数据进行修改或删除时需要更新索引树，会增加系统的开销。
 
-## 二级索引
-二级索引也属于非聚集索引。也有人把二级索引称为辅助索引。
+### 二级索引
+
+**二级索引也属于非聚集索引**。也有人把二级索引称为辅助索引。
 有表t_user，id是主键。age是非主键。在age字段上添加的索引称为二级索引。（所有非主键索引都是二级索引）
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692416482381-7ff192ad-a4ce-4292-b5c6-045f57768b72.png#averageHue=%23eaeaea&clientId=u333d438f-7a08-4&from=paste&height=209&id=uef214edb&originHeight=209&originWidth=343&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2566&status=done&style=shadow&taskId=u43c578a0-3cf4-40fd-966c-61be3441db0&title=&width=343)
+![index05](../assets/index05.png)
 
 二级索引的数据结构：
-![无标题.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692417008406-ebae09f8-dea7-4b6a-ab56-100e31611421.png#averageHue=%23fbfafa&clientId=u333d438f-7a08-4&from=paste&height=289&id=u7b39f705&originHeight=289&originWidth=582&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12930&status=done&style=shadow&taskId=ub45e4a96-b6ea-44da-ad92-0e85bd0d663&title=&width=582)
+![index06](../assets/index06.png)
 
 二级索引的查询原理：
 假设查询语句为：
 ```sql
 select * from t_user where age = 30;
 ```
-![无标题.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1692417425624-818e9980-dbe6-4470-a4b2-9c91b33ca2b6.png#averageHue=%23fcfcfc&clientId=u333d438f-7a08-4&from=paste&height=312&id=ud7db5feb&originHeight=312&originWidth=1045&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20570&status=done&style=shadow&taskId=ud87cd638-0631-45e1-8db2-692fa8231ae&title=&width=1045)
+![index07](../assets/index07.png)
 
 为什么会“回表”？因为使用了`select *`
 避免“回表【回到原数据表】”是提高SQL执行效率的手段。例如：select id from t_user where age = 30; 这样的SQL语句是不需要回表的。
 
-## 覆盖索引
+### 覆盖索引
+
 覆盖索引（Covering Index），顾名思义，是指某个查询语句可以通过索引的覆盖来完成，而不需要回表查询真实数据。其中的覆盖指的是在执行查询语句时，查询需要的所有列都可以从索引中提取到，而不需要再去查询实际数据行获取查询所需数据。
 当使用覆盖索引时，MySQL可以直接通过索引，也就是索引上的数据来获取所需的结果，而不必再去查找表中的数据。这样可以显著提高查询性能。
 
@@ -255,7 +279,7 @@ MySQL可以直接使用覆盖索引（idx_user_username_email）来获取查询�
 2.  会使索引变得庞大：当索引中包含了许多列时，它们可能会使索引变得非常庞大，从而影响查询性能，并且可能会占用大量的磁盘空间。 
 3.  只有在查询中包含了索引列时才能使用：只有当查询中包含了所有的索引列时才能使用覆盖索引。如果查询中包含了其他列，DBMS仍然需要访问实际的数据行，并且无法使用覆盖索引提高查询性能。 
 
-## 索引下推
+### 索引下推
 索引下推（Index Condition Pushdown）是一种 MySQL 中的优化方法，它可以将查询中的过滤条件下推到索引层级中处理，从而减少回表次数，优化查询性能。
 
 具体来说，在使用索引下推时，MySQL 会在索引的叶节点层级执行查询的过滤条件，过滤掉无用的索引记录，仅返回符合条件的记录的主键，这样就可以避免查询时回表读取表格的数据行，从而缩短了整个查询过程的时间。
@@ -291,7 +315,8 @@ SELECT * FROM users WHERE age > 30 AND city = 'London';
 
 在执行这个查询时，优化器会使用索引下推技术，先根据索引范围扫描找到所有满足条件的记录，然后再回到原数据表中获取完整的行数据，最终返回结果。
 
-## 单列索引（单一索引）
+### 单列索引（单一索引）
+
 单列索引是指对数据库表中的某一列或属性进行索引创建，对该列进行快速查找和排序操作。单列索引可以加快查询速度，提高数据库的性能。
 
 举个例子，假设我们有一个学生表（student），其中有以下几个列：学生编号（student_id）、姓名（name）、年龄（age）和性别（gender）。
@@ -304,7 +329,8 @@ SELECT * FROM student WHERE student_id = 123456;
 
 由于我们对学生编号列建立了单列索引，所以数据库可以直接通过索引快速定位到具有学生编号123456的那一行记录，从而加快查询速度。
 
-## 复合索引（组合索引）
+### 复合索引（组合索引）
+
 复合索引（Compound Index）也称为多列索引（Multi-Column Index），是指对数据库表中多个列进行索引创建。
 
 与单列索引不同，复合索引可以包含多个列。这样可以将多个列的值组合起来作为索引的键，以提高多列条件查询的效率。
@@ -327,7 +353,10 @@ SELECT * FROM Order WHERE CustomerID = 123456 AND OrderDate = '2021-01-01';
 2. 提高查询性能：当查询条件中涉及到复合索引的多个列时，数据库可以使用复合索引进行快速定位和过滤，从而提高查询性能。
 3. 覆盖查询：如果复合索引包含了所有查询需要的列，那么数据库可以直接使用索引中的数据，而不需要再进行表的读取，从而提高查询性能。
 4. 排序和分组：由于复合索引包含多个列，因此可以用于排序和分组操作，从而提高排序和分组的性能。
-# 索引的优缺点
+
+---
+## 索引的优缺点
+
 索引是数据库中一种重要的数据结构，用于加速数据的检索和查询操作。它的优点和缺点如下：
 
 优点：
@@ -342,7 +371,9 @@ SELECT * FROM Order WHERE CustomerID = 123456 AND OrderDate = '2021-01-01';
 2. 增删改操作的性能损耗：每次对数据表进行插入、更新、删除等操作时，需要更新索引，会导致操作的性能降低。
 3. 资源消耗较大：索引需要占用内存和CPU资源，特别是在大规模并发访问的情况下，可能对系统的性能产生影响。
 
-# 何时用索引
+---
+## 何时用索引
+
 在以下情况下建议使用索引：
 
 1.  频繁执行查询操作的字段：如果这些字段经常被查询，使用索引可以提高查询的性能，减少查询的时间。 

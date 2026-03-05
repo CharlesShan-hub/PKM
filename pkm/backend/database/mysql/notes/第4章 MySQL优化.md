@@ -1,4 +1,5 @@
 # MySQL优化手段
+
 MySQL数据库的优化手段通常包括但不限于：
 - SQL查询优化：这是最低成本的优化手段，通过优化查询语句、适当添加索引等方式进行。并且效果显著。
 - 库表结构优化：通过规范化设计、优化索引和数据类型等方式进行库表结构优化，需要对数据库结构进行调整和改进
@@ -7,8 +8,10 @@ MySQL数据库的优化手段通常包括但不限于：
 
 我们主要掌握：SQL查询优化
 
-# SQL性能分析工具
-## 查看数据库整体情况
+---
+## SQL性能分析工具
+
+### 查看数据库整体情况
 通过以下命令可以查看当前数据库在SQL语句执行方面的整体情况：
 ```sql
 show global status like 'Com_select';
@@ -25,7 +28,7 @@ show global status like 'Com_______';
 
 总之，通过查看 `Com_select` 的值，可以了解 MySQL 服务器的长期执行情况，并在优化查询性能时，帮助我们了解 MySQL 的性能瓶颈。
 
-## 慢查询日志
+### 慢查询日志
 慢查询日志文件可以将查询较慢的DQL语句记录下来，便于我们定位需要调优的select语句。
 通过以下命令查看慢查询日志功能是否开启：
 ```sql
@@ -49,7 +52,7 @@ select empno,ename,sleep(4) from emp where ename='smith';
 通过该文件可以清晰的看到哪些DQL语句属于慢查询：
 ![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709607677892-55420a92-0c66-4dff-a34e-85ba3ef1fa77.png#averageHue=%23f6f2f0&clientId=u1bbf35a1-ca62-4&from=paste&height=360&id=u5357d1d9&originHeight=360&originWidth=1264&originalType=binary&ratio=1&rotation=0&showTitle=false&size=40700&status=done&style=shadow&taskId=u96de1bce-7f1e-4608-8eec-88635aa660f&title=&width=1264)
 
-## show profiles
+### show profiles
 通过show profiles可以查看一个SQL语句在执行过程中具体的耗时情况。帮助我们更好的定位问题所在。
 
 查看当前数据库是否支持 profile操作：
@@ -92,13 +95,14 @@ show profile cpu for query 4;
 ![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709608704507-1e11a01d-cf8d-4208-9d1e-1a55287e8c0d.png#averageHue=%23161311&clientId=u1bbf35a1-ca62-4&from=paste&height=490&id=u28beb940&originHeight=490&originWidth=831&originalType=binary&ratio=1&rotation=0&showTitle=false&size=44398&status=done&style=shadow&taskId=u99024dea-0f7d-4b4f-8d21-1e097d5070e&title=&width=831)
 
 
-## explain
+### explain
 explain命令可以查看一个DQL语句的执行计划，根据执行计划可以做出相应的优化措施。提高执行效率。
 ```sql
 explain select * from emp where empno=7369;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1709802585549-f377b6db-7fff-4b76-8c8f-8770df3f6b7f.png#averageHue=%23f2f1f0&clientId=u35b840e1-8af8-4&from=paste&height=76&id=u83c0f5ad&originHeight=76&originWidth=1414&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5085&status=done&style=shadow&taskId=ueb9576b2-b431-461d-9fe8-1ccd9ecfe0e&title=&width=1414)
-### id
+
+#### id
 id反映出一条select语句执行顺序，id越大优先级越高。id相同则按照自上而下的顺序执行。
 ```sql
 explain select e.ename,d.dname from emp e join dept d on e.deptno=d.deptno join salgrade s on e.sal between s.losal and s.hisal;
@@ -112,7 +116,7 @@ explain select e.ename,d.dname from emp e join dept d on e.deptno=d.deptno where
 反映出，先执行子查询，然后让e和d做表连接。
 
 
-### select_type
+#### select_type
 反映了mysql查询语句的类型。常用值包括：
 
 - SIMPLE：表示查询中不包含子查询或UNION操作。这种查询通常包括一个表或是最多一个联接（JOIN）
@@ -120,9 +124,11 @@ explain select e.ename,d.dname from emp e join dept d on e.deptno=d.deptno where
 - UNION：表示查询中包含UNION操作
 - SUBQUERY：子查询
 - DERIVED：派生表（表示查询语句出现在from后面）
-### table
+
+#### table
 反映了这个查询操作的是哪个表。
-### type
+
+#### type
 反映了查询表中数据时的访问类型，常见的值：
 
 1. NULL：效率最高，一般不可能优化到这个级别，只有查询时没有查询表的时候，访问类型是NULL。例如：select 1;
@@ -137,18 +143,22 @@ explain select e.ename,d.dname from emp e join dept d on e.deptno=d.deptno where
 效率最高的是NULL，效率最低的是all，从上到下，从高到低。
 
 
-### possible_keys
+#### possible_keys
 这个查询可能会用到的索引
-### key
+
+#### key
 实际用到的索引
-### key_len
+
+#### key_len
 反映索引中在查询中使用的列所占的总字节数。
-### rows
+
+#### rows
 查询扫描的预估计行数。
-### Extra
+
+#### Extra
 给出了与查询相关的额外信息和说明。这些额外信息可以帮助我们更好地理解查询执行的过程。
 
-
+---
 # 索引优化
 ## 加索引 vs 不加索引
 将这个sql脚本初始化到数据库中（初始化100W条记录）：t_vip.sql
@@ -570,7 +580,7 @@ create index idx_emp_job_ename on emp(job,ename);
 7. 不要创建太多索引，当对数据进行增删改的时候，索引需要重新重新排序。
 8. 如果很少的查询，经常的增删改不建议加索引。 
 
-
+---
 # SQL优化
 ## order by的优化
 准备数据：

@@ -28,8 +28,10 @@
 * 视图：[view](notes/view.md)
 * 事物：[transactions](notes/transactions.md)
 * 存储过程：[procedure](notes/procedure.md)
+* 存储函数：[function](notes/function.md)
+* 触发器：[trigger](notes/trigger.md)
 * 存储索引：[engines](notes/engines.md)
-* 索引：[第3章 索引](notes/第3章%20索引.md)
+* 索引：[index](notes/index.md)
 * 优化：[第4章 MySQL优化](notes/第4章%20MySQL优化.md)
 
 ## 资料
