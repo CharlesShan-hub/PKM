@@ -2,6 +2,7 @@
 
 > https://www.yuque.com/taijuanlebaai/fh01mx/nz5pebfyfhkhticp?singleDoc#
 
+---
 ## 下载镜像
 
 * 检索：`docker search`
@@ -78,6 +79,7 @@ nginx:latest   553f64aecdc3        244MB         58.3MB
 charles@Charless-MacBook-Pro ~/w/p/welcome-to-docker (main)> 
 ```
 
+---
 ## 启动容器
 
 ### 常见命令
@@ -222,6 +224,7 @@ charles@Charless-MacBook-Pro ~> docker rm -f $(docker ps -aq)
 charles@Charless-MacBook-Pro ~> 
 ```
 
+---
 ## 保存镜像
 
 * 提交：`docker commit`
@@ -308,6 +311,7 @@ mynginx:v1.0   0856ddb965df        244MB         58.3MB
 charles@Charless-MacBook-Pro ~> 
 ```
 
+---
 ## 分享社区
 
 * 注册：`docker login`

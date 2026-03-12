@@ -1,4 +1,5 @@
 # 网络
+1. INetAddress：
 ---
 ## INetAddress
 
@@ -55,7 +56,7 @@ public class INetAddressExample {
 
 ---
 ## URL
-1. URL类的构造方法：URL url = new URL(“http://127.0.0.1:8080/oa/index.html?name=zhangsan#tip”);
+1. URL类的构造方法：`URL url = new URL(“http://127.0.0.1:8080/oa/index.html?name=zhangsan#tip”);`
 2. URL类的常用方法：
 	1. 获取协议：url.getProtocol()		获取域名：url.getHost()		获取默认端口：url.getDefaultPort()
 	2. 获取端口：url.getPort()			获取路径：url.getPath()		获取资源：url.getFile()		
