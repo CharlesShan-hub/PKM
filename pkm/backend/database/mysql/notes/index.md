@@ -5,46 +5,34 @@
 ---
 ## 索引的创建和删除
 
-### 主键会自动添加索引
-
-**主键字段会自动添加索引**，不需要程序员干涉，主键字段上的索引被称为`主键索引`
-
-### unique约束的字段自动添加索引
-
-**unique约束的字段会自动添加索引**，不需要程序员干涉，这种字段上添加的索引称为`唯一索引
-`
-### 给指定的字段添加索引
-
-建表时添加索引：
-```sql
-CREATE TABLE emp (
-    ...
-    name varchar(255),
-    ...
-    INDEX idx_name (name)
-);
-
-```
-如果表已经创建好了，后期给字段添加索引
-```sql
-ALTER TABLE emp ADD INDEX idx_name (name);
-```
-也可以这样添加索引：
-```sql
-create index idx_name on emp(name);
-```
-
-### 删除指定字段上的索引
-
-```sql
-ALTER TABLE emp DROP INDEX idx_name;
-```
-
-### 查看某张表上添加了哪些索引
-
-```sql
-show index from 表名;
-```
+1. **主键会自动添加索引**：不需要程序员干涉，主键字段上的索引被称为`主键索引`
+2. **unique约束的字段自动添加索引**：不需要程序员干涉，这种字段上添加的索引称为`唯一索引`
+3. 给指定的字段添加索引
+	1. 建表时添加索引：
+		```sql
+		CREATE TABLE emp (
+		    ...
+		    name varchar(255),
+		    ...
+		    INDEX idx_name (name)
+		);
+		```
+	2. 如果表已经创建好了，后期给字段添加索引
+		```sql
+		ALTER TABLE emp ADD INDEX idx_name (name);
+		```
+	3. 也可以这样添加索引：
+		```sql
+		create index idx_name on emp(name);
+		```
+4. 删除指定字段上的索引
+	```sql
+	ALTER TABLE emp DROP INDEX idx_name;
+	```
+5. 查看某张表上添加了哪些索引
+	```sql
+	show index from 表名;
+	```
 
 ---
 ## 索引的分类
@@ -52,7 +40,7 @@ show index from 表名;
 不同的`存储引擎`有不同的索引类型和实现：
 
 - 按照数据结构分类：
-	- B+树 索引（mysql的InnoDB存储引擎采用的就是这种索引）采用 B+树  的数据结构
+	- B+树 索引（**mysql的InnoDB**存储引擎采用的就是这种索引）采用**B+树**的数据结构
 	- Hash 索引（仅 `memory` 存储引擎支持）：采用  哈希表  的数据结构
 - 按照物理存储分类：
 	- 聚集索引：索引和表中数据在一起，数据存储的时候就是按照索引顺序存储的。一张表只能有一个聚集索引。
@@ -80,7 +68,8 @@ show index from 表名;
 ### 二叉树
 有这样一张表
 ![tree01](../assets/tree01.png)
-如果不给id字段添加索引，默认进行全表扫描，假设查询id=10的数据，那至少要进行10次磁盘IO。效率低。可以给id字段添加索引，假设该索引使用了二叉树这种数据结构，这个二叉树是这样的（**推荐一个数据结构可视化网站Data Structure Visualizations，是旧金山大学（USFCA）的一个网站**）：[https://www.cs.usfca.edu/~galles/visualization/Algorithms.html](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+如果不给id字段添加索引，默认进行全表扫描，假设查询id=10的数据，那至少要进行10次磁盘IO。效率低。可以给id字段添加索引，假设该索引使用了二叉树这种数据结构，这个二叉树是这样的
+(推荐一个数据结构可视化网：[Data Structure Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html))
 
 ![tree02](../assets/tree02.png)
 如果这个时候要找id=10的数据，需要的IO次数是？4次。效率显著提升了。
