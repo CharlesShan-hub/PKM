@@ -128,13 +128,13 @@ Integer.toBinaryString(Integer.MIN_VALUE));
 
 ## 浮点型变量
 
-### 类型对比
+### 表示形式
+
 | 类型 | 空间 | 范围 | 后缀 |
 |------|------|------|------|
 | `float` | 4B | ±3.403E38 | `F` 或 `f` |
 | `double` | 8B | ±1.798E308 | `D` 或 `d`（可省略） |
 
-### 使用要点
 1. **精度问题**：浮点数采用IEEE 754标准，尾数部分可能丢失精度
 2. **默认类型**：建议使用 `double`，它是默认的浮点类型
 3. **float必须加后缀**：`float` 类型字面量必须添加 `F` 或 `f`
@@ -151,7 +151,6 @@ double c = 10.5;
 double d = 10.5d;
 ```
 
-### 表示形式
 ```java
 double a = 5.12;      // 标准表示
 float b = 512.0F;     // float类型
@@ -160,10 +159,42 @@ double d = 5.12e2;    // 科学计数法：5.12 × 10² = 512.0
 double e = 5.12e-2;   // 科学计数法：5.12 × 10⁻² = 0.0512
 ```
 
-### 精度对比
 ```java
 double a = 2.123456789;   // 保持精度：2.123456789
 float b = 2.123456789F;   // 精度损失：2.1234567
+```
+
+### IEEE754标准
+
+```java
+public class Ieee754Demo {
+	public static void main(String[] args) {
+		float a = 0.1f;
+		float b = 0.2f;
+		float c = a + b;
+		
+		System.out.println("a = " + a);
+		System.out.println("b = " + b);
+		System.out.println("c = a + b = " + c);
+		
+		double x = 1.0 / 0.0;
+		double y = -1.0 / 0.0;
+		double z = 0.0 / 0.0;
+		
+		System.out.println("x = 1.0 / 0.0 = " + x);
+		System.out.println("y = -1.0 / 0.0 = " + y);
+		System.out.println("z = 0.0 / 0.0 = " + z);
+	}
+}
+```
+
+```java
+a = 0.1
+b = 0.2
+c = a + b = 0.3
+x = 1.0 / 0.0 = Infinity
+y = -1.0 / 0.0 = -Infinity
+z = 0.0 / 0.0 = NaN
 ```
 
 ### 浮点数陷阱

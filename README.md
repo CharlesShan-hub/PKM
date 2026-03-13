@@ -11,7 +11,7 @@
 		* database
 			* [mysql](pkm/backend/database/mysql/README.md)
 			* [JDBC](pkm/backend/database/jdbc/README.md)
-			* redis
+			* [Redis](pkm/backend/database/redis/README.md)
 			* MongoDB
 			* zookeeper
 		* java web
@@ -78,10 +78,12 @@
 ---
 Todo
 * sql-事务
-* sql-存储过程
 * sql-存储索引
 * sql-索引
 * sql-优化
+* javase
+	* strictfp关键字
+	* 多线程：volatile
 
 ## Resources
 * [Java 全栈知识体系](https://pdai.tech/)
