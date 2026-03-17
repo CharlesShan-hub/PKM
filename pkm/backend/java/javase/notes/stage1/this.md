@@ -1,6 +1,9 @@
 # this
+
 ---
+
 ## this本质
+
 其实this和name、age一样，都是成员变量，不过this被隐藏起来了，this存放的是对象自己的地址！
 
 ```java
@@ -44,6 +47,7 @@ class Test{
 ## 构造器与this
 
 可以让代码更好读：
+
 ```java
 public Dog{
 	String name;
@@ -63,6 +67,7 @@ public Dog{
 ```
 
 `this`在构造器中必须放在第一句：
+
   ```java
   class T{
     String name;

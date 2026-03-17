@@ -1,6 +1,6 @@
 # Java控制结构
 
-![java-basic-branchs.excalidraw|1000](../../assets/java-basic-branchs.excalidraw.md)
+![Java-basic-branchs.excalidraw|1000](../../assets/java-basic-branchs.excalidraw.md)
 
 ---
 
@@ -13,6 +13,7 @@
 ## 分支结构
 
 ### 1. 单分支 if
+
 ```java
 if (condition) {
     // 代码块
@@ -22,6 +23,7 @@ if (condition) {
 **注意**：如果只有一行代码，可以不写大括号（但不推荐）。
 
 ### 2. 双分支 if-else
+
 ```java
 if (condition) {
     // 代码块1
@@ -30,7 +32,8 @@ if (condition) {
 }
 ```
 
-**示例：判断闰年**
+示例：判断闰年
+
 ```java
 int year = 2024;
 if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
@@ -41,6 +44,7 @@ if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
 ```
 
 ### 3. 多分支 if-else if
+
 ```java
 if (condition1) {
     // 代码块1
@@ -54,9 +58,11 @@ if (condition1) {
 ```
 
 ### 4. 嵌套分支
+
 if语句可以嵌套使用，但建议不要超过三层嵌套。
 
 **减少嵌套的方法**：
+
 ```java
 while (condition) {
     if (flag) continue;  // 跳过当前迭代
@@ -65,6 +71,7 @@ while (condition) {
 ```
 
 ### 5. switch语句
+
 ```java
 switch (表达式) {
     case 常量1:
@@ -83,32 +90,34 @@ switch (表达式) {
 }
 ```
 
-#### switch注意事项：
+#### switch注意事项
+
 1. **break作用**：只退出switch，不退出外层循环
 2. **穿透现象**：如果case后没有break，会继续执行下一个case
 3. **表达式类型限制**（重要‼️）：
-   - 整型：**byte、short、int、long**
-   - 枚举类型（**enum**）
-   - 字符串（**Java 7+**）
-   - **不支持**：浮点型、布尔型
+    - 整型：**byte、short、int、long**
+    - 枚举类型（**enum**）
+    - 字符串（**Java 7+**）
+    - **不支持**：浮点型、布尔型
 
-```java
-// 错误示例：不支持double
-double num = 1.1;
-switch (num) {  // 编译错误
-    case 1.1:
-        // ...
-}
+    ```java
+    // 错误示例：不支持double
+    double num = 1.1;
+    switch (num) {  // 编译错误
+        case 1.1:
+            // ...
+    }
 
-// 正确示例：char可以，但要注意类型匹配
-char c = 'a';
-switch (c) {
-    case "a":  // 错误：字符串不能匹配char
-    case 20:   // 正确：char可以匹配整型常量
-}
-```
+    // 正确示例：char可以，但要注意类型匹配
+    char c = 'a';
+    switch (c) {
+        case "a":  // 错误：字符串不能匹配char
+        case 20:   // 正确：char可以匹配整型常量
+    }
+    ```
 
 4. **case值限制**：必须是常量或常量表达式，不能是变量
+
 ```java
 int j = 2;
 switch (n) {
@@ -118,14 +127,17 @@ switch (n) {
 ```
 
 ### 6. switch vs if 选择建议
+
 - **使用switch**：判断的具体数值不多，且符合**byte、short、int、char、enum、String**六种类型
-	- 最原始：byte，short，int，char，以及对应的包装类。
-	- java5：enum
-	- java7：String
+  - 最原始：byte，short，int，char，以及对应的包装类。
+  - java5：enum
+  - java7：String
 - **使用if**：区间判断、结果为boolean类型、复杂条件判断
 
 ### 7. Java 12+ 新特性
+
 #### 箭头语法（->）
+
 ```java
 int month = 4;
 String season = switch (month) {
@@ -138,6 +150,7 @@ String season = switch (month) {
 ```
 
 #### 作为表达式返回值
+
 ```java
 int dayNumber = switch (day) {
     case "MON" -> 1;
@@ -152,6 +165,7 @@ int dayNumber = switch (day) {
 ```
 
 #### 使用yield返回值（Java 13+）
+
 ```java
 String day = "MON";
 String dayDescription = switch (day) {
@@ -170,6 +184,7 @@ String dayDescription = switch (day) {
 ## 循环结构
 
 ### 1. for循环
+
 ```java
 for (循环变量初始化; 循环条件; 循环变量迭代) {
     语句块;
@@ -177,10 +192,12 @@ for (循环变量初始化; 循环条件; 循环变量迭代) {
 ```
 
 **特点**：
+
 - 初始化和变量迭代可以用逗号分隔多个表达式
 - `for (;;)` 表示死循环（两个分号不能省略）
 
 ### 2. while循环
+
 ```java
 while (循环条件) {
     循环体;
@@ -189,6 +206,7 @@ while (循环条件) {
 ```
 
 ### 3. do-while循环
+
 ```java
 do {
     循环体;
@@ -196,7 +214,8 @@ do {
 } while (循环条件);
 ```
 
-**示例：统计1-200之间能被5整除但不能被3整除的数**
+示例：统计1-200之间能被5整除但不能被3整除的数
+
 ```java
 public class Demo {
     public static void main(String[] args) {
@@ -215,9 +234,11 @@ public class Demo {
 ```
 
 ### 4. 多重循环
+
 建议不要超过三层嵌套。
 
-**示例1：九九乘法表**
+示例1：九九乘法表
+
 ```java
 public class Demo {
     public static void main(String[] args) {
@@ -231,7 +252,8 @@ public class Demo {
 }
 ```
 
-**示例2：空心金字塔**
+示例2：空心金字塔
+
 ```java
 public class Demo {
     public static void main(String[] args) {
@@ -278,9 +300,11 @@ public class Demo {
 ## 循环控制语句
 
 ### 1. break
+
 用于跳出当前循环或switch语句。
 
-**带标签的break**：
+带标签的break：
+
 ```java
 label1:
 for (int j = 0; j < 4; j++) {
@@ -296,9 +320,11 @@ for (int j = 0; j < 4; j++) {
 ```
 
 ### 2. continue
+
 跳过当前循环的剩余部分，继续下一次迭代。
 
-**带标签的continue**：
+带标签的continue：
+
 ```java
 label1:
 for (int j = 0; j < 4; j++) {
@@ -320,6 +346,7 @@ for (int j = 0; j < 4; j++) {
 ```
 
 ### 3. return
+
 跳出所在方法，结束方法的执行。
 
 ---
@@ -327,6 +354,7 @@ for (int j = 0; j < 4; j++) {
 ## 总结
 
 ### 控制结构选择指南
+
 1. **顺序结构**：默认执行方式
 2. **分支结构**：
    - 简单条件：if-else
@@ -338,6 +366,7 @@ for (int j = 0; j < 4; j++) {
    - 至少执行一次：do-while
 
 ### 最佳实践
+
 1. 避免过深的嵌套（建议不超过3层）
 2. switch语句记得加break防止穿透
 3. 循环中合理使用break和continue控制流程

@@ -3,12 +3,12 @@
 # Javase
 
 * Introduction
-  * [Remember!!](pkm/backend/java/javase/notes/00-introduction/remember.md)：备忘录
-  * [Background](pkm/backend/java/javase/notes/00-introduction/background.md)：Java基础、各个版本变化
-  * [Dos Instruction](pkm/backend/java/javase/notes/00-introduction/dos.md)：Dos命令
-  * [Hello World and Basic Java Structure](pkm/backend/java/javase/notes/00-introduction/hello-world.md)
+  * [remember](notes/00-introduction/remember.md)：备忘录
+  * [Background](notes/00-introduction/background.md)：Java基础、各个版本变化
+  * [Dos Instruction](notes/00-introduction/dos.md)：Dos命令
+  * [Hello World and Basic Java Structure](notes/00-introduction/hello-world.md)
   * [Escape Character](notes/stage1/escape-character.md)：转义字符
-  * [Comment](pkm/backend/java/javase/notes/00-introduction/comment.md)：注释
+  * [Comment](notes/00-introduction/comment.md)：注释
 * Basic (before oop)
   * [package](notes/stage1/package.md)：包
   * [Variable and Datatype](notes/stage1/variable-and-datatype.md)：变量与数据类型

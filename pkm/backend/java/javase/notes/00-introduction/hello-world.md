@@ -5,15 +5,18 @@
 ## Hello World程序
 
 ### 基本步骤
+
 1. **编码** - 创建`Hello.java`文件。
 2. **编译** - 使用`javac`命令：`javac ./Hello.java`，生成`Hello.class`字节码文件。
 3. **运行** - 使用`java`命令：`java Hello`。注意：运行时不带`.class`扩展名。
 
 ### 编码注意事项
+
 - 如果代码中包含中文`.java`文件需要保存为**GBK编码**
 - 具体编码介绍：[编码](coding.md)
 
 ### 示例代码
+
 ```java
 // Hello.java
 public class Hello {
@@ -28,6 +31,7 @@ public class Hello {
 ## Java源文件结构
 
 ### 类声明规则
+
 1. 一个源文件中最多只能有一个`public`类
 2. 源文件名必须与`public`类名完全一致
 3. 可以包含多个非`public`类
@@ -47,6 +51,7 @@ class Another {
 ```
 
 ### main方法的位置
+
 1. `public static void main(String[] args)`可以不在`public`类中
 2. 运行时需要指定包含main方法的类名
 
@@ -70,9 +75,11 @@ class Another {
 ## 代码规范
 
 ### 阿里巴巴Java开发手册
+
 - **链接**：[https://pdai.tech/md/dev-spec/code-style/code-style-alibaba.html](https://pdai.tech/md/dev-spec/code-style/code-style-alibaba.html)
 
 ### 基本规范建议
+
 1. **命名规范**
    - 类名使用大驼峰：`HelloWorld`
    - 方法名使用小驼峰：`getUserName()`
