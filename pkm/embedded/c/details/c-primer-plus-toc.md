@@ -12,7 +12,7 @@
 		6. 缺点
 	3. C语言的发展方向：❌比较基础
 	4. 计算机工作的基本原理：❌比较基础
-	5. 高级计算机语言和编译器：✅[hello-world](hello-world.md)
+	5. 高级计算机语言和编译器：✅[hello-world](pkm/embedded/c/details/hello-world.md)
 	6. 使用C语言的7个步骤：❌比较基础
 		1. 第1步：定义程序目标
 		2. 第2步：设计程序
@@ -40,13 +40,13 @@
 	12. 复习题：❌跳过
 	13. 编程练习：❌跳过
 * [x] 第2章 C语言概述
-	1. C语言的一个简单实例：✅ [hello-world](hello-world.md)
-	2. 实例说明：✅ [hello-world](hello-world.md)
+	1. C语言的一个简单实例：✅ [hello-world](pkm/embedded/c/details/hello-world.md)
+	2. 实例说明：✅ [hello-world](pkm/embedded/c/details/hello-world.md)
 		1. 第一遍 快速简介
 		2. 第二遍 程序细节
-	3. 一个简单程序的结构：✅ [hello-world](hello-world.md)
-	4. 使程序可读的技巧：✅ [hello-world](hello-world.md)
-	5. 更进一步：✅ [hello-world](hello-world.md)
+	3. 一个简单程序的结构：✅ [hello-world](pkm/embedded/c/details/hello-world.md)
+	4. 使程序可读的技巧：✅ [hello-world](pkm/embedded/c/details/hello-world.md)
+	5. 更进一步：✅ [hello-world](pkm/embedded/c/details/hello-world.md)
 		1. 说明
 		2. 多个声明
 		3. 乘法

@@ -42,10 +42,7 @@ Constable, ConstantDesc {
 }
 ```
 
-1. 内部字符数组的保存
-	1. java9之前：String 内部实现仍然是 `char[]`，字符串的字符使用 **Unicode** 字符编码，**一个字符（不区分字母还是汉字）占两个字节**。
-	2. java9 开始：使用`byte[]`保存字符串，针对 JDK 9 的 String 源码里，为了区别编码方式，追加了一个 coder 字段来区分。Java 会根据字符串的内容自动设置为相应的编码，要么 Latin-1 要么 UTF16。
-	3. 从 `char[]` 到 `byte[]`，最主要的目的是**节省字符串占用的内存空间**。内存占用减少带来的另外一个好处，就是 [GC](https://javabetter.cn/jvm/gc.html) 次数也会减少。
+1. java9开始，加入coder字段，可以进行编码方式的选择：[string-coder](pkm/backend/java/javase/details/string-coder.md)
 2. String 继承了 `Serializable` 接口：String 可以序列化，可以通过网络传输
 3. String 继承了 `Comparable` 接口：String 可以相互比较，所以我们别用`==`比较，而是用`compareTo()`方法
 4. **String 是一个 final 类**： String 不能被其他的类继承

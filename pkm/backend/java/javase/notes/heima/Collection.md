@@ -20,7 +20,7 @@ graph LR
     classDef label fill:#ffffff,stroke:#dee2e6,stroke-width:1px
     
     %% 图例
-    subgraph "Java 8 Collection Structure Simple"
+    subgraph "Java 8 Collection"
         direction TB
         LegendInterface["Interface"]:::interface
         LegendClass["Class"]:::concreteClass

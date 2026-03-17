@@ -28,7 +28,7 @@
 ---
 ## 对象的多态
 
-> （🌟重点）对象的多态。下边用一个案例介绍多态：主人喂很多种类宠物吃很多种类的饭。
+> （🌟重点）对象的多态。下边用一个案例介绍多态：主人喂很多种类宠物吃很多种类的饭。
 
 1. 没有多态。每一种宠物与饭的组合都要定一个方法，组合爆炸。👉 [polymorphism-without](../../details/polymorphism-without.md)
 2. 多态——向上转型：👉 [polymorphism-up](../../details/polymorphism-up.md) 
