@@ -33,8 +33,8 @@ class SingletonTest {
     t1.start();  
     t2.start();  
 
-	// t1.join() 和 t2.join() 的作用是
-	// 等两个线程都执行完，再往下执行
+    // t1.join() 和 t2.join() 的作用是
+    // 等两个线程都执行完，再往下执行
     try {  
       t1.join();  
     } catch (InterruptedException e) {  

@@ -61,18 +61,18 @@ public class Program{
    persons[4] = new Teacher("king", 50, 25000);
 
    for(int i=0; i<persons.length; i++){
-	 // 动态绑定机制
-	 System.out.println(persons[i].say());
-	 // 运行特殊的功能，向下转型
-	 if(persons[i] instanceof Student){
-	   Student s = (Student)persons[i];
-	   s.study();
-	 }else if(persons[i] instanceof Teacher){
-	   Teacher t = (Teacher)persons[i];
-	   t.teach();
-	 }else{
-	   System.out.println("你的类型有误, 请自己检查...");
-	 }
+     // 动态绑定机制
+     System.out.println(persons[i].say());
+     // 运行特殊的功能，向下转型
+     if(persons[i] instanceof Student){
+       Student s = (Student)persons[i];
+       s.study();
+     }else if(persons[i] instanceof Teacher){
+       Teacher t = (Teacher)persons[i];
+       t.teach();
+     }else{
+       System.out.println("你的类型有误, 请自己检查...");
+     }
    }
  }
 }

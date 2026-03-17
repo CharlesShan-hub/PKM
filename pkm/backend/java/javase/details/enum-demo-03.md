@@ -4,10 +4,10 @@ package ex_enum;
 
 public class Test {  
   public static void main(String[] args){  
-	System.out.println(Season.SPRING); // 没有你的春天，那便沉沉睡去...  
-	System.out.println(Season.SUMMER); // 没有你的夏天，那便沉沉睡去...  
-	System.out.println(Season.AUTUMN); // 没有你的秋天，那便沉沉睡去...  
-	System.out.println(Season.WINTER); // 没有你的冬天，那便沉沉睡去...  
+    System.out.println(Season.SPRING); // 没有你的春天，那便沉沉睡去...  
+    System.out.println(Season.SUMMER); // 没有你的夏天，那便沉沉睡去...  
+    System.out.println(Season.AUTUMN); // 没有你的秋天，那便沉沉睡去...  
+    System.out.println(Season.WINTER); // 没有你的冬天，那便沉沉睡去...  
   }  
 }  
 
@@ -29,18 +29,18 @@ enum Season{
   private String decs;  
 
   private Season(String name, String decs){  
-	this.name = name;  
-	this.decs = decs;  
+    this.name = name;  
+    this.decs = decs;  
   }  
   @Override  
   public String toString(){  
-	return "没有你的"+this.name+"，那便沉沉睡去...";  
+    return "没有你的"+this.name+"，那便沉沉睡去...";  
   }  
   public String getDecs() {  
-	return decs;  
+    return decs;  
   }  
   public String getName() {  
-	return name;  
+    return name;  
   }  
 }
 ```

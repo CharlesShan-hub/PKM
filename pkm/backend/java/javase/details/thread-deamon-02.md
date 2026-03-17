@@ -13,10 +13,10 @@ public class Deamon {
         }
         System.out.println("宝强回家了");
         if(myDeamon.isAlive()){
-	        System.out.println("💥被发现了");
-	        // 因为现在JVM这个进程还没结束，所以还是被发现了😆
+            System.out.println("💥被发现了");
+            // 因为现在JVM这个进程还没结束，所以还是被发现了😆
         }else{
-	        System.out.println("💚无事发生");
+            System.out.println("💚无事发生");
         }
     }
 }

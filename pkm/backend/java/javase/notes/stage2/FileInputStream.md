@@ -5,23 +5,23 @@
 ## 介绍
 1. 🏅核心特性
 
-	| 特性 | 说明 |
-	| :--- | :--- |
-	| **继承关系** | `java.io.InputStream` → `java.io.FileInputStream` |
-	| **数据单位** | 以**字节（byte）**为单位读取（适合二进制数据） |
-	| **读取方式** | 顺序读取（不可随机访问，需用 `RandomAccessFile`） |
-	| **资源管理** | 必须显式调用 `close()` 关闭流（推荐 try-with-resources） |
+    | 特性 | 说明 |
+    | :--- | :--- |
+    | **继承关系** | `java.io.InputStream` → `java.io.FileInputStream` |
+    | **数据单位** | 以**字节（byte）**为单位读取（适合二进制数据） |
+    | **读取方式** | 顺序读取（不可随机访问，需用 `RandomAccessFile`） |
+    | **资源管理** | 必须显式调用 `close()` 关闭流（推荐 try-with-resources） |
 
 
 2. 🔑核心API
 
-	| 分类 | API | 说明 |
-	| :--- | :--- | :--- |
-	| **构造器** | `FileInputStream(String name)` | 通过文件路径创建 |
-	| | `FileInputStream(File file)` | 通过 File 对象创建 |
-	| **常用方法** | `int read()` | 读取一个字节，返回 -1 表示结束 |
-	| | `int read(byte[] b)` | 读取多个字节到数组 |
-	| | `void close()` | 关闭流释放资源 |
+    | 分类 | API | 说明 |
+    | :--- | :--- | :--- |
+    | **构造器** | `FileInputStream(String name)` | 通过文件路径创建 |
+    | | `FileInputStream(File file)` | 通过 File 对象创建 |
+    | **常用方法** | `int read()` | 读取一个字节，返回 -1 表示结束 |
+    | | `int read(byte[] b)` | 读取多个字节到数组 |
+    | | `void close()` | 关闭流释放资源 |
 
 3. ✅ 适用场景
    1. **读取二进制文件**：图片（`.jpg`）、音频（`.mp3`）、视频（`.mp4`）、压缩包等。

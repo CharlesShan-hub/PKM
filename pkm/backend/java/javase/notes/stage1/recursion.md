@@ -195,11 +195,11 @@
 
   ```java
   public class Program{
-	public static void main(String[] args){
-	  T t = new T();
-	  t.queen(1,new int[8]);
-	  System.out.println(t.num);
-	}
+    public static void main(String[] args){
+      T t = new T();
+      t.queen(1,new int[8]);
+      System.out.println(t.num);
+    }
   }
   class T{
     public int num;
@@ -212,15 +212,15 @@
       return true;
     }
     private void print(int[] array){
-	    for(int i=0; i<array.length; i++)
-		    System.out.print(array[i]+" ");
-		System.out.println();
+        for(int i=0; i<array.length; i++)
+            System.out.print(array[i]+" ");
+        System.out.println();
     } 
     private int[] copy(int[] array){
-	    int[] temp = new int[array.length];
-	    for(int j=0;j<array.length;j++)
-		    temp[j] = array[j];
-		return temp;
+        int[] temp = new int[array.length];
+        for(int j=0;j<array.length;j++)
+            temp[j] = array[j];
+        return temp;
     }
     public void queen(int index,int[] array){
       if(index==9){

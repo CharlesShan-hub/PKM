@@ -6,8 +6,8 @@
 ```plsql
 CREATE FUNCTION 存储函数名称(参数列表) RETURNS 数据类型 [特征]
 BEGIN
-	--函数体
-	RETURN ...;
+    --函数体
+    RETURN ...;
 END;
 ```
 
@@ -26,14 +26,14 @@ drop function if exists sum_fun;
 create function sum_fun(n int)
 returns int deterministic 
 begin 
-	declare result int default 0;
-	while n > 0 do 
-		if n % 2 = 0 then 
-			set result := result + n;
-		end if;
-		set n := n - 1;
-	end while;
-	return result;
+    declare result int default 0;
+    while n > 0 do 
+        if n % 2 = 0 then 
+            set result := result + n;
+        end if;
+        set n := n - 1;
+    end while;
+    return result;
 end;
 
 -- 调用函数

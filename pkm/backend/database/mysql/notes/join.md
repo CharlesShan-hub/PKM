@@ -13,17 +13,17 @@
 ### 连接查询的分类
 
 1. 根据语法出现的年代进行分类：
-	1. SQL92（这种语法很少用，可以不用学。）
-	2. SQL99（我们主要学习这种语法。）
+    1. SQL92（这种语法很少用，可以不用学。）
+    2. SQL99（我们主要学习这种语法。）
 2. 根据连接方式的不同进行分类：
-	1. 内连接
-		1. 等值连接
-		2. 非等值连接
-		3. 自连接
-	2. 外连接
-		1. 左外连接（左连接）
-		2. 右外连接（右连接）
-	3. 全连接
+    1. 内连接
+        1. 等值连接
+        2. 非等值连接
+        3. 自连接
+    2. 外连接
+        1. 左外连接（左连接）
+        2. 右外连接（右连接）
+    3. 全连接
   
 ### 笛卡尔积现象
 
@@ -258,17 +258,17 @@ c.cid = o.cid;
 
 ```sql
 select
-	e.ename,d.dname,s.grade
+    e.ename,d.dname,s.grade
 from
-	emp e
+    emp e
 join
-	dept d
+    dept d
 on
-	e.deptno = d.deptno
+    e.deptno = d.deptno
 join
-	salgrade s
+    salgrade s
 on
-	e.sal between s.losal and s.hisal;
+    e.sal between s.losal and s.hisal;
 ```
 
 ```shell

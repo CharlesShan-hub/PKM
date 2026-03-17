@@ -8,25 +8,25 @@
 
 ```java
 public class Demo{
-	public static void main(String[] args){
-		Dog d1 = new Dog("One", 20);
-		Dog d2 = new Dog("Two", 30);
-		System.out.println(d1.hashCode()); // 1933863327
-		d1.info();// 1933863327
-		System.out.println(d2.hashCode()); // 112810359
-		d2.info();// 112810359
-	}
+    public static void main(String[] args){
+        Dog d1 = new Dog("One", 20);
+        Dog d2 = new Dog("Two", 30);
+        System.out.println(d1.hashCode()); // 1933863327
+        d1.info();// 1933863327
+        System.out.println(d2.hashCode()); // 112810359
+        d2.info();// 112810359
+    }
 }
 class Dog{
-	public String name;
-	public int age;
-	public Dog(String name, int age){
-		this.name = name;
-		this.age = age;
-	}
-	public void info(){
-		System.out.println(this.hashCode());
-	}
+    public String name;
+    public int age;
+    public Dog(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+    public void info(){
+        System.out.println(this.hashCode());
+    }
 }
 ```
 
@@ -50,19 +50,19 @@ class Test{
 
 ```java
 public Dog{
-	String name;
-	int age;
-	/*
-	public Dog(String _name, int _age){
-	  name = _name;
-	  age = _age;
-	}
-	*/
-	// 有没有另一种方法，让代码更好读
-	public Dog(String name, int age){
-	  this.name = name;
-	  this.age = age;
-	}
+    String name;
+    int age;
+    /*
+    public Dog(String _name, int _age){
+      name = _name;
+      age = _age;
+    }
+    */
+    // 有没有另一种方法，让代码更好读
+    public Dog(String name, int age){
+      this.name = name;
+      this.age = age;
+    }
 }
 ```
 

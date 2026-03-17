@@ -46,9 +46,9 @@
    public boolean equals(Object obj) {
      return (this == obj);
    }
-	```
-	
-	```java
+    ```
+    
+    ```java
    // Integer.java
    public boolean equals(Object obj) {
      if (obj instanceof Integer) {
@@ -56,9 +56,9 @@
      }
      return false;
    }
-	```
-	
-	```java
+    ```
+    
+    ```java
    // String.java(jdk17)
    public boolean equals(Object anObject) {
      if (this == anObject) {
@@ -68,9 +68,9 @@
        && (!COMPACT_STRINGS || this.coder == aString.coder)
        && StringLatin1.equals(value, aString.value);
    }
-	```
-	
-	```java
+    ```
+    
+    ```java
    // String.java(jdk8)
    public boolean equals(Object anObject) {
      if (this == anObject) {//如果是同一个对象
@@ -87,23 +87,23 @@
            i++; 
          }
          return true;//如果两个字符串的所有字符都相等，则返回 true
-   	}
-   	return false;//如果比较的不是字符串，则直接返回 false 
+       }
+       return false;//如果比较的不是字符串，则直接返回 false 
    }
    ```
 
 2. int 比较
-	```java
-	Integer i1 = new Integer(1000);
-	Integer i2 = new Integer(1000);
-	System.out.println(i1 == i2);
-	System.out.println(i1.equals(i2));
-	```
+    ```java
+    Integer i1 = new Integer(1000);
+    Integer i2 = new Integer(1000);
+    System.out.println(i1 == i2);
+    System.out.println(i1.equals(i2));
+    ```
 
-	```bash
-	false
-	true
-	```
+    ```bash
+    false
+    true
+    ```
 3. 字符串比较案例
 
    ```java
@@ -113,48 +113,48 @@
    System.out.println(str1.equals(str2));
    ```
 
-	```bash
-	false
-	true
-	```
+    ```bash
+    false
+    true
+    ```
 
 4. 重写.equal方法
 
-	```java
-	class Person{
-	 private String name; 
-	 private int age; 
-	 private char gender;
-	 
-	//重写 Object 的 equals 方法 
-	 @Override
-	 public boolean equals(Object obj) {
-	   //判断如果比较的两个对象是同一个对象，则直接返回 true 
-	   if(this == obj) {
-		 return true; 
-	   }
-	   //类型判断
-	   if(obj instanceof Person) {//是 Person，我们才比较
-		 Person p = (Person)obj;
-		 return this.name.equals(p.name) && this.age == p.age && this.gender == p.gender;
-	   }
-	   //如果不是 Person ，则直接返回 false 
-	   return false;
-	}
-	 
-	 public Person(String name, int age, char gender) { 
-	   this.name = name;
-	   this.age = age;
-	   this.gender = gender; 
-	 }
-	 public String getName() {return name;}
-	 public void setName(String name) {this.name = name;}
-	 public int getAge() {return age;}
-	 public void setAge(int age) { this.age = age;}
-	 public char getGender() {return gender;}
-	 public void setGender(char gender) {this.gender = gender;} 
-	}
-	```
+    ```java
+    class Person{
+     private String name; 
+     private int age; 
+     private char gender;
+     
+    //重写 Object 的 equals 方法 
+     @Override
+     public boolean equals(Object obj) {
+       //判断如果比较的两个对象是同一个对象，则直接返回 true 
+       if(this == obj) {
+         return true; 
+       }
+       //类型判断
+       if(obj instanceof Person) {//是 Person，我们才比较
+         Person p = (Person)obj;
+         return this.name.equals(p.name) && this.age == p.age && this.gender == p.gender;
+       }
+       //如果不是 Person ，则直接返回 false 
+       return false;
+    }
+     
+     public Person(String name, int age, char gender) { 
+       this.name = name;
+       this.age = age;
+       this.gender = gender; 
+     }
+     public String getName() {return name;}
+     public void setName(String name) {this.name = name;}
+     public int getAge() {return age;}
+     public void setAge(int age) { this.age = age;}
+     public char getGender() {return gender;}
+     public void setGender(char gender) {this.gender = gender;} 
+    }
+    ```
 
 ### 自己重写equals
 1. 练习
@@ -188,39 +188,39 @@
     ```
 
 2. 练习
-	```java
-	//代码如下 EqualsExercise03.java
-	int it = 65;
-	float fl = 65.0f;
-	System.out.println("65和65.0f是否相等？ " + (it == fl));
-	char ch1 = 'A'; char ch2 = 12;
-	System.out.println("65和 'A' 是否相等？ " + (it == ch1));
-	System.out.println("12和ch2是否相等？ " + (12 == ch2));
-	
-	String str1 = new String("hello");
-	String str2 = new String("hello");
-	System.out.println("str1和str2是否相等？ " + (str1 == str2));
-	
-	System.out.println("str1是否equals str2? " + (str1.equals(str2)));
-	System.out.println("hello" == new java.sql.Date());
-	```
+    ```java
+    //代码如下 EqualsExercise03.java
+    int it = 65;
+    float fl = 65.0f;
+    System.out.println("65和65.0f是否相等？ " + (it == fl));
+    char ch1 = 'A'; char ch2 = 12;
+    System.out.println("65和 'A' 是否相等？ " + (it == ch1));
+    System.out.println("12和ch2是否相等？ " + (12 == ch2));
+    
+    String str1 = new String("hello");
+    String str2 = new String("hello");
+    System.out.println("str1和str2是否相等？ " + (str1 == str2));
+    
+    System.out.println("str1是否equals str2? " + (str1.equals(str2)));
+    System.out.println("hello" == new java.sql.Date());
+    ```
 
-	```java
-	//代码如下 EqualsExercise03.java
-	int it = 65;
-	float fl = 65.0f;
-	System.out.println("65和65.0f是否相等？ " + (it == fl)); // true
-	char ch1 = 'A'; char ch2 = 12;
-	System.out.println("65和 'A' 是否相等？ " + (it == ch1)); // true
-	System.out.println("12和ch2是否相等？ " + (12 == ch2)); // true
-	
-	String str1 = new String("hello");
-	String str2 = new String("hello");
-	System.out.println("str1和str2是否相等？ " + (str1 == str2)); // false
-	
-	System.out.println("str1是否equals str2? " + (str1.equals(str2))); // true
-	System.out.println("hello" == new java.sql.Date()); // false
-	```
+    ```java
+    //代码如下 EqualsExercise03.java
+    int it = 65;
+    float fl = 65.0f;
+    System.out.println("65和65.0f是否相等？ " + (it == fl)); // true
+    char ch1 = 'A'; char ch2 = 12;
+    System.out.println("65和 'A' 是否相等？ " + (it == ch1)); // true
+    System.out.println("12和ch2是否相等？ " + (12 == ch2)); // true
+    
+    String str1 = new String("hello");
+    String str2 = new String("hello");
+    System.out.println("str1和str2是否相等？ " + (str1 == str2)); // false
+    
+    System.out.println("str1是否equals str2? " + (str1.equals(str2))); // true
+    System.out.println("hello" == new java.sql.Date()); // false
+    ```
 
 ### (面试题)为什么重写 equals 时必须重写 hashCode ⽅法？
 
@@ -265,49 +265,49 @@ aa3.hashCode()=112810359
 ## toString方法
 
 1. 默认返回:**全类名**+@+哈希值的十六进制（**全类名 = 包名+类名**）
-	```java
-	package ex_objects;  
-	  
-	public class Test {  
-	    public static void main(String[] args){  
-	        Cat c = new Cat();  
-	        Dog d = new Dog();  
-	        System.out.println(c.toString());  
-	        System.out.println(c); // 等价于
-	        // ex_objects.Cat@3feba861  
-	        System.out.println(d.toString()); 
-	        System.out.println(d);  // 等价于
-	        // I'm not a people, but you are a true dog!  
-	    }  
-	}  
-	  
-	class Cat{}  
-	class Dog{  
-	    @Override  
-	    public String toString(){  
-	        return "I'm not a people, but you are a true dog!";  
-	    }
-	}
-	```
+    ```java
+    package ex_objects;  
+      
+    public class Test {  
+        public static void main(String[] args){  
+            Cat c = new Cat();  
+            Dog d = new Dog();  
+            System.out.println(c.toString());  
+            System.out.println(c); // 等价于
+            // ex_objects.Cat@3feba861  
+            System.out.println(d.toString()); 
+            System.out.println(d);  // 等价于
+            // I'm not a people, but you are a true dog!  
+        }  
+    }  
+      
+    class Cat{}  
+    class Dog{  
+        @Override  
+        public String toString(){  
+            return "I'm not a people, but you are a true dog!";  
+        }
+    }
+    ```
 2. 子类往往重写 toString 方法，用于返回对象的属性信息
-	```java
-	class Person{
-	  String name;
-	  public Person(String name){
-	    this.name = name;
-	  }
-	  @Override
-	  public String toString(){
-	    return "name="+name;
-	  }
-	}
-	```
+    ```java
+    class Person{
+      String name;
+      public Person(String name){
+        this.name = name;
+      }
+      @Override
+      public String toString(){
+        return "name="+name;
+      }
+    }
+    ```
 3. Object 的 toString
-	```java
-	public String toString() {  
-	    return getClass().getName() + "@" + Integer.toHexString(hashCode());  
-	}
-	```
+    ```java
+    public String toString() {  
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());  
+    }
+    ```
 
 ---
 ## finalize方法

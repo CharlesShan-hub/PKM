@@ -49,63 +49,63 @@ class Cat extends Animal{
 2) 题2，思考：abstract public static void test2(); 能编译通过吗，why?❌
 3) 题3，思考：abstract private void test3(); 能编译通过吗，why?❌
 4) 编写一个Employee类，声明为抽象类，包含如下三个属性：name，id，salary。提供必要的构造器和抽象方法：work()。对于Manager类来说，他既是员工，还具有奖金(bonus)的属性。请使用继承的思想，设计CommonEmployee类和Manager类，要求类中提供必要的方法进行属性访问，实现work()，提示 “经理/普通员工 名字 工作中.....”
-	```java
-	package ex_abstract;  
-	  
-	public class Main {  
-	    public static void main(String[] args){  
-	        Employee[] p = new Employee[2];  
-	        p[0] = new Manager("Jack","01",20000);  
-	        p[1] = new Manager("Joker","01",2000);  
-	        for(int i=0; i<p.length; i++)  
-	            p[i].work();  
-	        // 经理Jack工作中  
-	        // 经理Joker工作中  
-	    }  
-	}  
-	  
-	abstract class Employee{  
-	    private String name;  
-	    private String id;  
-	    private double salary;  
-	  
-	    public String getName() {  
-	        return name;  
-	    }  
-	    public String getId() {  
-	        return id;  
-	    }  
-	    public double getSalary() {  
-	        return salary;  
-	    }  
-	    public Employee(String name, String id, double salary) {  
-	        this.name = name;  
-	        this.id = id;  
-	        this.salary = salary;  
-	    }  
-	    public abstract void work();  
-	}  
-	  
-	class CommonEmployee extends Employee{  
-	    public CommonEmployee(String name, String id, double salary) {  
-	        super(name, id, salary);  
-	    }  
-	    @Override  
-	    public void work(){  
-	        System.out.println("普通员工"+getName()+"工作中");  
-	    }
-	}  
-	  
-	class Manager extends Employee{  
-	    public Manager(String name, String id, double salary) {  
-	        super(name, id, salary);  
-	    }  
-	    @Override  
-	    public void work(){  
-	        System.out.println("经理"+getName()+"工作中");  
-	    }
-	}  
-	```
+    ```java
+    package ex_abstract;  
+      
+    public class Main {  
+        public static void main(String[] args){  
+            Employee[] p = new Employee[2];  
+            p[0] = new Manager("Jack","01",20000);  
+            p[1] = new Manager("Joker","01",2000);  
+            for(int i=0; i<p.length; i++)  
+                p[i].work();  
+            // 经理Jack工作中  
+            // 经理Joker工作中  
+        }  
+    }  
+      
+    abstract class Employee{  
+        private String name;  
+        private String id;  
+        private double salary;  
+      
+        public String getName() {  
+            return name;  
+        }  
+        public String getId() {  
+            return id;  
+        }  
+        public double getSalary() {  
+            return salary;  
+        }  
+        public Employee(String name, String id, double salary) {  
+            this.name = name;  
+            this.id = id;  
+            this.salary = salary;  
+        }  
+        public abstract void work();  
+    }  
+      
+    class CommonEmployee extends Employee{  
+        public CommonEmployee(String name, String id, double salary) {  
+            super(name, id, salary);  
+        }  
+        @Override  
+        public void work(){  
+            System.out.println("普通员工"+getName()+"工作中");  
+        }
+    }  
+      
+    class Manager extends Employee{  
+        public Manager(String name, String id, double salary) {  
+            super(name, id, salary);  
+        }  
+        @Override  
+        public void work(){  
+            System.out.println("经理"+getName()+"工作中");  
+        }
+    }  
+    ```
 
 ## 模板设计模式
 

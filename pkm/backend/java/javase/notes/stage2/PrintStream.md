@@ -5,12 +5,12 @@
 ## 介绍
 1. 🏅核心特性
 
-	| 特性 | 说明 |
-	| :--- | :--- |
-	| **继承关系** | `java.io.OutputStream` → `java.io.FilterOutputStream` → `java.io.PrintStream` |
-	| **主要作用** | 方便地打印各种数据类型（int, boolean, String 等） |
-	| **异常处理** | **永远不会抛出 IOException**（需调用 `checkError()` 检查错误） |
-	| **自动刷新** | 可配置自动刷新（遇到换行符或 `println` 时刷新） |
+    | 特性 | 说明 |
+    | :--- | :--- |
+    | **继承关系** | `java.io.OutputStream` → `java.io.FilterOutputStream` → `java.io.PrintStream` |
+    | **主要作用** | 方便地打印各种数据类型（int, boolean, String 等） |
+    | **异常处理** | **永远不会抛出 IOException**（需调用 `checkError()` 检查错误） |
+    | **自动刷新** | 可配置自动刷新（遇到换行符或 `println` 时刷新） |
 
 2. 🔑核心API
 

@@ -187,11 +187,11 @@ select * from t_vip where name='4c6494cb';
 假设有这样一张表：
 ```sql
 create table t_customer(
-	id int primary key auto_increment,
-	name varchar(255),
-	age int,
-	gender char(1),
-	email varchar(255)
+    id int primary key auto_increment,
+    name varchar(255),
+    age int,
+    gender char(1),
+    email varchar(255)
 );
 ```
 添加了这些数据：

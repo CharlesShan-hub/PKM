@@ -8,31 +8,31 @@
 1. **主键会自动添加索引**：不需要程序员干涉，主键字段上的索引被称为`主键索引`
 2. **unique约束的字段自动添加索引**：不需要程序员干涉，这种字段上添加的索引称为`唯一索引`
 3. 给指定的字段添加索引
-	1. 建表时添加索引：
-		```sql
-		CREATE TABLE emp (
-		    ...
-		    name varchar(255),
-		    ...
-		    INDEX idx_name (name)
-		);
-		```
-	2. 如果表已经创建好了，后期给字段添加索引
-		```sql
-		ALTER TABLE emp ADD INDEX idx_name (name);
-		```
-	3. 也可以这样添加索引：
-		```sql
-		create index idx_name on emp(name);
-		```
+    1. 建表时添加索引：
+        ```sql
+        CREATE TABLE emp (
+            ...
+            name varchar(255),
+            ...
+            INDEX idx_name (name)
+        );
+        ```
+    2. 如果表已经创建好了，后期给字段添加索引
+        ```sql
+        ALTER TABLE emp ADD INDEX idx_name (name);
+        ```
+    3. 也可以这样添加索引：
+        ```sql
+        create index idx_name on emp(name);
+        ```
 4. 删除指定字段上的索引
-	```sql
-	ALTER TABLE emp DROP INDEX idx_name;
-	```
+    ```sql
+    ALTER TABLE emp DROP INDEX idx_name;
+    ```
 5. 查看某张表上添加了哪些索引
-	```sql
-	show index from 表名;
-	```
+    ```sql
+    show index from 表名;
+    ```
 
 ---
 ## 索引的分类
@@ -40,18 +40,18 @@
 不同的`存储引擎`有不同的索引类型和实现：
 
 - 按照数据结构分类：
-	- B+树 索引（**mysql的InnoDB**存储引擎采用的就是这种索引）采用**B+树**的数据结构
-	- Hash 索引（仅 `memory` 存储引擎支持）：采用  哈希表  的数据结构
+    - B+树 索引（**mysql的InnoDB**存储引擎采用的就是这种索引）采用**B+树**的数据结构
+    - Hash 索引（仅 `memory` 存储引擎支持）：采用  哈希表  的数据结构
 - 按照物理存储分类：
-	- 聚集索引：索引和表中数据在一起，数据存储的时候就是按照索引顺序存储的。一张表只能有一个聚集索引。
-	- 非聚集索引：索引和表中数据是分开的，索引是独立于表空间的，一张表可以有多个非聚集索引。
+    - 聚集索引：索引和表中数据在一起，数据存储的时候就是按照索引顺序存储的。一张表只能有一个聚集索引。
+    - 非聚集索引：索引和表中数据是分开的，索引是独立于表空间的，一张表可以有多个非聚集索引。
 - 按照字段特性分类：
-	- 主键索引（primary key）
-	- 唯一索引（unique）
-	- 普通索引（index）
-	- 全文索引（fulltext：仅 `InnoDB`和`MyISAM` 存储引擎支持）
+    - 主键索引（primary key）
+    - 唯一索引（unique）
+    - 普通索引（index）
+    - 全文索引（fulltext：仅 `InnoDB`和`MyISAM` 存储引擎支持）
 - 按照字段个数分类：
-	- 单列索引、联合索引（也叫复合索引、组合索引）
+    - 单列索引、联合索引（也叫复合索引、组合索引）
 
 ---
 ## MySQL索引采用了B+树数据结构
@@ -155,7 +155,7 @@ B+ Trees方式存储的话如下图所示：
 支持Hash索引的存储引擎有：
 
 - InnoDB（不支持手动创建Hash索引，系统会自动维护一个`自适应的Hash索引`）
-	- 对于InnoDB来说，即使手动指定了某字段采用Hash索引，最终`show index from 表名`的时候，还是`BTREE`。
+    - 对于InnoDB来说，即使手动指定了某字段采用Hash索引，最终`show index from 表名`的时候，还是`BTREE`。
 - Memory（支持Hash索引）
 
 Hash索引底层的数据结构就是哈希表。一个数组，数组中每个元素是链表。和java中HashMap一样。哈希表中每个元素都是key value结构。key存储`索引值`，value存储`行指针`。

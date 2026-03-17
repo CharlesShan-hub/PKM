@@ -7,11 +7,11 @@
 
 1. select语句中嵌套select语句就叫做子查询。
 2. select语句可以嵌套在哪里？where后面、from后面、select后面都是可以的。
-	```sql
-	select ..(select)..
-	from ..(select)..
-	where ..(select)..
-	```
+    ```sql
+    select ..(select)..
+    from ..(select)..
+    where ..(select)..
+    ```
 
 ---
 ## where后面使用子查询
@@ -117,14 +117,14 @@ drop table if exists t_customer;
 drop table if exists t_order;
 
 create table t_customer(
-	customer_id int,
-	customer_name varchar(32)
+    customer_id int,
+    customer_name varchar(32)
 );
 
 create table t_order(
-	order_id int,
-	order_price decimal(5,1),
-	customer_id int
+    order_id int,
+    order_price decimal(5,1),
+    customer_id int
 );
 
 insert into t_customer(customer_id,customer_name) values(1,'zhangsan');
@@ -344,18 +344,18 @@ ERROR 1222 (2100): The used SELECT statements have a different number of columns
 1. limit作用：查询第几条到第几条的记录。通常是因为表中数据量太大，需要分页显示。
 2. limit语法格式：`limit 开始下标, 长度`
 3. 案例：查询员工表前5条记录
-	```sql
-	select ename,sal from emp limit 0, 5;
-	```
-	如果下标是从0开始，可以简写为：
-	```sql
-	select ename,sal from emp limit 5;
-	```
+    ```sql
+    select ename,sal from emp limit 0, 5;
+    ```
+    如果下标是从0开始，可以简写为：
+    ```sql
+    select ename,sal from emp limit 5;
+    ```
 
 4. 查询工资排名在前5名的员工（limit是在order by执行之后才会执行的
-	```sql
-	select ename,sal from emp order by sal desc limit 5;
-	```
+    ```sql
+    select ename,sal from emp order by sal desc limit 5;
+    ```
 
 5. 通用的分页sql
 

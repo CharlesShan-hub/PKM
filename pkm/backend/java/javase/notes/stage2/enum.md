@@ -14,30 +14,30 @@
 
 1. 通过反编译(javap)，可以证明`enum`和`public static final` 其实是一样的。👉 [enum-javap](../../details/enum-javap.md)
 2. 如果枚举定义的时候，并不需要参数，这样写
-	```java
-	enum Season{  
-	  SPRING, SUMMER, AUTUMN, WINTER;
+    ```java
+    enum Season{  
+      SPRING, SUMMER, AUTUMN, WINTER;
    }
-	```
+    ```
 3. 用 `enum` 的话，必须放在类的最前边。
 4. 使用`System.out.println`枚举对象调用的是`java.lang.Enum`的 `toString`。
-	```java
-	enum Gender{
-	  BOY, GRIL;
-	}
-	Gender b1 = Gender.BOY;
-	Gender b2 = Gender.BOY;
-	System.out.println(boy); 
-	// boy.toString() -> 调用的是java.lang.Enum的 toString
-	System.out.println(boy1 == boy2); // true
-	```
-	
-	```java
-	// java.lang.Enum的 toString
-	public String toString(){
-	  return name;  // 所以这个题输出 BOY
-	}
-	```
+    ```java
+    enum Gender{
+      BOY, GRIL;
+    }
+    Gender b1 = Gender.BOY;
+    Gender b2 = Gender.BOY;
+    System.out.println(boy); 
+    // boy.toString() -> 调用的是java.lang.Enum的 toString
+    System.out.println(boy1 == boy2); // true
+    ```
+    
+    ```java
+    // java.lang.Enum的 toString
+    public String toString(){
+      return name;  // 所以这个题输出 BOY
+    }
+    ```
 
 ---
 ## enum常用方法

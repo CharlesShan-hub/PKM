@@ -18,7 +18,7 @@
 
 ```java
 public interface AInterface {
-	// 属性
+    // 属性
   public int n1 = 10;
   public static final String n2 = "Hello";
 
@@ -100,7 +100,7 @@ class Camera implements UsbInterface{
 }  
   
 class Computer{  
-	// 通过接口调用方法
+    // 通过接口调用方法
   public void work(UsbInterface usbInterface){ 
     usbInterface.start();  
     usbInterface.stop();  
@@ -194,7 +194,7 @@ interface D extends A,B{
 
 ```java
 class Computer{  
-	// 通过接口调用方法
+    // 通过接口调用方法
     public void work(UsbInterface usbInterface){ 
         usbInterface.start();  
         usbInterface.stop();  
@@ -218,20 +218,20 @@ UsbInterface[] usbDevices = new UsbInterface[2]; // 多态数组
 usbDevices[0] = new Camera();
 usbDevices[1] = new Phone();
 for(int i=0; i<usbDevices.lenght; i++)
-	usbDevices[i].work();
-	if(usbDevices[i] instnaceof Phone)
-		((Phone)usbDevice[i]).call(); // 向下转型
+    usbDevices[i].work();
+    if(usbDevices[i] instnaceof Phone)
+        ((Phone)usbDevice[i]).call(); // 向下转型
 ```
 
 多态传递（需要继承父接口的方法）
 
 ```java
 interface IParent{
-	void m(){}
+    void m(){}
 }
 interface IChild extends IParent{}
 class C implements IChild{
-	public void m(){}
+    public void m(){}
 }
 ```
 

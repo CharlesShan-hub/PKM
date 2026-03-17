@@ -58,9 +58,9 @@ public class INetAddressExample {
 ## URL
 1. URL类的构造方法：`URL url = new URL(“http://127.0.0.1:8080/oa/index.html?name=zhangsan#tip”);`
 2. URL类的常用方法：
-	1. 获取协议：url.getProtocol()		获取域名：url.getHost()		获取默认端口：url.getDefaultPort()
-	2. 获取端口：url.getPort()			获取路径：url.getPath()		获取资源：url.getFile()		
-	3. 获取数据：url.getQuery()		获取锚点：url.getRef()
+    1. 获取协议：url.getProtocol()        获取域名：url.getHost()        获取默认端口：url.getDefaultPort()
+    2. 获取端口：url.getPort()            获取路径：url.getPath()        获取资源：url.getFile()        
+    3. 获取数据：url.getQuery()        获取锚点：url.getRef()
 3. 使用URL类的openStream()方法可以打开到此URL的连接并返回一个用于从该连接读入的InputStream，实现最简单的网络爬虫
 ```java
 package com.powernode.javase.net;  
@@ -161,23 +161,23 @@ public class URLTest02 {
 Socket类概述
 1. Socket类实现客户端套接字(Client），套接字是两台机器间通信的端点
 2. Socket类构造方法：
-	1. public Socket(InetAddress a, int p)  创建套接字并连接到指定IP地址的指定端口号
+    1. public Socket(InetAddress a, int p)  创建套接字并连接到指定IP地址的指定端口号
 3. Socket类实例方法：
-	1. public InetAddress getInetAddress()		返回此套接字连接到的远程 IP 地址。
-	2. public InputStream getInputStream()		返回此套接字的输入流（接收网络消息）。
-	3. public OutputStream getOutputStream()		返回此套接字的输出流（发送网络消息）。
-	4. public void shutdownInput()				禁用此套接字的输入流
-	5. public void shutdownOutput()				禁用此套接字的输出流。
-	6. public synchronized void close()			关闭此套接字（默认会关闭IO流）。
+    1. public InetAddress getInetAddress()        返回此套接字连接到的远程 IP 地址。
+    2. public InputStream getInputStream()        返回此套接字的输入流（接收网络消息）。
+    3. public OutputStream getOutputStream()        返回此套接字的输出流（发送网络消息）。
+    4. public void shutdownInput()                禁用此套接字的输入流
+    5. public void shutdownOutput()                禁用此套接字的输出流。
+    6. public synchronized void close()            关闭此套接字（默认会关闭IO流）。
 
 ServerSocket类概述
 1. ServerSocket类用于实现服务器套接字(Server服务端)。服务器套接字等待请求通过网络传入。它基于该请求执行某些操作，然后可能向请求者返回结果
 2. ServerSocket构造方法：
-	1. public ServerSocket(int port)
+    1. public ServerSocket(int port)
 3. ServerSocket实例方法：
-	1. public Socket accept()				侦听要连接到此套接字并接受它。
-	2. public InetAddress getInetAddress()	返回此服务器套接字的本地地址。
-	3. public void close()					关闭此套接字。
+    1. public Socket accept()                侦听要连接到此套接字并接受它。
+    2. public InetAddress getInetAddress()    返回此服务器套接字的本地地址。
+    3. public void close()                    关闭此套接字。
 
 ### 案例一
 
@@ -333,19 +333,19 @@ public class Client {
 ### 案例三：字符流版本
 
  1. ​**​最底层：`OutputStream`（字节流）​**​
-	- `socket.getOutputStream()`  
-	    ▶️ 获取Socket原始的​**​字节输出流​**​，只能处理`byte[]`类型数据
+    - `socket.getOutputStream()`  
+        ▶️ 获取Socket原始的​**​字节输出流​**​，只能处理`byte[]`类型数据
 
 2. ​**​中间层：`OutputStreamWriter`（桥梁）​**​
-	- `new OutputStreamWriter(outputStream)`  
-	    ▶️ 将字节流​**​转换为字符流​**​，实现字节到字符的编码（默认UTF-8）  
-	    ▶️ 关键作用：​**​字节流 → 字符流​**​的转换
+    - `new OutputStreamWriter(outputStream)`  
+        ▶️ 将字节流​**​转换为字符流​**​，实现字节到字符的编码（默认UTF-8）  
+        ▶️ 关键作用：​**​字节流 → 字符流​**​的转换
 
 3. ​**​最外层：`BufferedWriter`（缓冲包装）​**​
-	- `new BufferedWriter(writer)`  
-	    ▶️ 添加​**​缓冲功能​**​，避免频繁IO操作  
-	    ▶️ 提供`write()`、`newLine()`等便捷方法  
-	    ▶️ 必须调用`flush()`强制刷出缓冲区数据
+    - `new BufferedWriter(writer)`  
+        ▶️ 添加​**​缓冲功能​**​，避免频繁IO操作  
+        ▶️ 提供`write()`、`newLine()`等便捷方法  
+        ▶️ 必须调用`flush()`强制刷出缓冲区数据
 
 
 服务器
@@ -431,21 +431,21 @@ import java.io.*;
 import java.net.*;
 
 public class Server {
-	public static byte[] streamToByteArray(InputStream is) throws Exception {
-		// 创建输出流对象
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		// 字节数组
-		byte[] b = new byte[1024];
-		int len;
-		while ((len = is.read(b)) != -1) {
-			// 循环读取
-			// 把读取到的数据，写入 bos
-			bos.write(b, 0, len);
-		}
-		byte[] array = bos.toByteArray();
-		bos.close();
-		return array;
-	}
+    public static byte[] streamToByteArray(InputStream is) throws Exception {
+        // 创建输出流对象
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        // 字节数组
+        byte[] b = new byte[1024];
+        int len;
+        while ((len = is.read(b)) != -1) {
+            // 循环读取
+            // 把读取到的数据，写入 bos
+            bos.write(b, 0, len);
+        }
+        byte[] array = bos.toByteArray();
+        bos.close();
+        return array;
+    }
     public static void main(String[] args) {
         try {
             // 1. 在8888端口监听
@@ -500,47 +500,47 @@ public class Client {
         return builder.toString();
     }
     public static byte[] streamToByteArray(InputStream is) throws Exception {
-		// 创建输出流对象
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		// 字节数组
-		byte[] b = new byte[1024];
-		int len;
-		while ((len = is.read(b)) != -1) {
-			// 循环读取
-			// 把读取到的数据，写入 bos
-			bos.write(b, 0, len);
-		}
-		byte[] array = bos.toByteArray();
-		bos.close();
-		return array;
-	}
+        // 创建输出流对象
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        // 字节数组
+        byte[] b = new byte[1024];
+        int len;
+        while ((len = is.read(b)) != -1) {
+            // 循环读取
+            // 把读取到的数据，写入 bos
+            bos.write(b, 0, len);
+        }
+        byte[] array = bos.toByteArray();
+        bos.close();
+        return array;
+    }
     
     public static void main(String[] args) throws IOException {
         try{
-	        // 1. 连接服务端（8888端口）
-	        Socket socket = new Socket("127.0.0.1", 8889);
-	
-	        // 2. 读取本地图片（使用缓冲流）
-	        String imagePath = "/Users/kimshan/Downloads/pic.png"; // 严格匹配图片路径
-	        BufferedInputStream bis = new BufferedInputStream(new FileInputStream(imagePath));
-	        byte[] imageData = streamToByteArray(bis);
-	        bis.close();
-	
-	        // 3. 发送图片数据（带缓冲）
-	        BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream());
-	        bos.write(imageData);
-	        bos.flush();
-	        socket.shutdownOutput(); // 重要！通知服务端发送完成
-	
-	        // 4. 等待服务端确认（带缓冲）
-	        BufferedInputStream in = new BufferedInputStream(socket.getInputStream());
-	        String response = streamToString(in); // 使用工具类
-	        System.out.println("服务端响应：" + response);
-	
-	        // 5. 关闭连接
-	        in.close();
-	        bos.close();
-	        socket.close();
+            // 1. 连接服务端（8888端口）
+            Socket socket = new Socket("127.0.0.1", 8889);
+    
+            // 2. 读取本地图片（使用缓冲流）
+            String imagePath = "/Users/kimshan/Downloads/pic.png"; // 严格匹配图片路径
+            BufferedInputStream bis = new BufferedInputStream(new FileInputStream(imagePath));
+            byte[] imageData = streamToByteArray(bis);
+            bis.close();
+    
+            // 3. 发送图片数据（带缓冲）
+            BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream());
+            bos.write(imageData);
+            bos.flush();
+            socket.shutdownOutput(); // 重要！通知服务端发送完成
+    
+            // 4. 等待服务端确认（带缓冲）
+            BufferedInputStream in = new BufferedInputStream(socket.getInputStream());
+            String response = streamToString(in); // 使用工具类
+            System.out.println("服务端响应：" + response);
+    
+            // 5. 关闭连接
+            in.close();
+            bos.close();
+            socket.close();
         } catch (Exception e) {
             System.err.println("服务端错误: " + e.getMessage());
         }
@@ -553,17 +553,17 @@ public class Client {
 ### 概述
 
 * TCP协议
-	* 使用TCP协议，须先建立TCP连接，形成传输数据通道，似于拨打电话。
-	* 传输前，采用“三次握手”方式，属于**4️⃣点对点**通信，是**1️⃣面向连接**的，效率低。
-	* 仅支持单播传输，每条TCP传输连接只能有两个端点（客户端、服务端）。
-	* 两个端点的数据传输，采用的是“**2️⃣字节流**”来传输，属于**3️⃣可靠的**数据传输。
-	* 传输完毕，需释放已建立的连接，开销大，速度慢，**5️⃣适用于文件传输、邮件**等。
+    * 使用TCP协议，须先建立TCP连接，形成传输数据通道，似于拨打电话。
+    * 传输前，采用“三次握手”方式，属于**4️⃣点对点**通信，是**1️⃣面向连接**的，效率低。
+    * 仅支持单播传输，每条TCP传输连接只能有两个端点（客户端、服务端）。
+    * 两个端点的数据传输，采用的是“**2️⃣字节流**”来传输，属于**3️⃣可靠的**数据传输。
+    * 传输完毕，需释放已建立的连接，开销大，速度慢，**5️⃣适用于文件传输、邮件**等。
 * UDP协议
-	* 采用数据报（数据、源、目的）的方式来传输，**1️⃣无需建立连接**，类似于发短信。
-	* 每个**2️⃣数据报**的大小限制在64K内，超出64k可以分为多个数据报来发送。
-	* 发送不管对方是否准备好，接收方即使收到也不确认，因此属于**3️⃣不可靠的**。
-	* 可以广播发送，也就是属于**4️⃣一对一、一对多和多对一**连接的通信协议。
-	* 发送数据结束时无需释放资源，开销小，速度快，适用于**5️⃣视频会议、直播**等
+    * 采用数据报（数据、源、目的）的方式来传输，**1️⃣无需建立连接**，类似于发短信。
+    * 每个**2️⃣数据报**的大小限制在64K内，超出64k可以分为多个数据报来发送。
+    * 发送不管对方是否准备好，接收方即使收到也不确认，因此属于**3️⃣不可靠的**。
+    * 可以广播发送，也就是属于**4️⃣一对一、一对多和多对一**连接的通信协议。
+    * 发送数据结束时无需释放资源，开销小，速度快，适用于**5️⃣视频会议、直播**等
 
 ### TCP三次握手
 

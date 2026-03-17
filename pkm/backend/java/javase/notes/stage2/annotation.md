@@ -18,81 +18,81 @@
 ## JDK 内置的基本注解类型
 
 1. `@Override`
-	1. 只能用于重写父类的方法
-	2. 如果写了`@Override`编译器会去验证是否构成了重载，如果没写，就按默认执行。
+    1. 只能用于重写父类的方法
+    2. 如果写了`@Override`编译器会去验证是否构成了重载，如果没写，就按默认执行。
 2. `@Deprecated`：某个类或者成员过时了
-	```java
-	package com.powernode.javase.annotation;  
-	  
-	/**  
-	 * JDK的内置注解：@Deprecated  
-	 * 1. 被这个注解标注的元素已过时。  
-	 * 2. 这个注解是给编译器看的。编译器看到这个注解之后会有警告提示信息。  
-	 * 3. 经过测试 @Deprecated 注解可以标注的元素很多，例如：类上，方法上，属性上....  
-	 */public class AnnotationTest01 {  
-	    public static void main(String[] args) {  
-	        MyClass1 myClass1 = new MyClass1();  
-	        System.out.println(myClass1.num);  
-	        myClass1.doSome();  
-	    }  
-	}  
-	  
-	// 标注这个类已过时，不建议使用了  
-	@Deprecated  
-	class MyClass1 {  
-	  
-	    // since属性值表示从哪个版本开始已过时。  
-	    // forRemoval属性值如果是true表示已移除。  
-	    @Deprecated(since = "9", forRemoval = true)  
-	    public int num = 100;  
-	  
-	    @Deprecated  
-	    public void doSome(){  
-	  
-	    }  
-	}
-	```
+    ```java
+    package com.powernode.javase.annotation;  
+      
+    /**  
+     * JDK的内置注解：@Deprecated  
+     * 1. 被这个注解标注的元素已过时。  
+     * 2. 这个注解是给编译器看的。编译器看到这个注解之后会有警告提示信息。  
+     * 3. 经过测试 @Deprecated 注解可以标注的元素很多，例如：类上，方法上，属性上....  
+     */public class AnnotationTest01 {  
+        public static void main(String[] args) {  
+            MyClass1 myClass1 = new MyClass1();  
+            System.out.println(myClass1.num);  
+            myClass1.doSome();  
+        }  
+    }  
+      
+    // 标注这个类已过时，不建议使用了  
+    @Deprecated  
+    class MyClass1 {  
+      
+        // since属性值表示从哪个版本开始已过时。  
+        // forRemoval属性值如果是true表示已移除。  
+        @Deprecated(since = "9", forRemoval = true)  
+        public int num = 100;  
+      
+        @Deprecated  
+        public void doSome(){  
+      
+        }  
+    }
+    ```
 3. `@SuppressWarnings`：抑制警告
-	1. `@SuppressWarnings` 注解是 Java 编程语言中的一个特性，它用于抑制编译器生成的警告信息。这个注解可以应用于类型、字段、方法、参数、构造函数以及局部变量声明。下面是 `@SuppressWarnings` 支持的所有警告类型（也称为注解的值）的总结：  
-	2. @SuppressWarnings("rawtypes")：抑制未使用泛型的警告
-	3. @SuppressWarnings("resource")：抑制未关闭资源的警告
-	4. @SuppressWarnings("deprecation")：抑制使用了已过时资源时的警告
-	5. @SuppressWarnings("all")：抑制所有警告
-	6. 可以单独使用这些值，或者将它们组合起来传递给 `@SuppressWarnings` 注解，以抑制多种类型的警告。例如： 
-	```java  
-	@SuppressWarnings({"unchecked", "rawtypes"})  
-	public void myMethod() {  
-		// 方法实现，这里可能会有未检查的转换或未指定泛型参数的警告  
-	}  
-	```  
-	7. 可以通过标在不同的地方，表示不同的作用域
-	```java  
-	package ex_at;  
-	
-	import java.util.ArrayList;  
-	
-	public class Test {  
-		public static void main(String[] args){  
-			@SupressWarnings({"rawypes"})
-			List list = new ArrayList();  
-			list.add("Jack");  
-			@SupressWarnings({"unused"})
-			int i;  
-			System.out.println(list.get(1));  
-		}
-	
-		@SupressWarnings({"all"})
-		public static void main(String[] args){  
-			List list = new ArrayList();  
-			list.add("Jack");  
-			int i;  
-			System.out.println(list.get(1));  
-		}
-	}  
-	```  
+    1. `@SuppressWarnings` 注解是 Java 编程语言中的一个特性，它用于抑制编译器生成的警告信息。这个注解可以应用于类型、字段、方法、参数、构造函数以及局部变量声明。下面是 `@SuppressWarnings` 支持的所有警告类型（也称为注解的值）的总结：  
+    2. @SuppressWarnings("rawtypes")：抑制未使用泛型的警告
+    3. @SuppressWarnings("resource")：抑制未关闭资源的警告
+    4. @SuppressWarnings("deprecation")：抑制使用了已过时资源时的警告
+    5. @SuppressWarnings("all")：抑制所有警告
+    6. 可以单独使用这些值，或者将它们组合起来传递给 `@SuppressWarnings` 注解，以抑制多种类型的警告。例如： 
+    ```java  
+    @SuppressWarnings({"unchecked", "rawtypes"})  
+    public void myMethod() {  
+        // 方法实现，这里可能会有未检查的转换或未指定泛型参数的警告  
+    }  
+    ```  
+    7. 可以通过标在不同的地方，表示不同的作用域
+    ```java  
+    package ex_at;  
+    
+    import java.util.ArrayList;  
+    
+    public class Test {  
+        public static void main(String[] args){  
+            @SupressWarnings({"rawypes"})
+            List list = new ArrayList();  
+            list.add("Jack");  
+            @SupressWarnings({"unused"})
+            int i;  
+            System.out.println(list.get(1));  
+        }
+    
+        @SupressWarnings({"all"})
+        public static void main(String[] args){  
+            List list = new ArrayList();  
+            list.add("Jack");  
+            int i;  
+            System.out.println(list.get(1));  
+        }
+    }  
+    ```  
 4. `@FunctionalInterface`
-	1. 函数式接口”的注解，这个是 JDK1.8 版本引入的新特性。
-	2. 使用@FunctionalInterface标注的接口，则该**接口就有且只能存在一个抽象方法**，否则就会发生编译错误。（注意：接口中的默认方法或静态方法可以有多个。）
+    1. 函数式接口”的注解，这个是 JDK1.8 版本引入的新特性。
+    2. 使用@FunctionalInterface标注的接口，则该**接口就有且只能存在一个抽象方法**，否则就会发生编译错误。（注意：接口中的默认方法或静态方法可以有多个。）
 ```java
 package com.powernode.javase.annotation;  
   
@@ -172,8 +172,8 @@ public class AnnotationTest05 {
 注解也可以定义属性
 * 注解也可以定义属性，不过属性定义时，属性名后面必须加一个小括号。
 * 属性的类型只能是：
-	* byte，short，int，long，float，double，boolean，char，String、Class、枚举类型、注解类型
-	* 以上所有类型的一维数组形式
+    * byte，short，int，long，float，double，boolean，char，String、Class、枚举类型、注解类型
+    * 以上所有类型的一维数组形式
 ```java
 package com.powernode.javase.annotation;  
   

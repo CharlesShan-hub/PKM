@@ -8,73 +8,73 @@
 取得每个部门最高薪水的人员名称
 
 1. 首先获得每个部门编号，作为临时表t
-	```sql
-	select deptno, max(sal) as maxsal from emp group by deptno;
-	```
+    ```sql
+    select deptno, max(sal) as maxsal from emp group by deptno;
+    ```
 2. join 员工表
-	```sql
-	select 
-		e.ename, e.sal, e.deptno
-	from 
-		emp e
-	join
-		(select deptno, max(sal) as maxsal from emp group by deptno) t 
-	on
-		e.deptno = t.deptno and e.sal = t.maxsal;
-	```
+    ```sql
+    select 
+        e.ename, e.sal, e.deptno
+    from 
+        emp e
+    join
+        (select deptno, max(sal) as maxsal from emp group by deptno) t 
+    on
+        e.deptno = t.deptno and e.sal = t.maxsal;
+    ```
 
 ### 第2题
 
 哪些人的薪水在部门的平均薪水之上
 
 1. 先获得每个部门平均薪水作为临时表t
-	```sql
-	select deptno, avg(sal) avgsal from emp group by deptno;
-	```
+    ```sql
+    select deptno, avg(sal) avgsal from emp group by deptno;
+    ```
 2. join 员工表
-	```sql
-	select
-		e.ename, sal, avgsal
-	from
-		emp e
-	join
-		(select deptno, avg(sal) avgsal from emp group by deptno) t
-	where
-		e.sal > t.avgsal and e.deptno = t.deptno;
-	```
+    ```sql
+    select
+        e.ename, sal, avgsal
+    from
+        emp e
+    join
+        (select deptno, avg(sal) avgsal from emp group by deptno) t
+    where
+        e.sal > t.avgsal and e.deptno = t.deptno;
+    ```
 
 ### 第3题
 
 取得每个部门平均薪水的等级
 
 1. 先获得每个部门平均薪水作为临时表t
-	```sql
-	select deptno, avg(sal) avgsal from emp group by deptno;
-	```
+    ```sql
+    select deptno, avg(sal) avgsal from emp group by deptno;
+    ```
 2. join 薪水登记表
-	```sql
-	select
-		t.*, s.grade
-	from 
-		salgrade s
-	join
-		(select deptno, avg(sal) avgsal from emp group by deptno) t
-	where 
-		t.avgsal between s.losal and s.hisal;
-	```
+    ```sql
+    select
+        t.*, s.grade
+    from 
+        salgrade s
+    join
+        (select deptno, avg(sal) avgsal from emp group by deptno) t
+    where 
+        t.avgsal between s.losal and s.hisal;
+    ```
 
 ### 第4题
 
 取得部门中（所有人的）平均的薪水等级
 
 1. 得到每个人的薪水等级
-	```sql
-	select e.ename, e.sal, s.grade from emp e join salgrade s on e.sal between s.losal and s.hisal;
-	```
+    ```sql
+    select e.ename, e.sal, s.grade from emp e join salgrade s on e.sal between s.losal and s.hisal;
+    ```
 2. 在上面的查询结果当中继续按照部门编号进行分组，求平均值。（不需要将上面的查询结果当做临时表，继续基于它进行分组即可。）
-	```sql
-	select e.deptno, avg(s.grade) from emp e join salgrade s on e.sal between s.losal and s.hisal group by deptno;
-	```
+    ```sql
+    select e.deptno, avg(s.grade) from emp e join salgrade s on e.sal between s.losal and s.hisal group by deptno;
+    ```
 
 ### 第5题
 
@@ -96,25 +96,25 @@ select ename,sal from emp where sal not in(select distinct a.sal from emp a join
 第一种方案：降序排列取第一个
 ```sql
 select
-	deptno,avg(sal) as avgsal
+    deptno,avg(sal) as avgsal
 from 
-	emp
+    emp
 group by
-	deptno
+    deptno
 order by 
-	avgsal desc
+    avgsal desc
 limit 1;
 ```
 第二种方案：max函数
 ```sql
 select
-	deptno,avg(sal) as avgsal
+    deptno,avg(sal) as avgsal
 from
-	emp
+    emp
 group by
-	deptno
+    deptno
 having
-	avg(sal)=(select max(t.avgsal) from (select avg(sal) as avgsal from emp group by deptno) t);
+    avg(sal)=(select max(t.avgsal) from (select avg(sal) as avgsal from emp group by deptno) t);
 ```
 
 ### 第7题
@@ -124,37 +124,37 @@ having
 比上面的题目多一个表连接，和dept表连接，按照部门名称进行分组。
 
 1. 每个部门的平均薪水
-	```sql
-	select avg(sal) avgsal from emp group by deptno;
-	```
+    ```sql
+    select avg(sal) avgsal from emp group by deptno;
+    ```
 2. 取得平均薪水最高的部门
-	```sql
-	select 
-		avg(sal) avgsal
-	from
-		emp
-	group by
-		deptno 
-	order by
-		avgsal desc
-	limit 1;
-	```
+    ```sql
+    select 
+        avg(sal) avgsal
+    from
+        emp
+    group by
+        deptno 
+    order by
+        avgsal desc
+    limit 1;
+    ```
 3. join部门表得到名称
-	```sql
-	select
-		d.dname,avg(e.sal) as avgsal
-	from
-		emp e
-	join
-		dept d
-	on
-		e.deptno=d.deptno
-	group by
-		d.dname
-	order by
-		avgsal desc
-	limit 1;
-	```
+    ```sql
+    select
+        d.dname,avg(e.sal) as avgsal
+    from
+        emp e
+    join
+        dept d
+    on
+        e.deptno=d.deptno
+    group by
+        d.dname
+    order by
+        avgsal desc
+    limit 1;
+    ```
 
 ### 第8题
 
@@ -167,13 +167,13 @@ select deptno, avg(sal) as avgsal from emp group by deptno;
 2. 求每个部门的编号、平均薪水等级
 ```sql
 select
-	t.deptno, s.grade
+    t.deptno, s.grade
 from
-	salgrade s
+    salgrade s
 join
-	(select deptno, avg(sal) as avgsal from emp group by deptno) t
+    (select deptno, avg(sal) as avgsal from emp group by deptno) t
 on
-	t.avgsal between s.losal and s.hisal;
+    t.avgsal between s.losal and s.hisal;
 ```
 3. 得到最小的等级(`min(s.grade)`)
 ```sql
@@ -182,19 +182,19 @@ select min(sp.grade) from salgrade sp join (select deptno, avg(sal) as avgsal fr
 4. 找等级相等的部门名称
 ```sql
 select
-	d.dname, s.grade
+    d.dname, s.grade
 from
-	salgrade s
+    salgrade s
 join
-	(select deptno, avg(sal) as avgsal from emp group by deptno) t
+    (select deptno, avg(sal) as avgsal from emp group by deptno) t
 on
-	t.avgsal between s.losal and s.hisal
+    t.avgsal between s.losal and s.hisal
 join
-	dept d
+    dept d
 on
-	d.deptno = t.deptno
+    d.deptno = t.deptno
 where
-	s.grade = (select min(sp.grade) from salgrade sp join (select deptno, avg(sal) as avgsal from emp group by deptno) tp on tp.avgsal between sp.losal and sp.hisal);
+    s.grade = (select min(sp.grade) from salgrade sp join (select deptno, avg(sal) as avgsal from emp group by deptno) tp on tp.avgsal between sp.losal and sp.hisal);
 ```
 
 这个是他原来的写法，并不能处理并列倒数第一的情况
@@ -207,13 +207,13 @@ select t.*,s.grade from (select d.dname,avg(e.sal) as avgsal from emp e join dep
 取得比普通员工(员工代码没有在mgr字段上出现的)的最高薪水还要高的领导人姓名
 
 1. 所有普通员工的最高薪水
-	```sql
-	select max(sal) from emp where empno not in(select mgr from emp where mgr is not null);
-	```
+    ```sql
+    select max(sal) from emp where empno not in(select mgr from emp where mgr is not null);
+    ```
 2. 大于以上最高薪水的一定是要找的领导人。
-	```sql
-	select ename,sal from emp where sal > (select max(sal) from emp where empno not in(select mgr from emp where mgr is not null));
-	```
+    ```sql
+    select ename,sal from emp where sal > (select max(sal) from emp where empno not in(select mgr from emp where mgr is not null));
+    ```
 
 ### 第10题
 
@@ -244,28 +244,28 @@ select ename,sal,hiredate from emp order by hiredate desc limit 5;
 取得每个薪水等级有多少员工
 
 1. 找出每个员工的薪水等级
-	```sql
-	select
-		empno, grade
-	from
-		emp e
-	join
-		salgrade s
-	on
-		e.sal between s.losal and s.hisal;
-	```
+    ```sql
+    select
+        empno, grade
+    from
+        emp e
+    join
+        salgrade s
+    on
+        e.sal between s.losal and s.hisal;
+    ```
 2. 每个薪水等级有多少员工
 ```sql
 select
-	count(*),grade
+    count(*),grade
 from
-	emp e
+    emp e
 join
-	salgrade s
+    salgrade s
 on
-	e.sal between s.losal and s.hisal
+    e.sal between s.losal and s.hisal
 group by
-	grade;
+    grade;
 ```
 
 ### 第14题
@@ -274,13 +274,13 @@ group by
 
 ```sql
 select
-	e1.ename worker, e2.ename leader
+    e1.ename worker, e2.ename leader
 from
-	emp e1
+    emp e1
 join
-	emp e2
+    emp e2
 on 
-	e1.mgr = e2.empno;
+    e1.mgr = e2.empno;
 ```
 
 ### 第15题
@@ -289,17 +289,17 @@ on
 
 ```sql
 select
-	e1.empno, e1.ename, d.dname
+    e1.empno, e1.ename, d.dname
 from
-	emp e1
+    emp e1
 join
-	emp e2
+    emp e2
 on 
-	e1.hiredate < e2.hiredate and e1.mgr = e2.empno
+    e1.hiredate < e2.hiredate and e1.mgr = e2.empno
 join
-	dept d
+    dept d
 on
-	e1.deptno = d.deptno;
+    e1.deptno = d.deptno;
 ```
 
 
@@ -309,13 +309,13 @@ on
 
 ```sql
 select
-	dept.dname, emp.ename, emp.sal
+    dept.dname, emp.ename, emp.sal
 from 
-	dept
+    dept
 left join
-	emp
+    emp
 on
-	dept.deptno = emp.deptno;
+    dept.deptno = emp.deptno;
 ```
 
 
@@ -337,28 +337,28 @@ select deptno, count(*) from emp group by deptno having count(*) >= 5;
 列出薪金比"SMITH"多的所有员工信息
 
 1. "SMITH"的薪资
-	```sql
-	select sal from emp where ename = 'SMITH';
-	```
+    ```sql
+    select sal from emp where ename = 'SMITH';
+    ```
 2. 列出薪金比"SMITH"多的所有员工信息
 ```sql
 select
-	ename,sal
+    ename,sal
 from 
-	emp
+    emp
 where
-	emp.sal > select sal from emp where ename = 'SMITH';
+    emp.sal > select sal from emp where ename = 'SMITH';
 ```
 3. 换个方法，把smith的工资也列出来
 ```sql
 select
-	e.ename,e.sal,s.sal smith_sal
+    e.ename,e.sal,s.sal smith_sal
 from 
-	emp e
+    emp e
 join
-	(select sal from emp where ename = 'SMITH') s
+    (select sal from emp where ename = 'SMITH') s
 where
-	e.sal > s.sal;
+    e.sal > s.sal;
 ```
 
 ### 第19题
@@ -372,26 +372,26 @@ select d.deptno, d.dname, t.dnum from (select deptno, count(*) dnum from emp gro
 2. 列出所有"CLERK"(办事员)的姓名及其部门名称,部门的人数
 ```sql
 select
-	e.ename, p.dname, p.dnum
+    e.ename, p.dname, p.dnum
 from
-	emp e
+    emp e
 join
-	(select d.deptno, d.dname, t.dnum from (select deptno, count(*) dnum from emp group by deptno) t join dept d on d.deptno = t.deptno) p
+    (select d.deptno, d.dname, t.dnum from (select deptno, count(*) dnum from emp group by deptno) t join dept d on d.deptno = t.deptno) p
 on 
-	p.deptno = e.deptno
+    p.deptno = e.deptno
 where 
-	job = 'CLERK';
+    job = 'CLERK';
 ```
 3. 答案的方法
 ```sql
 select 
-	t1.ename,t1.dname,t2.total 
+    t1.ename,t1.dname,t2.total 
 from
-	(select e.ename,d.dname,d.deptno from emp e join dept d on e.deptno = d.deptno where e.job = 'CLERK') t1 
+    (select e.ename,d.dname,d.deptno from emp e join dept d on e.deptno = d.deptno where e.job = 'CLERK') t1 
 join
-	(select count(*) as total,deptno from emp group by deptno) t2
+    (select count(*) as total,deptno from emp group by deptno) t2
 on
-	t1.deptno = t2.deptno;
+    t1.deptno = t2.deptno;
 ```
 
 ### 第20题
@@ -491,15 +491,15 @@ select min(sal) min_sal, job from emp group by job;
 2. 最低工资及从事此工作的雇员姓名
 ```sql
 select
-	e.ename, t.*
+    e.ename, t.*
 from
-	emp e
+    emp e
 join
-	(select min(sal) min_sal, job from emp group by job) t
+    (select min(sal) min_sal, job from emp group by job) t
 on
-	t.job = e.job
+    t.job = e.job
 where
-	e.sal = t.min_sal;
+    e.sal = t.min_sal;
 ```
 
 ### 第30题
@@ -534,7 +534,7 @@ select e.ename 员工名, l.ename 领导名 from emp e join emp l on e.mgr = l.e
 
 ```sql
 select 
-	d.dname,ifnull(sum(sal),0) as sumsal,count(e.ename) 
+    d.dname,ifnull(sum(sal),0) as sumsal,count(e.ename) 
 from emp e 
 right join dept d on e.deptno=d.deptno where d.dname like '%S%' 
 group by d.dname;
@@ -564,22 +564,22 @@ SC（SNO，CNO，SCGRADE）代表（学号，课号，成绩）
 ```sql
 CREATE TABLE SC
 (
-	SNO VARCHAR(200),
-	CNO VARCHAR(200),
-	SCGRADE VARCHAR(200)
+    SNO VARCHAR(200),
+    CNO VARCHAR(200),
+    SCGRADE VARCHAR(200)
 );
 
 CREATE TABLE S
 (
-	SNO VARCHAR(200),
-	SNAME VARCHAR(200)
+    SNO VARCHAR(200),
+    SNAME VARCHAR(200)
 );
 
 CREATE TABLE C
 (
-	CNO VARCHAR(200),
-	CNAME VARCHAR(200),
-	CTEACHER VARCHAR(200)
+    CNO VARCHAR(200),
+    CNAME VARCHAR(200),
+    CTEACHER VARCHAR(200)
 );
 
 INSERT INTO C ( CNO, CNAME, CTEACHER ) VALUES ( '1', '语文', '张');
@@ -629,27 +629,27 @@ select sname from s where sno not in(select sno from sc where cno=(select cno fr
 select avg(sc.scgrade) avggrade from sc group by sno;
 -- 每个学生的平均成绩和姓名
 select 
-	t.avggrade, s.sname
+    t.avggrade, s.sname
 from
-	(select avg(sc.scgrade) avggrade, sno from sc group by sno) t
+    (select avg(sc.scgrade) avggrade, sno from sc group by sno) t
 join
-	s
+    s
 on
-	s.sno = t.sno;
+    s.sno = t.sno;
 -- 大于两个不及格的人
 select count(*) num, sno from sc where scgrade < 60 group by sno having num>2;
 -- 合起来
 select 
-	t.avggrade, s.sname
+    t.avggrade, s.sname
 from
-	(select avg(sc.scgrade) avggrade, sno from sc group by sno) t
+    (select avg(sc.scgrade) avggrade, sno from sc group by sno) t
 join
-	s
+    s
 on
-	s.sno = t.sno
+    s.sno = t.sno
 where
-	s.sno in (select sno from sc where scgrade < 60 group by sno having count(*)>2);
-	
+    s.sno in (select sno from sc where scgrade < 60 group by sno having count(*)>2);
+    
 -- 别人的答案
 select a.*,b.avgscore from (select s.sno,s.sname,count(sc.scgrade) as num from sc join s on sc.sno=s.sno where sc.scgrade < 60 group by s.sname,s.sno having count(sc.scgrade) >= 2) a join (select sno,avg(scgrade) avgscore from sc group by sno) b on a.sno = b.sno;
 ```

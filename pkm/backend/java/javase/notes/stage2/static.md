@@ -9,26 +9,26 @@
 
 ```java
 public class Test{
-	public static void main(String[] args){
-		int count = 0;
-		Child c1 = new Child("A");
-		count++;
-		Child c2 = new Child("B");
-		count++;
-		Child c3 = new Child("C");
-		count++;
-		System.out.println(count); // 3
-	}
+    public static void main(String[] args){
+        int count = 0;
+        Child c1 = new Child("A");
+        count++;
+        Child c2 = new Child("B");
+        count++;
+        Child c3 = new Child("C");
+        count++;
+        System.out.println(count); // 3
+    }
 }
 class Child{
-	private String name;
-	public Child(String name){
-		this.name = name;
-		join();
-	}
-	public void join(){
-		System.out.println(name + "加入了游戏");
-	}
+    private String name;
+    public Child(String name){
+        this.name = name;
+        join();
+    }
+    public void join(){
+        System.out.println(name + "加入了游戏");
+    }
 } 
 ```
 
@@ -36,25 +36,25 @@ class Child{
 
 ```java
 public class Test{
-	public static void main(String[] args){
-		Child c1 = new Child("A");
-		Child c2 = new Child("B");
-		Child c3 = new Child("C");
-		System.out.println(Child.count); // 3, 类变量可以用类名直接访问
-		System.out.println(c1.count);    // 3, 不同的对象共享同一个空间
-	}
+    public static void main(String[] args){
+        Child c1 = new Child("A");
+        Child c2 = new Child("B");
+        Child c3 = new Child("C");
+        System.out.println(Child.count); // 3, 类变量可以用类名直接访问
+        System.out.println(c1.count);    // 3, 不同的对象共享同一个空间
+    }
 }
 class Child{
-	private String name;
-	public static int count = 0; // 类变量(静态变量)
-	public Child(String name){
-		this.name = name;
-		join();
-		count++; // 这里修改的是类变量
-	}
-	public void join(){
-		System.out.println(name + "加入了游戏");
-	}
+    private String name;
+    public static int count = 0; // 类变量(静态变量)
+    public Child(String name){
+        this.name = name;
+        join();
+        count++; // 这里修改的是类变量
+    }
+    public void join(){
+        System.out.println(name + "加入了游戏");
+    }
 } 
 ```
 
@@ -64,18 +64,18 @@ class Child{
 
 ```json
 {
-	'stack':{
-		c1_pointer,c2_pointer,c3_pointer,
-	},
-	'heap':{
-		c1_content,c2_content,c3_content,
-		count(有的 jdk 版本静态变量在这里)
-	},
-	'constant pool':{
-		'静态域':{
-			count(有的 jdk 版本静态变量在这里)
-		}
-	}
+    'stack':{
+        c1_pointer,c2_pointer,c3_pointer,
+    },
+    'heap':{
+        c1_content,c2_content,c3_content,
+        count(有的 jdk 版本静态变量在这里)
+    },
+    'constant pool':{
+        '静态域':{
+            count(有的 jdk 版本静态变量在这里)
+        }
+    }
 }
 ```
 
@@ -264,13 +264,13 @@ public class TestPerson {
 
 ```java
 public Test{
-	static int i=1;
-	int j=2;
-	public static void main(String[] args){
-		System.out.println(i);
-		Test t = new Test(); 
-		System.out.println(t.j);
-	}
+    static int i=1;
+    int j=2;
+    public static void main(String[] args){
+        System.out.println(i);
+        Test t = new Test(); 
+        System.out.println(t.j);
+    }
 }
 ```
 
@@ -284,19 +284,19 @@ public Test{
 
 * 关于加载顺序
 
-	```java
-	  static int a = method();  
-	  
-	  static int b = 10;  
-	  
-	  public static int method(){  
-	    return b;  
-	  }  
-	  
-	  @Test  
-	  public void test3(){  
-	    System.out.println(a); // 0  
-	  }
-	  ```
+    ```java
+      static int a = method();  
+      
+      static int b = 10;  
+      
+      public static int method(){  
+        return b;  
+      }  
+      
+      @Test  
+      public void test3(){  
+        System.out.println(a); // 0  
+      }
+      ```
   答案：0。因为调用 method 的时候是 a 调用的，这时候 b 还没被初始化，所以是 0。
 

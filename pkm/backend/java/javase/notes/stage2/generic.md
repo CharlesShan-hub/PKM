@@ -5,15 +5,15 @@
 
 ```java
 public class Demo{
-	public static void main(String[] args){
-		ArrayList a = new ArrayList();
-		a.push(new Cat("a"));
-		a.push(new Cat("b"));
-		a.push(new Dog("c")); // ops!!! goes wrong!
-	}
-	for(Object o: a){
-		(Cat)o.miao(); // Dog is not Cat
-	}
+    public static void main(String[] args){
+        ArrayList a = new ArrayList();
+        a.push(new Cat("a"));
+        a.push(new Cat("b"));
+        a.push(new Dog("c")); // ops!!! goes wrong!
+    }
+    for(Object o: a){
+        (Cat)o.miao(); // Dog is not Cat
+    }
 }
 ```
 
@@ -21,13 +21,13 @@ public class Demo{
 
 ```java
 public class Demo{
-	public static void main(String[] args){
-		//ArrayList<Cat> a = new ArrayList<Cat>();
-		ArrayList<Cat> a = new ArrayList<>(); // java7开始后边可以不写类型
-		a.push(new Cat("a"));
-		a.push(new Cat("b"));
-		a.push(new Dog("c")); // 编译报错
-	}
+    public static void main(String[] args){
+        //ArrayList<Cat> a = new ArrayList<Cat>();
+        ArrayList<Cat> a = new ArrayList<>(); // java7开始后边可以不写类型
+        a.push(new Cat("a"));
+        a.push(new Cat("b"));
+        a.push(new Dog("c")); // 编译报错
+    }
 }
 ```
 
@@ -44,172 +44,172 @@ public class Demo{
 
 1. 实例化
 
-	```java
-	List<String> strList = new ArrayList<String>();
-	Iterator<Customer> iterator = customers.iterator();
-	```
+    ```java
+    List<String> strList = new ArrayList<String>();
+    Iterator<Customer> iterator = customers.iterator();
+    ```
 2. Demo
-	  ```java
-	  package ex_generic;
-	  
-	  import lombok.AllArgsConstructor;
-	  import lombok.Getter;
-	  import lombok.Setter;
-	  
-	  import java.util.HashMap;
-	  import java.util.Iterator;
-	  import java.util.Map;
-	  import java.util.Set;
-	  
-	  public class Demo01 {
-	    public static void main(String[] args) {
-	      HashMap<String,Student> map = new HashMap<>();
-	      map.put("Tom",new Student("Charles",10));
-	      map.put("Jerry",new Student("Bob",20));
-	  
-	      Set<Map.Entry<String, Student>> s = map.entrySet();
-	      Iterator<Map.Entry<String, Student>> iterator1 = s.iterator();
-	    }
-	  }
-	  
-	  @Setter
-	  @Getter
-	  @AllArgsConstructor
-	  class Student {
-	    private String name;
-	    private int age;
-	  }
-	```
+      ```java
+      package ex_generic;
+      
+      import lombok.AllArgsConstructor;
+      import lombok.Getter;
+      import lombok.Setter;
+      
+      import java.util.HashMap;
+      import java.util.Iterator;
+      import java.util.Map;
+      import java.util.Set;
+      
+      public class Demo01 {
+        public static void main(String[] args) {
+          HashMap<String,Student> map = new HashMap<>();
+          map.put("Tom",new Student("Charles",10));
+          map.put("Jerry",new Student("Bob",20));
+      
+          Set<Map.Entry<String, Student>> s = map.entrySet();
+          Iterator<Map.Entry<String, Student>> iterator1 = s.iterator();
+        }
+      }
+      
+      @Setter
+      @Getter
+      @AllArgsConstructor
+      class Student {
+        private String name;
+        private int age;
+      }
+    ```
 3. 注意：泛型只能是**引用类型**，不能是基本类型
-	```java
-	List<Integer> l1 = new List<Integer>(); // 可以
-	List<int> l1 = new List<int>(); // 不可以❌
-	```
+    ```java
+    List<Integer> l1 = new List<Integer>(); // 可以
+    List<int> l1 = new List<int>(); // 不可以❌
+    ```
 4. 不写泛型就默认是 `Object`
-	```java
-	ArrayList a = new ArrayList();
-	//等价于
-	ArrayList<Object> a = new ArrayList<>();
-	```
+    ```java
+    ArrayList a = new ArrayList();
+    //等价于
+    ArrayList<Object> a = new ArrayList<>();
+    ```
 5. 前边的类型可以后边是子类（其实很好理解，默认是`Object`时，一切都是`Object`的子类）
-	```java
-	package ex_generic;
-	
-	import java.util.ArrayList;
-	
-	public class Demo02 {
-	  public static void main(String[] args) {
-	    ArrayList<Father> a1 = new ArrayList<>();
-	    a1.add(new Father());
-	    ArrayList<Father> a2 = new ArrayList<>();
-	    a1.add(new Child());
-	    ArrayList<Father> a3 = new ArrayList<>();
-	    // a1.add(new Other());  // wrong
-	  }
-	}
-	
-	class Father{}
-	class Child extends Father{}
-	class Other{}
-	```
+    ```java
+    package ex_generic;
+    
+    import java.util.ArrayList;
+    
+    public class Demo02 {
+      public static void main(String[] args) {
+        ArrayList<Father> a1 = new ArrayList<>();
+        a1.add(new Father());
+        ArrayList<Father> a2 = new ArrayList<>();
+        a1.add(new Child());
+        ArrayList<Father> a3 = new ArrayList<>();
+        // a1.add(new Other());  // wrong
+      }
+    }
+    
+    class Father{}
+    class Child extends Father{}
+    class Other{}
+    ```
 6. 例题，定义 Employee 类：
-	1. **包含成员变量**：
-	    - `private` 成员变量：`name`（姓名），`sal`（薪水），`birthday`（生日，`MyDate` 类的对象）
-	2. **属性访问方法**：
-	    - 为每个属性定义 `getter` 和 `setter` 方法
-	3. **重写 toString 方法**：
-	    - 输出 `name`、`sal`、`birthday`
-	4. **MyDate 类**：
-	    - 包含 `private` 成员变量：`month`（月份），`day`（日），`year`（年）
-	    - 为每个属性定义 `getter` 和 `setter` 方法
-	5. **创建对象并排序**：
-	    - 创建该类的 3 个对象
-	    - 将这些对象放入 `ArrayList` 集合中（需使用泛型定义）
-	    - 对集合中的元素进行排序，并遍历输出
-	6. 排序方式
-	- 调用 `ArrayList` 的 `sort` 方法
-	- 传入 `Comparator` 对象（使用泛型）
-	    - 先按照 `name` 排序
-	    - 如果 `name` 相同，则按生日日期的先后排序（即：定制排序）
+    1. **包含成员变量**：
+        - `private` 成员变量：`name`（姓名），`sal`（薪水），`birthday`（生日，`MyDate` 类的对象）
+    2. **属性访问方法**：
+        - 为每个属性定义 `getter` 和 `setter` 方法
+    3. **重写 toString 方法**：
+        - 输出 `name`、`sal`、`birthday`
+    4. **MyDate 类**：
+        - 包含 `private` 成员变量：`month`（月份），`day`（日），`year`（年）
+        - 为每个属性定义 `getter` 和 `setter` 方法
+    5. **创建对象并排序**：
+        - 创建该类的 3 个对象
+        - 将这些对象放入 `ArrayList` 集合中（需使用泛型定义）
+        - 对集合中的元素进行排序，并遍历输出
+    6. 排序方式
+    - 调用 `ArrayList` 的 `sort` 方法
+    - 传入 `Comparator` 对象（使用泛型）
+        - 先按照 `name` 排序
+        - 如果 `name` 相同，则按生日日期的先后排序（即：定制排序）
 
-	```java
-	package ex_generic;
-	
-	import lombok.AllArgsConstructor;
-	import lombok.Getter;
-	import lombok.Setter;
-	import lombok.ToString;
-	
-	import java.util.ArrayList;
-	import java.util.Comparator;
-	import java.util.Iterator;
-	
-	public class Demo03 {
-	  public static void main(String[] args) {
-	    ArrayList<Employee> employees = new ArrayList<>();
-	    employees.add(new Employee("Jack",18000, new Birthday(1999,10,5)));
-	    employees.add(new Employee("Tom",19000, new Birthday(1999,10,6)));
-	    employees.add(new Employee("Peter",20000, new Birthday(2010,1,1)));
-	    employees.add(new Employee("Jack",18000, new Birthday(1999,10,6)));
-	    employees.add(new Employee("Tom",19000, new Birthday(1999,11,6)));
-	    employees.add(new Employee("Peter",20000, new Birthday(2010,2,1)));
-	    employees.sort(new Comparator<Employee>() {
-	      @Override
-	      public int compare(Employee o1, Employee o2) {
-	        if(o1 == null || o2 == null)
-	          throw new NullPointerException();
-	        int res = o1.getName().compareTo(o2.getName());
-	        return res==0?o1.getBirthday().compareTo(o2.getBirthday()):res;
-	      }
-	    });
-	    Iterator<Employee> iterator = employees.iterator();
-	    while (iterator.hasNext()) {
-	      Employee employee = iterator.next();
-	      System.out.println(employee);
-	    }
-	    //Employee(name=Jack, salary=18000, birthday=Birthday(year=1999, month=10, day=6))
-	    //Employee(name=Jack, salary=18000, birthday=Birthday(year=1999, month=10, day=5))
-	    //Employee(name=Peter, salary=20000, birthday=Birthday(year=2010, month=2, day=1))
-	    //Employee(name=Peter, salary=20000, birthday=Birthday(year=2010, month=1, day=1))
-	    //Employee(name=Tom, salary=19000, birthday=Birthday(year=1999, month=11, day=6))
-	    //Employee(name=Tom, salary=19000, birthday=Birthday(year=1999, month=10, day=6))
-	  }
-	}
-	
-	@Setter
-	@Getter
-	@AllArgsConstructor
-	@ToString
-	class Employee{
-	  private String name;
-	  private int salary;
-	  private Birthday birthday;
-	}
-	
-	@Setter
-	@Getter
-	@AllArgsConstructor
-	@ToString
-	class Birthday implements Comparable<Birthday> {
-	  private int year;
-	  private int month;
-	  private int day;
-	  @Override
-	  public int compareTo(Birthday o) {
-	    if(o==null)
-	      throw new NullPointerException();
-	    if(this.year==o.year && this.month==o.month && this.day==o.day)
-	      return 0;
-	    if(this.year<o.year)
-	      return 1;
-	    if(this.month<o.month)
-	      return 1;
-	    if (this.day<o.day)
-	      return 1;
-	    return -1;
-	  }
-	}
-	```
+    ```java
+    package ex_generic;
+    
+    import lombok.AllArgsConstructor;
+    import lombok.Getter;
+    import lombok.Setter;
+    import lombok.ToString;
+    
+    import java.util.ArrayList;
+    import java.util.Comparator;
+    import java.util.Iterator;
+    
+    public class Demo03 {
+      public static void main(String[] args) {
+        ArrayList<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("Jack",18000, new Birthday(1999,10,5)));
+        employees.add(new Employee("Tom",19000, new Birthday(1999,10,6)));
+        employees.add(new Employee("Peter",20000, new Birthday(2010,1,1)));
+        employees.add(new Employee("Jack",18000, new Birthday(1999,10,6)));
+        employees.add(new Employee("Tom",19000, new Birthday(1999,11,6)));
+        employees.add(new Employee("Peter",20000, new Birthday(2010,2,1)));
+        employees.sort(new Comparator<Employee>() {
+          @Override
+          public int compare(Employee o1, Employee o2) {
+            if(o1 == null || o2 == null)
+              throw new NullPointerException();
+            int res = o1.getName().compareTo(o2.getName());
+            return res==0?o1.getBirthday().compareTo(o2.getBirthday()):res;
+          }
+        });
+        Iterator<Employee> iterator = employees.iterator();
+        while (iterator.hasNext()) {
+          Employee employee = iterator.next();
+          System.out.println(employee);
+        }
+        //Employee(name=Jack, salary=18000, birthday=Birthday(year=1999, month=10, day=6))
+        //Employee(name=Jack, salary=18000, birthday=Birthday(year=1999, month=10, day=5))
+        //Employee(name=Peter, salary=20000, birthday=Birthday(year=2010, month=2, day=1))
+        //Employee(name=Peter, salary=20000, birthday=Birthday(year=2010, month=1, day=1))
+        //Employee(name=Tom, salary=19000, birthday=Birthday(year=1999, month=11, day=6))
+        //Employee(name=Tom, salary=19000, birthday=Birthday(year=1999, month=10, day=6))
+      }
+    }
+    
+    @Setter
+    @Getter
+    @AllArgsConstructor
+    @ToString
+    class Employee{
+      private String name;
+      private int salary;
+      private Birthday birthday;
+    }
+    
+    @Setter
+    @Getter
+    @AllArgsConstructor
+    @ToString
+    class Birthday implements Comparable<Birthday> {
+      private int year;
+      private int month;
+      private int day;
+      @Override
+      public int compareTo(Birthday o) {
+        if(o==null)
+          throw new NullPointerException();
+        if(this.year==o.year && this.month==o.month && this.day==o.day)
+          return 0;
+        if(this.year<o.year)
+          return 1;
+        if(this.month<o.month)
+          return 1;
+        if (this.day<o.day)
+          return 1;
+        return -1;
+      }
+    }
+    ```
 
 ---
 ## 自定义泛型类/接口
@@ -259,7 +259,7 @@ public class Demo{
 
   ```java
   class A<T>{
-  	T name1; // succeed
+      T name1; // succeed
     
     // 静态成员不能使用泛型
     // static T name2; // failed
@@ -275,86 +275,86 @@ public class Demo{
 
 * 继承/实现的时候写指定泛型
 
-	```java
-	interface I<U,R>{
-	}
-	
-	class A implements I<String,Double>{} // 可以
-	```
+    ```java
+    interface I<U,R>{
+    }
+    
+    class A implements I<String,Double>{} // 可以
+    ```
 
 ---
 ## 自定义泛型方法
 
 1. 基本语法
 
-	```java
-	修饰符 <T, R...> 返回类型 方法名(参数列表) {
-	  // 方法体
-	}
-	```
-	
-	1. **定义位置**：泛型方法可以定义在普通类中，也可以定义在泛型类中。
-	2. **类型确定时机**：当泛型方法**被调用**时，类型参数会确定。
-	3. **方法签名**：在方法签名中，泛型参数列表位于返回类型之前。
+    ```java
+    修饰符 <T, R...> 返回类型 方法名(参数列表) {
+      // 方法体
+    }
+    ```
+    
+    1. **定义位置**：泛型方法可以定义在普通类中，也可以定义在泛型类中。
+    2. **类型确定时机**：当泛型方法**被调用**时，类型参数会确定。
+    3. **方法签名**：在方法签名中，泛型参数列表位于返回类型之前。
 
 4. 示例代码
 
-	```java
-	package ex_generic;
-	
-	public class Demo04{
-	  public static void main(String[] args) {
-	    ZooKeeper keeper = new ZooKeeper();
-	    keeper.feed(new Lion(), new Meat());      // Feed Lion with Meat
-	    keeper.feed(new Panda(), new Bamboo());   // Feed Panda with Bamboo
-	    keeper.feed(new Fish(), new FishFood());  // Feed Fish with FishFood
-	  }
-	}
-	
-	class ZooKeeper {
-	  public <T, R> void feed(T animal, R food) {
-	    System.out.println("Feed " + animal.getClass().getSimpleName() +
-	                       " with " + food.getClass().getSimpleName());
-	  }
-	}
-	
-	class Lion{}
-	class Meat{}
-	class Panda{}
-	class Bamboo{}
-	class Fish{}
-	class FishFood{}
-	```
+    ```java
+    package ex_generic;
+    
+    public class Demo04{
+      public static void main(String[] args) {
+        ZooKeeper keeper = new ZooKeeper();
+        keeper.feed(new Lion(), new Meat());      // Feed Lion with Meat
+        keeper.feed(new Panda(), new Bamboo());   // Feed Panda with Bamboo
+        keeper.feed(new Fish(), new FishFood());  // Feed Fish with FishFood
+      }
+    }
+    
+    class ZooKeeper {
+      public <T, R> void feed(T animal, R food) {
+        System.out.println("Feed " + animal.getClass().getSimpleName() +
+                           " with " + food.getClass().getSimpleName());
+      }
+    }
+    
+    class Lion{}
+    class Meat{}
+    class Panda{}
+    class Bamboo{}
+    class Fish{}
+    class FishFood{}
+    ```
 
 3. 练习
 
-	```java
-	class Apple<T,R,M>{
-	  public<E> void fly(E e){ // 正确，泛型方法
-	    System.out.println(e.getClass().getSimpleName());
-	  }
-	  public void eat(U u) {} // 错误，因为 U 没有声明
-	  public void run(M m) {} // 正确
-	}
-	
-	class Dog {}
-	
-	//下面代码输出什么？
-	Apple<String, Integer, Double> apple= new Apple<>();
-	apple.fly(10); // Integer（自动装箱）
-	apple.fly(new Dog()); // Dog
-	```
+    ```java
+    class Apple<T,R,M>{
+      public<E> void fly(E e){ // 正确，泛型方法
+        System.out.println(e.getClass().getSimpleName());
+      }
+      public void eat(U u) {} // 错误，因为 U 没有声明
+      public void run(M m) {} // 正确
+    }
+    
+    class Dog {}
+    
+    //下面代码输出什么？
+    Apple<String, Integer, Double> apple= new Apple<>();
+    apple.fly(10); // Integer（自动装箱）
+    apple.fly(new Dog()); // Dog
+    ```
 
 ---
 ## 泛型的继承和通配符
 
 1. **泛型没有继承性**
-	
-	```java
-	Object a = new String("Hello"); //可以
-	List<Object> la = new ArrayList<String>(); //不可以
-	```
-	
+    
+    ```java
+    Object a = new String("Hello"); //可以
+    List<Object> la = new ArrayList<String>(); //不可以
+    ```
+    
 2. **通配符使用**`<?>`：在**使用泛型**的时候支持任意泛型类型。
    
 3. **上界通配符**`<? extends A>`：在**使用泛型**的时候支持A类以及A类的子类，规定了泛型的上限。

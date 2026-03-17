@@ -7,9 +7,9 @@
 2. 一个业务的完成可能需要多条DML语句共同配合才能完成，例如转账业务，需要执行两条DML语句，先更新张三账户的余额，再更新李四账户的余额，为了保证转账业务不出现问题，就必须保证要么同时成功，要么同时失败，怎么保证同时成功或者同时失败呢？就需要使用事务机制。
 3. 也就是说用了事务机制之后，在同一个事务当中，多条DML语句会同时成功，或者同时失败，不会出现一部分成功，一部分失败的现象。
 4. 事务只针对DML语句有效：因为只有这三个语句是改变表中数据的。
-	1. insert
-	2. delete
-	3. update
+    1. insert
+    2. delete
+    3. update
 
 ---
 ## 事务四大特性：ACID
@@ -48,23 +48,23 @@ MySQL默认情况下采用的事务机制是：**自动提交**。所谓自动�
 查看隔离级别
 * mysql默认的隔离级别：可重复读（REPEATABLE READ）
 - 查看当前会话的隔离级别
-	 ```sql
-	 select @@transaction_isolation;
-	 ```
+     ```sql
+     select @@transaction_isolation;
+     ```
 - 查看全局的隔离级别
-	```sql
-	select @@gobal.transaction_isolation;
-	```
+    ```sql
+    select @@gobal.transaction_isolation;
+    ```
 
 设置事务隔离级别
 - 会话级
-	```sql
-	set session transaction isolation level read committed;
-	````
+    ```sql
+    set session transaction isolation level read committed;
+    ````
 - 全局级
-	```sql
-	set global transaction isolation level read committed;
-	```
+    ```sql
+    set global transaction isolation level read committed;
+    ```
 
 ### 不同现象
 
@@ -75,49 +75,49 @@ MySQL默认情况下采用的事务机制是：**自动提交**。所谓自动�
 ### 隔离级别
 
 1. 读未提交（READ UNCOMMITTED）
-	* A事务与B事务，A事务可以读取到B事务未提交的数据。这是最低的隔离级别。几乎两个事务之间没有隔离。这种隔离级别是一种理论层面的，在实际的数据库产品中，没有从这个级别起步的。
-	* 当事务隔离级别是读未提交时，三种现象都存在：脏读，不可重复读，幻读。
-	* 将全局事务隔离级别设置为：READ UNCOMMITTED
-		```sql
-		set global transaction isolation level read uncommitted;
-		```
-	* 案例：[trans-01](../details/trans-01.md)
+    * A事务与B事务，A事务可以读取到B事务未提交的数据。这是最低的隔离级别。几乎两个事务之间没有隔离。这种隔离级别是一种理论层面的，在实际的数据库产品中，没有从这个级别起步的。
+    * 当事务隔离级别是读未提交时，三种现象都存在：脏读，不可重复读，幻读。
+    * 将全局事务隔离级别设置为：READ UNCOMMITTED
+        ```sql
+        set global transaction isolation level read uncommitted;
+        ```
+    * 案例：[trans-01](../details/trans-01.md)
 2. 读提交（READ COMMITTED）
-	* A事务与B事务，A事务可以读取到B事务提交之后的数据。
-	* Oracle数据库默认的就是这种隔离级别。
-	* 将数据库的全局事务隔离级别设置为读提交：READ COMMITTED
-		```sql
-		set global transaction isolation level read committed;
-		```
-	* 案例：[trans-02](../details/trans-02.md)
+    * A事务与B事务，A事务可以读取到B事务提交之后的数据。
+    * Oracle数据库默认的就是这种隔离级别。
+    * 将数据库的全局事务隔离级别设置为读提交：READ COMMITTED
+        ```sql
+        set global transaction isolation level read committed;
+        ```
+    * 案例：[trans-02](../details/trans-02.md)
 3. 可重复读（REPEATABLE READ）
-	* 这个隔离级别是MySQL数据库默认的。
-	* A事务和B事务，A事务开启后，读取了某一条记录，然后B事务对这条记录进行修改并提交，A事务读取到的还是修改前的数据。这种隔离级别称为可重复读。
-	* 将数据库全局隔离级别修改为可重复读：
-		```sql
-		set global transaction isolation level repeatable read;
-		```
-	* 案例：[trans-03](../details/trans-03.md)
+    * 这个隔离级别是MySQL数据库默认的。
+    * A事务和B事务，A事务开启后，读取了某一条记录，然后B事务对这条记录进行修改并提交，A事务读取到的还是修改前的数据。这种隔离级别称为可重复读。
+    * 将数据库全局隔离级别修改为可重复读：
+        ```sql
+        set global transaction isolation level repeatable read;
+        ```
+    * 案例：[trans-03](../details/trans-03.md)
 4. 串行化（SERIALIZABLE）
-	* 这种隔离级别最高，避免了所有的问题，缺点是效率低，因为这种隔离级别会导致事务排队处理，不支持并发。
-	* 设置数据库全局隔离级别为串行化：
-		```sql
-		set global transaction isolation level serializable;
-		```
-	* 案例：[trans-04](../details/trans-04.md)
+    * 这种隔离级别最高，避免了所有的问题，缺点是效率低，因为这种隔离级别会导致事务排队处理，不支持并发。
+    * 设置数据库全局隔离级别为串行化：
+        ```sql
+        set global transaction isolation level serializable;
+        ```
+    * 案例：[trans-04](../details/trans-04.md)
 
 ### 可重复读的幻读问题
 
 在上面讲解过程中提到，MySQL默认的隔离级别可重复读，在很大程度上避免了幻读问题（并不能完全解决），那么它是如何解决幻读问题的呢，解决方案包括两种。
 1. 针对**快照读**（普通 select 语句），是**通过 MVCC 方式解决了幻读**，因为可重复读隔离级别下，事务执行过程中看到的数据，一直跟这个事务启动时看到的数据是一致的，即使中途有其他事务插入了一条数据，是查询不出来这条数据的，所以就很好的避免了幻读问题。
-	- 什么是快照读？普通的select语句都是采用的快照读。顾名思义：在整个事务的处理过程中，执行相同的一个select语句时，每次都是读取的快照。（快照指的是固定的某个时刻的数据，就像现实世界中的拍照一样，把那个美好的时刻留下来）。也就是说，当事务隔离级别是可重复读，并且执行的select语句是一个普通的select语句时，都会采用快照读的方式读取数据。
-	* 底层实现原理是：底层由 MVCC（多版本并发控制）实现，实现的方式是开始事务后，在执行第一个查询语句后，会创建一个 Read View，后续的查询语句利用这个 Read View，通过这个 Read View 就可以在 undo log 版本链找到事务开始时的数据，所以事务过程中每次查询的数据都是一样的，即使中途有其他事务插入了新纪录，是查询不出来这条数据的，所以就很好的避免了幻读问题。
-	* 演示：[快照读](../details/快照读.md)
+    - 什么是快照读？普通的select语句都是采用的快照读。顾名思义：在整个事务的处理过程中，执行相同的一个select语句时，每次都是读取的快照。（快照指的是固定的某个时刻的数据，就像现实世界中的拍照一样，把那个美好的时刻留下来）。也就是说，当事务隔离级别是可重复读，并且执行的select语句是一个普通的select语句时，都会采用快照读的方式读取数据。
+    * 底层实现原理是：底层由 MVCC（多版本并发控制）实现，实现的方式是开始事务后，在执行第一个查询语句后，会创建一个 Read View，后续的查询语句利用这个 Read View，通过这个 Read View 就可以在 undo log 版本链找到事务开始时的数据，所以事务过程中每次查询的数据都是一样的，即使中途有其他事务插入了新纪录，是查询不出来这条数据的，所以就很好的避免了幻读问题。
+    * 演示：[快照读](../details/快照读.md)
 2. 针对**当前读**（select ... for update 等语句），是通过 **next-key lock** （**记录锁**+**间隙锁**） 方式解决了幻读，因为当执行 select ... for update 语句的时候，会加上 next-key lock，如果有其他事务在 next-key lock 锁范围内插入了一条记录，那么这个插入语句就会被阻塞，无法成功插入，所以就很好的避免了幻读问题。
-	* 当前读，顾名思义：每一次都读取最新的数据。当前读包括：update、delete、insert、select...for update。这个很好理解，因为增删改的时候都要基于最新的数据进行增删改。
-	* 而select...for update原理是：对查询范围内的数据进行加锁，不允许其它事务对这个范围内的数据进行增删改。也就是说这个select语句范围内的数据是不允许并发的，只能排队执行，从而避免幻读问题。
-	* select...for update加的锁叫做：**next-key lock**（面试要说）。**我们可以称其为：间隙锁 + 记录锁。间隙锁用来保证在锁定的范围内不允许insert操作。记录锁用来保证在锁定的范围内不允许delete和update操作。**
-	* 演示：[当前读](../details/当前读.md)
+    * 当前读，顾名思义：每一次都读取最新的数据。当前读包括：update、delete、insert、select...for update。这个很好理解，因为增删改的时候都要基于最新的数据进行增删改。
+    * 而select...for update原理是：对查询范围内的数据进行加锁，不允许其它事务对这个范围内的数据进行增删改。也就是说这个select语句范围内的数据是不允许并发的，只能排队执行，从而避免幻读问题。
+    * select...for update加的锁叫做：**next-key lock**（面试要说）。**我们可以称其为：间隙锁 + 记录锁。间隙锁用来保证在锁定的范围内不允许insert操作。记录锁用来保证在锁定的范围内不允许delete和update操作。**
+    * 演示：[当前读](../details/当前读.md)
 
 ### 出现幻读的两种情况
 
@@ -177,5 +177,5 @@ MySQL的可重复读隔离级别（默认隔离级），根据不同的查询方
 import sys
 
 for line in sys.stdin:
-	a = line.split()
+    a = line.split()
 ```

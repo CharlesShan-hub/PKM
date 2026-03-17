@@ -55,20 +55,20 @@ graph LR
 > 2. 异常 `Exception` 是还能抢救 = 运行时异常（`RuntionException`） + 编译时异常（`RuntionException`以外的所有）。所以异常可以抛出。
 
 * 继承关系梳理
-	1.  框架：**Serializable** 👉 **Throwable** 👉 **Exception** 和 **Error**
-	2. 运行时异常：Exception 👉 **RuntionException** 👉 NullPointerException，ArithmeticException, ArrayIndexOutOfBoundsException, ClassCastException
-	3. 编译时异常：Exception 👉 （等等，很多种编译异常）IOException 👉 FileNotFoundException
-	4. 错误：Error 👉 StackOverflowError, OutOfMemoryError, ....
+    1.  框架：**Serializable** 👉 **Throwable** 👉 **Exception** 和 **Error**
+    2. 运行时异常：Exception 👉 **RuntionException** 👉 NullPointerException，ArithmeticException, ArrayIndexOutOfBoundsException, ClassCastException
+    3. 编译时异常：Exception 👉 （等等，很多种编译异常）IOException 👉 FileNotFoundException
+    4. 错误：Error 👉 StackOverflowError, OutOfMemoryError, ....
 * Exception一些别称：
-	* 所有的RuntimeException的子类：运行时异常/未检查异常(UncheckedException)/非受控异常
-	* Exception的子类（除RuntimeException之外）：编译时异常/检查异常(CheckedException)/受控异常
-	*  [常见的异常（AI总结）](exception-ai.md)
+    * 所有的RuntimeException的子类：运行时异常/未检查异常(UncheckedException)/非受控异常
+    * Exception的子类（除RuntimeException之外）：编译时异常/检查异常(CheckedException)/受控异常
+    *  [常见的异常（AI总结）](exception-ai.md)
 * 编译时异常和运行时异常区别：
-	* 编译时异常特点：**在编译阶段必须提前处理，如果不处理编译器报错**。
-	* 运行时异常特点：在编译阶段可以选择处理，也可以不处理，没有硬性要求。
-	* 编译时异常一般是由外部环境或外在条件引起的，如网络故障、磁盘空间不足、文件找不到等
-	* 运行时异常一般是由程序员的错误引起的，并且不需要强制进行异常处理
-	* 注意：编译时异常并不是在编译阶段发生的异常，所有的**异常发生都是在运行阶段的**，因为每个异常发生都是会new异常对象的，new异常对象只能在运行阶段完成。那为什么叫做编译时异常呢？这是因为这种异常必须在编译阶段提前预处理，如果不处理编译器报错，因此而得名编译时异常。
+    * 编译时异常特点：**在编译阶段必须提前处理，如果不处理编译器报错**。
+    * 运行时异常特点：在编译阶段可以选择处理，也可以不处理，没有硬性要求。
+    * 编译时异常一般是由外部环境或外在条件引起的，如网络故障、磁盘空间不足、文件找不到等
+    * 运行时异常一般是由程序员的错误引起的，并且不需要强制进行异常处理
+    * 注意：编译时异常并不是在编译阶段发生的异常，所有的**异常发生都是在运行阶段的**，因为每个异常发生都是会new异常对象的，new异常对象只能在运行阶段完成。那为什么叫做编译时异常呢？这是因为这种异常必须在编译阶段提前预处理，如果不处理编译器报错，因此而得名编译时异常。
 
 ---
 ## 异常的创建与抛出
@@ -147,11 +147,11 @@ public class ExceptionTest02 {
 
 ```java
 try{
-	// 可能有错的代码
+    // 可能有错的代码
 }catch(Exception e){
-	// 如果 try 错了，就进来，通常将释放资源的代码写在这里
+    // 如果 try 错了，就进来，通常将释放资源的代码写在这里
 }finally{
-	// 一定会执行
+    // 一定会执行
 }
 ```
 
@@ -392,12 +392,12 @@ class Son extends Father {
 
 下边是一个案例，如果用户名长度不符合就触发异常
 * 定义两个编译时异常：
-	* `IllegalNameException` ：无效名字异常
-	* `IllegalAgeException`：无效年龄异常
+    * `IllegalNameException` ：无效名字异常
+    * `IllegalAgeException`：无效年龄异常
 * 完成这样的需求：
-	* 编写一个用户注册的方法，该方法接收两个参数，一个是用户名，一个是年龄。如果用户名长度在[6 - 12]位，并且年龄大于18岁时，输出用户注册成功。
-	* 如果用户名长度不是[6 - 12]位时，让程序出现异常，让`IllegalNameException`异常发生！
-	* 如果年龄小于18岁时，让程序出现异常，让`IllegalAgeException`异常发生！
+    * 编写一个用户注册的方法，该方法接收两个参数，一个是用户名，一个是年龄。如果用户名长度在[6 - 12]位，并且年龄大于18岁时，输出用户注册成功。
+    * 如果用户名长度不是[6 - 12]位时，让程序出现异常，让`IllegalNameException`异常发生！
+    * 如果年龄小于18岁时，让程序出现异常，让`IllegalAgeException`异常发生！
 
 ```java
 package com.powernode.javase;  
@@ -445,28 +445,28 @@ public class ExceptionTest04 {
             // 如果以上代码出现异常，这里不会执行。  
             System.out.println("如果出现异常，这里的代码会不会执行！");  
         }catch(IllegalNameException e){            
-	        System.out.println("对不起，用户名不合法");  
+            System.out.println("对不起，用户名不合法");  
         }catch(IllegalAgeException e){            
-	        System.out.println("对不起，年龄不合法！");  
+            System.out.println("对不起，年龄不合法！");  
         }*/  
     /*try {            
-	        // 可能出现异常的代码  
+            // 可能出现异常的代码  
             userService.register(name, age);            
             // 如果以上代码出现异常，这里不会执行。  
             System.out.println("如果出现异常，这里的代码会不会执行！");  
         }catch(Exception e){            
-	        System.out.println("异常发生了");  
+            System.out.println("异常发生了");  
         }*/  
     /*try {            
-	        // 可能出现异常的代码  
+            // 可能出现异常的代码  
             userService.register(name, age);            
             // 如果以上代码出现异常，这里不会执行。  
             System.out.println("如果出现异常，这里的代码会不会执行！");  
         }catch(IllegalNameException e){            
-	        System.out.println("名字有问题！");  
+            System.out.println("名字有问题！");  
             //System.out.println(e);        
         }catch(Exception e){            
-	        System.out.println("异常发生了");  
+            System.out.println("异常发生了");  
         }*/  
     // 编译报错  
     /*try {  
@@ -475,7 +475,7 @@ public class ExceptionTest04 {
             // 如果以上代码出现异常，这里不会执行。  
             System.out.println("如果出现异常，这里的代码会不会执行！");  
         }catch(Exception e){            
-	        System.out.println("异常发生了");  
+            System.out.println("异常发生了");  
         }catch(IllegalAgeException e){  
         }*/  
     // java7的新特性  
@@ -533,13 +533,13 @@ class UserDao {
 ## 异常的常用方法
 
 * 获取异常的简单描述信息：
-	* `exception.getMessage();`
-	* 获取的message是通过构造方法创建异常对象时传递过去的message。
+    * `exception.getMessage();`
+    * 获取的message是通过构造方法创建异常对象时传递过去的message。
 * 打印异常堆栈信息：
-	* `exception.printStackTrace();`
+    * `exception.printStackTrace();`
 * 要会看异常的堆栈信息：
-	* 异常信息的打印是符合栈数据结构的。
-	* 看异常信息主要看最开始的描述信息。看栈顶信息。
+    * 异常信息的打印是符合栈数据结构的。
+    * 看异常信息主要看最开始的描述信息。看栈顶信息。
 
 ---
 ## 方法重写的异常

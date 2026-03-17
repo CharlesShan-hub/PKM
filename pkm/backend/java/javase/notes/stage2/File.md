@@ -12,48 +12,48 @@
 | `File(URI)`            | URI 对象    | 网络或标准化路径 |
 
 1. `File(String pathname)`
-	```java
-	File file = new File("C:/test/example.txt");
-	```
-	*  **用途**：通过**路径名字符串**创建**文件**或**目录**对象。  
-	*  **参数**：  
-		* `pathname`：绝对路径或相对路径（如 `"data/config.ini"`）。  
-	*  **注意**： 
-	   *  路径分隔符需兼容系统（Windows用`\`需转义为`\\`，或直接用`/`）。  
-	   *  文件/目录可能不存在，需调用 `exists()` 检查。  
+    ```java
+    File file = new File("C:/test/example.txt");
+    ```
+    *  **用途**：通过**路径名字符串**创建**文件**或**目录**对象。  
+    *  **参数**：  
+        * `pathname`：绝对路径或相对路径（如 `"data/config.ini"`）。  
+    *  **注意**： 
+       *  路径分隔符需兼容系统（Windows用`\`需转义为`\\`，或直接用`/`）。  
+       *  文件/目录可能不存在，需调用 `exists()` 检查。  
 
 2. `File(String parent, String child)`
-	```java
-	File file = new File("C:/test", "example.txt");
-	```
-	* **用途**：**父路径 + 子路径**组合创建文件对象（避免手动拼接路径）。  
-	* **参数**：  
-	  * `parent`：父目录路径（如 `"C:/test"`）。  
-	  * `child`：子文件/目录名（如 `"example.txt"`）。  
-	* **优势**：跨平台路径分隔符自动处理。  
+    ```java
+    File file = new File("C:/test", "example.txt");
+    ```
+    * **用途**：**父路径 + 子路径**组合创建文件对象（避免手动拼接路径）。  
+    * **参数**：  
+      * `parent`：父目录路径（如 `"C:/test"`）。  
+      * `child`：子文件/目录名（如 `"example.txt"`）。  
+    * **优势**：跨平台路径分隔符自动处理。  
 
 3. `File(File parent, String child)`
-	```java
-	File parentDir = new File("C:/test");
-	File file = new File(parentDir, "example.txt");
-	```
-	* **用途**：**父路径对象 + 子路径**组合创建文件对象（面向对象风格）。  
-	* **参数**：  
-		* `parent`：父目录的 `File` 对象。  
-		* `child`：子文件/目录名。  
-	* **适用场景**：需要复用父目录对象时更高效。  
+    ```java
+    File parentDir = new File("C:/test");
+    File file = new File(parentDir, "example.txt");
+    ```
+    * **用途**：**父路径对象 + 子路径**组合创建文件对象（面向对象风格）。  
+    * **参数**：  
+        * `parent`：父目录的 `File` 对象。  
+        * `child`：子文件/目录名。  
+    * **适用场景**：需要复用父目录对象时更高效。  
 
 4. `File(URI uri)`
-	```java
-	URI uri = new URI("file:///C:/test/example.txt");
-	File file = new File(uri);
-	```
-	* **用途**：通过**统一资源标识符 (URI)** 创建文件对象。  
-	* **参数**：  
-	  * `uri`：格式必须为 `file://` 开头的合法 URI。  
-	* **注意**：  
-	  * 适用于网络或标准化路径处理场景。  
-	  * URI 需编码特殊字符（如空格转为 `%20`）。  
+    ```java
+    URI uri = new URI("file:///C:/test/example.txt");
+    File file = new File(uri);
+    ```
+    * **用途**：通过**统一资源标识符 (URI)** 创建文件对象。  
+    * **参数**：  
+      * `uri`：格式必须为 `file://` 开头的合法 URI。  
+    * **注意**：  
+      * 适用于网络或标准化路径处理场景。  
+      * URI 需编码特殊字符（如空格转为 `%20`）。  
 
 ---
 ## 文件常用操作
@@ -226,8 +226,8 @@ System.out.println("删除空目录是否成功: " + deleted); // true
         //  public boolean accept(File dir, String name) {  
         //    /*if (name.endsWith(".mdj")) {  
         //               return true;                
-   	   //             }                
-   	   //             return false;
+          //             }                
+          //             return false;
         //          */                
         //    return name.endsWith(".mdj");  
         //  }  

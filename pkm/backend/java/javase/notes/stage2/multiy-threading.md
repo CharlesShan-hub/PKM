@@ -8,10 +8,10 @@
 2. 线程：线程是指进程中的**一个执行单元**，**是进程的一部分**，它负责在进程中执行程序代码。每个线程都有自己的**栈和程序计数器，并且可以共享进程的资源**。多个线程可以在同一时刻执行不同的操作，从而提高了程序的执行效率。
 3. JVM规范中规定：堆内存、方法区 是线程共享的。虚拟机栈、本地方法栈、程序计数器 是每个线程私有的。
 4. 关于Java程序的运行原理
-	1. “java HelloWorld”执行后，会启动JVM，JVM的启动表示一个进程启动了。
-	2. JVM进程会首先启动一个主线程（main-thread），主线程负责调用main方法。因此main方法是在主线程中运行的。
-	3. 除了主线程之外，还启动了一个垃圾回收线程。因此启动JVM，至少启动了两个线程。
-	4. 在main方法的执行过程中，程序员可以手动创建其他线程对象并启动。
+    1. “java HelloWorld”执行后，会启动JVM，JVM的启动表示一个进程启动了。
+    2. JVM进程会首先启动一个主线程（main-thread），主线程负责调用main方法。因此main方法是在主线程中运行的。
+    3. 除了主线程之外，还启动了一个垃圾回收线程。因此启动JVM，至少启动了两个线程。
+    4. 在main方法的执行过程中，程序员可以手动创建其他线程对象并启动。
 
 ### 并行并发
 1. 并行：比如，多个 CPU 彼此就是并行
@@ -125,26 +125,26 @@ public class CPUNumber {
 **​类锁的两种实现方式​**：如果整个方法都需要同步，用第一种；如果只需要同步方法中的部分代码，用第二种。​
 
 - `static synchronized`方法
-	-  `public boolean sell()` 变成了 `public static synchronized boolean sell()`（唯一的改变）
-	- 👉 [thread-lock-02](../../details/thread-lock-02.md)
+    -  `public boolean sell()` 变成了 `public static synchronized boolean sell()`（唯一的改变）
+    - 👉 [thread-lock-02](../../details/thread-lock-02.md)
 - `synchronized(ClassName.class)`代码块
-	- 使用`synchronized(ClassName.class)`对代码块
-	- 👉 [thread-lock-03](../../details/thread-lock-03.md)
+    - 使用`synchronized(ClassName.class)`对代码块
+    - 👉 [thread-lock-03](../../details/thread-lock-03.md)
 
 ### 实例锁
 
 1. 语法
-	```java
-	synchronized(需要排队的线程共享的对象){
-		// 需要同步的代码
-	}
-	```
+    ```java
+    synchronized(需要排队的线程共享的对象){
+        // 需要同步的代码
+    }
+    ```
 2. 原理：假设`obj`是`t1`, `t2`两个线程共享的。`t1`和`t2`执行这个代码的时候，一定是有一个先抢到了CPU时间片。假设`t1`先抢到了CPU时间片。`t1`线程找共享对象`obj`的对象锁，找到之后，则占有这把锁。只要能够占有`obj`对象的对象锁，就有权利进入同步代码块执行代码。 当`t1`线程执行完同步代码块之后，会释放之前占有的对象锁（归还锁）。 同样，`t2`线程抢到CPU时间片之后，也开始执行，也会去找共享对象`obj`的对象锁，但由于`t1`线程占有这把锁，`t2`线程只能在同步代码块之外等待。
-	```java
-	synchronized(obj){
-		// 同步代码块
-	}
-	```
+    ```java
+    synchronized(obj){
+        // 同步代码块
+    }
+    ```
 3. 注意同步代码块的范围，不要无故扩大同步的范围，同步代码块范围越小，效率越高。
 4. `obj`需要是线程共享的对象，如果不是就会失效，👉 [thread-lock-04](../../details/thread-lock-04.md)
 5. 重新改成同一个对象上锁，👉 [thread-lock-05](../../details/thread-lock-05.md)
@@ -193,12 +193,12 @@ public class CPUNumber {
 ### 定时器
 
 - `java.util.Timer`：定时器，本质是一个线程
-	- `Timer()`：创建用户线程定时器
-	* `Timer(boolean isDaemon)`：`isDaemon=true`创建守护线程定时器
-	* `timer.schedule(task, firstTime, interval)`：安排定时任务
-	    - `task`：要执行的任务（TimerTask子类）
-	    - `firstTime`：首次执行时间
-	    - `interval`：重复执行间隔（毫秒）
+    - `Timer()`：创建用户线程定时器
+    * `Timer(boolean isDaemon)`：`isDaemon=true`创建守护线程定时器
+    * `timer.schedule(task, firstTime, interval)`：安排定时任务
+        - `task`：要执行的任务（TimerTask子类）
+        - `firstTime`：首次执行时间
+        - `interval`：重复执行间隔（毫秒）
 - `java.util.TimerTask`：定时任务，需要继承并实现`run()`方法
 * 👉 [thread-timer](../../details/thread-timer.md)
 
@@ -259,9 +259,9 @@ public class CPUNumber {
 
 ### 线程优先级
 * ***`setPriority(int priority)`**  
-	* 功能：设置线程优先级（范围：1~10）。  
+    * 功能：设置线程优先级（范围：1~10）。  
 * ***`getPriority()`**  
-	* 功能：获取线程优先级。  
+    * 功能：获取线程优先级。  
 * 线程优先级默认是5，最低是1，最高是10。
 * 👉 [thread-priority](../../details/thread-priority.md)
 
@@ -651,66 +651,66 @@ class ThreadFactory {
 
 ### 练习一
 1. **线程启动**  
-	- 在`main`方法中同时启动两个线程
+    - 在`main`方法中同时启动两个线程
 2. **线程1任务**  
-	   - 循环生成并打印0-100的随机整数  
-	   - 输出格式示例：`Thread-1: 42`
+       - 循环生成并打印0-100的随机整数  
+       - 输出格式示例：`Thread-1: 42`
 3. **线程2任务**  
-	   - 监听键盘输入  
-	   - 当检测到输入字符`Q`时（不区分大小写）  
-	   - 立即终止线程1的执行
-	```java
-	package ex_chapter16;  
-	
-	import java.util.Scanner;  
-	
-	public class Ex01 {  
-	  public static void main(String[] args){  
-	    T1 t1 = new T1();  
-	    t1.start();  
-	    new T2(t1).start();  
-	  }
-	}  
-	
-	class T1 extends Thread{  
-	  private boolean loop = true;  
-	
-	  @Override  
-	  public void run() {  
-	    while(loop){  
-	      System.out.println((int)(Math.random()*100+1));  
-	      try {  
-	        Thread.sleep(1000);  
-	      } catch (InterruptedException e) {  
-	        throw new RuntimeException(e);  
-	      }        
-	    }    
-	  }  
-	  public void setLoop(boolean loop) {  
-	    this.loop = loop;  
-	  }
-	}  
-	
-	class T2 extends Thread{  
-	  T1 t1;  
-	
-	  public T2(T1 t){  
-	    this.t1 = t;  
-	  }  
-	  @Override  
-	  public void run() {  
-	    Scanner scanner = new Scanner(System.in);  
-	    while(true){  
-	      System.out.println("请输入指令，q 表示退出");  
-	      if(scanner.nextLine().charAt(0) == 'q'){  
-	        t1.setLoop(false);  
-	        System.out.println("结束");  
-	        break;  
-	      }        
-	    }    
-	  }
-	}
-	```
+       - 监听键盘输入  
+       - 当检测到输入字符`Q`时（不区分大小写）  
+       - 立即终止线程1的执行
+    ```java
+    package ex_chapter16;  
+    
+    import java.util.Scanner;  
+    
+    public class Ex01 {  
+      public static void main(String[] args){  
+        T1 t1 = new T1();  
+        t1.start();  
+        new T2(t1).start();  
+      }
+    }  
+    
+    class T1 extends Thread{  
+      private boolean loop = true;  
+    
+      @Override  
+      public void run() {  
+        while(loop){  
+          System.out.println((int)(Math.random()*100+1));  
+          try {  
+            Thread.sleep(1000);  
+          } catch (InterruptedException e) {  
+            throw new RuntimeException(e);  
+          }        
+        }    
+      }  
+      public void setLoop(boolean loop) {  
+        this.loop = loop;  
+      }
+    }  
+    
+    class T2 extends Thread{  
+      T1 t1;  
+    
+      public T2(T1 t){  
+        this.t1 = t;  
+      }  
+      @Override  
+      public void run() {  
+        Scanner scanner = new Scanner(System.in);  
+        while(true){  
+          System.out.println("请输入指令，q 表示退出");  
+          if(scanner.nextLine().charAt(0) == 'q'){  
+            t1.setLoop(false);  
+            System.out.println("结束");  
+            break;  
+          }        
+        }    
+      }
+    }
+    ```
 
 ### 练习二
 1. **初始条件**  
@@ -722,50 +722,50 @@ class ThreadFactory {
 1. **同步要求**  
    - 必须保证线程安全  
    - 禁止出现超额取款（余额不能为负）  
-	```java
-	package ex_chapter16;  
-	
-	public class Ex02 {  
-	  public static void main(String[] args) {  
-	    Bank bank = new Bank();  
-	    new Thread(bank).start();  
-	    new Thread(bank).start();  
-	  }
-	}  
-	
-	class Bank extends Thread{  
-	  private static int balance = 10000;  
-	
-	  @Override  
-	  public void run() {  
-	    while(true) {  
-	      synchronized (this) {  
-	        if (balance <= 0)  
-	          break;  
-	        balance -= 1000;  
-	        System.out.println(Thread.currentThread().getName() + "取钱后，余额=" + balance);  
-	      }            
-	      try {  
-	        Thread.sleep(100);  
-	      } catch (InterruptedException e) {  
-	        throw new RuntimeException(e);  
-	      }        
-	    }    
-	  }
-	}
-	```
-	```txt
-	Thread-1取钱后，余额=9000
-	Thread-2取钱后，余额=8000
-	Thread-1取钱后，余额=7000
-	Thread-2取钱后，余额=6000
-	Thread-1取钱后，余额=5000
-	Thread-2取钱后，余额=4000
-	Thread-1取钱后，余额=3000
-	Thread-2取钱后，余额=2000
-	Thread-1取钱后，余额=1000
-	Thread-2取钱后，余额=0
-	```
+    ```java
+    package ex_chapter16;  
+    
+    public class Ex02 {  
+      public static void main(String[] args) {  
+        Bank bank = new Bank();  
+        new Thread(bank).start();  
+        new Thread(bank).start();  
+      }
+    }  
+    
+    class Bank extends Thread{  
+      private static int balance = 10000;  
+    
+      @Override  
+      public void run() {  
+        while(true) {  
+          synchronized (this) {  
+            if (balance <= 0)  
+              break;  
+            balance -= 1000;  
+            System.out.println(Thread.currentThread().getName() + "取钱后，余额=" + balance);  
+          }            
+          try {  
+            Thread.sleep(100);  
+          } catch (InterruptedException e) {  
+            throw new RuntimeException(e);  
+          }        
+        }    
+      }
+    }
+    ```
+    ```txt
+    Thread-1取钱后，余额=9000
+    Thread-2取钱后，余额=8000
+    Thread-1取钱后，余额=7000
+    Thread-2取钱后，余额=6000
+    Thread-1取钱后，余额=5000
+    Thread-2取钱后，余额=4000
+    Thread-1取钱后，余额=3000
+    Thread-2取钱后，余额=2000
+    Thread-1取钱后，余额=1000
+    Thread-2取钱后，余额=0
+    ```
 
 ### 面试题1
 

@@ -173,7 +173,7 @@ public StringBuilder() {
 
 ```java
 public String toString() { 
-	return new String(value, 0, count); 
+    return new String(value, 0, count); 
 }
 ```
 
@@ -223,9 +223,9 @@ private AbstractStringBuilder appendNull() {
 
 ```java
 private void ensureCapacityInternal(int minimumCapacity) {
-	// minimumCapacity = append()的 count + len
+    // minimumCapacity = append()的 count + len
     if (minimumCapacity - value.length > 0)
-		// 不够用了，扩容
+        // 不够用了，扩容
         expandCapacity(minimumCapacity);
 }
 
@@ -254,45 +254,45 @@ void expandCapacity(int minimumCapacity) {
 ## 🍭StringBuffer 和 String 的对比
 
 * String 类
-	- **特性**：`String` 保存的是字符串常量，其值不可更改。
-	- **内存管理**：每次对 `String` 类的更新实际上是在内存中创建一个新的字符串对象，这意味着原字符串对象的地址会改变。
-	- **性能**：由于每次更新都涉及到内存地址的更改，因此效率相对较低。
-	- **示例代码**：
-	    ```java
-	    private final char value[];
-	    ```
-	
+    - **特性**：`String` 保存的是字符串常量，其值不可更改。
+    - **内存管理**：每次对 `String` 类的更新实际上是在内存中创建一个新的字符串对象，这意味着原字符串对象的地址会改变。
+    - **性能**：由于每次更新都涉及到内存地址的更改，因此效率相对较低。
+    - **示例代码**：
+        ```java
+        private final char value[];
+        ```
+    
 * StringBuffer 类
-	- **特性**：`StringBuffer` 保存的是字符串变量，其值可以更改。
-	- **内存管理**：`StringBuffer` 的更新实际上可以在原有对象上进行，不需要每次都创建新的对象，因此不需要更新内存地址。
-	- **性能**：由于不需要频繁地创建新对象和更改内存地址，因此效率较高。
-	- **示例代码**：
-	    ```java
-	    char[] value; // 这个放在堆中
-	    ```
+    - **特性**：`StringBuffer` 保存的是字符串变量，其值可以更改。
+    - **内存管理**：`StringBuffer` 的更新实际上可以在原有对象上进行，不需要每次都创建新的对象，因此不需要更新内存地址。
+    - **性能**：由于不需要频繁地创建新对象和更改内存地址，因此效率较高。
+    - **示例代码**：
+        ```java
+        char[] value; // 这个放在堆中
+        ```
   
 * 使用场景
-	- `String` 类适合于不需要修改字符串内容的场景，因为其不可变性保证了字符串的安全性。
-	- `StringBuffer` 类适合于需要频繁修改字符串内容的场景，因为它提供了更高的效率。
+    - `String` 类适合于不需要修改字符串内容的场景，因为其不可变性保证了字符串的安全性。
+    - `StringBuffer` 类适合于需要频繁修改字符串内容的场景，因为它提供了更高的效率。
 
 ---
 ## 🍭 四种构造器
 
 1. `StringBuffer()`
-	- **描述**：构造一个不带字符的字符串缓冲区，其初始容量为 16 个字符。
-	- **用途**：当你需要一个空的 `StringBuffer` 实例，并且初始容量不是问题时使用。
+    - **描述**：构造一个不带字符的字符串缓冲区，其初始容量为 16 个字符。
+    - **用途**：当你需要一个空的 `StringBuffer` 实例，并且初始容量不是问题时使用。
 
 2. `StringBuffer(CharSequence seq)`
-	- **描述**：构造一个字符串缓冲区，它包含与指定的 `CharSequence` 相同的字符。
-	- **用途**：当你需要一个 `StringBuffer` 实例，并且已经有一个 `CharSequence`（如 `String`）作为内容时使用。
+    - **描述**：构造一个字符串缓冲区，它包含与指定的 `CharSequence` 相同的字符。
+    - **用途**：当你需要一个 `StringBuffer` 实例，并且已经有一个 `CharSequence`（如 `String`）作为内容时使用。
 
 3. `StringBuffer(int capacity)`
-	- **描述**：构造一个不带字符，但具有指定初始容量的字符串缓冲区。即对 `char[]` 大小进行指定。
-	- **用途**：当你需要一个 `StringBuffer` 实例，并且知道所需的初始容量时使用，这可以避免后续的容量调整。
+    - **描述**：构造一个不带字符，但具有指定初始容量的字符串缓冲区。即对 `char[]` 大小进行指定。
+    - **用途**：当你需要一个 `StringBuffer` 实例，并且知道所需的初始容量时使用，这可以避免后续的容量调整。
 
 4. `StringBuffer(String str)`
-	- **描述**：构造一个字符串缓冲区，并将其内容初始化为指定的字符串内容。
-	- **用途**：当你需要一个 `StringBuffer` 实例，并且已经有一个 `String` 作为初始内容时使用。
+    - **描述**：构造一个字符串缓冲区，并将其内容初始化为指定的字符串内容。
+    - **用途**：当你需要一个 `StringBuffer` 实例，并且已经有一个 `String` 作为初始内容时使用。
 
 ```java
 public class StringBufferExample {
@@ -409,53 +409,53 @@ String from b1: hello
 `StringBuffer` 类提供了多种方法来操作字符串缓冲区。以下是一些常用方法的笔记：
 
 1. 增加内容 (`append`)
-	- **描述**：在缓冲区的末尾追加新的字符串。
-	- **示例**：
-	  ```java
-	  StringBuffer s = new StringBuffer("hello");
-	  s.append(", ");
-	  s.append("张三丰");
-	  System.out.println(s); // 输出: hello, 张三丰
-	  ```
+    - **描述**：在缓冲区的末尾追加新的字符串。
+    - **示例**：
+      ```java
+      StringBuffer s = new StringBuffer("hello");
+      s.append(", ");
+      s.append("张三丰");
+      System.out.println(s); // 输出: hello, 张三丰
+      ```
 
 2. 删除内容 (`delete`)
-	- **描述**：删除缓冲区中从 `start` 到 `end`（不包括 `end`）的字符。
-	- **示例**：
-	  ```java
-	  s.delete(11, 14);
-	  System.out.println(s); // 输出: hello, 张三丰
-	  ```
+    - **描述**：删除缓冲区中从 `start` 到 `end`（不包括 `end`）的字符。
+    - **示例**：
+      ```java
+      s.delete(11, 14);
+      System.out.println(s); // 输出: hello, 张三丰
+      ```
 
 3. 修改内容 (`replace`)
-	- **描述**：将缓冲区中从 `start` 到 `end`（不包括 `end`）的内容替换为新的字符串。
-	- **示例**：
-	  ```java
-	  s.replace(9, 11, "周芷若");
-	  System.out.println(s); // 输出: hello, 周芷若
-	  ```
+    - **描述**：将缓冲区中从 `start` 到 `end`（不包括 `end`）的内容替换为新的字符串。
+    - **示例**：
+      ```java
+      s.replace(9, 11, "周芷若");
+      System.out.println(s); // 输出: hello, 周芷若
+      ```
 
 4. 查找索引 (`indexOf`)
-	- **描述**：查找子串在字符串中第一次出现的索引，如果找不到返回 -1。
-	- **示例**：
-	  ```java
-	  int index = s.indexOf("张三丰");
-	  System.out.println(index); // 输出: -1
-	  ```
+    - **描述**：查找子串在字符串中第一次出现的索引，如果找不到返回 -1。
+    - **示例**：
+      ```java
+      int index = s.indexOf("张三丰");
+      System.out.println(index); // 输出: -1
+      ```
 
 5. 插入内容 (`insert`)
-	- **描述**：在指定位置插入字符串。
-	- **示例**：
-	  ```java
-	  s.insert(9, "赵敏");
-	  System.out.println(s); // 输出: hello, 赵敏, 周芷若
-	  ```
+    - **描述**：在指定位置插入字符串。
+    - **示例**：
+      ```java
+      s.insert(9, "赵敏");
+      System.out.println(s); // 输出: hello, 赵敏, 周芷若
+      ```
 
 6. 获取长度 (`length`)
-	- **描述**：获取缓冲区中字符串的长度。
-	- **示例**：
-	  ```java
-	  System.out.println(s.length()); // 输出: 18
-	  ```
+    - **描述**：获取缓冲区中字符串的长度。
+    - **示例**：
+      ```java
+      System.out.println(s.length()); // 输出: 18
+      ```
 
 ```java
 public class StringBufferMethods {

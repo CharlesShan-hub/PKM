@@ -47,44 +47,44 @@ Constable, ConstantDesc {
 3. String 继承了 `Comparable` 接口：String 可以相互比较，所以我们别用`==`比较，而是用`compareTo()`方法
 4. **String 是一个 final 类**： String 不能被其他的类继承
 5. String 内部存放 **byte/char 数组的对象也是 final**：对象不能被修改，但是对象内部的内容可以被修改（value 不能指向新的地址，但是单独字符的内容是可以变换的）
-	```java
-	public class StringAndCharArrayExample {
-	  public static void main(String[] args) {
-	    // 字符串的重新赋值
-	    String name = "jack";
-	    System.out.println("Before changing name: " + name);
-	    name = "tom";
-	    System.out.println("After changing name: " + name);
-	
-	    // final 关键字和字符数组的操作
-	    final char[] value = {'a', 'b', 'c'};
-	    char[] v2 = {'t', 'u', 'm'};
-	
-	    // 修改字符数组中的元素
-	    value[0] = 'H';
-	    System.out.println("Modified value array: " + new String(value));
-	
-	    // 尝试重新赋值给 final 关键字修饰的数组（编译错误）
-	    // value = v2; // 这行代码会导致编译错误，因为 final 关键字修饰的数组不能被重新赋值
-	
-	    // 输出结果
-	    System.out.println("v2 array: " + new String(v2));
-	  }
-	}
-	```
+    ```java
+    public class StringAndCharArrayExample {
+      public static void main(String[] args) {
+        // 字符串的重新赋值
+        String name = "jack";
+        System.out.println("Before changing name: " + name);
+        name = "tom";
+        System.out.println("After changing name: " + name);
+    
+        // final 关键字和字符数组的操作
+        final char[] value = {'a', 'b', 'c'};
+        char[] v2 = {'t', 'u', 'm'};
+    
+        // 修改字符数组中的元素
+        value[0] = 'H';
+        System.out.println("Modified value array: " + new String(value));
+    
+        // 尝试重新赋值给 final 关键字修饰的数组（编译错误）
+        // value = v2; // 这行代码会导致编译错误，因为 final 关键字修饰的数组不能被重新赋值
+    
+        // 输出结果
+        System.out.println("v2 array: " + new String(v2));
+      }
+    }
+    ```
 6. 相比之下，后边的`StringBuilder`就把内容保存在了非`final`的`Byte`数组中。
-	```java
-	// AbstractStringBuilder.java
-	abstract sealed class AbstractStringBuilder implements Appendable, CharSequence  
-	  permits StringBuilder, StringBuffer {  
-	    /**  
-	       * The value is used for character storage.     
-	       */    
-	    byte[] value;
-	    ...
-	  }
-	}
-	```
+    ```java
+    // AbstractStringBuilder.java
+    abstract sealed class AbstractStringBuilder implements Appendable, CharSequence  
+      permits StringBuilder, StringBuffer {  
+        /**  
+           * The value is used for character storage.     
+           */    
+        byte[] value;
+        ...
+      }
+    }
+    ```
 
 ---
 ## 常用方法
@@ -92,102 +92,102 @@ Constable, ConstantDesc {
 ### 🍭简单方法总结
 
 1. `substring(int beginIndex, int endIndex)`
-	1. **描述**：返回一个新字符串，它是此字符串的一个子字符串。
-	2. **案例**
-		```java
-		String str = "Hello, World!";
-		String subStr = str.substring(0, 5);
-		System.out.println("Substring: " + subStr);
-		```
-	3. **源码**
-		```java
-		public String substring(int beginIndex) {
-		    // 检查起始索引是否小于 0，如果是，则抛出 StringIndexOutOfBoundsException 异常
-		    if (beginIndex < 0) {
-		        throw new StringIndexOutOfBoundsException(beginIndex);
-		    }
-		    // 计算子字符串的长度
-		    int subLen = value.length - beginIndex;
-		    // 检查子字符串长度是否为负数，如果是，则抛出 StringIndexOutOfBoundsException 异常
-		    if (subLen < 0) {
-		        throw new StringIndexOutOfBoundsException(subLen);
-		    }
-		    // 如果起始索引为 0，则返回原字符串；否则，创建并返回新的字符串
-		    return (beginIndex == 0) ? this : new String(value, beginIndex, subLen);
-		}
-		```
+    1. **描述**：返回一个新字符串，它是此字符串的一个子字符串。
+    2. **案例**
+        ```java
+        String str = "Hello, World!";
+        String subStr = str.substring(0, 5);
+        System.out.println("Substring: " + subStr);
+        ```
+    3. **源码**
+        ```java
+        public String substring(int beginIndex) {
+            // 检查起始索引是否小于 0，如果是，则抛出 StringIndexOutOfBoundsException 异常
+            if (beginIndex < 0) {
+                throw new StringIndexOutOfBoundsException(beginIndex);
+            }
+            // 计算子字符串的长度
+            int subLen = value.length - beginIndex;
+            // 检查子字符串长度是否为负数，如果是，则抛出 StringIndexOutOfBoundsException 异常
+            if (subLen < 0) {
+                throw new StringIndexOutOfBoundsException(subLen);
+            }
+            // 如果起始索引为 0，则返回原字符串；否则，创建并返回新的字符串
+            return (beginIndex == 0) ? this : new String(value, beginIndex, subLen);
+        }
+        ```
 2. `length()`
-	1. **描述**：返回字符串的长度。
-	2. **案例**
-		```java
-		String str = "Hello, World!";
-		int length = str.length();
-		System.out.println("Length of the string: " + length);
-		```
+    1. **描述**：返回字符串的长度。
+    2. **案例**
+        ```java
+        String str = "Hello, World!";
+        int length = str.length();
+        System.out.println("Length of the string: " + length);
+        ```
 3. `charAt(int index)`
-	1. **描述**：返回指定索引处的字符。
-	2. **案例**
-		```java
-		String str = "Hello";
-		char firstChar = str.charAt(0);
-		System.out.println("First character: " + firstChar);
-		```
+    1. **描述**：返回指定索引处的字符。
+    2. **案例**
+        ```java
+        String str = "Hello";
+        char firstChar = str.charAt(0);
+        System.out.println("First character: " + firstChar);
+        ```
 4. `indexOf(String str)` 和 `lastIndexOf(String str)`
-	1. **描述**：返回指定子字符串在此字符串中第一次出现的索引。
-	2. **案例**：
-		```java
-		String str = "Hello, World!";
-		int index = str.indexOf("World");
-		System.out.println("Index of 'World': " + index);
-		```
+    1. **描述**：返回指定子字符串在此字符串中第一次出现的索引。
+    2. **案例**：
+        ```java
+        String str = "Hello, World!";
+        int index = str.indexOf("World");
+        System.out.println("Index of 'World': " + index);
+        ```
 5. `replace(CharSequence target, CharSequence replacement)`
-	1. **描述**：返回一个新的字符串，它是通过用新子字符串替换此字符串中所有出现的给定目标子字符串得到的。
-	2. **案例**
-		```java
-		String str = "Hello, World!";
-		String newStr = str.replace("World", "Java");
-		System.out.println("Replaced string: " + newStr);
-		```
+    1. **描述**：返回一个新的字符串，它是通过用新子字符串替换此字符串中所有出现的给定目标子字符串得到的。
+    2. **案例**
+        ```java
+        String str = "Hello, World!";
+        String newStr = str.replace("World", "Java");
+        System.out.println("Replaced string: " + newStr);
+        ```
 6. `toUpperCase()` 和 `toLowerCase()`
-	1. **描述**：将此字符串转换为大写或小写。
-	2. **案例**：
-		```java
-		String str = "Hello, World!";
-		String upperStr = str.toUpperCase();
-		String lowerStr = str.toLowerCase();
-		System.out.println("Uppercase: " + upperStr);
-		System.out.println("Lowercase: " + lowerStr);
-		```
+    1. **描述**：将此字符串转换为大写或小写。
+    2. **案例**：
+        ```java
+        String str = "Hello, World!";
+        String upperStr = str.toUpperCase();
+        String lowerStr = str.toLowerCase();
+        System.out.println("Uppercase: " + upperStr);
+        System.out.println("Lowercase: " + lowerStr);
+        ```
 7. `trim()`
-	1. **描述**：去除字符串两端的空白字符。
-	2. **案例**：
-		```java
-		String str = "   Hello, World!   ";
-		String trimmedStr = str.trim();
-		System.out.println("Trimmed string: " + trimmedStr);
-		```
+    1. **描述**：去除字符串两端的空白字符。
+    2. **案例**：
+        ```java
+        String str = "   Hello, World!   ";
+        String trimmedStr = str.trim();
+        System.out.println("Trimmed string: " + trimmedStr);
+        ```
 8. `split(String regex)`
-	1. **描述**：根据给定正则表达式的匹配拆分此字符串。
-	2. **案例**
-		```java
-		String str = "one,two,three";
-		String[] parts = str.split(",");
-		System.out.println("Split strings:");
-		for (String part : parts) {
-			System.out.println(part);
-		}
-		```
+    1. **描述**：根据给定正则表达式的匹配拆分此字符串。
+    2. **案例**
+        ```java
+        String str = "one,two,three";
+        String[] parts = str.split(",");
+        System.out.println("Split strings:");
+        for (String part : parts) {
+            System.out.println(part);
+        }
+        ```
 9. `equals(Object anObject)` 和 `equalsIgnoreCase(String anotherString)`
-	1. **描述**：比较两个字符串是否相等。
-	2. **案例**
-		```java
-		String str1 = "Hello";
-		String str2 = "hello";
-		boolean isEqual = str1.equals(str2);
-		boolean isEqualIgnoreCase = str1.equalsIgnoreCase(str2);
-		System.out.println("Equal: " + isEqual);
-		System.out.println("Equal ignoring case: " + isEqualIgnoreCase);
-		```
+    1. **描述**：比较两个字符串是否相等。
+    2. **案例**
+        ```java
+        String str1 = "Hello";
+        String str2 = "hello";
+        boolean isEqual = str1.equals(str2);
+        boolean isEqualIgnoreCase = str1.equalsIgnoreCase(str2);
+        System.out.println("Equal: " + isEqual);
+        System.out.println("Equal ignoring case: " + isEqualIgnoreCase);
+        ```
 
 ### 🍭 `format()` 
 
@@ -331,16 +331,16 @@ System.out.println(s3.equals(s4)); // true
 * `String(byte[] bytes)`：根据字节数组创建一个新的字符串对象，默认使用平台默认的字符集进行解码。
 * `String(byte[] bytes, int offset, int length)`：根据字节数组的指定部分创建一个新的字符串对象，默认使用平台默认的字符集进行**解码**。
 * `String(byte[] bytes, Charset charset)`：
-	* 根据字节数组和指定的字符集创建一个新的字符串对象。
-	* new String(bytes, Charset.defaultCharset());
+    * 根据字节数组和指定的字符集创建一个新的字符串对象。
+    * new String(bytes, Charset.defaultCharset());
 * `String(byte[] bytes, String charsetName)`：
-	* 根据字节数组和指定的字符集名称创建一个新的字符串对象。
-	* 这是一个解码的过程。你需要提前知道“byte[] bytes”是通过哪个编码方式进行编码得到的。
-	* 如果通过GBK的方式进行编码得到的“byte[] bytes”，调用以上构造方法时采用UTF-8的方式进行解码。就会出现乱码。
+    * 根据字节数组和指定的字符集名称创建一个新的字符串对象。
+    * 这是一个解码的过程。你需要提前知道“byte[] bytes”是通过哪个编码方式进行编码得到的。
+    * 如果通过GBK的方式进行编码得到的“byte[] bytes”，调用以上构造方法时采用UTF-8的方式进行解码。就会出现乱码。
 * `String(String original)`：
-	* 通过复制现有字符串创建一个新的字符串对象。
-	* 这个方法被`@IntrinsicCandidate`标注（Java16引入的），这个注解的作用是告诉编译器,该方法或构造函数是一个内在的候选方法,可以被优化和替换为更高效的代码。因此它是**不建议使用**的。
-	* `new String(“hello”);` <u>这个代码会让常量池中有一个 “hello”，并且在堆中也有有一个String对象</u>。
+    * 通过复制现有字符串创建一个新的字符串对象。
+    * 这个方法被`@IntrinsicCandidate`标注（Java16引入的），这个注解的作用是告诉编译器,该方法或构造函数是一个内在的候选方法,可以被优化和替换为更高效的代码。因此它是**不建议使用**的。
+    * `new String(“hello”);` <u>这个代码会让常量池中有一个 “hello”，并且在堆中也有有一个String对象</u>。
 
 ```java
 package com.powernode.javase.stringtest;  
@@ -442,14 +442,14 @@ s1 = "haha";
 
 ```json
 {
-	'栈':{
-		s1: Ox11,//第一句
-		s1: 0x22//第二句后变成了这样
-	},
-	'常量池':{
-		0x11: "Hello",//(第一个对象)
-		0x22: "haha"//（第二个对象，都是字符串常量对象）
-	}
+    '栈':{
+        s1: Ox11,//第一句
+        s1: 0x22//第二句后变成了这样
+    },
+    '常量池':{
+        0x11: "Hello",//(第一个对象)
+        0x22: "haha"//（第二个对象，都是字符串常量对象）
+    }
 }
 ```
 
@@ -493,17 +493,17 @@ String a = "hello" + "abc";
 
 ```json
 {
-	'栈':{
-		a: 0x33;
-	},
-	'堆':{
-	},
-	'常量池':{
-		// 0x11: "Hello",
-		// 0x22: "haha",
-		// 上边两个被编译器优化没了，因为他们没有引用指向，不要把编译器当成傻子
-		0x33: "Hellohaha"（只有 1 个对象）
-	}
+    '栈':{
+        a: 0x33;
+    },
+    '堆':{
+    },
+    '常量池':{
+        // 0x11: "Hello",
+        // 0x22: "haha",
+        // 上边两个被编译器优化没了，因为他们没有引用指向，不要把编译器当成傻子
+        0x33: "Hellohaha"（只有 1 个对象）
+    }
 }
 ```
 
@@ -525,22 +525,22 @@ String c = a + b;
 
 ```json
 {
-	'栈':{
-		a: 0x11,
-		b: 0x22,
-		c: 0x88
-	},
-	'堆':{
-		0x88: { // 5
-			value: 0x33,
-		}
-		0x99: StringBuilder sb // 4
-	},
-	'常量池':{
-		0x11: "Hello", // 1
-		0x22: "haha", // 2
-		0x33: "Hellohaha" // 3
-	}
+    '栈':{
+        a: 0x11,
+        b: 0x22,
+        c: 0x88
+    },
+    '堆':{
+        0x88: { // 5
+            value: 0x33,
+        }
+        0x99: StringBuilder sb // 4
+    },
+    '常量池':{
+        0x11: "Hello", // 1
+        0x22: "haha", // 2
+        0x33: "Hellohaha" // 3
+    }
 }
 ```
 
@@ -731,13 +731,13 @@ public class StringExam {
 * [re](../powerpoint/re.md)
 * [史上最全正则表达式](../powerpoint/resources/史上最全正则表达式.md)
 * String replace(CharSequence target, CharSequence replacement);
-	* 将当前字符串中所有的target替换成replacement，返回一个新的字符串。
+    * 将当前字符串中所有的target替换成replacement，返回一个新的字符串。
 * String replaceAll(String regex, String replacement);
-	* 将当前字符串中所有符合正则表达式的regex替换成replacement。
+    * 将当前字符串中所有符合正则表达式的regex替换成replacement。
 * String[] split(String regex);
-	* 将当前字符串以某个正则表达式表示的子字符串进行分割，返回一个字符串数组。
+    * 将当前字符串以某个正则表达式表示的子字符串进行分割，返回一个字符串数组。
 * boolean matches(String regex);
-	* 判断当前字符串是否符合正则表达式regex。
+    * 判断当前字符串是否符合正则表达式regex。
 
 ```java
 package com.powernode.javase.stringtest;  

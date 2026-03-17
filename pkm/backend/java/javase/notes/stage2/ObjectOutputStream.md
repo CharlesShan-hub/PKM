@@ -12,7 +12,7 @@
     * 通常与ObjectInputStream配合使用
 
 * **注意⚠️**
-	* **实现对象的序列化(Serialization)【常用】**
+    * **实现对象的序列化(Serialization)【常用】**
     * **也可以实现Enternalizable接口（不常用）**
     * **读写顺序需要一致！**
     * **序列化类时，类中的成员也要可以序列化！**

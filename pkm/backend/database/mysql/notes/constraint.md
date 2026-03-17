@@ -89,12 +89,12 @@ mysql> select * from table_constraints where table_name = 't_stu';
 3. 任何一张表都应该有主键，没有主键的表可以视为无效表。
 4. 主键值是这行记录的身份证号，是唯一标识。在数据库表中即使两条数据一模一样，但由于主键值不同，我们也会认为是两条完全的不同的数据。
 5. 主键分类：
-	1. 根据字段数量分类：
-		1. 单一主键（1个字段作为主键）==>建议的
-		2. 复合主键（2个或2个以上的字段作为主键）
-	2. 根据业务分类：
-		1. 自然主键（主键和任何业务都无关，只是一个单纯的自然数据）===>建议的
-		2. 业务主键（主键和业务挂钩，例如：银行卡账号作为主键）
+    1. 根据字段数量分类：
+        1. 单一主键（1个字段作为主键）==>建议的
+        2. 复合主键（2个或2个以上的字段作为主键）
+    2. 根据业务分类：
+        1. 自然主键（主键和任何业务都无关，只是一个单纯的自然数据）===>建议的
+        2. 业务主键（主键和业务挂钩，例如：银行卡账号作为主键）
 6. 单一主键（建议使用这种方式）
 ```sql
 create table t_student(
@@ -126,76 +126,76 @@ create table t_vip(
 ## 外键约束
 
 1. 有这样一个需求：要求设计表，能够存储学生以及学校信息。
-	1. 第一种方案：一张表(这种方式会导致数据冗余，浪费空间。)
-		![image.png](../assets/fk1.png)
-	2. 第二种方案：两张表：一张存储学生，一张存储学校
-		t_school 表
-		![fk2](../assets/fk2.png)
-		t_student 表
-		![fk3](../assets/fk3.png)
-		如果采用以上两张表存储数据，对于学生表来说，sno这个字段的值是不能随便填的，这个sno是学校编号，必须要求这个字段中的值来自学校表的sno。
-		为了达到要求，此时就必须要给t_student表的sno字段添加外键约束了。
+    1. 第一种方案：一张表(这种方式会导致数据冗余，浪费空间。)
+        ![image.png](../assets/fk1.png)
+    2. 第二种方案：两张表：一张存储学生，一张存储学校
+        t_school 表
+        ![fk2](../assets/fk2.png)
+        t_student 表
+        ![fk3](../assets/fk3.png)
+        如果采用以上两张表存储数据，对于学生表来说，sno这个字段的值是不能随便填的，这个sno是学校编号，必须要求这个字段中的值来自学校表的sno。
+        为了达到要求，此时就必须要给t_student表的sno字段添加外键约束了。
 2. 外键约束：foreign key，简称FK。
 3. 添加了外键约束的字段中的数据必须来自其他字段，不能随便填。
 4. 假设给a字段添加了外键约束，要求a字段中的数据必须来自b字段，b字段不一定是主键，但至少要有**唯一性**。
 5. 外键约束可以给单个字段添加，叫做单一外键。也可以给多个字段联合添加，叫做复合外键。复合外键很少用。
 6. a表如果引用b表中的数据，可以把b表叫做父表，把a表叫做子表。
-	1. 创建表时，先创建父表，再创建子表。
-	2. 插入数据时，先插入父表，在插入子表。
-	3. 删除数据时，先删除子表，再删除父表。
-	4. 删除表时，先删除子表，再删除父表。
+    1. 创建表时，先创建父表，再创建子表。
+    2. 插入数据时，先插入父表，在插入子表。
+    3. 删除数据时，先删除子表，再删除父表。
+    4. 删除表时，先删除子表，再删除父表。
 7. 如何添加外键：
-	```sql
-	create table t_school( 
-	  sno int primary key, 
-	  sname varchar(255) 
-	); 
-	create table t_student( 
-	  no int primary key, 
-	  name varchar(255), 
-	  age int, 
-	  sno int, 
-	  constraint t_school_sno_fk foreign key(sno) references t_school(sno)
-	);
-	```
+    ```sql
+    create table t_school( 
+      sno int primary key, 
+      sname varchar(255) 
+    ); 
+    create table t_student( 
+      no int primary key, 
+      name varchar(255), 
+      age int, 
+      sno int, 
+      constraint t_school_sno_fk foreign key(sno) references t_school(sno)
+    );
+    ```
 8. 级联删除：`on delete cascade`
-	创建子表时，外键可以添加：on delete cascade，这样在删除父表数据时，子表会级联删除。谨慎使用。
-	```sql
-	create table t_student( 
-	  no int primary key, 
-	  name varchar(255), 
-	  age int, 
-	  sno int, 
-	  constraint t_school_sno_fk foreign key(sno) references t_school(sno) on delete cascade 
-	);
-	```
-	
-	```sql
-	-- 删除约束
-	alert table t_student drop foreign key t_student_sno_fk;
-	-- 添加约束
-	alert table t_student add constraint t_student_sno_fk foreign key(sno) references t_school(sno) on delete cascade;
-	```
-	
+    创建子表时，外键可以添加：on delete cascade，这样在删除父表数据时，子表会级联删除。谨慎使用。
+    ```sql
+    create table t_student( 
+      no int primary key, 
+      name varchar(255), 
+      age int, 
+      sno int, 
+      constraint t_school_sno_fk foreign key(sno) references t_school(sno) on delete cascade 
+    );
+    ```
+    
+    ```sql
+    -- 删除约束
+    alert table t_student drop foreign key t_student_sno_fk;
+    -- 添加约束
+    alert table t_student add constraint t_student_sno_fk foreign key(sno) references t_school(sno) on delete cascade;
+    ```
+    
 9. 级联更新：`on update cascade `
-	```sql
-	create table t_student( 
-	  no int primary key, 
-	  name varchar(255), 
-	  age int, 
-	  sno int, 
-	  constraint t_school_sno_fk foreign key(sno) references t_school(sno) on update cascade 
-	);
-	```
+    ```sql
+    create table t_student( 
+      no int primary key, 
+      name varchar(255), 
+      age int, 
+      sno int, 
+      constraint t_school_sno_fk foreign key(sno) references t_school(sno) on update cascade 
+    );
+    ```
 
 10. 级联置空：`on delete set null`
-	```sql
-	create table t_student( 
-	  no int primary key, 
-	  name varchar(255), 
-	  age int, 
-	  sno int, 
-	  constraint t_school_sno_fk foreign key(sno) references t_school(sno) on delete set null 
-	);
-	```
+    ```sql
+    create table t_student( 
+      no int primary key, 
+      name varchar(255), 
+      age int, 
+      sno int, 
+      constraint t_school_sno_fk foreign key(sno) references t_school(sno) on delete set null 
+    );
+    ```
 

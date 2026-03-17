@@ -8,10 +8,10 @@
 2. 输入流、输出流
 3. 节点流/低级流、处理流/包装流：包装流就是本身不能工作，需要包装进来一个别的类来工作。
 4. 四个抽象基类
-	1. 字节流+输入流：`InputStream`
-	2. 字节流+输出流：`OutPutStream`
-	3. 字符流+输入流：`Reader`
-	4. 字符流+输出流：`Writer`
+    1. 字节流+输入流：`InputStream`
+    2. 字节流+输出流：`OutPutStream`
+    3. 字符流+输入流：`Reader`
+    4. 字符流+输出流：`Writer`
 
 ### 流的分类
 ![io-drawing|1000](../../assets/io-drawing.md)
@@ -40,10 +40,10 @@
 * `System.in`运行类型：`BufferedInputStream`
 ```java
 public class SystemInTest {
-	public static void main(String[] args) {
-		System.out.println(System.in.getClass());
-		// class java.io.BufferedInputStream
-	}
+    public static void main(String[] args) {
+        System.out.println(System.in.getClass());
+        // class java.io.BufferedInputStream
+    }
 }
 ```
 * 案例
@@ -115,10 +115,10 @@ public class SystemInTest02 {
 * `System.out`运行类型：`PrintStream`
 ```java
 public class SystemInTest {
-	public static void main(String[] args) {
-		System.out.println(System.out.getClass());
-		// class java.io.PrintStream
-	}
+    public static void main(String[] args) {
+        System.out.println(System.out.getClass());
+        // class java.io.PrintStream
+    }
 }
 ```
 
@@ -171,48 +171,48 @@ public class SystemOutTest {
 ### Properties
 
 1. 介绍：
-	* `Properties`类继承自`Hashtable`类，用于处理属性文件
-	* 键值对都是字符串类型
-	* 常用于读取配置文件
+    * `Properties`类继承自`Hashtable`类，用于处理属性文件
+    * 键值对都是字符串类型
+    * 常用于读取配置文件
 2. 常用方法：
-	* `load(InputStream inStream)`：从输入流中加载属性列表
-	* `list(PrintStream out)`：将属性列表输出到指定的输出流
-	* `setProperty(String key, String value)`：设置属性值
-	* `getProperty(String key)`：获取属性值
-	* `store(OutputStream out, String comments)`：将属性列表写入输出流
+    * `load(InputStream inStream)`：从输入流中加载属性列表
+    * `list(PrintStream out)`：将属性列表输出到指定的输出流
+    * `setProperty(String key, String value)`：设置属性值
+    * `getProperty(String key)`：获取属性值
+    * `store(OutputStream out, String comments)`：将属性列表写入输出流
 3. 示例：
-	```java
-	import java.io.*;
-	import java.util.Properties;
-	
-	public class PropertiesExample {
-	    public static void main(String[] args) {
-	        String filePath = "/Users/kimshan/Public/project/javanote/out/production/javanote/assets/config.properties";
-			File file = new File(filePath);
-			if(!file.exists()){
-				try {
-					file.createNewFile();
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-				}
-			}
-			Properties props = new Properties();
-	        // 加载属性文件
-	        try (InputStream in = new FileInputStream(filePath)) {
-	            props.load(in);
-				System.out.println(props.getProperty("username"));
-				props.list(System.out);
-	            // 获取属性值
-	            String username = props.getProperty("username");
-	            String password = props.getProperty("password");
-				props.store(new FileOutputStream(filePath), "update");
-	        }catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	}
-	```
-	
+    ```java
+    import java.io.*;
+    import java.util.Properties;
+    
+    public class PropertiesExample {
+        public static void main(String[] args) {
+            String filePath = "/Users/kimshan/Public/project/javanote/out/production/javanote/assets/config.properties";
+            File file = new File(filePath);
+            if(!file.exists()){
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            Properties props = new Properties();
+            // 加载属性文件
+            try (InputStream in = new FileInputStream(filePath)) {
+                props.load(in);
+                System.out.println(props.getProperty("username"));
+                props.list(System.out);
+                // 获取属性值
+                String username = props.getProperty("username");
+                String password = props.getProperty("password");
+                props.store(new FileOutputStream(filePath), "update");
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    ```
+    
 ### ResourceBundle资源绑定
 
 配置文件如下

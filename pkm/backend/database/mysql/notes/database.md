@@ -23,10 +23,10 @@ CREATE DATABASE [IF NOT EXISTS] `db_name`
 * `db_name`：数据库名称
 * `CHARACTER SET`：数据库字符集，如 `utf8`、`gbk`
 * `COLLATE`：数据库排序规则，如 `utf8_general_ci`、`gbk_chinese_ci`
-	* `_ci`：不区分大小写
-	* `_cs`：区分大小写
-	* `_bin`：二进制排序
-	* 默认表的排序规则为数据库的排序规则
+    * `_ci`：不区分大小写
+    * `_cs`：区分大小写
+    * `_bin`：二进制排序
+    * 默认表的排序规则为数据库的排序规则
 
 ## 数据库的查看
 ```sql

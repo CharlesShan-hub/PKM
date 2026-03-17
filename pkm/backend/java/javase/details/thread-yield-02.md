@@ -82,10 +82,10 @@ class MyThread extends Thread {
         // t1会让位一次  
         //Thread.yield();  
         try{
-	        otherThread.join(1);
+            otherThread.join(1);
         }catch (InterruptedException e) {  
-			throw new RuntimeException(e);  
-		}
+            throw new RuntimeException(e);  
+        }
       }  
       System.out.println(Thread.currentThread().getName() + "==>" + i);  
     }  

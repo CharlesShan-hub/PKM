@@ -299,9 +299,9 @@ public void copyFile1(File srcFile, File destFile) {
 Java7及以后关闭资源的正确姿势：try-with-resource，该语法格式为：
 ```java
 try(/*实例化需要关闭资源的对象或引用需要关闭资源的对象*/){
-	// 书写可能出现异常的代码
+    // 书写可能出现异常的代码
 } catch(Exception e) {
-	// 处理异常
+    // 处理异常
 }
 ```
 使用try-with-resource来自动关闭资源，则需要关闭资源的对象对应的类就必须实现java.lang.AutoCloseable接口，该接口中提供了一个close()的抽象方法，而自动关闭资源默认调用的就是实现于java.lang.AutoCloseable接口中的close()方法。

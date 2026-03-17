@@ -78,7 +78,7 @@ create trigger dept_trigger_insert
 after insert on dept
 for each row
 begin
-	insert into oper_log(id,table_name,oper_type,oper_time,oper_id,oper_desc) values
+    insert into oper_log(id,table_name,oper_type,oper_time,oper_id,oper_desc) values
 (null,'dept','insert',now(),new.deptno,concat('插入数据：deptno=', new.deptno, ',dname=', new.dname,',loc=', new.loc));
 end;
 ```
@@ -104,7 +104,7 @@ create trigger dept_trigger_update
 after update on dept
 for each row
 begin
-	insert into oper_log(id,table_name,oper_type,oper_time,oper_id,oper_desc) values
+    insert into oper_log(id,table_name,oper_type,oper_time,oper_id,oper_desc) values
 (null,'dept','update',now(),new.deptno,concat('更新前：deptno=', old.deptno, ',dname=', old.dname,',loc=', old.loc, 
                                               ',更新后：deptno=', new.deptno, ',dname=', new.dname,',loc=', new.loc));
 end;
@@ -123,7 +123,7 @@ create trigger dept_trigger_delete
 after delete on dept
 for each row
 begin
-	insert into oper_log(id,table_name,oper_type,oper_time,oper_id,oper_desc) values
+    insert into oper_log(id,table_name,oper_type,oper_time,oper_id,oper_desc) values
 (null,'dept','delete',now(),old.deptno,concat('删除了数据：deptno=', old.deptno, ',dname=', old.dname,',loc=', old.loc));
 end;
 ```

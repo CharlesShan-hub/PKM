@@ -31,9 +31,9 @@ class SingletonTest {
     // 启动线程  
     t1.start();  
     t2.start();  
-	
-	// t1.join() 和 t2.join() 的作用是
-	// 等两个线程都执行完，再往下执行
+    
+    // t1.join() 和 t2.join() 的作用是
+    // 等两个线程都执行完，再往下执行
     try {  
       t1.join();  
     } catch (InterruptedException e) {  
@@ -69,15 +69,15 @@ public class Singleton {
   // com.powernode.javase.thread23.Singleton@5b480cf9    
   // true    
   public static synchronized Singleton getSingleton() {        
-	     if (singleton == null) {            
-		    try {                
-			     Thread.sleep(2000);            
-			} catch (InterruptedException e) {                
-				throw new RuntimeException(e);            
-			}            
-			singleton = new Singleton();        
-		}        
-		return singleton;    
-	}
+         if (singleton == null) {            
+            try {                
+                 Thread.sleep(2000);            
+            } catch (InterruptedException e) {                
+                throw new RuntimeException(e);            
+            }            
+            singleton = new Singleton();        
+        }        
+        return singleton;    
+    }
 }
 ```

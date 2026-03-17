@@ -83,13 +83,13 @@ select count(*) num, g_idcard from g_cardapplydetail group by g_idcard having nu
 3）将身份证号码为440401430103082的记录在两个表中的申请状态均改为07。 
 ```sql
 update
-	g_cardapply a
+    g_cardapply a
 join
-	g_cardapplydetail b
+    g_cardapplydetail b
 on 
-	a.g_applyno = b.g_applyno and b.g_idcard = '440401430103082'
+    a.g_applyno = b.g_applyno and b.g_idcard = '440401430103082'
 set
-	a.g_state = '07', b.g_state = '07';
+    a.g_state = '07', b.g_state = '07';
 ```
 4）删除g_cardapplydetail表中所有姓李的记录。
 ```sql
@@ -138,11 +138,11 @@ select avg(score),name from stuscore group by name having name not in (select di
 ```sql
 drop table if exists WCMEmploy;
 create table WCMEmploy(
-	no int,
-	name varchar(255),
-	dname varchar(255),
-	job varchar(255),
-	sal double(10,2)
+    no int,
+    name varchar(255),
+    dname varchar(255),
+    job varchar(255),
+    sal double(10,2)
 );
 insert into WCMEmploy values(1, '张三', 'A', '钳工', 1500);
 insert into WCMEmploy values(2, '李四', 'A', '钳工', 2800);
@@ -170,28 +170,28 @@ select * from WCMEmploy;
 答案：
 ```sql
 select
-	dname,avg(sal)
+    dname,avg(sal)
 from
-	WCMEmploy
+    WCMEmploy
 where
-	job = '钳工'
+    job = '钳工'
 group by
-	dname;
+    dname;
 ```
 ```sql
 -- 1
 select * from (select dname,avg(sal) avgsal from WCMEmploy where job = '钳工' group by dname) t where t.avgsal > 2000;
 -- 2
 select
-	dname,avg(sal) avgsal
+    dname,avg(sal) avgsal
 from
-	WCMEmploy
+    WCMEmploy
 where
-	job = '钳工'
+    job = '钳工'
 group by
-	dname
+    dname
 having
-	avgsal > 2000;
+    avgsal > 2000;
 ```
 
 ## 第五题
@@ -199,9 +199,9 @@ having
 ```sql
 drop table if exists Employee;
 create table Employee(
-	`person-name` varchar(255) primary key,
-	street varchar(255),
-	city varchar(255)
+    `person-name` varchar(255) primary key,
+    street varchar(255),
+    city varchar(255)
 );
 insert into Employee values('bob','街道1','天津');
 insert into Employee values('frank','街道2','天津');
@@ -217,8 +217,8 @@ select * from Employee;
 
 drop table if exists Company;
 create table Company(
-	`company-name` varchar(255) primary key,
-	city varchar(255)
+    `company-name` varchar(255) primary key,
+    city varchar(255)
 );
 insert into Company values('Small Bank Corporation', '北京');
 insert into Company values('公司B', '石家庄');
@@ -227,9 +227,9 @@ select * from Company;
 
 drop table if exists Works;
 create table Works(
-	`person-name` varchar(255) primary key,
-	`company-name` varchar(255),
-	salary double(10,2)
+    `person-name` varchar(255) primary key,
+    `company-name` varchar(255),
+    salary double(10,2)
 );
 insert into Works values('bob','公司C', 22000);
 insert into Works values('frank','公司C', 99999);
@@ -245,8 +245,8 @@ select * from Works;
 
 drop table if exists Manages;
 create table Manages(
-	`person-name` varchar(255) primary key,
-	`manager-name` varchar(255)
+    `person-name` varchar(255) primary key,
+    `manager-name` varchar(255)
 );
 insert into Manages values('bob','frank');
 insert into Manages values('frank',NULL);
@@ -262,19 +262,19 @@ select * from Manages;
 ```
 
 Employee是雇员信息表：
-	雇员姓名（主键）：person-name
-	街道：street
-	城市：city
+    雇员姓名（主键）：person-name
+    街道：street
+    城市：city
 Company是公司信息表：
-	公司名称（主键）：company-name
-	城市：city
+    公司名称（主键）：company-name
+    城市：city
 Works是雇员工作信息表：
-	雇员姓名（主键）：person-name
-	公司名称：company-name
-	年薪：salary
+    雇员姓名（主键）：person-name
+    公司名称：company-name
+    年薪：salary
 Manages是雇员工作关系表：
-	雇员姓名（主键）：person-name
-	经理姓名：manager-name
+    雇员姓名（主键）：person-name
+    经理姓名：manager-name
 
 模拟数据：
 员工表：employee
@@ -295,19 +295,19 @@ Manages是雇员工作关系表：
 答案：
 ```sql
 select
-	e.`person-name`, e.city
+    e.`person-name`, e.city
 from
-	Works w
+    Works w
 join
-	employee e
+    employee e
 on 
-	w.`person-name` = e.`person-name`
+    w.`person-name` = e.`person-name`
 join
-	company c
+    company c
 on
-	w.`company-name` = c.`company-name`
+    w.`company-name` = c.`company-name`
 where
-	e.city = c.city;
+    e.city = c.city;
 ```
 
 ```sql
@@ -315,11 +315,11 @@ where
 select max(salary) from Works where `company-name`='Small Bank Corporation';
 -- 
 select
-	w.`person-name`
+    w.`person-name`
 from
-	Works w
+    Works w
 where
-	w.salary > (select max(salary) from Works where `company-name`='Small Bank Corporation');
+    w.salary > (select max(salary) from Works where `company-name`='Small Bank Corporation');
 ```
 
 ```sql
@@ -334,10 +334,10 @@ select `company-name`,avg(salary) from Works group by `company-name` having avg(
 ```sql
 drop table if exists Client;
 create table Client(
-	client_id int,
-	client_name varchar(255),
-	phone varchar(255),
-	address varchar(255)
+    client_id int,
+    client_name varchar(255),
+    phone varchar(255),
+    address varchar(255)
 );
 insert into Client values(1,'Zhao', 12522542470, '海淀区');
 insert into Client values(2,'Wang', 12522542471, '朝阳区');
@@ -347,8 +347,8 @@ select * from Client;
 
 drop table if exists `Order`;
 create table `Order`(
-	order_id int,
-	book_id int
+    order_id int,
+    book_id int
 );
 insert into `Order` values(11,21);
 insert into `Order` values(12,22);
@@ -362,8 +362,8 @@ select * from `Order`;
 
 drop table if exists ClientOrder;
 create table ClientOrder(
-	client_id int,
-	order_id int
+    client_id int,
+    order_id int
 );
 insert into ClientOrder values(1,11);
 insert into ClientOrder values(1,12);
@@ -377,9 +377,9 @@ select * from ClientOrder;
 
 drop table if exists Book;
 create table Book(
-	book_id int,
-	book_name varchar(255),
-	price double(10,2)
+    book_id int,
+    book_name varchar(255),
+    price double(10,2)
 );
 insert into Book values(21, '管理学', 30);
 insert into Book values(22, '计算机网络', 50);
@@ -403,20 +403,20 @@ select * from Book;
 
 ```sql
 select
-	c.address,c.client_name,c.phone,co.order_id
+    c.address,c.client_name,c.phone,co.order_id
 from
-	Client c
+    Client c
 join
-	ClientOrder co
+    ClientOrder co
 on
-	c.client_id = co.client_id
+    c.client_id = co.client_id
 order by
     c.address;
 ```
 
 ```sql
 select
-	c.client_name, sum(b.price) total_price
+    c.client_name, sum(b.price) total_price
 from Client c 
 join ClientOrder co on c.client_id = co.client_id
 join `Order` o on o.order_id = co.order_id
@@ -434,10 +434,10 @@ group by c.client_name;
 ```sql
 drop table if exists student;
 create table student(
-	`s#` int,
-	sname varchar(255),
-	sage int,
-	ssex char(1)
+    `s#` int,
+    sname varchar(255),
+    sage int,
+    ssex char(1)
 );
 insert into student values(1,'学生1', 20, '男');
 insert into student values(2,'学生2', 20, '男');
@@ -448,9 +448,9 @@ select * from student;
 
 drop table if exists course;
 create table course(
-	`c#` int,
-	cname varchar(255),
-	`t#` int
+    `c#` int,
+    cname varchar(255),
+    `t#` int
 );
 insert into course values(1,'数学',1);
 insert into course values(2,'语文',1);
@@ -460,9 +460,9 @@ select * from course;
 
 drop table if exists sc;
 create table sc(
-	`s#` int,
-	`c#` int,
-	score int
+    `s#` int,
+    `c#` int,
+    score int
 );
 insert into sc values(1,1,65);
 insert into sc values(1,2,66);
@@ -482,8 +482,8 @@ select * from sc;
 
 drop table if exists teacher;
 create table teacher(
-	`t#` int,
-	tname varchar(255)
+    `t#` int,
+    tname varchar(255)
 );
 insert into teacher values(1,'叶平');
 insert into teacher values(2,'李白');
@@ -508,46 +508,46 @@ select * from teacher;
 
 答案：
 1. 查询1号课比2号课成绩高的所有学生学号。
-	```sql
-	select
-		sc1.`s#`, sc1.score score1, sc2.score score2
-	from
-		sc sc1
-	join
-		sc sc2
-	on
-		sc1.`s#` = sc2.`s#` and sc1.`c#` = 1 and sc2.`c#` = 2
-	where
-		sc1.score > sc2.score; 
-	```
+    ```sql
+    select
+        sc1.`s#`, sc1.score score1, sc2.score score2
+    from
+        sc sc1
+    join
+        sc sc2
+    on
+        sc1.`s#` = sc2.`s#` and sc1.`c#` = 1 and sc2.`c#` = 2
+    where
+        sc1.score > sc2.score; 
+    ```
 2. 查询平均成绩大于60分的学号和平均成绩。
-	```sql
-	select
-		`s#`, avg(score)
-	from
-		sc
-	group by
-		`s#`
-	having
-		avg(score) > 60;
-	```
+    ```sql
+    select
+        `s#`, avg(score)
+    from
+        sc
+    group by
+        `s#`
+    having
+        avg(score) > 60;
+    ```
 3. 查询所有学生学号、姓名、选课数、总成绩。
-	```sql
-	select
-		s.`s#`, s.sname, count(sc.score) class_num, coalesce(sum(sc.score), 0) score_sum
-	from
-		student s
-	left join -- 保留没选科的学生
-		sc
-	on
-		s.`s#` = sc.`s#`
-	group by
-		s.`s#`, s.sname;
-	```
+    ```sql
+    select
+        s.`s#`, s.sname, count(sc.score) class_num, coalesce(sum(sc.score), 0) score_sum
+    from
+        student s
+    left join -- 保留没选科的学生
+        sc
+    on
+        s.`s#` = sc.`s#`
+    group by
+        s.`s#`, s.sname;
+    ```
 4. 查询姓“李”的老师的个数。
-	```sql
-	select count(*) from teacher where tname like '李%';
-	```
+    ```sql
+    select count(*) from teacher where tname like '李%';
+    ```
 5. 查询没学过“叶平”老师课的学号、姓名。
 ```sql
 -- 叶平老师id
@@ -558,11 +558,11 @@ select `c#` from course join teacher on course.`t#`=teacher.`t#` where teacher.t
 select distinct `s#` from sc where `c#` in (select `c#` from course join teacher on course.`t#`=teacher.`t#` where teacher.tname = '叶平');
 -- 其他人的id
 select
-	`s#`, sname
+    `s#`, sname
 from
-	student
+    student
 where
-	`s#` not in (select distinct `s#` from sc where `c#` in (select `c#` from course join teacher on course.`t#`=teacher.`t#` where teacher.tname = '叶平'));
+    `s#` not in (select distinct `s#` from sc where `c#` in (select `c#` from course join teacher on course.`t#`=teacher.`t#` where teacher.tname = '叶平'));
 ```
 
 ## 第八题
@@ -619,40 +619,40 @@ select * from chosen_class;
 
 答案
 1. 没有选修课程编号为C1的学生姓名
-	```sql
-	-- 选了c1的学生id
-	select distinct s_id from chosen_class where c_id = 'C1';
-	-- 其他id的姓名
-	select sname from student where s_id not in (select distinct s_id from chosen_class where c_id = 'C1');
-	```
+    ```sql
+    -- 选了c1的学生id
+    select distinct s_id from chosen_class where c_id = 'C1';
+    -- 其他id的姓名
+    select sname from student where s_id not in (select distinct s_id from chosen_class where c_id = 'C1');
+    ```
 2. 列出每门课程名称和平均成绩，并按照成绩排序
-	```sql
-	select
-		c.c_name, avg(cc.grade)
-	from 
-		class c
-	join
-		chosen_class cc
-	on
-		c.c_id = cc.c_id
-	group by
-		c.c_id, c.c_name
-	order by
-		avg(cc.grade) desc;
-	```
+    ```sql
+    select
+        c.c_name, avg(cc.grade)
+    from 
+        class c
+    join
+        chosen_class cc
+    on
+        c.c_id = cc.c_id
+    group by
+        c.c_id, c.c_name
+    order by
+        avg(cc.grade) desc;
+    ```
 3. 选了2门课以上的学生姓名。
 ```sql
 -- 两门课以上的学生id
 select s_id from chosen_class group by s_id having count(*) > 2;
 -- 这些id的学生姓名
 select
-	s.sname
+    s.sname
 from
-	(select s_id from chosen_class group by s_id having count(*) > 2) t
+    (select s_id from chosen_class group by s_id having count(*) > 2) t
 join
-	student s
+    student s
 on
-	t.s_id = s.s_id;
+    t.s_id = s.s_id;
 ```
 
 ## 第九题
@@ -684,15 +684,15 @@ select * from t_temp;
 答案：这个是行转列的问题
 ```sql
 select
-	year,
-	max(case season when '一季度' then count else 0 end) as '一季度',
-	max(case season when '二季度' then count else 0 end) as '二季度',
-	max(case season when '三季度' then count else 0 end) as '三季度',
-	max(case season when '四季度' then count else 0 end) as '四季度'
+    year,
+    max(case season when '一季度' then count else 0 end) as '一季度',
+    max(case season when '二季度' then count else 0 end) as '二季度',
+    max(case season when '三季度' then count else 0 end) as '三季度',
+    max(case season when '四季度' then count else 0 end) as '四季度'
 from
-	t_temp
+    t_temp
 group by
-	year;
+    year;
 ```
 
 ## 第十题
@@ -718,13 +718,13 @@ select * from t;
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1680403550525-8f28573a-a583-4aaa-9e91-b5dde5ffa2f3.png#averageHue=%23909092&clientId=u170b2320-f065-4&from=paste&height=424&id=YlEzc&originHeight=424&originWidth=578&originalType=binary&ratio=1&rotation=0&showTitle=false&size=224946&status=done&style=shadow&taskId=uce0f516b-9d95-40ed-bd7a-e9dfc0c9591&title=&width=578)
 ```sql
 select 
-	x.a 开始数字, y.a 结束数字
+    x.a 开始数字, y.a 结束数字
 from 
-	(select m.a,row_number() over(order by m.a) as rownum from (select a, lag(a) over(order by a asc) as pre_a from t) m where m.a - m.pre_a != 1 or m.pre_a is null) x 
+    (select m.a,row_number() over(order by m.a) as rownum from (select a, lag(a) over(order by a asc) as pre_a from t) m where m.a - m.pre_a != 1 or m.pre_a is null) x 
 join 
-	(select n.a,row_number() over(order by n.a) as rownum from (select a, lead(a) over(order by a asc) as next_a from t) n where n.next_a - n.a != 1 or n.next_a is null) y 
+    (select n.a,row_number() over(order by n.a) as rownum from (select a, lead(a) over(order by a asc) as next_a from t) n where n.next_a - n.a != 1 or n.next_a is null) y 
 on 
-	x.rownum = y.rownum;
+    x.rownum = y.rownum;
 ```
 
 
@@ -783,13 +783,13 @@ select * from t_student;
 sql如下：
 ```sql
 select
-	stu_name,
-	max(case course_name when '数学' then score else 0 end) as '数学',
-	max(case course_name when '英语' then score else 0 end) as '英语', 
-	max(case course_name when '历史' then score else 0 end) as '历史' 
+    stu_name,
+    max(case course_name when '数学' then score else 0 end) as '数学',
+    max(case course_name when '英语' then score else 0 end) as '英语', 
+    max(case course_name when '历史' then score else 0 end) as '历史' 
 from 
-	t_student
+    t_student
 group by 
-	stu_name;
+    stu_name;
 ```
 

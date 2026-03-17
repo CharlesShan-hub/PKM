@@ -37,13 +37,13 @@ select empno,ename,sal,row_number() over(order by sal) as rownum from emp;
 ![row_number_ex3](../assets/row_number_ex3.png)
 ```sql
 select 
-	x.a, y.b 
+    x.a, y.b 
 from 
-	(select a,row_number() over(order by a) as rownum from t1) x 
+    (select a,row_number() over(order by a) as rownum from t1) x 
 join 
-	(select b,row_number() over(order by b) as rownum from t2) y 
+    (select b,row_number() over(order by b) as rownum from t2) y 
 on 
-	x.rownum = y.rownum;
+    x.rownum = y.rownum;
 ```
 ![row_number_ex4](../assets/row_number_ex4.png)
 
@@ -52,24 +52,24 @@ CTE语法（公用表表达式）：Common Table Expression。创建临时表的
 -- 查询每个部门平均工资的工资等级
 -- 第一种写法
 select 
-	t.deptno,t.avgsal,s.grade 
+    t.deptno,t.avgsal,s.grade 
 from 
-	(select deptno,avg(sal) as avgsal from emp group by deptno) t 
+    (select deptno,avg(sal) as avgsal from emp group by deptno) t 
 join 
-	salgrade s 
+    salgrade s 
 on 
-	t.avgsal between s.losal and s.hisal;
+    t.avgsal between s.losal and s.hisal;
 
 -- 第二种写法：使用CTE语法
 with cte_exp as(select deptno,avg(sal) as avgsal from emp group by deptno)
 select 
-	cte_exp.deptno,cte_exp.avgsal,s.grade
+    cte_exp.deptno,cte_exp.avgsal,s.grade
 from
-	cte_exp
+    cte_exp
 join
-	salgrade s
+    salgrade s
 on
-	cte_exp.avgsal between s.losal and s.hisal;
+    cte_exp.avgsal between s.losal and s.hisal;
 ```
 
 partition by：将数据分区，和group by区别是：group by是分组，然后和分组函数一起用。partition by分区不需要和分组函数一起使用

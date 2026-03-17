@@ -14,11 +14,11 @@
 ## 存储过程的优点和缺点？
 
 * 优点
-	* 速度快。
-	* 降低了**应用服务器**和**数据库服务器**之间网络通讯的开销。尤其在数据量庞大的情况下效果显著。
+    * 速度快。
+    * 降低了**应用服务器**和**数据库服务器**之间网络通讯的开销。尤其在数据量庞大的情况下效果显著。
 * 缺点：移植性差。编写难度大。维护性差。
-	* 每一个数据库都有自己的存储过程的语法规则，这种语法规则不是通用的。一旦使用了存储过程，则数据库产品很难更换，例如：编写了mysql的存储过程，这段代码只能在mysql中运行，无法在oracle数据库中运行。
-	* 对于数据库存储过程这种语法来说，没有专业的IDE工具（集成开发环境），所以编码速度较低。自然维护的成本也会较高。
+    * 每一个数据库都有自己的存储过程的语法规则，这种语法规则不是通用的。一旦使用了存储过程，则数据库产品很难更换，例如：编写了mysql的存储过程，这段代码只能在mysql中运行，无法在oracle数据库中运行。
+    * 对于数据库存储过程这种语法来说，没有专业的IDE工具（集成开发环境），所以编码速度较低。自然维护的成本也会较高。
 * 在实际开发中，存储过程还是**很少使用**的。只有在系统遇到了性能瓶颈，在进行优化的时候，对于大数量的应用来说，可以考虑使用一些。
 
 ---
@@ -28,7 +28,7 @@
 ```plsql
 create procedure p1()
 begin
-	select empno,ename from emp;
+    select empno,ename from emp;
 end;
 ```
 
@@ -165,18 +165,18 @@ select 字段名 into 变量名 from 表名 ...;
 ```sql
 create PROCEDURE p2()
 begin 
-	/*声明变量*/
-	declare emp_count int default 0;
-	/*声明变量*/
-	declare sal double(10,2) default 0.0;
-	/*给变量赋值*/
-	select count(*) into emp_count from emp;
-	/*给变量赋值*/
-	set sal := 5000.0;
-	/*读取变量的值*/
-	select emp_count;
-	/*读取变量的值*/
-	select sal;
+    /*声明变量*/
+    declare emp_count int default 0;
+    /*声明变量*/
+    declare sal double(10,2) default 0.0;
+    /*给变量赋值*/
+    select count(*) into emp_count from emp;
+    /*给变量赋值*/
+    set sal := 5000.0;
+    /*读取变量的值*/
+    select emp_count;
+    /*读取变量的值*/
+    select sal;
 end;
 ```
 ```sql
@@ -202,16 +202,16 @@ end if;
 ```sql
 create procedure p3()
 begin
-	declare sal int default 5000;
-	declare grade varchar(20);
-	if sal > 10000 then
-  	set grade := '高收入';
-	elseif sal >= 6000 then
-  	set grade := '中收入';
-	else
-  	set grade := '低收入';
-	end if;
-	select grade;
+    declare sal int default 5000;
+    declare grade varchar(20);
+    if sal > 10000 then
+      set grade := '高收入';
+    elseif sal >= 6000 then
+      set grade := '中收入';
+    else
+      set grade := '低收入';
+    end if;
+    select grade;
 end;
 ```
 ```sql
@@ -230,13 +230,13 @@ call p3();
 ```sql
 create procedure p4(in sal int, out grade varchar(20))
 begin
-	if sal > 10000 then
-  	set grade := '高收入';
-	elseif sal >= 6000 then
-  	set grade := '中收入';
-	else
-  	set grade := '低收入';
-	end if;
+    if sal > 10000 then
+      set grade := '高收入';
+    elseif sal >= 6000 then
+      set grade := '中收入';
+    else
+      set grade := '低收入';
+    end if;
 end;
 ```
 ```sql
@@ -248,7 +248,7 @@ select @grade;
 ```sql
 create procedure p5(inout sal int)
 begin
-	set sal := sal * 1.1;
+    set sal := sal * 1.1;
 end;
 ```
 ```sql
@@ -263,26 +263,26 @@ select @sal;
 语法格式：
 ```sql
 case 值
-	when 值1 then
-	......
-	when 值2 then
-	......
-	when 值3 then
-	......
-	els
-	......
+    when 值1 then
+    ......
+    when 值2 then
+    ......
+    when 值3 then
+    ......
+    els
+    ......
 end case;
 ```
 ```sql
 case
-	when 条件1 then
-	......
-	when 条件2 then
-	......
-	when 条件3 then
-	......
-	else
-	......
+    when 条件1 then
+    ......
+    when 条件2 then
+    ......
+    when 条件3 then
+    ......
+    else
+    ......
 end case;
 ```
 
@@ -290,38 +290,38 @@ end case;
 ```sql
 create procedure mypro(in month int, out result varchar(100))
 begin 
-	case month
-		when 3 then set result := '春季';
-		when 4 then set result := '春季';
-		when 5 then set result := '春季';
-		when 6 then set result := '夏季';
-		when 7 then set result := '夏季';
-		when 8 then set result := '夏季';
-		when 9 then set result := '秋季';
-		when 10 then set result := '秋季';
-		when 11 then set result := '秋季';
-		when 12 then set result := '冬季';
-		when 1 then set result := '冬季';
-		when 2 then set result := '冬季';
-		else set result := '非法月份';
-	end case;
+    case month
+        when 3 then set result := '春季';
+        when 4 then set result := '春季';
+        when 5 then set result := '春季';
+        when 6 then set result := '夏季';
+        when 7 then set result := '夏季';
+        when 8 then set result := '夏季';
+        when 9 then set result := '秋季';
+        when 10 then set result := '秋季';
+        when 11 then set result := '秋季';
+        when 12 then set result := '冬季';
+        when 1 then set result := '冬季';
+        when 2 then set result := '冬季';
+        else set result := '非法月份';
+    end case;
 end;
 ```
 ```sql
 create procedure mypro(in month int, out result varchar(100))
 begin 
-	case 
-		when month = 3 or month = 4 or month = 5 then 
-			set result := '春季';
-		when  month = 6 or month = 7 or month = 8  then 
-			set result := '夏季';
-		when  month = 9 or month = 10 or month = 11  then 
-			set result := '秋季';
-		when  month = 12 or month = 1 or month = 2  then 
-			set result := '冬季';
-		else 
-			set result := '非法月份';
-	end case;
+    case 
+        when month = 3 or month = 4 or month = 5 then 
+            set result := '春季';
+        when  month = 6 or month = 7 or month = 8  then 
+            set result := '夏季';
+        when  month = 9 or month = 10 or month = 11  then 
+            set result := '秋季';
+        when  month = 12 or month = 1 or month = 2  then 
+            set result := '冬季';
+        else 
+            set result := '非法月份';
+    end case;
 end;
 ```
 ```sql
@@ -334,7 +334,7 @@ select @season;
 语法格式：
 ```sql
 while 条件 do
-	循环体;
+    循环体;
 end while;
 ```
 
@@ -342,14 +342,14 @@ end while;
 ```sql
 create procedure mypro(in n int)
 begin
-	declare sum int default 0;
-	while n > 0 do
-  		if n % 2 = 0 then
-    		set sum := sum + n;
-  		end if;
-  		set n := n - 1;
-	end while;
-	select sum;
+    declare sum int default 0;
+    while n > 0 do
+          if n % 2 = 0 then
+            set sum := sum + n;
+          end if;
+          set n := n - 1;
+    end while;
+    select sum;
 end;
 ```
 ```sql
@@ -361,8 +361,8 @@ call mypro(10);
 语法格式：
 ```sql
 repeat
-	循环体;
-	until 条件
+    循环体;
+    until 条件
 end repeat;
 ```
 注意：条件成立时结束循环。
@@ -371,14 +371,14 @@ end repeat;
 ```sql
 create procedure mypro(in n int, out sum int)
 begin 
-	set sum := 0;
-	repeat 
-		if n % 2 = 0 then 
-		  set sum := sum + n;
-		end if;
-		set n := n - 1;
-		until n <= 0
-	end repeat;
+    set sum := 0;
+    repeat 
+        if n % 2 = 0 then 
+          set sum := sum + n;
+        end if;
+        set n := n - 1;
+        until n <= 0
+    end repeat;
 end;
 ```
 ```sql
@@ -392,30 +392,30 @@ select @sum;
 ```sql
 create procedure mypro()
 begin 
-	declare i int default 0;
+    declare i int default 0;
   mylp:loop 
-		set i := i + 1;
-		if i = 5 then 
-			leave mylp;
-		end if;
-		select i;
-	end loop;
+        set i := i + 1;
+        if i = 5 then 
+            leave mylp;
+        end if;
+        select i;
+    end loop;
 end;
 ```
 ```sql
 create procedure mypro()
 begin 
-	declare i int default 0;
+    declare i int default 0;
   mylp:loop 
-		set i := i + 1;
-		if i = 5 then 
-			iterate mylp;
-		end if;
-		if i = 10 then 
-		  leave mylp;
-		end if;
-		select i;
-	end loop;
+        set i := i + 1;
+        if i = 5 then 
+            iterate mylp;
+        end if;
+        if i = 10 then 
+          leave mylp;
+        end if;
+        select i;
+    end loop;
 end;
 ```
 
@@ -450,24 +450,24 @@ drop procedure if exists mypro;
 create procedure mypro()
 begin 
 
-	declare no int;
-	declare name varchar(100);
-	declare dept_cursor cursor for select deptno,dname from dept;
+    declare no int;
+    declare name varchar(100);
+    declare dept_cursor cursor for select deptno,dname from dept;
 
-	drop table if exists dept2;
-	create table dept2(
-		no int primary key,
-		name varchar(100)
-	);
-	
-	open dept_cursor;
-	
-	while true do
-		fetch dept_cursor into no, name;
-		insert into dept2(no,name) values(no,name);
-	end while;
-	
-	close dept_cursor;
+    drop table if exists dept2;
+    create table dept2(
+        no int primary key,
+        name varchar(100)
+    );
+    
+    open dept_cursor;
+    
+    while true do
+        fetch dept_cursor into no, name;
+        insert into dept2(no,name) values(no,name);
+    end while;
+    
+    close dept_cursor;
 end;
 
 call mypro();
@@ -489,13 +489,13 @@ DECLARE handler_name HANDLER FOR condition_value action_statement
 ```
 
 1. `handler_name` 表示异常处理程序的名称，重要取值包括：
-	1. `CONTINUE`：发生异常后，程序不会终止，会正常执行后续的过程。(捕捉)
-	2. `EXIT`：发生异常后，终止存储过程的执行。（上抛）
+    1. `CONTINUE`：发生异常后，程序不会终止，会正常执行后续的过程。(捕捉)
+    2. `EXIT`：发生异常后，终止存储过程的执行。（上抛）
 2. `condition_value` 是指捕获的异常，重要取值包括：
-	1. `SQLSTATE sqlstate_value`，例如：`SQLSTATE '02000'`
-	2. `SQLWARNING`，代表所有01开头的SQLSTATE
-	3. `NOT FOUND`，代表所有02开头的SQLSTATE
-	4. `SQLEXCEPTION`，代表除了01和02开头的所有SQLSTATE
+    1. `SQLSTATE sqlstate_value`，例如：`SQLSTATE '02000'`
+    2. `SQLWARNING`，代表所有01开头的SQLSTATE
+    3. `NOT FOUND`，代表所有02开头的SQLSTATE
+    4. `SQLEXCEPTION`，代表除了01和02开头的所有SQLSTATE
 3. `action_statement` 是指异常发生时执行的语句，例如：`CLOSE cursor_name`
 
 给之前的游标添加异常处理机制：
@@ -505,26 +505,26 @@ drop procedure if exists mypro;
 create procedure mypro()
 begin 
 
-	declare no int;
-	declare name varchar(100);
-	declare dept_cursor cursor for select deptno,dname from dept;
+    declare no int;
+    declare name varchar(100);
+    declare dept_cursor cursor for select deptno,dname from dept;
 
-	declare exit handler for not found close dept_cursor;
+    declare exit handler for not found close dept_cursor;
 
-	drop table if exists dept2;
-	create table dept2(
-		no int primary key,
-		name varchar(100)
-	);
-	
-	open dept_cursor;
-	
-	while true do
-		fetch dept_cursor into no, name;
-		insert into dept2(no,name) values(no,name);
-	end while;
-	
-	close dept_cursor;
+    drop table if exists dept2;
+    create table dept2(
+        no int primary key,
+        name varchar(100)
+    );
+    
+    open dept_cursor;
+    
+    while true do
+        fetch dept_cursor into no, name;
+        insert into dept2(no,name) values(no,name);
+    end while;
+    
+    close dept_cursor;
 end;
 
 call mypro();

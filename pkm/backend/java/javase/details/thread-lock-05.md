@@ -55,7 +55,7 @@ class ThreadTicket extends Thread {
 ```java
 public class Ticket {
     public static void main(String[] args) {
-	    ThreadTicket ticket = new ThreadTicket();  
+        ThreadTicket ticket = new ThreadTicket();  
         new Thread(ticket, "窗口1").start(); 
         new Thread(ticket, "窗口2").start(); 
         new Thread(ticket, "窗口3").start();
@@ -68,18 +68,18 @@ class ThreadTicket extends Thread {
   
     public boolean sell(){  
         synchronized(obj) { // <- 这样
-	        if (ticket <= 0) {  
-	            System.out.println("已卖完");  
-	            return false;  
-	        }else{  
-	            try{  
-	                Thread.sleep(50);  
-	            }catch (InterruptedException e){  
-	                e.printStackTrace();  
-	            }            
-	            System.out.println(Thread.currentThread().getName()+"售出一张票, 还剩余"+ --ticket);  
-	            return true;  
-	        }   
+            if (ticket <= 0) {  
+                System.out.println("已卖完");  
+                return false;  
+            }else{  
+                try{  
+                    Thread.sleep(50);  
+                }catch (InterruptedException e){  
+                    e.printStackTrace();  
+                }            
+                System.out.println(Thread.currentThread().getName()+"售出一张票, 还剩余"+ --ticket);  
+                return true;  
+            }   
         } 
     }
     @Override  

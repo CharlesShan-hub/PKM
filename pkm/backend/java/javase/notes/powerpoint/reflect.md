@@ -257,8 +257,8 @@ public class ReflectTest04 {
         System.out.println(fields.length);  
         // 遍历数组  
         for(Field field : fields){            
-	        System.out.println(field.getName());        
-	    }*/  
+            System.out.println(field.getName());        
+        }*/  
   
         for(Field field : fields){  
             // 获取属性名  
@@ -457,9 +457,9 @@ public class ReflectTest08 {
             /*
             Class<?>[] parameterTypes = method.getParameterTypes();  
             for (Class parameterType : parameterTypes){                
-	            System.out.println(parameterType.getName());            
-	        }
-	        */  
+                System.out.println(parameterType.getName());            
+            }
+            */  
             Parameter[] parameters = method.getParameters();  
             for (Parameter parameter : parameters){  
                 System.out.println(parameter.getType().getName());  
@@ -668,12 +668,12 @@ import java.lang.reflect.Parameter;
  */  
 public class ReflectTest11 {  
     public static void main(String[] args) throws Exception{  
-	    getByReflect();
-		buildByReflect();
+        getByReflect();
+        buildByReflect();
     }  
 
-	public static void getByReflect() throws Exception{
-		StringBuilder sb = new StringBuilder();  
+    public static void getByReflect() throws Exception{
+        StringBuilder sb = new StringBuilder();  
         // 获取类  
         Class clazz = Class.forName("com.powernode.javase.reflect.Order");  
         // 类的修饰符  
@@ -728,37 +728,37 @@ public class ReflectTest11 {
         sb.append("}");  
   
         System.out.println(sb); 
-	}
+    }
 
-	public static void buildByReflect() throws Exception{
-		// 不使用反射机制的时候，怎么创建的对象？  
-		Order order1 = new Order();  
-		System.out.println(order1);  
-		  
-		Order order2 = new Order("1111122222", 3650.5, "已完成");  
-		System.out.println(order2);  
-		  
-		// 通过反射机制来实例化对象？  
-		Class clazz = Class.forName("com.powernode.javase.reflect.Order");  
-		// 这种方式依赖的是必须有一个无参数构造方法。如果没有会出现异常！  
-		// 在Java9的时候，这个方法被标注了已过时。不建议使用了。  
-		/*
-		Object obj = clazz.newInstance();  
-		System.out.println(obj);
-		*/  
-		  
-		// 获取Order的无参数构造方法  
-		Constructor defaultCon = clazz.getDeclaredConstructor();  
-		// 调用无参数构造方法实例化对象  
-		Object obj = defaultCon.newInstance();  
-		System.out.println(obj);  
-		  
-		// 获取三个参数的构造方法  
-		Constructor threeArgsCon = clazz.getDeclaredConstructor(String.class, double.class, String.class);  
-		// 调用三个参数的构造方法  
-		Object obj1 = threeArgsCon.newInstance("5552454222", 6985.0, "未完成");  
-		System.out.println(obj1);
-	}
+    public static void buildByReflect() throws Exception{
+        // 不使用反射机制的时候，怎么创建的对象？  
+        Order order1 = new Order();  
+        System.out.println(order1);  
+          
+        Order order2 = new Order("1111122222", 3650.5, "已完成");  
+        System.out.println(order2);  
+          
+        // 通过反射机制来实例化对象？  
+        Class clazz = Class.forName("com.powernode.javase.reflect.Order");  
+        // 这种方式依赖的是必须有一个无参数构造方法。如果没有会出现异常！  
+        // 在Java9的时候，这个方法被标注了已过时。不建议使用了。  
+        /*
+        Object obj = clazz.newInstance();  
+        System.out.println(obj);
+        */  
+          
+        // 获取Order的无参数构造方法  
+        Constructor defaultCon = clazz.getDeclaredConstructor();  
+        // 调用无参数构造方法实例化对象  
+        Object obj = defaultCon.newInstance();  
+        System.out.println(obj);  
+          
+        // 获取三个参数的构造方法  
+        Constructor threeArgsCon = clazz.getDeclaredConstructor(String.class, double.class, String.class);  
+        // 调用三个参数的构造方法  
+        Object obj1 = threeArgsCon.newInstance("5552454222", 6985.0, "未完成");  
+        System.out.println(obj1);
+    }
 } 
   
 class Order {  
@@ -879,18 +879,18 @@ public class ReflectTest13 {
 ### 类加载的过程
 
 1. **装载**（loading）
-	* 类加载器负责将类的class文件读入内存，并创建一个java.lang.Class对象
+    * 类加载器负责将类的class文件读入内存，并创建一个java.lang.Class对象
 2. **连接**(linking)
-	1. 验证（Verify）
-		* 确保加载类的信息符合JVM规范。
-	2. 准备（Prepare）
-		* 正式为静态变量在方法区中开辟存储空间并设置默认值
-		* public static int k = 10; 此时：k会赋值0
-		* public static final int f = 10; 此时： f会赋值10
-	3. 解析（Resolve）
-		* 将虚拟机常量池内的符号引用替换为直接引用（地址）的过程。
+    1. 验证（Verify）
+        * 确保加载类的信息符合JVM规范。
+    2. 准备（Prepare）
+        * 正式为静态变量在方法区中开辟存储空间并设置默认值
+        * public static int k = 10; 此时：k会赋值0
+        * public static final int f = 10; 此时： f会赋值10
+    3. 解析（Resolve）
+        * 将虚拟机常量池内的符号引用替换为直接引用（地址）的过程。
 3. **初始化**（initialization）
-	* 静态变量赋值，静态代码块执行
+    * 静态变量赋值，静态代码块执行
 
 低版本的JDK中类加载器的名字：
 * 启动类加载器：`负责加载rt.jar`
@@ -903,10 +903,10 @@ public class ReflectTest13 {
 2. 实例方法：`Class clazz = 引用.getClass();`
 3. class属性：`Class clazz = 类型名.class;`
 4. 通过类加载器获取
-	```java
-	ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-	Class clazz = classLoader.loadClass(“全限定类名”);
-	```
+    ```java
+    ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+    Class clazz = classLoader.loadClass(“全限定类名”);
+    ```
 
 Class.forName和classLoader.loadClass()的区别？
 * Class.forName()：类加载时会进行初始化。
@@ -941,10 +941,10 @@ public class ReflectTest14 {
 ### 类加载器
 
 1. 虚拟机内部提供了三种类加载器（Java9+）：
-	1. **启动类加载器**（BootstrapClassLoader）：加载Java最核心的类，例如String
-	2. **平台类加载器**（PlatformClassLoader）：加载Java平台扩展的类库，例如解析XML的
-	3. **应用类加载器**（AppClassLoader）：加载classpath中的
-	4. 同时我们还可以自定义一个类加载器（UserClassLoader）
+    1. **启动类加载器**（BootstrapClassLoader）：加载Java最核心的类，例如String
+    2. **平台类加载器**（PlatformClassLoader）：加载Java平台扩展的类库，例如解析XML的
+    3. **应用类加载器**（AppClassLoader）：加载classpath中的
+    4. 同时我们还可以自定义一个类加载器（UserClassLoader）
 2. 获取类加载器可以通过 getParent()方法一级一级获取
 
 ```java
@@ -993,8 +993,8 @@ public class ReflectTest15 {
 1. 某个类加载器接收到加载类的任务时，通常委托给“父 类加载”完成加载。
 2. 最“父 类加载器”无法加载时，一级一级向下委托加载任务。
 3. 作用：
-	1. 保护程序的安全。
-	2. 防止类加载重复。
+    1. 保护程序的安全。
+    2. 防止类加载重复。
 ![[resources/双亲委派.png]]
 
 ---

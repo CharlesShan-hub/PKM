@@ -26,38 +26,38 @@
 
 * 要求：方法名必须相同，参数列表必须不同，对返回类型无要求
 
-	```java
-	// 与下边构成方法重载的
-	void show(int a, char b, double c){}
-	
-	void show(int x, char y, double z){} // 不是
-	int show(int a, double c, char b){}  // 是
-	void show(int a, double c, char b){} // 是
-	boolean show(int c, char b){}        // 是
-	void show(double c){}                // 是
-	double show(int x, char y, double z){}//不是
-	void shows(){}                       // 不是
-	```
+    ```java
+    // 与下边构成方法重载的
+    void show(int a, char b, double c){}
+    
+    void show(int x, char y, double z){} // 不是
+    int show(int a, double c, char b){}  // 是
+    void show(int a, double c, char b){} // 是
+    boolean show(int c, char b){}        // 是
+    void show(double c){}                // 是
+    double show(int x, char y, double z){}//不是
+    void shows(){}                       // 不是
+    ```
 
 * 构造器也可以进行方法重载
 
-	```java
-	class Cat{
-	 int age;
-	 String name;
-	 Cat(){
-	   this(0,"Default");
-	 }
-	 Cat(int age){
-	   this(age,"Default");
-	 }
-	 Cat(String name){
-	   this(0,name);
-	 }
-	 Cat(int age, String name){
-	   this.age = age;
-	   this.name = name;
-	 }
-	}
-	```
+    ```java
+    class Cat{
+     int age;
+     String name;
+     Cat(){
+       this(0,"Default");
+     }
+     Cat(int age){
+       this(age,"Default");
+     }
+     Cat(String name){
+       this(0,name);
+     }
+     Cat(int age, String name){
+       this.age = age;
+       this.name = name;
+     }
+    }
+    ```
 

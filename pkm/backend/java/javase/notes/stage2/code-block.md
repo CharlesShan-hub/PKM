@@ -14,7 +14,7 @@
 
 ```java
 [修饰符]{ // 修饰符只能是 static 或者省略
-	代码
+    代码
 }
 ```
 
@@ -170,7 +170,7 @@ class A {
         System.out.println("A 静态代码块01");
     }
     
-	// 静态属性的初始化
+    // 静态属性的初始化
     private static int n1 = getN1();
 
     public static int getN1() {
@@ -366,10 +366,10 @@ class Test {
     Test() {
         System.out.println("Test默认构造函数被调用");
     }
-	// 主方法
-	public static void main(String str[]) {
-	    Test a = new Test(); // 无参构造器
-	}
+    // 主方法
+    public static void main(String str[]) {
+        Test a = new Test(); // 无参构造器
+    }
 }
 ```
 

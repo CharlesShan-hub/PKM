@@ -102,9 +102,9 @@
 
       ```java
       class Cat{
-      	public void miao(){
-      		System.out.println("Miao~");
-      	}
+          public void miao(){
+              System.out.println("Miao~");
+          }
         public void doubleMiao(){
           miao();//同一个类中：直接调用 (和 python 不一样)
           miao();
@@ -116,9 +116,9 @@
 
       ```java
       class Cat{
-      	public void miao(){
-      		System.out.println("Miao~");
-      	}
+          public void miao(){
+              System.out.println("Miao~");
+          }
       }
       class Dog{
         public void biteCat(){
@@ -154,8 +154,8 @@ class Calculator{
 3. 当方法执行到return（执行完毕），就会返回到调用方法的地方
 
 ```json
-{	
-	"栈": 
+{    
+    "栈": 
   {
     "main栈":
     {
@@ -352,30 +352,30 @@ System.out.println("z2.age="+z2.age); //2
         Person(){} // <- 默认构造器
     }
 
-	// 但是当用户写了构造器之后，默认构造器就没了，就不能再直接new Person();了，除非显示的写出来Person(){}
-	```
+    // 但是当用户写了构造器之后，默认构造器就没了，就不能再直接new Person();了，除非显示的写出来Person(){}
+    ```
 
 3. 对象创建流程的分析（面试题）
 
-	```java
-	class Person{
-		int age = 90;
-		String name;
-		Person(String n, int a){
-			name = n;
-			age = a;
-		}
-	}
-	```
+    ```java
+    class Person{
+        int age = 90;
+        String name;
+        Person(String n, int a){
+            name = n;
+            age = a;
+        }
+    }
+    ```
 
   4. 构造器搭配[this](this.md)可以写出更优雅的代码；
   5. 下面是执行`Person p = new Person("小倩",20);`的流程
-	  1. 在「方法区」加载「类信息(Person类)」
-	  2. 在「堆」开辟空间，比如「0x1122」，里边有age和name两个字段，
-	  3. age默认是0，name默认是null，这一步是「隐式初始化」
-	  4. 进行「显式初始化」，age赋值成90
-	  5. 运行「构造函数」，age赋值成20，name赋值成0x1133，0x1133是常量池中保存name的位置的地址，该地址保存名字“小倩”
-	  6. 最后把0x1122赋值到「栈」里边的p变量，p是对象的引用
+      1. 在「方法区」加载「类信息(Person类)」
+      2. 在「堆」开辟空间，比如「0x1122」，里边有age和name两个字段，
+      3. age默认是0，name默认是null，这一步是「隐式初始化」
+      4. 进行「显式初始化」，age赋值成90
+      5. 运行「构造函数」，age赋值成20，name赋值成0x1133，0x1133是常量池中保存name的位置的地址，该地址保存名字“小倩”
+      6. 最后把0x1122赋值到「栈」里边的p变量，p是对象的引用
 
 ---
 
@@ -390,31 +390,31 @@ System.out.println("z2.age="+z2.age); //2
 
 ```java
 public class Demo{
-	public static void main(String[] args){
-	}
+    public static void main(String[] args){
+    }
 }
 
 class Cat{
-	double weight; // 默认是 0.0，属性（全局变量）会有默认值
-	public void hi(){
-		double weight2;
-		System.out.println(weight2);// 这个报错，因为局部变量没有初始化
-	}
+    double weight; // 默认是 0.0，属性（全局变量）会有默认值
+    public void hi(){
+        double weight2;
+        System.out.println(weight2);// 这个报错，因为局部变量没有初始化
+    }
 }
 ```
 
 ```java
 public class Demo{
-	public static void main(String[] args){
-	}
+    public static void main(String[] args){
+    }
 }
 
 class Cat{
-	double weight = 10.0;
-	public void hi(){
-		double weight = 20.0;// 可以重名，访问按照就近原则
-		System.out.println(weight);// 20.0
-	}
+    double weight = 10.0;
+    public void hi(){
+        double weight = 20.0;// 可以重名，访问按照就近原则
+        System.out.println(weight);// 20.0
+    }
 }
 ```
 

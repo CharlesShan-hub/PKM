@@ -54,8 +54,8 @@ select * from 表名;
 ```
 
 * 采用`*`进行查询存在的缺点：
-	- `select * from dept;` 在执行的时候会被解析为 `select DEPTNO, DNAME, LOC from dept;` 再执行，所以这种效率方面弱一些。
-	- 采用`*`的可读性较差，通过`*`很难看出都有哪些具体的字段。
+    - `select * from dept;` 在执行的时候会被解析为 `select DEPTNO, DNAME, LOC from dept;` 再执行，所以这种效率方面弱一些。
+    - 采用`*`的可读性较差，通过`*`很难看出都有哪些具体的字段。
 - 什么时候使用`*`：这个SQL语句不在项目编码中使用，更常用语平时自己想快速查看表中所有数据。
 - 案例：查询部门表所有信息 [select-03](../details/select-03.md)
 
@@ -121,16 +121,16 @@ where
 | exists / not exists   | 存在 / 不存在        | [select-13](../details/select-13.md) |
 | like                  | 模糊查询            | [select-14](../details/select-14.md) |
 * mysql和orcal区别
-	* MySQL判断字符串相等不区分大小写
-	* Oracle判断字符串相等区分大小写
+    * MySQL判断字符串相等不区分大小写
+    * Oracle判断字符串相等区分大小写
 * and和or的优先级问题
-	* **and优先级较高，会先执行**，如果希望or先执行，可以添加小括号。
-	* 可以通过添加小括号的方式来解决。对于优先级问题没必要记忆。
+    * **and优先级较高，会先执行**，如果希望or先执行，可以添加小括号。
+    * 可以通过添加小括号的方式来解决。对于优先级问题没必要记忆。
 * 在MySQL当中，如何统计一个SQL语句的执行时长？[sql-time](../details/sql-time.md)
 * in和or的效率比拼：`or`的效率为O(n)，而`in`的效率为O(log n), 当n越大的时候效率相差越明显（也就是说数据量越大的时候，in的效率越高）。[select-in-or](../details/select-in-or.md)
 * in不要使用null
-	* **in自动忽略NULL**
-	* **not in是不会自动忽略NULL**
+    * **in自动忽略NULL**
+    * **not in是不会自动忽略NULL**
 * where后边不能用[分组函数](function2.md)
 ---
 ## `ORDER BY`
