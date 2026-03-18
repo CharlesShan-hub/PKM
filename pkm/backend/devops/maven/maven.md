@@ -3,6 +3,7 @@
 
 
 * [Introduction](./notes/introduction.md)
+* [Command](./notes/command.md)
 
 ---
 
@@ -20,7 +21,7 @@
 1. pom
    1. parent（父工程 GAV）
    2. 本项目GAV：group，artifact，version（SNAPSHOT临时，RELEASE发布）
-   3. 打包方式（jar：普通java项目与springboot项目 因为springboot里边已经有tomcat了，war：web项目）
+   3. 打包方式（jar：普通Java项目与springboot项目 因为springboot里边已经有tomcat了，war：web项目）
    4. properties：集中化管理版本号，重点在“集中化”（ex：定义springboot版本号3.5.4）
    5. dependencyManagement：管理版本（并不会 真正的加载包），相当于一个父模块（ex：定义需要springboot-data，springboot-sequrity等）
    6. dependency：依赖。这里就不用写version了，如果写version就把dependencyManagement的覆盖了（ex：作为子模块，可能之引入了springboot-data）
@@ -30,12 +31,12 @@
       3. resources：配置文件
 2. 工程的目录结构
    1. src
-      1. main：java/resources。java和resources这两个文件夹里边的内容都等于是根路径下的文件。
-      2. test：java/resources
+      1. main：`java/resources`。`java`和`resources`这两个文件夹里边的内容都等于是根路径下的文件。
+      2. test：`java/resources`
    2. pom.xml
 3. 仓库：存构件（artifact）的位置。默认用户的根目录。
-   1. 中央仓库：https://repo.maven.apache.org/maven2
-   2. 找坐标：http://mvnrepository.com/
+   1. 中央仓库：<https://repo.maven.apache.org/maven2>
+   2. 找坐标：<http://mvnrepository.com/>
 
 4. 生命周期与插件
    1. default：项目构建+部署
@@ -43,12 +44,12 @@
    3. site：生成文档
 
 5. 安装与配置
-   1. 不用idea的本地配置：新建环境变量 MAVEN_HOME（不要带bin的路径），然后保证也要有JAVA_HOME（到jdkxxx这一层），最后把上边两个加到PATH里，`%JAVA_HOME%\bin`，`%MAVEN_HOME%\bin`
+   1. 不用idea的本地配置：新建环境变量 MAVEN_HOME（不要带bin的路径），然后保证也要有`JAVA_HOME`（到jdkxxx这一层），最后把上边两个加到PATH里，`%JAVA_HOME%\bin`，`%MAVEN_HOME%\bin`
    2. 可以指定本地仓库目录：localRepository
    3. 默认的远程仓库：mirros
-   4. jdk自适应构建，这样编译的时候可以默认使用某一个版本的java
+   4. jdk自适应构建，这样编译的时候可以默认使用某一个版本的Java
 
-6. 
+6.
 
 ---
 
@@ -77,15 +78,6 @@
 ---
 
 ## 私服
-
-
-
-
-
-
-
-
-
 
 
 

@@ -4,8 +4,8 @@
 
 ## maven是什么
 
-1. Maven 是自动化构建工具。
-2. Maven 由 Apache 软件基金会组织维护。
+1. Maven 是**自动化构建工具**。
+2. Maven 由 **Apache** 软件基金会组织维护。
 3. Maven 这个单词的本意是：专家，内行。
 4. 类似 Maven 自动化构建工具还有：Gant,  Gradle。
 5. Maven的两大核心功能：**依赖管理**（蓝色）、**项目构建**（黄色）。
@@ -16,24 +16,28 @@
 
 ## 依赖管理
 
-1. GAV坐标：项目的唯一名称，创建项目时定义gav名称，引用项目时使用gav名称。相当于项目的身份证号。
+1. **依赖（Dependency）** 是 Maven 项目中声明的外部库（如 JAR 文件），通过 `pom.xml` 中的 `<dependency>`标签定义，构建时会自动从仓库下载并引入到项目中。
+
+2. **GAV坐标**：项目的唯一名称，创建项目时定义GAV名称，引用项目时使用GAV名称。相当于项目的身份证号。
 
    1. `groupId`：组织名称，一般是公司域名的倒写
-   2. `artifactId`：项目名称 
+
+   2. `artifactId`：项目名称
+
    3. `version`：版本号
       1. 1.0-SNAPSHOT（开发时的临时版本号）
       2. 5.2.5.RELEASE（发布版本）
 
-   ```xml
-   <groupId>com.jkweilai</groupId>
-   <artifactId>maven_project</artifactId>	  
-   <version>1.0.0</version>
-   ```
+        ```xml
+        <groupId>com.jkweilai</groupId>
+        <artifactId>maven_project</artifactId>	  
+        <version>1.0.0</version>
+        ```
 
-2. 仓库的种类
+3. **仓库**的种类
 
    1. 本地仓库：默认存放在自己电脑的`~\.m2\repository`中。也可以通过Maven的配置文件`MAVEN_HOME/conf/settings.xml`修改本地仓库所在的目录。
-   2. 远程仓库：
+   2. 远程仓库
       1. 私服：一种特殊的远程仓库，在局域网内的仓库服务，比如公司的共享环境。
       2. 中央仓库：全世界范围内的开发人员提供服务。
          1. Maven官方的中央仓库地址：<https://repo.maven.apache.org/maven2>
@@ -57,6 +61,24 @@
 
 ---
 
+## 目录结构
+
+Maven工程的目录结构遵循：工程与测试分开，代码与配置分开。
+
+```plain
+maven_project
+|-----src
+    |--------main
+        |------java
+        |------resources
+    |--------test
+        |------java
+        |------resources
+|-----pom.xml
+```
+
+---
+
 ## POM
 
 POM(Project Object Model)项目对象模型，它是Maven的核心组件。它是Maven中的基本工作单元。它是一个xml文件，以pom.xml驻留在项目的根目录中。👉[pom.xml案例](../details/pom-example.md)
@@ -70,9 +92,28 @@ POM(Project Object Model)项目对象模型，它是Maven的核心组件。它�
 7. `<plugins>`：插件。项目构建的环节使用的插件，可以在这里自定义。
 8. `<resources>`：配置文件，可以在这里手动引入。
 
+---
 
+## 生命周期与插件
 
+1. 名词解释：Maven 的构建过程由**生命周期（Lifecycle）**驱动，它是一组**预定义的、有序的阶段（Phases）**，用于标准化项目的构建流程（如编译、测试、打包）。但需要注意的是：**生命周期本身只定义阶段顺序，不包含任何具体逻辑！**真正干活的是**插件（Plugins）**。
 
+2. 三大生命周期
 
+   |      `default`       |   `clean`    |     `site`     |
+   | :------------------: | :----------: | :------------: |
+   | 构建和部署的完整过程 | 清理构建产物 | 生成文档和报告 |
+   |      `validate`      | `pre-clean`  |   `pre-site`   |
+   |      `compile`       |   `clean`    |     `site`     |
+   |        `test`        | `post-clean` |  `post-site`   |
+   |      `package`       |              | `site-deploy`  |
+   |       `verify`       |              |                |
+   |      `install`       |              |                |
+   |       `deploy`       |              |                |
+
+3. 插件的绑定
+   1. 默认插件：每一个上述的阶段（Phase）都一一对应一个内置的插件。
+   2. 自定义插件：可以在pom.xml里边的`<build>`的`<plugins>`中自定义。
+   3. 如果没有插件，这个阶段会被跳过。
 
 
