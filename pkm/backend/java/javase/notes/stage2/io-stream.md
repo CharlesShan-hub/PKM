@@ -1,9 +1,11 @@
 # IO流
 
 ---
+
 ## ✏️ IO 流
 
 ### 流的原理
+
 1. 字符流（文本文件）、字节流（二进制文件）
 2. 输入流、输出流
 3. 节点流/低级流、处理流/包装流：包装流就是本身不能工作，需要包装进来一个别的类来工作。
@@ -14,6 +16,7 @@
     4. 字符流+输出流：`Writer`
 
 ### 流的分类
+
 ![io-drawing|1000](../../assets/io-drawing.md)
 
 |       分类       |                      字节输入流                      |                       字节输出流                       |                字符输入流                |                字符输出流                | 节点流/处理流 |
@@ -31,6 +34,7 @@
 |  ​**​特殊流​**​   |      [DataInputStream](DataInputStream.md)      |      [DataOutputStream](DataOutputStream.md)      |            StringReader             |            StringWriter             |   节点流   |
 
 ---
+
 ## 🍭 标准输入输出
 
 ### 标准输入
@@ -38,6 +42,7 @@
 * 源码：`public final static InputStream in = null;`
 * `System.in`编译类型：`InputStream`
 * `System.in`运行类型：`BufferedInputStream`
+
 ```java
 public class SystemInTest {
     public static void main(String[] args) {
@@ -46,7 +51,9 @@ public class SystemInTest {
     }
 }
 ```
+
 * 案例
+
 ```java
 package com.powernode.javase.io;  
   
@@ -80,7 +87,9 @@ public class SystemInTest {
     }  
 }
 ```
+
 * 修改数据源
+
 ```java
 package com.powernode.javase.io;  
   
@@ -107,12 +116,14 @@ public class SystemInTest02 {
     }  
 }
 ```
+
 ### 标准输出
 
 * 源码：`public final static PrintStream out = null;`
 * `System.out.print()`就是`System.in.write()`
 * `System.out`编译类型：`PrintStream`
 * `System.out`运行类型：`PrintStream`
+
 ```java
 public class SystemInTest {
     public static void main(String[] args) {
@@ -167,7 +178,9 @@ public class SystemOutTest {
 ```
 
 ---
+
 ## 🍭 配置文件
+
 ### Properties
 
 1. 介绍：
@@ -181,6 +194,7 @@ public class SystemOutTest {
     * `getProperty(String key)`：获取属性值
     * `store(OutputStream out, String comments)`：将属性列表写入输出流
 3. 示例：
+
     ```java
     import java.io.*;
     import java.util.Properties;
@@ -212,7 +226,7 @@ public class SystemOutTest {
         }
     }
     ```
-    
+
 ### ResourceBundle资源绑定
 
 配置文件如下
@@ -226,6 +240,7 @@ password=11111
 ```
 
 代码
+
 ```java
 package com.powernode.javase.io;  
   

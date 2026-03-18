@@ -1,18 +1,20 @@
 # Mybatis Introduction
 
 ---
+
 ## 资料
 
-* 黑马mybatis教程: https://www.bilibili.com/video/BV1MT4y1k7wZ
-* 动力节点: https://www.bilibili.com/video/BV1JP4y1Z73S
-* 官网: https://mybatis.org/mybatis-3/zh_CN/index.html
-* github:  https://github.com/mybatis/mybatis-3
-* 中文文档: https://mybatis.net.cn/
-* 语雀文档: https://www.yuque.com/dujubin/ltckqu/pozck9
-* 大佬笔记: https://blog.csdn.net/m0_53022813/article/details/128563832
+* 黑马mybatis教程: <https://www.bilibili.com/video/BV1MT4y1k7wZ>
+* 动力节点: <https://www.bilibili.com/video/BV1JP4y1Z73S>
+* 官网: <https://mybatis.org/mybatis-3/zh_CN/index.html>
+* github:  <https://github.com/mybatis/mybatis-3>
+* 中文文档: <https://mybatis.net.cn/>
+* 语雀文档: <https://www.yuque.com/dujubin/ltckqu/pozck9>
+* 大佬笔记: <https://blog.csdn.net/m0_53022813/article/details/128563832>
 * MyBatis 是一个 ​**​Java 持久层框架​**​，它通过 XML 或注解将 SQL 与 Java 对象映射，避免了传统 JDBC 的复杂代码。
 
 ---
+
 ## 概述
 
 ### 框架
@@ -20,31 +22,31 @@
 > 什么是框架
 > 一句话总结，框架就是提前写好了一堆接口和类
 
-- 在文献中看到的framework被翻译为框架
-- Java常用框架：
-	- SSM三大框架：Spring + SpringMVC + MyBatis
-	- SpringBoot
-	- SpringCloud
-	- 等。。
-- 框架其实就是对通用代码的封装，提前写好了一堆接口和类，我们可以在做项目的时候直接引入这些接口和类（引入框架），基于这些现有的接口和类进行开发，可以大大提高开发效率。
-- 框架一般都以jar包的形式存在。(jar包中有class文件以及各种配置文件等。)
-- SSM三大框架的学习顺序：MyBatis、Spring、SpringMVC（仅仅是建议）
+* 在文献中看到的framework被翻译为框架
+* Java常用框架：
+  * SSM三大框架：Spring + SpringMVC + MyBatis
+  * SpringBoot
+  * SpringCloud
+  * 等。。
+* 框架其实就是对通用代码的封装，提前写好了一堆接口和类，我们可以在做项目的时候直接引入这些接口和类（引入框架），基于这些现有的接口和类进行开发，可以大大提高开发效率。
+* 框架一般都以jar包的形式存在。(jar包中有class文件以及各种配置文件等。)
+* SSM三大框架的学习顺序：MyBatis、Spring、SpringMVC（仅仅是建议）
 
 ### 三层架构
 
 > 现在所有项目都是分层的，表现层、业务逻辑层、数据访问层。其中 MyBatis 就是数据访问层的框架之一。
 
-- **表现层（UI）**：直接跟前端打交互（一是接收前端ajax请求，二是返回json数据给前端）
-- **业务逻辑层（BLL）**：一是处理表现层转发过来的前端请求（也就是具体业务），二是将从持久层获取的数据返回到表现层。
-- **数据访问层/持久层（DAL）**：直接操作数据库完成CRUD，并将获得的数据返回到上一层（也就是业务逻辑层）。
-- Java持久层框架：
-	- MyBatis
-	- Hibernate（实现了JPA规范）
-	- jOOQ
-	- Guzz
-	- Spring Data（实现了JPA规范）
-	- ActiveJDBC
-	- ......
+* **表现层（UI）**：直接跟前端打交互（一是接收前端ajax请求，二是返回json数据给前端）
+* **业务逻辑层（BLL）**：一是处理表现层转发过来的前端请求（也就是具体业务），二是将从持久层获取的数据返回到表现层。
+* **数据访问层/持久层（DAL）**：直接操作数据库完成CRUD，并将获得的数据返回到上一层（也就是业务逻辑层）。
+* Java持久层框架：
+    - MyBatis
+    - Hibernate（实现了JPA规范）
+    - jOOQ
+    - Guzz
+    - Spring Data（实现了JPA规范）
+    - ActiveJDBC
+    - ......
 
 ### JDBC不足
 

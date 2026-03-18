@@ -3,9 +3,10 @@
 数组专题推荐浏览顺序：[array](../stage1/array.md) 👉 本文
 
 ---
+
 ## Arrays 类简介
 
-Arrays 类是 Java 中 java.util 包提供的一个工具类，主要用于操作数组（如排序、搜索、比较、填充等）。它包含了一系列静态方法，可以方便地对数组进行各种操作。
+Arrays 类是 Java 中 `java.util` 包提供的一个工具类，主要用于操作数组（如排序、搜索、比较、填充等）。它包含了一系列静态方法，可以方便地对数组进行各种操作。
 
 * `Arrays.toString()`：将数组转换成字符串
 * `Arrays.deepToString()`：可以将二维数组转换成字符串
@@ -26,58 +27,59 @@ Arrays 类是 Java 中 java.util 包提供的一个工具类，主要用于操�
 ### 主要功能
 
 1. **​排序​**​：对数组进行排序
-   
-    ```
+
+    ```java
     int[] numbers = {3, 1, 4, 2};
     Arrays.sort(numbers); // 排序后：[1, 2, 3, 4]
     ```
-    
+
 2. **​二分查找​**​：在已排序数组中查找元素
-   
-    ```
+
+    ```java
     int index = Arrays.binarySearch(numbers, 3); // 返回2
     ```
-    
+
 3. **​比较数组​**​：比较两个数组是否相等
-   
-    ```
+
+    ```java
     int[] arr1 = {1, 2, 3};
     int[] arr2 = {1, 2, 3};
     boolean isEqual = Arrays.equals(arr1, arr2); // 返回true
     ```
-    
+
 4. **​填充数组​**​：用指定值填充数组
-   
-    ```
+
+    ```java
     int[] filled = new int[5];
     Arrays.fill(filled, 7); // [7, 7, 7, 7, 7]
     ```
-    
+
 5. **​数组转字符串​**​：方便打印数组内容
-   
-    ```
+
+    ```java
     String arrayStr = Arrays.toString(numbers); // "[1, 2, 3, 4]"
     ```
-    
+
 6. **​复制数组​**​：复制数组的全部或部分
-   
-    ```
+
+    ```java
     int[] copy = Arrays.copyOf(numbers, numbers.length);
     ```
-    
+
 7. **​流操作​**​（Java 8+）：将数组转换为流
-   
-    ```
+
+    ```java
     Arrays.stream(numbers).forEach(System.out::println);
     ```
-    
+
 ### 特点
 
-- 所有方法都是静态的，无需创建 Arrays 实例
-- 支持基本类型数组和对象数组
-- 线程安全（因为方法都是无状态的）
+* 所有方法都是静态的，无需创建 Arrays 实例
+* 支持基本类型数组和对象数组
+* 线程安全（因为方法都是无状态的）
 
 ---
+
 ## toString
 
 比如要输出一个数组，可以循环的输出，也可以用 Arrays
@@ -139,14 +141,16 @@ System.out.println(Arrays.toString(boolArray));
 ```
 
 ---
+
 ## deepToString
 
 `deepToString()` 方法用于将多维数组转换为字符串表示形式，可以正确处理嵌套数组。
-- 专门用于多维数组或对象数组
-- 递归地转换嵌套数组
-- 输出格式为：`[[元素1, 元素2], [元素3, 元素4]]`
-- 如果数组为null，返回"null"
-- 可以处理任意深度的嵌套数组
+
+* 专门用于多维数组或对象数组
+* 递归地转换嵌套数组
+* 输出格式为：`[[元素1, 元素2], [元素3, 元素4]]`
+* 如果数组为null，返回"null"
+* 可以处理任意深度的嵌套数组
 
 ```java
 int[][] deepIntArray = {{1, 2}, {3, 4}, {5, 6}};
@@ -172,10 +176,11 @@ System.out.println(Arrays.toString(deepArray));
 ```
 
 ---
+
 ## equals
 
-- `equals()` - 比较两个数组是否相等
-- `deepEquals()` - 比较两个多维数组是否相等
+* `equals()` - 比较两个数组是否相等
+* `deepEquals()` - 比较两个多维数组是否相等
 
 ```java
 Integer[] a1 = new Integer[]{1,2,3};  
@@ -186,6 +191,7 @@ System.out.println(Arrays.equals(a1,a3)); // false
 ```
 
 ---
+
 ## sort
 
 ### 排序规则
@@ -317,13 +323,14 @@ System.out.println(Arrays.toString(data));
 ```
 
 性能考虑
-1. **​数据集大小​**​：
-    - 小数组（≤ 8192 元素）：`parallelSort()` 可能比 `sort()` 稍慢（由于并行开销）
-    - 大数组：`parallelSort()` 通常更快
-2. **​处理器核心数​**​：
-    - 核心越多，并行优势越明显
-3. **​内存考虑​**​：
-    - `parallelSort()` 需要额外的内存空间（约为原数组大小）
+
+1. **数据集大小**：
+    * 小数组（≤ 8192 元素）：`parallelSort()` 可能比 `sort()` 稍慢（由于并行开销）
+    * 大数组：`parallelSort()` 通常更快
+2. **处理器核心数**：
+    * 核心越多，并行优势越明显
+3. **内存考虑**：
+    * `parallelSort()` 需要额外的内存空间（约为原数组大小）
 
 ```java
 /**  
@@ -376,6 +383,7 @@ System.out.println(Arrays.binarySearch(nums,0)); // -1
 同理如果 0 存在，他应该在第一个位置。
 
 ---
+
 ## binarySearch
 
 ```java
@@ -387,6 +395,7 @@ public void testBinarySearch(){
 ```
 
 ---
+
 ## copyOf
 
 深拷贝，如果位置不够，就加一个空
@@ -403,9 +412,10 @@ System.out.println(Arrays.toString(newArr2));
 ```
 
 ---
+
 ## fill
 
-填充 
+填充
 
 ```java
 @Test  
@@ -421,6 +431,7 @@ public void testFill(){
 ```
 
 ---
+
 ## asList
 
 ```java
@@ -431,12 +442,13 @@ System.out.println(l1.getClass()); // class java.util.Arrays$ArrayList(这个是
 ```
 
 ---
+
 ## 练习
 
-Arrays类课堂练习
-ArrayExercise.java
+Arrays类课堂练习：`ArrayExercise.java`
 案例: 自定义Book类, 里面包含name和price, 按price排序(从大到小)。要求使用两种方式排序，对对象的某个属性排序, 有一个 Book[] books = 5本书对象.
 使用前面学习过的传递实现Comparator接口匿名内部类, 也称为定制排序。
+
 ```java
 Book[] books = new Book[4];
 books[0] = new Book("红楼梦", 100);
@@ -532,6 +544,7 @@ class Book{
 ```
 
 通过流的方式简化一下
+
 ```java
 System.out.println("按照价格升序");
 Arrays.sort(books, Comparator.comparingInt(Book::getPrice));

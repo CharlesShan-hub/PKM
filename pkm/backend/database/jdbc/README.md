@@ -1,7 +1,7 @@
 # JDBC
 
-> 动力节点老韩JDBC： https://www.bilibili.com/video/BV1SXiEBxEHn
-> 	对应资料： https://pan.quark.cn/s/76ed0271ff3f
+> 动力节点老韩JDBC： <https://www.bilibili.com/video/BV1SXiEBxEHn>
+> 对应资料： <https://pan.quark.cn/s/76ed0271ff3f>
 
 * [hsp-jdbc](notes/hsp-jdbc.md)
 

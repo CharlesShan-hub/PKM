@@ -5,6 +5,7 @@
 字符串专题阅读顺序：本文 👉 [StringBuilder-and-StringBuffer](StringBuilder-and-StringBuffer.md)
 
 ---
+
 ## 🍭 基本概念
 
 1. String 不是 Java 基本数据类型。
@@ -19,6 +20,7 @@
     - 还有很多其他的
 
 ---
+
 ## ✏️ 源码分析
 
 ```java
@@ -47,6 +49,7 @@ Constable, ConstantDesc {
 3. String 继承了 `Comparable` 接口：String 可以相互比较，所以我们别用`==`比较，而是用`compareTo()`方法
 4. **String 是一个 final 类**： String 不能被其他的类继承
 5. String 内部存放 **byte/char 数组的对象也是 final**：对象不能被修改，但是对象内部的内容可以被修改（value 不能指向新的地址，但是单独字符的内容是可以变换的）
+
     ```java
     public class StringAndCharArrayExample {
       public static void main(String[] args) {
@@ -72,7 +75,9 @@ Constable, ConstantDesc {
       }
     }
     ```
+
 6. 相比之下，后边的`StringBuilder`就把内容保存在了非`final`的`Byte`数组中。
+
     ```java
     // AbstractStringBuilder.java
     abstract sealed class AbstractStringBuilder implements Appendable, CharSequence  
@@ -87,6 +92,8 @@ Constable, ConstantDesc {
     ```
 
 ---
+
+
 ## 常用方法
 
 ### 🍭简单方法总结
@@ -94,12 +101,16 @@ Constable, ConstantDesc {
 1. `substring(int beginIndex, int endIndex)`
     1. **描述**：返回一个新字符串，它是此字符串的一个子字符串。
     2. **案例**
+
+
         ```java
         String str = "Hello, World!";
         String subStr = str.substring(0, 5);
         System.out.println("Substring: " + subStr);
         ```
+
     3. **源码**
+
         ```java
         public String substring(int beginIndex) {
             // 检查起始索引是否小于 0，如果是，则抛出 StringIndexOutOfBoundsException 异常
@@ -116,41 +127,51 @@ Constable, ConstantDesc {
             return (beginIndex == 0) ? this : new String(value, beginIndex, subLen);
         }
         ```
+
 2. `length()`
     1. **描述**：返回字符串的长度。
     2. **案例**
+
         ```java
         String str = "Hello, World!";
         int length = str.length();
         System.out.println("Length of the string: " + length);
         ```
+
 3. `charAt(int index)`
     1. **描述**：返回指定索引处的字符。
     2. **案例**
+
         ```java
         String str = "Hello";
         char firstChar = str.charAt(0);
         System.out.println("First character: " + firstChar);
         ```
+
 4. `indexOf(String str)` 和 `lastIndexOf(String str)`
     1. **描述**：返回指定子字符串在此字符串中第一次出现的索引。
     2. **案例**：
+
         ```java
         String str = "Hello, World!";
         int index = str.indexOf("World");
         System.out.println("Index of 'World': " + index);
         ```
+
 5. `replace(CharSequence target, CharSequence replacement)`
     1. **描述**：返回一个新的字符串，它是通过用新子字符串替换此字符串中所有出现的给定目标子字符串得到的。
     2. **案例**
+
         ```java
         String str = "Hello, World!";
         String newStr = str.replace("World", "Java");
         System.out.println("Replaced string: " + newStr);
         ```
+
 6. `toUpperCase()` 和 `toLowerCase()`
     1. **描述**：将此字符串转换为大写或小写。
     2. **案例**：
+
         ```java
         String str = "Hello, World!";
         String upperStr = str.toUpperCase();
@@ -158,17 +179,21 @@ Constable, ConstantDesc {
         System.out.println("Uppercase: " + upperStr);
         System.out.println("Lowercase: " + lowerStr);
         ```
+
 7. `trim()`
     1. **描述**：去除字符串两端的空白字符。
     2. **案例**：
+
         ```java
         String str = "   Hello, World!   ";
         String trimmedStr = str.trim();
         System.out.println("Trimmed string: " + trimmedStr);
         ```
+
 8. `split(String regex)`
     1. **描述**：根据给定正则表达式的匹配拆分此字符串。
     2. **案例**
+
         ```java
         String str = "one,two,three";
         String[] parts = str.split(",");
@@ -177,9 +202,11 @@ Constable, ConstantDesc {
             System.out.println(part);
         }
         ```
+
 9. `equals(Object anObject)` 和 `equalsIgnoreCase(String anotherString)`
     1. **描述**：比较两个字符串是否相等。
     2. **案例**
+
         ```java
         String str1 = "Hello";
         String str2 = "hello";
@@ -189,10 +216,11 @@ Constable, ConstantDesc {
         System.out.println("Equal ignoring case: " + isEqualIgnoreCase);
         ```
 
-### 🍭 `format()` 
+### 🍭 `format()`
 
 **描述**：根据格式字符串（format string）和后续参数来格式化字符串。
 **语法**：
+
 ```java
 String.format(String format, Object... args)
 ```
@@ -232,7 +260,7 @@ public class FormatExample {
 }
 ```
 
-```
+```bash
 Name: Kimi, Age: 30, PI: 3.14
 Hexadecimal: ff
 Binary: 1001
@@ -280,6 +308,7 @@ H(s) = (s[0] * 31^(n-1)) + (s[1] * 31^(n-2)) + ... + (s[n-1] * 31^0)
 ```
 
 模拟计算Hash
+
 ```java
 public class HashCodeExample {
     public static void main(String[] args) {
@@ -301,6 +330,7 @@ public class HashCodeExample {
 ```
 
 ---
+
 ## 内存分析
 
 ### ✏️ 常量池
@@ -605,7 +635,7 @@ public class Test1 {
 } // 思考，认真看，仔细想
 ```
 
-change函数拿到 str，一开始指向 ex.str。后来因为 String 不能变，所以修改的是 change 的函数指向了常量池中的 “java”并不会更不会影响到 main 栈里边的 ex.str。所以结果为 hsp，hava
+change函数拿到 str，一开始指向 ex.str。后来因为 String 不能变，所以修改的是 change 的函数指向了常量池中的 `"java"`并不会更不会影响到 main 栈里边的 ex.str。所以结果为 hsp，hava
 
 为什么 hava 变了呢，因为原来的数组存在堆里边，j 变成了 h。
 
@@ -726,6 +756,7 @@ public class StringExam {
 ```
 
 ---
+
 ## 🍭 String与正则表达式
 
 * [re](../powerpoint/re.md)

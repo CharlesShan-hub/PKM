@@ -1,6 +1,7 @@
 # Java新特性
 
 ---
+
 ## 主要内容
 
 1. 新特性的概述
@@ -8,6 +9,7 @@
 3. API层面的变化
 
 ---
+
 ## 学习目标
 
 | **知识点** | **要求** |
@@ -17,44 +19,49 @@
 | API层面的变化 | 理解 |
 
 ---
+
 ## 新特性的概述
+
 纵观Java这几年的版本变化，在Java被收入Oracle之后，Java以小步快跑的迭代方式，在功能更新上迈出了更加轻快的步伐。基于时间发布的版本，可以让Java研发团队及时获得开发人员的反馈，因此可以看到最近的Java版本，有很多语法层面简化的特性。同时，Java在支持容器化场景，提供低延迟的GC方面(ZGC等)也取得了巨大的进步。
 
 注意一个新特性的出现通常会经过以下阶段：
 
-1.  孵化器（Incubator）阶段：这是新特性最早的开发和试验阶段，此时新特性只能作为一个单独的模块或库出现，而不会包含在Java SE中。在这个阶段，特性的设计可能会有些不稳定，而且会经常调整和变更。 
-2.  预览（Preview）阶段：在经过了孵化器阶段的验证和修改后，新特性进入了预览阶段，这是一种在Java SE内部实现的，开发人员可以使用并对其提供反馈的渠道。此时特性可能被包含在Java SE版本中，但是它默认是未开启的，需要通过特定的命令行参数或其他方式进行启用。 
-3.  正式版（GA）阶段：在经过了预览阶段的反复测试和修复后，新特性最终会在Java SE的稳定版本中发布。此时，特性被默认开启，成为Java SE的一部分，并可以在各个Java应用程序中使用。 
+1. 孵化器（Incubator）阶段：这是新特性最早的开发和试验阶段，此时新特性只能作为一个单独的模块或库出现，而不会包含在Java SE中。在这个阶段，特性的设计可能会有些不稳定，而且会经常调整和变更。
+2. 预览（Preview）阶段：在经过了孵化器阶段的验证和修改后，新特性进入了预览阶段，这是一种在Java SE内部实现的，开发人员可以使用并对其提供反馈的渠道。此时特性可能被包含在Java SE版本中，但是它默认是未开启的，需要通过特定的命令行参数或其他方式进行启用。
+3. 正式版（GA）阶段：在经过了预览阶段的反复测试和修复后，新特性最终会在Java SE的稳定版本中发布。此时，特性被默认开启，成为Java SE的一部分，并可以在各个Java应用程序中使用。
 
 需要注意的是，上述阶段并非一成不变，并不是所有JEP（Java Enhancement Proposal：Java增强方案）都需要经过孵化器阶段和预览阶段，这取决于特定的提案和规划。但是，Java SE领导小组通常会遵循这些阶段的流程，以确保新特性可以经过充分的评估和测试，以便能够稳定和可靠地使用在Java应用程序中。
 
 在以下的内容中，我们对Java9到Java21新特性做一个简单的概述。
 
 ### Java9新特性
+
 Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，提供了超过150项新功能特性。
 
 - JEP 261: Module System
-   - JDK 9 开始引入的一种全新的模块化编程方式。JPMS 的目的是为了更好地支持大型应用程序的开发和维护，同时也可以使 Java 程序在更为动态、可移植和安全的环境下运行。
+  - JDK 9 开始引入的一种全新的模块化编程方式。JPMS 的目的是为了更好地支持大型应用程序的开发和维护，同时也可以使 Java 程序在更为动态、可移植和安全的环境下运行。
 - JEP 222: jshell: The Java Shell (Read-Eval-Print Loop)
-   - 一种交互式的 Java Shell，可以在命令行上快速地进行 Java 代码的编写、验证和执行，从而提高开发者的生产力。
+  - 一种交互式的 Java Shell，可以在命令行上快速地进行 Java 代码的编写、验证和执行，从而提高开发者的生产力。
 - JEP 213: Milling Project Coin（细化工程改进，该计划旨在引入小型语言特性来提高代码的简洁性和可读性）
-   - 在Java 9中，@SafeVarargs注解可以用于一个私有实例方法上。在Java 7和Java 8中，@SafeVarargs注解只能用于静态方法、final实例方法和构造函数。
-   - 在Java 9中，可以将效果等同于final变量作为try-with-resources语句块中的资源来使用。在Java 7/8中，try-with-resources语句块中的资源必须是显式的final或事实上的final（即变量在初始化后未被修改），否则编译器会报错。这个限制限制了Java程序员使用try-with-resources语句块的能力，特别是在涉及lambda表达式、匿名类或其他读取外部变量的代码段时。
-   - Java 9允许在匿名类实例化时使用钻石操作符(<>)来简化代码，但参数类型必须是具体的、可推导的类型。
-   - 从Java9开始，不能使用一个单一的“_”作为标识符了。
-   - 从Java9开始，接口中支持定义私有方法。
+  - 在Java 9中，@SafeVarargs注解可以用于一个私有实例方法上。在Java 7和Java 8中，@SafeVarargs注解只能用于静态方法、final实例方法和构造函数。
+  - 在Java 9中，可以将效果等同于final变量作为try-with-resources语句块中的资源来使用。在Java 7/8中，try-with-resources语句块中的资源必须是显式的final或事实上的final（即变量在初始化后未被修改），否则编译器会报错。这个限制限制了Java程序员使用try-with-resources语句块的能力，特别是在涉及lambda表达式、匿名类或其他读取外部变量的代码段时。
+  - Java 9允许在匿名类实例化时使用钻石操作符(<>)来简化代码，但参数类型必须是具体的、可推导的类型。
+  - 从Java9开始，不能使用一个单一的“_”作为标识符了。
+  - 从Java9开始，接口中支持定义私有方法。
 - JEP 224: HTML5 Javadoc
-   - 从Java9开始，javadoc开始支持HTML5的语法。
+  - 从Java9开始，javadoc开始支持HTML5的语法。
 - JEP 254: Compact Strings
-   - 一种新的字符串表示方式，称为紧凑型字符串，以提高Java应用程序的性能和内存利用率。通过String源码得知：char[] 变成了 byte[]。
+  - 一种新的字符串表示方式，称为紧凑型字符串，以提高Java应用程序的性能和内存利用率。通过String源码得知：char[] 变成了 byte[]。
 - JEP 269: Convenience Factory Methods for Collections
-   - 更加方便的创建只读集合：List.of("abc", "def", "xyz"); 
+  - 更加方便的创建只读集合：List.of("abc", "def", "xyz");
 - JEP 269：对Stream API进行了增强
-   - 其中最显著的是引入了四个新的方法，分别是 `takeWhile()`, `dropWhile()`, `ofNullable()` 和 `iterate()`
+  - 其中最显著的是引入了四个新的方法，分别是 `takeWhile()`, `dropWhile()`, `ofNullable()` 和 `iterate()`
 - JEP 110：一个新的HTTP客户端API，名为HttpClient，它是一种基于异步和事件驱动的方式，更加高效和灵活的HTTP客户端。
 
 ### Java10新特性
-2018年3月21日，Oracle官方宣布JAVA10正式发布。JAVA10一共定义了109个新特性，其中包含JEP，对开发人员来说，真正的新特性也就一个，还有一些新的API和JVM规范以及JAVA语言规范上的改动。
+
+2018年3月21日，Oracle官方宣布JAVA10正式发布。JAVA10一共定义了109个新特性，其中包含JEP，对开发人员来说，真正的新特性也就一个，还有一些新的API和JVM规范以及Java语言规范上的改动。
+
 - JEP 286：局部变量类型推断
 - JEP 296：将 JDK 森林合并到单个存储库中
 - JEP 304：垃圾收集器接口
@@ -69,7 +76,9 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 322：基于时间的发布版本控制
 
 ### Java11新特性
-2018年9月26日，Oracle官方发布JAVA11。这是JAVA大版本周期变化后的第一个长期支持版本，官方支持到2026年。
+
+2018年9月26日，Oracle官方发布JAVA11。这是Java大版本周期变化后的第一个长期支持版本，官方支持到2026年。
+
 - JEP 181：基于 Nest 的访问控制
 - JEP 309：动态类文件常量
 - JEP 315：改进 Aarch64 内部函数
@@ -89,7 +98,9 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 336：弃用 Pack200 工具和 API
 
 ### Java12新特性
+
 2019年3月19日，java12正式发布。
+
 - JEP 189：Shenandoah：一个低暂停时间的垃圾收集器（实验性）
 - JEP 230：微基准套件
 - JEP 325：switch表达式（预览）
@@ -100,6 +111,7 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 346：及时从 G1 返回未使用的已提交内存
 
 ### Java13新特性
+
 - JEP 350：动态 CDS 档案
 - JEP 351：ZGC：取消提交未使用的内存
 - JEP 353：重新实现旧的 Socket API
@@ -107,6 +119,7 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 355：文本块（预览）
 
 ### Java14新特性
+
 - JEP 305：instanceof 的模式匹配（预览）
 - JEP 343：包装工具（孵化器）
 - JEP 345：G1 的 NUMA 感知内存分配
@@ -125,6 +138,7 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 370：外部内存访问 API（孵化器）
 
 ### Java15新特性
+
 - JEP 339：爱德华兹曲线数字签名算法 (EdDSA)
 - JEP 360：密封类（预览）
 - JEP 371：隐藏类
@@ -141,6 +155,7 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 385：弃用 RMI 激活以进行删除
 
 ### Java16新特性
+
 - JEP 338：Vector API（孵化器）
 - JEP 347：启用 C++14 语言功能
 - JEP 357：从 Mercurial 迁移到 Git
@@ -160,7 +175,9 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 397：密封类（第二次预览）
 
 ### Java17新特性
+
 2021年9月14日，java17正式发布（LTS）。长期支持版，支持到2029年。Oracle 宣布，从JDK17开始，后面的JDK都全部免费提供。
+
 - JEP 306：恢复始终严格的浮点语义
 - JEP 356：增强型伪随机数发生器
 - JEP 382：新的 macOS 渲染管线
@@ -177,6 +194,7 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 415：上下文特定的反序列化过滤器
 
 ### Java18新特性
+
 2022年3月22日发布。非长期支持版本。
 
 - JEP 400：从JDK18开始，UTF-8是Java SE API的默认字符集。
@@ -190,22 +208,24 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 421：Object中的finalize()方法被移除
 
 ### Java19新特性
+
 2022年9月20日发布。非长期支持的版本。直到 2023 年 3 月它将被 JDK 20 取代。
 
 - JEP 425：虚拟线程（预览版）
-   - 一种新的线程模型，即虚拟线程；"虚拟线程" 指的是一种轻量级线程，可以通过 JVM 进行管理和调度，而不需要操作系统进行支持
+  - 一种新的线程模型，即虚拟线程；"虚拟线程" 指的是一种轻量级线程，可以通过 JVM 进行管理和调度，而不需要操作系统进行支持
 - JEP 428：结构化并发（孵化器）
-   - 一组新的API和规范，用于优化并简化Java程序的并发编程
+  - 一组新的API和规范，用于优化并简化Java程序的并发编程
 - JEP 405：Record模式 (预览版)
 - JEP 427：switch语句中的模式匹配（第三次预览版）
-   - "switch语句中的模式匹配"表示该特性是针对 switch 语句的改进，可以使用模式匹配的方式处理 switch 语句中的分支
+  - "switch语句中的模式匹配"表示该特性是针对 switch 语句的改进，可以使用模式匹配的方式处理 switch 语句中的分支
 - JEP 424：外部函数和内存API（预览版）
-   - “外部函数”指的是在Java程序中调用非Java语言编写的函数，比如C/C++函数
-   - “内存API”指的是在Java程序中直接操作内存的API
+  - “外部函数”指的是在Java程序中调用非Java语言编写的函数，比如C/C++函数
+  - “内存API”指的是在Java程序中直接操作内存的API
 - JEP 426：向量API（第四版孵化器）
-   - 一组专用于向量化处理的API，允许在Java程序中轻松高效地执行向量化计算
+  - 一组专用于向量化处理的API，允许在Java程序中轻松高效地执行向量化计算
 
 ### Java20新特性
+
 2023年3月21日发布。非长期支持版本。直到 2023 年 9月它将被 JDK 21 取代。
 
 - JEP 432： Record模式(第二次预览版)
@@ -217,6 +237,7 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 437： 结构化并发（第二版孵化器）
 
 ### Java21新特性
+
 2023年9月19日发布。长期支持版本。
 
 - JEP 440：Record模式（正式确定）
@@ -235,7 +256,9 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 451：Prepare to Disallow the Dynamic Loading of Agents
 
 ## 新语法方面的变化
+
 ### jShell命令
+
 jShell命令是Java9引进的新特性，像Python和Scala之类的语言早就有交互式编程环境REPL (read-evaluate-print-loop)，以交互式的方式对语句和表达式进行求值。开发者只需要输入一些代码，就可以在编译前获得对程序的反馈。而之前的Java 版本要想执行代码，必须创建文件、声明类、提供测试方法方可实现。
 我们打开DOS命令窗口，然后输入jshell，就能进入交互式编程环境REPL，如下图所示：
 ![图片1.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1693815555675-419b4573-2adc-49d9-802e-f1cdd8a11232.png#averageHue=%230a0a0a&clientId=u5039a3e5-4a28-4&from=paste&height=95&id=u5191846f&originHeight=95&originWidth=435&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3194&status=done&style=none&taskId=u2482601c-6fe2-48e5-bb1d-394d37b5297&title=&width=435)
@@ -255,9 +278,11 @@ jShell命令是Java9引进的新特性，像Python和Scala之类的语言早就�
 ![图片8.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1693815779555-09e830d6-40c4-42ca-a762-78a53132c67b.png#averageHue=%23100808&clientId=u5039a3e5-4a28-4&from=paste&height=47&id=u974bf0dd&originHeight=47&originWidth=454&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2596&status=done&style=none&taskId=u080aed12-84fc-44fa-ae72-6d3a0501f84&title=&width=454)
 
 ### try-with-resources
+
 众所周知，所有被打开的系统资源，比如流、文件、Socket连接等，都需要被开发者手动关闭，否则随着程序的不断运行，资源泄露将会累积成重大的生产事故。
 在Java7以前，我们想要关闭资源就必须的finally代码块中完成。
 【示例】Java7之前资源的关闭的方式
+
 ```java
 public void copyFile1(File srcFile, File destFile) {
     FileInputStream fis = null;
@@ -297,6 +322,7 @@ public void copyFile1(File srcFile, File destFile) {
 ```
 
 Java7及以后关闭资源的正确姿势：try-with-resource，该语法格式为：
+
 ```java
 try(/*实例化需要关闭资源的对象或引用需要关闭资源的对象*/){
     // 书写可能出现异常的代码
@@ -304,9 +330,11 @@ try(/*实例化需要关闭资源的对象或引用需要关闭资源的对象*/
     // 处理异常
 }
 ```
-使用try-with-resource来自动关闭资源，则需要关闭资源的对象对应的类就必须实现java.lang.AutoCloseable接口，该接口中提供了一个close()的抽象方法，而自动关闭资源默认调用的就是实现于java.lang.AutoCloseable接口中的close()方法。
-因为FileInputStream类和FileOutputStream类都属于java.lang.AutoCloseable接口的实现类，因此此处文件拷贝的操作就可以使用try-with-resource来自动关闭资源。
+
+使用try-with-resource来自动关闭资源，则需要关闭资源的对象对应的类就必须实现Java.lang.AutoCloseable接口，该接口中提供了一个close()的抽象方法，而自动关闭资源默认调用的就是实现于Java.lang.AutoCloseable接口中的close()方法。
+因为FileInputStream类和FileOutputStream类都属于Java.lang.AutoCloseable接口的实现类，因此此处文件拷贝的操作就可以使用try-with-resource来自动关闭资源。
 【示例】Java7之后资源的关闭的方式
+
 ```java
 public void copyFile(File srcFile, File destFile) {
     // 实例化IO流（输入流和输出流）
@@ -325,9 +353,11 @@ public void copyFile(File srcFile, File destFile) {
     }
 }
 ```
+
 通过try-with-resource来关闭放资源，即使资源很多，代码也可以写的很简洁，如果用Java7之前的方式去关闭资源，那么资源越多，用finally关闭资源时嵌套也就越多。
 在Java9之后，为了避免在try后面的小括号中去实例化很多需要关闭资源的对象（复杂），则就可以把需要关闭资源的多个对象在try之前实例化，然后在try后面的小括号中引用需要关闭资源的对象即可，从而提高了代码的可读性。
 【示例】Java9之后的使用方式
+
 ```java
 public void copyFile(File srcFile, File destFile) throws FileNotFoundException {
     // 实例化IO流（输入流和输出流）
@@ -345,11 +375,14 @@ public void copyFile(File srcFile, File destFile) throws FileNotFoundException {
     }
 }
 ```
+
 在以上代码中，表达式中引用了fis和fos，那么在fis和fos就自动变为常量啦，也就意味着在try代码块中不能修改fis和fos的指向，从而保证打开的资源肯定能够关闭。
 
 ### 局部变量类型判断
-在Java10中，新增了局部变量类型判断。在方法体或代码块中，对于可以在编译期确定的类型，可以使用var来定义。这个特性并不意味着java是弱类型的语言，仅是提供了更简洁的书写方式。对于编译期无法确定的类型，依然要写清楚类型。
+
+在Java10中，新增了局部变量类型判断。在方法体或代码块中，对于可以在编译期确定的类型，可以使用var来定义。这个特性并不意味着Java是弱类型的语言，仅是提供了更简洁的书写方式。对于编译期无法确定的类型，依然要写清楚类型。
 【示例】局部变量类型判断案例
+
 ```java
 // 使用var来作为变量的引用声明
 var num = 123;
@@ -373,8 +406,10 @@ var calendar = Calendar.getInstance();
 ```
 
 ### instanceof的模式匹配
+
 在JDK14中新增instanceof模式匹配增强(预览)，在JDK16中转正。通过instanceof模式匹配增强，我们就可以直接在模式匹配的括号内声明对应类型的局部变量。
 【示例】执行向下转型的操作，从而调用show()方法
+
 ```java
 /**
  * 以前的代码实现方式
@@ -404,7 +439,9 @@ public void testNew() {
     }
 }
 ```
+
 【示例】重写equals()，判断成员变量是否相等
+
 ```java
 public class Tiger {
     String name;
@@ -446,6 +483,7 @@ public class Tiger {
 ```
 
 ### switch表达式
+
 目前switch表达式的问题：
 
 1. 匹配自上而下，若无break，后面的case语句都会执行
@@ -455,6 +493,7 @@ public class Tiger {
 
 在Java12中对switch表达式做了增强（预览），能够使用更加简洁的代码来解决这些问题。
 【示例】switch表达式使用的案例
+
 ```java
 /**
  * 需求：根据月份输出对应季节的特点
@@ -509,8 +548,10 @@ public static void newSwitch(int month) {
     System.out.println(season);
 }
 ```
+
 在Java13中，增加关键字yield关键字（预览）， 用于在switch表达式中返回结果。到Java14版本中，Java12和Java13中关于switch的新特性都确定为正式版本。
 【示例】switch表达式中的yield关键字
+
 ```java
 /**
  * 需求：根据月份输出对应季节的特点
@@ -536,9 +577,11 @@ public static void yieldSwitch1(int month) {
 ```
 
 ### 文本块
+
 在Java语言中，通常需要使用String类型表达HTML，XML，SQL或JSON等格式的字符串，在进行字符串赋值时需要进行转义和连接操作，然后才能编译该代码，这种表达方式难以阅读并且难以维护。
 在Java12版本中，新增了文本块（预览）。文本块就是指多行字符串，例如一段格式化后的xml、json等。而有了文本块以后，用户不需要转义，Java能自动搞定。因此，文本块将提高Java程序的可读性和可写性。
 【示例】演示文本块的使用
+
 ```java
 // 使用以前拼接的方式
 String html1 = "<html>\n" +
@@ -557,8 +600,10 @@ String html2 = """
         """;
 System.out.println(html2);
 ```
+
 在Java14版本中，针对文本块又新增两个特性（阅览）。1)在一行的结尾增加“\”可以取消改行的换行符；2)可以通过“\s”增加空格。
 【示例】演示文本块新增特性
+
 ```java
 // 取消换行（\）
 String json1 = """
@@ -579,9 +624,11 @@ System.out.println(json2);
 ```
 
 ### Record
+
 早在2019年2月份，Java语言架构师Brian Goetz就吐槽了Java语言，他和很多程序员一样抱怨“Java太啰嗦”或有太多的“繁文缛节”，他提到：开发人员想要创建纯数据载体类，通常都必须编写大量低价值、重复的、容易出错的代码。例如：构造方法、getter/setter、equals()、hashCode()以及toString()等。
 以至于很多人选择使用IDE的功能来自动生成这些代码。还有一些开发会选择使用一些第三方类库，如Lombok等来生成这些方法，从而会导致了令人吃惊的表现和糟糕的可调试性。
 那么，Brian Goetz大神提到的纯数据载体到底指的是什么呢？我们举了一个简单的例子：
+
 ```java
 public final class Tiger {
     private final String name;
@@ -622,6 +669,7 @@ public final class Tiger {
     }
 }
 ```
+
 这里面的Tiger其实就是一个纯数据载体，Tiger类中提供了name和age两个私有常量，并且只提供了全参构造方法和常量名相同的getter方法，以及一些equals、hashCode和toString等方法。于是，BrianGoetz大神提出一种想法，他提到，Java完全可以对于这种纯数据载体通过另外一种方式表示。
 在Java14版本中，新增了Record类型。Record是Java的一种新的类型，Record使数据类型变得非常简洁，一般可以帮助我们定义一些简单的用于纯数据载体的实体类。
 
@@ -629,7 +677,7 @@ public final class Tiger {
 状态声明中的每个属性，都是默认采用了private和final修饰，则属性值就不可修改
 在Record类中，默认已经重写了Object类提供的equals()，hashcode()，toString()方法
 在Record类中，默认提供全参的构造方法，并且提供的getter方法名和属性名保持一致。
-Record类采用了final修饰，并且显示的继承于java.lang.Record类，因此就不能继承别的父类。
+Record类采用了final修饰，并且显示的继承于Java.lang.Record类，因此就不能继承别的父类。
 【示例】将以上的Tiger类转化为Record类
 
 ```java
@@ -637,9 +685,11 @@ public record Tiger(String name, int age)  {
 
 }
 ```
-在以上的Record类中，Tiger类默认采用了final修饰，并且显示的继承于java.lang.Record抽象类，因此Tiger类就不能继承于别的父类。在Tiger类中，提供了name和age两个私有常量，并且还提供了一个public修饰的全参构造方法，提供的getter方法的名字和属性名保持一致，但是并没有提供setter方法。并且，在Tiger类中还重写了Object类提供的equals()，hashcode()，toString()方法。
+
+在以上的Record类中，Tiger类默认采用了final修饰，并且显示的继承于Java.lang.Record抽象类，因此Tiger类就不能继承于别的父类。在Tiger类中，提供了name和age两个私有常量，并且还提供了一个public修饰的全参构造方法，提供的getter方法的名字和属性名保持一致，但是并没有提供setter方法。并且，在Tiger类中还重写了Object类提供的equals()，hashcode()，toString()方法。
 在Record类中，我们还可以新增静态属性、无参构造方法、成员方法和静态方法，但是创建对象时不能调用无参构造方法，而是通过全参构造方法创建对象的时候，默认就会调用Record类中的无参构造方法。
 【示例】在Record类中添加的内容
+
 ```java
 public record Tiger(String name, int age)  {
     // 新增静态属性
@@ -661,17 +711,18 @@ public record Tiger(String name, int age)  {
 ```
 
 ### 密封类
+
 Java中的密封类是一种新的类修饰符，它可以修饰类和接口，可以控制哪些类可以扩展或实现该类或接口。下面是密封类的一些主要用途：
 
 1. 维护类层次结构的封闭性
 
 密封类的一个主要用途是确保类层次结构的封闭性。这意味着，如果您想保护一组类，而不希望其他类继承或实现它们，可以使用密封类来实现这一目标。这对于确保代码的安全性和稳定性非常有用。
 
-2. 预防代码的意外扩展
+1. 预防代码的意外扩展
 
 密封类可以防止其他程序员意外地扩展一个类。在进行类设计时，您可能希望自己或其他程序员只能在特定的类中实现或继承指定的类。在这种情况下，您可以将类标记为“密封”，强制限制其他程序员可以实现或继承的类的范围。
 
-3. 增强代码的可读性和可维护性
+1. 增强代码的可读性和可维护性
 
 密封类可以增强代码的可读性和可维护性。由于密封类明确规定了哪些类可以扩展或实现它，因此其他开发人员可以更清晰地看到代码的结构并理解它们的关系。这使得代码更易于维护和修改。
 总之，密封类是一种灵活而有用的类修饰符，可以帮助您维护类的封闭性、预防代码的意外扩展、增强代码的可读性和可维护性。
@@ -692,8 +743,10 @@ non-sealed class Bird extends Animal { }
 sealed class Dog extends Animal {}
 non-sealed class SmallDog extends Dog {}
 ```
+
 使用sealed关键字修饰的接口，我们就称之为密封接口。密封接口必须使用permits关键字来指定实现类或子接口。针对密封接口的实现类，则必须使用sealed、final或non-sealed来修饰；针对密封接口的子接口，则必须使用sealed或non-sealed来修饰。
 【示例】密封接口的演示
+
 ```java
 // 使用sealed修饰的接口，则必须使用permits来指定实现类或子接口。
 public sealed interface InterA permits Student, InterB { }
@@ -702,9 +755,11 @@ non-sealed /*final*/ /*sealed*/ class Student implements InterA { }
 // 密封接口的子接口，必须使用sealed或non-sealed来修饰
 non-sealed /*sealed*/ interface InterB extends InterA {}
 ```
+
 **sealed与record：**
 因为Record类默认采用了final关键字修饰，因此Record类就可以作为密封接口的实现类。
 【示例】密封接口和Record类
+
 ```java
 // 密封接口
 sealed interface Flyable permits SuperMan { }
@@ -713,12 +768,18 @@ record SuperMan(String name, int age) implements Flyable { }
 ```
 
 ---
+
 ## API层面的变化
+
 ### String存储结构改变
+
 在Java8及其之前，String底层采用char类型数组来存储字符；在Java9及其以后，String底层采用byte类型的数组来存储字符。将char[]转化为byte[]，其目的就是为了节约存储空间。
 ![图片9.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1693816288883-1977353d-6a2b-4f8a-8136-ef732f257496.png#averageHue=%23fcfaf8&clientId=u5039a3e5-4a28-4&from=paste&height=431&id=ua4df4a81&originHeight=431&originWidth=746&originalType=binary&ratio=1&rotation=0&showTitle=false&size=33019&status=done&style=none&taskId=u4388d723-406b-43f5-b8a9-0f7797be2ee&title=&width=746)
+
 ### String 新增的方法
+
 在Java11版本中，对String类新增了一些方法，新增的方法如下：
+
 ```java
 // 空格，制表符，换行等都认为是空的
 boolean blank = "\t \n".isBlank();
@@ -742,6 +803,7 @@ System.out.println(lines.count()); // 输出：3
 ```
 
 在Java12版本中，对String类新增了一些方法，新增的方法如下：
+
 ```java
 // 在字符串前面添加n个空格
 String result2 = "Java Golang".indent(4);
@@ -749,8 +811,10 @@ System.out.println(result2);
 ```
 
 ### 接口支持私有方法
+
 在Java8版本中，接口中支持“公开”的静态方法和公开的默认方法；在Java9版本中，接口中还允许定义“私有”的静态方法和成员方法，但是不能定义私有的默认方法。
 【示例】演示接口中的私有静态方法和成员方法
+
 ```java
 /**
  * 接口（JDK1.9）
@@ -766,19 +830,25 @@ public interface Flyable {
     }
 }
 ```
+
 ### 标识符命名的变化
+
 在Java8及其之前，标识符可以独立使用“_”来命名。
+
 ```java
 String _ = "hello";
 System.out.println(_);
 ```
+
 但是，在Java9中规定“_”不能独立命名标识符了，如果使用就会报错：
 ![图片10.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1693816390382-1812ee1d-c55c-4a79-ac8e-219203126225.png#averageHue=%23f8f7f5&clientId=u5039a3e5-4a28-4&from=paste&height=132&id=uc65db047&originHeight=132&originWidth=911&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11105&status=done&style=none&taskId=u5bfb5efa-8086-4933-b572-0d8b7daeeff&title=&width=911)
 
 
 ### 简化编译运行程序
-在我们的认知里面，要运行一个Java源代码必须先编译（javac命令），再运行（java命令），两步执行动作。而在Java 11版本中，通过一个java命令就直接搞定了。
+
+在我们的认知里面，要运行一个Java源代码必须先编译（javac命令），再运行（Java命令），两步执行动作。而在Java 11版本中，通过一个Java命令就直接搞定了。
 需要执行的程序：
+
 ```java
 public class HelloWorld {
     public static void main(String[] args) {
@@ -786,11 +856,15 @@ public class HelloWorld {
     }
 }
 ```
-执行java命令进行运行，如下图所示：
+
+执行Java命令进行运行，如下图所示：
 ![图片11.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1693816436316-0a490d10-91c4-48c7-8958-1e5250d7c0a9.png#averageHue=%230c0c0c&clientId=u5039a3e5-4a28-4&from=paste&height=48&id=u27423f8c&originHeight=48&originWidth=422&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1206&status=done&style=none&taskId=ufe0f2e4a-3da9-4019-b43f-ed80ffd70aa&title=&width=422)
+
 ### 创建不可变集合
+
 在Java9版本中，我们可以通过List、Set和Map接口提供的of(E... elements)静态方法来创建不可变集合。通过此方式创建的不可变集合，我们不但不能添加或删除元素，并且还不能修改元素。
 【示例】创建不可变集合
+
 ```java
 // 创建不可变List集合
 List<Integer> list = List.of(1, 2, 3, 4, 5);
@@ -810,6 +884,7 @@ List.of：不能向集合中添加或删除元素，也不能修改集合中的�
 Arrays.asList：不能向集合中添加或删除元素，但是可以修改集合中的元素。
 
 【示例】Arrays.asList与List.of的区别
+
 ```java
 // 通过Arrays.asList()方法创建不可变集合
 List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
@@ -826,21 +901,26 @@ List<Integer> list2 = List.of(1, 2, 3, 4, 5);
 ```
 
 ### Optional API
+
 在Java8以前，Java程序员操作对象时，为了避免错误引用null造成的空指针异常，往往需要一系列繁杂冗余的判空操作，增加了许多重复代码，降低了代码可读性，于是Java 8引入Optional类，优雅简洁的对null值进行处理，从而避免出现空指针异常（NullPointerException）。
 本质上，Optional 类是一个包含有可选值的包装类，这意味着 Optional 类中既可以含有对象也可以为null。
 
 #### 创建Optional对象
+
 使用Optional类提供的of()和ofNullable() 静态方法来创建包含值的Optioanal实例。
 如果将null当作参数传进去of()会抛出空指针异常，如果将null当作参数传进去 ofNullable() 就不会抛出空指针异常。
 因此当对象可能存在或者不存在，应该使用 ofNullable()方法来创建Optional实例。
 【示例】创建一个Optional实例
+
 ```java
 // 创建一个包含“null”的Optional示例
 Optional<Object> optional1 = Optional.ofNullable(null);
 // 创建一个包含“对象”的Optional示例
 Optional<String> optional2 = Optional.ofNullable("hello");
 ```
+
 #### Optional类的方法
+
 想要获得Optional实例中包含的值，那么就可以使用以下两个方法来实现。
 
 | **方法名** | **描述** |
@@ -850,6 +930,7 @@ Optional<String> optional2 = Optional.ofNullable("hello");
 
 开发中，我们获取Optional中存储的值，一般都是采用orElse(T other)方法来实现。
 【示例】演示get()方法
+
 ```java
 // 创建一个包含“null”的Optional示例
 Optional<Object> optional1 = Optional.ofNullable(null);
@@ -859,7 +940,9 @@ Optional<String> optional2 = Optional.ofNullable("hello");
 String str = optional2.get();
 System.out.println(str); // 输出：hello
 ```
+
 【示例】演示orElse(T other)方法
+
 ```java
 // 创建一个包含“null”的Optional示例
 Optional<Object> optional1 = Optional.ofNullable(null);
@@ -872,7 +955,9 @@ System.out.println(str2); // 输出：hello
 ```
 
 #### Optional的使用案例
+
 需求：有一场商业表演，原计划让“刘亦菲”来表演，如果“刘亦菲”不能参加，则就换“佟丽娅”来表演，该需求的实现代码如下：
+
 ```java
 // 定义一个变量，用于保存表演者的名字
 // String name = "刘亦菲"; // 原计划

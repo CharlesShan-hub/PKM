@@ -1,4 +1,5 @@
 # Collection
+>
 > 本版本励志于弄一个精简版本的，之前的会有很多冗余的图和代码。以下是老资源：
 > [集合](../stage2/集合.md)
 > [精通集合](../stage2/精通集合.md)
@@ -9,7 +10,7 @@
 
 ### 继承关系
 
-> * https://javabetter.cn/collection/gailan.html
+> * <https://javabetter.cn/collection/gailan.html>
 
 ```mermaid
 graph LR
@@ -70,10 +71,13 @@ graph LR
 （面试题）简单介绍一下集合的体系：
 
 集合框架可以分为两条大的支线
+
 1. 第一条支线 `Collection`，主要由 **List**、**Set**、**Queue** 组成：
+
   - `List` 代表有序、可重复的集合，典型代表就是封装了动态数组的 [ArrayList](https://javabetter.cn/collection/arraylist.html) 和封装了链表的 [LinkedList](https://javabetter.cn/collection/linkedlist.html)；
   - `Set` 代表无序、不可重复的集合，典型代表就是 HashSet 和 TreeSet；
   - `Queue` 代表队列，典型代表就是双端队列 [ArrayDeque](https://javabetter.cn/collection/arraydeque.html)，以及优先级队列 [PriorityQueue](https://javabetter.cn/collection/PriorityQueue.html)。
+
 2. 第二条支线 `Map`，代表键值对的集合，典型代表就是 [HashMap](https://javabetter.cn/collection/hashmap.html)，LinkedHashMap、TreeMap等。
 
 ### Collection全部api
@@ -178,7 +182,7 @@ public class ArrayList<E> extends AbstractList<E> implements List<E>, RandomAcce
 
 ### 并发修改异常问题
 
-> * https://javabetter.cn/collection/fail-fast.html
+> * <https://javabetter.cn/collection/fail-fast.html>
 
 1. 迭代集合时删除元素
   1. 使用`集合对象.remove(元素)`：会出现`ConcurrentModificationException`异常（并发修改异常）。
@@ -271,7 +275,7 @@ public class ArrayList<E> extends AbstractList<E> implements List<E>, RandomAcce
 
 ### ArrayList扩容
 
-> * https://javabetter.cn/collection/arraylist.html
+> * <https://javabetter.cn/collection/arraylist.html>
 
 当创建ArrayList对象时，如果使用的是**无参构造器**，则**初始**elementData容量为**0**，**第1次**添加，则扩容elementData为**10**，如需要**再次扩容**，则扩容elementData为**1.5倍**。
 
@@ -352,8 +356,8 @@ public ArrayList(int initialCapacity) {
 
 ### LinkedList
 
-> * https://javabetter.cn/collection/linkedlist.html
-> * https://javabetter.cn/collection/list-war-2.html
+> * <https://javabetter.cn/collection/linkedlist.html>
+> * <https://javabetter.cn/collection/list-war-2.html>
 
 * `LinkedList`是基于**双链表**实现的
 * `LinkdedList`和`ArrayList`都是线程**不安全**的
@@ -374,7 +378,7 @@ public ArrayList(int initialCapacity) {
 
 ### Stack
 
-> * https://javabetter.cn/collection/stack.html
+> * <https://javabetter.cn/collection/stack.html>
 
 * `Vector`的子类，实现了栈数据结构，除了具有 `Vector` 的方法，还扩展了其它方法，完成了栈结构的模拟。不过在JDK1.6（Java6）之后就**不建议使用**了。
 * `Stack` 是一个“原始”类，它的核心方法上都加了 `synchronized` 关键字以确保线程安全，当我们不需要线程安全（比如说单线程环境下）性能就会比较差。当需要使用栈时候，请首选`ArrayDeque`。
@@ -390,7 +394,7 @@ public ArrayList(int initialCapacity) {
 
 ### ArrayDeque
 
-> * https://javabetter.cn/collection/arraydeque.html
+> * <https://javabetter.cn/collection/arraydeque.html>
 
 * `ArrayDeque`底层也是数组
 * `ArrayDeque`实现了**双端队列**（实现`Deque` 接口）
@@ -398,7 +402,7 @@ public ArrayList(int initialCapacity) {
 
 ### PriorityQueue
 
-> * https://javabetter.cn/collection/PriorityQueue.html
+> * <https://javabetter.cn/collection/PriorityQueue.html>
 
 `PriorityQueue` 是 Java 中的一个基于**优先级堆**的优先队列实现，它能够在 O(log n) 的时间复杂度内实现元素的插入和删除操作，并且能够自动维护队列中元素的优先级顺序。
 
@@ -499,7 +503,7 @@ public ArrayList(int initialCapacity) {
 
 ### HashMap哈希计算
 
-> * https://javabetter.cn/collection/hashmap.html
+> * <https://javabetter.cn/collection/hashmap.html>
 
 1. `HashMap`使用 key 对象本身的哈希值进行处理得到 key 的哈希。
 
@@ -657,7 +661,7 @@ graph TD
 
 ### LinkedHashMap
 
-> * https://javabetter.cn/collection/linkedhashmap.html
+> * <https://javabetter.cn/collection/linkedhashmap.html>
 
 1. `LinkedHashMap`是`HashMap`子类
 
@@ -689,7 +693,7 @@ graph TD
 
 ### TreeMap排序规则
 
-> * https://javabetter.cn/collection/treemap.html
+> * <https://javabetter.cn/collection/treemap.html>
 
 `TreeMap`使用**红黑树**存储，底层可以自动排序。对于自定义对象来说需要指定排序规则。
 
@@ -733,7 +737,6 @@ class Teacher{
 
 ### WeakHashMap
 
-> * https://javabetter.cn/collection/WeakHashMap.html
-
+> * <https://javabetter.cn/collection/WeakHashMap.html>
 
 

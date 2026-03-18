@@ -118,7 +118,7 @@ class BowMovePanel extends JPanel implements KeyListener  {
 4. 事件监听器接口：
     1. 当事件源产生一个事件，可以传送给事件监听者处理  
     2. 事件监听者实际上就是一个类，该类实现了某个事件监听器接口 比如前面我们案例中的MyPanle就是一个类，它实现了 KeyListener 接口，它就可以作为一个事件监听者，对接受到的事件进行处理  
-    3. 事件监听器接口有多种，不同的事件监听器接口可以监听不同的事件，一个类可以实现多个监听接口这些接口在 java.awt.event 和 javax.swing.event 包中列出常用的事件监听器接口
+    3. 事件监听器接口有多种，不同的事件监听器接口可以监听不同的事件，一个类可以实现多个监听接口这些接口在 `java.awt.event` 和 `javax.swing.event` 包中列出常用的事件监听器接口
 
 ```java
 package demo;  

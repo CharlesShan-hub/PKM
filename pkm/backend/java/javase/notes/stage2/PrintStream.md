@@ -3,6 +3,7 @@
 `PrintStream` 是 Java I/O 体系中的**字节打印流**，它为其他输出流添加了功能，使它们能够方便地打印各种数据值表示形式。我们最熟悉的 `System.out` 就是一个 `PrintStream` 实例。
 
 ## 介绍
+
 1. 🏅核心特性
 
     | 特性 | 说明 |
@@ -31,6 +32,7 @@
 ## 代码示例
 
 ### 1. 基本打印示例
+
 ```java
 // PrintStream 示例（字节流）
 import java.io.FileOutputStream;
@@ -54,6 +56,7 @@ public class PrintStreamAndPrintWriterExample {
 ```
 
 ### 2. 详细功能测试
+
 ```java
 package com.powernode.javase.io;  
 

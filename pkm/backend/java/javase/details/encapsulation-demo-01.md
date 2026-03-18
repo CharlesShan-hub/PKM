@@ -1,4 +1,5 @@
 封装的案例：getter和setter（与构造器结合）
+
 ```java
 public class Person{
  private int age; // 1. 将属性变成 private

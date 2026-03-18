@@ -3,7 +3,9 @@
 `FileWriter` 是 Java I/O 体系中**字符输出流（Writer）**的子类，专门用于将字符数据写入文件。
 
 ## 介绍
+
 1. 🏅核心特性
+
    | 特性 | 说明 |
    | :--- | :--- |
    | **继承关系** | `java.io.Writer` → `java.io.OutputStreamWriter` → `java.io.FileWriter` |
@@ -12,6 +14,7 @@
    | **资源管理** | 必须显式调用 `close()` 或 `flush()` 才能将缓冲区数据写入文件 |
 
 2. 🔑核心API
+
    | 分类 | API | 说明 |
    | :--- | :--- | :--- |
    | **构造器** | `FileWriter(String fileName)` | 创建覆盖写模式的流 |
@@ -33,6 +36,7 @@
 ## 代码示例
 
 ### 1. 覆盖写入
+
 演示写入字符、字符数组和字符串。
 
 ```java
@@ -62,6 +66,7 @@ public class WriteFile {
 ```
 
 ### 2. 追加写入
+
 构造函数传入 `true` 开启追加模式。
 
 ```java
@@ -81,6 +86,7 @@ public class WriteAppend {
 ```
 
 ### 3. ⚠️ 注意事项：Flush与Close
+
 `FileWriter` 内部有缓冲区，如果不关闭流也不刷新，数据可能丢失。
 
 ```java

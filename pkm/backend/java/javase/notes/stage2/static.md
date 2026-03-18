@@ -1,6 +1,7 @@
 # static
 
 ---
+
 ## 类变量（静态变量）
 
 有一个游乐场，有很多小孩，不停的有小孩进来，求小孩个数。
@@ -84,6 +85,7 @@ class Child{
 类变量的生命周期随着类的加载开始，随着类的消亡结束
 
 ---
+
 ## 类方法（静态方法）
 
 类方法（静态方法）：也是 static 修饰，注意 **里边不能用 this 和 super**，静态方法只能访问静态成员
@@ -252,6 +254,7 @@ public class TestPerson {
 ```
 
 ---
+
 ## main
 
 为什么是`public static void main(String[] args)`
@@ -275,6 +278,7 @@ public Test{
 ```
 
 ## 面试题
+
 * 简述一下static
   * 变量：静态变量，类级别变量，所有实例共享同⼀份数据。
   * ⽅法：静态⽅法，类级别⽅法，与实例⽆关。
@@ -297,6 +301,7 @@ public Test{
       public void test3(){  
         System.out.println(a); // 0  
       }
-      ```
+    ```
+
   答案：0。因为调用 method 的时候是 a 调用的，这时候 b 还没被初始化，所以是 0。
 

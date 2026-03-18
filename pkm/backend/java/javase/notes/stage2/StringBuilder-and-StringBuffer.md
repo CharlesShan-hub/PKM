@@ -4,6 +4,7 @@
 字符串专题阅读顺序：[String](String.md)  👉 本文
 
 ---
+
 ## String的缺点
 
 * String 类的对象是**不可变**的。也就是说，⼀旦⼀个 String 对象被创建，它所包含的字符串内容是不可改变的。
@@ -38,32 +39,33 @@ public final class StringBuffer extends AbstractStringBuilder implements Seriali
 * `StringBuffer`的父类`AbstractStringBuilder`里边有一个`char[] value;`这里存放字符串内容。⚠️不是 final 的。另外存放在堆里边而不是常量池了（因为数组在堆里边）。
 
 ---
+
 ## ✏️ StringBuilder
 
 由于 StringBuffer 操作字符串的方法加了 [`synchronized` 关键字](https://javabetter.cn/thread/synchronized-1.html)进行了同步，主要是考虑到多线程环境下的安全问题，所以如果在非多线程环境下，执行效率就会比较低，因为加了没必要的锁。
 
 于是 Java 就给 StringBuffer “生了个兄弟”，名叫 StringBuilder，说，“孩子，你别管线程安全了，你就在单线程环境下使用，这样效率会高得多，如果要在多线程环境下修改字符串，你到时候可以使用 [`ThreadLocal`](https://javabetter.cn/thread/ThreadLocal.html) 来避免多线程冲突。”
 
-- 当需要在**单个线程**中频繁修改字符串内容时，推荐使用 `StringBuilder`。
-- 由于 `StringBuilder` 不是线程安全的，因此在**多线程环境**中应使用 `StringBuffer`。
+* 当需要在**单个线程**中频繁修改字符串内容时，推荐使用 `StringBuilder`。
+* 由于 `StringBuilder` 不是线程安全的，因此在**多线程环境**中应使用 `StringBuffer`。
 
 ```java
 public final class StringBuilder extends AbstractStringBuilder
-  implements java.io.Serializable, CharSequence
+   implements java.io.Serializable, CharSequence
 {
-  // ...
+   // ...
 
-  public StringBuilder append(String str) {
-    super.append(str);
-    return this;
-  }
+   public StringBuilder append(String str) {
+      super.append(str);
+      return this;
+   }
 
-  public String toString() {
-    // Create a copy, don't share the array
-    return new String(value, 0, count);
-  }
+   public String toString() {
+      // Create a copy, don't share the array
+      return new String(value, 0, count);
+   }
 
-  // ...
+   // ...
 }
 ```
 
@@ -121,6 +123,7 @@ String的执行时间: 73
 4. 如果我们字符串很少修改，被多个对象引用，使用 String，比如配置信息等
 
 ---
+
 ## ✏️ AbstractStringBuilder 扩容机制（重点）
 
 > 重点是扩容规则要记住，初始化大小要记住。
@@ -247,52 +250,57 @@ void expandCapacity(int minimumCapacity) {
 ```
 
  快速记忆
- 1.  初始化：默认 16，也可以指定
+
+ 1. 初始化：默认 16，也可以指定
  2. append：默认新容量为旧容量的两倍加上 2，如果不够，就是原长度+要加的长度
 
 ---
+
 ## 🍭StringBuffer 和 String 的对比
 
 * String 类
-    - **特性**：`String` 保存的是字符串常量，其值不可更改。
-    - **内存管理**：每次对 `String` 类的更新实际上是在内存中创建一个新的字符串对象，这意味着原字符串对象的地址会改变。
-    - **性能**：由于每次更新都涉及到内存地址的更改，因此效率相对较低。
-    - **示例代码**：
-        ```java
-        private final char value[];
-        ```
-    
+  * **特性**：`String` 保存的是字符串常量，其值不可更改。
+  * **内存管理**：每次对 `String` 类的更新实际上是在内存中创建一个新的字符串对象，这意味着原字符串对象的地址会改变。
+  * **性能**：由于每次更新都涉及到内存地址的更改，因此效率相对较低。
+  * **示例代码**：
+
+    ```java
+    private final char value[];
+    ```
+
 * StringBuffer 类
-    - **特性**：`StringBuffer` 保存的是字符串变量，其值可以更改。
-    - **内存管理**：`StringBuffer` 的更新实际上可以在原有对象上进行，不需要每次都创建新的对象，因此不需要更新内存地址。
-    - **性能**：由于不需要频繁地创建新对象和更改内存地址，因此效率较高。
-    - **示例代码**：
-        ```java
-        char[] value; // 这个放在堆中
-        ```
+  * **特性**：`StringBuffer` 保存的是字符串变量，其值可以更改。
+  * **内存管理**：`StringBuffer` 的更新实际上可以在原有对象上进行，不需要每次都创建新的对象，因此不需要更新内存地址。
+  * **性能**：由于不需要频繁地创建新对象和更改内存地址，因此效率较高。
+  * **示例代码**：
+
+    ```java
+    char[] value; // 这个放在堆中
+    ```
   
 * 使用场景
-    - `String` 类适合于不需要修改字符串内容的场景，因为其不可变性保证了字符串的安全性。
-    - `StringBuffer` 类适合于需要频繁修改字符串内容的场景，因为它提供了更高的效率。
+  * `String` 类适合于不需要修改字符串内容的场景，因为其不可变性保证了字符串的安全性。
+  * `StringBuffer` 类适合于需要频繁修改字符串内容的场景，因为它提供了更高的效率。
 
 ---
+
 ## 🍭 四种构造器
 
 1. `StringBuffer()`
-    - **描述**：构造一个不带字符的字符串缓冲区，其初始容量为 16 个字符。
-    - **用途**：当你需要一个空的 `StringBuffer` 实例，并且初始容量不是问题时使用。
+    * **描述**：构造一个不带字符的字符串缓冲区，其初始容量为 16 个字符。
+    * **用途**：当你需要一个空的 `StringBuffer` 实例，并且初始容量不是问题时使用。
 
 2. `StringBuffer(CharSequence seq)`
-    - **描述**：构造一个字符串缓冲区，它包含与指定的 `CharSequence` 相同的字符。
-    - **用途**：当你需要一个 `StringBuffer` 实例，并且已经有一个 `CharSequence`（如 `String`）作为内容时使用。
+    * **描述**：构造一个字符串缓冲区，它包含与指定的 `CharSequence` 相同的字符。
+    * **用途**：当你需要一个 `StringBuffer` 实例，并且已经有一个 `CharSequence`（如 `String`）作为内容时使用。
 
 3. `StringBuffer(int capacity)`
-    - **描述**：构造一个不带字符，但具有指定初始容量的字符串缓冲区。即对 `char[]` 大小进行指定。
-    - **用途**：当你需要一个 `StringBuffer` 实例，并且知道所需的初始容量时使用，这可以避免后续的容量调整。
+    * **描述**：构造一个不带字符，但具有指定初始容量的字符串缓冲区。即对 `char[]` 大小进行指定。
+    * **用途**：当你需要一个 `StringBuffer` 实例，并且知道所需的初始容量时使用，这可以避免后续的容量调整。
 
 4. `StringBuffer(String str)`
-    - **描述**：构造一个字符串缓冲区，并将其内容初始化为指定的字符串内容。
-    - **用途**：当你需要一个 `StringBuffer` 实例，并且已经有一个 `String` 作为初始内容时使用。
+    * **描述**：构造一个字符串缓冲区，并将其内容初始化为指定的字符串内容。
+    * **用途**：当你需要一个 `StringBuffer` 实例，并且已经有一个 `String` 作为初始内容时使用。
 
 ```java
 public class StringBufferExample {
@@ -319,55 +327,62 @@ public class StringBufferExample {
 }
 ```
 
-```
+```bash
 Hello
 World
 Java
 Kimi
 ```
 
-- `StringBuffer` 是一个可变的字符序列，适用于需要频繁修改字符串内容的场景。
-- 选择合适的构造器可以提高程序的效率，特别是在需要大量字符串操作的情况下。
-- 通过指定初始容量，可以避免多次扩容操作，从而提高性能。
+* `StringBuffer` 是一个可变的字符序列，适用于需要频繁修改字符串内容的场景。
+* 选择合适的构造器可以提高程序的效率，特别是在需要大量字符串操作的情况下。
+* 通过指定初始容量，可以避免多次扩容操作，从而提高性能。
 
 ---
+
 ## 🍭 StringBuffer 与 String 的转换
 
 在 Java 开发中，经常需要在 `String` 和 `StringBuffer` 之间进行转换。以下是如何实现这些转换的详细说明和示例代码。
 
 1. `String` 转换为 `StringBuffer`
 
-**方法1**：
-- 使用 `StringBuffer` 的构造器直接将 `String` 转换为 `StringBuffer`。
-- 示例代码：
-  ```java
-  String s = "hello";
-  StringBuffer b1 = new StringBuffer(s);
-  ```
+    **方法1**：
+    * 使用 `StringBuffer` 的构造器直接将 `String` 转换为 `StringBuffer`。
+    * 示例代码：
 
-**方法2**：
-- 创建一个空的 `StringBuffer` 对象，然后使用 `append` 方法添加字符串。
-- 示例代码：
-  ```java
-  StringBuffer b2 = new StringBuffer();
-  b2.append(s);
-  ```
+    ```java
+        String s = "hello";
+        StringBuffer b1 = new StringBuffer(s);
+    ```
+
+    **方法2**：
+    * 创建一个空的 `StringBuffer` 对象，然后使用 `append` 方法添加字符串。
+    * 示例代码：
+
+    ```java
+        StringBuffer b2 = new StringBuffer();
+        b2.append(s);
+    ```
 
 2. `StringBuffer` 转换为 `String`
 
-**方法1**：
-- 使用 `StringBuffer` 的 `toString()` 方法将 `StringBuffer` 转换为 `String`。
-- 示例代码：
-  ```java
-  String s2 = b1.toString();
-  ```
+    **方法1**：
 
-**方法2**：
-- 使用 `String` 的构造器，将 `StringBuffer` 作为参数传递。
-- 示例代码：
-  ```java
-  String s3 = new String(b1);
-  ```
+    * 使用 `StringBuffer` 的 `toString()` 方法将 `StringBuffer` 转换为 `String`。
+    * 示例代码：
+
+      ```java
+      String s2 = b1.toString();
+      ```
+
+    **方法2**：
+
+    * 使用 `String` 的构造器，将 `StringBuffer` 作为参数传递。
+    * 示例代码：
+
+      ```java
+      String s3 = new String(b1);
+      ```
 
 示例代码
 
@@ -394,23 +409,25 @@ public class StringAndStringBuffer {
 }
 ```
 
-```
+```bash
 String from b1: hello
 String from b1: hello
 ```
 
-- `String` 是不可变的，每次修改都会创建新的对象。
-- `StringBuffer` 是可变的，可以在原有对象上进行修改，适合频繁修改的场景。
-- 通过上述方法，可以在 `String` 和 `StringBuffer` 之间灵活转换，以满足不同的编程需求。
+* `String` 是不可变的，每次修改都会创建新的对象。
+* `StringBuffer` 是可变的，可以在原有对象上进行修改，适合频繁修改的场景。
+* 通过上述方法，可以在 `String` 和 `StringBuffer` 之间灵活转换，以满足不同的编程需求。
 
 ---
+
 ## 🍭 StringBuffer 的常用方法
 
 `StringBuffer` 类提供了多种方法来操作字符串缓冲区。以下是一些常用方法的笔记：
 
 1. 增加内容 (`append`)
-    - **描述**：在缓冲区的末尾追加新的字符串。
-    - **示例**：
+    * **描述**：在缓冲区的末尾追加新的字符串。
+    * **示例**：
+
       ```java
       StringBuffer s = new StringBuffer("hello");
       s.append(", ");
@@ -419,40 +436,45 @@ String from b1: hello
       ```
 
 2. 删除内容 (`delete`)
-    - **描述**：删除缓冲区中从 `start` 到 `end`（不包括 `end`）的字符。
-    - **示例**：
+    * **描述**：删除缓冲区中从 `start` 到 `end`（不包括 `end`）的字符。
+    * **示例**：
+
       ```java
       s.delete(11, 14);
       System.out.println(s); // 输出: hello, 张三丰
       ```
 
 3. 修改内容 (`replace`)
-    - **描述**：将缓冲区中从 `start` 到 `end`（不包括 `end`）的内容替换为新的字符串。
-    - **示例**：
+    * **描述**：将缓冲区中从 `start` 到 `end`（不包括 `end`）的内容替换为新的字符串。
+    * **示例**：
+
       ```java
       s.replace(9, 11, "周芷若");
       System.out.println(s); // 输出: hello, 周芷若
       ```
 
 4. 查找索引 (`indexOf`)
-    - **描述**：查找子串在字符串中第一次出现的索引，如果找不到返回 -1。
-    - **示例**：
+    * **描述**：查找子串在字符串中第一次出现的索引，如果找不到返回 -1。
+    * **示例**：
+
       ```java
       int index = s.indexOf("张三丰");
       System.out.println(index); // 输出: -1
       ```
 
 5. 插入内容 (`insert`)
-    - **描述**：在指定位置插入字符串。
-    - **示例**：
+    * **描述**：在指定位置插入字符串。
+    * **示例**：
+
       ```java
       s.insert(9, "赵敏");
       System.out.println(s); // 输出: hello, 赵敏, 周芷若
       ```
 
 6. 获取长度 (`length`)
-    - **描述**：获取缓冲区中字符串的长度。
-    - **示例**：
+    * **描述**：获取缓冲区中字符串的长度。
+    * **示例**：
+
       ```java
       System.out.println(s.length()); // 输出: 18
       ```
@@ -489,7 +511,7 @@ public class StringBufferMethods {
 }
 ```
 
-```
+```bash
 hello, 张三丰
 hello, 张三丰
 hello, 周芷若
@@ -498,8 +520,8 @@ hello, 赵敏, 周芷若
 18
 ```
 
-- `StringBuffer` 是一个可变的字符序列，适合在需要频繁修改字符串内容的场景中使用。
-- 通过这些方法，可以方便地对字符串缓冲区进行增删改查等操作。
+* `StringBuffer` 是一个可变的字符序列，适合在需要频繁修改字符串内容的场景中使用。
+* 通过这些方法，可以方便地对字符串缓冲区进行增删改查等操作。
 
 练习（有点坑，请留意）
 

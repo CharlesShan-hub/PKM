@@ -1,26 +1,34 @@
 # 注解
+
 ---
+
 ## 概述
+
 什么是注解？
+
 * 注解是JDK1.5才引入的。
 * 注解可以标注在 类上，属性上，方法上 等。
 * 注解可以做到在不改变代码逻辑的前提下在代码中嵌入补充信息。
 
 注解与注释
+
 * 注**释**：给程序员看的，编译器编译时会忽略注释。
 * 注**解**：给编译器看的，或给其它程序看的，程序根据有没有这个注解来决定不同的处理方式。
 
 注解的重要性
+
 * 框架是如何实现的：**框架 = 反射 + 注解 + 设计模式**。
 
 
 ---
+
 ## JDK 内置的基本注解类型
 
 1. `@Override`
     1. 只能用于重写父类的方法
     2. 如果写了`@Override`编译器会去验证是否构成了重载，如果没写，就按默认执行。
 2. `@Deprecated`：某个类或者成员过时了
+
     ```java
     package com.powernode.javase.annotation;  
       
@@ -52,20 +60,24 @@
         }  
     }
     ```
+
 3. `@SuppressWarnings`：抑制警告
     1. `@SuppressWarnings` 注解是 Java 编程语言中的一个特性，它用于抑制编译器生成的警告信息。这个注解可以应用于类型、字段、方法、参数、构造函数以及局部变量声明。下面是 `@SuppressWarnings` 支持的所有警告类型（也称为注解的值）的总结：  
     2. @SuppressWarnings("rawtypes")：抑制未使用泛型的警告
     3. @SuppressWarnings("resource")：抑制未关闭资源的警告
     4. @SuppressWarnings("deprecation")：抑制使用了已过时资源时的警告
     5. @SuppressWarnings("all")：抑制所有警告
-    6. 可以单独使用这些值，或者将它们组合起来传递给 `@SuppressWarnings` 注解，以抑制多种类型的警告。例如： 
-    ```java  
-    @SuppressWarnings({"unchecked", "rawtypes"})  
-    public void myMethod() {  
-        // 方法实现，这里可能会有未检查的转换或未指定泛型参数的警告  
-    }  
-    ```  
+    6. 可以单独使用这些值，或者将它们组合起来传递给 `@SuppressWarnings` 注解，以抑制多种类型的警告。例如：
+
+        ```java  
+        @SuppressWarnings({"unchecked", "rawtypes"})  
+        public void myMethod() {  
+            // 方法实现，这里可能会有未检查的转换或未指定泛型参数的警告  
+        }  
+        ```
+
     7. 可以通过标在不同的地方，表示不同的作用域
+
     ```java  
     package ex_at;  
     
@@ -89,27 +101,29 @@
             System.out.println(list.get(1));  
         }
     }  
-    ```  
+    ```
+
 4. `@FunctionalInterface`
     1. 函数式接口”的注解，这个是 JDK1.8 版本引入的新特性。
     2. 使用@FunctionalInterface标注的接口，则该**接口就有且只能存在一个抽象方法**，否则就会发生编译错误。（注意：接口中的默认方法或静态方法可以有多个。）
+
 ```java
-package com.powernode.javase.annotation;  
+package com.powernode.javase.annotation; 
   
-/**  
- * 关于Java内置注解：@FunctionalInterface  
- *      1. 这个注解是专门用来标注接口的。  
- *      2. 被标注的接口必须是一个函数式接口，如果不是函数式接口，则编译器报错。  
- *      3. 这个注解也是给编译器看的。  
- *      4. 什么是函数式接口？  
- *          如果这个接口中抽象方法只有一个（有且仅有一个）。称为函数式接口。  
- *      5. 被 @FunctionalInterface 标注的接口中，允许有多个默认方法和静态方法。  
- */  
-public class AnnotationTest04 {  
-}  
+/** 
+ * 关于Java内置注解：@FunctionalInterface 
+ *      1. 这个注解是专门用来标注接口的。 
+ *      2. 被标注的接口必须是一个函数式接口，如果不是函数式接口，则编译器报错。 
+ *      3. 这个注解也是给编译器看的。 
+ *      4. 什么是函数式接口？ 
+ *          如果这个接口中抽象方法只有一个（有且仅有一个）。称为函数式接口。 
+ *      5. 被 @FunctionalInterface 标注的接口中，允许有多个默认方法和静态方法。 
+ */ 
+public class AnnotationTest04 { 
+} 
   
-@FunctionalInterface  
-interface Flyable {  
+@FunctionalInterface 
+interface Flyable { 
     void fly();  
   
     //void run();  
@@ -123,12 +137,17 @@ interface Flyable {
     }  
 }
 ```
+
 ---
+
 ## 自定义注解
+
 自定义注解
+
 * 使用 @interface 来定义注解。
 * 默认情况下注解可以出现在类上、方法上、属性上、构造方法上、方法参数上等......
-* 所有自定义的注解，它的父类是：java.lang.annotation.Annotation
+* 所有自定义的注解，它的父类是：`java.lang.annotation.Annotation`
+
 ```java
 package com.powernode.javase.annotation;  
   
@@ -152,11 +171,9 @@ public class AnnotationTest05 {
   
     @MyAnnotation  
     public void doSome(){  
-  
     }  
   
     public void doOther(@MyAnnotation String name, @MyAnnotation String password){  
-  
     }  
   
     public void toDo(  
@@ -164,16 +181,17 @@ public class AnnotationTest05 {
             String name,  
             @MyAnnotation  
             String password){  
-  
     }  
 }
 ```
 
 注解也可以定义属性
+
 * 注解也可以定义属性，不过属性定义时，属性名后面必须加一个小括号。
 * 属性的类型只能是：
-    * byte，short，int，long，float，double，boolean，char，String、Class、枚举类型、注解类型
-    * 以上所有类型的一维数组形式
+  * byte，short，int，long，float，double，boolean，char，String、Class、枚举类型、注解类型
+  * 以上所有类型的一维数组形式
+
 ```java
 package com.powernode.javase.annotation;  
   
@@ -243,6 +261,7 @@ package com.powernode.javase.annotation;
 ```
 
 注解的使用
+
 * 注解在使用时必须给属性赋值，除非你使用了default关键字为属性指定了默认值。
 * 如果属性只有一个，并且属性名是value时，使用注解时value可以省略不写。
 * 如果属性是一个数组，使用注解时，数组值只有一个，数组的大括号是可以省略的。
@@ -275,15 +294,16 @@ public class AnnotationTest07 {
   
     @SuppressWarnings("all")  
     public static void main(String[] args) {  
-  
     }  
 }
 ```
 
 ---
+
 ## 元注解：对注解进行注解
 
 元注解的种类（使用不多，了解，不用深入研究）
+
 1) Retention // 指定注解的作用范围，三种 SOURCE, CLASS, RUNTIME  
 2) Target // 指定注解可以在哪些地方使用  
 3) Documented // 指定该注解是否会在 javadoc 体现  
@@ -327,6 +347,7 @@ public @interface Deprecated {
 @Repeatable：设置注解在某一个元素上是否可以重复使用（Java8的新特性。）
 
 ### @Retention
+
 Retention英文意思有保留、保持的意思，它表示注解存在阶段是保留在源代码（编译期），字节码（类加载）或者运行时（JVM中运行）。
 在@Retention注解中使用枚举RetentionPolicy来表示注解保留时期。
 @Retention(RetentionPolicy.SOURCE)：注解仅存在于源代码中，在字节码文件中不包含。
@@ -339,7 +360,6 @@ package com.powernode.javase.annotation.meta1;
 import java.lang.annotation.Annotation;  
 import java.lang.annotation.Retention;  
 import java.lang.annotation.RetentionPolicy;  
-
 
 @MyAnnotation // 这个注解会被保留到字节码中，并且在运行时可以被反射。  
 public class Test {  
@@ -365,7 +385,9 @@ public class Test {
 @interface MyAnnotation {  
 }
 ```
+
 ### @Target
+
 用于描述注解可以使用的位置，该注解使用ElementType枚举类型用于描述注解可以出现的位置，
 ElementType有如下枚举值：
 @Target(ElementType.TYPE)：作用于接口、类、枚举、注解
@@ -376,7 +398,7 @@ ElementType有如下枚举值：
 @Target(ElementType.LOCAL_VARIABLE)：作用于局部变量
 @Target(ElementType.ANNOTATION_TYPE)：作用于注解
 @Target(ElementType.PACKAGE)：作用于包
-@Target(ElementType.TYPE_PARAMETER)：作用于泛型，即泛型方法、泛型类和泛型接口。 
+@Target(ElementType.TYPE_PARAMETER)：作用于泛型，即泛型方法、泛型类和泛型接口。
 @Target(ElementType.TYPE_USE)：作用于任意类型。
 
 ```java
@@ -393,8 +415,7 @@ public class Test {
   
     @MyAnnotation  
     public static void main(String[] args) {  
-  
-    }  
+    }
 }
   
 //@Target(value={ElementType.METHOD})  
@@ -405,12 +426,14 @@ public class Test {
 ```
 
 ### @Documented
+
 Documented的英文意思是文档。使用javadoc.exe工具可以从程序源代码中抽取类、方法、属性等注释形成一个源代码配套的API帮助文档，而该工具抽取时默认不包括注释内容。如果使用的注解被@Documented标注，那么该注解就能被javadoc.exe工具提取到API文档。
 
 ### @Inherited
+
 Inherited的英文意思是继承，但是这个继承和我们平时理解的继承大同小异，一个被@Inherited注解了的注解修饰了一个父类，则它的子类也继承了父类的注解。
 
 ### @Repeatable
-Repeatable表示可重复的含义，该注解属于JDK1.8版本的新特性。
 
+Repeatable表示可重复的含义，该注解属于JDK1.8版本的新特性。
 

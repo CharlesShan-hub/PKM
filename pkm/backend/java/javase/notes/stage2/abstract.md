@@ -36,7 +36,7 @@ class Cat extends Animal{
 
 1) **抽象类不能被实例化**
 2) 抽象类不一定要包含abstract方法。也就是说，抽象类可以没有abstract方法
-3) 一旦类包含了abstract方法，则这个类必须声明为abstract 
+3) 一旦类包含了abstract方法，则这个类必须声明为abstract
 4) abstract 只能修饰**类**和**方法**，不能修饰属性和其它的
 5) 抽象类可以有任意成员【**因为抽象类还是类**】，比如：非抽象方法、构造器、静态属性等等
 6) 抽象方法不能有主体，即不能实现：❌`abstract void aaa(){ };`
@@ -49,6 +49,7 @@ class Cat extends Animal{
 2) 题2，思考：abstract public static void test2(); 能编译通过吗，why?❌
 3) 题3，思考：abstract private void test3(); 能编译通过吗，why?❌
 4) 编写一个Employee类，声明为抽象类，包含如下三个属性：name，id，salary。提供必要的构造器和抽象方法：work()。对于Manager类来说，他既是员工，还具有奖金(bonus)的属性。请使用继承的思想，设计CommonEmployee类和Manager类，要求类中提供必要的方法进行属性访问，实现work()，提示 “经理/普通员工 名字 工作中.....”
+
     ```java
     package ex_abstract;  
       

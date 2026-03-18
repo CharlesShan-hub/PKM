@@ -1,6 +1,7 @@
-# java.lang.System类的常用方法
+# `java.lang.System`类的常用方法
 
 常用属性
+
 ```java
 static final PrintStream err //标准错误输出流（System.err.println(“错误信息”);输出红色字体）
 static final InputStream in 标准输入流
@@ -52,6 +53,7 @@ public class SystemTest {
 ```
 
 常用方法：
+
 ```java
 static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length); 数组拷贝
 static void exit(int status); 退出虚拟机

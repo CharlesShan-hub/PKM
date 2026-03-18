@@ -1,5 +1,7 @@
 # 反射
+
 ---
+
 ## 反射机制概述
 
 Java反射机制是指在运行时动态获取类的信息或动态调用对象的方法、修改属性等操作。主要核心就是Class类、Constructor类、Field类、Method类等API。 反射机制主要应用于框架开发、动态代理、ORM框架、JDBC驱动等方面。通过反射机制，程序员能够获得在编译期间不被知晓的类、属性、方法等信息。但是反射机制的性能较低，常常被认为是一种牺牲性能换取灵活性的实现方式。
@@ -7,6 +9,7 @@ Java反射机制是指在运行时动态获取类的信息或动态调用对象�
 Java反射机制核心包：`java.lang.reflect.*`
 
 Java反射机制核心类：
+
 * `java.lang.Class`
 * `java.lang.reflect.Field`
 * `java.lang.reflect.Method`
@@ -14,25 +17,29 @@ Java反射机制核心类：
 * `java.lang.reflect.Modifier`
 
 ---
+
 ## 获取Class
 
 Java中获取Class对象有以下三种方式：
 
 1. 调用Object类的getClass()方法：可以通过`对象的getClass()`方法来获取Class对象
-```java
-Object obj = new Object();
-Class clazz = obj.getClass();
-```
+
+    ```java
+    Object obj = new Object();
+    Class clazz = obj.getClass();
+    ```
 
 2. 使用“`类.class`”语法：可以使用“类.class”语法来获取Class对象
-```java
-Class clazz = Object.class;
-```
+
+    ```java
+    Class clazz = Object.class;
+    ```
 
 3. 使用`Class类的forName()`方法：可以使用Class类的forName()方法来获取Class对象
-```java
-Class clazz = Class.forName("java.lang.Object");
-```
+
+    ```java
+    Class clazz = Class.forName("java.lang.Object");
+    ```
 
 👉：[面试题：创建对象有哪⼏种⽅式](../mianshi/new-class.md)
 
@@ -129,6 +136,7 @@ class User {
 ```
 
 ---
+
 ## 反射Class
 
 在属性配置文件中配置类名：`classInfo.properties`
@@ -141,6 +149,7 @@ class User {
 这说明反射机制可以让程序变的更加灵活。在进行系统扩展时，可以达到OCP开闭原则。
 
 下面的例子就是通过Class去创建对象的案例：
+
 ```java
 package com.powernode.javase.reflect;  
   
@@ -182,6 +191,7 @@ class User{
 ```
 
 实际应用中，类名可以通过配置文件获取，如下：
+
 ```java
 package com.powernode.javase.reflect;  
   
@@ -213,10 +223,13 @@ public class ReflectTest03 {
 ```
 
 classInfo.properties
+
 ```properties
 className=java.util.Date
 ```
+
 ---
+
 ## 反射Field
 
 反射Field包括两方面：
@@ -224,13 +237,13 @@ className=java.util.Date
 一方面：通过反射机制获取Field
 
     Field field = clazz.getDeclaredField("fieldName"); // 通过属性名获取 
-
+    
     Field[] fields = clazz.getDeclaredFields(); // 获取所有的属性，包括私有的
 
 另一方面：通过Filed访问对象的属性
 
     Object fieldValue = field.get(myObject); // 读取某个对象的属性值
-
+    
     field.set(myObject, newValue); // 修改某个对象的属性值
 
 ```java
@@ -409,7 +422,9 @@ class Customer {
     private int age;  
 }
 ```
+
 ---
+
 ## 反射Method
 
 反射Method包括两方面：
@@ -426,6 +441,7 @@ class Customer {
     Object result = method.invoke(myObject, args);
 
 下边是获取Method
+
 ```java
 package com.powernode.javase.reflect;  
   
@@ -570,6 +586,7 @@ public class ReflectTest09 {
 ```
 
 Method调用方法
+
 ```java
 package com.powernode.javase.reflect;  
   
@@ -636,7 +653,9 @@ class UserService {
     }  
 }
 ```
+
 ---
+
 ## 反射Constructor
 
 反射Constructor包括两方面：
@@ -818,7 +837,9 @@ class Order {
     }  
 }
 ```
+
 ---
+
 ## 模拟框架的部分实现
 
 本案例的实现类似于Spring框架中部分实现，主要是通过修改配置文件来达到创建不同的对象，调用不同的方法。
@@ -874,12 +895,13 @@ public class ReflectTest13 {
 ```
 
 ---
+
 ## 类加载及双亲委派机制
 
 ### 类加载的过程
 
 1. **装载**（loading）
-    * 类加载器负责将类的class文件读入内存，并创建一个java.lang.Class对象
+    * 类加载器负责将类的class文件读入内存，并创建一个`java.lang.Class`对象
 2. **连接**(linking)
     1. 验证（Verify）
         * 确保加载类的信息符合JVM规范。
@@ -893,6 +915,7 @@ public class ReflectTest13 {
     * 静态变量赋值，静态代码块执行
 
 低版本的JDK中类加载器的名字：
+
 * 启动类加载器：`负责加载rt.jar`
 * 扩展类加载器：`ext/*.jar`
 * 系统类加载器：`classpath`
@@ -903,14 +926,17 @@ public class ReflectTest13 {
 2. 实例方法：`Class clazz = 引用.getClass();`
 3. class属性：`Class clazz = 类型名.class;`
 4. 通过类加载器获取
+
     ```java
     ClassLoader classLoader = ClassLoader.getSystemClassLoader();
     Class clazz = classLoader.loadClass(“全限定类名”);
     ```
 
 Class.forName和classLoader.loadClass()的区别？
+
 * Class.forName()：类加载时会进行初始化。
 * classLoader.loadClass()：类加载时不会进行初始化，直到第一次使用该类。
+
 ```java
 package com.powernode.javase.reflect;  
   
@@ -938,6 +964,7 @@ public class ReflectTest14 {
     }  
 } 
 ```
+
 ### 类加载器
 
 1. 虚拟机内部提供了三种类加载器（Java9+）：
@@ -995,12 +1022,14 @@ public class ReflectTest15 {
 3. 作用：
     1. 保护程序的安全。
     2. 防止类加载重复。
-![[resources/双亲委派.png]]
+    ![[resources/双亲委派.png]]
 
 ---
+
 ## 反射泛型
 
 1.反射父类的泛型
+
 ```java
 package com.powernode.javase.reflect.generic01;  
   
@@ -1046,7 +1075,9 @@ class Animal<X, Y, Z> {
 class Cat extends Animal<String, Integer, Double>{  
 }
 ```
+
 2.反射接口的泛型
+
 ```java
 package com.powernode.javase.reflect.generic02;  
   
@@ -1081,7 +1112,9 @@ public class Mouse implements Flyable<String, Integer>, Comparable<Mouse>{
     }  
 }
 ```
+
 3.反射属性上的泛型
+
 ```java
 package com.powernode.javase.reflect.generic03;  
   
@@ -1113,7 +1146,9 @@ public class User {
     private Map<Integer, String> map;  
 }
 ```
+
 4.反射方法参数上的泛型
+
 ```java
 package com.powernode.javase.reflect.generic04;  
   
@@ -1156,7 +1191,9 @@ class MyClass {
   
 }
 ```
+
 5.反射方法返回值的泛型
+
 ```java
 package com.powernode.javase.reflect.generic04;  
   
@@ -1197,7 +1234,9 @@ class MyClass {
   
 }
 ```
+
 6.反射构造方法参数上的泛型
+
 ```java
 package com.powernode.javase.reflect.generic05;  
   

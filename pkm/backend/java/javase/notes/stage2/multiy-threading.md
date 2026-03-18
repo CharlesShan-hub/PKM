@@ -1,9 +1,11 @@
 # 多线程
 
 ---
+
 ## 基本概念
 
 ### 概述
+
 1. 进程：进程是指操作系统中的**一段程序**，它是一个正在执行中的程序实例，**具有独立的内存空间和系统资源**，如文件、网络端口等。在计算机程序执行时，先创建进程，再在进程中进行程序的执行。一般来说，一个进程可以包含多个线程。（简单理解，一个程序就是一个进程。）
 2. 线程：线程是指进程中的**一个执行单元**，**是进程的一部分**，它负责在进程中执行程序代码。每个线程都有自己的**栈和程序计数器，并且可以共享进程的资源**。多个线程可以在同一时刻执行不同的操作，从而提高了程序的执行效率。
 3. JVM规范中规定：堆内存、方法区 是线程共享的。虚拟机栈、本地方法栈、程序计数器 是每个线程私有的。
@@ -14,10 +16,12 @@
     4. 在main方法的执行过程中，程序员可以手动创建其他线程对象并启动。
 
 ### 并行并发
+
 1. 并行：比如，多个 CPU 彼此就是并行
 2. 并发：比如，一个 CPU 轮转处理不同的任务，就是并发
 
 查看本电脑可用的CPU数
+
 ```java
 package ex_thread;  
   
@@ -30,6 +34,7 @@ public class CPUNumber {
 
 
 ---
+
 ## 线程创建
 
 > 1. 继承`Thread`类，重写`run`方法。
@@ -38,7 +43,9 @@ public class CPUNumber {
 > 4. 线程池，`executorService.submit(new MyRunnable());`
 
 ### 继承`Thread`类
+
 👉 [thread-impl-01](../../details/thread-impl-01.md)
+
 1. 编写一个类继承`Thread`，重写`run()`。
 2. 创建线程对象：`Thread t = new MyThread();`
 3. 启动线程：`t.start();`
@@ -61,7 +68,8 @@ public class CPUNumber {
 
 ### 线程池
 
-👉 [thread-impl-04](../../details/thread-impl-04.md)，线程池本质上就是一个缓存：cache 。一般都是服务器在启动的时候，初始化线程池，也就是说服务器在启动的时候，创建N多个线程对象，直接放到线程池中，需要使用线程对象的时候，直接从线程池中获取。 
+👉 [thread-impl-04](../../details/thread-impl-04.md)，线程池本质上就是一个缓存：cache 。一般都是服务器在启动的时候，初始化线程池，也就是说服务器在启动的时候，创建N多个线程对象，直接放到线程池中，需要使用线程对象的时候，直接从线程池中获取。
+
 ### 为什么是 start 不是 run
 
 在[Thread.java 源码](../../details/thread-start-source.md)中， run 就是一个普通的方法。直接调用 run 并没有启用多线程，`start0()`才是真正的实现了多线程的方法！
@@ -99,6 +107,7 @@ public class CPUNumber {
 终端输入 jconsole，可以查看进程
 
 ---
+
 ## 锁
 
 > 我们使用一个卖票的案例，引出锁的应用。
@@ -120,12 +129,13 @@ public class CPUNumber {
 假设有一个售票系统，三个售票窗口同时出售5张票。如果没有适当的同步机制，多个线程（窗口）可能会同时访问和修改剩余的票数，导致数据不一致的问题。
 
 👉 [thread-lock-01](../../details/thread-lock-01.md)
+
 ### 类锁
 
 **​类锁的两种实现方式​**：如果整个方法都需要同步，用第一种；如果只需要同步方法中的部分代码，用第二种。​
 
 - `static synchronized`方法
-    -  `public boolean sell()` 变成了 `public static synchronized boolean sell()`（唯一的改变）
+    - `public boolean sell()` 变成了 `public static synchronized boolean sell()`（唯一的改变）
     - 👉 [thread-lock-02](../../details/thread-lock-02.md)
 - `synchronized(ClassName.class)`代码块
     - 使用`synchronized(ClassName.class)`对代码块
@@ -134,17 +144,21 @@ public class CPUNumber {
 ### 实例锁
 
 1. 语法
+
     ```java
     synchronized(需要排队的线程共享的对象){
         // 需要同步的代码
     }
     ```
+
 2. 原理：假设`obj`是`t1`, `t2`两个线程共享的。`t1`和`t2`执行这个代码的时候，一定是有一个先抢到了CPU时间片。假设`t1`先抢到了CPU时间片。`t1`线程找共享对象`obj`的对象锁，找到之后，则占有这把锁。只要能够占有`obj`对象的对象锁，就有权利进入同步代码块执行代码。 当`t1`线程执行完同步代码块之后，会释放之前占有的对象锁（归还锁）。 同样，`t2`线程抢到CPU时间片之后，也开始执行，也会去找共享对象`obj`的对象锁，但由于`t1`线程占有这把锁，`t2`线程只能在同步代码块之外等待。
+
     ```java
     synchronized(obj){
         // 同步代码块
     }
     ```
+
 3. 注意同步代码块的范围，不要无故扩大同步的范围，同步代码块范围越小，效率越高。
 4. `obj`需要是线程共享的对象，如果不是就会失效，👉 [thread-lock-04](../../details/thread-lock-04.md)
 5. 重新改成同一个对象上锁，👉 [thread-lock-05](../../details/thread-lock-05.md)
@@ -164,6 +178,7 @@ public class CPUNumber {
 1. 两个线程同时创建单例，结果创建了**两个不同的对象**，破坏了单例。👉 [thread-singleton-01](../../details/thread-singleton-01.md)
 2. 采用类锁：👉 [thread-singleton-02](../../details/thread-singleton-02.md)
 3. 采用实例锁：👉 [thread-singleton-03](../../details/thread-singleton-03.md)
+
 ### Lock
 
 1. `Lock`是接口，从JDK5开始引入的。  
@@ -172,6 +187,7 @@ public class CPUNumber {
 4. 使用`Lock`解决懒汉式单例模式安全问题：👉 [thread-lock-lock](../../details/thread-lock-lock.md)
 
 ---
+
 ## 用户线程与守护线程
 
 ### 概念与案例
@@ -200,14 +216,17 @@ public class CPUNumber {
         - `firstTime`：首次执行时间
         - `interval`：重复执行间隔（毫秒）
 - `java.util.TimerTask`：定时任务，需要继承并实现`run()`方法
+
 * 👉 [thread-timer](../../details/thread-timer.md)
 
 ---
+
 ## 线程的生命周期
 
 ### 六种状态
 
 ![[../../assets/threading-drawing|1000]]
+
 * 新建状态（NEW）
 * 就绪状态（RUNNABLE）
 * 运行状态（RUNNABLE）
@@ -223,7 +242,7 @@ public class CPUNumber {
 | `sleep()`     | 线程暂停   | 不释放锁，可能抛`InterruptedException` |
 | `interrupt()` | 请求终止线程 | 需线程自身检查中断标志                    |
 
-使用`getState()`一个查看 java 线程状态的案例：👉 [thread-state](../../details/thread-state.md)
+使用`getState()`一个查看 Java 线程状态的案例：👉 [thread-state](../../details/thread-state.md)
 
 ### sleep(静态方法)
 
@@ -238,26 +257,32 @@ public class CPUNumber {
 
 * 中断一个线程的睡眠：👉 [thread-interrupt-01](../../details/thread-interrupt-01.md)
 * 👉 [thread-interrupt-02](../../details/thread-interrupt-02.md)
+
 ### stop(已经废弃)
 
 * `stop`不能成功终止线程：👉 [thread-stop-01](../../details/thread-stop-01.md)
 * 正确的方法需要我们手动使用flag进行判断：👉 [thread-stop-02](../../details/thread-stop-02.md)
 
 ### join(实例方法)
+
 - **作用**：强制优先执行插队线程
 - **特点**：插队线程必须完全执行完毕；调用线程会等待插队线程完成
 - **使用场景**：需要确保某个线程优先完成时
+
 * 🌟join也可以指定join的时间，就是只把CPU让给某个进程最多一段时间：👉 [thread-join-01](../../details/thread-join-01.md)
 * 练习：👉 [thread-join-02](../../details/thread-join-02.md)
 
 ---
+
 ## 虚拟机调度
 
 ### 调度模型
+
 * 分时调度模型：所有线程轮流使用CPU的执行权，并且平均的分配每个线程占用的CPU的时间。
 * 抢占式调度模型：让优先级高的线程以较大的概率优先获得CPU的执行权，如果线程的优先级相同，那么就会随机选择一个线程获得CPU的执行权，而**Java采用的就是抢占式调用**。
 
 ### 线程优先级
+
 * ***`setPriority(int priority)`**  
     * 功能：设置线程优先级（范围：1~10）。  
 * ***`getPriority()`**  
@@ -266,6 +291,7 @@ public class CPUNumber {
 * 👉 [thread-priority](../../details/thread-priority.md)
 
 ### yield(让位)
+
 - **作用**：让出CPU资源，允许其他线程执行
 - **特点**：礼让时间不确定；不保证礼让一定成功
 - **使用场景**：当线程不需要占用全部CPU资源时

@@ -3,7 +3,9 @@
 `FileReader` 是 Java I/O 体系中**字符输入流（Reader）**的子类，专门用于从文件系统中读取字符数据（文本）。
 
 ## 介绍
+
 1. 🏅核心特性
+
    | 特性 | 说明 |
    | :--- | :--- |
    | **继承关系** | `java.io.Reader` → `java.io.InputStreamReader` → `java.io.FileReader` |
@@ -12,6 +14,7 @@
    | **资源管理** | 必须显式调用 `close()` 关闭流（推荐 try-with-resources） |
 
 2. 🔑核心API
+
    | 分类 | API | 说明 |
    | :--- | :--- | :--- |
    | **构造器** | `FileReader(String fileName)` | 通过文件路径创建 |
@@ -31,6 +34,7 @@
 ## 代码示例
 
 ### 1. 单字符读取
+
 逐个字符读取，效率较低。
 
 ```java
@@ -54,6 +58,7 @@ public class ReadChar {
 ```
 
 ### 2. 分批读取（推荐）
+
 使用字符数组缓冲区（Buffer）读取，效率更高。
 
 ```java

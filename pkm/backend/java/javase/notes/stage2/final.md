@@ -1,6 +1,7 @@
 # final
 
 ---
+
 ## 基本使用
 
 1. 使用了 final 的类，就不能继承了
@@ -36,6 +37,7 @@
     ```
 
 ---
+
 ## 细节
 
 1. final修饰的属性又叫常量，一般用 XX_XX_XX 来命名。比如`TAX_TATE`
@@ -43,6 +45,7 @@
    ① 定义时：如 `public final double TAX_RATE = 0.08;`
    ② 在构造器中
    ③ 在代码块中。
+
     ```java
     class A{
         public final double TAX_RATE1 = 0.8;
@@ -56,9 +59,11 @@
         }
     }
     ```
+
 3. 如果final修饰的属性是静态的，则初始化的位置只能是
-     ① 定义时 
+     ① 定义时
      ② 在静态代码块（**不能在构造器中赋值**）。
+
     ```java
     class B{
         public static final double TAX_RATE1 = 0.8;
@@ -72,11 +77,13 @@
         }
     }
     ```
+
 4. final类不能继承，但是可以实例化对象。
 5. 如果类不是final类，但是含有final方法，则该方法虽然不能重写，但是可以被继承。
 6. 一般来说，如果一个类已经是final类了，就没有必要再将方法修饰成final方法。（final类没有子类，自然没有重写其方法之说）
 7. final不能修饰构造方法(即构造器)
 8. （重点）`final` 和 `static` 往往搭配使用，叫做常量，效率更高，底层编译器做了优化处理——进行**宏替换**。
+
     ```java
     package ex_final;  
       
@@ -104,9 +111,11 @@
         }
     }
     ```
-9. 包装类(`Integer`,` Double`, `Float`, `Boolean`等都是`final`), `String`也是`final`类。
+
+9. 包装类(`Integer`,`Double`, `Float`, `Boolean`等都是`final`), `String`也是`final`类。
 
 ---
+
 ## 练习
 
 请编写一个程序，能够计算圆形的面积。要求圆周率为 3.14。赋值的位置3个方式都写一下

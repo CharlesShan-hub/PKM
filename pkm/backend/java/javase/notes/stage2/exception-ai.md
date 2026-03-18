@@ -4,6 +4,7 @@
 
 1. **NullPointerException 空指针异常**
    - 当尝试访问一个未初始化的对象时，会抛出此异常。
+
    ```java
    public class Test {
        public static void main(String[] args) {
@@ -12,10 +13,12 @@
        }
    }
    ```
+
    运行上述代码将抛出 `NullPointerException`。
 
 2. **ArithmeticException 数学运算异常**
    - 当执行非法的数学运算时，例如除以零，会抛出此异常。
+
    ```java
    public class Test {
        public static void main(String[] args) {
@@ -23,10 +26,12 @@
        }
    }
    ```
+
    运行上述代码将抛出 `ArithmeticException`。
 
 3. **ArrayIndexOutOfBoundsException 数组下标越界异常**
    - 当访问数组时，如果下标超出数组的有效范围，会抛出此异常。
+
    ```java
    public class Test {
        public static void main(String[] args) {
@@ -35,10 +40,12 @@
        }
    }
    ```
+
    运行上述代码将抛出 `ArrayIndexOutOfBoundsException`。
 
 4. **ClassCastException 类型转换异常**
    - 当尝试将对象强制转换为不兼容的类型时，会抛出此异常。
+
    ```java
    public class Test {
        public static void main(String[] args) {
@@ -47,10 +54,12 @@
        }
    }
    ```
+
    运行上述代码将抛出 `ClassCastException`。
 
 5. **NumberFormatException 数字格式不正确异常**
    - 当尝试将字符串转换为数字，但字符串格式不正确时，会抛出此异常。
+
    ```java
    public class Test {
        public static void main(String[] args) {
@@ -58,6 +67,7 @@
        }
    }
    ```
+
    运行上述代码将抛出 `NumberFormatException`。
 
 常见的编译异常：
@@ -72,6 +82,7 @@
 以下是每种异常的示例代码：
 
 1. **SQLException**
+
    ```java
    import java.sql.*;
    
@@ -99,9 +110,11 @@
        }
    }
    ```
+
    上述代码尝试连接到 MySQL 数据库并查询一个表，如果发生异常（例如，数据库连接信息错误），将捕获 `SQLException`。
 
 2. **IOException**
+
    ```java
    import java.io.*;
    
@@ -126,9 +139,11 @@
        }
    }
    ```
+
    上述代码尝试打开一个不存在的文件，将抛出 `IOException`。
 
 3. **FileNotFoundException**
+
    ```java
    import java.io.*;
    
@@ -143,9 +158,11 @@
        }
    }
    ```
+
    上述代码检查一个文件是否存在，如果不存在，将不抛出 `FileNotFoundException`。
 
 4. **ClassNotFoundException**
+
    ```java
    public class Test {
        public static void main(String[] args) {
@@ -157,9 +174,11 @@
        }
    }
    ```
+
    上述代码尝试加载一个不存在的类，将抛出 `ClassNotFoundException`。
 
 5. **EOFException**
+
    ```java
    import java.io.*;
    
@@ -185,9 +204,11 @@
           }
        }
    ```
+
    上述代码尝试读取一个文件直到文件末尾，将抛出 `EOFException`。
 
 6. **IllegalArgumentException**
+
    ```java
    public class Test {
        public static void main(String[] args) {
@@ -199,4 +220,5 @@
        }
    }
    ```
+
    上述代码尝试将一个非法参数传递给 `System.out.println()` 方法，将抛出 `IllegalArgumentException`。
