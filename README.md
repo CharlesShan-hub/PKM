@@ -28,6 +28,7 @@
 			* SpringCloud
 		* devops
 			* [git](pkm/backend/devops/git/README.md)
+			* [SVN](pkm/backend/devops/svn/README.md)
 			* [maven](pkm/backend/devops/maven/maven.md)
 			* [docker](pkm/backend/devops/docker/README.md)
 			* k8s
