@@ -39,13 +39,19 @@ JDBC编程的步骤是很固定的，通常包含以下六步：
 ### 构建表
 
 ```sql
-CREATE TABLE t_user (  
-	id INT PRIMARY KEY AUTO_INCREMENT,  
-	name VARCHAR(50) NOT NULL,  
-	password VARCHAR(100) NOT NULL,  
-	realname VARCHAR(50),  
-	gender VARCHAR(10),  
-	tel VARCHAR(20)  
+CREATE DATABASE IF NOT EXISTS jdbc
+  DEFAULT CHARACTER SET utf8mb4
+  DEFAULT COLLATE utf8mb4_0900_ai_ci;
+
+USE jdbc;
+
+CREATE TABLE t_user (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  realname VARCHAR(50),
+  gender VARCHAR(10),
+  tel VARCHAR(20)
 );
 ```
 
@@ -98,7 +104,7 @@ CREATE TABLE t_user (
 
 ### JDBC编程第二步：获取连接
 
-1. 获取 java.sql.Connection 对象，该对象的创建标志着mysql进程和jvm进程之间的通道打开了。
+1. 获取 `java.sql.Connection` 对象，该对象的创建标志着mysql进程和jvm进程之间的通道打开了。`
 2. 获取连接方法一：`getConnection(String url, String user, String password)`
 	```java
 	// 2. 获取连接
@@ -300,7 +306,7 @@ public class JDBCTest01 {
             // 2. 获取连接
             String url = "jdbc:mysql://localhost:3306/jdbc?useUnicode=true&serverTimezone=Asia/Shanghai&useSSL=true&characterEncoding=utf-8";
             String user = "root";
-            String password = "123456";
+            String password = "";
             conn = DriverManager.getConnection(url, user, password);
 
             // 3. 获取数据库操作对象
@@ -351,7 +357,7 @@ public class JDBCTest03 {
             // 2. 获取连接
             String url = "jdbc:mysql://localhost:3306/jdbc?useUnicode=true&serverTimezone=Asia/Shanghai&useSSL=true&characterEncoding=utf-8";
             String user = "root";
-            String password = "123456";
+            String password = "";
             conn = DriverManager.getConnection(url, user, password);
 
             // 3. 获取数据库操作对象
@@ -408,7 +414,7 @@ import java.util.ResourceBundle;
 public class JDBCTest04 {
     public static void main(String[] args){
         
-    	// 通过以下代码获取属性文件中的配置信息
+    // 通过以下代码获取属性文件中的配置信息
 		ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
 		String driver = bundle.getString("driver");
 		String url = bundle.getString("url");

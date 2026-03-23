@@ -50,7 +50,7 @@
 		* [c](pkm/embedded/c/README.md)
 		* [cpp](pkm/embedded/cpp/README.md)
 		* [rust](pkm/embedded/rust/README.md)
-		* [esp8266](pkm/embedded/esp8266/README.md)
+		* [esp](pkm/embedded/esp8266/README.md)
 	* Others
 		* [Minecraft](pkm/others/minecraft/README.md)
 		* [Ethereum](pkm/others/ethereum/README.md)

@@ -1,27 +1,40 @@
 # JDBC的查询操作
-ResultSet 是 JDBC （Java 数据库连接） API 提供的接口，它用于表示 SQL 查询的结果集。ResultSet 对象中包含了查询结果的所有行，可以通过 next() 方法逐行地获取并处理每一行的数据。它最常用于执行 SELECT 语句查询出来的结果集。
+---
+
+## ResultSet 介绍
 
 ResultSet 的遍历是基于 JDBC 的流式处理机制的，即一行一行地获取结果，避免将所有结果全部取出后再进行处理导致内存溢出问题。
 
 在使用 ResultSet 遍历查询结果时，一般会采用以下步骤：
 
-1. 执行 SQL 查询，获取 ResultSet 对象。
-2. 使用 ResultSet 的 next() 方法移动游标指向结果集的下一行，判断是否有更多的数据行。
-3. 如果有更多的数据行，则使用 ResultSet 对象提供的 getXXX() 方法获取当前行的各个字段（XXX 表示不同的数据类型）。例如，getLong("id") 方法用于获取当前行的 id 列对应的 Long 类型的值。
+1. 执行 SQL 查询，获取 `ResultSet` 对象。
+2. 使用 ResultSet 的 `next()` 方法移动游标指向结果集的下一行，判断是否有更多的数据行。
+3. 如果有更多的数据行，则使用 `ResultSet` 对象提供的 `getXXX()` 方法获取当前行的各个字段（XXX 表示不同的数据类型）。例如，`getLong("id")` 方法用于获`取当前行的 id 列对应的 Long 类型的值。
 4. 处理当前行的数据，例如将其存入 Java 对象中。
 5. 重复执行步骤 2~4，直到结果集中的所有行都被遍历完毕。
-6. 调用 ResultSet 的 close() 方法释放资源。
+6. 调用 `ResultSet` 的 `close()` 方法释放资源。
 
-需要注意的是，在使用完 ResultSet 对象之后，需要及时关闭它，以释放数据库资源并避免潜在的内存泄漏问题。否则，如果在多个线程中打开了多个 ResultSet 对象，并且没有正确关闭它们的话，可能会导致数据库连接过多，从而影响系统的稳定性和性能。
+需要注意的是，在使用完 `ResultSet` 对象之后，需要及时关闭它，以释放数据库资源并避免潜在的内存泄漏问题。否则，如果在多个线程中打开了多个 `ResultSet` 对象，并且没有正确关闭它们的话，可能会导致数据库连接过多，从而影响系统的稳定性和性能。
+
+---
 
 ## 通过列索引获取数据（以String类型获取）
 需求：获取t_user表中所有数据，在控制台打印输出每一行的数据。
 ```sql
 select id,name,password,realname,gender,tel from t_user;
+
+-- 制造这些数据的sql语句如下
+INSERT INTO t_user (name, password, realname, gender, tel) VALUES
+('sunwukong', '123', 'Sun Wukong', 'Male', '13566524578'),
+('zhubajie', '123', 'Zhu Bajie', 'Male', '13566524579'),
+('shaseng', '123', 'Sha Seng', 'Male', '1235568754'),
+('baijuping', '456', 'White Bone Spirit', 'Female', '14788545242'),
+('tangzanga', '123', 'Tang Sanzang', 'Male', '12566568956');
 ```
 要查询的数据如下图：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702536722789-fc5bbe25-598a-4619-b5b0-2dc1871da569.png#averageHue=%23f5f3f1&clientId=u4be5fce1-1b74-4&from=paste&height=137&id=u4577f84c&originHeight=137&originWidth=543&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11309&status=done&style=none&taskId=u78254320-0cef-41c6-afba-771a9b8d6ea&title=&width=543)
-代码如下（重点关注第4步 第5步 第6步）：
+![image.png](../assets/read-res1.png)
+代码如下（重点关注第4步 第5步 第6步)：
+
 ```java
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -33,7 +46,7 @@ import java.sql.ResultSet;
 public class JDBCTest09 {
     public static void main(String[] args){
         
-    	// 通过以下代码获取属性文件中的配置信息
+    // 通过以下代码获取属性文件中的配置信息
 		ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
 		String driver = bundle.getString("driver");
 		String url = bundle.getString("url");

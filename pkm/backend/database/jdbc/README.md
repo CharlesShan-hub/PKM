@@ -5,9 +5,9 @@
 
 * [hsp-jdbc](notes/hsp-jdbc.md)
 
-* [JDBC概述](notes/JDBC概述.md)
-* [JDBC的新增修改删除](notes/JDBC的新增修改删除.md)
-* [JDBC的查询](notes/JDBC的查询.md)
+* [JDBC概述](notes/overview.md)
+* [JDBC的新增修改删除](notes/crud1.md)
+* [JDBC的查询](notescrud2.md)
 * [第04章 SQL注入](notes/第04章%20SQL注入.md)
 * [第05章 JDBC事务](notes/第05章%20JDBC事务.md)
 * [第06章 JDBC调用存储过程](notes/第06章%20JDBC调用存储过程.md)
