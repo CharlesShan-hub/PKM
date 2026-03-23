@@ -6,6 +6,7 @@
 3. SVN：SubVersion，公司集中化管理，支持版本回退，跨平台。
 4. 服务器：VisualSVN Server
 5. 客户端：tortoisesvn
+6. 官网文档：<https://svnbook.red-bean.com/>
 ---
 ## 服务器配置
 端口注意不要用443，因为会和ssh装上，所以推荐8443
