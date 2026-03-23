@@ -1,4 +1,3 @@
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=O8j9i&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 # 在MySQL中创建存储过程
 ```sql
 create procedure mypro(in n int, out sum int)
@@ -14,7 +13,6 @@ begin
 end;
 ```
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=eRzbv&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 # 使用JDBC代码调用存储过程
 ```java
 package com.powernode.jdbc;
@@ -61,9 +59,8 @@ public class JDBCTest21 {
 ```
 
 执行结果：
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1712915314800-457530dc-85bd-4592-b0e7-595349fb92cb.png#averageHue=%239e886a&clientId=u5cc1386e-7362-4&from=paste&height=99&id=u799c12bb&originHeight=99&originWidth=212&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5633&status=done&style=none&taskId=u00e009ad-cade-410a-88fb-32c53ff16b4&title=&width=212)
+![image.png](../assets/img_b79097cb1bef.png)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=G93kN&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 
 程序解说：
 使用JDBC代码调用存储过程需要以下步骤：
@@ -131,4 +128,3 @@ conn.close();
 ```
 上述代码中，可以根据实际情况适当修改存储过程名、参数传递方式、参数类型等内容。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=ejcIL&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
