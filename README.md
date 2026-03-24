@@ -78,10 +78,10 @@
 		* [Social Psychology](pkm/hobbies/humanities/social-psychology/README.md)
 ---
 Todo
-* sql-事务
-* sql-存储索引
 * sql-索引
 * sql-优化
+* redis
+    * jmeter，压测工具
 * javase
 	* strictfp关键字
 	* 多线程：volatile
