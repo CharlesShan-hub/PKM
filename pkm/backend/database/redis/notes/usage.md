@@ -1,4 +1,53 @@
-## 常用命令
+# 使用
+---
+
+## 基础使用
+
+* 进入docker的redis的指令：`docker exec -it iia-redis redis-cli`
+* 进入这个容器的linux：`docker exec -it iia-redis /bin/sh`
+* Redis默认数据库数量是16个，分别为0-15。但是在集群模式下仅有0号一个数据库，所以建议默认只是用0号库。
+* 可以使用`select 0`来使用0号数据库.
+* 查看当前数据库中key的数量：**dbsize**
+* 清空数据库
+    * 清空当前数据库：**flushdb**
+    * 清空当前Redis实例中所有的数据库：**flushall**
+    * 这两个命令会立即删除数据，且不可恢复（除非有备份），**生产环境务必备份数据或限制命令权限！**
+* 关闭数据库使用`redis-cli shutdown`，不要去kill进程，使用指令可以进行数据持久化
+* 如何修改密码
+    * 配置文件方式：编辑 `redis.conf`，添加 `requirepass yourpassword`，重启生效
+    * 临时设置：`CONFIG SET requirepass "yourpassword"`（重启失效）
+    * 客户端连接：`redis-cli -a yourpassword` 或连接后执行 `AUTH yourpassword`；这样不安全，也可以进入客户端后输入`auth yourpassword`
+* 端口放行
+    * firewalld: `firewall-cmd --permanent --add-port=6379/tcp && firewall-cmd --reload`
+    * iptables: `iptables -A INPUT -p tcp --dport 6379 -j ACCEPT`
+    * 云服务器：安全组添加入站规则允许 TCP 6379
+    * 安全加固：配置 `bind 127.0.0.1 192.168.x.x` 限制访问IP；使用 `rename-command` 禁用 FLUSHALL/CONFIG 等危险命令
+
+
+---
+
+## 常用命令与Jedis
+
+### Jedis连接
+
+添加依赖（pom.xml）
+```xml
+<dependency>
+    <groupId>redis.clients</groupId>
+    <artifactId>jedis</artifactId>
+    <version>4.4.0</version>
+</dependency>
+```
+
+创建连接
+```java
+Jedis jedis = new Jedis("localhost", 6379);
+// jedis.auth("password");  // 如有密码
+jedis.ping();  // 测试连接，返回 "PONG"
+jedis.set("key", "value");
+String value = jedis.get("key");
+jedis.close();  // 用完关闭
+```
 
 ### Key 相关命令
 
@@ -88,3 +137,4 @@
 | `ZINCRBY key increment member` | 对有序集合中指定成员的分数加上增量 increment |
 
 [jedis实现ZSet相关命令](../details/jedis-zset.md)
+
