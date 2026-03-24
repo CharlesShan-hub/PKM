@@ -1,4 +1,5 @@
 # 使用
+
 ---
 
 ## 基础使用
@@ -11,22 +12,22 @@
 * 可以使用`select 0`来使用0号数据库.
 * 查看当前数据库中key的数量：**dbsize**
 * 清空数据库
-    * 清空当前数据库：**flushdb**
-    * 清空当前Redis实例中所有的数据库：**flushall**
-    * 这两个命令会立即删除数据，且不可恢复（除非有备份），**生产环境务必备份数据或限制命令权限！**
+  * 清空当前数据库：**flushdb**
+  * 清空当前Redis实例中所有的数据库：**flushall**
+  * 这两个命令会立即删除数据，且不可恢复（除非有备份），**生产环境务必备份数据或限制命令权限！**
 * 关闭数据库使用`redis-cli shutdown`，不要去kill进程，使用指令可以进行数据持久化
 
 ### 设置密码
 
 * 如何修改密码
-    * 配置文件方式：编辑 `redis.conf`，添加 `requirepass yourpassword`，重启生效
-    * 临时设置：`CONFIG SET requirepass "yourpassword"`（重启失效）
-    * 客户端连接：`redis-cli -a yourpassword` 或连接后执行 `AUTH yourpassword`；这样不安全，也可以进入客户端后输入`auth yourpassword`
+  * 配置文件方式：编辑 `redis.conf`，添加 `requirepass yourpassword`，重启生效
+  * 临时设置：`CONFIG SET requirepass "yourpassword"`（重启失效）
+  * 客户端连接：`redis-cli -a yourpassword` 或连接后执行 `AUTH yourpassword`；这样不安全，也可以进入客户端后输入`auth yourpassword`
 * 端口放行
-    * firewalld: `firewall-cmd --permanent --add-port=6379/tcp && firewall-cmd --reload`
-    * iptables: `iptables -A INPUT -p tcp --dport 6379 -j ACCEPT`
-    * 云服务器：安全组添加入站规则允许 TCP 6379
-    * 安全加固：配置 `bind 127.0.0.1 192.168.x.x` 限制访问IP；使用 `rename-command` 禁用 FLUSHALL/CONFIG 等危险命令
+  * firewalld: `firewall-cmd --permanent --add-port=6379/tcp && firewall-cmd --reload`
+  * iptables: `iptables -A INPUT -p tcp --dport 6379 -j ACCEPT`
+  * 云服务器：安全组添加入站规则允许 TCP 6379
+  * 安全加固：配置 `bind 127.0.0.1 192.168.x.x` 限制访问IP；使用 `rename-command` 禁用 FLUSHALL/CONFIG 等危险命令
 
 ---
 
@@ -35,6 +36,7 @@
 ### Jedis连接
 
 添加依赖（pom.xml）
+
 ```xml
 <dependency>
     <groupId>redis.clients</groupId>
@@ -44,6 +46,7 @@
 ```
 
 创建连接
+
 ```java
 Jedis jedis = new Jedis("localhost", 6379);
 // jedis.auth("password");  // 如有密码
@@ -143,16 +146,17 @@ jedis.close();  // 用完关闭
 [jedis实现ZSet相关命令](../details/jedis-zset.md)
 
 ---
+
 ## ACL 与 Jedis
 
 ### Redis ACL 概念
 
 * Redis ACL (**Access Control List**) 是 Redis **6.0** 引入的访问控制系统，它提供了更细粒度的权限控制机制。
-- ACL 是 Redis 安全性的重要组成部分，特别适合多用户共享的 Redis 环境。
-- **定义多个用户**，每个用户有独立的密码，为每个用户分配特定的命令权限。
-- 控制用户对特定**键模式**的访问
-    - 例如执行 `ACL SETUSER username ~order:* ~product:*`，用户只能访问以 "order:" 或 "product:" 开头的键
-    - `~` 符号表示"键模式匹配"的权限前缀
+* ACL 是 Redis 安全性的重要组成部分，特别适合多用户共享的 Redis 环境。
+* **定义多个用户**，每个用户有独立的密码，为每个用户分配特定的命令权限。
+* 控制用户对特定**键模式**的访问
+  * 例如执行 `ACL SETUSER username ~order:* ~product:*`，用户只能访问以 "order:" 或 "product:" 开头的键
+  * `~` 符号表示"键模式匹配"的权限前缀
 
 ### 开启 ACL
 
@@ -211,8 +215,8 @@ TLS主要保护客户端不被骗，同时保护数据不被偷看。
 1. Redis服务器需要向CA机构申请证书，这个证书相当于现实生活中的营业执照。
 2. 营业执照申请下来挂到店里，等于是放到 Redis服务器的某个目录中。
 3. 然后 `java` 客户端内置了**根证书**（用它来验证营业执照真伪），jdk安装之后jdk的目录中就自带了根证书。【**JAVA_HOME\lib\security\cacerts**】
-4. 当java客户端发送数据给redis服务器的时候，**java客户端**会使用根证书验证 **Redis 服务器**的真伪，如果验证失败，立即中断连接。
-5. 如果验证通过，建立加密通道进行通信（加密的实现是：java 客户端和 Redis 服务器商量好一个暗号，按照这个暗号进行数据传输。即使窃听了也没事）
+4. 当Java客户端发送数据给redis服务器的时候，**Java客户端**会使用根证书验证 **Redis 服务器**的真伪，如果验证失败，立即中断连接。
+5. 如果验证通过，建立加密通道进行通信（加密的实现是：Java 客户端和 Redis 服务器商量好一个暗号，按照这个暗号进行数据传输。即使窃听了也没事）
 
 ### 安装Redis7时的注意事项
 
@@ -242,11 +246,11 @@ cd utils
 
 生成的证书将位于 `utils/tests/tls/` 目录下。
 
-**这里生成的证书是自签名证书哈（仅用于开发和测试，或者说你的项目以后是在局域网中运行的，这种方式完全够用）。**
+这里生成的证书是自签名证书哈（仅用于开发和测试，或者说你的项目以后是在局域网中运行的，这种方式完全够用）。
 
-**生成自签名证书的意思是：自己给自己发证。自己给自己发营业执照。（正常来说这个证书应该是 CA 机构来发证）**
+生成自签名证书的意思是：自己给自己发证。自己给自己发营业执照。（正常来说这个证书应该是 CA 机构来发证）
 
-**生产环境下一般是连接云服务商的 Redis，你什么都不用做，服务商已经配好证书了。服务商配置的证书都是 CA 机构给发的。**
+生产环境下一般是连接云服务商的 Redis，你什么都不用做，服务商已经配好证书了。服务商配置的证书都是 CA 机构给发的。
 
 **第二步**：在Redis的配置文件中添加以下内容：**把配置文件中的 `port 6379`注释掉，然后添加以下配置**
 
@@ -281,3 +285,18 @@ keytool.exe -importcert -file /path/redis.crt -alias redis-tls-cert -keystore "J
 ```shell
 redis-cli --tls -u redis://default:123456@localhost:6379 --insecure
 ```
+
+### 关闭TLS/SSL
+
+你需要把 Redis 配置文件中之前添加的内容注释掉，并且将 `port 6379`的注释去掉：
+
+```nginx
+# port 0
+# tls-port 6379
+# tls-cert-file /root/redis-7.4.2/utils/tests/tls/redis.crt
+# tls-key-file /root/redis-7.4.2/utils/tests/tls/redis.key
+# tls-ca-cert-file /root/redis-7.4.2/utils/tests/tls/ca.crt
+# tls-auth-clients no
+```
+
+重启 Redis 服务，从而关闭tls。

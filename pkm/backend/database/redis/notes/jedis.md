@@ -81,22 +81,27 @@ jedis.set("key", "value");
 **QPS（Queries Per Second）** 是指每秒查询数，用于衡量系统的吞吐量。
 
 计算方式：
-```
+
+```plaintext
 QPS = 总请求量 / 总时间(秒)
 ```
+
 例如：1分钟内处理了6000次请求 → QPS = 6000 / 60 = 100。
 一般通过压测工具（如**JMeter**）模拟请求统计得出。
 
 连接池大小（**重点**）
+
 - 计算公式：`maxTotal ≈ QPS × avg_query_time(ms) / 1000`
 - 例如：QPS=1000，平均查询时间=10ms → maxTotal ≈ 10（这样的话，10 个连接理论上可以保证 10ms 内处理 1000 个查询）
 - 安全系数：以上公式计算的是最小值。实际情况下需要考虑安全系数。它是来应付突发情况的。
 - Redis连接池安全系数建议**1.2-1.5**倍，数据库连接池建议**2-3**倍，因为数据库连接创建成本更高、需要更多缓冲。
 
 超时设置
+
 - `maxWaitMillis` 不宜过长（避免线程堆积）。
 
 健康检测
+
 - 开启 `testOnBorrow` 或 `testWhileIdle`。
 
 ---
@@ -104,9 +109,11 @@ QPS = 总请求量 / 总时间(秒)
 ## 管道（Pipeline）
 
 ### 1. 管道概述
+
 Redis管道技术允许客户端一次性发送多个命令到服务器，而不需要等待每个命令的响应，最后一次性读取所有响应，大大减少网络往返时间。
 
 ### 2. 管道使用示例
+
 ```java
 // 使用管道批量操作
 try (Jedis jedis = jedisPool.getResource()) {
@@ -142,6 +149,7 @@ try (Jedis jedis = jedisPool.getResource()) {
 ```
 
 ### 3. 管道响应处理
+
 ```java
 try (Jedis jedis = jedisPool.getResource()) {
     Pipeline pipeline = jedis.pipelined();
@@ -265,7 +273,7 @@ public class TestACL {
 }
 ```
 
-###  `JedisPool` + ACL（生产推荐）
+### `JedisPool` + ACL（生产推荐）
 
 生产环境推荐使用连接池，避免频繁创建/销毁连接。
 

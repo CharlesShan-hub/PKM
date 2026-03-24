@@ -1460,7 +1460,7 @@ public class RedisController {
     - curl "[http://localhost:8080/api/redis/has/test"](http://localhost:8080/api/redis/hasKey?key=test")
 
 # 第十一章Redis的持久化
-<img src="https://cdn.nlark.com/yuque/0/2025/jpeg/21376908/1757681056420-39d1bc52-55fe-4f3b-8183-b4d7ba79b166.jpeg" width="4308" title="" crop="0,0,1,1" id="oxJbe" class="ne-image" style="font-size: 16px">
+
 
 Redis提供了两种持久化：
 
@@ -1532,9 +1532,6 @@ redis-cli CONFIG GET save
 | **<font style="color:rgb(64, 64, 64);">崩溃一致性</font>** | <font style="color:rgb(64, 64, 64);">可能生成部分损坏的 RDB 文件</font> | <font style="color:rgb(64, 64, 64);">旧文件始终完整，新文件全量校验</font> |
 | **<font style="color:rgb(64, 64, 64);">并发安全</font>** | <font style="color:rgb(64, 64, 64);">其他进程可能读取到不完整文件</font> | <font style="color:rgb(64, 64, 64);">替换是原子操作，无中间状态</font> |
 | **<font style="color:rgb(64, 64, 64);">实现复杂度</font>** | <font style="color:rgb(64, 64, 64);">需额外逻辑处理中断恢复</font> | <font style="color:rgb(64, 64, 64);">简单可靠</font> |
-
-
-
 
 另外大家再思考一个问题：上述描述中提到子进程会将内存中的数据写入到一个临时文件中，那如果在写到临时文件的过程中**主进程又进行了写操作**，内存中的数据又变化了，子进程会把变化后的数据写入到临时文件中吗？不会的。永远要记住，RDB备份的是内存快照，备份的是某一个时刻的内存数据。快照是如何实现的呢？**<font style="color:#DF2A3F;">底层使用了写时复制技术（著名的COW技术：Copy On Write）</font>**。
 
