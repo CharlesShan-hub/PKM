@@ -71,11 +71,8 @@ Redis提供了两种持久化：
 
 **写时复制技术原理**
 
-1. fork() 机制：
-    + 当触发 RDB 持久化时，Redis 主进程会调用 fork() 创建一个**子进程**。子进程与父进程共享相同的内存数据（物理内存页）
-2. 写操作触发复制（写时复制）：
-    + 读操作：父子进程继续共享内存页。
-    + 写操作：当父进程修改某块数据时，**操作系统****复制该内存页****，主进程修改副本，子进程仍读原页（****这里的原页可以理解为内存快照****）**。
+1. fork() 机制：当触发 RDB 持久化时，Redis 主进程会调用 fork() 创建一个**子进程**。子进程与父进程共享相同的内存数据（物理内存页）
+2. 写操作触发复制（写时复制）：**读操作**：父子进程继续共享内存页；**写操作**：当父进程修改某块数据时，操作系统复制该内存页，主进程修改副本，子进程仍读原页（这里的原页可以理解为内存快照）。
 
 COW 的一个形象的比喻：
 
@@ -230,20 +227,15 @@ appenddirname "appendonlydir"
 | `appendonly.aof.manifest` | **清单文件** | 记录当前有效的 `base.rdb` 和 `incr.aof` 组合（JSON 格式，维护文件关系） |
 设计原理（Redis 7.0+）
 
-+ **混合持久化**：  
-    + **混合持久化**<font style="color:rgb(15, 17, 21);">就是</font>**<font style="color:rgb(15, 17, 21);">用RDB格式存“老数据”快照（base.rdb），用AOF格式存“新变动”日志（incr.aof），重启时先读快照再补日志，实现又快又全的恢复</font>**<font style="color:rgb(15, 17, 21);">。</font>
-+ **分段滚动更新**：  
-      + <font style="color:rgb(15, 17, 21);">“分段”体现在将完整数据</font>**<font style="color:rgb(15, 17, 21);">拆成基础快照(base.rdb)和增量日志(incr.aof)两个文件</font>**<font style="color:rgb(15, 17, 21);">；</font>
-  + <font style="color:rgb(15, 17, 21);">“滚动”体现在通过</font>**<font style="color:rgb(15, 17, 21);">原子切换清单(manifest)</font>**<font style="color:rgb(15, 17, 21);">来版本升级，像翻书一样无感更替。</font>
++ **混合持久化**： 混合持久化就是用RDB格式存“老数据”快照（base.rdb），用AOF格式存“新变动”日志（incr.aof），重启时先读快照再补日志，实现又快又全的恢复。
++ **分段滚动更新**： “分段”体现在将完整数据拆成基础快照(base.rdb)和增量日志(incr.aof)两个文件；
++ “滚动”体现在通过 **原子切换清单(manifest)** 来版本升级，像翻书一样无感更替。
 
 文件生成逻辑
 
-1. **首次启用 AOF**：  
-    + 生成 `base.rdb`（全量数据） + 空的 `incr.aof`。
-2. **写入新命令**：  
-    + 增量操作追加到 `incr.aof`（如 `SET`/`DEL`）。
-3. **触发 AOF 重写**：  
-    + 创建新的 `base.rdb`（当前数据快照）和新的 `incr.aof`，更新 `manifest`。
+1. **首次启用 AOF**：生成 `base.rdb`（全量数据） + 空的 `incr.aof`。
+2. **写入新命令**：增量操作追加到 `incr.aof`（如 `SET`/`DEL`）。
+3. **触发 AOF 重写**：创建新的 `base.rdb`（当前数据快照）和新的 `incr.aof`，更新 `manifest`。
 
 生产环境建议
 
@@ -259,88 +251,63 @@ appenddirname "appendonlydir"
 | **磁盘占用** | 较大（纯文本） | 更小（RDB 压缩 + 增量 AOF） |
 | **兼容性** | 所有版本 | Redis 7.0+ |
 
-### 怎么触发AOF？
+### AOF触发机制
 
 在 Redis 7 及更高版本中，**AOF（Append-Only File）持久化的触发方式**分为 **自动触发** 和 **手动触发** 两种，以下是详细说明：
 
-#### 手动触发
+1. 手动触发
+    * 执行命令：`redis-cli BGREWRITEAOF`
+    * 执行该命令后，查看文件是否更新
+    ![](../assets/rdb_image_8.png)
+2. 自动触发
+    *  实时写入（**默认开启**）
+    + 每个写命令（如 `SET`、`DEL`）会立即追加到 **增量 AOF 文件**（`appendonly.aof.?.incr.aof`），由 `appendfsync` 控制刷盘策略
+      ```nginx
+      appendfsync always   # 每个命令刷盘（最安全，性能最低）
+      appendfsync everysec # 每秒刷盘（默认推荐）
+      appendfsync no       # 依赖操作系统刷盘（最快，可能丢数据）
+      ```
+3. **AOF 重写（满足条件时自动触发）**
+    + **触发条件**：  根据 `auto-aof-rewrite-percentage` 和 `auto-aof-rewrite-min-size` 参数判断：两个是并且关系，同时满足时才会触发 AOF 重写。
+        ```nginx
+        auto-aof-rewrite-percentage 100  # 当前AOF文件比上次重写后增长100%时触发
+        auto-aof-rewrite-min-size 64mb   # AOF文件最小达到64MB才触发
+        ```
+    + **重写过程**：  
+          1. 创建子进程，生成 **全量数据的 RDB 快照**（写入 `appendonly.aof.1.base.rdb`）。  
+          2. 后续增量命令写入新的 `incr.aof` 文件。  
+          3. 更新 `manifest` 文件记录有效文件组合。
 
-手动执行这个命令：redis-cli BGREWRITEAOF
-
-
-
-执行该命令后，查看文件是否更新：
-
-![](../assets/rdb_image_8.png)
-
-#### 自动触发
-
-1. **<font style="color:#DF2A3F;"></font>****实时写入（默认开启）**
-
-+ 每个写命令（如 `SET`、`DEL`）会立即追加到 **增量 AOF 文件**（`appendonly.aof.?.incr.aof`），由 `appendfsync` 控制刷盘策略：
-
-```nginx
-appendfsync always   # 每个命令刷盘（最安全，性能最低）
-appendfsync everysec # 每秒刷盘（默认推荐）
-appendfsync no       # 依赖操作系统刷盘（最快，可能丢数据）
-```
-
-1. **AOF 重写（满足条件时自动触发）**
-
-+ **触发条件**：  
-  + 根据 `auto-aof-rewrite-percentage` 和 `auto-aof-rewrite-min-size` 参数判断：  **两个是并且关系，同时满足时才会触发 AOF 重写。**
-
-```nginx
-auto-aof-rewrite-percentage 100  # 当前AOF文件比上次重写后增长100%时触发
-auto-aof-rewrite-min-size 64mb   # AOF文件最小达到64MB才触发
-```
-
-+ **重写过程**：  
-    1. 创建子进程，生成 **全量数据的 RDB 快照**（写入 `appendonly.aof.1.base.rdb`）。  
-    2. 后续增量命令写入新的 `incr.aof` 文件。  
-    3. 更新 `manifest` 文件记录有效文件组合。
-
-#### 总结
-
-Redis 7+ 的 AOF 触发机制通过**实时追加 + 条件化重写** 实现，结合 RDB 快照提升性能。多文件设计解决了传统 AOF 体积过大和恢复慢的问题，同时保持数据安全性。
+> 总结：Redis 7+ 的 AOF 触发机制通过 **实时追加 + 条件化重写** 实现，结合 RDB 快照提升性能。多文件设计解决了传统 AOF 体积过大和恢复慢的问题，同时保持数据安全性。
 
 ### RDB和AOF同时开启会怎样
 
 在 Redis 7 及更高版本中，**当 RDB 和 AOF 持久化同时开启时，Redis 会同时维护两种持久化机制**，但它们的用途和触发逻辑是独立的，具体行为如下：
 
-#### 同时开启时的关键行为
+1. 同时开启时的关键行为
+    1. **数据写入流程**
+        + **AOF 优先**：所有写命令会**实时追加到 AOF 文件**（`incr.aof`），确保操作日志不丢失。  
+        + **RDB 异步触发**：根据 `save` 配置或手动命令生成快照，**不影响 AOF 的实时记录**。
+    2. **数据恢复流程**
+        + **重启加载时**：Redis 会**优先加载 AOF 文件**（因为 AOF 记录更完整），仅当 AOF 关闭或文件不存在时才会加载 RDB。  
+2. 注意事项
+    + **磁盘空间**：同时开启会占用更多存储（需监控 `dir` 目录）。  
+    + **性能影响**：RDB 的 `BGSAVE` 和 AOF 的 `BGREWRITEAOF` **不会同时运行**（Redis 内部有任务调度机制）。
+3. 如何验证当前持久化状态？
 
-**(1) 数据写入流程**
+    ```bash
+    # 检查 RDB 最后一次保存时间
+    redis-cli INFO PERSISTENCE | grep rdb_last_save_time
+    
+    # 检查 AOF 是否生效
+    redis-cli INFO PERSISTENCE | grep aof_enabled
+    
+    # 查看 AOF 文件类型（Redis 7+）
+    # ls -lh 这里的linux命令中带了 -h 参数，这样文件大小显示更加人性化。这个参数和redis没有关系。
+    ls -lh /usr/local/bin/appendonlydir/
+    ```
 
-+ **AOF 优先**：所有写命令会**实时追加到 AOF 文件**（`incr.aof`），确保操作日志不丢失。  
-+ **RDB 异步触发**：根据 `save` 配置或手动命令生成快照，**不影响 AOF 的实时记录**。
-
-**(2) 数据恢复流程**
-
-+ **重启加载时**：Redis 会**优先加载 AOF 文件**（因为 AOF 记录更完整），仅当 AOF 关闭或文件不存在时才会加载 RDB。  
-
-#### 注意事项
-
-+ **磁盘空间**：同时开启会占用更多存储（需监控 `dir` 目录）。  
-+ **性能影响**：RDB 的 `BGSAVE` 和 AOF 的 `BGREWRITEAOF` **不会同时运行**（Redis 内部有任务调度机制）。
-
-#### 如何验证当前持久化状态？
-
-```bash
-# 检查 RDB 最后一次保存时间
-redis-cli INFO PERSISTENCE | grep rdb_last_save_time
-
-# 检查 AOF 是否生效
-redis-cli INFO PERSISTENCE | grep aof_enabled
-
-# 查看 AOF 文件类型（Redis 7+）
-# ls -lh 这里的linux命令中带了 -h 参数，这样文件大小显示更加人性化。这个参数和redis没有关系。
-ls -lh /usr/local/bin/appendonlydir/
-```
-
-#### 总结
-
-**在 Redis 7+ 中，RDB 和 AOF 同时开启时会并行工作，但 AOF 在数据恢复时优先级更高。推荐生产环境同时启用两者，利用 RDB 的快照优势和 AOF 的实时安全性，通过 **`aof-use-rdb-preamble`** 进一步优化性能。**
+> 总结：**在 Redis 7+ 中，RDB 和 AOF 同时开启时会并行工作，但 AOF 在数据恢复时优先级更高。推荐生产环境同时启用两者，利用 RDB 的快照优势和 AOF 的实时安全性，通过 `aof-use-rdb-preamble` 进一步优化性能。**
 
 ### AOF的所有建议配置
 
