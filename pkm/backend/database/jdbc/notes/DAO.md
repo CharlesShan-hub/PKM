@@ -1,11 +1,12 @@
-# 什么是DAO
+# DAO
+## 什么是DAO
 DAO是：Data Access Object，翻译为：数据访问对象。
 一种JavaEE的设计模式，专门用来做数据增删改查的类。
 在实际的开发中，通常我们会将数据库的操作封装为一个单独的DAO去完成，这样做的目的是：提高代码的复用性，另外也可以降低程序的耦合度，提高扩展力。
 例如：操作用户数据的叫做UserDao，操作员工数据的叫做EmployeeDao，操作产品数据的叫做ProductDao，操作订单数据的叫做OrderDao等。
 
-# 使用DAO改造员工信息管理
-## 定义Employee封装数据
+## 使用DAO改造员工信息管理
+### 定义Employee封装数据
 Employee类是一个Java Bean，专门用来封装员工的信息：
 ```java
 package com.powernode.jdbc.beans;
@@ -99,7 +100,7 @@ public class Employee {
 }
 
 ```
-## 定义EmployeeDao
+### 定义EmployeeDao
 定义五个方法，分别完成五个功能：新增，修改，删除，查看一个，查看所有。
 ```java
 package com.powernode.jdbc.dao;
@@ -266,7 +267,7 @@ public class EmployeeDao {
     }
 }
 ```
-# BaseDao的封装
+## BaseDao的封装
 ```java
 package com.powernode.jdbc.dao;
 

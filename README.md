@@ -11,7 +11,7 @@
 		* database
 			* [mysql](pkm/backend/database/mysql/README.md)
 			* [JDBC](pkm/backend/database/jdbc/README.md)
-			* [Redis](pkm/backend/database/redis/README.md)
+			* ⭐[Redis](pkm/backend/database/redis/README.md)
 			* MongoDB
 			* zookeeper
 		* java web
@@ -28,14 +28,14 @@
 			* SpringCloud
 		* devops
 			* [git](pkm/backend/devops/git/README.md)
-			* [SVN](pkm/backend/devops/svn/README.md)
+			* ⭐[SVN](pkm/backend/devops/svn/README.md)
 			* [maven](pkm/backend/devops/maven/maven.md)
 			* [docker](pkm/backend/devops/docker/README.md)
 			* k8s
 			* [linux](pkm/backend/devops/linux/README.md)
 		* tools
-			* [markdown](pkm/backend/tools/markdown/README.md)
-			* [json](pkm/backend/tools/json/README.md)
+			* ⭐[markdown](pkm/backend/tools/markdown/README.md)
+			* ⭐[json](pkm/backend/tools/json/README.md)
 			* [yaml](pkm/backend/tools/yaml/README.md)
 			* [Regular Expression](pkm/backend/tools/regular-expression/README.md)
 	* Frontend
@@ -61,20 +61,20 @@
 		* [Calculus](pkm/math/calculus/README.md)
 		* [Linear Algebra](pkm/math/linear-algebra/README.md)
 	* Computer Science
-		* [Computer Network](pkm/theory/computer-network/README.md)
-		* [Data Structure](pkm/theory/data-structure/README.md)
-		* [Computer Organization](pkm/theory/computer-organization/README.md)
-		* [Operating System](pkm/theory/operating-system/README.md)
+		* ⭐[Computer Network](pkm/theory/computer-network/README.md)
+		* ⭐[Data Structure](pkm/theory/data-structure/README.md)
+		* ⭐[Computer Organization](pkm/theory/computer-organization/README.md)
+		* ⭐[Operating System](pkm/theory/operating-system/README.md)
 		* [DataBase](pkm/theory/database/README.md)
 		* [Digital Image Processing](pkm/theory/digital-image-processing/README.md)
 * 🎨 Hobbies and Life
 	* Life Skill
 		* [Driving License](pkm/hobbies/life-skill/driving-license/README.md)
 	* Humanities
-		* [Modern China](pkm/hobbies/humanities/modern-china/README.md)
-		* [Mao Zedong Thought](pkm/hobbies/humanities/mao-zedong-thought/README.md)
-		* [Ideological Cultivation](pkm/hobbies/humanities/ideological-cultivation/README.md)
-		* [Marxism](pkm/hobbies/humanities/marxism/README.md)
+		* ⭐[Modern China](pkm/hobbies/humanities/modern-china/README.md)
+		* ⭐[Mao Zedong Thought](pkm/hobbies/humanities/mao-zedong-thought/README.md)
+		* ⭐[Ideological Cultivation](pkm/hobbies/humanities/ideological-cultivation/README.md)
+		* ⭐[Marxism](pkm/hobbies/humanities/marxism/README.md)
 		* [Social Psychology](pkm/hobbies/humanities/social-psychology/README.md)
 ---
 Todo

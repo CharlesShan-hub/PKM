@@ -19,7 +19,9 @@ ResultSet 的遍历是基于 JDBC 的流式处理机制的，即一行一行地�
 ---
 
 ## 通过列索引获取数据（以String类型获取）
+
 需求：获取t_user表中所有数据，在控制台打印输出每一行的数据。
+
 ```sql
 select id,name,password,realname,gender,tel from t_user;
 
@@ -31,8 +33,11 @@ INSERT INTO t_user (name, password, realname, gender, tel) VALUES
 ('baijuping', '456', 'White Bone Spirit', 'Female', '14788545242'),
 ('tangzanga', '123', 'Tang Sanzang', 'Male', '12566568956');
 ```
+
 要查询的数据如下图：
+
 ![image.png](../assets/read-res1.png)
+
 代码如下（重点关注第4步 第5步 第6步)：
 
 ```java
@@ -393,8 +398,7 @@ public class JDBCTest12 {
             ResultSetMetaData rsmd = rs.getMetaData();
             int columnCount = rsmd.getColumnCount();
             for (int i = 1; i <= columnCount; i++) {
-                System.out.println("列名：" + rsmd.getColumnName(i) + "，数据类型：" + rsmd.getColumnTypeName(i) +
-                                   "，列的长度：" + rsmd.getColumnDisplaySize(i));
+                System.out.println("列名：" + rsmd.getColumnName(i) + "，数据类型：" + rsmd.getColumnTypeName(i) + "，列的长度：" + rsmd.getColumnDisplaySize(i));
             }
             
         } catch(SQLException | ClassNotFoundException e){
@@ -432,12 +436,13 @@ public class JDBCTest12 {
 
 在上面的代码中，我们首先创建了一个 Statement 对象，然后执行了一条 SQL 查询语句，生成了一个 ResultSet 对象。接下来，我们通过 ResultSet 对象的 getMetaData() 方法获取了 ResultSetMetaData 对象，进而获取了查询结果中列的信息并进行输出。需要注意的是，在进行列信息的获取时，列的编号从 1 开始计算。该示例代码将获取查询结果集中所有列名、数据类型以及长度等信息。
 
-# 获取新增行的主键值
-有很多表的主键字段值都是自增的，在某些特殊的业务环境下，当我们插入了新数据后，希望能够获取到这条新数据的主键值，应该如何获取呢？
-在 JDBC 中，如果要获取插入数据后的主键值，可以使用 Statement 接口的 executeUpdate() 方法的重载版本，该方法接受一个额外的参数，用于指定是否需要获取自动生成的主键值。然后，通过以下两个步骤获取插入数据后的主键值：
+---
+## 获取新增行的主键值
 
-1.  在执行 executeUpdate() 方法时指定一个标志位，表示需要返回插入的主键值。
-2.  调用 Statement 对象的 getGeneratedKeys() 方法，返回一个包含插入的主键值的 ResultSet 对象。 
+有很多表的主键字段值都是自增的，在某些特殊的业务环境下，当我们插入了新数据后，希望能够获取到这条新数据的主键值，应该如何获取呢？在 JDBC 中，如果要获取插入数据后的主键值，可以使用 Statement 接口的 executeUpdate() 方法的重载版本，该方法接受一个额外的参数，用于指定是否需要获取自动生成的主键值。然后，通过以下两个步骤获取插入数据后的主键值：
+
+1.  在执行 `executeUpdate()` 方法时指定一个标志位，表示需要返回插入的主键值。
+2.  调用 Statement 对象的 `getGeneratedKeys()` 方法，返回一个包含插入的主键值的 ResultSet 对象。 
 
 ```java
 import java.sql.DriverManager;
@@ -514,130 +519,4 @@ public class JDBCTest13 {
 执行结果如下：
 ![image.png](../assets/img_35f2e0ac5378.png)
 ![image.png](../assets/img_0e6ae9f467df.png)
-以上代码中，我们将 Statement.RETURN_GENERATED_KEYS 传递给 executeUpdate() 方法，以指定需要获取插入的主键值。然后，通过调用 Statement 对象的 getGeneratedKeys() 方法获取包含插入的主键值的 ResultSet 对象，通过 ResultSet 对象获取主键值。需要注意的是，在使用 Statement 对象的 getGeneratedKeys() 方法获取自动生成的主键值时，主键值的获取方式具有一定的差异，需要根据不同的数据库种类和版本来进行调整。
-
-# 使用IDEA工具编写JDBC程序
-## 创建空的工程并设置JDK
-创建一个空的工程：mypro
-![image.png](../assets/img_f01a1da47329.png)
-
-工程结构：
-![image.png](../assets/img_7762890b3b14.png)
-
-设置JDK以及编译器版本：
-![image.png](../assets/img_b4aca6c3be7a.png)
-
-## 创建一个模块
-![image.png](../assets/img_5fe21ec36f8f.png)
-![image.png](../assets/img_e69c228a826c.png)
-
-## 将驱动加入到CLASSPATH
-在模块jdbc下创建一个目录：lib
-![image.png](../assets/img_11d25f9ca4ec.png)
-![image.png](../assets/img_faa3d6474e76.png)
-
-将mysql的驱动jar包拷贝到lib目录当中：
-![image.png](../assets/img_ed6a456ddbdb.png)
-![image.png](../assets/img_570835a01fd0.png)
-
-将jar包加入到classpath：
-![image.png](../assets/img_5bc2195eaa68.png)
-![image.png](../assets/img_6e9e0f550637.png)
-
-## 编写JDBC程序
-新建软件包：com.powernode.jdbc
-![image.png](../assets/img_7286cbd3803f.png)
-
-新建JDBCTest01类：
-![image.png](../assets/img_48362e9bad36.png)
-
-在JDBCTest01类中编写main方法，main方法中编写JDBC代码：
-```java
-package com.powernode.jdbc;
-
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.util.ResourceBundle;
-import java.sql.ResultSet;
-
-public class JDBCTest01 {
-    public static void main(String[] args){
-
-        // 通过以下代码获取属性文件中的配置信息
-        ResourceBundle bundle = ResourceBundle.getBundle("com.powernode.jdbc.jdbc");
-        String driver = bundle.getString("driver");
-        String url = bundle.getString("url");
-        String user = bundle.getString("user");
-        String password = bundle.getString("password");
-
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        try {
-            // 1. 注册驱动
-            Class.forName(driver);
-
-            // 2. 获取连接
-            conn = DriverManager.getConnection(url, user, password);
-
-            // 3. 获取数据库操作对象
-            stmt = conn.createStatement();
-
-            // 4. 执行SQL语句
-            String sql = "select id,name,password from t_user";
-            rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String pwd = rs.getString("password");
-                System.out.println(id + "," + name + "," + pwd);
-            }
-
-        } catch(SQLException | ClassNotFoundException e){
-            e.printStackTrace();
-        } finally {
-            // 6. 释放资源
-            if(rs != null){
-                try{
-                    rs.close();
-                }catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
-            if(stmt != null){
-                try{
-                    stmt.close();
-                }catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
-            if(conn != null){
-                try{
-                    conn.close();
-                }catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-}
-```
-
-提供配置文件，在com.powernode.jdbc包下新建jdbc.properties文件：
-![image.png](../assets/img_99836bfcb422.png)
-![image.png](../assets/img_17fe90eeea5f.png)
-![image.png](../assets/img_e4753d1bb521.png)
-
-jdbc.properties文件中如下配置：
-```properties
-driver=com.mysql.cj.jdbc.Driver
-url=jdbc:mysql://localhost:3306/jdbc?useUnicode=true&serverTimezone=Asia/Shanghai&useSSL=true&characterEncoding=utf-8
-user=root
-password=123456
-```
-
-执行结果如下：
-![image.png](../assets/img_f2cd9d78f614.png)
-
+以上代码中，我们将 `Statement.RETURN_GENERATED_KEYS` 传递给 `executeUpdate()` 方法，以指定需要获取插入的主键值。然后，通过调用 Statement 对象的 `getGeneratedKeys()` 方法获取包含插入的主键值的 ResultSet 对象，通过 ResultSet 对象获取主键值。需要注意的是，在使用 Statement 对象的 `getGeneratedKeys()` 方法获取自动生成的主键值时，主键值的获取方式具有一定的差异，需要根据不同的数据库种类和版本来进行调整。

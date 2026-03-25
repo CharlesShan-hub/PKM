@@ -1,5 +1,6 @@
 
 ## 使用PowerDesigner进行物理数据建模
+
 打开PowerDesigner：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702352345350-1c1441c3-560f-4485-ba11-aff5522c7d42.png#averageHue=%239ec58f&clientId=u0cd9c8dc-062f-4&from=paste&height=694&id=u62d067c3&originHeight=694&originWidth=964&originalType=binary&ratio=1&rotation=0&showTitle=false&size=246317&status=done&style=shadow&taskId=u188417d2-31ad-44c7-b177-094b4303fc0&title=&width=964)
 
@@ -40,6 +41,7 @@
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702356365447-df18d670-da99-40f0-b80f-95918bdf20f6.png#averageHue=%23dee8f2&clientId=u0cd9c8dc-062f-4&from=paste&height=189&id=u223a5402&originHeight=189&originWidth=348&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10585&status=done&style=none&taskId=u6394b4c2-2385-400d-9a4a-b5ad2483556&title=&width=348)
 
 ## 使用PowerDesigner导出建表语句
+
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1702356449130-0ab2e139-0029-4db4-a89d-c4d46ca800e4.png#averageHue=%23f5f4f4&clientId=u0cd9c8dc-062f-4&from=paste&height=663&id=u93450af9&originHeight=663&originWidth=1088&originalType=binary&ratio=1&rotation=0&showTitle=false&size=49050&status=done&style=shadow&taskId=u551f93ed-f4ad-4e51-b667-2fc25c38dbd&title=&width=1088)
 
 ```sql

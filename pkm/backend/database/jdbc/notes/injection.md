@@ -1,4 +1,8 @@
-# SQL注入问题
+# SQL 注入
+---
+
+## SQL注入问题
+
 SQL注入问题说的是：用户输入的信息中含有SQL语句关键字，和程序中的SQL语句进行字符串拼接，导致程序中的SQL语句改变了原意。（SQL注入问题是一种系统安全问题）
 接下来我们来演示一下SQL注入问题。以用户登录为例。使用表：t_user
 业务描述：系统启动后，给出登录页面，用户可以输入用户名和密码，用户名和密码全部正确，则登录成功，反之，则登录失败。
@@ -108,7 +112,10 @@ select realname from t_user where name = 'aaa' and password = 'bbb' or '1'='1';
 ![image.png](../assets/img_b6abceda7067.png)
 把所有结果全部查到了，这是因为 '1'='1' 是恒成立的，并且使用的是 or 运算符，所以 or 前面的条件等于是没有的。这样就会把所有数据全部查到。而在程序中的判断逻辑是只要结果集中有数据，则表示登录成功。所以以上的输入方式最终的结果就是登录成功。你设想一下，如果这个系统是一个高级别保密系统，只有登录成功的人才有权限，那么这个系统是不是极其危险了。
 
-# 解决SQL注入问题
+---
+
+## 解决SQL注入问题
+
 导致SQL注入的根本原因是什么？只有找到真正的原因，问题才能得到解决。
 
 最根本的原因是：Statement造成的。
@@ -229,8 +236,12 @@ public class JDBCTest03 {
 - PreparedStatement执行速度更快，可以避免SQL注入攻击；(PreparedStatement对于同一条SQL语句来说，编译一次，执行N次。而Statement是每次都要进行编译的。因此PreparedStatement效率略微高一些。)
 - PreparedStatement会做类型检查，是类型安全的；
 
-# PreparedStatement的使用
-## 新增操作
+---
+
+## `PreparedStatement`的使用
+
+### 新增操作
+
 需求：向 emp 表中插入这样一条记录：
 empno：8888
 ename：张三
@@ -311,7 +322,8 @@ public class JDBCTest04 {
 执行结果如下：
 ![image.png](../assets/img_f3f633ecb270.png)
 
-## 修改操作
+### 修改操作
+
 需求：将员工编号为8888的员工，姓名修改为李四，岗位修改为产品经理，月薪修改为5000.0，其他不变。
 ```java
 package com.powernode.jdbc;
@@ -377,7 +389,8 @@ public class JDBCTest05 {
 执行结果如下：
 ![image.png](../assets/img_f41931862528.png)
 
-## 删除操作
+### 删除操作
+
 需求：将员工编号为8888的删除。
 ```java
 package com.powernode.jdbc;
@@ -440,7 +453,8 @@ public class JDBCTest06 {
 执行结果如下：
 ![image.png](../assets/img_8682e2f0e873.png)
 
-## 模糊查询
+### 模糊查询
+
 需求：查询员工名字中第二个字母是 O 的。
 ```java
 package com.powernode.jdbc;
@@ -508,20 +522,21 @@ public class JDBCTest07 {
 ```
 执行结果如下：
 ![image.png](../assets/img_8c455a7d3db1.png)
-通过这个例子主要告诉大家，程序不能这样写：
+通过这个例子主要告诉大家，程序**不能**这样写：
 ```java
 String sql = "select ename from emp where ename like '_?%'";
 pstmt.setString(1, "O");
 ```
 由于占位符 ? 被单引号包裹，因此这个占位符是无效的。
 
-## 分页查询
+### 分页查询
+
 对于MySQL来说，通用的分页SQL语句：
 假设每页显示3条记录：pageSize = 3
 第1页：limit 0, 3
 第2页：limit 3, 3
 第3页：limit 6, 3
-**第pageNo页：limit (pageNo - 1)*pageSize, pageSize**
+**第pageNo页：limit (pageNo - 1)\*pageSize, pageSize**
 需求：查询所有员工姓名，每页显示3条(pageSize)，显示第2页(pageNo)。
 
 ```java
@@ -598,7 +613,9 @@ public class JDBCTest08 {
 执行结果如下：
 ![image.png](../assets/img_cb9069d24daf.png)
 
+---
 ## blob数据的插入和读取
+
 准备一张表：t_img，三个字段，一个id主键，一个图片名字name，一个img。
 建表语句如下：
 
@@ -764,7 +781,8 @@ public class JDBCTest10 {
 ```
 执行完毕之后，查看一下图片大小是否和原图片相同，打开看看是否可以正常显示。
 
-# JDBC批处理操作
+---
+## JDBC批处理操作
 准备一张商品表：t_product
 建表语句如下：
 ```sql
@@ -773,7 +791,8 @@ create table t_product(
   name varchar(255)
 );
 ```
-## 不使用批处理
+
+### 不使用批处理
 不使用批处理，向 t_product 表中插入一万条商品信息，并记录耗时！
 ```java
 package com.powernode.jdbc;
@@ -839,7 +858,7 @@ public class NoBatchTest {
 执行结果如下：
 ![image.png](../assets/img_510e5f74020c.png)
 
-## 使用批处理
+### 使用批处理
 使用批处理，向 t_product 表中插入一万条商品信息，并记录耗时！
 **注意：启用批处理需要在URL后面添加这个的参数：rewriteBatchedStatements=true**
 ![image.png](../assets/img_fd8aa0998118.png)
@@ -912,8 +931,12 @@ public class BatchTest {
 1.  减少了网络通信次数：JDBC 批处理会将多个 SQL 语句一次性发送给服务器，减少了客户端和服务器之间的通信次数，从而提高了数据写入的速度，特别是对于远程服务器而言，优化效果更为显著。 
 2.  减少了数据库操作次数：JDBC 批处理会将多个 SQL 语句合并成一条 SQL 语句进行执行，从而减少了数据库操作的次数，减轻了数据库的负担，大大提高了数据写入的速度。  
 
-# DbUtils工具类的封装
+---
+
+## DbUtils工具类的封装
+
 JDBC编程六步中，很多代码是重复出现的，可以为这些代码封装一个工具类。让JDBC代码变的更简洁。
+
 ```java
 package com.powernode.jdbc;
 
