@@ -32,17 +32,17 @@ Connection对象是重量级对象，创建Connection对象就是建立两个进
 ## 常用的连接池
 市面上常用的数据库连接池有许多，以下是其中几种：
 
-1. DBCP
+1. DBCP（不用了）
     1. 2001年诞生，最早的连接池。
     2. Apache Software Foundation的一个开源项目。
     3. DBCP的设计初衷是为了满足Tomcat服务器对连接池管理的需求。
-2. c3p0
+2. c3p0（不用了）
     1. 2004年诞生
     2. c3p0是由Steve Waldman于2004年推出的，它是一个高性能、高可靠性、易配置的数据库连接池。c3p0能够提供连接池的容错能力、自动重连等功能，适用于高并发场景和数据量大的应用。
-3. Druid
+3. Druid（常用 重量级 可以做监控）
     1. 2012年诞生
     2. Druid连接池由阿里巴巴集团开发，于2011年底开始对外公开，2012年正式发布。Druid是一个具有高性能、高可靠性、丰富功能的数据库连接池，不仅可以做连接池，还能做监控、分析和管理数据库，支持SQL防火墙、统计分析、缓存和访问控制等功能。
-4. HikariCP
+4. HikariCP（常用 轻量级 只支持连接池）
     1. 2012年诞生
     2. HikariCP是由Brett Wooldridge于2012年创建的开源项目，它被认为是Java语言下最快的连接池之一，具有快速启动、低延迟、低资源消耗等优点。HikariCP连接池适用于高并发场景和云端应用。
     3. 很单纯的一个连接池，这个产品只做连接池应该做的，其他的不做。所以性能是极致的。相对于Druid来说，它更加轻量级。
@@ -80,7 +80,7 @@ DataSource dataSource = DruidDataSourceFactory.createDataSource(props);
 Connection conn = dataSource.getConnection();
 ```
 第四步：关闭连接
-仍然调用Connection的close()方法，但是这个close()方法并不是真正的关闭连接，只是将连接归还到连接池，让其称为空闲连接对象。这样其他线程可以继续使用该空闲连接。
+仍然调用Connection的close()方法，但是这个close()方法并不是真正的关闭连接，**只是将连接归还到连接池**，让其称为空闲连接对象。这样其他线程可以继续使用该空闲连接。
 
 ### HikariCP的使用
 第一步：引入jar包

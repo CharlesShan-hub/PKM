@@ -13,7 +13,8 @@ import java.util.ResourceBundle;
  * Datetime: 2024/4/10 22:29  
  * Author: 老杜@动力节点  
  * Version: 1.0  
- */public class DbUtils {  
+ */
+ public class DbUtils {  
     private static String url;  
     private static String user;  
     private static String password;  

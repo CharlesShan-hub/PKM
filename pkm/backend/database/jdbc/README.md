@@ -22,8 +22,9 @@
     * 隔离级别（主要就一行代码）
 * [JDBC调用存储过程](notes/procedure.md)
     * （使用较少）
-* [JDBC实现员工管理项目](notes/JDBC实现员工管理项目.md)
-    * （项目案例）
-* [DAO](notes/DAO.md)
-    * （把上边的案例使用DAO，其实dao就是mapper）
+* [dao](notes/dao.md)
+    * （其实dao就是mapper）
 * [JDBC连接池](notes/pools.md)
+    * 连接池概念
+    * Druid
+    * HikariCP

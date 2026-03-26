@@ -10,7 +10,7 @@
 			* [Design Pattern](pkm/backend/java/design-pattern/README.md)
 		* database
 			* [mysql](pkm/backend/database/mysql/README.md)
-			* [JDBC](pkm/backend/database/jdbc/README.md)
+			* ⭐[JDBC](pkm/backend/database/jdbc/README.md)
 			* ⭐[Redis](pkm/backend/database/redis/README.md)
 			* MongoDB
 			* zookeeper
