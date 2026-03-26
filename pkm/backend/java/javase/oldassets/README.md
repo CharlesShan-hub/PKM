@@ -382,7 +382,7 @@
 	28. Vue-常用指令-v-model与v-on    👌
 	29. Ajax-入门 👌
 	30. Ajax-案例 👌
-* 第二部分：后端Web基础（4天）：[[../../../devops/maven/maven|maven]]
+* 第二部分：后端Web基础（4天）：[[../../../devops/maven/README|README]]
 	31. Maven-课程介绍  👌
 	32. Maven-概述-介绍&安装  👌
 	33. Maven-IDEA集成  👌

@@ -4,7 +4,9 @@
 
 ## 什么是依赖范围
 
-Maven的依赖构件包含一个依赖范围的属性。这个属性描述的是三套classpath的控制，即编译、测试、运行。说白了就是添加的jar包起作用的范围。  maven提供了以下几种依赖范围：compile，test，provided，runtime，system，import。
+* Maven的依赖构件包含一个依赖范围的属性。这个属性描述的是三套classpath的控制，即**编译**、**测试**、**运行**。
+* 说白了就是添加的jar包起作用的范围。
+* maven提供了以下几种依赖范围：compile，test，provided，runtime，system，import。
 
 ### compile
 
@@ -105,7 +107,6 @@ Maven的依赖构件包含一个依赖范围的属性。这个属性描述的是
 ```
 
 
-
 | **scope**       | **编译**           | **测试** | **运行** | **示例**                                                     |
 | --------------- | ------------------ | -------- | -------- | ------------------------------------------------------------ |
 | compile（默认） | 是                 | 是       | 是       | spring-context                                               |
@@ -115,6 +116,7 @@ Maven的依赖构件包含一个依赖范围的属性。这个属性描述的是
 | test            | 编译测试代码时有用 | 是       |          | junit                                                        |
 | import          |                    |          |          | <font style="color:rgb(64, 64, 64);">把另一个POM文件中的依赖版本定义"复制"到当前POM中</font> |
 
+---
 
 ## 什么是依赖传递
 
@@ -128,12 +130,12 @@ Maven的依赖构件包含一个依赖范围的属性。这个属性描述的是
 
 ### 主要依赖范围及其传递影响
 
-1. **<font style="color:rgb(15, 17, 21);">compile</font>**<font style="color:rgb(15, 17, 21);">：</font>**<font style="color:rgb(15, 17, 21);">传递</font>**<font style="color:rgb(15, 17, 21);">。会向依赖你的项目传递。（这个 jar 包在编译和运行的时候都需要，自然需要传递）</font>
-2. **<font style="color:rgb(15, 17, 21);">runtime</font>**<font style="color:rgb(15, 17, 21);">：</font>**<font style="color:rgb(15, 17, 21);">传递</font>**<font style="color:rgb(15, 17, 21);">。会向依赖你的项目传递。（这个 jar 包在运行时需要，自然也需要传递）</font>
-3. **<font style="color:rgb(15, 17, 21);">test</font>**<font style="color:rgb(15, 17, 21);">：</font>**<font style="color:rgb(15, 17, 21);">不传递</font>**<font style="color:rgb(15, 17, 21);">。永远不会传递给其他项目。（这个 jar 包既然只是在测试阶段起作用，传递也没有意义。）</font>
-4. **<font style="color:rgb(15, 17, 21);">provided</font>**<font style="color:rgb(15, 17, 21);">：</font>**<font style="color:rgb(15, 17, 21);">不传递</font>**<font style="color:rgb(15, 17, 21);">。永远不会传递给其他项目。（这个 jar 包既然由容器提供了，传递也没有意义。）</font>
-5. **<font style="color:rgb(15, 17, 21);">system</font>**<font style="color:rgb(15, 17, 21);">：</font>**<font style="color:rgb(15, 17, 21);">不传递</font>**<font style="color:rgb(15, 17, 21);">。由于与本地路径强绑定，永远不会传递给其他项目。</font>
-6. **<font style="color:rgb(15, 17, 21);">import</font>**<font style="color:rgb(15, 17, 21);">：</font>**<font style="color:rgb(15, 17, 21);">不涉及传递</font>**<font style="color:rgb(15, 17, 21);">。它本身不是真正的依赖，只是导入依赖管理列表，因此不参与传递性依赖机制。</font>
+1. **compile**：**传递**。会向依赖你的项目传递。（这个 jar 包在编译和运行的时候都需要，自然需要传递）
+2. **runtime**：**传递**。会向依赖你的项目传递。（这个 jar 包在运行时需要，自然也需要传递）
+3. **test**：**不传递**。永远不会传递给其他项目。（这个 jar 包既然只是在测试阶段起作用，传递也没有意义。）
+4. **provided**：**不传递**。永远不会传递给其他项目。（这个 jar 包既然由容器提供了，传递也没有意义。）
+5. **system**：**不传递**。由于与本地路径强绑定，永远不会传递给其他项目。
+6. **import**：**不涉及传递**。它本身不是真正的依赖，只是导入依赖管理列表，因此不参与传递性依赖机制。
 
 ### 编写程序测试
 
@@ -193,8 +195,6 @@ Maven的依赖构件包含一个依赖范围的属性。这个属性描述的是
 </project>
 ```
 
-
-
 `maven-004`工程的`pom.xml`文件：
 
 ```xml
@@ -226,11 +226,11 @@ Maven的依赖构件包含一个依赖范围的属性。这个属性描述的是
 </project>
 ```
 
-
-
 观察依赖范围对依赖传递的影响，可以清楚的看到，只有`compile`和`runtime`支持传递：
 
 ![](../assets/1748225467118-5e6c0ed7-0a71-423c-bbff-b9e7363b9bad.png)
+
+---
 
 ## Maven是如何解决依赖冲突的
 
@@ -244,16 +244,14 @@ Maven可以通过以下途径解决依赖冲突。
 
 #### 版本锁定
 
-<font style="color:rgb(15, 17, 21);">在 Maven 的父工程中，</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);"><dependencyManagement></font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">的核心作用是进行</font>**<font style="color:rgb(15, 17, 21);">依赖版本的统一锁定</font>**<font style="color:rgb(15, 17, 21);">。它可以集中管理所有子项目共用的依赖及其版本号，从而确保整个项目体系使用的依赖是一致的。</font>
+在 Maven 的父工程中，`<dependencyManagement>` 的核心作用是进行**依赖版本的统一锁定**。它可以集中管理所有子项目共用的依赖及其版本号，从而确保整个项目体系使用的依赖是一致的。
 
-<font style="color:rgb(15, 17, 21);">需要明确的是，</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);"><dependencyManagement></font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">仅仅是一个</font>**<font style="color:rgb(15, 17, 21);">声明</font>**<font style="color:rgb(15, 17, 21);">，它本身并不会实际引入这些依赖。</font>
+需要明确的是，`<dependencyManagement>`​ 仅仅是一个**声明**，它本身并不会实际引入这些依赖。
 
-<font style="color:rgb(15, 17, 21);">只有当子项目中</font>**<font style="color:rgb(15, 17, 21);">显式地声明</font>**<font style="color:rgb(15, 17, 21);">了某个依赖时，该依赖才会被真正引入。此时：</font>
+只有当子项目中**显式地声明**了某个依赖时，该依赖才会被真正引入。此时：
 
-+ **<font style="color:rgb(15, 17, 21);">如果子项目没有指定版本号</font>**<font style="color:rgb(15, 17, 21);">，Maven 会自动使用父工程在</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);"><dependencyManagement></font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">中锁定的版本。</font>
-+ **<font style="color:rgb(15, 17, 21);">如果子项目明确指定了版本号</font>**<font style="color:rgb(15, 17, 21);">，则会以子项目自己指定的版本为准，</font>**<font style="color:rgb(15, 17, 21);">覆盖</font>**<font style="color:rgb(15, 17, 21);">掉父工程中锁定的版本。</font>
-
-<font style="color:rgb(15, 17, 21);"></font>
+- **如果子项目没有指定版本号**，Maven 会自动使用父工程在 `<dependencyManagement>`​ 中锁定的版本。
+- **如果子项目明确指定了版本号**，则会以子项目自己指定的版本为准，**覆盖**掉父工程中锁定的版本。
 
 1. 子工程使用父工程锁定的版本号 
 
@@ -712,8 +710,6 @@ maven项目有权利决定自己的直接依赖或者间接依赖是否继续传
 <optional>true</optional>
 ```
 
-
-
 `maven-011`项目的`pom.xml`:
 
 ```xml
@@ -747,8 +743,6 @@ maven项目有权利决定自己的直接依赖或者间接依赖是否继续传
 </project>
 ```
 
-
-
 `maven-012`项目的`pom.xml`文件：
 
 ```xml
@@ -779,8 +773,6 @@ maven项目有权利决定自己的直接依赖或者间接依赖是否继续传
 </project>
 ```
 
-
-
 效果如下：
 
 ![](../assets/1748242695999-e8722374-3350-4cb1-b888-3b52bc337d01.png)
@@ -788,8 +780,6 @@ maven项目有权利决定自己的直接依赖或者间接依赖是否继续传
 #### 排除依赖
 
 当前的maven项目有权利将某个传递过来的依赖排除掉。使用`<exclusions>`配置。
-
-
 
 `maven-013`项目的`pom.xml`：
 
@@ -821,8 +811,6 @@ maven项目有权利决定自己的直接依赖或者间接依赖是否继续传
 
 </project>
 ```
-
-
 
 `maven-014`项目的`pom.xml`文件：
 
@@ -860,13 +848,9 @@ maven项目有权利决定自己的直接依赖或者间接依赖是否继续传
 </project>
 ```
 
-
-
 效果如下：
 
 ![](../assets/1748244446921-cfd142a6-7368-44fe-a151-3764043d39d8.png)
-
-
 
 **可选依赖和排除依赖的区别：**
 
@@ -910,4 +894,3 @@ maven项目有权利决定自己的直接依赖或者间接依赖是否继续传
     </resources>
 </build>
 ```
-
