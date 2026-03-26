@@ -1,15 +1,57 @@
 # DAO
-## 什么是DAO
-DAO是：Data Access Object，翻译为：数据访问对象。
-一种JavaEE的设计模式，专门用来做数据增删改查的类。
-在实际的开发中，通常我们会将数据库的操作封装为一个单独的DAO去完成，这样做的目的是：提高代码的复用性，另外也可以降低程序的耦合度，提高扩展力。
-例如：操作用户数据的叫做UserDao，操作员工数据的叫做EmployeeDao，操作产品数据的叫做ProductDao，操作订单数据的叫做OrderDao等。
 
-## 使用DAO改造员工信息管理
-### 定义Employee封装数据
-Employee类是一个Java Bean，专门用来封装员工的信息：
+> 下边会用一个员工信息管理系统演示DAO
+> 本文使用工具类：[utils](../details/utils.md)
+
+---
+
+## 什么是DAO
+
+* DAO是：Data Access Object，翻译为：数据访问对象。一种JavaEE的设计模式，专门用来做数据增删改查的类。
+* 在实际的开发中，通常我们会将数据库的操作封装为一个单独的DAO去完成，这样做的目的是：提高代码的复用性，另外也可以降低程序的耦合度，提高扩展力。
+* 例如：操作用户数据的叫做`UserDao`，操作员工数据的叫做`EmployeeDao`，操作产品数据的叫做`ProductDao`，操作订单数据的叫做`OrderDao`等。
+
+---
+
+## 数据表
+
+```sql
+drop databases if exists 
+drop table if exists t_employee;
+
+create table t_employee(
+  id bigint primary key auto_increment,
+  name varchar(255),
+  job varchar(255),
+  hiredate char(10),
+  salary decimal(10,2),
+  address varchar(255)
+);
+
+insert into t_employee(name,job,hiredate,salary,address) values('Zhang San','Salesman','1999-10-11',5000.0,'Chaoyang, Beijing');
+insert into t_employee(name,job,hiredate,salary,address) values('Li Si','Coder','1998-02-12',5000.0,'Haidian, Beijing');
+insert into t_employee(name,job,hiredate,salary,address) values('Wang Wu','Project Manager','2000-08-11',5000.0,'Daxing, Beijing');
+insert into t_employee(name,job,hiredate,salary,address) values('Zhao Liu','Product Manager','2022-09-11',5000.0,'Dongcheng, Beijing');
+insert into t_employee(name,job,hiredate,salary,address) values('Qian Qi','Tester','2024-12-11',5000.0,'Xicheng, Beijing');
+
+commit;
+
+select * from t_employee;
+```
+
+![image.png](../assets/img_9378e3048f36.png)
+
+---
+## 定义Employee封装数据
+
+Employee类是一个Java Bean，专门用来封装员工的信息
+
 ```java
 package com.powernode.jdbc.beans;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * ClassName: Employee
@@ -18,6 +60,9 @@ package com.powernode.jdbc.beans;
  * Author: 老杜@动力节点
  * Version: 1.0
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
     private Long id;
     private String name;
@@ -25,81 +70,9 @@ public class Employee {
     private Double salary;
     private String hiredate;
     private String address;
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", job='" + job + '\'' +
-                ", salary=" + salary +
-                ", hiredate='" + hiredate + '\'' +
-                ", address='" + address + '\'' +
-                '}';
-    }
-
-    public Employee() {
-    }
-
-    public Employee(Long id, String name, String job, Double salary, String hiredate, String address) {
-        this.id = id;
-        this.name = name;
-        this.job = job;
-        this.salary = salary;
-        this.hiredate = hiredate;
-        this.address = address;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
-
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
-    }
-
-    public String getHiredate() {
-        return hiredate;
-    }
-
-    public void setHiredate(String hiredate) {
-        this.hiredate = hiredate;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }
-
 ```
+
 ### 定义EmployeeDao
 定义五个方法，分别完成五个功能：新增，修改，删除，查看一个，查看所有。
 ```java
@@ -404,5 +377,3 @@ public class BaseDao {
     }
 
 }
-
-```

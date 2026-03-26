@@ -22,7 +22,7 @@ commit;
 select * from t_employee;
 ```
 
-![image.png](../assets/img_9378e3048f36.png)
+
 
 # 实现效果
 ## 查看员工列表
