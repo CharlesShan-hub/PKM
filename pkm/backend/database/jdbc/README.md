@@ -22,7 +22,7 @@
     * 隔离级别（主要就一行代码）
 * [JDBC调用存储过程](notes/procedure.md)
     * （使用较少）
-* [dao](notes/dao.md)
+* [DAO](notes/dao.md)
     * （其实dao就是mapper）
 * [JDBC连接池](notes/pools.md)
     * 连接池概念

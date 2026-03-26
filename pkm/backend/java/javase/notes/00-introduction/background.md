@@ -2,7 +2,7 @@
 
 ## 版本
 
-![Java-basic-version.excalidraw](pkm/backend/java/javase/assets/java-basic-version.excalidraw.md)
+![Java-basic-version.excalidraw|500](pkm/backend/java/javase/assets/java-basic-version.excalidraw.md)
 
 - LTS（长期支持）：Java 8、Java 11、Java 17
 - Java 8、JDK 8、JDK 1.8 是同一个版本
