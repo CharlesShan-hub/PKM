@@ -1,0 +1,5 @@
+# MyBatis-Plus
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

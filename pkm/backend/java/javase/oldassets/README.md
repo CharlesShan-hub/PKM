@@ -344,7 +344,7 @@
 
 ### JavaWeb
 
-* [[../../../javaweb/servlet/notes/servlet]]
+* [[../../../javaweb/servlet/notes/servlet-old]]
 
 ### JavaWeb（黑马）
 
@@ -563,10 +563,10 @@
 
 ### Springboot
 
-1. [[../../../javaweb/springboot/notes/introduction|introduction]]
-2. [[../../../javaweb/springboot/notes/hello-world|hello-world]]
+1. [[../../../javaweb/springboot/old-notes/introduction|introduction]]
+2. [[../../../javaweb/springboot/old-notes/hello-world|hello-world]]
 3. 
-4. [[../../../javaweb/springboot/notes/config|config]]
+4. [[../../../javaweb/springboot/old-notes/config|config]]
 
 
 ## 后续内容
