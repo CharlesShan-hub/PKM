@@ -1,6 +1,8 @@
 # 实现部门管理
 
-在项目的开发过程中会融入新知识点的讲解，请务必注意新知识点的吸收。（****以项目驱动教学。****）
+在项目的开发过程中会融入新知识点的讲解，请务必注意新知识点的吸收。
+
+> 前端内容：[static-website-development](../details/static-website-development.md)
 
 ---
 

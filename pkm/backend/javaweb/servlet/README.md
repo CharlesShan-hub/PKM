@@ -1,13 +1,10 @@
 # Servlet
-* [servlet-old](notes/servlet-old.md)
-* [jsp-old](notes/jsp-old.md)
-* [bs-cs-architecture](notes/bs-cs-architecture.md)
-* [bs-communication-principle](notes/bs-communication-principle.md)
-* [javaee-overview](notes/javaee-overview.md)
-* [tomcat-server](notes/tomcat-server.md)
-* [static-website-development](notes/static-website-development.md)
-* [servlet-deep-dive](notes/servlet-deep-dive.md)
-* [first-servlet](notes/first-servlet.md)
+> 框架：servlet，模板技术：JSP（没人用了），Thymeleaf（改成这个了）
+
+
+* [background](notes/background.md)
+* [servlet-start](notes/servlet-start.md)
+
 * [servlet-database-connection](notes/servlet-database-connection.md)
 * [servlet-with-idea](notes/servlet-with-idea.md)
 * [http-protocol](notes/http-protocol.md)
@@ -29,3 +26,9 @@
 * [path-summary](notes/path-summary.md)
 * [tomcat-stdout-encoding](notes/tomcat-stdout-encoding.md)
 * [appendix-http-status-codes](notes/appendix-http-status-codes.md)
+
+
+
+
+* [servlet-old](notes/servlet-old.md)
+* [jsp-old](notes/jsp-old.md)

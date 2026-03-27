@@ -12,7 +12,7 @@ web01
                |-------classes
 ```
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748836276684-d803e6f4-99f6-4fc8-a3c9-aa068c136d22.png)
+![](../assets/1748836276684-d803e6f4-99f6-4fc8-a3c9-aa068c136d22.png)
 
 ---
 
@@ -20,11 +20,11 @@ web01
 
 在任意位置创建 `HelloServlet.java`。
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748836351532-1d762a67-85fb-4eb3-8fef-56acde86de6c.png)
+![](../assets/1748836351532-1d762a67-85fb-4eb3-8fef-56acde86de6c.png)
 
 任何 `Servlet`都必须实现 `jakarta.servlet.Servlet`接口，该接口中有哪些方法呢？参考帮助文档：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748836574181-7a44e911-ae3f-4929-8f87-32fee8d27e76.png)
+![](../assets/1748836574181-7a44e911-ae3f-4929-8f87-32fee8d27e76.png)
 
 编写 `HelloServlet`实现该接口中所有方法：
 
@@ -71,19 +71,19 @@ public class HelloServlet implements Servlet{
 
 配置环境变量 CLASSPATH：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748851199928-24bbe6f8-3ca5-436c-a219-db299087ac4e.png)
+![](../assets/1748851199928-24bbe6f8-3ca5-436c-a219-db299087ac4e.png)
 
 思考，为什么要配置 CLASSPATH 环境变量，另外环境变量中为什么要添加一个 `.`
 
 编译：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748851547556-4d470879-eb8d-4228-aea7-c2c83b7a77ce.png)
+![](../assets/1748851547556-4d470879-eb8d-4228-aea7-c2c83b7a77ce.png)
 
 以上编译命令表示：编译当前目录下的 `HelloServlet.java`文件，将编译之后的程序放到当前目录下。
 
 编译之后生成了：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748851646239-23c3bf7b-d3c3-4580-9c74-571389271ba2.png)
+![](../assets/1748851646239-23c3bf7b-d3c3-4580-9c74-571389271ba2.png)
 
 ---
 
@@ -91,7 +91,7 @@ public class HelloServlet implements Servlet{
 
 将以上编译之后的结果拷贝到 `WEB-INF/classes`目录下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748851963150-40b6f755-d0be-45f3-a817-11af3dafa2af.png)
+![](../assets/1748851963150-40b6f755-d0be-45f3-a817-11af3dafa2af.png)
 
 ---
 
@@ -134,7 +134,7 @@ Tomcat 服务器 webapps 目录下自带了几个项目，这些项目当中都�
 
 将 `web01`目录拷贝到 `CATALINA_HOME/webapps`目录下，如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748852918795-fe55d6b3-11a6-4624-a5fa-2d900c205fce.png)
+![](../assets/1748852918795-fe55d6b3-11a6-4624-a5fa-2d900c205fce.png)
 
 ---
 
@@ -142,11 +142,11 @@ Tomcat 服务器 webapps 目录下自带了几个项目，这些项目当中都�
 
 浏览器上的结果：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748853060622-88e484b5-f2ac-4a24-87bd-7dffe9f91a9a.png)
+![](../assets/1748853060622-88e484b5-f2ac-4a24-87bd-7dffe9f91a9a.png)
 
 控制台的结果：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748853138208-1a55b30a-d716-4af6-abf5-b7f83284f206.png)
+![](../assets/1748853138208-1a55b30a-d716-4af6-abf5-b7f83284f206.png)
 
 ---
 
@@ -172,25 +172,25 @@ Tomcat 服务器 webapps 目录下自带了几个项目，这些项目当中都�
 
 将 `index.html`文件部署到 Tomcat 服务器的 `web01`项目下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748859001290-77a54198-d123-44b9-8120-4c839a1cf16a.png)
+![](../assets/1748859001290-77a54198-d123-44b9-8120-4c839a1cf16a.png)
 
 **再次启动服务器测试**
 
 启动 Tomcat 服务器，然后打开浏览器在地址栏上输入：`http://localhost:8080/web01/index.html`
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748859103460-3f57709a-1ef9-4f4a-aea0-26364de5e1d3.png)
+![](../assets/1748859103460-3f57709a-1ef9-4f4a-aea0-26364de5e1d3.png)
 
 点击以上两个超链接发送请求，结果都是：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748859138773-9c0f1e2b-2fec-4cb1-8d97-4e32bb449099.png)
+![](../assets/1748859138773-9c0f1e2b-2fec-4cb1-8d97-4e32bb449099.png)
 
 **将 index.html 放到 WEB-INF 目录下测试**
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748859250198-96529326-6d70-419d-9943-1c26131411d9.png)
+![](../assets/1748859250198-96529326-6d70-419d-9943-1c26131411d9.png)
 
 启动服务器，打开浏览器，输入地址：`http://localhost:8080/web01/WEB-INF/index.html`，如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748859309266-480d57e4-e5f1-498f-8557-a1306d9ea7c6.png)
+![](../assets/1748859309266-480d57e4-e5f1-498f-8557-a1306d9ea7c6.png)
 
 通过测试得知，放在 WEB-INF 目录下的资源是受保护的。
 
@@ -214,7 +214,7 @@ public void service(ServletRequest request,ServletResponse response)
 
 运行效果：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748859785380-65dcda4d-636c-4795-a329-acade8134963.png)
+![](../assets/1748859785380-65dcda4d-636c-4795-a329-acade8134963.png)
 
 发现响应中文的时候出现了乱码问题，编写以下代码来解决响应时的中文乱码问题：
 
@@ -236,7 +236,7 @@ public void service(ServletRequest request,ServletResponse response)
 
 重新编译、重新部署、重启服务器访问：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748860098856-21253950-c8e3-49a0-ba03-49da074c50a6.png)
+![](../assets/1748860098856-21253950-c8e3-49a0-ba03-49da074c50a6.png)
 
 中文乱码问题就解决了。另外，以上解决中文乱码的两行代码：
 

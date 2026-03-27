@@ -28,8 +28,7 @@ JavaEE包含以下关键规范（不同版本略有增减）：
 | **安全** | JAAS (Java Authentication and Authorization Service) | 认证和授权 |
 | **其他** | JAX-RS (Java API for RESTful Services) | RESTful Web服务（如Jersey、RESTEasy） |
 | | JAX-WS (Java API for XML Web Services) | SOAP Web服务 |
-
-****因此：Servlet 属于 JavaEE 规范。****
+因此：Servlet 属于 JavaEE 规范。
 
 ---
 
@@ -40,23 +39,15 @@ JavaEE包含以下关键规范（不同版本略有增减）：
     - Jakarta EE是JavaEE的延续，目前最新版本为**Jakarta EE 10**（2022年发布）。
     - 规范名称中的`javax.*`包逐步改为`jakarta.*`（如`javax.servlet` → `jakarta.servlet`）。
 
-| **对比项** | **JavaEE** | **Jakarta EE** |
-| --- | --- | --- |
-| 维护方 | Oracle | Eclipse基金会 |
-| 版本 | 最终版本JavaEE 8（2017） | 持续更新（如Jakarta EE 10） |
-| 包名 | `javax.*` | `jakarta.*` |
-| 新特性 | 停止更新 | 新增云原生支持 |
+| **对比项** | **JavaEE**         | **Jakarta EE**       |
+| ------- | ------------------ | -------------------- |
+| 维护方     | Oracle             | Eclipse基金会           |
+| 版本      | 最终版本JavaEE 8（2017） | 持续更新（如Jakarta EE 10） |
+| 包名      | `javax.*`          | `jakarta.*`          |
+| 新特性     | 停止更新               | 新增云原生支持              |
 
 ---
 
 ## Jakarta EE 10 API 帮助文档
 
-主站点：[https://jakarta.ee/](https://jakarta.ee/)
-
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517409207-2a63a763-250c-4865-a198-45ebdfd839b7.png)
-
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517430492-f15eb52f-d438-4f09-a05c-936999b2fc38.png)
-
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517450193-caa56071-c089-4a6e-bd68-a6952689c741.png)
-
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517469779-84ab0fdf-559f-41a4-b726-4b4543fb56df.png)
+主站点：<https://jakarta.ee/>
