@@ -3,9 +3,9 @@
 
 
 * [background](notes/background.md)
-* [servlet-start](notes/servlet-start.md)
+* [hello-world](notes/hello-world.md)
+* [database-connection](notes/database-connection.md)
 
-* [servlet-database-connection](notes/servlet-database-connection.md)
 * [servlet-with-idea](notes/servlet-with-idea.md)
 * [http-protocol](notes/http-protocol.md)
 * [servlet-lifecycle](notes/servlet-lifecycle.md)

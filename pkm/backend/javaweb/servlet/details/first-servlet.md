@@ -251,9 +251,9 @@ response.setCharacterEncoding("UTF-8");
 response.setContentType("text/html;charset=UTF-8");
 ```
 
-**注意：这行代码必须出现在 **`**PrintWriter out = response.getWriter();**`**之前才能解决乱码问题。**
+**注意：这行代码必须出现在 `PrintWriter out = response.getWriter();`之前才能解决乱码问题。
 
-`****response.setCharacterEncoding("UTF-8");****`****和 HTML 中的****`****<meta charset="UTF-8">****`****有什么区别？****
+`response.setCharacterEncoding("UTF-8");`和 HTML 中的`<meta charset="UTF-8">`有什么区别？
 
-+ **前者：设置Servlet输出流的字符编码方式，影响**`****PrintWriter****`**如何将Java字符串转换为字节序列，是服务器端的行为，发生在内容发送到客户端之前，会自动设置**`****Content-Type****`**响应头的charset部分，例如：**`****Content-Type: text/html;charset=UTF-8****`**这是最根本的编码设置，决定了数据在传输时的实际编码。**
-+ **后者：是HTML文档内部的编码声明，浏览器在解析HTML时会参考这个提示，当HTTP响应头没有指定charset时，浏览器会查找meta标签，如果HTTP头已指定charset，meta标签通常会被忽略。**
++ **前者**：设置Servlet输出流的字符编码方式，影响`PrintWriter`如何将Java字符串转换为字节序列，是服务器端的行为，发生在内容发送到客户端之前，会自动设置`Content-Type`响应头的charset部分，例如：`Content-Type: text/html;charset=UTF-8`这是最根本的编码设置，决定了数据在传输时的实际编码。
++ **后者**：是HTML文档内部的编码声明，浏览器在解析HTML时会参考这个提示，当HTTP响应头没有指定charset时，浏览器会查找meta标签，如果HTTP头已指定charset，meta标签通常会被忽略。

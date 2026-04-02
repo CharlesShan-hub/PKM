@@ -1,4 +1,4 @@
-# Servlet Start
+# Hello World
 
 ---
 
@@ -141,3 +141,9 @@ web01
 ```
 
 最后把编写好的 web01 放到 WEBAPPs 下边。
+
+---
+
+## 静态网站案例
+
+后边很多案例会基于这个静态网站进行进一步开发，这个案例就是在servlet上搭建一个部门管理系统的最初的雏形。详细内容：[static-website-development](../details/static-website-development.md)
