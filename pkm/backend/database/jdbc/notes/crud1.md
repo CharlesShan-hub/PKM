@@ -4,36 +4,24 @@
 
 ## JDBC编程六步
 
-JDBC编程的步骤是很固定的，通常包含以下六步：
-
-- 第一步：注册驱动
-    - 作用一：将 JDBC 驱动程序从硬盘上的文件系统中加载到内存中。
-    - 作用二：使得 DriverManager 可以通过一个统一的接口来管理该驱动程序的所有连接操作。
-- 第二步：获取数据库连接
-    - 获取 `java.sql.Connection` 对象，该对象的创建标志着mysql进程和jvm进程之间的通道打开了。
-- 第三步：获取数据库操作对象
-    - 获取 `java.sql.Statement` 对象，该对象负责将SQL语句发送给数据库，数据库负责执行该SQL语句。
-- 第四步：执行SQL语句
-    - 执行具体的SQL语句，例如：insert delete update select等。
-- 第五步：处理查询结果集
-    - 如果之前的操作是DQL查询语句，才会有处理查询结果集这一步。
-    - 执行DQL语句通常会返回查询结果集对象：`java.sql.ResultSet`。
-    - 对于ResultSet查询结果集来说，通常的操作是针对查询结果集进行结果集的遍历。
-- 第六步：释放资源
-    - 释放资源可以避免资源的浪费。在 JDBC 编程中，每次使用完 Connection、Statement、ResultSet 等资源后，都需要显式地调用对应的 close() 方法来释放资源，避免资源的浪费。
-    - 释放资源可以避免出现内存泄露问题。在 Java 中，当一个对象不再被引用时，会被 JVM 的垃圾回收机制进行回收。但是在 JDBC 编程中，如果不显式地释放资源，那么这些资源就不会被 JVM 的垃圾回收机制自动回收，从而导致内存泄露问题。
+* 第一步：注册驱动（`DriverManager`或`Class.forName(...)`）
+* 第二步：获取连接（`Connection conn = DriverManager.getConnection(...);`）
+* 第三步：数据库操作对象（`Statement stmt = conn.createStatement();`）
+* 第四步：执行SQL（`stmt.executeXXXX(sql);`）
+* 第五步：处理查询结果集（DQL语句才会返回`java.sql.ResultSet`）
+* 第六步：释放资源（每次使用完 `Connection`、`Statement`、`ResultSet` 等资源后，都需要显式地调用对应的 `close()`）
 
 ---
 
 ## 数据的准备
 
 * 使用PowerDesigner设计用户表t_user。
-    * powerdesigner介绍：[PowerDesigner-intro](../details/PowerDesigner-intro.md)
-    * powerdesigner安装：[PowerDesigner-install](../details/PowerDesigner-install.md)
-    * powerdesigner使用：[PowerDesigner-use](../details/PowerDesigner-use.md)
+  * powerdesigner介绍：[PowerDesigner-intro](../details/PowerDesigner-intro.md)
+  * powerdesigner安装：[PowerDesigner-install](../details/PowerDesigner-install.md)
+  * powerdesigner使用：[PowerDesigner-use](../details/PowerDesigner-use.md)
 * 但我还是选择用PDMass进行标设计。
 * 使用Navicat for MySQL创建数据库，创建表，插入数据。
-    * navicat使用：[navicat-use](../details/navicat-use.md)
+  * navicat使用：[navicat-use](../details/navicat-use.md)
 
 ---
 
@@ -90,35 +78,36 @@ CREATE TABLE t_user (
     * `oracle.jdbc.OracleDriver`是oracle的实现；
 3. 注册驱动的方法2（更常用）：
 
-	```java
-	Class.forName("com.mysql.cj.jdbc.Driver");
-	```
+ ```java
+    Class.forName("com.mysql.cj.jdbc.Driver");
+ ```
 
-	为什么这种方式常用？第一：代码少了很多；第二：这种方式可以很方便的将`com.mysql.cj.jdbc.Driver`类名配置到属性文件当中。
-	实现原理是什么？找一下`com.mysql.cj.jdbc.Driver`的源码
+   为什么这种方式常用？第一：代码少了很多；第二：这种方式可以很方便的将`com.mysql.cj.jdbc.Driver`类名配置到属性文件当中。
+    实现原理是什么？找一下`com.mysql.cj.jdbc.Driver`的源码
 
-	```java
-	package com.mysql.cj.jdbc;
-	
-	public class Driver extends NonRegisteringDriver implements java.sql.Driver {  
-		// Register ourselves with the DriverManager.  
-		static {  
-			try {  
-				java.sql.DriverManager.registerDriver(new Driver());  
-			} catch (SQLException E) {  
-				throw new RuntimeException("Can't register driver!");  
-			}    
-		}
-		// .....
-	}
-	```
+```java
+package com.mysql.cj.jdbc;
 
-	通过源码不难发现，在`com.mysql.cj.jdbc.Driver`类中有一个静态代码块，在这个静态代码块中调用了`java.sql.DriverManager.registerDriver(new Driver());`完成了驱动的注册。而`Class.forName("com.mysql.cj.jdbc.Driver");`代码的作用就是让`com.mysql.cj.jdbc.Driver`类完成加载，执行它的静态代码块。
+  public class Driver extends NonRegisteringDriver implements java.sql.Driver {  
+    // Register ourselves with the DriverManager.  
+    static {  
+        try {  
+          java.sql.DriverManager.registerDriver(new Driver());  
+        } catch (SQLException E) {  
+          throw new RuntimeException("Can't register driver!");  
+        }    
+    }
+// .....
+}
+```
+
+   通过源码不难发现，在`com.mysql.cj.jdbc.Driver`类中有一个静态代码块，在这个静态代码块中调用了`java.sql.DriverManager.registerDriver(new Driver());`完成了驱动的注册。而`Class.forName("com.mysql.cj.jdbc.Driver");`代码的作用就是让`com.mysql.cj.jdbc.Driver`类完成加载，执行它的静态代码块。
 
 ### 第二步：获取连接
 
 1. 获取 `java.sql.Connection` 对象，该对象的创建标志着mysql进程和jvm进程之间的通道打开了。`
 2. 获取连接方法一：`getConnection(String url, String user, String password)`
+
     ```java
     // 2. 获取连接
     String url = "jdbc:mysql://localhost:3306/jdbc";
@@ -126,6 +115,7 @@ CREATE TABLE t_user (
     String password = "123456";
     Connection conn = DriverManager.getConnection(url, user, password);
     ```
+
     通过以上程序的输出结果得知：`com.mysql.cj.jdbc.ConnectionImpl`是`java.sql.Connection`接口的实现类，降低了耦合度。
     连接数据库需要提供三个信息：**url**，**用户名**，**密码**。
 3. 获取连接方法二：`getConnection(String url)`，把用户名和密码放到url里边。
@@ -134,6 +124,7 @@ CREATE TABLE t_user (
     String url = "jdbc:mysql://localhost:3306/jdbc?user=root&password=123456";
     Connection conn = DriverManager.getConnection(url);
     ```
+
 4. 获取连接方法三：`getConnection(String url, Properties info)`。这种方式有两个参数，一个是url，一个是Properties对象。
     - url：可以单纯提供一个url地址
     - info：可以将url的参数存放到该对象中
@@ -204,6 +195,7 @@ CREATE TABLE t_user (
     	- **useUnicode设置的是数据在传输过程中是否使用Unicode编码方式。**
     	- **characterEncoding设置的是数据被传输到服务器之后，服务器采用哪一种字符集进行编码。**
     	例如，连接 MySQL 数据库的 JDBC URL 可以如下所示：
+
     	```
     	jdbc:mysql://localhost:3306/jdbc?useUnicode=true&serverTimezone=Asia/Shanghai&useSSL=true&characterEncoding=utf-8
     	```
@@ -217,6 +209,7 @@ API帮助文档如下：
 ![createStatement](../assets/createStatement.png)
 
 获取数据库操作对象代码如下：
+
 ```java
 // 3. 获取数据库操作对象
 Statement stmt = conn.createStatement();

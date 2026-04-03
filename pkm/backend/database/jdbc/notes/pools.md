@@ -58,7 +58,7 @@ Connection对象是重量级对象，创建Connection对象就是建立两个进
 第一步：引入Druid的jar包
 ![image.png](../assets/img_fcd533667031.png)
 第二步：配置文件
-在类的根路径下创建一个属性资源文件：jdbc.properties
+在类的根路径下创建一个属性资源文件：`jdbc.properties`
 
 ```properties
 url=jdbc:mysql://localhost:3306/jdbc
@@ -80,12 +80,12 @@ DataSource dataSource = DruidDataSourceFactory.createDataSource(props);
 Connection conn = dataSource.getConnection();
 ```
 第四步：关闭连接
-仍然调用Connection的close()方法，但是这个close()方法并不是真正的关闭连接，**只是将连接归还到连接池**，让其称为空闲连接对象。这样其他线程可以继续使用该空闲连接。
+仍然调用`Connection`的`close()`方法，但是这个`close()`方法并不是真正的关闭连接，**只是将连接归还到连接池**，让其称为空闲连接对象。这样其他线程可以继续使用该空闲连接。
 
 ### HikariCP的使用
 第一步：引入jar包
 第二步：编写配置文件
-在类的根路径下创建一个属性资源文件：jdbc2.properties
+在类的根路径下创建一个属性资源文件：`jdbc2.properties`
 
 ```properties
 jdbcUrl=jdbc:mysql://localhost:3306/jdbc
@@ -103,6 +103,6 @@ HikariConfig config = new HikariConfig(props);
 DataSource dataSource = new HikariDataSource(config);
 Connection conn = dataSource.getConnection();
 ```
-第四步：关闭连接（调用conn.close()，将连接归还到连接池，连接对象为空闲状态。）
+第四步：关闭连接（调用`conn.close()`，将连接归还到连接池，连接对象为空闲状态。）
 
 
