@@ -5,33 +5,42 @@
 ## Timer和TimerTask（单线程本质）
 
 ```java
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class BasicScheduler {
-    public static void main(String[] args) {
-        Timer timer = new Timer();
-        
-        // 延迟1秒后执行，只执行一次
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("执行一次任务 - " + new Date());
-            }
-        }, 1000);
-        
-        // 延迟2秒后执行，之后每隔3秒重复执行
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("重复执行任务 - " + new Date());
-            }
-        }, 2000, 3000);
-    }
+package top.charles;  
+  
+import java.util.Date;  
+import java.util.Timer;  
+import java.util.TimerTask;  
+  
+public class TimerDemo {  
+    public static void main(String[] args) {  
+        Timer timer = new Timer();  
+  
+        // 延迟5秒后执行，只执行一次  
+        timer.schedule(new TimerTask() {  
+            @Override  
+            public void run() {  
+                System.out.println("执行一次任务 - " + new Date());  
+            }  
+        }, 5000);  
+  
+        // 延迟3秒后执行，之后每隔3秒重复执行  
+        timer.scheduleAtFixedRate(new TimerTask() {  
+            @Override  
+            public void run() {  
+                System.out.println("重复执行任务 - " + new Date());  
+            }  
+        }, 3000, 3000);  
+    }  
 }
 ```
 
-**缺点**：功能简单，不适合复杂调度需求，并且Timer底层执行任务是单线程的本质。
+```plaintext
+定期执行任务 - Tue Apr 07 10:21:19 CST 2026
+延迟执行任务 - Tue Apr 07 10:21:21 CST 2026
+定期执行任务 - Tue Apr 07 10:21:22 CST 2026
+```
+
+**缺点**：功能简单，不适合复杂调度需求，并且`Timer`底层执行任务是**单线程**。
 
 **Timer的单线程本质：**
 
@@ -76,36 +85,54 @@ timer.schedule(new TimerTask() {
 }, 1000);
 ```
 
-执行结果说明了Timer本质上是单线程的方式：
+执行结果说明了Timer本质上是单线程的方式，可以看到阻塞开始后，重复执行的任务并没有如期执行：
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744637909072-461d28c0-c910-4276-826f-31ba411150b8.png" width="441" title="" crop="0,0,1,1" id="ua4e6b97e" class="ne-image" style="font-size: 16px">
+```plaintext
+重复执行任务 - Tue Apr 07 10:28:57 CST 2026
+阻塞开始Tue Apr 07 10:28:59 CST 2026
+阻塞结束Tue Apr 07 10:29:09 CST 2026
+重复执行任务 - Tue Apr 07 10:29:09 CST 2026
+重复执行任务 - Tue Apr 07 10:29:09 CST 2026
+重复执行任务 - Tue Apr 07 10:29:09 CST 2026
+重复执行任务 - Tue Apr 07 10:29:09 CST 2026
+重复执行任务 - Tue Apr 07 10:29:12 CST 2026
+```
 
 ---
 
 ## ScheduledExecutorService（并发方式）
 
 ```java
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
-public class ExecutorScheduler {
-    public static void main(String[] args) {
-        // ExecutorService 是JUC包提供的线程池
-        // ScheduledExecutorService 是JUC包提供的专门负责任务调度的线程池（ScheduledExecutorService 是 ExecutorService的子类。）
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
-        
-        // 延迟3秒后执行
-        executor.schedule(() -> {
-            System.out.println("延迟执行任务 - " + new Date());
-        }, 3, TimeUnit.SECONDS);
-        
-        // 延迟5秒后执行，之后每隔2秒重复执行
-        executor.scheduleAtFixedRate(() -> {
-            System.out.println("定期执行任务 - " + new Date());
-        }, 5, 2, TimeUnit.SECONDS);
-    }
+package top.charles;  
+  
+import java.util.Date;  
+import java.util.concurrent.Executors;  
+import java.util.concurrent.ScheduledExecutorService;  
+import java.util.concurrent.TimeUnit;  
+  
+public class ScheduledExecutorServiceDemo {  
+    public static void main(String[] args) {  
+        // ExecutorService 是JUC包提供的线程池  
+        // ScheduledExecutorService 是JUC包提供的专门负责任务调度的线程池（ScheduledExecutorService 是 ExecutorService的子类。）  
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);  
+  
+        // 延迟5秒后执行  
+        executor.schedule(() -> {  
+            System.out.println("延迟执行任务 - " + new Date());  
+        }, 5, TimeUnit.SECONDS);  
+  
+        // 延迟3秒后执行，之后每隔3秒重复执行  
+        executor.scheduleAtFixedRate(() -> {  
+            System.out.println("定期执行任务 - " + new Date());  
+        }, 3, 3, TimeUnit.SECONDS);  
+    }  
 }
+```
+
+```plaintext
+定期执行任务 - Tue Apr 07 10:30:26 CST 2026
+延迟执行任务 - Tue Apr 07 10:30:28 CST 2026
+定期执行任务 - Tue Apr 07 10:30:29 CST 2026
 ```
 
 **优点**：线程池管理，更灵活，功能更强大。
@@ -134,44 +161,76 @@ executor.schedule(() -> {
 
 执行结果如下：
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744638342122-740e935c-6468-495d-b5d5-01e2574c074e.png" width="503" title="" crop="0,0,1,1" id="u734c191e" class="ne-image" style="font-size: 16px">
+```plaintext
+定期执行任务 - Tue Apr 07 10:32:09 CST 2026
+阻塞任务开始：Tue Apr 07 10:32:11 CST 2026
+定期执行任务 - Tue Apr 07 10:32:12 CST 2026
+定期执行任务 - Tue Apr 07 10:32:15 CST 2026
+定期执行任务 - Tue Apr 07 10:32:18 CST 2026
+定期执行任务 - Tue Apr 07 10:32:21 CST 2026
+阻塞任务结束：Tue Apr 07 10:32:21 CST 2026
+定期执行任务 - Tue Apr 07 10:32:24 CST 2026
+```
 
-`**Timer**`**和**`**ScheduledExecutorService**`**的区别：**
+`Timer`和`ScheduledExecutorService`的区别：
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744638024854-6f57fdaf-1696-42cc-a3a1-47a102a8d067.png" width="615" title="" crop="0,0,1,1" id="ueebaa57d" class="ne-image" style="font-size: 16px">
+|  特性   |      Timer      | ScheduledExecutorService |
+| :---: | :-------------: | :----------------------: |
+| 线程模型  |       单线程       |       线程池（真正的多线程）        |
+| 阻塞影响  | 一个任务阻塞会延迟所有后续任务 |         各任务独立执行          |
+| 时间准确性 |     受前序任务影响     |       严格准时（线程充足时）        |
+| 异常影响  |   导致整个Timer崩溃   |         仅影响当前任务          |
+| 任务隔离性 |        无        |           完全隔离           |
 
 ---
 
 ## Spring框架的@Scheduled注解（Spring项目常用）
 
 ```java
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-
-import java.util.Date;
-
-@Component
-@EnableScheduling
-public class SpringScheduler {
-    
-    // 每5秒执行一次
-    @Scheduled(fixedRate = 5000)
-    public void fixedRateTask() {
-        System.out.println("固定频率任务 - " + new Date());
-    }
-    
-    // 每天上午10:15执行
-    @Scheduled(cron = "0 15 10 * * ?") // cron表达式：定义任务执行时间规则的字符串格式
-    public void cronTask() {
-        System.out.println("Cron表达式任务 - " + new Date());
-    }
+package com.example.demo;  
+  
+import org.springframework.scheduling.annotation.EnableScheduling;  
+import org.springframework.scheduling.annotation.Scheduled;  
+import org.springframework.stereotype.Component;  
+  
+import java.util.Date;  
+  
+@Component  
+@EnableScheduling  
+public class SpringScheduler {  
+  
+    // 每5秒执行一次  
+    @Scheduled(fixedRate = 5000)  
+    public void fixedRateTask() {  
+        System.out.println("固定频率任务 - " + new Date());  
+    }  
+  
+    // 每天上午11:10执行  
+    @Scheduled(cron = "0 10 11 * * ?") // cron表达式：定义任务执行时间规则的字符串格式  
+    public void cronTask() {  
+        System.out.println("Cron表达式任务 - " + new Date());  
+    }  
 }
 ```
 
 需要在Spring配置类上添加`@EnableScheduling`注解启用调度功能。
 
+```plaintext
+固定频率任务 - Tue Apr 07 11:09:55 CST 2026
+Cron表达式任务 - Tue Apr 07 11:10:00 CST 2026
+固定频率任务 - Tue Apr 07 11:10:00 CST 2026
+```
+
 `@Scheduled`默认是同步执行，如果要异步执行需要额外添加 `@Async`注解。
+
+```java
+@Async
+@Scheduled(fixedRate = 5000)  
+public void fixedRateTask() {  
+    System.out.println("固定频率任务 - " + new Date());  
+}
+// 或者在内部的方法上加Async也可以
+```
 
 ---
 
@@ -179,7 +238,13 @@ public class SpringScheduler {
 
 Quartz是一个功能强大的开源作业调度库，支持复杂的调度需求。但在近些年的统计数据来看，Quartz框架使用的越来越少了。
 
-**使用量下降的原因：**
+使用量下降的原因：
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744639792374-9e4470e7-f384-4d11-bd25-e9bf4d4f777a.png" width="765" title="" crop="0,0,1,1" id="u35f21fff" class="ne-image" style="font-size: 16px">
+| 因素 | 说明 | 替代方案 |
+|------|------|----------|
+| 轻量级需求增加 | 80%的定时任务场景变得简单 | Spring `@Scheduled`、ScheduledExecutorService |
+| 云原生普及 | 云平台提供托管调度服务 | AWS EventBridge、Azure Scheduler、Kubernetes CronJob |
+| 分布式需求 | 原生Quartz需要额外开发分布式支持 | Elastic-Job、XXL-JOB、PowerJob |
+| 开发便捷性 | 配置复杂度较高 | 注解驱动的轻量级方案 |
+
 

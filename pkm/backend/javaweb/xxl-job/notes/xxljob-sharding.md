@@ -120,19 +120,19 @@ public void sendMsgHandler(){
 
 ## 添加Mapper扫描
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744775526336-4b2bfaae-322f-4eac-b0d1-078491c7a82d.png" width="738" title="" crop="0,0,1,1" id="u7bcfb413" class="ne-image" style="font-size: 16px">
+![1744775526336-4b2bfaae-322f-4eac-b0d1-078491c7a82d.png](../assets/1744775526336-4b2bfaae-322f-4eac-b0d1-078491c7a82d.png)
 
 ---
 
 ## 在调度中心上添加任务
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744786949757-daef0862-3ae0-4b62-9628-06902dc50437.png" width="891" title="" crop="0,0,1,1" id="u89e17360" class="ne-image" style="font-size: 16px">
+![1744786949757-daef0862-3ae0-4b62-9628-06902dc50437.png](../assets/1744786949757-daef0862-3ae0-4b62-9628-06902dc50437.png)
 
-<img src="https://cdn.nlark.com/yuque/0/2026/png/21376908/1770389971799-a2bc5ef4-7b89-46c4-93f6-4f91f7abe923.png" width="390.4" title="" crop="0,0,1,1" id="DkNYZ" class="ne-image">
+![1770389971799-a2bc5ef4-7b89-46c4-93f6-4f91f7abe923.png](../assets/1770389971799-a2bc5ef4-7b89-46c4-93f6-4f91f7abe923.png)
 
 启动任务，执行效果：
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744786832724-56ee2ab2-a6cc-4fca-9c5b-4b1b4ab33e8c.png" width="659" title="" crop="0,0,1,1" id="u4709075f" class="ne-image" style="font-size: 16px">
+![1744786832724-56ee2ab2-a6cc-4fca-9c5b-4b1b4ab33e8c.png](../assets/1744786832724-56ee2ab2-a6cc-4fca-9c5b-4b1b4ab33e8c.png)
 
 ---
 
@@ -151,17 +151,17 @@ public void sendMsgHandler(){
 
 并且在Java程序中，是可以通过以下代码来获取分片总数和分片索引的：
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744787648643-35769431-a314-459b-813f-a8a934a75e61.png" width="1029" title="" crop="0,0,1,1" id="u643ace8a" class="ne-image" style="font-size: 16px">
+![1744787648643-35769431-a314-459b-813f-a8a934a75e61.png](../assets/1744787648643-35769431-a314-459b-813f-a8a934a75e61.png)
 
 编写了以上的代码之后，在调度中心将任务的路由策略修改为：分片广播
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744787713996-f9b60894-8c8a-4ae1-b320-1bf85f6284bc.png" width="871" title="" crop="0,0,1,1" id="u0dcf61db" class="ne-image" style="font-size: 16px">
+![1744787713996-f9b60894-8c8a-4ae1-b320-1bf85f6284bc.png](../assets/1744787713996-f9b60894-8c8a-4ae1-b320-1bf85f6284bc.png)
 
 然后启动任务，查看后台输出，可以看到分片总数以及分片索引：
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744787777989-97f3bf25-005b-4c24-ab5f-8bea3e66c2b3.png" width="590" title="" crop="0,0,1,1" id="u840e3a0d" class="ne-image" style="font-size: 16px">
+![1744787777989-97f3bf25-005b-4c24-ab5f-8bea3e66c2b3.png](../assets/1744787777989-97f3bf25-005b-4c24-ab5f-8bea3e66c2b3.png)
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744787794257-a3b61ed0-d840-4e18-857d-928266cce07e.png" width="617" title="" crop="0,0,1,1" id="u23caa391" class="ne-image" style="font-size: 16px">
+![1744787794257-a3b61ed0-d840-4e18-857d-928266cce07e.png](../assets/1744787794257-a3b61ed0-d840-4e18-857d-928266cce07e.png)
 
 我们可以通过分片总数和分片索引来完成分片执行，对应的SQL语句如下：
 
@@ -169,9 +169,9 @@ public void sendMsgHandler(){
 select * from t_user_mobile_plan where mod(id, 分片总数) = 分片索引;
 ```
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744788837328-f8b17d42-1198-4d04-b192-4501c66cf7c2.png" width="598" title="" crop="0,0,1,1" id="ubc9390fa" class="ne-image" style="font-size: 16px">
+![1744788837328-f8b17d42-1198-4d04-b192-4501c66cf7c2.png](../assets/1744788837328-f8b17d42-1198-4d04-b192-4501c66cf7c2.png)
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744788868442-513c7284-02a7-4387-bca0-73002656c746.png" width="631" title="" crop="0,0,1,1" id="u914ba12e" class="ne-image" style="font-size: 16px">
+![1744788868442-513c7284-02a7-4387-bca0-73002656c746.png](../assets/1744788868442-513c7284-02a7-4387-bca0-73002656c746.png)
 
 这样的话，数据就可以平均分配到不同的机器上执行。
 
@@ -220,8 +220,8 @@ public void sendMsgHandler(){
 
 然后启动任务，查看控制台是否为分片执行：
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744789640409-21114150-14a8-48aa-8ff7-d4be5a62c563.png" width="1012" title="" crop="0,0,1,1" id="u143dbea3" class="ne-image" style="font-size: 16px">
+![1744789640409-21114150-14a8-48aa-8ff7-d4be5a62c563.png](../assets/1744789640409-21114150-14a8-48aa-8ff7-d4be5a62c563.png)
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1744789651146-1de06e8c-316a-4d20-8eb8-bf50c434a183.png" width="1027" title="" crop="0,0,1,1" id="ua7ae2081" class="ne-image" style="font-size: 16px">
+![1744789651146-1de06e8c-316a-4d20-8eb8-bf50c434a183.png](../assets/1744789651146-1de06e8c-316a-4d20-8eb8-bf50c434a183.png)
 
 经过测试，效率翻倍，处理5000条记录，总耗时5秒左右。
