@@ -10,7 +10,7 @@
 
 在 `WEB-INF`目录下新建 `lib`目录，将 `mysql.jar`驱动放到 `lib`目录中。
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748911994986-fe9bc878-f3db-4fd8-8df1-0ce33086aa7a.png)
+![](../assets/1748911994986-fe9bc878-f3db-4fd8-8df1-0ce33086aa7a.png)
 
 ---
 
@@ -108,12 +108,12 @@ public class DeptListServlet implements Servlet{
 
 ```xml
 <servlet>
-  <servlet-name>dListServlet</servlet-name>
-  <servlet-class>com.jkweilai.servlet.DeptListServlet</servlet-class>
+    <servlet-name>dListServlet</servlet-name>
+    <servlet-class>com.jkweilai.servlet.DeptListServlet</servlet-class>
 </servlet>
 <servlet-mapping>
-  <servlet-name>dListServlet</servlet-name>
-  <url-pattern>/list</url-pattern>
+    <servlet-name>dListServlet</servlet-name>
+    <url-pattern>/list</url-pattern>
 </servlet-mapping>
 ```
 
@@ -132,10 +132,10 @@ public class DeptListServlet implements Servlet{
 
 ## 部署测试
 
-将项目部署到 Tomcat 的 webapps 目录下，启动 Tomcat 服务器，打开浏览器输入地址：http://localhost:8080/web01/index.html
+将项目部署到 Tomcat 的 webapps 目录下，启动 Tomcat 服务器，打开浏览器输入地址：<http://localhost:8080/web01/index.html>
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748912894420-6557f035-2495-4439-821d-8ccf778fae53.png)
+![](../assets/1748912894420-6557f035-2495-4439-821d-8ccf778fae53.png)
 
 点击部门列表超链接发送请求：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748912917558-644e7f88-c10f-4aa1-b75d-74d341eb00b5.png)
+![](../assets/1748912917558-644e7f88-c10f-4aa1-b75d-74d341eb00b5.png)

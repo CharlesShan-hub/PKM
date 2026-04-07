@@ -1,13 +1,11 @@
 # Servlet
-> 框架：servlet，模板技术：JSP（没人用了），Thymeleaf（改成这个了）
 
+> 框架：servlet，模板技术：JSP（没人用了），Thymeleaf（改成这个了）
 
 * [background](notes/background.md)
 * [hello-world](notes/hello-world.md)
-* [database-connection](notes/database-connection.md)
 
-* [servlet-with-idea](notes/servlet-with-idea.md)
-* [http-protocol](notes/http-protocol.md)
+
 * [servlet-lifecycle](notes/servlet-lifecycle.md)
 * [generic-servlet](notes/generic-servlet.md)
 * [servlet-config](notes/servlet-config.md)

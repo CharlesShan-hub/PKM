@@ -124,9 +124,8 @@ Tomcat 服务器 webapps 目录下自带了几个项目，这些项目当中都�
 
 **需要引起注意：**
 
-`**metadata-complete="true"**`：容器忽略所有注解，只使用 web.xml 配置
-
-`**metadata-complete="false"**`**(默认值)：容器会扫描注解**
+`metadata-complete="true"`：容器忽略所有注解，只使用 web.xml 配置
+`metadata-complete="false"`**(默认值)：容器会扫描注解**
 
 ---
 
@@ -257,3 +256,105 @@ response.setContentType("text/html;charset=UTF-8");
 
 + **前者**：设置Servlet输出流的字符编码方式，影响`PrintWriter`如何将Java字符串转换为字节序列，是服务器端的行为，发生在内容发送到客户端之前，会自动设置`Content-Type`响应头的charset部分，例如：`Content-Type: text/html;charset=UTF-8`这是最根本的编码设置，决定了数据在传输时的实际编码。
 + **后者**：是HTML文档内部的编码声明，浏览器在解析HTML时会参考这个提示，当HTTP响应头没有指定charset时，浏览器会查找meta标签，如果HTTP头已指定charset，meta标签通常会被忽略。
+
+---
+
+## 简单版本总结
+
+
+首先是创建目录
+
+```plain
+web01
+    |-------WEB-INF
+        |-------classes
+        |-------web.xml
+```
+
+在任意位置编写实现类，需要实现五个方法
+
+```java
+package com.jkweilai.servlet;
+
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.ServletConfig;
+import java.io.PrintWriter;
+import java.io.IOException;
+
+public class HelloServlet implements Servlet{
+
+    public void init(ServletConfig config) throws ServletException{}
+
+    public void service(ServletRequest request,ServletResponse response)
+        throws ServletException, IOException{
+        // 向控制台打印
+        System.out.println("Hello Servlet!");
+        
+        // 向浏览器上响应HTML
+        response.setContentType("text/html"); // 设置响应的内容类型，这个对解决响应时的中文乱码问题没有作用。
+        response.setCharacterEncoding("UTF-8"); // 设置响应时采用的字符编码方式。这个是解决响应时中文乱码问题的关键。
+        
+        PrintWriter out = response.getWriter();
+        out.print("<h1>Hello Servlet!</h1>");
+        out.print("<h1>你好，服务器端的小程序！</h1>");
+    }
+
+    public void destroy(){}
+
+    public String getServletInfo(){
+        return "";
+    }
+
+    public ServletConfig getServletConfig(){
+        return null;
+    }
+
+}
+```
+
+编译需要确保 javac 能找到 `servlet-api.jar`，然后把生成的 `.class` 文件放到指定位置。我把项目放在了：`/opt/homebrew/Cellar/tomcat/11.0.21/libexec/webapps/dept/WEB-INF`
+然后把源文件也放在这里的src目录下。我的Mac上边的 javac 命令如下：
+
+```bash
+javac \
+-cp "/opt/homebrew/Cellar/tomcat/11.0.21/libexec/lib/servlet-api.jar" \
+-d WEB-INF/classes \
+src/com/jkweilai/servlet/HelloServlet.java
+```
+
+```plain
+web01
+    |---WEB-INF
+        |---classes
+            |---com (要注意一定要带着包粘贴)
+                |---jkweilai
+                    |---HelloServlet
+```
+
+编写 web.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+  version="6.0"
+  metadata-complete="true">
+
+  <servlet>
+      <servlet-name>firstServlet</servlet-name>
+      <servlet-class>com.jkweilai.servlet.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>firstServlet</servlet-name>
+      <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
+```
+
+最后把编写好的 web01 放到 WEBAPPs 下边。
