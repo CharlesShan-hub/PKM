@@ -190,3 +190,6 @@ class SpringbootRabbitmqProducerApplicationTests {
 运行生产端测试程序，观察消费端是否收到消息：
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763874137388-bb2ce88f-fa51-4fb3-954c-e684482f0838.png" width="299.2" title="" crop="0,0,1,1" id="u9e747acb" class="ne-image">
+
+
+

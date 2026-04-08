@@ -107,3 +107,4 @@ public class MyMessageListener {
 ```shell
 docker restart rabbitmq-node1
 ```
+

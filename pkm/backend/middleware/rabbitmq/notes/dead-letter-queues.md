@@ -134,3 +134,4 @@ public void test04(){
 此时启动死信队列的监听，就是我们在验证第一种情况时编写的监听死信队列的代码，结果如下：
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763977143487-5ae3cf22-3535-4629-be3d-b4167c3f0d6b.png" width="404" title="" crop="0,0,1,1" id="u9f90c7a0" class="ne-image">
+

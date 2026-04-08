@@ -636,3 +636,4 @@ public class Consumer2 {
 **<font style="color:rgb(15, 17, 21);">典型场景？</font>**<font style="color:rgb(15, 17, 21);"> 用在金融交易、订单处理等不允许消息丢失的业务中。</font>
 
 <font style="color:rgb(15, 17, 21);"></font>
+

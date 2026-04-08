@@ -120,3 +120,4 @@ docker run -d --name mq \
 **第四步：打开 Web 管理界面：**[**http://localhost:15672/**](http://localhost:15672/)
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1764038774581-d900af0d-21dd-4929-9599-a1d96f9c5359.png" width="287.2" title="" crop="0,0,1,1" id="u77a69977" class="ne-image">
+

@@ -118,3 +118,4 @@ class ProducerTxApplicationTests {
 以上三个单元测试方法分别去执行，然后去 web 管理界面看数据是否和预期数据相同。
 
 **注意：对于单元测试类中的单元测试方法来说，使用 **`**@Transactional**`**注解时需要配合 **`**@Rollback(true/false)**`**注解使用，如果不是单元测试类，这个 **`**@Rollback(true/false)**`**可以省略。**
+

@@ -1,3 +1,39 @@
+# 延迟队列
+**<font style="color:rgb(15, 17, 21);">延迟队列就是让消息在指定的延迟时间之后才被消费的特殊队列。</font>**
+
+**<font style="color:rgb(15, 17, 21);"></font>**
+
+**<font style="color:rgb(15, 17, 21);">在电商平台上，用户下单之后，会显示：请在多长时间内支付。这个机制实现有多种方案，但其中有一种方案就是：采用延迟队列来完成。</font>**
+
+**<font style="color:rgb(15, 17, 21);"></font>**
+
+## <font style="color:rgb(15, 17, 21);">实现延迟队列的第一种方案</font>
+设置消息的超时时间，然后监听死信队列。（不监听正常队列，而是监听死信队列。）
+
+等时间一到，消息就会从正常队列发送到死信队列。当死信队列的监听收到消息则表示时间已到。
+
+这种方式就不需要演示了，上面我们刚测试过。
+
+
+
+## 实现延迟队列的第二种方案：使用 RabbitMQ 的插件
+### 安装插件
+```shell
+# 进入容器（建立在我们大健康项目的基础之上的哈。）
+docker exec -it mq bash
+
+# 容器内安装wget命令
+apt-get update && apt-get install -y wget
+
+# 下载延迟插件（在容器内）
+wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.13.0/rabbitmq_delayed_message_exchange-3.13.0.ez
+
+# 复制到插件目录
+cp rabbitmq_delayed_message_exchange-3.13.0.ez /opt/rabbitmq/plugins/
+
+# 启用插件
+rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+
 # 退出并重启容器
 exit
 docker restart mq
@@ -85,3 +121,4 @@ public void processMessageDelay(String dataString, Message message, Channel chan
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763995296320-2b866780-b1a6-4a64-a497-68560368afb0.png" width="240" title="" crop="0,0,1,1" id="u016de9be" class="ne-image">
 
 使用这种方式比之前的死信队列要好很多。
+

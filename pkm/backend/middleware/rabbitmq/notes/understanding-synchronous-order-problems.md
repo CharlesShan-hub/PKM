@@ -151,3 +151,4 @@ class SmsConsumer {
 1. <font style="color:rgb(15, 17, 21);"></font>**<font style="color:rgb(15, 17, 21);">不修改核心业务代码</font>**<font style="color:rgb(15, 17, 21);">（OrderService完全不变）</font>
 2. **<font style="color:rgb(15, 17, 21);">短信服务挂了不影响订单主流程</font>**<font style="color:rgb(15, 17, 21);">（解耦）</font>
 3. **<font style="color:rgb(15, 17, 21);">只需测试新的SmsConsumer</font>**<font style="color:rgb(15, 17, 21);">（隔离测试）</font>
+

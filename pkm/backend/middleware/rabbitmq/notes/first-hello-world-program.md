@@ -164,3 +164,4 @@ public class Consumer {
 4. **<font style="color:rgb(15, 17, 21);">接收消息</font>**<font style="color:rgb(15, 17, 21);">：消费者通过 Channel </font>**<font style="color:rgb(15, 17, 21);">监听</font>**<font style="color:rgb(15, 17, 21);">指定的队列。</font>
 5. **<font style="color:rgb(15, 17, 21);">消费消息</font>**<font style="color:rgb(15, 17, 21);">：当队列中有消息时，Broker 会将消息推送给消费者。消费者接收到消息并进行处理。</font>
 6. **<font style="color:rgb(15, 17, 21);">确认消息</font>**<font style="color:rgb(15, 17, 21);">：消费者处理完消息后，会向 Broker 发送一个</font>**<font style="color:rgb(15, 17, 21);">确认信号（ack）</font>**<font style="color:rgb(15, 17, 21);">，告知消息已被成功处理。Broker 随后从队列中永久删除该消息。</font>
+

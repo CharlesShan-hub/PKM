@@ -29,3 +29,5 @@
 | **<font style="color:rgb(15, 17, 21);">消息延迟</font>** | **<font style="color:rgb(15, 17, 21);">微秒～毫秒级</font>** | <font style="color:rgb(15, 17, 21);">毫秒级</font> | **<font style="color:rgb(15, 17, 21);">毫秒级</font>** | <font style="color:rgb(15, 17, 21);">毫秒级（受批处理影响）</font> |
 | **<font style="color:rgb(15, 17, 21);">消息确认机制</font>** | **<font style="color:rgb(15, 17, 21);">最完善</font>** | <font style="color:rgb(15, 17, 21);"></font> |  |  |
 | **<font style="color:rgb(15, 17, 21);"></font>** | **<font style="color:rgb(15, 17, 21);">仍然是普通微服务项目最常用</font>** | <font style="color:rgb(15, 17, 21);">比较老了，使用较少</font> | 阿里系的用的多 | 大数据领域专用 |
+
+
