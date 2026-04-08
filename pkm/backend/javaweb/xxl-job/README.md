@@ -43,3 +43,9 @@
 * [GLUE 模式（动态任务）](notes/xxljob-glue-mode.md)
 * [集群去重与路由策略](notes/xxljob-cluster-dedup.md)
 * [分片广播](notes/xxljob-sharding.md)
+
+---
+
+### 外部链接收集
+
+* [美团点评许雪里：分布式任务调度平台 XXL-JOB](https://zhuanlan.zhihu.com/p/36627346)

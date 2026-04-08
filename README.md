@@ -33,7 +33,7 @@
 			* Easy-Query
 			* Spring Data JPA
 		* message-queue
-			* RabbitMQ
+			* [RabbitMQ](pkm/backend/middleware/rabbitmq/README.md)
 			* [RocketMQ](pkm/backend/middleware/rocketmq/README.md)
 			* Kafka
 			* Pulsar
@@ -42,6 +42,7 @@
 				* SpringCloud
 				* Dubbo
 				* gRPC
+				* ⭐[xxl-job](pkm/backend/javaweb/xxl-job/README.md)
 			* service-mesh
 				* Istio
 				* Linkerd

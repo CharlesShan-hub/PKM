@@ -571,5 +571,5 @@ if __name__ == "__main__":
         result = run(input_file, output_dir, api_key)
         print(result)
     else:
-        print("用法: python markdown_splitter_v2.py <input_file> <output_dir> [api_key]")
-        print("示例: python markdown_splitter_v2.py input.md ./output")
+        print("用法: python markdown_splitter.py <input_file> <output_dir> [api_key]")
+        print("示例: python markdown_splitter.py input.md ./output")
