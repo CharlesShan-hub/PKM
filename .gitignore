@@ -1,7 +1,26 @@
-.obsidian
-.smtcmp_json_db
-Inner
+# Obsidian 配置文件目录
+.obsidian/
+
+# 第三方工具/插件缓存目录
+.smtcmp_json_db/
+.smtcmp_vector_db.tar.gz
+
+# 系统文件
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# 开发环境文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 临时文件和备份
+*.tmp
+*.bak
+~$*
+*.log
+
+# 特定目录内的同步排除文件
 **/extension.nosync
-KnowledgeMap/测试
-KnowledgeMap/未归档文件
