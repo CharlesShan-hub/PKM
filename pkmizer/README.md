@@ -63,12 +63,90 @@ def run(arg1=None, arg2=None):
     return result
 ```
 
-## Demo Tool: Markdown Formatter
+## Available Tools
 
-The included demo tool (`markdown_formatter.py`) demonstrates:
-- Finding all markdown files in the PKM project
-- Formatting markdown files (cleaning whitespace, standardizing headers)
-- Providing a summary of changes
+### 1. Markdown Splitter (`markdown_splitter.py`)
+A powerful tool for splitting large markdown files into smaller, organized notes.
+
+**Features:**
+- Splits markdown files by level-1 headings (`# Title`)
+- Handles code blocks correctly (ignores `#` inside code)
+- AI-powered filename generation using DeepSeek API (optional)
+- Creates organized directory structure with `/notes` subfolder
+- Automatically generates README.md with relative path links
+- Supports both AI-generated and fallback filenames
+
+**Usage:**
+```bash
+uv run python scripts/markdown_splitter.py <input_file> <output_dir> [api_key]
+```
+
+**Parameters:**
+- `input_file`: Path to the markdown file to split
+- `output_dir`: Output directory (will create `/notes` subfolder)
+- `api_key`: DeepSeek API key (optional, for AI filename generation)
+
+### 2. Image Downloader (`image_downloader.py`)
+A tool for downloading images from URLs.
+
+**Features:**
+- Downloads images from provided URLs
+- Saves images to specified directory
+- Handles various image formats
+- Provides download progress and status
+
+## Markdown Splitter Detailed Example
+
+### Basic Usage (Without AI)
+
+```bash
+# Split a markdown file without AI filename generation
+uv run python scripts/markdown_splitter.py "D:/path/to/input.md" "./output"
+```
+
+This will:
+1. Read the input markdown file
+2. Find all level-1 headings (`# Title`)
+3. Split the content at each heading
+4. Generate fallback filenames based on headings
+5. Save each section as a separate file in `./output/notes/`
+6. Create `README.md` in `./output/` with links to all files
+
+### Advanced Usage (With AI)
+
+```bash
+# Split a markdown file with AI filename generation
+uv run python scripts/markdown_splitter.py "D:/path/to/input.md" "./output" "your-deepseek-api-key"
+```
+
+This will:
+1. Do everything from the basic usage
+2. Use DeepSeek API to generate meaningful filenames for each section
+3. Create more descriptive and organized filenames
+
+### Output Structure
+
+After running the tool, you'll get:
+
+```
+output/
+├── README.md                    # Index file with links to all notes
+└── notes/                       # All split files go here
+    ├── introduction.md          # First section
+    ├── technical-overview.md    # Second section
+    ├── api-integration.md       # Third section
+    ├── testing-strategy.md      # Fourth section
+    └── conclusion.md            # Last section
+```
+
+### Features in Detail
+
+1. **Smart Heading Detection**: Only detects `# Title` (not `## Subtitle`) and ignores `#` inside code blocks
+2. **Code Block Handling**: Preserves code blocks intact, doesn't split inside them
+3. **AI Filename Generation**: Uses DeepSeek API to create meaningful, English filenames
+4. **Fallback Mechanism**: If AI fails or no API key provided, uses heading-based filenames
+5. **Directory Organization**: Automatically creates `/notes` subfolder for clean organization
+6. **README Generation**: Creates index file with relative path links for easy navigation
 
 ## Project Structure
 
@@ -76,10 +154,12 @@ The included demo tool (`markdown_formatter.py`) demonstrates:
 PKM/
  ├── main.py # Main GUI application
  ├── pyproject.toml # Project configuration and dependencies
+ ├── README.md # Project documentation (this file)
  ├── scripts/ # Tool scripts directory
- │ ├── init.py # Makes scripts a Python package
- │ └── markdown_formatter.py # Demo tool
- └── TOOLS_README.md # This file
+ │ ├── __init__.py # Makes scripts a Python package
+ │ ├── markdown_splitter.py # Markdown file splitter tool
+ │ └── image_downloader.py # Image downloader tool
+ └── tests/ # Test files (optional)
 ```
 
 

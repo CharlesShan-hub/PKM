@@ -1,5 +1,14 @@
 # 集群环境下任务不会重复执行
 
+目前port总结
+```plaintext
+9090：调度中心
+9999：执行器1
+8088：客户端1
+9998：执行器2
+8089：客户端2
+```
+
 ---
 
 ## 创建应用副本
@@ -22,13 +31,16 @@
 
 ![1744768319572-7ea1aa91-5439-44bb-b01c-ec3dd26f5084.png](../assets/1744768319572-7ea1aa91-5439-44bb-b01c-ec3dd26f5084.png)
 
-`-Dserver.port=8088 -Dxxl.job.executor.port=9998`
+```
+-Dserver.port=8088 -Dxxl.job.executor.port=9998
+```
 
 配置第二个应用的服务器端口8089和执行器端口9999：
 
 ![1744768409646-fb923c0f-7c7a-40b8-9ef1-6f957f1e55f2.png](../assets/1744768409646-fb923c0f-7c7a-40b8-9ef1-6f957f1e55f2.png)
-
-`**-Dserver.port=8089 -Dxxl.job.executor.port=9999**`
+```
+-Dserver.port=8089 -Dxxl.job.executor.port=9999
+```
 
 启动两个应用：
 

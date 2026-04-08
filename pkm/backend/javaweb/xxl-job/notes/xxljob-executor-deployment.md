@@ -6,6 +6,13 @@
 4. 创建任务处理类，定义任务的具体内容。
 5. 在调度中心添加任务
 
+目前port总结
+```plaintext
+9090：调度中心
+9999：执行器
+8088：客户端
+```
+
 ---
 
 ## 创建Spring Boot项目
@@ -34,7 +41,7 @@
 
 ```properties
 ### 调度中心部署根地址 [选填]：执行器通过这个地址通知调度中心任务的执行结果
-xxl.job.admin.addresses=http://127.0.0.1:8080/xxl-job-admin
+xxl.job.admin.addresses=http://127.0.0.1:9090/xxl-job-admin
 
 ### 调度中心通讯TOKEN [选填]：非空时启用；
 xxl.job.admin.accessToken=default_token

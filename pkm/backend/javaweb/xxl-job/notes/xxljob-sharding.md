@@ -6,7 +6,7 @@
 
 ## 初始化数据
 
-1. 执行`xxl-job-demo.sql`脚本完成数据初始化。
+1. 执行`xxl-job-demo.sql`脚本完成数据初始化。（[脚本](../assets/xxl-job-demo.sql)）
 2. 新建数据库`xxl-job-demo`
 3. 执行SQL脚本
 
@@ -42,7 +42,7 @@
 ```properties
 spring.datasource.type=com.zaxxer.hikari.HikariDataSource
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.datasource.url=jdbc:mysql://localhost:3306/xxl-job-demo
+spring.datasource.url=jdbc:mysql://localhost:3306/xxl_job_demo
 spring.datasource.username=root
 spring.datasource.password=123456
 ```
@@ -95,24 +95,40 @@ public interface UserMobilePlanMapper {
 添加发送短信的任务：
 
 ```java
-private final UserMobilePlanMapper userMobilePlanMapper;
-
-@XxlJob("sendMsgHandler")
-public void sendMsgHandler(){
-    List<UserMobilePlan> userMobilePlans = userMobilePlanMapper.selectAll();
-    System.out.println("任务开始时间：" + new Date() + "，要处理的任务数量：" + userMobilePlans.size());
-    long begin = System.currentTimeMillis();
-    userMobilePlans.forEach(item -> {
-        try {
-            // 模拟发送短信的动作
-            TimeUnit.MICROSECONDS.sleep(10);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    });
-    System.out.println("任务结束时间：" + new Date());
-    long end = System.currentTimeMillis();
-    System.out.println("任务耗时：" + (end - begin) + "毫秒");
+package com.example.demo.job;  
+  
+import com.example.demo.mapper.UserMobilePlanMapper;  
+import com.example.demo.po.UserMobilePlan;  
+import com.xxl.job.core.handler.annotation.XxlJob;  
+import lombok.RequiredArgsConstructor;  
+import org.springframework.stereotype.Component;  
+  
+import java.util.Date;  
+import java.util.List;  
+import java.util.concurrent.TimeUnit;  
+  
+@Component  
+@RequiredArgsConstructor  
+public class ChipXxlJob {  
+    private final UserMobilePlanMapper userMobilePlanMapper;  
+  
+    @XxlJob("sendMsgHandler")  
+    public void sendMsgHandler(){  
+        List<UserMobilePlan> userMobilePlans = userMobilePlanMapper.selectAll();  
+        System.out.println("任务开始时间：" + new Date() + "，要处理的任务数量：" + userMobilePlans.size());  
+        long begin = System.currentTimeMillis();  
+        userMobilePlans.forEach(item -> {  
+            try {  
+                // 模拟发送短信的动作  
+                TimeUnit.MICROSECONDS.sleep(10);  
+            } catch (InterruptedException e) {  
+                throw new RuntimeException(e);  
+            }  
+        });  
+        System.out.println("任务结束时间：" + new Date());  
+        long end = System.currentTimeMillis();  
+        System.out.println("任务耗时：" + (end - begin) + "毫秒");  
+    }  
 }
 ```
 
