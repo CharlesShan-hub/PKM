@@ -50,7 +50,7 @@ LN 类名 = 第1字母（功能域）+ 第2-4字母（具体功能）
 
 ```
 LLN0 包含的数据对象：
-├── Loc          SPS    [ST]  就地/远方状态
+├── Loc          SPS    [ST]  就地/远方状态(就是本地还是远程)
 ├── OpTmh        INS    [ST]  运行时间（小时）
 ├── Health       ENS    [ST]  健康状态
 ├── Beh          ENS    [ST]  行为状态
@@ -70,7 +70,7 @@ LPHD 包含的数据对象：
 ├── OutOv        SPS    [ST]  输出溢出
 ├── Proxy        SPS    [ST]  代理状态
 ├── InOv         SPS    [ST]  输入溢出
-└── NumPwrUp     INS    [ST]  上电次数
+└── NumPwrUp     INS    [ST]  上电次数 (类似于开机次数,用来评估健康状态)
 ```
 
 ---
@@ -80,6 +80,8 @@ LPHD 包含的数据对象：
 ### MMXU - Measurement
 
 三相电气量测量，最常用的测量 LN。
+
+[mmxu](../assets/mmxu.md)
 
 ```
 MMXU 包含的数据对象：
@@ -322,22 +324,22 @@ TVTR 包含的数据对象：
 
 ## 九、逻辑节点速查表
 
-| 类别 | LN 类名 | 功能 | 关键 DO |
-|------|---------|------|---------|
-| 系统 | LLN0 | 逻辑设备公用 | Loc, Health, Beh, Mod |
-| 系统 | LPHD | 物理设备信息 | PhyNam, PhyHealth |
-| 测量 | MMXU | 三相电气量测量 | PhV, A, PPV, TotW, Hz |
-| 测量 | MMTR | 电能计量 | TotWh, TotVArh |
-| 开关 | XCBR | 断路器 | Pos, OpCnt, BlkOpn, BlkCls |
-| 开关 | XSWI | 隔离开关 | Pos, OpCnt |
-| 保护 | PTOC | 过流保护 | Str, Op, StrVal, OpDlTmms |
-| 保护 | PDIS | 距离保护 | Str, Op, Zn, OpDlTmms |
-| 保护 | PDIF | 差动保护 | Str, Op, StrVal, DifAClc |
-| 保护 | PTRC | 保护跳闸输出 | Op, Str |
-| 控制 | CSWI | 开关控制器 | Pos, PosA, BlkOpn, BlkCls |
-| 控制 | CILO | 联闭锁 | EnaOpn, EnaCls |
-| 互感器 | TCTR | 电流互感器 | Amp, Hz |
-| 互感器 | TVTR | 电压互感器 | Vol, Hz |
+| 类别  | LN 类名 | 功能      | 关键 DO                      |
+| --- | ----- | ------- | -------------------------- |
+| 系统  | LLN0  | 逻辑设备公用  | Loc, Health, Beh, Mod      |
+| 系统  | LPHD  | 物理设备信息  | PhyNam, PhyHealth          |
+| 测量  | MMXU  | 三相电气量测量 | PhV, A, PPV, TotW, Hz      |
+| 测量  | MMTR  | 电能计量    | TotWh, TotVArh             |
+| 开关  | XCBR  | 断路器     | Pos, OpCnt, BlkOpn, BlkCls |
+| 开关  | XSWI  | 隔离开关    | Pos, OpCnt                 |
+| 保护  | PTOC  | 过流保护    | Str, Op, StrVal, OpDlTmms  |
+| 保护  | PDIS  | 距离保护    | Str, Op, Zn, OpDlTmms      |
+| 保护  | PDIF  | 差动保护    | Str, Op, StrVal, DifAClc   |
+| 保护  | PTRC  | 保护跳闸输出  | Op, Str                    |
+| 控制  | CSWI  | 开关控制器   | Pos, PosA, BlkOpn, BlkCls  |
+| 控制  | CILO  | 联闭锁     | EnaOpn, EnaCls             |
+| 互感器 | TCTR  | 电流互感器   | Amp, Hz                    |
+| 互感器 | TVTR  | 电压互感器   | Vol, Hz                    |
 
 ---
 
