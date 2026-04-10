@@ -121,22 +121,22 @@ Bus_XCBR1    → 母线的断路器
 
 ### 常见逻辑节点类
 
-| lnClass | 含义 | 功能 |
-|---------|------|------|
-| **LLN0** | Logical Node Zero | 每个 LD 的公用节点，包含数据集、报告控制块 |
-| **LPHD** | Physical Device | 物理设备信息，如健康状态、代理地址 |
-| **MMXU** | Measurement | 三相电气量测量（电压、电流、功率）|
-| **MMTR** | Metering | 电能计量（有功、无功电能）|
-| **XCBR** | Circuit Breaker | 断路器控制与监测 |
-| **XSWI** | Switch | 隔离开关/接地开关控制 |
-| **PDIS** | Distance Protection | 距离保护 |
-| **PTOC** | Overcurrent | 过流保护 |
-| **PDIF** | Differential | 差动保护 |
-| **PTRC** | Protection Trip Conditioning | 保护跳闸输出 |
-| **CSWI** | Switch Controller | 开关控制器（接收控制命令）|
-| **ATCC** | Tap Changer Control | 变压器分接头控制 |
-| **TVTR** | Voltage Transformer | 电压互感器 |
-| **TCTR** | Current Transformer | 电流互感器 |
+| lnClass  | 含义                           | 功能                      |
+| -------- | ---------------------------- | ----------------------- |
+| **LLN0** | Logical Node Zero            | 每个 LD 的公用节点，包含数据集、报告控制块 |
+| **LPHD** | Physical Device              | 物理设备信息，如健康状态、代理地址       |
+| **MMXU** | Measurement                  | 三相电气量测量（电压、电流、功率）       |
+| **MMTR** | Metering                     | 电能计量（有功、无功电能）           |
+| **XCBR** | Circuit Breaker              | 断路器控制与监测                |
+| **XSWI** | Switch                       | 隔离开关/接地开关控制             |
+| **PDIS** | Distance Protection          | 距离保护                    |
+| **PTOC** | Overcurrent                  | 过流保护                    |
+| **PDIF** | Differential                 | 差动保护                    |
+| **PTRC** | Protection Trip Conditioning | 保护跳闸输出                  |
+| **CSWI** | Switch Controller            | 开关控制器（接收控制命令）           |
+| **ATCC** | Tap Changer Control          | 变压器分接头控制                |
+| **TVTR** | Voltage Transformer          | 电压互感器                   |
+| **TCTR** | Current Transformer          | 电流互感器                   |
 
 **记忆技巧**：
 - 第1个字母：功能域（M=测量, X=开关设备, P=保护, C=控制, T=互感器）
@@ -200,20 +200,20 @@ MMXU1.PhV.phsA.q = 0x00       ← 有效
 
 FC（Functional Constraint）是对数据属性的**分类标签**，告诉系统这个数据是干什么用的。
 
-| FC | 含义 | 用途 | 示例 |
-|----|------|------|------|
-| **ST** | Status | 状态信息（只读）| 开关位置、告警状态 |
-| **MX** | Measurand | 测量值（只读）| 电压、电流、功率 |
-| **SP** | Setpoint | 设定值（可写）| 保护定值、阈值 |
-| **SV** | Substitution | 替代值（可写）| 强制置数、调试 |
-| **CF** | Configuration | 配置参数（可写）| 通信参数、设备配置 |
-| **DC** | Description | 描述信息（只读）| 设备名称、版本信息 |
-| **SG** | Setting Group | 定值组（可切换）| 多套保护定值 |
-| **SE** | Setting Group Editable | 可编辑定值组 | 在线修改定值 |
-| **SR** | Service Response | 服务响应 | 服务调用的返回值 |
-| **OR** | Operator Blocking | 操作员闭锁 | 就地/远方切换 |
-| **BL** | Blocking | 闭锁 | 功能闭锁状态 |
-| **EX** | Extended Definition | 扩展定义 | 厂商扩展 |
+| FC     | 含义                     | 用途       | 示例        |
+| ------ | ---------------------- | -------- | --------- |
+| **ST** | Status                 | 状态信息（只读） | 开关位置、告警状态 |
+| **MX** | Measurand              | 测量值（只读）  | 电压、电流、功率  |
+| **SP** | Setpoint               | 设定值（可写）  | 保护定值、阈值   |
+| **SV** | Substitution           | 替代值（可写）  | 强制置数、调试   |
+| **CF** | Configuration          | 配置参数（可写） | 通信参数、设备配置 |
+| **DC** | Description            | 描述信息（只读） | 设备名称、版本信息 |
+| **SG** | Setting Group          | 定值组（可切换） | 多套保护定值    |
+| **SE** | Setting Group Editable | 可编辑定值组   | 在线修改定值    |
+| **SR** | Service Response       | 服务响应     | 服务调用的返回值  |
+| **OR** | Operator Blocking      | 操作员闭锁    | 就地/远方切换   |
+| **BL** | Blocking               | 闭锁       | 功能闭锁状态    |
+| **EX** | Extended Definition    | 扩展定义     | 厂商扩展      |
 
 **关键理解**：FC 决定了一个数据属性能否被写入。ST/MX 是只读的，SP/CF 是可写的。
 

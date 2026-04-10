@@ -1,7 +1,7 @@
-# **SpringBoot 整合 RabbitMQ**
+# SpringBoot 整合 RabbitMQ
 开发中最常用的是基于路由模式。因此我们就基于路由模式来编写代码：
 
-## 创建**消费端** SpringBoot 项目引入依赖
+## 创建消费端 SpringBoot 项目引入依赖
 我们使用的 SpringBoot 的版本 `3.5.8`，引入以下依赖：
 
 ```xml
@@ -155,7 +155,7 @@ spring:
 ```
 
 ## 编写生产端的测试程序
-编写**单元测试**：
+编写单元测试：
 
 ```java
 package com.jkweilai.mq;
@@ -184,8 +184,6 @@ class SpringbootRabbitmqProducerApplicationTests {
 
 }
 ```
-
-
 
 运行生产端测试程序，观察消费端是否收到消息：
 

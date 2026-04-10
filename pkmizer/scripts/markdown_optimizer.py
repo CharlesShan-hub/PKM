@@ -130,7 +130,7 @@ def optimize_with_api(content: str, api_key: str, model: str, system_prompt: str
             'https://api.deepseek.com/chat/completions',
             headers=headers,
             json=payload,
-            timeout=60
+            timeout=120
         )
 
         if response.status_code == 200:

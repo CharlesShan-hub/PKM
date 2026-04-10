@@ -48,13 +48,13 @@ public class RabbitConfig {
 
 ```
 
-**<font style="color:rgb(15, 17, 21);">这个配置类的作用是：启用 RabbitMQ 的事务支持，让 RabbitTemplate 的操作能够参与到 Spring 的事务管理中。</font>**
+**这个配置类的作用是：启用 RabbitMQ 的事务支持，让 RabbitTemplate 的操作能够参与到 Spring 的事务管理中。**
 
-<font style="color:rgb(15, 17, 21);">简单说就是：</font>**<font style="color:rgb(15, 17, 21);">让 RabbitMQ 消息发送支持 Spring 的</font>****<font style="color:rgb(15, 17, 21);"> </font>**`**<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">@Transactional</font>**`**<font style="color:rgb(15, 17, 21);"> </font>****<font style="color:rgb(15, 17, 21);">事务控制。</font>**
+**简单说就是：让 RabbitMQ 消息发送支持 Spring 的** `**@Transactional**` **事务控制。**
 
-<font style="color:rgb(15, 17, 21);">这样配置后，就可以在方法上使用 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">@Transactional</font>`<font style="color:rgb(15, 17, 21);">，其中的 RabbitMQ 消息发送就会在事务提交时一起提交，回滚时一起回滚。</font>
+**这样配置后，就可以在方法上使用 **`**@Transactional**`**，其中的 RabbitMQ 消息发送就会在事务提交时一起提交，回滚时一起回滚。**
 
-### <font style="color:rgb(15, 17, 21);">创建交换机 队列</font>
+### **创建交换机 队列**
 在 web 管理界面创建交换机：`exchange.tx`
 
 创建队列：`queue.tx`
@@ -118,4 +118,3 @@ class ProducerTxApplicationTests {
 以上三个单元测试方法分别去执行，然后去 web 管理界面看数据是否和预期数据相同。
 
 **注意：对于单元测试类中的单元测试方法来说，使用 **`**@Transactional**`**注解时需要配合 **`**@Rollback(true/false)**`**注解使用，如果不是单元测试类，这个 **`**@Rollback(true/false)**`**可以省略。**
-

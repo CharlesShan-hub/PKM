@@ -4,12 +4,12 @@
 Federation 翻译为联邦。
 
 ## 理解 Federation
-**RabbitMQ Federation 用于在不同 RabbitMQ 集群之间自动复制消息，实现跨****<font style="color:#DF2A3F;">网络域</font>****的消息传输。**
+**RabbitMQ Federation 用于在不同 RabbitMQ 集群之间自动复制消息，实现跨网络域的消息传输。**
 
 **它是 RabbitMQ 的一个插件。**
 
 ### 主要场景
-1. **跨****<font style="color:#DF2A3F;">机房/地域</font>**** 复制** - 北京集群 ↔ 上海集群
+1. **跨机房/地域 复制** - 北京集群 ↔ 上海集群
 2. **上下游系统集成** - 生产集群 → 消费集群
 
 ### Federation vs 镜像队列/仲裁队列
@@ -58,7 +58,7 @@ docker run -d --name rabbitmq-beijing \
   rabbitmq:3.13-management
 ```
 
-```java
+```shell
 docker run -d --name rabbitmq-shanghai \
   --net dajiankang --ip 172.16.0.22 \
   -p 56723:5672 \
@@ -114,7 +114,7 @@ docker exec -it rabbitmq-shanghai rabbitmq-plugins enable rabbitmq_federation_ma
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1764070775597-38fec8ec-4839-434d-a9a2-316d2ff46db8.png" width="1355.2" title="" crop="0,0,1,1" id="ud1c26c14" class="ne-image">
 
 ## 联邦交换机
-### 在下游<font style="color:#DF2A3F;">定义</font>上游的地址
+### 在下游**定义**上游的地址
 假设北京是上游（端口 15675）。上海是下游（端口 15676）。需要在下游中配置：告诉下游，它的上游节点在哪里。
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1764071171721-695b56f0-ddc1-4e9a-ba3d-0ae7882982dc.png" width="1464.8" title="" crop="0,0,1,1" id="ud3af1d32" class="ne-image">
@@ -128,9 +128,9 @@ docker exec -it rabbitmq-shanghai rabbitmq-plugins enable rabbitmq_federation_ma
 ### 下游配置 Federation 交换机策略
 在下游配置交换机策略：
 
-**<font style="color:rgb(15, 17, 21);">这个策略的作用是：自动将匹配 </font>**`**<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">^federation\.</font>**`**<font style="color:rgb(15, 17, 21);"> 的交换机设置为联邦交换机（Federation Exchange），并连接到北京的上游集群。</font>**
+**这个策略的作用是：自动将匹配 `^federation\.` 的交换机设置为联邦交换机（Federation Exchange），并连接到北京的上游集群。**
 
-`**<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">^federation\.</font>**`**<font style="color:rgb(15, 17, 21);"> 是正则表达式：表示交换机名字以 </font>**`**<font style="color:rgb(15, 17, 21);">federation.</font>**`**<font style="color:rgb(15, 17, 21);">开头的都设置为联邦交换机。</font>**
+`^federation\.`** 是正则表达式：表示交换机名字以 `federation.`开头的都设置为联邦交换机。**
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1764073208259-172ef6d5-90c1-4c97-a977-a5e4e938d00b.png" width="1448" title="" crop="0,0,1,1" id="u83bff58a" class="ne-image">
 
@@ -168,8 +168,8 @@ docker exec -it rabbitmq-shanghai rabbitmq-plugins enable rabbitmq_federation_ma
 
 队列绑定路由键：`routing.key.demo.test`
 
-### 在上游<font style="color:#DF2A3F;">交换机上</font>发条消息测试
-在上游的 web 管理界面中发送一条消息，进行测试，看看下游的队列中是否也存在这条消息：注意，是在交换机上发送消息。**<font style="color:#DF2A3F;">因为现在配置的是联邦交换机</font>**。
+### 在上游**交换机上**发条消息测试
+在上游的 web 管理界面中发送一条消息，进行测试，看看下游的队列中是否也存在这条消息：注意，是在交换机上发送消息。**因为现在配置的是联邦交换机**。
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1764077482490-cbb0a24b-6cf8-4d75-8a05-78ed7c0643a1.png" width="843.2" title="" crop="0,0,1,1" id="u66a72ee6" class="ne-image">
 
@@ -180,7 +180,7 @@ docker exec -it rabbitmq-shanghai rabbitmq-plugins enable rabbitmq_federation_ma
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1764077514501-763141a1-7fd0-42e5-89d2-0cd2f366a7e9.png" width="247.2" title="" crop="0,0,1,1" id="u4f5a1b34" class="ne-image">
 
 ## 联邦队列
-### 下游配置 Federation<font style="color:#DF2A3F;"> 队列</font>策略
+### 下游配置 Federation** 队列**策略
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1764078244455-1c415efd-7287-46c1-a0ad-330bfa535bed.png" width="1468" title="" crop="0,0,1,1" id="uba2e657b" class="ne-image">
 
 **名字：**`policy.federation.queue`
@@ -209,7 +209,7 @@ docker exec -it rabbitmq-shanghai rabbitmq-plugins enable rabbitmq_federation_ma
 ### 下游创建组件
 创建队列：`fed.queue.demo`
 
-### 在上游的<font style="color:#DF2A3F;">交换机</font>位置发送一条消息
+### 在上游的**交换机**位置发送一条消息
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1764078820564-440dbf05-4b87-467a-aaaa-0f17a30d0e79.png" width="728.8" title="" crop="0,0,1,1" id="udaf2407b" class="ne-image">
 
 
@@ -282,4 +282,3 @@ public class MyMessageListener {
 
 1. 联邦交换机主要完成上游集群和下游集群数据的复制/同步。下游消费的时候只消费下游的队列中的消息。
 2. 联邦队列在下游进行消费的时候，先消费下游队列的消息，如果消费已经消费完了。会继续消费上游队列中的消息。
-

@@ -344,7 +344,7 @@
 
 ### JavaWeb
 
-* [[../../../javaweb/servlet/notes/servlet-old]]
+* [[../../../specs/servlet/notes/servlet-old]]
 
 ### JavaWeb（黑马）
 

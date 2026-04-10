@@ -6,7 +6,7 @@
 * 💻 Practise
 	* Backend
 		* Language: [javase](pkm/backend/java/javase/README.md), kotlin, go
-		* Specs: ⭐[JDBC](pkm/backend/database/jdbc/README.md), [Servlet](pkm/backend/javaweb/servlet/README.md), JPA, JMS
+		* Specs: ⭐[JDBC](pkm/backend/specs/jdbc/README.md), [Servlet](pkm/backend/specs/servlet/README.md), JPA, JMS
 		* Design: [Design Pattern](pkm/backend/java/design-pattern/README.md), Coding Standards
 		* database
 			* relational database: [mysql](pkm/backend/database/mysql/README.md), postgresql, sqlite, oracle
@@ -15,7 +15,7 @@
 		* version: [git](pkm/backend/devops/git/README.md), ⭐[SVN](pkm/backend/devops/svn/README.md)
 		* java web: [Spring](pkm/backend/javaweb/spring/README.md), [SpringBoot](pkm/backend/javaweb/springboot/README.md)
 		* orm：Hibernate, [MyBatis](pkm/backend/javaweb/mybatis/README.md), [MyBatisPlus](pkm/backend/javaweb/mybatisplus/README.md), Easy-Query, Spring Data JPA
-		* message-queue: [RabbitMQ](pkm/backend/middleware/rabbitmq/README.md), [RocketMQ](pkm/backend/middleware/rocketmq/README.md), Kafka, Pulsar
+		* message-queue: [RabbitMQ](pkm/backend/message-queue/rabbitmq/README.md), [RocketMQ](pkm/backend/message-queue/rocketmq/README.md), Kafka, Pulsar
 		* microservices
 			* framework
 				* SpringCloud

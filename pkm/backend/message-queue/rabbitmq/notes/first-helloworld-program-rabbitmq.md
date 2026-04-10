@@ -66,23 +66,15 @@ public class Producer {
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763810546280-ead9b95d-3844-4963-a7d0-2bb18568950f.png" width="298.4" title="" crop="0,0,1,1" id="ucc7d7a02" class="ne-image">
 
-
-
 **使用 RabbitMQ Web 管理界面查看**
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763810897646-3758254a-8d00-44a2-ae74-b1be386f07b1.png" width="1055.2" title="" crop="0,0,1,1" id="u6c677b04" class="ne-image">
-
-
 
 **点击队列的名字可以看到更加详细的信息：**
 
 <img src="https://cdn.nlark.com/yuque/0/2026/png/21376908/1770518372337-f7de6a58-a129-43dc-8c58-e4efa31aa399.png" width="834.4" title="" crop="0,0,1,1" id="u1b6a1998" class="ne-image">
 
-
-
 <img src="https://cdn.nlark.com/yuque/0/2026/png/21376908/1770518500458-7788b87e-8ce1-4ff6-9b20-7e913deb3af3.png" width="728" title="" crop="0,0,1,1" id="u227340a4" class="ne-image">
-
-
 
 通过这个管理界面可以看到，虽然生产者端程序已经结束了。但是这个消息并没有消失，消息就一直存放在消息队列中，等待消费。
 
@@ -145,13 +137,9 @@ public class Consumer {
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763812439379-4c387399-23b4-409e-a46f-7f3c85a41f83.png" width="712.8" title="" crop="0,0,1,1" id="u778abd7f" class="ne-image">
 
-
-
 **再次查看 web 端管理界面，可以看到消费者端已经将消息消费了，消息队列中的消息被删除了：**
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763812525076-4531aa60-2db4-40a2-bb27-5abb1360f013.png" width="840" title="" crop="0,0,1,1" id="ua73f5458" class="ne-image">
-
-
 
 ## 对第一个 HelloWorld 程序的理解
 **工作流程：**
