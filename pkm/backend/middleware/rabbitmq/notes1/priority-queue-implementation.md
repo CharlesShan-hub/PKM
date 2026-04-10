@@ -78,3 +78,4 @@ public void processMessagePriority(String dataString, Message message, Channel c
 执行这个程序，看看控制台，是不是优先级最高的那条消息最先被消费：
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763991042509-e1dd799a-5d35-409a-89ad-0f4c1f3d916b.png" width="213.6" title="" crop="0,0,1,1" id="u5dc1fffd" class="ne-image">
+

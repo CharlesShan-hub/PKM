@@ -5,8 +5,8 @@
 ### 故障情况 1
 **消息压根没有发到消息队列**，解决方案包括两个：
 
-1. **在生产者端启用****确认****机制。当消息发送失败（如交换机或队列不存在）时，生产者立即感知并执行重发。**
-2. **为****主交换机****配置一个****备份交换机****。当消息无法路由到任何队列时，自动转发到****备份交换机****，保证消息不丢失。**
+1. <font style="color:rgb(15, 17, 21);">在生产者端启用</font>**<font style="color:rgb(15, 17, 21);">确认</font>**<font style="color:rgb(15, 17, 21);">机制。当消息发送失败（如交换机或队列不存在）时，生产者立即感知并执行重发。</font>
+2. <font style="color:rgb(15, 17, 21);">为</font>**<font style="color:rgb(15, 17, 21);">主交换机</font>**<font style="color:rgb(15, 17, 21);">配置一个</font>**<font style="color:rgb(15, 17, 21);">备份交换机</font>**<font style="color:rgb(15, 17, 21);">。当消息无法路由到任何队列时，自动转发到</font>**<font style="color:rgb(15, 17, 21);">备份交换机</font>**<font style="color:rgb(15, 17, 21);">，保证消息不丢失。</font>
 
 ### 故障情况 2
 消息发到消息服务器后，服务器宕机了，导致内存中消息丢失，解决方案是：**将消息持久化到硬盘上。**
@@ -14,10 +14,10 @@
 ### 故障情况 3
 消息发到消息服务器了，消息服务器也没有宕机，但是消费端在消费的时候出现异常了。导致消息没有成功消费，解决方案是：
 
-1. ****成功则确认******：处理成功时消费端返回确认(ACK)，消息服务器删除消息。**
-2. ****失败则拒收******：处理失败时消费端返回(NACK)，消息可以重新入队等待再次消费。（这属于消费端的重试机制）**
+1. **<font style="color:rgb(15, 17, 21);">成功则确认</font>**<font style="color:rgb(15, 17, 21);">：处理成功时消费端返回确认(ACK)，消息服务器删除消息。</font>
+2. **<font style="color:rgb(15, 17, 21);">失败则拒收</font>**<font style="color:rgb(15, 17, 21);">：处理失败时消费端返回(NACK)，消息可以重新入队等待再次消费。（这属于消费端的重试机制）</font>
 
-## **解决故障情况 1 的具体实践**
+## <font style="color:rgb(15, 17, 21);">解决故障情况 1 的具体实践</font>
 ### 方案 1：生产端确认机制
 **第一步：**创建生产端的 SpringBoot 项目 `**producer-confirm**`，引入依赖。操作和之前相同。
 
@@ -40,7 +40,7 @@
 </dependencies>
 ```
 
-**第二步：**在 `application.yml`中启用生产端确认机制。重点关注以下****两个配置****。
+**第二步：**在 `application.yml`中启用生产端确认机制。重点关注以下**<font style="color:#DF2A3F;">两个配置</font>**。
 
 ```yaml
 spring:
@@ -200,7 +200,7 @@ class ProducerConfirmApplicationTests {
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763882982507-a8195421-f2d2-4760-aa67-6e903afc8505.png" width="844.8" title="" crop="0,0,1,1" id="u1c0d6e15" class="ne-image">
 
-启用备用交换机原理：消息到达目标交换机，目标交换机绑定队列时失败，启用备用交换机， 备用交换机会将消息绑定到其他队列，消费者端一般的消费方式为：****记录日志/告警****（通知运维人员/开发人员等）。
+启用备用交换机原理：消息到达目标交换机，目标交换机绑定队列时失败，启用备用交换机， 备用交换机会将消息绑定到其他队列，消费者端一般的消费方式为：**<font style="color:#DF2A3F;">记录日志/告警</font>**（通知运维人员/开发人员等）。
 
 
 
@@ -318,15 +318,15 @@ spring:
         acknowledge-mode: manual # 把消息确认默认修改为手动确认
 ```
 
-****不设置**** `****acknowledge-mode: manual****` ****的后果就是：****
+**<font style="color:rgb(15, 17, 21);">不设置</font>****<font style="color:rgb(15, 17, 21);"> </font>**`**<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">acknowledge-mode: manual</font>**`**<font style="color:rgb(15, 17, 21);"> </font>****<font style="color:rgb(15, 17, 21);">的后果就是：</font>**
 
-+ **Spring Boot 会自动管理消息确认**
-+ **方法正常完成 → ****自动ACK****（消息被删除）**
-+ **方法抛出异常 → ****自动NACK****（消息重新入队或进入死信）**
++ <font style="color:rgb(15, 17, 21);">Spring Boot 会自动管理消息确认</font>
++ <font style="color:rgb(15, 17, 21);">方法正常完成 →</font><font style="color:rgb(15, 17, 21);"> </font>**<font style="color:rgb(15, 17, 21);">自动ACK</font>**<font style="color:rgb(15, 17, 21);">（消息被删除）</font>
++ <font style="color:rgb(15, 17, 21);">方法抛出异常 →</font><font style="color:rgb(15, 17, 21);"> </font>**<font style="color:rgb(15, 17, 21);">自动NACK</font>**<font style="color:rgb(15, 17, 21);">（消息重新入队或进入死信）</font>
 
-**手动模式让你对消息确认有完全的控制权，适合需要精确控制重试逻辑的业务场景。**
+<font style="color:rgb(15, 17, 21);">手动模式让你对消息确认有完全的控制权，适合需要精确控制重试逻辑的业务场景。</font>
 
-
+<font style="color:rgb(15, 17, 21);"></font>
 
 **第三步：**编写消费端的监听程序（**核心代码**）
 
@@ -357,4 +357,51 @@ public class MyMessageListener {
             System.out.println("消费端收到消息:" + dataString + "，正在处理消息，处理核心业务.....");
             // 返回ACK的操作
             // 第一个参数是：消息的唯一标识。
-            // 第二个参数是multiple：true表示支持多项
+            // 第二个参数是multiple：true表示支持多项操作。false表示不支持多项操作。啥意思？
+            // 返回ACK后，消息队列会删除消息
+            // 如果multiple为true表示将当前消息以及小于deliveryTag的消息都删除。
+            // 如果multiple为false表示只将当前消息删除。（多数情况设置为false。）
+            channel.basicAck(deliveryTag, false);
+        } catch (Exception e) {
+            // 出现异常就代表消费失败了。
+            // 返回NACK的操作
+            if(redelivered){
+                // 告警或通知运维等人员
+                System.out.println("你已经重试过一次了，还是失败，我给运维人员打电话吧！！！");
+                channel.basicNack(deliveryTag, false, false);
+            }else{
+                // 返回队列重新消费。（由于你是第一次，再给你一次重试的机会）
+                System.out.println("看在你是初犯，给你一次重试的机会。");
+                channel.basicNack(deliveryTag, false, true);
+            }
+        }
+    }
+}
+
+```
+
+
+
+**第四步：**启动消费端，然后打开 web 管理界面，手动在管理界面上找到对应的交换机 `**<font style="color:black;">exchange.direct.order</font>**` 发消息给 `**queue.order**` <font style="color:#080808;background-color:#ffffff;">队列。</font>
+
+<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763890838372-a73a132c-d76d-4a38-b629-4ef279ae8405.png" width="760.8" title="" crop="0,0,1,1" id="u0deae712" class="ne-image">
+
+当 `try`语句块中没有发生异常时，消息能够正常消费：
+
+<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763890858805-5cbedca3-50e0-47e8-9c9a-68aa07cf1f74.png" width="476.8" title="" crop="0,0,1,1" id="u500c9871" class="ne-image">
+
+
+
+当 `try`语句块中发生异常时（**在代码中模拟异常**），消息不能正常消费，但如果是第一次发消息，会给一次机会重试，重试之后还是失败，则告警：
+
+模拟异常：
+
+<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763890900797-4d206369-ca3c-41b0-81a7-fca3b0a1c5f5.png" width="711.2" title="" crop="0,0,1,1" id="ud64490a7" class="ne-image">
+
+在 web 管理界面发消息，观察控制台：
+
+<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763890997441-550d229b-506c-461b-b5f7-6b30d8135196.png" width="463.2" title="" crop="0,0,1,1" id="u3671cf7f" class="ne-image">
+
+## 总结
+要想达到消息的可靠性传递，通常需要以上三种解决方法同时协作才行。绝非一个解决办法就能保证的。
+

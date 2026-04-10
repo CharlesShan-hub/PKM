@@ -29,7 +29,7 @@
 
 
 
-**在 `producer_confirm`项目中编写测试代码，生产端发送 100 条消息到队列，看看超时之后，消息是否全部删除：**
+**在 **`**producer_confirm**`**项目中编写测试代码，生产端发送 100 条消息到队列，看看超时之后，消息是否全部删除：**
 
 ```java
 public static final String EXCHANGE_TIMEOUT = "exchange.timeout";
@@ -51,7 +51,7 @@ void test02() {
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763897515548-9783d76a-c5f4-4734-a70a-5319e7a482cc.png" width="171.2" title="" crop="0,0,1,1" id="ue16e320e" class="ne-image">
 
 ## 通过代码设置某条消息的超时时间
-**在 `producer_confirm`项目中编写测试代码，生产端发送 1 条**设置了超时时间**的消息到队列，看看超时之后，消息是否全部删除：**
+**在 **`**producer_confirm**`**项目中编写测试代码，生产端发送 1 条****<font style="color:#DF2A3F;">设置了超时时间</font>****的消息到队列，看看超时之后，消息是否全部删除：**
 
 ```java
 @Test
@@ -68,3 +68,4 @@ void test03() {
 ```
 
 运行测试，看看 7 秒后该消息是否自动删除。
+

@@ -1,7 +1,7 @@
-# **SpringBoot 整合 RabbitMQ**
+# <font style="color:rgb(15, 17, 21);">SpringBoot 整合 RabbitMQ</font>
 开发中最常用的是基于路由模式。因此我们就基于路由模式来编写代码：
 
-## 创建**消费端** SpringBoot 项目引入依赖
+## 创建<font style="color:#DF2A3F;">消费端</font> SpringBoot 项目引入依赖
 我们使用的 SpringBoot 的版本 `3.5.8`，引入以下依赖：
 
 ```xml
@@ -190,3 +190,6 @@ class SpringbootRabbitmqProducerApplicationTests {
 运行生产端测试程序，观察消费端是否收到消息：
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763874137388-bb2ce88f-fa51-4fb3-954c-e684482f0838.png" width="299.2" title="" crop="0,0,1,1" id="u9e747acb" class="ne-image">
+
+
+

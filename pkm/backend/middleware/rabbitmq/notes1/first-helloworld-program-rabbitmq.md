@@ -154,13 +154,14 @@ public class Consumer {
 
 
 ## 对第一个 HelloWorld 程序的理解
-**工作流程：**
+**<font style="color:rgb(15, 17, 21);">工作流程：</font>**
 
-1. **建立连接**：生产者和消费者都需要与**RabbitMQ服务器**建立一个TCP连接，并在其上创建一个通道（Channel）。
-2. **发送消息**：生产者通过 Channel 将消息发送给**默认交换机**，**默认交换机**通过路由键 `simple_queue`将消息路由到 `simple_queue`队列。
-    1. 没有指定交换机，Broker 使用默认交换机。
-    2. **在默认交换机中，路由键就是队列名**
-3. **存储消息**：Broker 将**接收到的消息**存储在**指定的队列**中，等待被消费。
-4. **接收消息**：消费者通过 Channel **监听**指定的队列。
-5. **消费消息**：当队列中有消息时，Broker 会将消息推送给消费者。消费者接收到消息并进行处理。
-6. **确认消息**：消费者处理完消息后，会向 Broker 发送一个**确认信号（ack）**，告知消息已被成功处理。Broker 随后从队列中永久删除该消息。
+1. **<font style="color:rgb(15, 17, 21);">建立连接</font>**<font style="color:rgb(15, 17, 21);">：生产者和消费者都需要与</font>**<font style="color:rgb(15, 17, 21);">RabbitMQ服务器</font>**<font style="color:rgb(15, 17, 21);">建立一个TCP连接，并在其上创建一个通道（Channel）。</font>
+2. **<font style="color:rgb(15, 17, 21);">发送消息</font>**<font style="color:rgb(15, 17, 21);">：生产者通过 Channel 将消息发送给</font>**<font style="color:rgb(15, 17, 21);"> 默认交换机</font>**<font style="color:rgb(15, 17, 21);">，</font>**<font style="color:rgb(15, 17, 21);">默认交换机</font>**<font style="color:rgb(15, 17, 21);">通过路由键 </font>`<font style="color:rgb(15, 17, 21);">simple_queue</font>`<font style="color:rgb(15, 17, 21);">将消息路由到 </font>`<font style="color:rgb(15, 17, 21);">simple_queue</font>`<font style="color:rgb(15, 17, 21);">队列。</font>
+    1. <font style="color:rgb(15, 17, 21);">没有指定交换机，Broker 使用默认交换机。</font>
+    2. **<font style="color:rgb(15, 17, 21);">在默认交换机中，路由键就是队列名</font>**
+3. **<font style="color:rgb(15, 17, 21);">存储消息</font>**<font style="color:rgb(15, 17, 21);">：Broker 将</font>**<font style="color:rgb(15, 17, 21);">接收到的消息</font>**<font style="color:rgb(15, 17, 21);">存储在</font>**<font style="color:rgb(15, 17, 21);">指定的队列</font>**<font style="color:rgb(15, 17, 21);">中，等待被消费。</font>
+4. **<font style="color:rgb(15, 17, 21);">接收消息</font>**<font style="color:rgb(15, 17, 21);">：消费者通过 Channel </font>**<font style="color:rgb(15, 17, 21);">监听</font>**<font style="color:rgb(15, 17, 21);">指定的队列。</font>
+5. **<font style="color:rgb(15, 17, 21);">消费消息</font>**<font style="color:rgb(15, 17, 21);">：当队列中有消息时，Broker 会将消息推送给消费者。消费者接收到消息并进行处理。</font>
+6. **<font style="color:rgb(15, 17, 21);">确认消息</font>**<font style="color:rgb(15, 17, 21);">：消费者处理完消息后，会向 Broker 发送一个</font>**<font style="color:rgb(15, 17, 21);">确认信号（ack）</font>**<font style="color:rgb(15, 17, 21);">，告知消息已被成功处理。Broker 随后从队列中永久删除该消息。</font>
+

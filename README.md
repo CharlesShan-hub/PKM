@@ -5,27 +5,17 @@
 
 * 💻 Practise
 	* Backend
-		* language: [javase](pkm/backend/java/javase/README.md), kotlin, go
-		* [Design Pattern](pkm/backend/java/design-pattern/README.md)
+		* Language: [javase](pkm/backend/java/javase/README.md), kotlin, go
+		* Specs: ⭐[JDBC](pkm/backend/database/jdbc/README.md), [Servlet](pkm/backend/javaweb/servlet/README.md), JPA, JMS
+		* Design: [Design Pattern](pkm/backend/java/design-pattern/README.md), Coding Standards
 		* database
 			* relational database: [mysql](pkm/backend/database/mysql/README.md), postgresql, sqlite, oracle
 			* nosql database: ⭐[Redis](pkm/backend/database/redis/README.md), MongoDB, ElasticSearch
-			* tools: ⭐[JDBC](pkm/backend/database/jdbc/README.md)
-		* package: ⭐[maven](pkm/backend/devops/maven/README.md), gradle
+		* package: ⭐[maven](pkm/backend/devops/maven/README.md), [gradle](pkm/backend/devops/gradle/README.md)
 		* version: [git](pkm/backend/devops/git/README.md), ⭐[SVN](pkm/backend/devops/svn/README.md)
-		* java web: [Servlet](pkm/backend/javaweb/servlet/README.md), [Spring](pkm/backend/javaweb/spring/README.md), [SpringBoot](pkm/backend/javaweb/springboot/README.md)
-		* orm
-			* [MyBatis](pkm/backend/javaweb/mybatis/README.md)
-			* [MyBatisPlus](pkm/backend/javaweb/mybatisplus/README.md)
-			* Hibernate
-			* JPA
-			* Easy-Query
-			* Spring Data JPA
-		* message-queue
-			* [RabbitMQ](pkm/backend/middleware/rabbitmq/README.md)
-			* [RocketMQ](pkm/backend/middleware/rocketmq/README.md)
-			* Kafka
-			* Pulsar
+		* java web: [Spring](pkm/backend/javaweb/spring/README.md), [SpringBoot](pkm/backend/javaweb/springboot/README.md)
+		* orm：Hibernate, [MyBatis](pkm/backend/javaweb/mybatis/README.md), [MyBatisPlus](pkm/backend/javaweb/mybatisplus/README.md), Easy-Query, Spring Data JPA
+		* message-queue: [RabbitMQ](pkm/backend/middleware/rabbitmq/README.md), [RocketMQ](pkm/backend/middleware/rocketmq/README.md), Kafka, Pulsar
 		* microservices
 			* framework
 				* SpringCloud

@@ -1,22 +1,22 @@
 # 死信与死信队列
 ## 什么是死信
-**死信就是"屡次处理失败"或"无家可归"的消息，被系统打入"冷宫"单独处理。**
+**<font style="color:rgb(15, 17, 21);">死信就是"屡次处理失败"或"无家可归"的消息，被系统打入"冷宫"单独处理。</font>**
 
-## **导致死信的原因**
-**导致死信的原因有三个：**
+## <font style="color:rgb(15, 17, 21);">导致死信的原因</font>
+**<font style="color:rgb(15, 17, 21);">导致死信的原因有三个：</font>**
 
-**第一个：消息被拒绝且不重新入队**
+**<font style="color:rgb(15, 17, 21);">第一个：消息被拒绝且不重新入队</font>**
 
 ```java
 // 返回NACK，并且第三个参数为false，不再重新入队。
-channel.basicNack(deliveryTag, false, false);
+channel.basicNack(deliveryTag, false, false); 
 ```
 
-**第二个：消息在队列中存活时间超限（TTL到期）**
+**<font style="color:rgb(15, 17, 21);">第二个：消息在队列中存活时间超限（TTL到期）</font>**
 
-**第三个：队列达到最大长度限制：****当队列已满，新消息进入时会挤掉最早的消息，被挤掉的消息就成为死信**
+**<font style="color:rgb(15, 17, 21);">第三个：队列达到最大长度限制：</font>**<font style="color:rgb(15, 17, 21);">当队列已满，新消息进入时会挤掉最早的消息，被挤掉的消息就成为死信</font>
 
-## **死信的处理方式**
+## <font style="color:rgb(15, 17, 21);">死信的处理方式</font>
 死信处理方式通常包括以下三种：
 
 1. **丢弃**：不重要的消息直接丢弃，不做处理。
@@ -94,7 +94,7 @@ public void processMessageDead(String dataString, Message message, Channel chann
 
 **生产端发送消息后，查看控制台：**
 
-<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763976083987-9786fe0e-4468-4a0d-b34b-1c6cfa36512.png" width="353.6" title="" crop="0,0,1,1" id="u08d5b7ec" class="ne-image">
+<img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763976083987-9786fe0e-4468-4a0d-b34b-1316cfa36512.png" width="353.6" title="" crop="0,0,1,1" id="u08d5b7ec" class="ne-image">
 
 
 
@@ -134,3 +134,4 @@ public void test04(){
 此时启动死信队列的监听，就是我们在验证第一种情况时编写的监听死信队列的代码，结果如下：
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1763977143487-5ae3cf22-3535-4629-be3d-b4167c3f0d6b.png" width="404" title="" crop="0,0,1,1" id="u9f90c7a0" class="ne-image">
+

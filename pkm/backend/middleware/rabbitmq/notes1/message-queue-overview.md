@@ -12,12 +12,12 @@
 
 消息队列的通信协议很多，可以重点关注：**AMQP、JMS。**
 
-1.  **AMQP（Advanced Message Queuing Protocol 高级消息队列协议）** - 一个功能丰富的企业级消息协议，支持复杂的路由、队列和可靠的传输，是RabbitMQ等消息队列的核心。
-2.  **MQTT** - 一个极其轻量级的发布/订阅协议，专为低功耗、高延迟的物联网设备通信而设计。
-3.  **Kafka Protocol** - 一个为Kafka设计的二进制协议，核心目标是实现高吞吐量的流数据传输与持久化。
-4.  **STOMP** - 一个非常简单的、基于文本的协议，它使用类似HTTP的帧格式，使得客户端实现变得容易。
-5.  **JMS（Java Message Service：Java 消息规范，JakartaEE 规范之一）** - 一个Java平台的API标准（**非网络协议**），它定义了Java应用程序之间使用消息中间件的统一接口。
-6.  **OpenWire** - 一个高性能的二进制协议，旨在为ActiveMQ提供跨语言的客户端和强大的功能集。
+1. **AMQP（Advanced Message Queuing Protocol 高级消息队列协议）** - 一个功能丰富的企业级消息协议，支持复杂的路由、队列和可靠的传输，是RabbitMQ等消息队列的核心。
+2. **MQTT** - 一个极其轻量级的发布/订阅协议，专为低功耗、高延迟的物联网设备通信而设计。
+3. **Kafka Protocol** - 一个为Kafka设计的二进制协议，核心目标是实现高吞吐量的流数据传输与持久化。
+4. **STOMP** - 一个非常简单的、基于文本的协议，它使用类似HTTP的帧格式，使得客户端实现变得容易。
+5. **JMS（Java Message Service：Java 消息规范，JakartaEE 规范之一）** - 一个Java平台的API标准（**非网络协议**），它定义了Java应用程序之间使用消息中间件的统一接口。
+6. **OpenWire** - 一个高性能的二进制协议，旨在为ActiveMQ提供跨语言的客户端和强大的功能集。
 
 ## 主流的 MQ 产品对比
 

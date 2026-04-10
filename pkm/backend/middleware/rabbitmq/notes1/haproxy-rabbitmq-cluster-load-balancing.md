@@ -1,7 +1,7 @@
 # 集群下的负载均衡
 使用 HAProxy 为 RabbitMQ 集群做负载均衡是一个**非常标准和推荐**的做法。
 
-客户端连接 HAProxy 提供的统一入口。HAProxy 负载均衡的方式访问各节点。
+客户端连接 HAProxy 提供的统一入口。HAProxy 负载均衡的方式访问各节点。 
 
 ## 客户端的负载均衡方案
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1764061851134-699b045a-93f7-47cc-9608-f4db36dc7943.png" width="500.4000244140625" title="" crop="0,0,1,1" id="u7904150c" class="ne-image">
@@ -196,3 +196,4 @@ class ProducerClusterApplicationTests {
 **查看队列上是否有消息：**
 
 <img src="https://cdn.nlark.com/yuque/0/2025/png/21376908/1764066093295-b1bc6921-278b-4a64-ada9-9d9c08bfa8e0.png" width="420" title="" crop="0,0,1,1" id="u1886eb78" class="ne-image">
+

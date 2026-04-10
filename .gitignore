@@ -9,6 +9,7 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+/pkmizer/.api_key
 
 # 开发环境文件
 .vscode/

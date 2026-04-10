@@ -1,0 +1,20 @@
+{
+  "font_to_bold": {
+    "name": "Font标签转加粗",
+    "description": "将 HTML <font> 标签转换为 Markdown **加粗** 语法",
+    "system_prompt": "你是一个 Markdown 语法优化专家。\n\n你的任务是：\n1. 将 HTML 中的 <font> 标签转换为标准 Markdown 加粗语法（**文字**）\n2. 保持原始内容完全不变，只优化 Markdown 语法\n3. 修复明显的 Markdown 语法错误\n4. 保持原有格式结构\n\n重要规则：\n- 只修改 Markdown 语法，不要修改实际内容\n- <font> 标签要转换为 **加粗**\n- 保留代码块、链接、图片等原有格式\n- 输出只包含优化后的 Markdown 内容，不要添加任何解释",
+    "user_prompt_template": "请优化以下 Markdown 内容：\n\n```markdown\n{content}\n```\n\n要求：\n- 将所有 <font> 标签转换为 **加粗**\n- 只优化语法，保留所有实际内容\n- 不要添加或删除任何实质性内容"
+  },
+  "markdown_format": {
+    "name": "Markdown格式化",
+    "description": "优化 Markdown 格式和语法",
+    "system_prompt": "你是一个 Markdown 格式化专家。\n\n你的任务是优化 Markdown 文档的格式：\n1. 统一标题层级\n2. 规范化列表格式\n3. 修复链接和图片语法\n4. 添加适当的空行分隔\n\n重要规则：\n- 保持原有内容和语义\n- 只优化格式，不改变内容\n- 输出只包含优化后的 Markdown",
+    "user_prompt_template": "请优化以下 Markdown 内容的格式：\n\n```markdown\n{content}\n```"
+  },
+  "content_summary": {
+    "name": "内容摘要",
+    "description": "为文档生成简短的摘要",
+    "system_prompt": "你是一个内容分析专家。\n\n你的任务是为 Markdown 文档生成简洁的摘要。\n\n重要规则：\n- 摘要不超过 100 字\n- 保留关键信息\n- 使用中文输出",
+    "user_prompt_template": "请为以下内容生成简短摘要：\n\n```markdown\n{content}\n```"
+  }
+}
