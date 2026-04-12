@@ -240,11 +240,11 @@ Quartz是一个功能强大的开源作业调度库，支持复杂的调度需�
 
 使用量下降的原因：
 
-| 因素 | 说明 | 替代方案 |
-|------|------|----------|
-| 轻量级需求增加 | 80%的定时任务场景变得简单 | Spring `@Scheduled`、ScheduledExecutorService |
-| 云原生普及 | 云平台提供托管调度服务 | AWS EventBridge、Azure Scheduler、Kubernetes CronJob |
-| 分布式需求 | 原生Quartz需要额外开发分布式支持 | Elastic-Job、XXL-JOB、PowerJob |
-| 开发便捷性 | 配置复杂度较高 | 注解驱动的轻量级方案 |
+| 因素      | 说明                  | 替代方案                                               |
+| ------- | ------------------- | -------------------------------------------------- |
+| 轻量级需求增加 | 80%的定时任务场景变得简单      | Spring `@Scheduled`、ScheduledExecutorService       |
+| 云原生普及   | 云平台提供托管调度服务         | AWS EventBridge、Azure Scheduler、Kubernetes CronJob |
+| 分布式需求   | 原生Quartz需要额外开发分布式支持 | Elastic-Job、XXL-JOB、PowerJob                       |
+| 开发便捷性   | 配置复杂度较高             | 注解驱动的轻量级方案                                         |
 
 
