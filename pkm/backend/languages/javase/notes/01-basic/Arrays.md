@@ -446,8 +446,7 @@ System.out.println(l1.getClass()); // class java.util.Arrays$ArrayList(这个是
 ## 练习
 
 Arrays类课堂练习：`ArrayExercise.java`
-案例: 自定义Book类, 里面包含name和price, 按price排序(从大到小)。要求使用两种方式排序，对对象的某个属性排序, 有一个 Book[] books = 5本书对象.
-使用前面学习过的传递实现Comparator接口匿名内部类, 也称为定制排序。
+案例: 自定义Book类, 里面包含name和price, 按price从大到小排序。要求使用两种方式排序，对对象的某个属性排序。使用前面学习过的传递实现 Comparator 接口匿名内部类, 也称为定制排序。
 
 ```java
 Book[] books = new Book[4];

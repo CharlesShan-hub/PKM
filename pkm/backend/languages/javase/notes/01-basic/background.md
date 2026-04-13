@@ -8,8 +8,8 @@
 - Java 8、JDK 8、JDK 1.8 是同一个版本
 - [Java 版本特性总结（官网）](https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html)
 - Windows 多版本 JDK 切换：[多个JDK版本可以吗：JDK17、JDK19、JDK1.8轻松切换（无坑版）小白也可以看懂](https://blog.csdn.net/aaxzsuj/article/details/128122537)
-- macOS 多版本：建议直接在 IDEA *中选择运行环境*
-- 新版本更新详细内容：[java_new](../powerpoint/java_new.md)
+- macOS 多版本：建议直接在 IDEA 中选择运行环境
+- 新版本更新详细内容：[java-new](../06-java-advanced/java-new.md)
 - 八卦时间：[interests](../../details/interests.md)
 - 商用付费问题（OracleJDK要钱，OpenJDK不要钱）：[money](../../details/money.md)
 

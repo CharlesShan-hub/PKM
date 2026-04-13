@@ -1,14 +1,19 @@
 # SVN 简介
 ---
+
 ## 简介
+
 1. 是什么：SCM（软件配置管理，对源代码继续管理）
 2. 竞品：CVS（元老级产品）、VSS（入门级产品 windows产品）、ClearCase（已经被IBM收购）
 3. SVN：SubVersion，公司集中化管理，支持版本回退，跨平台。
 4. 服务器：VisualSVN Server
 5. 客户端：tortoisesvn
 6. 官网文档：<https://svnbook.red-bean.com/>
+
 ---
+
 ## 服务器配置
+
 端口注意不要用443，因为会和ssh装上，所以推荐8443
 ![install](../assets/install01.png)
 对于社区版本，不要勾选这个
@@ -56,8 +61,11 @@ charles = 123456
 * = r
 charles = rw
 ```
+
 ---
+
 ## 客户端设置
+
 1. 安装tortoisesvn有两个要安装的，`TortoiseSVN-1.9.2.26806-x64-svn-1.9.2.msi`软件本身和`LanguagePack_1.9.2.26806-x64-zh_CN.msi`汉化安装包
 2. 在任何目录上右键，就会有svn相关的选项了。（svn checkout和tortoisesvn）
 3. 客户端第一次连接要用checkout，检出仓库。输入服务器地址，比如

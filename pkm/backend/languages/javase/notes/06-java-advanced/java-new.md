@@ -46,12 +46,12 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
   - 在Java 9中，@SafeVarargs注解可以用于一个私有实例方法上。在Java 7和Java 8中，@SafeVarargs注解只能用于静态方法、final实例方法和构造函数。
   - 在Java 9中，可以将效果等同于final变量作为try-with-resources语句块中的资源来使用。在Java 7/8中，try-with-resources语句块中的资源必须是显式的final或事实上的final（即变量在初始化后未被修改），否则编译器会报错。这个限制限制了Java程序员使用try-with-resources语句块的能力，特别是在涉及lambda表达式、匿名类或其他读取外部变量的代码段时。
   - Java 9允许在匿名类实例化时使用钻石操作符(<>)来简化代码，但参数类型必须是具体的、可推导的类型。
-  - 从Java9开始，不能使用一个单一的“_”作为标识符了。
+  - 从Java9开始，不能使用一个单一的`_`作为标识符了。
   - 从Java9开始，接口中支持定义私有方法。
 - JEP 224: HTML5 Javadoc
   - 从Java9开始，javadoc开始支持HTML5的语法。
 - JEP 254: Compact Strings
-  - 一种新的字符串表示方式，称为紧凑型字符串，以提高Java应用程序的性能和内存利用率。通过String源码得知：char[] 变成了 byte[]。
+  - 一种新的字符串表示方式，称为紧凑型字符串，以提高Java应用程序的性能和内存利用率。通过String源码得知：`char[]` 变成了 `byte[]`。
 - JEP 269: Convenience Factory Methods for Collections
   - 更加方便的创建只读集合：List.of("abc", "def", "xyz");
 - JEP 269：对Stream API进行了增强
@@ -833,14 +833,14 @@ public interface Flyable {
 
 ### 标识符命名的变化
 
-在Java8及其之前，标识符可以独立使用“_”来命名。
+在Java8及其之前，标识符可以独立使用`_`来命名。
 
 ```java
 String _ = "hello";
 System.out.println(_);
 ```
 
-但是，在Java9中规定“_”不能独立命名标识符了，如果使用就会报错：
+但是，在Java9中规定`_`不能独立命名标识符了，如果使用就会报错：
 ![图片10.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1693816390382-1812ee1d-c55c-4a79-ac8e-219203126225.png#averageHue=%23f8f7f5&clientId=u5039a3e5-4a28-4&from=paste&height=132&id=uc65db047&originHeight=132&originWidth=911&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11105&status=done&style=none&taskId=u5bfb5efa-8086-4933-b572-0d8b7daeeff&title=&width=911)
 
 
@@ -862,7 +862,8 @@ public class HelloWorld {
 
 ### 创建不可变集合
 
-在Java9版本中，我们可以通过List、Set和Map接口提供的of(E... elements)静态方法来创建不可变集合。通过此方式创建的不可变集合，我们不但不能添加或删除元素，并且还不能修改元素。
+在Java9版本中，我们可以通过List、Set和Map接口提供的`of(E... elements)`静态方法来创建不可变集合。通过此方式创建的不可变集合，我们不但不能添加或删除元素，并且还不能修改元素。
+
 【示例】创建不可变集合
 
 ```java
@@ -878,12 +879,11 @@ Map<Integer, String> map = Map.of(123, "武汉", 456, "成都");
 System.out.println(map);
 ```
 
+`Arrays.asList`与`List.of`的区别：
+`List.of`：不能向集合中添加或删除元素，也不能修改集合中的元素。
+`Arrays.asList`：不能向集合中添加或删除元素，但是可以修改集合中的元素。
 
-Arrays.asList与List.of的区别：
-List.of：不能向集合中添加或删除元素，也不能修改集合中的元素。
-Arrays.asList：不能向集合中添加或删除元素，但是可以修改集合中的元素。
-
-【示例】Arrays.asList与List.of的区别
+【示例】`Arrays.asList`与`List.of`的区别
 
 ```java
 // 通过Arrays.asList()方法创建不可变集合
@@ -923,12 +923,12 @@ Optional<String> optional2 = Optional.ofNullable("hello");
 
 想要获得Optional实例中包含的值，那么就可以使用以下两个方法来实现。
 
-| **方法名** | **描述** |
-| --- | --- |
-| public T get() | 如果值不为null，则直接取出该值；如果值为null，则抛出空指针异常。 |
-| public T orElse(T other) | 如果值不为null，则直接取出该值；如果值为null，则取出的就是参数other的值。 |
+| **方法名**                    | **描述**                                      |
+| -------------------------- | ------------------------------------------- |
+| `public T get()`           | 如果值不为null，则直接取出该值；如果值为null，则抛出空指针异常。        |
+| `public T orElse(T other)` | 如果值不为null，则直接取出该值；如果值为null，则取出的就是参数other的值。 |
 
-开发中，我们获取Optional中存储的值，一般都是采用orElse(T other)方法来实现。
+开发中，我们获取Optional中存储的值，一般都是采用`orElse(T other)`方法来实现。
 【示例】演示get()方法
 
 ```java
@@ -941,7 +941,7 @@ String str = optional2.get();
 System.out.println(str); // 输出：hello
 ```
 
-【示例】演示orElse(T other)方法
+【示例】演示`orElse(T other)`方法
 
 ```java
 // 创建一个包含“null”的Optional示例

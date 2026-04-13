@@ -5,9 +5,9 @@
 ## Hello World程序
 
 1. 基本步骤
-    1. `**编码** - 创建`Hello.java`文件。
+    1. **编码** - 创建`Hello.java`文件。
     2. **编译** - 使用`javac`命令：`javac ./Hello.java`，生成`Hello.class`字节码文件。
-    3. **运行** - 使用``java`命令：`java Hello`。注意：运行时不带`.class`扩展名。
+    3. **运行** - 使用`java`命令：`java Hello`。注意：运行时不带`.class`扩展名。
 2. 编码注意事项
     - 如果代码中包含中文`.java`文件需要保存为**GBK编码**
     - 具体编码介绍：[编码](../05-io/coding.md)

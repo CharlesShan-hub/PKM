@@ -12,14 +12,14 @@
     * [Keyboard Input](notes/01-basic/keyboard-input.md)：键盘输入
     * [Branch Control](notes/01-basic/branch-control.md)：分支结构
     * [recursion](notes/01-basic/recursion.md)：递归
-    *  [array](notes/01-basic/array.md)：数组
+    * [array](notes/01-basic/array.md)：数组
     * [Arrays](notes/01-basic/Arrays.md)：⚠️Comparator
 * OOP Basic
     * [Introduction for Class and Object](notes/02-oop/class-and-object-introduce.md)：引入
     * [Attributes and Methods](notes/02-oop/attributes-and-methods.md)：属性和成员方法
     * [this](notes/02-oop/this.md)
     * [encapsulation](notes/02-oop/encapsulation.md)：封装，javabean
-    * [static](notes/stage2/static.md)：类变量(静态变量) 与 类方法(静态方法)
+    * [static](notes/02-oop/static.md)：类变量(静态变量) 与 类方法(静态方法)
     * [extends](notes/02-oop/extends.md)：继承，super
     * [Access Modifiers](notes/02-oop/access-modifiers.md)：public protected 缺省 private
     * [Object](notes/02-oop/Object.md)：所有类都继承了Object
@@ -59,3 +59,4 @@
     * [annotation](notes/06-java-advanced/annotation.md)：注解
     * [Swing](notes/06-java-advanced/Swing.md)：GUI
     * [jvm](notes/06-java-advanced/jvm.md)
+    * [java-new](notes/06-java-advanced/java-new.md)

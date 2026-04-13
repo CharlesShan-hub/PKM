@@ -223,7 +223,7 @@
 	* 370：房屋查找
 	* 371：查找
 	* 372：总结，[[../notes/stage1/第九章作业|第九章作业]]
-* 第 10 章：[static](../notes/stage2/static.md)，[code-block](../notes/03-oop-advanced/code-block.md)，[design partten](../../../design/design-pattern/README.md)，[final](../notes/03-oop-advanced/final.md)，[abstract](../notes/03-oop-advanced/abstract.md)，[interface](../notes/03-oop-advanced/interface.md)，[inner-class](../notes/03-oop-advanced/inner-class.md)
+* 第 10 章：[static](../notes/02-oop/static.md)，[code-block](../notes/03-oop-advanced/code-block.md)，[design partten](../../../design/design-pattern/README.md)，[final](../notes/03-oop-advanced/final.md)，[abstract](../notes/03-oop-advanced/abstract.md)，[interface](../notes/03-oop-advanced/interface.md)，[inner-class](../notes/03-oop-advanced/inner-class.md)
 	* 373~374：类变量的引出
 	* 375：类变量内存布局
 	* 376~377：类变量的使用与细节
