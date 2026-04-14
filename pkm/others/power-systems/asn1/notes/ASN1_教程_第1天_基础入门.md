@@ -14,25 +14,9 @@ ASN.1（Abstract Syntax Notation One）是一种**抽象语法记法一**，用�
 
 ## 2. 实战：完整的可编译ASN.1文件
 
-> 本文使用工具[asn1c](asn1c.md)将asn1文件解码成c语言代码
+> 本文使用工具[asn1c](asn1c.md)将asn1文件解码成c语言代码，在windows上使用msys32进行c语言的编译运行。
 
-### 2.1 保存为`test_minimal.asn1`
-
-```
--- 最简单的可编译ASN.1文件
-MinimalModule DEFINITIONS ::= BEGIN
-    SimpleType ::= INTEGER
-END
-```
-
-编译测试
-
-```
-asn1c test_minimal.asn1
-```
-
-
-### 2.2 保存为`basic_types.asn1`
+### 2.1 保存为`basic_types.asn1`
 
 ```
 -- ===========================================
@@ -65,7 +49,7 @@ DomainType ::= IA5String (PATTERN "[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")
 END
 ```
 
-### 2.3 保存为`person_info.asn1`
+### 2.2 保存为`person_info.asn1`
 
 ```
 -- ===========================================
@@ -120,7 +104,7 @@ Address ::= SEQUENCE {
 END
 ```
 
-### 2.4 保存为`network_protocol.asn1`
+### 2.3 保存为`network_protocol.asn1`
 
 ```
 -- ===========================================
