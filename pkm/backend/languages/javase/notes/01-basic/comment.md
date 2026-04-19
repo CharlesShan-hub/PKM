@@ -6,111 +6,29 @@
 
 ---
 
-## 注释的作用
+## 普通注释
 
-注释是程序员在代码中添加的说明性文字，不会被编译器执行，主要用于：
+1. Java注释是代码中的非执行性文本，用于向开发者说明代码逻辑、功能或临时屏蔽代码段。它分为单行注释（`//`）、多行注释（`/* ... */`）和文档注释（`/** ... */`）。前两者通常用于代码内部的简短说明、调试或临时注释代码块，而文档注释则专用于API文档的生成。
+2. 多行注释的两种写法
+    ```java
+    /*
+     这是一个
+     多行注释
+    */
+    
+    /*
+     * 这是多行注释
+     * 这样写更好看
+     */
+    ```
 
-1. **代码说明**：解释代码的功能和逻辑
-2. **文档生成**：通过Javadoc生成API文档
-3. **调试辅助**：临时禁用代码段
-4. **团队协作**：帮助其他开发者理解代码
-
-## 注释的类型
-
-### 1. 单行注释
-
-* **语法**：`// 注释内容`
-* **特点**：从`//`开始到行尾的内容都是注释
-* **用途**：简短说明、行尾注释
-
-```java
-// 这是单行注释
-int age = 25;  // 定义年龄变量
-// System.out.println("这行代码被注释了");
-```
-
-### 2. 多行注释
-
-* **语法**：`/* 注释内容 */`
-* **特点**：可以跨越多行
-* **用途**：较长的说明、临时屏蔽代码块
-
-```java
-/*
- * 这是多行注释
- * 可以包含多行内容
- * 常用于方法或类的说明
- */
-
-/*
- 也可以不使用星号前缀
- 直接写多行内容
-*/
-
-/* 临时注释掉的代码段
-System.out.println("第一行");
-System.out.println("第二行");
-System.out.println("第三行");
-*/
-```
-
-### 3. 文档注释（Javadoc）
+### 文档注释（Javadoc）
 
 * **语法**：`/** 文档注释 */`
 * **特点**：特殊的注释格式，用于生成HTML格式的API文档
 * **用途**：类、接口、方法、字段的正式文档
 
-```java
-/**
- * 这是一个学生类
- * 用于表示学生的基本信息
- * 
- * @author 张三
- * @version 1.0
- * @since 2024
- */
-public class Student {
-    /**
-     * 学生姓名
-     */
-    private String name;
-    
-    /**
-     * 学生年龄
-     */
-    private int age;
-    
-    /**
-     * 构造方法
-     * @param name 学生姓名
-     * @param age 学生年龄
-     */
-    public Student(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-    
-    /**
-     * 获取学生姓名
-     * @return 学生姓名
-     */
-    public String getName() {
-        return name;
-    }
-    
-    /**
-     * 设置学生姓名
-     * @param name 新的姓名
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-}
-```
-
-## Javadoc标签
-
-### 常用标签
+常用标签
 
 | 标签 | 说明 | 示例 |
 |------|------|------|
@@ -122,8 +40,7 @@ public class Student {
 | `@throws` | 抛出的异常 | `@throws IOException 输入输出异常` |
 | `@see` | 参考链接 | `@see java.lang.String` |
 | `@deprecated` | 已过时 | `@deprecated 使用新方法代替` |
-
-### 标签使用示例
+标签使用示例
 
 ```java
 /**
@@ -155,21 +72,30 @@ public void oldMethod() {
 }
 ```
 
-## 生成API文档
+## Javadoc工具
 
-### 使用Javadoc工具
+基本语法
 
 ```bash
-# 基本语法
 javadoc [选项] [包名] [源文件]
+```
 
-# 常用选项
+常用选项
+
+```bash
 -d <directory>      # 指定输出目录
 -author             # 包含@author信息
 -version            # 包含@version信息
 -encoding <编码>    # 指定源文件编码
 -windowtitle <文本> # 浏览器窗口标题
 -doctitle <HTML>    # 文档标题
+```
+
+案例演示
+
+```bash
+# 创建文档目录
+mkdir doc
 
 # 示例：为单个文件生成文档
 javadoc -d ./doc -author -version Student.java
@@ -179,15 +105,8 @@ javadoc -d ./doc -author -version com.example.util
 
 # 示例：指定编码（处理中文）
 javadoc -d ./doc -author -version -encoding UTF-8 Student.java
-```
 
-### 生成文档示例
-
-```bash
-# 创建文档目录
-mkdir doc
-
-# 生成文档
+# 示例：生成文档
 javadoc -d ./doc \
         -author \
         -version \
@@ -200,69 +119,6 @@ open ./doc/index.html  # Mac
 # 或
 start ./doc/index.html # Windows
 ```
-
-## 注释的最佳实践
-
-### 1. 该注释什么
-
-* **公共API**：所有public类、接口、方法、字段
-* **复杂算法**：难以理解的逻辑
-* **业务规则**：特定的业务需求
-* **TODO/FIXME**：待完成或需要修复的代码
-* **重要假设**：代码基于的假设条件
-
-### 2. 注释风格建议
-
-```java
-// 好的注释示例
-public class Calculator {
-    /**
-     * 计算圆的面积
-     * 使用公式：π * r²
-     * 
-     * @param radius 圆的半径（必须大于0）
-     * @return 圆的面积
-     * @throws IllegalArgumentException 如果半径小于等于0
-     */
-    public double calculateCircleArea(double radius) {
-        if (radius <= 0) {
-            throw new IllegalArgumentException("半径必须大于0");
-        }
-        return Math.PI * radius * radius;
-    }
-    
-    // TODO: 添加计算矩形面积的方法
-    // FIXME: 这里需要处理浮点数精度问题
-    
-    /**
-     * 假设：用户ID从1000开始递增
-     * 如果系统迁移，可能需要修改这个逻辑
-     */
-    private static final int START_USER_ID = 1000;
-}
-
-// 不好的注释示例
-public class BadExample {
-    // 设置x为10（废话注释）
-    int x = 10;
-    
-    // 增加计数器（没有说明为什么）
-    counter++;
-    
-    /* 这个方法做了一些事情 */
-    public void doSomething() {
-        // 这里有很多代码
-    }
-}
-```
-
-### 3. 注释的"不要"
-
-* ❌ 不要写显而易见的注释
-* ❌ 不要写与代码不一致的注释
-* ❌ 不要保留无用的注释代码
-* ❌ 不要用注释代替清晰的代码
-* ❌ 不要写过于冗长的注释
 
 ## 特殊注释标记
 

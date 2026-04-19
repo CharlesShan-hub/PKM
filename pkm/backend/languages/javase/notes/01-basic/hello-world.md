@@ -94,12 +94,12 @@
 ## Java 的加载
 
 ![load](../../assets/load.png)
-（重点）Java的加载与执行（java Test 的执行过程）：
-第一步：执行java Test后，会启动JVM 
-第二步：JVM会启动classloader类加载器 
-第三步：类加载器会去加载Test类，自动去硬盘上找Test类对应的字节码文件Test.class 
-第四步：找到Test.class字节码文件之后将其加载到JVM当中。 
-第五步：JVM将Test.class字节码解释为机器码。 
+（重点）Java的加载与执行（`java Test` 的执行过程）：
+第一步：执行`java Test`后，会启动 JVM 
+第二步：JVM 会启动 classloader 类加载器 
+第三步：类加载器加载 Test 类，自动去硬盘上找`Test.class`字节码文件
+第四步：找到`Test.class`字节码文件之后将其加载到 JVM 当中。 
+第五步：JVM 将 `Test.class` 字节码解释为机器码。 
 第六步：操作系统执行机器码和底层硬件平台进行交互。
 
 ---

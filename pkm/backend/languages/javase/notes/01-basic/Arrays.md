@@ -23,7 +23,6 @@ Arrays 类是 Java 中 `java.util` 包提供的一个工具类，主要用于操
 * `int[] Arrays.copyOfRange(int[] original, int from, int to)`
 * `Arrays.asList(T... data)`：将一组数据转换成List集合。
 
-
 ### 主要功能
 
 1. **​排序​**​：对数组进行排序
