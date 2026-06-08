@@ -2,7 +2,7 @@
 
 ---
 
-## Timer和TimerTask（单线程本质）
+## `Timer`和`TimerTask`（单线程本质）
 
 ```java
 package top.charles;  
@@ -100,7 +100,7 @@ timer.schedule(new TimerTask() {
 
 ---
 
-## ScheduledExecutorService（并发方式）
+## `ScheduledExecutorService`（并发）
 
 ```java
 package top.charles;  
@@ -184,7 +184,7 @@ executor.schedule(() -> {
 
 ---
 
-## Spring框架的@Scheduled注解（Spring项目常用）
+## Spring框架的`@Scheduled`注解
 
 ```java
 package com.example.demo;  
