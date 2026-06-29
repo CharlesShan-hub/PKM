@@ -18,13 +18,13 @@
 ## Redis
 
 1. Redis（REmote DIctionary Server）是由Salvatore Sanfilippo（网名antirez）开发的开源内存数据库，最初发布于2009年。它的底层主要用**C语言**编写，以高性能和低延迟著称，广泛应用于缓存、消息队列等场景。
-2. 应用场景：
+2. 应用场景
     1. **缓存**(Cache)(最常用)
     2. **会话存储**（Session Storage）（比如nginx做负载均衡，把会话存到redis里边；再如做排行榜，添加进去的内容就是排好序的）
     3. **分布式锁**（Distributed Lock）(synchronized是单机所，redis可以作为分布式系统的锁，比如防止重复提交、秒杀库存扣减)
 
 3. redis存储是key-value。
-    1. key永远是字符串；
+    1. key永远是字符串
     2. value有多种类型，比如string(字符串)/hash(哈希表)/list(列表)/set(集合)/zset(有序集合)，不同的类型底层数据结构不同
 
 4. redis核心逻辑是**单线程**，避免了多线程的锁的开销。Redis从 6.0 版本开始引入了有限的多线程支持。
