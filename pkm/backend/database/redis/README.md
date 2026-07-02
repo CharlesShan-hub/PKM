@@ -18,6 +18,7 @@
     * 密码设置与端口放行
     * Redis ACL 访问控制（6.0+）
     * TLS/SSL 加密传输（7.0+）
+* 
 * [Jedis客户端](notes/jedis.md)
     * 连接池配置与使用
     * 管道（Pipeline）批量操作
