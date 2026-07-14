@@ -1,9 +1,10 @@
 # Linux Roadmap
 
 * 介绍
-	* [[notes/versions|versions]]
+	* [versions](notes/versions.md)
+	* 
 * 应用
-	* [[notes/ibus|ibus]]
-	* [[notes/clash|clash]]
-	* [[notes/vim|vim]]
-	* [[notes/nginx|nginx]]
+	* [ibus](notes/ibus.md)
+	* [clash](notes/clash.md)
+	* [vim](notes/vim.md)
+	* [nginx](notes/nginx.md)
