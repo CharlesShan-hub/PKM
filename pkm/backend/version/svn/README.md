@@ -5,3 +5,4 @@
 
 * [introduction](notes/introduction.md)
 * [usage](notes/usage.md)
+* [快速操作](notes/command.md)
