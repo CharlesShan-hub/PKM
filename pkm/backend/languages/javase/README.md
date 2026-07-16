@@ -2,7 +2,7 @@
 
 1. Basic
 
-   * [remember](notes/01-basic/remember.md)：备忘录
+   * [Remember](notes/01-basic/remember.md)：备忘录
 
    * [Background](notes/01-basic/background.md)：Java基础、各个版本变化
 
@@ -12,19 +12,19 @@
 
    * [Comment](notes/01-basic/comment.md)：注释
 
-   * [package](notes/01-basic/package.md)：包
+   * [Package](notes/01-basic/package.md)：包
 
    * [Variable and Datatype](notes/01-basic/variable-and-datatype.md)：变量与数据类型
 
-   * [operator](notes/01-basic/operator.md)：操作符
+   * [Operator](notes/01-basic/operator.md)：操作符
 
    * [Keyboard Input](notes/01-basic/keyboard-input.md)：键盘输入
 
    * [Branch Control](notes/01-basic/branch-control.md)：分支结构
 
-   * [recursion](notes/01-basic/recursion.md)：递归
+   * [Recursion](notes/01-basic/recursion.md)：递归
 
-   * [array](notes/01-basic/array.md)：数组
+   * [Array](notes/01-basic/array.md)：数组
 
    * [Arrays](notes/01-basic/Arrays.md)：Comparator
 
@@ -36,7 +36,7 @@
 
    * [this](notes/02-oop/this.md)
 
-   * [encapsulation](notes/02-oop/encapsulation.md)：封装，javabean
+   * [Encapsulation](notes/02-oop/encapsulation.md)：封装，javabean
 
    * [static](notes/02-oop/static.md)：类变量(静态变量) 与 类方法(静态方法)
 
@@ -48,7 +48,7 @@
 
    * [super](notes/02-oop/super.md)
 
-   * [polymorphism](notes/02-oop/polymorphism.md)：多态
+   * [Polymorphism](notes/02-oop/polymorphism.md)：多态
 
 3. OOP Advanced
 
@@ -66,13 +66,13 @@
 
    * [lambda](notes/03-oop-advanced/lambda.md)：表达式、方法引用
 
-   * [exception](notes/03-oop-advanced/exception.md)：异常
+   * [Exception](notes/03-oop-advanced/exception.md)：异常
 
-   * [generic](notes/03-oop-advanced/generic.md)：泛型
+   * [Generic](notes/03-oop-advanced/generic.md)：泛型
 
    * [Collection](notes/03-oop-advanced/Collection.md)：集合
 
-   * [stream](notes/03-oop-advanced/stream.md)：stream流
+   * [Stream](notes/03-oop-advanced/stream.md)：stream流
 
 4. Utils Classes
     * [String](notes/04-utils/String.md)：⚠️内存分布

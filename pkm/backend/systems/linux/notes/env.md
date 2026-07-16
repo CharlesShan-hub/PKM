@@ -170,5 +170,63 @@ sudo apt install ./TraeCN-linux-x64.deb
 * Obsidian：下载 AppImage
 
 ```shell
-sudo apt install appimagelauncher
+mkdir -p ~/Applications
+mv ~/Downloads/Obsidian-1.12.7-arm64.AppImage ~/Applications/
+chmod +x ~/Applications/Obsidian-1.12.7-arm64.AppImage
+~/Applications/Obsidian-1.12.7-arm64.AppImage --no-sandbox
+sudo vim /usr/share/applications/obsidian.desktop
+```
+
+然后obsidian.desktop插入以下内容
+
+```txt
+[Desktop Entry]
+Name=Obsidian
+Comment=Obsidian Notes
+Exec=/home/parallels/Applications/Obsidian-1.12.7-arm64.AppImage --no-sandbox
+Icon=obsidian
+Terminal=false
+Type=Application
+Categories=Office;
+```
+
+```bash
+# 刷新应用缓存
+sudo update-desktop-database
+```
+
+* idea (community)
+
+```bash
+# 1. 解压到 Applications
+tar -xzf ~/Downloads/idea-2026.1.4-aarch64.tar.gz -C ~/Applications/
+
+# 2. 查看实际解压目录名
+ls ~/Applications/ | grep idea
+
+# 3. 重命名为 idea（用上一步查到的实际名字，比如 idea-IC-2026.1.4）
+mv ~/Applications/idea-IC-261.26222.65 ~/Applications/idea
+
+# 4. 创建软链接
+ln -s ~/Applications/idea/bin/idea.sh ~/.local/bin/idea
+
+# 5. 测试启动
+idea
+
+vim ~/.local/share/applications/idea.desktop
+```
+
+```bash
+[Desktop Entry]
+Name=IntelliJ IDEA
+Comment=Java IDE
+Exec=/home/parallels/Applications/idea/bin/idea.sh
+Icon=/home/parallels/Applications/idea/bin/idea.png
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+```
+
+```bash
+update-desktop-database ~/.local/share/applications/
 ```

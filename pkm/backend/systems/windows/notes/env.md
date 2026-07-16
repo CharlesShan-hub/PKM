@@ -62,7 +62,7 @@ scoop install pixi      # main bucket 中的 pixi
 #uv self uninstall      # 卸载 uv（原手动安装在 ~\.local\bin\）
 ```
 
-😋前端工具钳：（√）nvm + node + yarn
+😋前端工具链：（√）nvm + node + yarn
 ```powershell
 scoop install nvm
 nvm install 22.11.0 # LTS
