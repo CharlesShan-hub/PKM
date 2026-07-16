@@ -138,10 +138,37 @@ end
 sudo apt install -y gcc g++ cmake make
 ```
 
-* java语言：以后安装Java，现在先不支持
+* java语言
+
+```shell
+# 下载 Corretto 的 GPG 公钥
+wget -O - https://apt.corretto.aws/corretto.key | sudo gpg --dearmor -o /usr/share/keyrings/corretto-keyring.gpg
+# 添加 Corretto 软件源
+echo "deb [signed-by=/usr/share/keyrings/corretto-keyring.gpg] https://apt.corretto.aws stable main" | sudo tee /etc/apt/sources.list.d/corretto.list
+# 安装 Java 21（日常开发主力）
+sudo apt install -y java-21-amazon-corretto-jdk
+# 安装 Java 8（照顾老项目，可选）
+sudo apt install -y java-1.8.0-amazon-corretto-jdk
+# 查看所有已安装的 Corretto
+ls /usr/lib/jvm/ | grep corretto
+# 列出系统中的java版本
+sudo update-alternatives --config java # 然后按照内容选择 1 2 3这样
+```
 
 * Rust
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+* 编辑器 trae
+
+```shell
+sudo apt install ./TraeCN-linux-x64.deb
+```
+
+* Obsidian：下载 AppImage
+
+```shell
+sudo apt install appimagelauncher
 ```
