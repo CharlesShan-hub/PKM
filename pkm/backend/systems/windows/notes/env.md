@@ -24,6 +24,41 @@ irm get.scoop.sh | iex
 
 😋终端：（√ ）**powershell**，（x 淘汰）cmd，（x 需要linux子系统）fish
 
+```powershell
+scoop install windows-terminal pwsh # 最新版的 poweshell 而不是自带的
+scoop install oh-my-posh
+scoop bucket add nerd-fonts 
+scoop install JetBrainsMono-NF
+scoop install terminal-icons
+# 打开你的配置文件
+notepad $PROFILE
+```
+
+```txt
+# ============ 编码设置 ============
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::InputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+chcp 65001 | Out-Null
+
+# ============ Oh My Posh 主题 ============
+# 【重要】把下面的路径换成你电脑上真实的路径
+oh-my-posh init pwsh --config "C:\Users\你的用户名\AppData\Local\Programs\oh-my-posh\themes\jandedobbeleer.omp.json" | Invoke-Expression
+
+# ============ 文件图标 ============
+Import-Module Terminal-Icons
+
+# ============ PSReadLine 智能补全 ============
+Import-Module PSReadLine
+Set-PSReadLineOption -Colors @{ 
+    Command = '#FF79C6'
+    Parameter = '#50FA7B'
+    String = '#F1FA8C'
+}
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+```
+
 😋版本管理：（√ 个人使用）**git**，（√ 团队使用）**svn**
 ```powershell
 scoop install git
