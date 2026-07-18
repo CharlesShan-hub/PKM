@@ -22,7 +22,7 @@
     * 3：（可跳过）开发场景：SSM（Spring 、 SpringMVC 、 Mybatis）
     * 4：（可跳过）应用领域：后端、客户端、嵌入式
     * 5：（可跳过）之前的PPT，总结成了笔记
-* 第 2 章：[background](../notes/01-basic/background.md)，[hello-world](../notes/01-basic/hello-world.md)，[remember](../notes/01-basic/remember.md)，[dos](../../../systems/windows/notes/dos.md)
+* 第 2 章：[background](../notes/01-basic/background.md)，[hello-world](../notes/01-basic/hello-world.md)，[remember](../details/remember.md)，[dos](../../../systems/windows/notes/dos.md)
     * 6：（可跳过）什么是程序，Hello World
     * 7：（可跳过）Java 历史：sun、gosling、1995、oak、Oracle；SE、EE、ME
     * 8：（可跳过）Java 特性：OOP、GC 强类型、跨平台、解释型语言

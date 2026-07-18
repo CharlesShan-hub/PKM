@@ -1,17 +1,15 @@
 # Java新特性
-
 ---
 
 ## 主要内容
-
 1. 新特性的概述
 2. 新语法的结构
 3. API层面的变化
 
 ---
 
-## 学习目标
 
+## 学习目标
 | **知识点** | **要求** |
 | --- | --- |
 | 新特性的概述 | 了解 |
@@ -20,8 +18,32 @@
 
 ---
 
-## 新特性的概述
 
+## Java语言发展史
+Java语言的发展历程中的重要事件：
+
+1. 1995年：Java语言诞生，由Sun Microsystems的James Gosling等人开发。
+2. 1996年：发布Java 1.0版本。
+3. 1998年：发布Java 2（也称为Java SE）版本，引入了重要的新特性，如Swing图形界面工具包、JavaBeans组件技术等。
+4. 2004年：发布Java SE 5.0版本，引入了自动装箱/拆箱、泛型、枚举、注解等重要特性。
+5. 2006年：Sun Microsystems发布Java SE 6版本，引入了更多的新特性，如JDBC 4.0、JAX-WS 2.0等。
+6. 2010年：Oracle公司收购了Sun Microsystems，成为Java语言的主要维护者。
+7. 2011年：发布Java SE 7版本，引入了重要的新特性，如Switch语句的字符串支持、NIO 2.0等。
+8. 2014年：发布Java SE 8版本，引入了Lambda表达式、Stream API、新的日期/时间API等重要特性。
+9. 2017年：发布Java SE 9版本，引入了模块化系统、REPL工具等新特性。
+10. 2018年3月：发布Java SE 10版本，引入了局部变量类型推断、G1垃圾收集器等新特性。
+11. 2018年9月：发布Java SE 11版本，成为长期支持版本，移除了一些过时的API，引入了新的HTTP Client API等新特性。
+12. 2019年3月：发布Java SE 12版本，增加了Switch表达式、新的垃圾回收器Shenandoah等特性。
+13. 2019年9月：发布Java SE 13版本，增加了文本块、改进的Switch表达式、动态CDS等特性。
+14. 2020年3月：发布Java SE 14版本，增加了Switch表达式的模式匹配、Records、改进的垃圾回收器等特性。
+15. 2020年9月：发布Java SE 15版本，增加了Sealed类、文本块、ZGC（Z Garbage Collector）等功能。
+16. 2021年3月：发布Java SE 16版本，增加了Records、Pattern Matching for instanceof、Vector API等功能。
+17. 2021年9月：发布Java SE 17版本，增加了Sealed类、Pattern Matching for switch、Records、Foreign Linker API等功能。
+18. 2023 年 9 月：发布 JavaSE21 版本，这也是一个 LTS 版（Long-Term Support，长期支持版）
+19. 2025年9月：发布JavaSE25版本，它也是一个LTS版本。
+
+
+## 新特性的概述
 纵观Java这几年的版本变化，在Java被收入Oracle之后，Java以小步快跑的迭代方式，在功能更新上迈出了更加轻快的步伐。基于时间发布的版本，可以让Java研发团队及时获得开发人员的反馈，因此可以看到最近的Java版本，有很多语法层面简化的特性。同时，Java在支持容器化场景，提供低延迟的GC方面(ZGC等)也取得了巨大的进步。
 
 注意一个新特性的出现通常会经过以下阶段：
@@ -35,7 +57,6 @@
 在以下的内容中，我们对Java9到Java21新特性做一个简单的概述。
 
 ### Java9新特性
-
 Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，提供了超过150项新功能特性。
 
 - JEP 261: Module System
@@ -58,8 +79,8 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
   - 其中最显著的是引入了四个新的方法，分别是 `takeWhile()`, `dropWhile()`, `ofNullable()` 和 `iterate()`
 - JEP 110：一个新的HTTP客户端API，名为HttpClient，它是一种基于异步和事件驱动的方式，更加高效和灵活的HTTP客户端。
 
-### Java10新特性
 
+### Java10新特性
 2018年3月21日，Oracle官方宣布JAVA10正式发布。JAVA10一共定义了109个新特性，其中包含JEP，对开发人员来说，真正的新特性也就一个，还有一些新的API和JVM规范以及Java语言规范上的改动。
 
 - JEP 286：局部变量类型推断
@@ -75,8 +96,8 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 319：根证书
 - JEP 322：基于时间的发布版本控制
 
-### Java11新特性
 
+### Java11新特性
 2018年9月26日，Oracle官方发布JAVA11。这是Java大版本周期变化后的第一个长期支持版本，官方支持到2026年。
 
 - JEP 181：基于 Nest 的访问控制
@@ -97,8 +118,8 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 335：弃用 Nashorn JavaScript 引擎
 - JEP 336：弃用 Pack200 工具和 API
 
-### Java12新特性
 
+### Java12新特性
 2019年3月19日，java12正式发布。
 
 - JEP 189：Shenandoah：一个低暂停时间的垃圾收集器（实验性）
@@ -110,16 +131,16 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 344：G1 支持可中断的 Mixed GC
 - JEP 346：及时从 G1 返回未使用的已提交内存
 
-### Java13新特性
 
+### Java13新特性
 - JEP 350：动态 CDS 档案
 - JEP 351：ZGC：取消提交未使用的内存
 - JEP 353：重新实现旧的 Socket API
 - JEP 354：开关表达式（预览）
 - JEP 355：文本块（预览）
 
-### Java14新特性
 
+### Java14新特性
 - JEP 305：instanceof 的模式匹配（预览）
 - JEP 343：包装工具（孵化器）
 - JEP 345：G1 的 NUMA 感知内存分配
@@ -137,8 +158,8 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 368：文本块（第二次预览）
 - JEP 370：外部内存访问 API（孵化器）
 
-### Java15新特性
 
+### Java15新特性
 - JEP 339：爱德华兹曲线数字签名算法 (EdDSA)
 - JEP 360：密封类（预览）
 - JEP 371：隐藏类
@@ -154,8 +175,8 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 384：记录（第二次预览）
 - JEP 385：弃用 RMI 激活以进行删除
 
-### Java16新特性
 
+### Java16新特性
 - JEP 338：Vector API（孵化器）
 - JEP 347：启用 C++14 语言功能
 - JEP 357：从 Mercurial 迁移到 Git
@@ -174,8 +195,8 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 396：默认情况下强封装JDK内部
 - JEP 397：密封类（第二次预览）
 
-### Java17新特性
 
+### Java17新特性
 2021年9月14日，java17正式发布（LTS）。长期支持版，支持到2029年。Oracle 宣布，从JDK17开始，后面的JDK都全部免费提供。
 
 - JEP 306：恢复始终严格的浮点语义
@@ -193,8 +214,8 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 414：Vector API（第二孵化器）
 - JEP 415：上下文特定的反序列化过滤器
 
-### Java18新特性
 
+### Java18新特性
 2022年3月22日发布。非长期支持版本。
 
 - JEP 400：从JDK18开始，UTF-8是Java SE API的默认字符集。
@@ -207,8 +228,8 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 420：switch 的模式匹配（第二次预览）
 - JEP 421：Object中的finalize()方法被移除
 
-### Java19新特性
 
+### Java19新特性
 2022年9月20日发布。非长期支持的版本。直到 2023 年 3 月它将被 JDK 20 取代。
 
 - JEP 425：虚拟线程（预览版）
@@ -224,8 +245,8 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 426：向量API（第四版孵化器）
   - 一组专用于向量化处理的API，允许在Java程序中轻松高效地执行向量化计算
 
-### Java20新特性
 
+### Java20新特性
 2023年3月21日发布。非长期支持版本。直到 2023 年 9月它将被 JDK 21 取代。
 
 - JEP 432： Record模式(第二次预览版)
@@ -236,8 +257,8 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 436： 虚拟线程(第二次预览版)
 - JEP 437： 结构化并发（第二版孵化器）
 
-### Java21新特性
 
+### Java21新特性
 2023年9月19日发布。长期支持版本。
 
 - JEP 440：Record模式（正式确定）
@@ -255,10 +276,10 @@ Java9经过4次推迟，历经曲折的Java9最终在2017年9月21日发布，�
 - JEP 439：Generational ZGC
 - JEP 451：Prepare to Disallow the Dynamic Loading of Agents
 
+
 ## 新语法方面的变化
 
 ### jShell命令
-
 jShell命令是Java9引进的新特性，像Python和Scala之类的语言早就有交互式编程环境REPL (read-evaluate-print-loop)，以交互式的方式对语句和表达式进行求值。开发者只需要输入一些代码，就可以在编译前获得对程序的反馈。而之前的Java 版本要想执行代码，必须创建文件、声明类、提供测试方法方可实现。
 我们打开DOS命令窗口，然后输入jshell，就能进入交互式编程环境REPL，如下图所示：
 ![图片1.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1693815555675-419b4573-2adc-49d9-802e-f1cdd8a11232.png#averageHue=%230a0a0a&clientId=u5039a3e5-4a28-4&from=paste&height=95&id=u5191846f&originHeight=95&originWidth=435&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3194&status=done&style=none&taskId=u2482601c-6fe2-48e5-bb1d-394d37b5297&title=&width=435)
@@ -277,8 +298,8 @@ jShell命令是Java9引进的新特性，像Python和Scala之类的语言早就�
 想要将输入的历史代码片段保存到文件中，就需要使用“ /save”指令，如下图所示：
 ![图片8.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1693815779555-09e830d6-40c4-42ca-a762-78a53132c67b.png#averageHue=%23100808&clientId=u5039a3e5-4a28-4&from=paste&height=47&id=u974bf0dd&originHeight=47&originWidth=454&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2596&status=done&style=none&taskId=u080aed12-84fc-44fa-ae72-6d3a0501f84&title=&width=454)
 
-### try-with-resources
 
+### try-with-resources
 众所周知，所有被打开的系统资源，比如流、文件、Socket连接等，都需要被开发者手动关闭，否则随着程序的不断运行，资源泄露将会累积成重大的生产事故。
 在Java7以前，我们想要关闭资源就必须的finally代码块中完成。
 【示例】Java7之前资源的关闭的方式
@@ -378,8 +399,8 @@ public void copyFile(File srcFile, File destFile) throws FileNotFoundException {
 
 在以上代码中，表达式中引用了fis和fos，那么在fis和fos就自动变为常量啦，也就意味着在try代码块中不能修改fis和fos的指向，从而保证打开的资源肯定能够关闭。
 
-### 局部变量类型判断
 
+### 局部变量类型判断
 在Java10中，新增了局部变量类型判断。在方法体或代码块中，对于可以在编译期确定的类型，可以使用var来定义。这个特性并不意味着Java是弱类型的语言，仅是提供了更简洁的书写方式。对于编译期无法确定的类型，依然要写清楚类型。
 【示例】局部变量类型判断案例
 
@@ -405,8 +426,8 @@ var calendar = Calendar.getInstance();
 // 7.所有参数声明，返回值类型，构造方法参数都不可以
 ```
 
-### instanceof的模式匹配
 
+### instanceof的模式匹配
 在JDK14中新增instanceof模式匹配增强(预览)，在JDK16中转正。通过instanceof模式匹配增强，我们就可以直接在模式匹配的括号内声明对应类型的局部变量。
 【示例】执行向下转型的操作，从而调用show()方法
 
@@ -482,8 +503,8 @@ public class Tiger {
 }
 ```
 
-### switch表达式
 
+### switch表达式
 目前switch表达式的问题：
 
 1. 匹配自上而下，若无break，后面的case语句都会执行
@@ -576,8 +597,8 @@ public static void yieldSwitch1(int month) {
 }
 ```
 
-### 文本块
 
+### 文本块
 在Java语言中，通常需要使用String类型表达HTML，XML，SQL或JSON等格式的字符串，在进行字符串赋值时需要进行转义和连接操作，然后才能编译该代码，这种表达方式难以阅读并且难以维护。
 在Java12版本中，新增了文本块（预览）。文本块就是指多行字符串，例如一段格式化后的xml、json等。而有了文本块以后，用户不需要转义，Java能自动搞定。因此，文本块将提高Java程序的可读性和可写性。
 【示例】演示文本块的使用
@@ -623,8 +644,8 @@ String json2 = """
 System.out.println(json2);
 ```
 
-### Record
 
+### Record
 早在2019年2月份，Java语言架构师Brian Goetz就吐槽了Java语言，他和很多程序员一样抱怨“Java太啰嗦”或有太多的“繁文缛节”，他提到：开发人员想要创建纯数据载体类，通常都必须编写大量低价值、重复的、容易出错的代码。例如：构造方法、getter/setter、equals()、hashCode()以及toString()等。
 以至于很多人选择使用IDE的功能来自动生成这些代码。还有一些开发会选择使用一些第三方类库，如Lombok等来生成这些方法，从而会导致了令人吃惊的表现和糟糕的可调试性。
 那么，Brian Goetz大神提到的纯数据载体到底指的是什么呢？我们举了一个简单的例子：
@@ -710,8 +731,8 @@ public record Tiger(String name, int age)  {
 }
 ```
 
-### 密封类
 
+### 密封类
 Java中的密封类是一种新的类修饰符，它可以修饰类和接口，可以控制哪些类可以扩展或实现该类或接口。下面是密封类的一些主要用途：
 
 1. 维护类层次结构的封闭性
@@ -769,15 +790,15 @@ record SuperMan(String name, int age) implements Flyable { }
 
 ---
 
+
 ## API层面的变化
 
 ### String存储结构改变
-
 在Java8及其之前，String底层采用char类型数组来存储字符；在Java9及其以后，String底层采用byte类型的数组来存储字符。将char[]转化为byte[]，其目的就是为了节约存储空间。
 ![图片9.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1693816288883-1977353d-6a2b-4f8a-8136-ef732f257496.png#averageHue=%23fcfaf8&clientId=u5039a3e5-4a28-4&from=paste&height=431&id=ua4df4a81&originHeight=431&originWidth=746&originalType=binary&ratio=1&rotation=0&showTitle=false&size=33019&status=done&style=none&taskId=u4388d723-406b-43f5-b8a9-0f7797be2ee&title=&width=746)
 
-### String 新增的方法
 
+### String 新增的方法
 在Java11版本中，对String类新增了一些方法，新增的方法如下：
 
 ```java
@@ -810,8 +831,8 @@ String result2 = "Java Golang".indent(4);
 System.out.println(result2);
 ```
 
-### 接口支持私有方法
 
+### 接口支持私有方法
 在Java8版本中，接口中支持“公开”的静态方法和公开的默认方法；在Java9版本中，接口中还允许定义“私有”的静态方法和成员方法，但是不能定义私有的默认方法。
 【示例】演示接口中的私有静态方法和成员方法
 
@@ -831,8 +852,8 @@ public interface Flyable {
 }
 ```
 
-### 标识符命名的变化
 
+### 标识符命名的变化
 在Java8及其之前，标识符可以独立使用`_`来命名。
 
 ```java
@@ -845,7 +866,6 @@ System.out.println(_);
 
 
 ### 简化编译运行程序
-
 在我们的认知里面，要运行一个Java源代码必须先编译（javac命令），再运行（Java命令），两步执行动作。而在Java 11版本中，通过一个Java命令就直接搞定了。
 需要执行的程序：
 
@@ -860,8 +880,8 @@ public class HelloWorld {
 执行Java命令进行运行，如下图所示：
 ![图片11.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1693816436316-0a490d10-91c4-48c7-8958-1e5250d7c0a9.png#averageHue=%230c0c0c&clientId=u5039a3e5-4a28-4&from=paste&height=48&id=u27423f8c&originHeight=48&originWidth=422&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1206&status=done&style=none&taskId=ufe0f2e4a-3da9-4019-b43f-ed80ffd70aa&title=&width=422)
 
-### 创建不可变集合
 
+### 创建不可变集合
 在Java9版本中，我们可以通过List、Set和Map接口提供的`of(E... elements)`静态方法来创建不可变集合。通过此方式创建的不可变集合，我们不但不能添加或删除元素，并且还不能修改元素。
 
 【示例】创建不可变集合
@@ -900,13 +920,12 @@ List<Integer> list2 = List.of(1, 2, 3, 4, 5);
 // list2.set(2, 33); // 抛出UnsupportedOperationException异常
 ```
 
-### Optional API
 
+### Optional API
 在Java8以前，Java程序员操作对象时，为了避免错误引用null造成的空指针异常，往往需要一系列繁杂冗余的判空操作，增加了许多重复代码，降低了代码可读性，于是Java 8引入Optional类，优雅简洁的对null值进行处理，从而避免出现空指针异常（NullPointerException）。
 本质上，Optional 类是一个包含有可选值的包装类，这意味着 Optional 类中既可以含有对象也可以为null。
 
 #### 创建Optional对象
-
 使用Optional类提供的of()和ofNullable() 静态方法来创建包含值的Optioanal实例。
 如果将null当作参数传进去of()会抛出空指针异常，如果将null当作参数传进去 ofNullable() 就不会抛出空指针异常。
 因此当对象可能存在或者不存在，应该使用 ofNullable()方法来创建Optional实例。
@@ -919,8 +938,8 @@ Optional<Object> optional1 = Optional.ofNullable(null);
 Optional<String> optional2 = Optional.ofNullable("hello");
 ```
 
-#### Optional类的方法
 
+#### Optional类的方法
 想要获得Optional实例中包含的值，那么就可以使用以下两个方法来实现。
 
 | **方法名**                    | **描述**                                      |
@@ -954,8 +973,8 @@ String str2 = optional2.orElse("world");
 System.out.println(str2); // 输出：hello
 ```
 
-#### Optional的使用案例
 
+#### Optional的使用案例
 需求：有一场商业表演，原计划让“刘亦菲”来表演，如果“刘亦菲”不能参加，则就换“佟丽娅”来表演，该需求的实现代码如下：
 
 ```java
@@ -970,4 +989,3 @@ String finalName = optional.orElse("佟丽娅");
 // 输出实际表演者的名字
 System.out.println(finalName);
 ```
-

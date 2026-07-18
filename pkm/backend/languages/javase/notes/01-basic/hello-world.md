@@ -1,9 +1,7 @@
 # 第一个Java程序
-
 ---
 
 ## Hello World程序
-
 1. 基本步骤
     1. **编码** - 创建`Hello.java`文件。
     2. **编译** - 使用`javac`命令：`javac ./Hello.java`，生成`Hello.class`字节码文件。
@@ -23,8 +21,8 @@
 
 ---
 
-## Java源文件结构
 
+## Java源文件结构
 1. 类声明规则
     1. 一个源文件中最多**只能有一个**`public`类
     2. 源文件名必须与`public`类名完全一致
@@ -39,13 +37,12 @@
         }
     }
     
-    class Another {
     // 可以包含多个非public类
+    class Another {
     }
     ```
 
-2. main方法的位置
-
+2. `main方法的位置
     1. `public static void main(String[] args)`可以不在`public`类中
     2. 运行时需要指定包含main方法的类名
 
@@ -66,14 +63,14 @@
 
 ---
 
+
 ## 代码规范
 
 ### 阿里巴巴Java开发手册
-
 - **链接**：[https://pdai.tech/md/dev-spec/code-style/code-style-alibaba.html](https://pdai.tech/md/dev-spec/code-style/code-style-alibaba.html)
 
-### 基本规范建议
 
+### 基本规范建议
 1. **命名规范**
    - 类名使用大驼峰：`HelloWorld`
    - 方法名使用小驼峰：`getUserName()`
@@ -91,8 +88,8 @@
 
 ---
 
-## Java 的加载
 
+## Java 的加载
 ![load](../../assets/load.png)
 （重点）Java的加载与执行（`java Test` 的执行过程）：
 第一步：执行`java Test`后，会启动 JVM 
@@ -104,16 +101,16 @@
 
 ---
 
-## Path 与 Classpath
 
+## Path 与 Classpath
 * Path是windows系统的环境变量，Classpath是java类加载器（classloader）的环境变量。classpath环境变量**隶属于Java语言**。
 * java Test命令执行之后，JVM启动类加载器classloader，classloader会通过classpath中的路径查找Test.class文件。当classpath没有配置的情况下，**默认从当前路径下查找**。 
 * 当classpath显示的配置出来之后，则只会从配置的路径中查找，不再从当前路径下查找。
 
 ---
 
-## 总结要点
 
+## 总结要点
 1. **编译运行**：`javac`编译 → `java`运行
 2. **文件命名**：必须与`public`类名一致
 3. **编码问题**：中文使用GBK编码
