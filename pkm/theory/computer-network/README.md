@@ -1,10 +1,9 @@
 # 计算机网络 
-
 2022.11.06
 
 [TOC]
-## 目录与主要内容
 
+## 目录与主要内容
 ![计算机网络导图概览](resources/计算机网络.png)
 
 图例说明
@@ -100,8 +99,9 @@
 
 
 ## 介绍
-
 计算机网络按照408考研辅导进行梳理。
+
+
 ## 资源
 链接: https://pan.baidu.com/s/1M34LB98BsKdHGby2eMC_Qw?1cv1  
 提取码: 1cv1  如果资源失效请联系我  
@@ -165,8 +165,8 @@
 
   1. Computer Networking A Top-Down Approach, 7th Edition by James Kurose, Keith Ross.pdf
   2. 中文计算机网络.pdf（翻译）
-  2. 中国教材答案
-  2. 英文教材答案
+  3. 中国教材答案
+  4. 英文教材答案
 
   
 
@@ -225,10 +225,8 @@
   | [SIGCOMM](http://dblp.uni-trier.de/db/conf/sigcomm/index.html) | ACM International Conference on the applications, technologies, architectures, and protocols for computer communication |  ACM   |
   |     [INFOCOM](http://dblp.uni-trier.de/db/conf/infocom/)     |   IEEE International Conference on Computer Communications   |  IEEE  |
 
-  
 
 ## 版本
-
 * **V1 2021.08.24**
 
   按照《2022年计算机网络考研复习指导》与相关课程进行整理，完成全部知识框架搭建  

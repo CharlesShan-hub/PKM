@@ -25,6 +25,30 @@
 * 依赖倒置原则（Dependency Inversion Principle, DIP）
     * 指⾼层模块不应该依赖低层模块，⼆者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象。这意味着设计时应该尽量依赖接⼝或抽象类，⽽不是实现类。
 
+## 代码规范
+
+## 代码规范
+
+### 阿里巴巴Java开发手册
+- **链接**：[https://pdai.tech/md/dev-spec/code-style/code-style-alibaba.html](https://pdai.tech/md/dev-spec/code-style/code-style-alibaba.html)
+
+### 基本规范建议
+1. **命名规范**
+   - 类名使用大驼峰：`HelloWorld`
+   - 方法名使用小驼峰：`getUserName()`
+   - 常量全大写：`MAX_VALUE`
+
+2. **代码格式**
+   - 使用4个空格缩进（不要用Tab）
+   - 大括号换行风格一致
+   - 适当的空行分隔逻辑块
+
+3. **注释规范**
+   - 公共API必须使用文档注释
+   - 复杂逻辑添加行内注释
+   - 及时更新过时的注释
+
+
 ## 资料
 * [01-JavaSE《第01章》](https://www.yuque.com/dujubin/java/na23g2vnz7cgzzdi?singleDoc#)
 * [《第02章 Java基础语法》](https://www.yuque.com/dujubin/java/rw03xkpkadgaw7u7?singleDoc#)

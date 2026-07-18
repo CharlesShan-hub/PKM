@@ -1,10 +1,11 @@
 # Javase
 * [Remember](details/remember.md)：反思总结
+* [plan](details/plan.md)：进度追踪
 * Basic
     * [Background](notes/01-basic/background.md)：Java基础、各个版本变化
-    * [Hello World and Basic Java Structure](notes/01-basic/hello-world.md)
+    * [Basic Java Structure](notes/01-basic/hello-world.md)：Hello World、注释
     * [Escape Character](notes/01-basic/escape-character.md)：转义字符
-    * [Comment](notes/01-basic/comment.md)：注释
+    * [JavaDoc](notes/01-basic/comment.md)：文档
     * [Package](notes/01-basic/package.md)：包
     * [Variable and Datatype](notes/01-basic/variable-and-datatype.md)：变量与数据类型
     * [Operator](notes/01-basic/operator.md)：操作符

@@ -1,17 +1,15 @@
 # PKM - 操作系统  
-
 2022.10.14
 
 ![image text](resources/操作系统.png)
 
 * 计算机系统概述
-  * [操作系统的基本概念](notes/计算机系统概述/操作系统的基本概念.md)
-    * *特征(并发共享虚拟异步)、接口(程序接口与命令接口)*
-  * [操作系统发展历程](notes/计算机系统概述/操作系统发展历程.md)
-  * [操作系统运行环境](notes/计算机系统概述/操作系统运行环境.md)
-  * [操作系统结构](notes/计算机系统概述/操作系统结构.md)
-  * [操作系统引导](notes/计算机系统概述/操作系统引导.md)
-  * [虚拟机](notes/计算机系统概述/虚拟机.md)
+    * [操作系统的基本概念](notes/计算机系统概述/操作系统的基本概念.md): 特征(并发共享虚拟异步)、接口(程序接口与命令接口)]
+    * [操作系统发展历程](notes/计算机系统概述/操作系统发展历程.md)
+    * [操作系统运行环境](notes/计算机系统概述/操作系统运行环境.md)
+    * [操作系统结构](notes/计算机系统概述/操作系统结构.md)
+    * [操作系统引导](notes/计算机系统概述/操作系统引导.md)
+    * [虚拟机](notes/计算机系统概述/虚拟机.md)
 * 进程与线程
   * [进程与线程](notes/进程与线程/进程与线程.md)
     * *PCB、五态图、进程的通信、多线程模型*
@@ -38,8 +36,9 @@
     * *磁盘调度算法、磁盘的时间计算*
 
 ## 介绍
-
 操作系统按照408考研辅导进行梳理。
+
+
 ## 资源
 链接: https://pan.baidu.com/s/1QxzWfLDufuI2BAkbIk_1_g  
 提取码: yq2f  
@@ -73,10 +72,12 @@
   2. 《计算机操作系统（第4版）》学习指导与题解.pdf
   ```
 
-* 
+*
+
 
 ## 外部资源
 * __studytonight__: https://www.studytonight.com/operating-system/
+
 ```
 In this tutorial, we will cover the Operating System along with its various concepts.
 The operating system acts as an intermediary between the user of a computer and the computer hardware. The main purpose of the Operating system is to provide an environment where the user can execute the programs in a convenient and efficient manner.
@@ -87,11 +88,14 @@ Memory Management
 Virtual Memory Management
 We will cover the concept of deadlocks in detail.
 ```
+
 * __北京大学 Principles of Operating System 操作系统原理 by 陈向群__: https://www.bilibili.com/video/av9555596  
 详细资料: https://www.yuque.com/ob26eq/nshoar/mhvtss
+
 ```
 北京大学的网课，有一些配套资料在第二个链接中
 ```
+
 * __OS Tutorial on OS2ATC2019__: 
 https://github.com/rcore-os/rCore/wiki/os-tutorial-os2atc
 
@@ -104,11 +108,14 @@ https://rcore-os.github.io/rCore_tutorial_doc/
 * __rCore-Tutorial V3（原作者开发中)__: 
 https://rcore-os.github.io/rCore-Tutorial-deploy/
 https://github.com/rcore-os/rCore-Tutorial
+
 ```
 rCore_tutorial V2与rCore_tutorial V3是两个高质量实验教程
 ```
+
 * __操作系统实验：基于 uCore OS__: 
 https://www.shiyanlou.com/courses/221
+
 
 ## 版本
 * **V1 2021.09.10**
