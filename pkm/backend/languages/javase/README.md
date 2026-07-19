@@ -4,8 +4,6 @@
 * Basic and Components
     * [01-java-intro](notes/01-basic/01-java-intro.md)：Java基础、Hello World等
     * [02-variable-and-datatype](notes/01-basic/02-variable-and-datatype.md)：变量与数据类型
-    * [Package](notes/01-basic/package.md)：包
-    * [Operator](notes/01-basic/operator.md)：操作符
     * [Keyboard Input](notes/01-basic/keyboard-input.md)：键盘输入
     * [Branch and Loop](notes/01-basic/branch-control.md)：分支与循环
     * [Array](notes/01-basic/array.md)：数组
