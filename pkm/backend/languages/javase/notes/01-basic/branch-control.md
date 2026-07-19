@@ -1,6 +1,6 @@
 # Java控制结构
 
-![Java-basic-branchs.excalidraw|1000](../../assets/java-basic-branchs.excalidraw.md)
+![Java-basic-branchs|700](../../assets/java-basic-branchs.svg)
 
 ---
 
@@ -348,6 +348,10 @@ for (int j = 0; j < 4; j++) {
 ### 3. return
 
 跳出所在方法，结束方法的执行。
+
+### 4. 递归
+
+* [Recursion](notes/01-basic/recursion.md)：递归
 
 ---
 

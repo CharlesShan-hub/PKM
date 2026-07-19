@@ -13,7 +13,7 @@
 - 方法、方法重载、方法递归（掌握）
 - package 和 import（掌握）
 
-<img src="https://cdn.nlark.com/yuque/0/2025/jpeg/21376908/1757681056420-39d1bc52-55fe-4f3b-8183-b4d7ba79b166.jpeg" width="4308" title="" crop="0,0,1,1" id="u7e6a4c9c" class="ne-image">
+
 
 # 本章内容详解
 
@@ -68,7 +68,7 @@ Java 中合法的标识符需要满足以下要求：
 3. my-name（中间包含横线）
 4. MyClassName!（包含非法字符）
 
-<img src="https://cdn.nlark.com/yuque/0/2025/jpeg/21376908/1757681056420-39d1bc52-55fe-4f3b-8183-b4d7ba79b166.jpeg" width="4308" title="" crop="0,0,1,1" id="G3xUn" class="ne-image">
+
 
 ### 标识符命名规范
 
@@ -97,7 +97,6 @@ Java 中合法的标识符需要满足以下要求：
 12. $money
 13. 你好
 
-<img src="https://cdn.nlark.com/yuque/0/2025/jpeg/21376908/1757681056420-39d1bc52-55fe-4f3b-8183-b4d7ba79b166.jpeg" width="4308" title="" crop="0,0,1,1" id="yMw15" class="ne-image">
 
 ## 关键字（理解）
 

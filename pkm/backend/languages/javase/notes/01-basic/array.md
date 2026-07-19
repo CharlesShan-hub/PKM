@@ -8,7 +8,7 @@
 
 ### 数组初始化方式
 
-![java-basic-array.excalidraw|500](../../assets/java-basic-array.excalidraw.md)
+![java-basic-array|700](../../assets/java-basic-array.svg)
 
 1. **方式1**：直接初始化
    ```java

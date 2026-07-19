@@ -1,17 +1,13 @@
 # Javase
 * [Remember](details/remember.md)：反思总结
-* [plan](details/plan.md)：进度追踪
-* Basic
-    * [Background](notes/01-basic/background.md)：Java基础、各个版本变化
-    * [Basic Java Structure](notes/01-basic/hello-world.md)：Hello World、注释
-    * [Escape Character](notes/01-basic/escape-character.md)：转义字符
-    * [JavaDoc](notes/01-basic/comment.md)：文档
+* [Plan](details/plan.md)：进度追踪
+* Basic and Components
+    * [01-java-intro](notes/01-basic/01-java-intro.md)：Java基础、Hello World等
+    * [02-variable-and-datatype](notes/01-basic/02-variable-and-datatype.md)：变量与数据类型
     * [Package](notes/01-basic/package.md)：包
-    * [Variable and Datatype](notes/01-basic/variable-and-datatype.md)：变量与数据类型
     * [Operator](notes/01-basic/operator.md)：操作符
     * [Keyboard Input](notes/01-basic/keyboard-input.md)：键盘输入
-    * [Branch Control](notes/01-basic/branch-control.md)：分支结构
-    * [Recursion](notes/01-basic/recursion.md)：递归
+    * [Branch and Loop](notes/01-basic/branch-control.md)：分支与循环
     * [Array](notes/01-basic/array.md)：数组
     * [Arrays](notes/01-basic/Arrays.md)：Comparator
 * OOP Basic

@@ -1,32 +1,41 @@
 # 变量与数据类型
-
 数据类型专题浏览顺序：本文 👉 [WrapperClass](../04-utils/WrapperClass.md)
 
-![Java-basic-basicdatatype.excalidraw|1000](../../assets/java-basic-basicdatatype.excalidraw.md)
+![Java-basic-basicdatatype.excalidraw|1000](../../assets/java-basic-basicdatatype.svg)
 
 ---
 
 ## 变量基础
 
 ### 变量概念
-
 * **三要素**：类型、名称、值
 * **变量声明**：定义变量的类型和名称
 * **变量赋值**：为变量赋予具体的值
 
-### 标识符规则与规范
 
+### 标识符
+* Java 中的标识符可以标识以下内容
+    1. 变量（Variable）
+    2. 方法（Method）
+    3. 类（Class）
+    4. 接口（Interface）
+    5. 枚举（Enum）
+    6. 注解（Annotation）
+    7. 包（Package）
+    8. 类型参数（Type Parameter）
+    9. 类型名称（Type Name）
+    10. 常量（Constant）
 * 规则
-  * [Java语言标识符的命名规范(超详细讲解)](https://www.cnblogs.com/qian-fen/p/16963064.html)
-  * 变量名可以包含`$`
+    * [Java语言标识符的命名规范(超详细讲解)](https://www.cnblogs.com/qian-fen/p/16963064.html)
+    * 变量名可以包含`$`
 * 规范
-  * 包名：`abc.def.ghi`
-  * 类/接口：`XxxYyyZzz`
-  * 变量/函数：`xxYyyZzz`
-  * 常量名：`XXX_YYY_ZZZ`
+    * 包名：`abc.def.ghi`
+    * 类/接口：`XxxYyyZzz`
+    * 变量/函数：`xxYyyZzz`
+    * 常量名：`XXX_YYY_ZZZ`
+
 
 ### 作用域规则
-
 * 变量在一个作用域内不能重名
 * Java不支持变量遮蔽（与C语言不同）
 
@@ -44,10 +53,10 @@ public class Main {
 
 ---
 
+
 ## 数据类型分类
 
 ### 基本数据类型（8种）
-
 | 类别 | 类型 | 大小 | 说明 |
 |------|------|------|------|
 | 整型 | `byte` | 1字节 | -128 ~ 127 |
@@ -64,30 +73,30 @@ public class Main {
 * Java变量所占空间固定，与操作系统无关！
 * 在网络传输、大文件读写时，为了节省空间，常用byte来作为数据的传输方式。
 
-### 引用数据类型
 
+### 引用数据类型
 * **类**（如 `String`）
 * **接口**
 * **数组**
 
-### 字符类型比较
 
+### 字符类型比较
 * **Java**：`char` 2字节（Unicode）
 * **C语言**：`char` 1字节（ASCII）
 * **Rust**：`char` 4字节（Unicode标量值）
 
-### 面试题：介绍一下Java的数据类型
 
+### 面试题：介绍一下Java的数据类型
 Java 的数据类型可以分为两种：基本数据类型和引⽤数据类型。
 基础数据类型有：`byte`，`short`，`int`，`long`，`float`，`double`，`boolean`，`char`
 引用数据类型有：数组，类，接口
 
 ---
 
+
 ## 整型变量
 
 ### 类型范围表
-
 | 类型 | 空间 | 范围 | 数学表示 |
 |------|------|------|----------|
 | `byte` | 1B | -128 ~ 127 | -2⁷ ~ 2⁷-1 |
@@ -95,8 +104,8 @@ Java 的数据类型可以分为两种：基本数据类型和引⽤数据类型
 | `int` | 4B | -2,147,483,648 ~ 2,147,483,647 | -2³¹ ~ 2³¹-1 |
 | `long` | 8B | -9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807 | -2⁶³ ~ 2⁶³-1 |
 
-### 字面量规则
 
+### 字面量规则
 1. **默认类型**：整数字面量默认为 `int`
 2. **long字面量**：需要在结尾加 `L` 或 `l`
 
@@ -115,8 +124,8 @@ long c = 2147493648;  // 编译错误
 long d = 2147493648L; // 编译通过
 ```
 
-### 面试题：Integer.MAX_VALUE + 1
 
+### 面试题：Integer.MAX_VALUE + 1
 Integer是包装类（[WrapperClass](../04-utils/WrapperClass.md)），里边包含了一些常量和方法，`Integer.MAX_VALUE`是int最大值，+1会溢出，变成`Integer.MIN_VALUE`。
 
 ```java
@@ -138,10 +147,10 @@ Integer.toBinaryString(Integer.MIN_VALUE));
 
 ---
 
+
 ## 浮点型变量
 
 ### 表示形式
-
 | 类型 | 空间 | 范围 | 后缀 |
 |------|------|------|------|
 | `float` | 4B | ±3.403E38 | `F` 或 `f` |
@@ -176,8 +185,8 @@ double a = 2.123456789;   // 保持精度：2.123456789
 float b = 2.123456789F;   // 精度损失：2.1234567
 ```
 
-### IEEE754标准
 
+### IEEE754标准
 ```java
 public class Ieee754Demo {
     public static void main(String[] args) {
@@ -209,8 +218,8 @@ y = -1.0 / 0.0 = -Infinity
 z = 0.0 / 0.0 = NaN
 ```
 
-### 浮点数陷阱
 
+### 浮点数陷阱
 由于二进制表示的限制，某些十进制小数无法精确表示：
 
 ```java
@@ -234,8 +243,8 @@ double 同样不适合用于精确的数值，比如说金额，可以使用[Big
 
 在实际开发中，如果不是特别大的金额（精确到 0.01 元，也就是一分钱），一般建议乘以 100 转成整型进行处理。
 
-### 面试题：float 怎么表示⼩数
 
+### 面试题：float 怎么表示⼩数
 是通过 IEEE 754 标准的单精度浮点数格式来表示
 $$V = (-1)^S\cdot M \cdot 2^E$$
 
@@ -256,15 +265,15 @@ $$V = (-1)^S\cdot M \cdot 2^E$$
 
 ---
 
+
 ## 字符型变量
 
 ### 字符编码
-
 * **ASCII表**：[在线查看](https://www.runoob.com/w3cnote/ascii.html)
 * **Unicode转换**：[在线工具](https://tool.chinaz.com/Tools/Unicode.aspx)
 
-### 字符表示方式
 
+### 字符表示方式
 ```java
 // 字符字面量
 char a = 'a';
@@ -282,8 +291,8 @@ System.out.println((int) a);  // 97
 System.out.println(b);  // a
 ```
 
-### 转义字符
 
+### 转义字符
 允许使用转义字符：
 
 ```java
@@ -293,8 +302,8 @@ char backslash = '\\';
 char quote = '\"';
 ```
 
-### 字符运算
 
+### 字符运算
 ```java
 // 字符参与数值运算
 System.out.println('a' + 10);  // 97 + 10 = 107
@@ -314,8 +323,8 @@ char value_char2 = Character.forDigit(value_int2 , radix2);
 System.out.println(value_char2);
 ```
 
-### 存储原理
 
+### 存储原理
 字符在计算机内部的存储过程：
 
 1. **存储**：`'a'` → 97 → 二进制 `01100001`
@@ -323,10 +332,10 @@ System.out.println(value_char2);
 
 ---
 
+
 ## 布尔类型
 
 ### 基本特性
-
 * **大小**：占用1字节
 * **取值**：只能是 `true` 或 `false`
 * **与C的区别**：不能用0或非零整数代替 `boolean`
@@ -340,8 +349,8 @@ boolean isFinished = false;
 // boolean b = flag;
 ```
 
-### 面试题：boolean占用多少字节
 
+### 面试题：boolean占用多少字节
 对于单独的boolean变量，理论上是1字节，但是JVM会对内存进行补齐，所以后边增加了三字节的空白。如果再加上对象头，一共占用了32 字节。
 
 ```bash
@@ -374,8 +383,8 @@ Space losses: 0 bytes internal + 2 bytes external = 2 bytes total
 
 ---
 
-## 进制
 
+## 进制
 | 进制   | 前缀        | 举例      |
 | ---- | --------- | ------- |
 | 二进制  | `0b`，`0B` | `0b111` |
@@ -404,12 +413,12 @@ public class Hello{
 
 ---
 
+
 ## 类型转换
 
 ### 自动类型转换
 
 #### 转换方向（从小到大）
-
 ```txt
 byte 
 ⬇️
@@ -422,7 +431,6 @@ char
 
 
 #### 转换规则
-
 1. **默认转成最宽泛的类型；用常量赋值float需要指定f**
 
     ```java
@@ -499,8 +507,8 @@ char
     // int num = flag;
     ```
 
-### 强制类型转换
 
+### 强制类型转换
 通过类型转换运算符 `(类型)`：
 
 ```java
@@ -508,17 +516,17 @@ double d = 3.14;
 int i = (int) d;  // i = 3（截断小数部分）
 ```
 
+
 ### 基本类型与String的转换
 
 #### 基本类型 → String
-
 ```java
 int num = 123;
 String s = num + "";  // "123"
 ```
 
-#### String → 基本类型
 
+#### String → 基本类型
 使用[WrapperClass](../04-utils/WrapperClass.md)的解析方法：
 
 ```java
@@ -533,8 +541,8 @@ boolean n6 = Boolean.parseBoolean("true");
 short n7 = Short.parseShort(s);
 ```
 
-#### char → 基本类型
 
+#### char → 基本类型
 使用`Character`类（也是包装类）的方法：
 
 ```java
@@ -542,8 +550,8 @@ int a = Character.getNumericValue('1');
 int b = Character.digit('1', 10);
 ```
 
-#### 字符串操作
 
+#### 字符串操作
 ```java
 // 提取字符串中的字符
 String s = "123";
@@ -557,8 +565,8 @@ System.out.println(name.equals("林黛玉"));   // 可能引发空指针异常
 
 ---
 
-## 总结要点
 
+## 总结要点
 1. **变量命名**：作用域内不能重名，Java不支持变量遮蔽
 2. **类型选择**：
    * 整数默认用 `int`，大数用 `long`

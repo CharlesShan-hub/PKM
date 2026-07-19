@@ -22,7 +22,7 @@
     * 3：（可跳过）开发场景：SSM（Spring 、 SpringMVC 、 Mybatis）
     * 4：（可跳过）应用领域：后端、客户端、嵌入式
     * 5：（可跳过）之前的PPT，总结成了笔记
-* 第 2 章：[background](../notes/01-basic/background.md)，[hello-world](../notes/01-basic/hello-world.md)，[remember](../details/remember.md)，[dos](../../../systems/windows/notes/dos.md)
+* 第 2 章：[background](../notes/01-basic/background.md)，[hello-world](../notes/01-basic/details/hello-world.md)，[remember](../details/remember.md)，[dos](../../../systems/windows/notes/dos.md)
     * 6：（可跳过）什么是程序，Hello World
     * 7：（可跳过）Java 历史：sun、gosling、1995、oak、Oracle；SE、EE、ME
     * 8：（可跳过）Java 特性：OOP、GC 强类型、跨平台、解释型语言
@@ -47,7 +47,7 @@
     * 30：（可跳过）Dos：exit 、 md 、 rd 、 del 、 type 、 copy、 echo、 move
     * 31~32：（可跳过）[[../notes/stage1/第二章作业|第二章作业]]
     * 33：（可跳过）内容梳理
-* 第 3 章：[variable-and-datatype](../notes/01-basic/variable-and-datatype.md)，[package](../notes/01-basic/package.md)，[coding](../notes/05-io/coding.md)
+* 第 3 章：[02-variable-and-datatype](../notes/01-basic/02-variable-and-datatype.md)，[package](../notes/01-basic/package.md)，[coding](../notes/05-io/coding.md)
 	* 34：（可跳过）变量原理：类型、名称、值
 	* 35：（可跳过）变量概念：声明、赋值
 	* 36：（可跳过）变量入门：int 、 double 、char 、 String 初识
