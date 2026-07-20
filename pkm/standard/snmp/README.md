@@ -10,18 +10,53 @@
 
 * 介绍
     * [CMOT和SNMP](details/cmot-vs-snmp.md)
-
+* SNMPv1体系
+    * SMI
+        * [rfc1155](rfc-1155/README.md): SNMPv1对应的SMI（语法定义）
+        * [rfc1212](rfc-1212/README.md)：定义了具体写对象时的模板（OBJECT-TYPE 宏）（对rfc1155的补充）
+        * [rfc1215](rfc-1215/README.md)：定义如何描述告警事件（Trap）（对rfc1155的补充）
+    * SNMP
+        * [rfc1157](rfc-1157/README.md): SNMPv1
+    * MIB
+        * [rfc1156](rfc-1156/README.md)：SNMPv1对应的MIB（基于SMI的规则 MIB-I）
+        * [rfc1213](rfc-1213/README.md)：MIB-II（取代rfc1156）
+* SNMPv2体系
+    * SMI
+        * [rfc2578](rfc-2578/README.md)：SMIv2
+        * [rfc2579](rfc-2579/README.md)：文本约定
+        * [rfc2580](rfc-2580/README.md)：一致性声明
+    * SNMP
+        * [rfc1901](rfc-1901/README.md)：背景引言
+        * [rfc1905](rfc-1905/README.md)：协议操作核心
+        * [rfc1906](rfc-1906/README.md)：传输映射
+    * MIB
+        *  [rfc1213](rfc-1213/README.md)：MIB-II（沿用）
+        * [rfc1907](rfc-1907/README.md)：SNMPv2 MIB
+* SNMPv3体系
+    * SMI
+        * [rfc2578](rfc-2578/README.md)：SMIv2（沿用）
+        * [rfc2579](rfc-2579/README.md)：文本约定（沿用）
+        * [rfc2580](rfc-2580/README.md)：一致性声明（沿用）
+    * SNMP
+        * [rfc3411](rfc-3411/README.md)：架构概述（Dispatcher, Message Processing Subsystem 等模块划分）
+        * [rfc3412](rfc-3412/README.md)：消息处理与分发模型（定义了msgProcessingModel等细节）
+        * [rfc3413](rfc-3413/README.md)：SNMP应用（命令生成器、命令响应器、通知发送器、通知接收器等）
+        * [rfc3414](rfc-3414/README.md)：USM（用户安全模型）—— 认证（MD5/SHA）与加密（DES/AES）
+        * [rfc3415](rfc-3415/README.md)：VACM（视图访问控制模型）—— 细粒度的读/写/通知权限控制
+    * MIB
+        *  [rfc1213](rfc-1213/README.md)：MIB-II（沿用）
+        * [rfc3418](rfc-3418/README.md)：SNMPv3 MIB（定义snmpEngine、snmpTarget等引擎自身的MIB）
 ## Plan 
 
-| 学习阶段        | 推荐研读的RFC（核心）                         | 说明与重点                              |
-| ----------- | ------------------------------------ | ---------------------------------- |
-| **SMIv1**   | RFC 1155, RFC 1212, RFC 1215         | 三者合在一起才是完整的SMIv1定义体系。              |
-| **MIB-II**  | RFC 1213                             | 经典的设备基础MIB，虽古老但思想沿用至今。             |
-| **SMIv2**   | RFC 2578, RFC 2579, RFC 2580         | 现代SNMP的数据定义语言，必读。                  |
-| **通用MIB**   | RFC 3418                             | 定义了SNMP引擎自身的MIB，替代了旧版的部分MIB。       |
-| **SNMPv1**  | RFC 1157                             | 核心协议操作，理解5种基本PDU。                  |
-| **SNMPv2c** | **RFC 1905（核心）**， RFC 1901（背景）       | 重点学习`GetBulk`和`Inform`，这是v2c的最大贡献。 |
-| **SNMPv3**  | **RFC 3411, 3412, 3413, 3414, 3415** | 这是STD 62的核心五部曲。你的重点（USM、VACM）完全正确。 |
+| 学习阶段        | 推荐研读的RFC（核心）                         | 说明与重点                                          |
+| ----------- | ------------------------------------ | ---------------------------------------------- |
+| **SMIv1**   | RFC 1155, RFC 1212, RFC 1215         | 三者合在一起才是完整的SMIv1定义体系。                          |
+| **MIB-II**  | RFC 1213                             | 经典的设备基础MIB，虽古老但思想沿用至今。                         |
+| **SMIv2**   | RFC 2578, RFC 2579, RFC 2580         | 现代SNMP的数据定义语言，必读。                              |
+| **通用MIB**   | RFC 3418                             | 定义了SNMP引擎自身的MIB，替代了旧版的部分MIB。                   |
+| **SNMPv1**  | RFC 1157                             | 核心协议操作，理解5种基本PDU。                              |
+| **SNMPv2c** | **RFC 1905（协议操作核心）**，RFC 1906（传输映射）  | 重点学习 GetBulk 和 Inform。RFC 1901 仅作背景了解，非正式标准轨迹。 |
+| **SNMPv3**  | **RFC 3411, 3412, 3413, 3414, 3415** | 这是STD 62的核心五部曲。你的重点（USM、VACM）完全正确。             |
 
 **总结一句**：你提供的是一个**80分的学习框架**，大方向极佳，但在具体的RFC编号和归属上存在一些“民间理解”与“官方定义”的偏差。按照我上面修正后的表格去读，你的路线会更严谨，少走弯路。
 

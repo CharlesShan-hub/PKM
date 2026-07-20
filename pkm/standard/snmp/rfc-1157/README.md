@@ -10,35 +10,35 @@
 
 ---
 
-## 1. 背景与动机（§1-§2）
+## 1. Status of this Memo & Introduction（§1-§2）
 
-- 从 RFC 1098 重新发布，内容不变
-- IAB 双轨策略：短期用 SNMP，长期转向 OSI 网络管理（CMIS/CMIP）
-- SNMP 定位：简单、可快速部署的短期方案
-- 与 SGMP 的关系：RFC 1157 是 SGMP 的演进版本，**语法已改变，不向后兼容**
-- 新 UDP 端口分配：代理监听 **161**，Trap 接收 **162**
+* 简单网关监控协议（**SGMP** - RFC 1098）：SNMP（RFC - 1157）的前身。rfc1157对其进行分叉，不在追踪其后续进展。SGMP只监控网关（路由器），SNMP 将其泛化为管理所有网络设备的通用协议。
+* OSI 网络管理（CMIS/CMIP）（**CMOT**（RFC-1095））：由于 IAB 双轨策略打算以后使用，但后来废弃。
+- **SNMP**：定位是简单、可快速部署的短期方案。后来成功普及，成为事实标准。SNMP 进行了新 UDP 端口分配：代理监听 **161**，Trap 接收 **162**。
 
 ---
 
-## 2. SNMP 架构（§3）
+## 2. Architecture（§3）
 
-### 2.1 架构目标（§3.1）
-1. 最小化代理侧的管理功能复杂度
-2. 功能范式足够可扩展
-3. 与特定主机/网关架构无关
+名词解析：考虑下面场景，公司有一个主交换机，各自连接到一楼到六楼的楼层交换机，他们所有都打开了SNMP协议。我在某一个未知请求他们，获取网络拓扑结构。
+* SNMP：管理站与代理之间传递管理信息的协议
+* 管理站：我的电脑（运行的 SNMP 管理应用程序）
+* 网络元素：中心和楼层交换机
+* Agent：每个交换机上运行的 SNMP 代理
+* 被管对象：每个交换机的端口状态、流量、MAC 表等
 
-### 2.2 架构六要素（§3.2）
+### 3.2 架构六要素（§3.2）
 
-| 要素 | 说明 |
-|------|------|
-| **管理信息的范围**（§3.2.1） | 仅包含 MIB 中的非聚合（non-aggregate）对象类型 |
-| **管理信息的表示**（§3.2.2） | 使用 ASN.1 受限子集（同 SMI），BER 编码使用**定长形式** |
-| **支持的操作**（§3.2.3） | 本质上只有两种：**get**（取值）和 **set**（赋值）；通过**轮询 + 有限 Trap** 实现监控 |
-| **协议交换的形式与含义**（§3.2.4） | 基于不可靠数据报（UDP），每条消息独立由单个数据报表示 |
-| **管理关系定义**（§3.2.5） | Community（团体）体系 |
-| **管理对象引用**（§3.2.6） | 对象实例的命名规则 |
+| 要素                     | 说明                                                       |
+| ---------------------- | -------------------------------------------------------- |
+| **管理信息的范围**（§3.2.1）    | 仅包含 MIB 中的非聚合（non-aggregate）对象类型                         |
+| **管理信息的表示**（§3.2.2）    | 使用 ASN.1 受限子集（同 SMI），BER 编码使用**定长形式**                    |
+| **支持的操作**（§3.2.3）      | 本质上只有两种：**get**（取值）和 **set**（赋值）；通过**轮询 + 有限 Trap** 实现监控 |
+| **协议交换的形式与含义**（§3.2.4） | 基于不可靠数据报（UDP），每条消息独立由单个数据报表示                             |
+| **管理关系定义**（§3.2.5）     | Community（团体）体系                                          |
+| **管理对象引用**（§3.2.6）     | 对象实例的命名规则                                                |
 
-### 2.3 关键概念：Community 模型（§3.2.5）
+### 3.3 关键概念：Community 模型（§3.2.5）
 
 SNMPv1 的安全模型完全基于 **Community（团体）** 字符串：
 
@@ -56,31 +56,31 @@ SNMPv1 的安全模型完全基于 **Community（团体）** 字符串：
 
 ---
 
-## 3. 对象实例的命名（§3.2.6）
+## 4. 对象实例的命名（§3.2.6）
 
 SNMP 如何唯一标识某个具体对象实例？规则如下：
 
-### 3.1 标量对象
+### 4.1 标量对象
 - 格式：`对象类型OID . 0`
 - 示例：`sysDescr.0` → `1.3.6.1.2.1.1.1.0`
 
-### 3.2 表对象
-| 表 | 实例标识方式 | 示例 |
-|----|-------------|------|
-| **ifTable** | `类型OID . ifIndex` | `ifType.2` |
-| **atTable** | `类型OID . ifIndex . IP地址` | `atPhysAddress.3.1.89.1.1.42` |
-| **ipAddrTable** | `类型OID . IP地址` | `ipAdEntNetMask.89.1.1.42` |
-| **ipRoutingTable** | `类型OID . 目的地址` | `ipRouteNextHop.89.1.1.42` |
-| **tcpConnTable** | `类型OID . 本地IP.本地端口.远端IP.远端端口` | `tcpConnState.89.1.1.42.21.10.0.0.51.2059` |
-| **egpNeighTable** | `类型OID . 邻居IP` | `egpNeighState.89.1.1.42` |
+### 4.2 表对象
+
+| 表 | 实例标识方式 | 示例 | 注释 |
+|----|-------------|------|------|
+| **ifTable** | `类型OID . ifIndex` | `ifType.2` | 按接口索引，唯一标识一个接口 |
+| **atTable** | `类型OID . ifIndex . IP地址` | `atPhysAddress.3.1.89.1.1.42` | 接口 3 上 IP 为 89.1.1.42 的地址转发表条目 |
+| **ipAddrTable** | `类型OID . IP地址` | `ipAdEntNetMask.89.1.1.42` | 设备上 IP 地址为 89.1.1.42 的接口配置条目 |
+| **ipRoutingTable** | `类型OID . 目的地址` | `ipRouteNextHop.89.1.1.42` | 以 89.1.1.42 为目的的路由条目 |
+| **tcpConnTable** | `类型OID . 本地IP.本地端口.远端IP.远端端口` | `tcpConnState.89.1.1.42.21.10.0.0.51.2059` | TCP 连接：本地 89.1.1.42:21 → 远端 10.0.0.51:2059 |
+| **egpNeighTable** | `类型OID . 邻居IP` | `egpNeighState.89.1.1.42` | EGP 邻居 89.1.1.42 的邻居关系状态 |
 
 > **核心思想**：所有实例名按**字典序（lexicographical order）** 组织，这是 GetNextRequest 实现表遍历的基础。
 
 ---
 
-## 4. 协议规范（§4）
-
-### 4.1 消息格式 — Message 结构
+## 5. 协议规范（§4）
+### 5.1 消息格式 — Message 结构
 
 ```
 Message ::= SEQUENCE {
@@ -94,21 +94,21 @@ Message ::= SEQUENCE {
 - Community 为明文
 - PDU 通过 ASN.1 BER 编码后放入 data 字段
 
-### 4.2 五种 PDU 类型
+### 5.2 五种 PDU 类型
 
-| PDU | ASN.1 Tag | 方向 | 说明 |
-|-----|-----------|------|------|
-| **GetRequest-PDU** | `[0]` | Manager → Agent | 请求获取一个或多个变量的值 |
-| **GetNextRequest-PDU** | `[1]` | Manager → Agent | 请求获取字典序下一个变量的值，用于**遍历表** |
-| **GetResponse-PDU** | `[2]` | Agent → Manager | 对 Get/GetNext/Set 请求的响应 |
-| **SetRequest-PDU** | `[3]` | Manager → Agent | 设置一个或多个变量的值 |
-| **Trap-PDU** | `[4]` | Agent → Manager | **主动上报**事件（无需轮询） |
+| PDU                    | ASN.1 Tag | 方向              | 说明                       |
+| ---------------------- | --------- | --------------- | ------------------------ |
+| **GetRequest-PDU**     | `[0]`     | Manager → Agent | 请求获取一个或多个变量的值            |
+| **GetNextRequest-PDU** | `[1]`     | Manager → Agent | 请求获取字典序下一个变量的值，用于**遍历表** |
+| **GetResponse-PDU**    | `[2]`     | Agent → Manager | 对 Get/GetNext/Set 请求的响应  |
+| **SetRequest-PDU**     | `[3]`     | Manager → Agent | 设置一个或多个变量的值              |
+| **Trap-PDU**           | `[4]`     | Agent → Manager | **主动上报**事件（无需轮询）         |
 
-### 4.3 五种 PDU 的公共结构
+### 5.3 五种 PDU 的公共结构
 
 GetRequest / GetNextRequest / GetResponse / SetRequest 共享同一个 `PDU` 结构：
 
-```
+```asn1
 PDU ::= SEQUENCE {
     request-id        INTEGER,
     error-status      INTEGER { noError(0), tooBig(1), noSuchName(2),
@@ -127,27 +127,27 @@ PDU ::= SEQUENCE {
 | readOnly(4) | 只读 | Set 请求尝试写只读变量 |
 | genErr(5) | 其他错误 | 无法归类的错误 |
 
-### 4.4 GetRequest 处理流程（§4.1.2）
+### 5.4 GetRequest 处理流程（§4.1.2）
 1. 变量名不存在 → `noSuchName`
 2. 变量是聚合类型 → `noSuchName`
 3. 响应超限 → `tooBig`
 4. 其他无法获取 → `genErr`
 5. 正常 → 返回 `noError` + 所有变量的值
 
-### 4.5 GetNextRequest 与表遍历（§4.1.3、§4.1.3.1）
+### 5.5 GetNextRequest 与表遍历（§4.1.3、§4.1.3.1）
 
 - GetNextRequest 在字典序中找到**紧邻的下一个**变量
 - 这是 SNMP 中**遍历表**的核心机制 —— 不需要知道表有多大
 - §4.1.3.1 给出了完整的路由表示例遍历过程
 
-### 4.6 SetRequest 处理流程（§4.1.5）
+### 5.6 SetRequest 处理流程（§4.1.5）
 1. 变量不可写 → `noSuchName`
 2. 值类型/长度不符 → `badValue`
 3. 响应超限 → `tooBig`
 4. 其他 → `genErr`
 5. 正常 → 所有变量**原子式同步赋值**，返回 `noError`
 
-### 4.7 Trap-PDU（§4.1.6）
+### 5.7 Trap-PDU（§4.1.6）
 
 Trap 是**唯一由 Agent 主动发起**的 PDU，结构与其他不同：
 
@@ -174,7 +174,7 @@ Trap-PDU ::= SEQUENCE {
 | **egpNeighborLoss** | 5 | EGP 邻居关系中断，VarBind 首项为 `egpNeighAddr` |
 | **enterpriseSpecific** | 6 | 企业自定义事件，`specific-trap` 标识具体类型 |
 
-### 4.8 变量绑定（VarBind / VarBindList）
+### 5.8 变量绑定（VarBind / VarBindList）
 
 ```
 VarBind ::= SEQUENCE {
@@ -190,7 +190,7 @@ VarBindList ::= SEQUENCE OF VarBind
 
 ---
 
-## 5. ASN.1 正式定义（§5）
+## 6. ASN.1 正式定义（§5）
 
 模块 `RFC1157-SNMP` 定义：
 
@@ -203,19 +203,19 @@ VarBindList ::= SEQUENCE OF VarBind
 
 ---
 
-## 6. 协议操作总结
+## 7. 协议操作总结
 
-| 操作 | 方向 | 典型用途 |
-|------|------|---------|
-| **Get** | M → A | 查询设备的一个或多个变量 |
-| **GetNext** | M → A | 遍历表、发现未知对象 |
+| 操作              | 方向    | 典型用途                  |
+| --------------- | ----- | --------------------- |
+| **Get**         | M → A | 查询设备的一个或多个变量          |
+| **GetNext**     | M → A | 遍历表、发现未知对象            |
 | **GetResponse** | A → M | 对 Get/GetNext/Set 的应答 |
-| **Set** | M → A | 修改设备配置、触发动作 |
-| **Trap** | A → M | 事件上报（启动、故障、认证失败等） |
+| **Set**         | M → A | 修改设备配置、触发动作           |
+| **Trap**        | A → M | 事件上报（启动、故障、认证失败等）     |
 
 ---
 
-## 7. 与其他 RFC 的关系
+## 8. 与其他 RFC 的关系
 
 | RFC | 关系 |
 |-----|------|
@@ -227,7 +227,7 @@ VarBindList ::= SEQUENCE OF VarBind
 
 ---
 
-## 8. 学习要点与建议
+## 9. 学习要点与建议
 
 - SNMPv1 的设计哲学：**把复杂留给管理站，让代理保持简单**。代理只有 Get 和 Set 两类本质操作
 - **GetNextRequest + 字典序** 是 SNMP 最精巧的设计之一，实现了变量发现和表遍历而无需预知 MIB 结构
