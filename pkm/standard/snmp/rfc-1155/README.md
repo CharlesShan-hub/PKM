@@ -4,7 +4,7 @@
 >
 > **状态**: Standard Protocol (Recommended) | **废止**: RFC 1065
 >
-> **核心定位**: 定义 SNMP 体系中「管理信息」如何**命名（Name）**、如何**描述结构（Syntax）**、如何**编码传输（Encoding）** 的元规范。与 RFC 1156（MIB-I）、RFC 1157（SNMPv1）共同构成 SNMPv1 的三驾马车。
+> **核心定位**: 定义 SNMP 体系中「管理信息」如何**命名（Name）**、如何**描述结构（Syntax）**、如何**编码传输（Encoding）** 的元规范。
 
 ---
 
@@ -42,7 +42,7 @@ RFC 1155 围绕三个问题展开，这也是理解 SMI 的纲领：
 | **private(4)** | `1.3.6.1.4` | 厂商**私有**对象，其下 `enterprises(1)` 用于厂商注册产品 |
 
 ### 3.3 关键约定
-- 禁止使用子标识符 `0`（§4.1）—— 保留给未来扩展
+- 禁止使用子标识符 `0`（§4.1）—— 保留给未来扩展（这个规定后续被废除了）
 - OBJECT DESCRIPTOR 必须是唯一、助记、可打印的字符串
 
 ---
@@ -63,14 +63,14 @@ RFC 1155 围绕三个问题展开，这也是理解 SMI 的纲领：
 - 不支持 DEFAULT / OPTIONAL 子句（简化设计）
 
 ### 4.3 应用定义类型（Application-wide Types, §3.2.3）
-| 类型 | ASN.1 标签 | 含义 |
-|------|-----------|------|
-| **NetworkAddress** | CHOICE | 协议族地址选择（当时只定义了 Internet 族） |
-| **IpAddress** | `[APPLICATION 0]` | 32 位 IPv4 地址，网络字节序的 OCTET STRING(4) |
-| **Counter** | `[APPLICATION 1]` | 单调递增计数，达 2^32-1 后回绕 |
-| **Gauge** | `[APPLICATION 2]` | 可增可减的整数，达 2^32-1 后锁定 |
-| **TimeTicks** | `[APPLICATION 3]` | 百分之一秒计时（相对于某个 epoch） |
-| **Opaque** | `[APPLICATION 4]` | 任意 ASN.1 数据的"双重包装"，用于扩展 |
+| 类型                 | ASN.1 标签          | 含义                                  |
+| ------------------ | ----------------- | ----------------------------------- |
+| **NetworkAddress** | CHOICE            | 协议族地址选择（当时只定义了 Internet 族）          |
+| **IpAddress**      | `[APPLICATION 0]` | 32 位 IPv4 地址，网络字节序的 OCTET STRING(4) |
+| **Counter**        | `[APPLICATION 1]` | 单调递增计数，达 2^32-1 后回绕                 |
+| **Gauge**          | `[APPLICATION 2]` | 可增可减的整数，达 2^32-1 后锁定                |
+| **TimeTicks**      | `[APPLICATION 3]` | 百分之一秒计时（相对于某个 epoch）                |
+| **Opaque**         | `[APPLICATION 4]` | 任意 ASN.1 数据的"双重包装"，用于扩展             |
 
 ---
 
