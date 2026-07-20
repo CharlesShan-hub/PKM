@@ -19,8 +19,8 @@
         }
     }
     ```
-* `javac`命令具体参数：👉[command-javac](../../../details/command-javac.md)
-* `java`命令具体参数：👉[command-java](../../../details/command-java.md)
+* `javac`命令具体参数：👉[command-javac](command-javac.md)
+* `java`命令具体参数：👉[command-java](command-java.md)
 
 ---
 

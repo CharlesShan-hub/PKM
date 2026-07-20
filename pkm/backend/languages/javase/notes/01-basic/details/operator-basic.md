@@ -33,6 +33,7 @@
   System.out.println("Hello" + 1 + 2);  // 输出：Hello12
   ```
 
+👉 更多案例：[operator-plus](operator-plus.md)
 
 ## 除法运算细节
 除法取整

@@ -1,13 +1,13 @@
 # JavaDoc
 ![Java-basic-comment.excalidraw|500](../../assets/java-basic-javadoc.svg)
 
-* 极简案例：[comment-detail](../../details/comment-detail.md)
+* 极简案例：[comment-detail](details/comment-detail.md)
 
 ### 文档注释（Javadoc）
 * **语法**：`/** 文档注释 */`
 * **特点**：特殊的注释格式，用于生成HTML格式的API文档
 * **用途**：类、接口、方法、字段的正式文档
-* **命令**：[javadoc](../../details/command-javadoc.md)，但现在已经不用这个工具了，有更好的封装
+* **命令**：[javadoc](details/command-javadoc.md)，但现在已经不用这个工具了，有更好的封装
 
 常用标签
 
