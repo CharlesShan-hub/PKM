@@ -91,6 +91,12 @@ $env:JAVA_HOME = "$env:USERPROFILE\scoop\apps\corretto8-jdk\current"
 [Environment]::SetEnvironmentVariable("JAVA_HOME", $env:JAVA_HOME, "User")
 ```
 
+😋 Rust工具
+```powershell
+scoop install rustup
+rustup default stable
+```
+
 😋Python 语言工具链：（√）**pixi**，（x 淘汰）uv
 ```powershell
 scoop install pixi      # main bucket 中的 pixi
