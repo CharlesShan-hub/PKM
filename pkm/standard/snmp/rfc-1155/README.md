@@ -5,6 +5,8 @@
 > **状态**: Standard Protocol (Recommended) | **废止**: RFC 1065
 >
 > **核心定位**: 定义 SNMP 体系中「管理信息」如何**命名（Name）**、如何**描述结构（Syntax）**、如何**编码传输（Encoding）** 的元规范。
+> asn1： https://github.com/lextudio/sharpsnmppro-mib/blob/master/RFC1155-SMI.txt
+> [rfc1155-asn1.md](assets/rfc1155-asn1.md.md)
 
 ---
 
@@ -134,12 +136,12 @@ RFC 1155 提供了完整的 ASN.1 模块 `RFC1155-SMI`，内容包括：
 
 ## 9. 与其他 RFC 的关系
 
-| RFC | 关系 |
-|-----|------|
-| **RFC 1156 (MIB-I)** | 基于本 SMI 定义的第一个标准管理信息库 |
+| RFC                   | 关系                              |
+| --------------------- | ------------------------------- |
+| **RFC 1156 (MIB-I)**  | 基于本 SMI 定义的第一个标准管理信息库           |
 | **RFC 1157 (SNMPv1)** | 基于本 SMI 定义的管理协议，规定了实例引用和 PDU 格式 |
-| **RFC 1212** | 补充 SMIv1 的**简明 MIB 定义**格式 |
-| **RFC 1213 (MIB-II)** | 取代 RFC 1156，仍基于 SMIv1 但扩充了大量对象 |
+| **RFC 1212**          | 补充 SMIv1 的**简明 MIB 定义**格式       |
+| **RFC 1213 (MIB-II)** | 取代 RFC 1156，仍基于 SMIv1 但扩充了大量对象  |
 
 > 后续演进方向：SMIv2（RFC 2578/2579/2580）在此基础上升级，引入 `Counter64`、`RowStatus`、`INDEX` 子句等。
 

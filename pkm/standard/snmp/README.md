@@ -5,6 +5,8 @@
 本专题从技术背景，到标准解读，最后到代码实现，完整的解析SNMP的前世今生。下面是整理一些有用的链接：
 * 博客
     * [什么是SNMP](https://support.huawei.com/enterprise/zh/doc/EDOC1100087025/5d668861)
+* 资料： https://di-mgt.com.au/guidumpasn1.html
+* 所有的ASN.1： https://github.com/lextudio/sharpsnmppro-mib
 
 ## Articles
 
