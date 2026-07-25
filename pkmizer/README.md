@@ -11,22 +11,21 @@ A PySide6-based GUI application for managing and automating tasks in the PKM (Pe
 
 ## Installation
 
-1. Make sure you have Python 3.8+ installed
-2. Install uv (if not already installed):
+1. Make sure you have pixi installed:
    ```bash
-   pip install uv
+   brew install pixi
    ```
 
-3. Install dependencies:
+2. Install dependencies:
    ```bash
-   uv sync
+   pixi install
    ```
 
 ## Usage
 
 1. Run the application:
    ```bash
-   uv run python main.py
+   pixi run python main.py
    ```
 
 2. The GUI will show:
@@ -78,7 +77,7 @@ A powerful tool for splitting large markdown files into smaller, organized notes
 
 **Usage:**
 ```bash
-uv run python scripts/markdown_splitter.py <input_file> <output_dir> [api_key]
+pixi run python scripts/markdown_splitter.py <input_file> <output_dir> [api_key]
 ```
 
 **Parameters:**
@@ -101,7 +100,7 @@ A tool for downloading images from URLs.
 
 ```bash
 # Split a markdown file without AI filename generation
-uv run python scripts/markdown_splitter.py "D:/path/to/input.md" "./output"
+pixi run python scripts/markdown_splitter.py "D:/path/to/input.md" "./output"
 ```
 
 This will:
@@ -116,7 +115,7 @@ This will:
 
 ```bash
 # Split a markdown file with AI filename generation
-uv run python scripts/markdown_splitter.py "D:/path/to/input.md" "./output" "your-deepseek-api-key"
+pixi run python scripts/markdown_splitter.py "D:/path/to/input.md" "./output" "your-deepseek-api-key"
 ```
 
 This will:
@@ -153,7 +152,7 @@ output/
 ```
 PKM/
  ├── main.py # Main GUI application
- ├── pyproject.toml # Project configuration and dependencies
+ ├── pixi.toml # Project configuration and dependencies
  ├── README.md # Project documentation (this file)
  ├── scripts/ # Tool scripts directory
  │ ├── __init__.py # Makes scripts a Python package
@@ -173,22 +172,22 @@ PKM/
 
 Install development dependencies:
 ```bash
-uv sync --group dev
+pixi install
 ```
 
 Run tests:
 ```bash
-uv run pytest
+pixi run pytest
 ```
 
 Format code:
 ```bash
-uv run black .
+pixi run black .
 ```
 
 Check code style:
 ```bash
-uv run flake8
+pixi run flake8
 ```
 
 ## Future Ideas for Tools

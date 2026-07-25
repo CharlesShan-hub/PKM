@@ -207,11 +207,11 @@ def replace_image_references(input_dir, output_dir, url_to_filename):
                 new_content = img_pattern.sub(f'![{local_name}]({clean_relative_path}/{local_name})', new_content)
                 
                 # 替换Markdown图片语法
-                md_pattern = re.compile(fr'!\\[[^\\]]*\\]\\({re.escape(url)}\\)')
+                md_pattern = re.compile(fr'!\[[^\]]*\]\({re.escape(url)}\)')
                 new_content = md_pattern.sub(f'![{local_name}]({clean_relative_path}/{local_name})', new_content)
                 
                 # 替换带标题的Markdown图片
-                md_title_pattern = re.compile(fr'!\\[[^\\]]*\\]\\({re.escape(url)}\\s+"[^"]+"\\)')
+                md_title_pattern = re.compile(fr'!\[[^\]]*\]\({re.escape(url)}\s+"[^"]+"\)')
                 new_content = md_title_pattern.sub(f'![{local_name}]({clean_relative_path}/{local_name})', new_content)
             
             if new_content != content:

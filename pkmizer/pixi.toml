@@ -1,0 +1,19 @@
+[workspace]
+name = "pkmizer"
+version = "0.1.0"
+description = "PKM Tools - GUI tool collection for Personal Knowledge Map"
+channels = ["conda-forge"]
+platforms = ["osx-arm64"]
+
+[tasks]
+run = "python main.py"
+dev = { cmd = "python main.py", depends-on = ["postinstall"] }
+postinstall = "python -c 'print(\"Dependencies ready\")'"
+
+[dependencies]
+python = ">=3.8"
+
+[pypi-dependencies]
+PySide6 = ">=6.5.0"
+chardet = ">=5.2.0"
+requests = "*"
