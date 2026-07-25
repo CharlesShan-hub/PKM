@@ -37,7 +37,7 @@ All ASN.1 type and value assignments are required to appear within a module, sta
 
 The example we gave in figure 13 had one top-level type ("Order-for-stock"), and a number of supporting types, most of which we left incomplete. We will still leave the supporting types incomplete (and, indeed, will use three lines of four dots for the body of all the types to avoid repetition), but will now otherwise turn the example in Figure 我们在图 13 中给出的例子包含一个顶层类型（“Order-for-stock”），以及若干辅助类型。这些辅助类型我们大都未详细描述。我们仍会让辅助类型保持不完整状态（实际上，为了避免重复，我们会用三行四个点来表示所有类型的主体），但现在我们将继续展示图例中的例子。
 
-```txt
+```asn1txt
 Wineco-ordering-protocol
 {joint-iso-itu-t internationalRA(23) set(42) set-vendors(9)
 wineco(43) modules(2) ordering(1)}
@@ -345,7 +345,7 @@ Pre-1994 (only) we add macro names, and post-1994 we add names of information ob
 
 An exports statement is relatively simple, and is illustrated in figure 19, where we have taken our type definitions for "OutletType" and "Address", put them into a module of commonly used types, and exported them, that is to say, made them available for use in another module. 导出声明相对简单，如图 19 所示。我们在其中将“OutletType”和“Address”这两个类型定义放入一个通用类型模块中，从而将其导出，即让其他模块可以访问这些类型。
 
-```txt
+```asn1txt
 Wineco-common-types
 { joint-iso-itu-t internationalRA(23) set(42) set-vendors(9)
 wineco(43) modules(2) common(3)}
@@ -383,7 +383,7 @@ has the semantics "nothing is available for import by another module". 它的语
 
 Next we are going to assume that the "Security-Type" which we first used in Figure 13 is being imported from the Secure Electronic Transactions (SET) specification (a totally separate publication), and will be used in our "Wineco-common-types" module but also in our other modules. We import this for use in the "Wineco-common-types" module, but also export it again to make the imports clauses of our other modules simpler (they merely need to import from "Wineco-common-types"). This "relaying" of type definitions is legal. 接下来，我们将假设在图 13 中首次使用的“Security-Type”类型是从安全电子交易（SET）规范中导入的（这是一个完全独立的规范）。该类型将被用于我们的“Wineco-common-types”模块，同时也会应用于其他模块。我们导入这个类型是为了在“Wineco-common-types”模块中使用，但也会再次导出它，以便其他模块在导入时只需从“Wineco-common-types”模块中导入该类型即可。这种类型定义的“传递”方式是完全合法的。
 
-```txt
+```asn1txt
 Wineco-common-types
 { joint-iso-itu-t internationalRA(23) set(42) set-vendors(9)
     wineco(43) modules(2) common(3)}

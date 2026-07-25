@@ -472,7 +472,7 @@ identifier-of-a-choice-alternative < Type-notation-for-a-CHOICE
 
 For example, given: 例如，给定以下条件：
 
-```txt
+```asn1
 Example-choice ::= CHOICE
 {alt1 Type1,
 alt2 Type2,
@@ -503,7 +503,7 @@ What follows is described in relation to "SEQUENCE", but applies equally to "SET
 
 Suppose we have a collection of elements (identifiers and type-notation) that we want to include in quite a few of the sequence types in our application specification. Clearly we do not want to write them out several times, for all the obvious reasons. We could, of course, define a type: 假设我们有一些元素（标识符和类型标记），这些元素需要在我们的应用程序规范中的多个序列类型中引用。显然，由于种种显而易见的原因，我们不想多次书写这些元素。当然，我们可以定义一个类型来容纳这些元素。
 
-```txt
+```asn1
 Common-elements ::= SEQUENCE
 {element1 Type1,
 element2 Type2,

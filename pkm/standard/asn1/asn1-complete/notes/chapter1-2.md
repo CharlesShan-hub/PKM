@@ -47,42 +47,51 @@ Refer to figure 13 constantly! Note that the lines of four dots are not part of 
 
 请不断参考图 13！请注意，那些由四个点组成的线条并不属于 ASN.1 语法的一部分——它们仅仅表示我尚未完成那部分的规范编写工作。
 
-```txt
-Order-for-stock ::= SEQUENCE
-{order-no INTEGER,
-name-address BranchIdentification,
-details SEQUENCE OF
-SEQUENCE
-{item OBJECT IDENTIFIER,
-cases INTEGER},
-urgency ENUMERATED
-{tomorrow(0),
-three-day(1),
-week(2)} DEFAULT week,
-authenticator Security-Type}
+```asn1
+Order-for-stock ::= SEQUENCE {
+    order-no      INTEGER,
+    name-address  BranchIdentification,
+    details       SEQUENCE OF SEQUENCE {
+        item   OBJECT IDENTIFIER,
+        cases  INTEGER
+    },
+    urgency       ENUMERATED {
+        tomorrow  (0),
+        three-day (1),
+        week      (2)
+    } DEFAULT week,
+    authenticator Security-Type
+}
+
 .....
+
+BranchIdentification ::= SET {
+    unique-id OBJECT IDENTIFIER,
+    details   CHOICE {
+        uk        [0] SEQUENCE {
+            name     VisibleString,
+            type     OutletType,
+            location Address
+        },
+        overseas  [1] SEQUENCE {
+            name     UTF8String,
+            type     OutletType,
+            location Address
+        },
+        warehouse [2] CHOICE {
+            northern  [0] NULL,
+            southern  [1] NULL
+        }
+    }
+}
+
 .....
-BranchIdentification ::= SET
-{unique-id OBJECT IDENTIFIER,
-details CHOICE
-{uk [0] SEQUENCE
-{name VisibleString,
-type OutletType,
-location Address},
-overseas [1] SEQUENCE
-{name UTF8String,
-type OutletType,
-location Address},
-warehouse [2] CHOICE
-{northern [0] NULL,
-southern [1] NULL} }
-...
-.....
-....
-Security-Type ::= SET
-{ ....
-.....
-.... } 
+
+Security-Type ::= SET {
+    .....
+    .....
+    .....
+}
 ```
 
 ### 2.1 The Top-level Type 2.1 最高级别的类型
@@ -440,7 +449,7 @@ As a matter of style, everybody puts a new line between each type or value assig
 
 从格式上讲，大家通常会在每种类型或值赋值语句之间，以及每个集合或序列的元素与选择项之间，都加上一条新的行。图 13 所示的格式是作者所偏爱的格式，因为这种方式能很好地体现圆括号的配对关系。不过，另一种更常见的格式是在"SEQUENCE"这个词之后，紧接着在同一行中加上开圆括号，例如：
 
-```
+```asn1
 SEQUENCE { items OBJECT IDENTIFIER, cases INTEGER }
 ```
 
@@ -454,7 +463,7 @@ On a slightly more serious vein, there was pre-1994 value notation for the "CHOI
 
 稍微严肃一点来说，在 1994 年之前，对于"BranchIdentification"类型的"CHOICE"类型，存在一种数值表示方式，这种方式可以允许：
 
-```
+```asn1
 details warehouse northern value-ref
 ```
 
@@ -468,7 +477,7 @@ In this case, it cannot determine where the first assignment ends - after "jack"
 
 在这种情况之下，就无法确定第一个赋值点应该位于"jack"之后、还是"jill"之后，或者"joseph"之后了——这取决于"Fred"的实际类型（该类型会在后面定义）。这确实会给计算机带来麻烦！一些早期的工具供应商无法应对这种情况（尽管这种情况可能根本就没有发生过），因此他们要求在使用 ASN.1 时，将"分号"作为语句分隔符使用。直到今天，如果你使用这些工具，就必须在所有类型赋值之间插入分号。不过，"OSS ASN.1 工具"套件并不要求这样做。虽然人们反对在 ASN.1 规范中插入分号的做法，但为了帮助工具供应商，人们还是将"冒号"引入到"CHOICE"的值表示法中。因此，自 1994 年之后，上述值表示法的书写方式就变成了：
 
-```
+```asn1
 details : warehouse : northern : value-ref
 ```
 
