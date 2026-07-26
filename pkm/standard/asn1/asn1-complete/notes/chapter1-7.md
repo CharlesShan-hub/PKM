@@ -1,6 +1,7 @@
-# Chapter 7 Management and design issues for ASN.1 specification and implementation 第七章 ASN.1 规范与实现的管理与设计问题
+# Chapter 7 Management and design issues for ASN.1 specification and implementation 
+第七章 ASN.1 规范与实现的管理与设计问题
 
-# (Or: Things you need to think about!) （或者：你需要思考的一些事情！）
+(Or: Things you need to think about!) （或者：你需要思考的一些事情！）
 
 Summary: 总结：
 

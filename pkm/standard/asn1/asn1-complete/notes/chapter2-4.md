@@ -1,6 +1,7 @@
-# Chapter 4 Tagging 第四章 标签标注
+# Chapter 4 Tagging 
+第四章 标签标注
 
-# (Or: Control it or forget it!) （或者：控制它，或者就放弃吧！）
+(Or: Control it or forget it!) （或者：控制它，或者就放弃吧！）
 
 Summary: Tagging was an important (and difficult!) part of the ASN.1 notation pre-1994. Its importance (and the need to understand it) is much less now, due to three factors: 总结：在 1994 年之前，标签标注是 ASN.1 表示法中的一个重要环节（而且相当复杂）。不过，由于三个原因，现在这一环节的重要性已经大大降低，人们不需要再深入了解它了。
 

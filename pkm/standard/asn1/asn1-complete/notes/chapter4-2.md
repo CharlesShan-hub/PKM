@@ -1,6 +1,7 @@
-# Chapter 2 Applications of ASN.1 第 2 章 ASN.1 的应用
+# Chapter 2 Applications of ASN.1 
+第 2 章 ASN.1 的应用
 
-## (Or: Are you using software that does ASN.1 encodings?) （或者：您使用的是可以进行 ASN.1 编码处理的软件吗？）
+(Or: Are you using software that does ASN.1 encodings?) （或者：您使用的是可以进行 ASN.1 编码处理的软件吗？）
 
 ## Summary: 总结：
 

@@ -1,4 +1,5 @@
-# Chapter 4 The basic data types and construction mechanisms - closure 第四章 基本数据类型与构造机制——闭包
+# Chapter 4 The basic data types and construction mechanisms - closure 
+第四章 基本数据类型与构造机制——闭包
 
 ## (Or: You need bricks - of various shapes and sizes!) （或者：你需要各种形状和大小的砖块！）
 
@@ -48,7 +49,7 @@ Figure 22 has been carefully constructed to complete your introduction to all th
 
 Have a good look at Figure 22. It should by now be fairly easy for you to understand its meaning. If you have no problems with it, you can probably skip the rest of this chapter, unless you want to understand ASN.1 well-enough to write a book, or to deliver a course, on it! (We included winecoitems in Figure 22 to reduce the verbosity of the object identifier values in figure 23 later!) 请仔细查看图 22。现在你应该能够比较容易理解它的含义了。如果你没有疑问，那么你可以跳过这一章的其余内容，除非你真的想深入了解 ASN.1，以至于愿意就此撰写一本书或开设一门课程！（我们在图 22 中加入了 winecoitems 元素，这样就能减少图 23 中对象标识符值的复杂性了！）
 
-```txt
+```asn1
 Return-of-sales ::= SEQUENCE
 {version BIT STRING
 {version1 (0), version2 (1)} DEFAULT {version1},

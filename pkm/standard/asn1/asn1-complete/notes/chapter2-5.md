@@ -1,6 +1,7 @@
-# Chapter 5 Extensibility, Exceptions, and Version Brackets 第五章 扩展性、异常处理以及版本标签
+# Chapter 5 Extensibility, Exceptions, and Version Brackets 
+第五章 扩展性、异常处理以及版本标签
 
-# (Or: There is always more to learn!) （或者可以说：总是有更多的东西可以学习！）
+(Or: There is always more to learn!) （或者可以说：总是有更多的东西可以学习！）
 
 ## Summary: This chapter: 摘要：这一章的内容是：
 

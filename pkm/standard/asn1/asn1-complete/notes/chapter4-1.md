@@ -1,6 +1,7 @@
-# Chapter 1 The development of ASN.1 第 1 章 ASN.1 的发展
+# Chapter 1 The development of ASN.1 
+第 1 章 ASN.1 的发展
 
-# (Or: The ramblings of an old man!) （或者：一个老人的絮絮叨叨！）
+(Or: The ramblings of an old man!) （或者：一个老人的絮絮叨叨！）
 
 ## Summary: 总结：
 

@@ -1,6 +1,7 @@
-# Chapter 3 Subtyping 第三章 亚型分类
+# Chapter 3 Subtyping 
+第三章 亚型分类
 
-# (Or: Tighten up your data types!) （或者：请仔细考虑一下你的数据类型吧！）
+(Or: Tighten up your data types!) （或者：请仔细考虑一下你的数据类型吧！）
 
 Summary: This chapter describes the ASN.1 subtype notation that allows the precise definition of the set (subset) of values that you wish to allow for a type. You can, for example, specify: 摘要：本章介绍了 ASN.1 子类型表示法，它使得我们可以精确地定义某个类型所允许的值集（或子集）。例如，我们可以这样进行定义：
 

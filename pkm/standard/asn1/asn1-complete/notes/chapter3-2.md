@@ -1,6 +1,7 @@
-# Chapter 2 The Basic Encoding Rules 第二章 基本编码规则
+# Chapter 2 The Basic Encoding Rules 
+第二章 基本编码规则
 
-## (Or: Encodings for the 80s - simple, robust, but inefficient!) （或者：80 年代的编码方式——简单、可靠，但效率较低！）
+(Or: Encodings for the 80s - simple, robust, but inefficient!) （或者：80 年代的编码方式——简单、可靠，但效率较低！）
 
 Summary: This chapter provides details of the Basic Encoding Rules. It describes: 摘要：本章详细介绍了基本编码规则的相关内容。具体内容包括：
 

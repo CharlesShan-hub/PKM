@@ -1,4 +1,5 @@
-# ASN.1 Complete ASN.1 完整规范
+# ASN.1 Complete 
+ASN.1 完整规范
 
 by Prof John Larmouth 
 作者：约翰·拉尔梅斯教授

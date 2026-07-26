@@ -1,6 +1,7 @@
-# Chapter 6 Information Object Classes, Constraints, and Parameterization 第六章 信息对象类、约束条件与参数化
+# Chapter 6 Information Object Classes, Constraints, and Parameterization 
+第六章 信息对象类、约束条件与参数化
 
-## (Or: Completing the incomplete - with precision) （或者：完成那些不完整的事物——以精确的方式）
+(Or: Completing the incomplete - with precision) （或者：完成那些不完整的事物——以精确的方式）
 
 ## Summary: 总结：
 

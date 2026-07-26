@@ -1,6 +1,7 @@
-# Chapter 1 Introduction to encoding rules 第一章 编码规则介绍
+# Chapter 1 Introduction to encoding rules 
+第一章 编码规则介绍
 
-## (Or: What no-one needs to know!) （或者：那些没人需要知道的事情！）
+(Or: What no-one needs to know!) （或者：那些没人需要知道的事情！）
 
 Summary: This first chapter of Section 3: 摘要：这是第 3 部分的第一个章节。
 

@@ -1,4 +1,5 @@
-# 1 The Wineco protocol scenario 1. Wineco 协议场景
+# 1 The Wineco protocol scenario 
+1. Wineco 协议场景
 
 Many of the examples in this book are based on the development of the "Wineco protocol". This is a fictitious protocol, used simply to illustrate various parts of ASN.1. The first parts of it appear in Figure 13 of Section 1 Chapter 2, and a full copy of the final protocol is given in Appendix 2 below. 本书中的许多示例都是基于“Wineco 协议”的开发的。这实际上是一个虚构的协议，用于说明 ASN.1 中的各种组成部分。该协议的初始部分出现在第 2 章第 1 节的图 13 中，而完整的协议文本则可以在下面的附录 2 中找到。
 
@@ -16,7 +17,8 @@ The next use of our example is in Chapter 3 of Section II, when we decide to def
 
 The final major extension is when we decide (in Section II Chapter 6 to change over to use of a Remote Operations metaphor, with four defined operations. This leads to two further modules - one to define the Remote Operations PDU (which in the real world would have been imported from the Remote Operations Service (ROSE) Standard, and one to define the Wineco operation Information Objects. 最后一个重要的扩展环节是，我们在第六章的第二部分中决定采用“远程操作”这一隐喻，并定义出四种具体的操作。这一决策还导致了两个新的模块的创建——一个用于定义远程操作的数据单元（在实际应用中，该数据单元通常来自远程操作服务标准），另一个则用于定义 Wineco 操作的信息对象。
 
-# 2 The full protocol for Wineco 2. Wineco 的完整协议说明
+# 2 The full protocol for Wineco 
+2. Wineco 的完整协议说明
 
 This appendix gives the final version of the specification of the Wineco protocol in a form that is syntactically correct and complete. 这个附录提供了 Wineco 协议规范的最终版本，其语法正确且内容完整。
 
@@ -195,7 +197,8 @@ country UTF8String}
 END 
 ```
 
-# 3 Compiler output for C support for the Wineco protocol 3. 编译器输出结果：C 语言支持 Wineco 协议
+# 3 Compiler output for C support for the Wineco protocol 
+3. 编译器输出结果：C 语言支持 Wineco 协议
 
 This appendix contains the text produced by the "OSS ASN.1 Tools" product to provide support for a C implementation of "Return-of-sales" and "Report-item" in our Wineco protocol. (Some of this text is generated just for wineco, some is generic definitions obtained from an include file, for example "GeneralizedTime" and "ossBoolean"): 这个附录包含了“OSS ASN.1 工具”产品所生成的文本。这些文本旨在为 Wineco 协议中的“退货信息”和“报告项”功能提供 C 语言实现的支持。（其中一些文本是专门为 Wineco 设计的，另一些则来自包含文件中的通用定义，例如“GeneralizedTime”和“ossBoolean”）。
 
@@ -898,7 +901,8 @@ public void SetAverage_stock_level(double average_stock_level)
 } // End class definition for Report_item 
 ```
 
-## 5 ASN.1 resources via the Web 通过网络获取 5 个 ASN.1 资源。
+## 5 ASN.1 resources via the Web 
+通过网络获取 5 个 ASN.1 资源。
 
 This appendix provides a single link to an OSS Nokalva site that contains both links to other Web resources and extensions of this book. In particular, it contains: 这个附录提供了一个链接到 OSS Nokalva 网站的途径，该网站包含对其他网络资源的链接以及本书内容的扩展内容。具体来说，它包含以下内容：
 

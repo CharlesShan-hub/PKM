@@ -1,4 +1,5 @@
-# Chapter 4 Other ASN.1-related encoding rules 第四章 其他与 ASN.1 相关的编码规则
+# Chapter 4 Other ASN.1-related encoding rules 
+第四章 其他与 ASN.1 相关的编码规则
 
 (Or: So you have special requirements?) （或者：那么您有一些特殊的要求吗？）
 

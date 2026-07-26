@@ -1,6 +1,7 @@
-# Chapter 5 Reference to more complex areas 第五章 关于更复杂区域的参考内容
+# Chapter 5 Reference to more complex areas 
+第五章 关于更复杂区域的参考内容
 
-# (Or: There is always more to learn!) （或者可以说：总是有更多的东西可以学习！）
+(Or: There is always more to learn!) （或者可以说：总是有更多的东西可以学习！）
 
 ## Summary: 总结：
 

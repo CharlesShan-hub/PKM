@@ -1,6 +1,7 @@
-# Chapter 7 More on classes, constraints, and parameterization 第七章 关于类、约束条件以及参数化的更多内容
+# Chapter 7 More on classes, constraints, and parameterization 
+第七章 关于类、约束条件以及参数化的更多内容
 
-# (Or: More than you ever wanted to know!) （或者：比你想知道的一切还要多！）
+(Or: More than you ever wanted to know!) （或者：比你想知道的一切还要多！）
 
 Summary: 总结：
 

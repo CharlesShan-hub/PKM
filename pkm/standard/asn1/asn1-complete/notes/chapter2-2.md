@@ -1,6 +1,7 @@
-# Chapter 2 The character string types 第二章 字符串类型
+# Chapter 2 The character string types 
+第二章 字符串类型
 
-## (Or: Overcoming Genesis Chapter 11!) （或者：克服创世记第 11 章的困难！）
+(Or: Overcoming Genesis Chapter 11!) （或者：克服创世记第 11 章的困难！）
 
 Summary: This chapter discusses the complete set of character string types: 摘要：本章讨论了所有字符串类型的完整集合：
 

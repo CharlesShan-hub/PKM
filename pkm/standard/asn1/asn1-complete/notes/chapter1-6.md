@@ -1,6 +1,7 @@
-# Chapter 6 Using an ASN.1 compiler 第六章 使用 ASN 编译器
+# Chapter 6 Using an ASN.1 compiler 
+第六章 使用 ASN 编译器
 
-## (Or: What it is all about - producing the bits on the line!) （或者：到底是怎么回事——就是在生产线上下制造这些零件而已！）
+(Or: What it is all about - producing the bits on the line!) （或者：到底是怎么回事——就是在生产线上下制造这些零件而已！）
 
 ## Summary: 总结：
 

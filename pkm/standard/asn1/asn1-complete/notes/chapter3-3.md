@@ -1,5 +1,6 @@
 
-# Chapter 3 The Packed Encoding Rules 第三章 打包编码规则
+# Chapter 3 The Packed Encoding Rules 
+第三章 打包编码规则
 
 (Or: Encodings for the next millennium - as good as you'll get – for now!) （或者：为下一个千年准备的编码方案——目前来看，这已经算是相当不错的了……）
 

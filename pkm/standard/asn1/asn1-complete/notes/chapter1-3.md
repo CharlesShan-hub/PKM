@@ -1,4 +1,5 @@
-# Chapter 3 Structuring an ASN.1 specification 第三章 构建 ASN.1 规范的结构
+# Chapter 3 Structuring an ASN.1 specification 
+第三章 构建 ASN.1 规范的结构
 
 (Or: The walls, floors, door-ways and lifts, with some environmental considerations!) （或者：墙壁、地板、门厅以及电梯等建筑构件，以及一些相关的环境考虑因素！）
 
@@ -37,7 +38,7 @@ All ASN.1 type and value assignments are required to appear within a module, sta
 
 The example we gave in figure 13 had one top-level type ("Order-for-stock"), and a number of supporting types, most of which we left incomplete. We will still leave the supporting types incomplete (and, indeed, will use three lines of four dots for the body of all the types to avoid repetition), but will now otherwise turn the example in Figure 我们在图 13 中给出的例子包含一个顶层类型（“Order-for-stock”），以及若干辅助类型。这些辅助类型我们大都未详细描述。我们仍会让辅助类型保持不完整状态（实际上，为了避免重复，我们会用三行四个点来表示所有类型的主体），但现在我们将继续展示图例中的例子。
 
-```asn1txt
+```asn1
 Wineco-ordering-protocol
 {joint-iso-itu-t internationalRA(23) set(42) set-vendors(9)
 wineco(43) modules(2) ordering(1)}

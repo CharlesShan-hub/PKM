@@ -1,4 +1,5 @@
-# Chapter 1 The object identifier type 第一章 对象标识符类型
+# Chapter 1 The object identifier type 
+第一章 对象标识符类型
 
 (Or: What's in a name?) （或者：名字有什么意义呢？）
 
