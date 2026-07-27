@@ -24,6 +24,8 @@ describes common problems that arise in designing specification mechanisms and n
 
 ## 1 What is a protocol? 什么是协议？
 
+> 这一部分定义了协议：一组定义明确的消息（比特或八位组）及其语义，以及发送规则。协议往往属于“协议栈”，通过分层实现复用和扩展。以TCP/IP为例，底层提供“载体服务”，上层填入具体内容，从而实现不同协议间的协同工作。
+
 A computer protocol can be defined as:
 计算机协议可以定义为：一种用于在不同计算机之间交换数据的方式。
 
@@ -64,6 +66,8 @@ When multiple different protocols can occupy a hole in the layer below (or provi
 ![6c135ef9542a5bc8a4e511bda26875e59ee0b7cbb00a63c374f3b54af0a76015.jpg](../assets/6c135ef9542a5bc8a4e511bda26875e59ee0b7cbb00a63c374f3b54af0a76015.jpg)
 
 ## 2 Protocol specification - some basic concepts 2. 协议规范——一些基本概念
+
+> 这一部分介绍了协议规范的几个基本概念：基于字符的规范与基于二进制的规范（后者是ASN.1采用的方法）；分层与协议“空洞”的概念；可扩展性的重要性；抽象语法与转移语法的区别；以及接口定义语言（IDL）的简要对比。
 
 Protocols can be (and historically have been) specified in many ways. One fundamental distinction is between character-based specification versus binary-based specification.
 协议可以通过多种方式来指定。其中一个基本的区别在于基于字符的指定与基于二进制数的指定。
@@ -260,14 +264,14 @@ The equivalent definition in ASN.1 appears below.
 In ASN.1 we also have the concept of values of basic types or of more complex structures. These are often called abstract values (see Figure 8 again), to emphasise that we are considering them without any concern for how they might be represented in a computer or on a communications line. For convenience, these abstract values are grouped together into types. So for example, we have the ASN.1 type notation
 在 ASN.1 中，我们还定义了基本类型的值以及更复杂的结构值。这些通常被称为抽象值（请再次参考图 8），目的是强调我们是在不考虑这些值在计算机或通信线路上的表示方式的情况下来考虑它们的。为了方便起见，这些抽象值被归类到不同的类型中。例如，我们有 ASN.1 类型表示法
 
-```
+```asn1
 INTEGER
 ```
 
 that references the integer type, with abstract values from (more or less) minus infinity to plus infinity. We also have the ASN.1 type notation
 它指的是整数类型，其抽象值范围是从负无穷大到正无穷大。我们还使用了 ASN.1 类型的表示方式。
 
-```
+```asn1
 BOOLEAN
 ```
 
@@ -277,9 +281,12 @@ that references the boolean type with just two abstract values "TRUE" and "FALSE
 We can define a type of our own:
 我们可以定义一种属于自己的类型：
 
-$$
-\begin{array}{r l} \text {My - type} & : := \text {SEQUENCE} \\ & \left\{\text {first - item} \quad \text {INTEGER}, \right. \\ & \left. \text {second - item} \quad \text {BOOLEAN} \right\} \end{array}
-$$
+```asn1
+My-type ::= SEQUENCE {
+    first-item  INTEGER,
+    second-item BOOLEAN
+}
+```
 
 each of whose abstract values is a pair of values, one "integer" and one "boolean". The important point, however, is that for many purposes, we don't care about (or discuss) any internal structure of the values in "My-type". Just like "integer" and "boolean", it is simply a convenient means of referencing a set of abstract values.
 这些对象的每个抽象值都由一个“整数”和一个“布尔值”组成。不过，重要的是，对于许多应用场景来说，我们并不关心“My-type”中这些值的内部结构。就像“整数”和“布尔值”一样，它们只是对一组抽象值进行引用的一种便捷方式而已。
@@ -289,7 +296,7 @@ each of whose abstract values is a pair of values, one "integer" and one "boolea
 So (to summarise the above discussion) for any type that can be defined using ASN.1, we say that it contains (represents) a set of abstract values. (See Figure 8 again).
 因此（总结上述讨论），对于任何可以用 ASN 来定义的类型，我们都可以说它包含了一组抽象的值。（请再次参考图 8）。
 
-## But now for the important part: 但现在是关键的部分：
+**But now for the important part**: 但现在是关键的部分：
 
 When any (correct!) set of encoding rules are applied to the abstract values in any given ASN.1 type, they will produce bit-patterns (actually octet-strings) for each value such that any given octet string corresponds to precisely one abstract value.
 当将任何一组正确的编码规则应用于任何给定的 ASN.1 类型中的抽象值时，都会为每个值产生一个位模式（实际上是一个八位组字符串）。这样一来，任何一个八位组字符串都唯一对应一个抽象值。

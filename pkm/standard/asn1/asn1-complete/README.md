@@ -4,7 +4,7 @@
 本章是对《ASN.1 Complete》的原文整理与阅读解析。其中assets部分包含了原书电子版和对应的markdown解析。notes部分是逐章的中英文对照原文。
 
 * Contents, Foreword & Introduction
-    * [chapter0](notes/chapter0.md)
+    * [chapter0](notes/chapter0.md)，[chapter0-summary](notes/chapter0-summary.md)
 * SECTION I ASN.1 OVERVIEW
     * [chapter1-1](notes/chapter1-1.md)
     * [chapter1-2](notes/chapter1-2.md)

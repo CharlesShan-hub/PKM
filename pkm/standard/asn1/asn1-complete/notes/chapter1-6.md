@@ -65,32 +65,32 @@ The use of a library of encode routines and of a parse tree are discussed furthe
 
 As an illustration of what ASN.1-compiler-tools produce, we will use a part of our wineco specification, that for "Return-of-sales", which references "Report-item". These were first shown in Figure 22 (part 2) in Chapter 4 of this section, and are repeated here without the comments. The C and Java structures and classes produced by the "OSS ASN.1 Tools" product (a good example of an ASN.1-compiler-tool product) are given in Appendices 3 and 4, and those familiar with C and Java may wish to compare these structures and classes with figure 28. (The "OSS ASN.1 Tools" product also provides mappings to C++, but we do not illustrate that in this book – it is too big already!) 作为展示 ASN.1 编译器工具所生成的结果的一个例子，我们将使用 wineco 规范中的一部分内容。这部分内容涉及到“销售退回”功能，而“销售退回”功能又依赖于“报告项目”。这些结构在本书第 4 章的第 2 部分中有描述，这里直接呈现出来，没有添加注释。由“OSS ASN.1 工具”生成的 C 语言和 Java 语言的结构与类在附录 3 和附录 4 中有详细说明。对于熟悉 C 语言和 Java 编程的人来说，或许可以将这些结构与图 28 进行比较。（“OSS ASN.1 工具”还提供了与 C++语言的映射关系，但本书并未对此进行展示——因为内容太多，无法一一介绍。）
 
-```txt
-Return-of-sales ::= SEQUENCE
-{version BIT STRING
-{version1 (0), version2 (1)} DEFAULT {version1},
-no-of-days-reported-on INTEGER
-{week(7), month (28), maximum (56)} (1..56)
-DEFAULT week,
-time-and-date-of-report CHOICE
-{two-digit-year UTCTime,
-four-digit-year GeneralizedTime},
-reason-for-delay ENUMERATED
-{computer-failure, network-failure, other} OPTIONAL,
-additional-information
-SEQUENCE OF PrintableString OPTIONAL,
-sales-data SET OF Report-item,
-... ! PrintableString : "See wineco manual chapter 15" }
-Report-item ::= SEQUENCE
-{item OBJECT IDENTIFIER,
-item-description ObjectDescriptor OPTIONAL,
-bar-code-data OCTET STRING,
-ran-out-of-stock BOOLEAN DEFAULT FALSE,
-min-stock-level REAL,
-max-stock-level REAL,
-average-stock-level REAL}
-Figure 28 - An example to be implemented 
+```asn1
+Return-of-sales ::= SEQUENCE {
+    version                 BIT STRING {version1(0), version2(1)} DEFAULT {version1},
+    no-of-days-reported-on  INTEGER {week(7), month(28), maximum(56)} (1..56) DEFAULT week,
+    time-and-date-of-report  CHOICE {
+        two-digit-year     UTCTime,
+        four-digit-year    GeneralizedTime
+    },
+    reason-for-delay        ENUMERATED {computer-failure, network-failure, other} OPTIONAL,
+    additional-information  SEQUENCE OF PrintableString OPTIONAL,
+    sales-data              SET OF Report-item,
+    ...
+    ! PrintableString : "See wineco manual chapter 15"
+}
+
+Report-item ::= SEQUENCE {
+    item                OBJECT IDENTIFIER,
+    item-description    ObjectDescriptor OPTIONAL,
+    bar-code-data       OCTET STRING,
+    ran-out-of-stock    BOOLEAN DEFAULT FALSE,
+    min-stock-level     REAL,
+    max-stock-level     REAL,
+    average-stock-level REAL
+}
 ```
+Figure 28 - An example to be implemented
 
 ## 3 The overall features of an ASN.1-compiler-tool 3. ASN.1 编译工具的整体特性
 
@@ -152,6 +152,7 @@ Clear buffer_x, buffer_y
 
 Figure 29 - Pseucode to encode "Report-item" 
 ```
+
 
 Here we assume we have routines available in a library we have purchased that will take a value of any given ASN.1 primitive type (using some datatype in the language capable of supporting that primitive type) and returning an encoding in a buffer. Finally, we call another library routine that will put all the buffers together (note the copying that is involved here) and will generate the "T" and the "L" for a SEQUENCE (assuming we are using BER), returning the final coding in buffer\_y. 在这里，我们假设有一个我们购买的库中的函数可用，该函数能够接受任何给定的 ASN.1 基本类型的值（使用语言中能够支持该基本类型的数据类型），并返回一个编码结果到缓冲区中。最后，我们调用另一个库函数，它将把所有缓冲区中的编码结果合并起来（注意这里涉及到数据的复制操作），并生成 SEQUENCE 的“T”和“L”部分（假设我们使用的是 BER 编码方式），最终将完整的编码结果返回到 buffer\_y 中。
 
