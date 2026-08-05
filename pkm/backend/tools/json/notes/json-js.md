@@ -160,3 +160,37 @@ readyState：
 * 4:请求已完成，且相应已就绪
 
 status：是响应码
+
+---
+
+> 下面是老杜网课内容
+
+### JavaScript 对象转换为 JSON
+
+```javascript
+const myObject = {
+  name: "张三",
+  age: 30,
+  city: "北京"
+};
+
+// 将对象转换为 JSON 字符串
+const jsonString = JSON.stringify(myObject);
+
+console.log(jsonString);
+// 输出: {"name":"张三","age":30,"city":"北京"}
+```
+
+### JSON 转换为 JavaScript 对象
+
+```javascript
+const jsonString = '{"name":"张三","age":30,"city":"北京"}';
+
+// 将 JSON 字符串转换为 JavaScript 对象
+const jsObject = JSON.parse(jsonString);
+
+console.log(jsObject.name); // 输出: "张三"
+console.log(jsObject.age);  // 输出: 30
+```
+
+---
