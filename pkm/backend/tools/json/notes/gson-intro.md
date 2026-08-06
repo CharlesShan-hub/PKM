@@ -1,10 +1,21 @@
-## Part 1：快速上手
+# Part 1：快速上手
 
 > 目标：5 分钟跑通 Gson 基本流程，知道怎么用，不深入原理。
+> 
+> 🏰 背景故事：下面所有例子都发生在 **"查尔斯动物园"** 里：
+>
+> - **动物（Animal）**：动物园的居民 —— 后续所有例子都会用到它
+> - **动物园（Zoo）**：管理动物的场所 —— 演示 `List`、`Map` 的集合场景
+> - **员工（Employee）**：动物园的员工 —— 演示字段重命名
+> - **经理（Manager）**：动物园的管理层 —— 演示 `transient`
+> - **老板（Boss）**：动物园的老板和会计 —— 演示 `Expose`
+> - **游客（Tourist）**：来参观动物园的人 —— 演示日期格式化
+>
+> 每个例子之间有关联，建议按顺序阅读。
 
 ---
 
-### 1.1 引入依赖
+## 引入依赖
 
 **Maven**：
 
@@ -24,96 +35,583 @@ implementation 'com.google.code.gson:gson:2.10.1'
 
 ---
 
-### 1.2 最简示例：对象 ↔ JSON
+## 场景：对象
+
+
+> 🐯 **背景**：1938年的一个春日，查尔斯动物园迎来了一位新居民 —— 一只名叫**汤姆**的猫。兽医打开登记簿，准备给它建档。此时档案还很简单，只有两个字段：名字和出生年份。
+
+💡 Gson 不强制要求 getter/setter，直接通过反射读取字段值。但**必须有默认构造器**（无参构造），否则反序列化会失败。
 
 ```java
-// 定义一个简单的 POJO
-public class User {
-    private String name;
-    private int age;
-    // 必须有默认构造器（无参构造）
-    // getter/setter 可省略，Gson 通过反射直接访问字段
+package top.charles;  
+  
+import lombok.AllArgsConstructor;  
+import lombok.NoArgsConstructor;  
+import lombok.ToString;  
+  
+// @Data // getter/setter 可省略，Gson 通过反射直接访问字段  
+@AllArgsConstructor  
+@NoArgsConstructor // 必须有默认构造器（无参构造）  
+@ToString  
+public class Animal {  
+    private String name;  
+    private int birthYear;  
 }
+```
 
-// 使用
+```java
+package top.charles;  
+  
+import com.google.gson.Gson;  
+import org.junit.Test;  
+  
+public class AnimalTest {  
+    Gson gson = new Gson();  
+    @Test  
+    public void test(){  
+        // 对象 → JSON        
+        Animal a1 = new Animal("Tom", 1938);  
+        String json = gson.toJson(a1);  
+        System.out.println(json); 
+        // {"name":"Tom","birthYear":1938}
+  
+        // JSON → 对象  
+        Animal a2 = gson.fromJson(json, Animal.class);  
+        System.out.println(a2); 
+        // Animal(name=Tom, birthYear=1938)
+    }  
+}
+```
+
+## 场景：集合与列表
+
+> 🐱🐭 **背景**：1940年，汤姆在动物园里认识了新朋友 —— 一只叫**杰瑞**的小老鼠。两年过去了，动物园的居民越来越多，兽医不能再一个个手动建档了，得用**列表**和**字典**来批量管理这些动物档案。
+
+💡 Gson 反序列化需要指定泛型，否则会退回到 `LinkedTreeMap`。这里记住：**凡是泛型类型（List、Map、自定义泛型类），必须用 `TypeToken` 包装**。
+
+ `List`类如何进行转换：
+ 
+```java
+@Test  
+public void testList(){  
+    // List -> JSON  
+    List<Animal> list = Arrays.asList(  
+            new Animal("Tom",1938),  
+            new Animal("Jerry", 1940)  
+    );    
+    String json = gson.toJson(list);  
+    System.out.println(json);  
+    // [{"name":"Tom","birthYear":1938},{"name":"Jerry","birthYear":1940}]  
+  
+    // JSON -> List    
+    List<Animal> list2 = gson.fromJson(json,  
+        new TypeToken<List<Animal>>(){}.getType()  
+    );    
+    System.out.println(list2);  
+    // [Animal(name=Tom, birthYear=1938), Animal(name=Jerry, birthYear=1940)]  
+}
+```
+
+`Map`类如何进行转换：
+
+```java
+@Test  
+public void testMap(){  
+    // Map -> JSON  
+    Map<String, Animal> zoo = new HashMap<>();  
+    zoo.put("cat", new Animal("Tom",8));  
+    zoo.put("mouse", new Animal("Jerry", 4));  
+    String json = gson.toJson(zoo);  
+    System.out.println(json);  
+    // {"mouse":{"name":"Jerry","age":4},"cat":{"name":"Tom","age":8}}  
+  
+    // JSON -> Map    
+    Map<String, Animal> zoo2 = gson.fromJson(json, 
+        new TypeToken<Map<String, Animal>>(){}.getType()
+    );  
+    System.out.println(zoo2);  
+    // {mouse=Animal(name=Jerry, age=4), cat=Animal(name=Tom, age=8)}  
+}
+```
+
+类型擦除错误示例：
+
+```java
+@Test  
+public void testListError() {  
+    String json = "[{\"name\":\"Tom\",\"age\":8},{\"name\":\"Jerry\",\"age\":4}]";  
+  
+    // ❌ 错误写法：直接传 List.class    
+    // List<Animal> list = gson.fromJson(json, List.class);  
+    List list = gson.fromJson(json, List.class);  
+  
+    System.out.println(list.getClass());  
+    // class java.util.ArrayList  
+  
+    System.out.println(list.get(0).getClass());  
+    // class com.google.gson.internal.LinkedTreeMap  
+    // ↑ 每个元素都是 LinkedTreeMap，不是 Animal！  
+  
+    // 如果尝试强转或当 Animal 用：  
+    // Animal a1 = list.get(0);// ❌ ClassCastException
+    // a1.getName();// ❌ 编译不报错，运行时报  
+}
+```
+
+对象中的字段包装好`List`或者`Map`可以简化反序列化的复杂度：
+
+```java
+package top.charles;  
+  
+import lombok.AllArgsConstructor;  
+import lombok.NoArgsConstructor;  
+import lombok.ToString;  
+  
+import java.util.List;  
+  
+public class Zoo {  
+    private List<Animal> animals;  
+}
+```
+
+```java
+package top.charles;
+
+import com.google.gson.Gson;
+import org.junit.Test;
+
+import java.util.Arrays;
+
+public class ZooTest {
+    Gson gson = new Gson();
+
+    @Test
+    public void test() {
+        // 对象 → JSON
+        Zoo z1 = new Zoo(Arrays.asList(
+                new Animal("Tom", 1940),
+                new Animal("Jerry", 1940))
+        );
+        String json = gson.toJson(z1);
+        System.out.println(json);
+        // {"animals":[{"name":"Tom","birthYear":1940},{"name":"Jerry","birthYear":1940}]}
+
+        // JSON → 对象
+        Zoo z2 = gson.fromJson(json, Zoo.class);
+        System.out.println(z2);
+        // Zoo(animals=[Animal(name=Tom, birthYear=1940), Animal(name=Jerry, birthYear=1940)])
+    }
+}
+```
+
+## 场景：null字段
+
+> 🐯 **背景**：动物园录入动物信息时，有些动物没有名字（比如刚出生的），`name` 可能是 `null`。我们需要决定：`null` 要不要写进 JSON？
+
+💡 Gson 序列化某字段为`null`，不会加入到json中，反序列化遇到json没有的字段默认填充`null`；如果json需要指定`null`，需要用`serializeNulls()`。
+
+```java
 Gson gson = new Gson();
+Gson gsonWithNull = new GsonBuilder()
+        .serializeNulls()
+        .create();
 
-// 对象 → JSON
-User user = new User("张三", 25);
-String json = gson.toJson(user);
-// 输出: {"name":"张三","age":25}
+@Test
+public void testNull(){
+    Animal a1 = new Animal(null, 1940);
+    String json1 = gson.toJson(a1);
+    System.out.println(json1);
+    // {"birthYear":1940} // name字段消失了
 
-// JSON → 对象
-User user2 = gson.fromJson(json, User.class);
-```
+    String json2 = gsonWithNull.toJson(a1);
+    System.out.println(json2);
+    // {"name":null,"birthYear":1940} // 保留了null
 
-> 💡 注意：Gson 不强制要求 getter/setter，直接通过反射读取字段值。但**必须有默认构造器**（无参构造），否则反序列化会失败。
+    Animal a2 = gson.fromJson(json1, Animal.class);
+    System.out.println(a2); // Animal(name=null, birthYear=1940)
 
----
-
-### 1.3 常见场景速览
-
-#### 1.3.1 List / Map 转换
-
-```java
-// List → JSON
-List<String> list = Arrays.asList("a", "b", "c");
-String json = gson.toJson(list);  // ["a","b","c"]
-
-// JSON → List（注意泛型）
-List<String> list2 = gson.fromJson(json, new TypeToken<List<String>>(){}.getType());
-
-// Map → JSON
-Map<String, Object> map = new HashMap<>();
-map.put("name", "张三");
-map.put("age", 25);
-String json2 = gson.toJson(map);  // {"name":"张三","age":25}
-```
-
-#### 1.3.2 复杂嵌套对象
-
-```java
-public class Order {
-    private int id;
-    private User user;          // 嵌套对象
-    private List<Item> items;   // 嵌套 List
+    Animal a3 = gson.fromJson(json1, Animal.class);
+    System.out.println(a3); // Animal(name=null, birthYear=1940)
 }
-public class Item {
-    private String name;
-    private double price;
-}
-
-// 直接互转，Gson 自动递归处理嵌套
-Order order = gson.fromJson(json, Order.class);
-String json = gson.toJson(order);
 ```
 
-#### 1.3.3 `TypeToken` 解决泛型问题
+## 场景：日期格式
+
+> 🧑 **背景**：1942年，查尔斯动物园名声渐起，不少游客慕名而来。售票处需要登记每位游客的姓名和**生日** —— 生日是完整的日期时间。
+
+💡 Gson 默认日期格式是 `"Jun 8, 2021, 10:00:00 AM"`，不是我们常用的 `yyyy-MM-dd HH:mm:ss`。需要手动指定。
 
 ```java
-// 错误写法：泛型被擦除，无法拿到 List<User> 的类型
-// List<User> users = gson.fromJson(json, List.class);  // ❌ 会得到 List<LinkedTreeMap>
-
-// 正确写法：使用 TypeToken
-List<User> users = gson.fromJson(json, new TypeToken<List<User>>(){}.getType());
+package top.charles;  
+  
+import lombok.AllArgsConstructor;  
+import lombok.NoArgsConstructor;  
+import lombok.ToString;  
+  
+import java.util.Date;  
+  
+@AllArgsConstructor  
+@NoArgsConstructor  
+@ToString  
+public class Tourist {  
+    private String name;  
+    private Date birthday;  
+}
 ```
 
-> ⚠️ 原理放第二部分，这里记住：**凡是泛型类型（List、Map、自定义泛型类），必须用 `TypeToken` 包装**。
+```java
+package top.charles;  
+  
+import com.google.gson.Gson;  
+import com.google.gson.GsonBuilder;  
+import org.junit.Test;  
+  
+import java.util.Date;  
+  
+public class TouristTest {  
+  
+    @Test  
+    public void testDefault() {  
+        Gson gson = new Gson();  
+  
+        Tourist user = new Tourist("Dimo", new Date());  
+        String json = gson.toJson(user);  
+  
+        System.out.println(json);  
+        // {"name":"Dimo","birthday":"Aug 6, 2026, 2:03:41 PM"}  
+        // 默认格式，不是我们常用的  
+    }  
+  
+    @Test  
+    public void testCustomFormat() {  
+        Gson gson = new GsonBuilder()  
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")  
+                .create();  
+  
+        Tourist user = new Tourist("Guardian Dog", new Date());  
+        String json = gson.toJson(user);  
+  
+        System.out.println(json);  
+        // {"name":"Guardian Dog","birthday":"2026-08-06 14:03:41"}  
+    }  
+  
+    @Test  
+    public void testDeserialize() {  
+        Gson gson = new GsonBuilder()  
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")  
+                .create();  
+  
+        String json = "{\"name\":\"Elsa\",\"age\":30,\"birthday\":\"2025-03-21 14:30:00\"}";  
+  
+        Tourist user = gson.fromJson(json, Tourist.class);  
+        System.out.println(user);  
+        // Tourist(name=Elsa, birthday=Fri Mar 21 14:30:00 CST 2025)  
+    }  
+}
+```
 
----
+## 场景：字段重命名
 
-### 1.4 常见误区速览（详细分析放后续）
+> 🏢 **背景**：1943年，动物园规模扩大，查尔斯先生招了一批新员工。人事系统是外国的，字段名都要求用英文缩写 —— "员工姓名"叫 `ename`，"工资"叫 `sal`。但 Java 代码里我们希望用可读性好的 `name` 和 `salary`，这就需要 Gson 的 `@SerializedName` 来做个**翻译**。
 
-| 误区 | 简要说明 |
-|------|---------|
-| `null` 字段丢失 | 默认不序列化 `null` 字段，需 `serializeNulls()` |
-| 日期格式奇怪 | 默认输出 `"Jun 8, 2021"` 这种格式，需 `setDateFormat()` |
-| 循环引用栈溢出 | 对象互相引用会无限递归，需 `@JsonIgnore` 或自定义策略 |
-| 接口/抽象类失败 | 反序列化时不知道具体子类型，需要自定义处理 |
-| 大整数精度丢失 | 超过 2^53 的 Long 可能变 Double，需 `setLongSerializationPolicy()` |
+💡 `@SerializedName` 指定 JSON 里的字段名。
+💡 `alternate` 只在**反序列化**时生效，序列化时始终用 `value` 指定的名字。
 
----
+```java
+package top.charles;  
+  
+import com.google.gson.annotations.SerializedName;  
+import lombok.AllArgsConstructor;  
+import lombok.NoArgsConstructor;  
+import lombok.ToString;  
+  
+@AllArgsConstructor  
+@NoArgsConstructor  
+@ToString  
+public class Employee {  
+    @SerializedName(value = "ename", 
+        alternate = {"employee_name"})  
+    private String name;  
+    
+    @SerializedName("sal")
+    private double salary;
+}
+```
 
-### 1.5 小结
+```java
+package top.charles;  
+  
+import com.google.gson.Gson;  
+import org.junit.Test;  
+  
+public class EmployeeTest {  
+  
+    Gson gson = new Gson();  
+  
+    @Test  
+    public void testSerialize() {  
+        Employee employee = new Employee("Jack", 10000.5);  
+        String json = gson.toJson(employee);  
+  
+        System.out.println(json);  
+        // {"ename":"Jack","sal":10000.5}  
+        // ↑ name 变成 ename，salary 变成 sal    
+    }  
+  
+    @Test  
+    public void testDeserializeWithAlternate() {  
+        String json = "{\"employee_name\":\"Tom\",\"sal\":8000.5}";  
+  
+        Employee employee = gson.fromJson(json, Employee.class);  
+        System.out.println(employee);  
+        // Employee(name=Tom, salary=8000.5)  
+    }  
+}
+```
 
-到这里你已经能完成 90% 的日常 JSON 转换需求。接下来进入第二部分，深入 Gson 的核心类和机制，理解它为什么这么设计，以及如何避开那些坑。
+## 场景：字段过滤
+
+> 🏢 **背景**：1943年，动物园规模扩大，查尔斯先生雇了一位**经理**来管理员工。经理要算手下所有员工的工资开销，但这个"总开销"是内部数据，不想让外部系统看到。同时，老板和会计之间有些字段要**双向控制** —— 哪些能发出去、哪些能收进来，要精准把控。
+
+使用了`transient`的字段，不参加序列化：
+
+```java
+package top.charles;  
+  
+import lombok.AllArgsConstructor;  
+import lombok.NoArgsConstructor;  
+import lombok.ToString;  
+  
+import java.util.List;  
+  
+@AllArgsConstructor  
+@NoArgsConstructor  
+@ToString  
+public class Manager extends Employee {  
+  
+    private List<Employee> employees;  
+  
+    // transient：部门总开销，内部计算，不序列化  
+    private transient double totalExpense;  
+  
+    public Manager(String name, double salary, List<Employee> employees) {  
+        super(name, salary);  
+        this.employees = employees;  
+        this.totalExpense = initTotalExpense();  
+    }  
+    private double initTotalExpense() {  
+        double sum = salary;  
+        for (Employee employee : employees) {  
+            sum += employee.salary;  
+        }        
+        return sum;  
+    }  
+    public double getTotalExpense() {  
+        totalExpense = initTotalExpense();  
+        return totalExpense;  
+    }
+}
+```
+
+```java
+package top.charles;  
+  
+import com.google.gson.Gson;  
+import org.junit.Test;  
+  
+import java.util.Arrays;  
+  
+public class ManagerTest {  
+  
+    Gson gson = new Gson();  
+  
+    @Test  
+    public void testManager() {  
+        // 创建经理：自己工资 10000，手下 张三 5000、李四 6000   
+        Manager manager = new Manager("张经理", 10000.0, Arrays.asList(  
+                new Employee("张三", 5000.0),  
+                new Employee("李四", 6000.0)  
+        ));        
+        System.out.println("构造时 totalExpense 自动计算: "+manager);  
+        // Manager(employees=[Employee(name=张三, salary=5000.0), Employee(name=李四, salary=6000.0)], totalExpense=21000.0)  
+  
+        // 序列化：totalExpense 不输出（transient）  
+        String json = gson.toJson(manager);  
+        System.out.println("序列化: " + json);  
+        // {"employees":[{"ename":"张三","sal":5000.0},{"ename":"李四","sal":6000.0}],"ename":"张经理","sal":10000.0}  
+        // ↑ totalExpense 不输出  
+  
+        // 反序列化：totalExpense 恢复默认 0.0        
+        Manager manager2 = gson.fromJson(json, Manager.class);  
+        System.out.println("反序列化后 totalExpense: " + manager2);  
+        // 反序列化后 totalExpense: Manager(employees=[Employee(name=张三, salary=5000.0), Employee(name=李四, salary=6000.0)], totalExpense=21000.0)  
+        // ↑ 走的是 getter，重新算了  
+    }  
+}
+```
+
+使用`Expose`精准控制序列化与反序列化的作用范围：
+
+```java
+package top.charles;  
+  
+import com.google.gson.annotations.Expose;  
+import lombok.AllArgsConstructor;  
+import lombok.NoArgsConstructor;  
+import lombok.ToString;  
+  
+@AllArgsConstructor  
+@NoArgsConstructor  
+@ToString  
+public class Boss {  
+  
+    // 总额：常量，序列化/反序列化都参与  
+    @Expose  
+    private double total;  
+  
+    // 花费：会计告诉的，从 JSON 读，不序列化出去  
+    @Expose(serialize = false, deserialize = true)  
+    private double cost;  
+  
+    // 利润：自己算的，序列化给外面看，不从 JSON 读  
+    @Expose(serialize = true, deserialize = false)  
+    private double profit;  
+  
+    public Boss(double total, double cost) {  
+        this.total = total;  
+        this.cost = cost;  
+        this.profit = total - cost;  
+    }  
+    // 这个一定要写
+    public double getProfit() {  
+        this.profit = total - cost;  
+        return profit;  
+    }
+}
+```
+
+```java
+package top.charles;  
+  
+import com.google.gson.Gson;  
+import com.google.gson.GsonBuilder;  
+import org.junit.Test;  
+  
+public class BossTest {  
+  
+    Gson gson = new GsonBuilder()  
+            .excludeFieldsWithoutExposeAnnotation()  
+            .create();  
+  
+    @Test  
+    public void testBoss() {  
+        // 序列化：cost 不输出，profit 输出  
+        Boss boss = new Boss(100000.0, 40000.0);  
+        String json = gson.toJson(boss);  
+        System.out.println(json);  
+        // {"total":100000.0,"profit":60000.0}  
+  
+        // 会计传来花费  
+        String fromAccountant = "{\"total\":100000.0,\"cost\":80000.0,\"profit\":99999.0}";  
+  
+        Boss boss2 = gson.fromJson(fromAccountant, Boss.class);  
+        System.out.println(boss2);  
+        // Boss(total=100000.0, cost=80000.0, profit=20000.0)  
+    }  
+}
+```
+
+## 场景：循环引用
+
+> 🏢 **背景**：1944年，动物园规模扩大，查尔斯先生按**条块划分**管理 —— 张经理负责"动物管理"业务线，同时兼任"员工培训"的讲师；小李经理负责"员工培训"业务线，同时在"动物管理"担任顾问。**从行政级别讲，张经理是领导；但从业务线讲，小李是培训这块的负责人** —— 两人互相挂职，档案里互相包含对方 —— 形成**循环引用**。直接序列化会**栈溢出**！
+
+```java
+// 张经理：动物管理线负责人，兼任培训讲师
+Manager zhang = new Manager("张经理", 10000.0, Arrays.asList(
+    new Employee("张三", 5000.0),
+    new Employee("李四", 6000.0)
+));
+
+// 小李经理：培训线负责人，兼任动物管理顾问
+Manager li = new Manager("小李经理", 8000.0, Arrays.asList(
+    new Employee("王五", 4000.0)
+));
+
+// 条块划分：互相挂职，往对方的员工列表里加
+zhang.getEmployees().add(li);   // 张经理手下有小李（培训线）
+li.getEmployees().add(zhang);   // 小李手下有张经理（动物管理线）
+
+// ❌ 直接序列化
+String json = gson.toJson(zhang);
+// StackOverflowError：张经理 -> 小李 -> 张经理 -> 小李 ... 无限递归
+```
+
+这个问题其实没有满分的解决答案，下面是一些常见的思路
+
+**1. @Expose 注解 + 排除未标记字段**
+- 做法：在需要序列化的字段上加 `@Expose`，反向引用字段不加。构建 Gson 时调用 `excludeFieldsWithoutExposeAnnotation()`
+- 本质：白名单机制，只序列化明确标记的字段
+- 适用：能修改实体类，且希望明确控制哪些字段参与序列化
+
+**2. transient 关键字**
+- 做法：在反向引用字段上加 `transient`，如 `private transient Manager manager;`
+- 本质：Java 原生机制，序列化时直接跳过该字段
+- 局限：字段会完全从 JSON 中消失，反序列化时该字段为 null，且对子类、集合内元素中的同名字段也生效，粒度较粗
+
+**3. ExclusionStrategy 动态排除**
+- 做法：实现 `ExclusionStrategy` 接口，在 `shouldSkipField()` 中按字段名、字段类型、甚至注解动态判断是否跳过
+- 本质：运行时策略模式，比 `transient` 灵活，比 `@Expose` 更动态（可根据上下文决定）
+- 适用：不想改实体类，或排除规则需要动态变化
+
+**4. 自定义 TypeAdapter / JsonSerializer**
+- 做法：接管序列化全过程，用 `IdentityHashMap` 记录已访问对象，遇到重复引用时输出 `null`、ID 或自定义标记
+- 本质：完全控制序列化逻辑，理论上可以实现"遇到已访问节点就停"
+- 局限：实现复杂，反序列化更难，且输出非标准 JSON；Gson 本身并未内置此功能，需手写大量代码
+
+**5. 换用支持循环引用的库**
+- 做法：使用 FastJson（默认输出 `$ref`）或 Jackson（`@JsonIdentityInfo`）
+- 本质：这些库内置了循环引用检测机制，通过引用 ID 或特殊标记保留对象关系
+- 代价：输出的 JSON 不标准，跨语言/跨系统消费可能不兼容
+
+6. **遇到已访问节点就中断**
+* 这是最自然的想法，但 Gson 没这么做的原因：一旦中断，要么输出 `null`（数据丢失），要么输出特殊引用标记（JSON 不标准），两种结果都不符合 Gson 追求"标准 JSON 且完整表达数据"的设计目标。所以 Gson 的选择是：**不自动处理，由开发者按业务需要显式切断引用链**。
+
+💡 精髓：JSON 是树，Java 是图。循环引用超出了 JSON 的表达范围，Gson 不提供魔法解法 —— 它引导开发者**主动设计序列化边界**：什么字段该出现、什么关系该切断。`transient`、`@Expose`、自定义序列化器，都是你在告诉 Gson"你的 JSON 长什么样"。
+
+## 场景：大整数精度
+
+> 💰 **背景**：1945年，动物园开放了募捐，一位富豪捐了一笔巨款。财务要用 `long` 来记录这笔捐款，但 Gson 序列化时默认把数字变成 `double`，**精度丢失**！
+
+Gson 默认行为：
+
+```java
+@Test
+public void testBigNumber() {
+    long donation = 9007199254740993L;  // 超过 2^53
+    String json = gson.toJson(donation);
+    System.out.println(json);
+    // 9007199254740992  ← 精度丢了！最后一位 3 变成了 2
+}
+```
+
+为什么？因为 Gson 内部默认把数字当作 `double` 处理，而 `double` 只能精确表示 2^53 以内的整数。
+
+**解决办法**：注册自定义 `TypeAdapter`：
+
+```java
+Gson gson = new GsonBuilder()
+    .registerTypeAdapter(Long.class, new JsonSerializer<Long>() {
+        @Override
+        public JsonElement serialize(Long value, Type type, JsonSerializationContext context) {
+            return new JsonPrimitive(value.toString());  // 转成字符串
+        }
+    })
+    .create();
+```
+
+或者更简单：如果字段类型是 `long`/`Long`，Gson 其实会正确序列化。问题主要出在**反序列化时**：
+
+```java
+String json = "{\"donation\":9007199254740993}";
+// 如果字段是 long，Gson 能正确处理
+```

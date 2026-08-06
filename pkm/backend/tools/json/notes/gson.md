@@ -32,6 +32,8 @@ String json = gson.toJson(user); // 对象转JSON
 ---
 
 ## 第一部分：快速上手（使用角度）
+
+[gson-intro](gson-intro.md)
 > 目标：让读者 5 分钟能用起来，跑通基本流程
 
 - 引入依赖（Maven / Gradle）
