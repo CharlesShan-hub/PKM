@@ -775,4 +775,3 @@ String json = "{\"donation\":9007199254740993}";
 > - **注解（`@SerializedName`、`@Expose`、`transient`）**：字段重命名、双向过滤、循环引用切断 —— 从**局部**精细控制
 >
 > 所以，**Java 和 JSON 的鸿沟，Gson 不会替你填，但给你填的工具。**
-

@@ -1,3 +1,232 @@
+# Part 2：源码级理解（从外到内）
+
+> 目标：不追求逐行读懂源码，而是带着问题看 —— **这个类解决了什么问题？设计决策是什么？边界情况怎么处理？**
+
+## 核心类清单（按阅读顺序）
+
+| 类                              | 重点关注                            |
+| ------------------------------ | ------------------------------- |
+| `Gson`                         | `toJson()` / `fromJson()` 的入口流程 |
+| `GsonBuilder`                  | 各种配置如何影响内部组件                    |
+| `TypeAdapter`                  | 序列化/反序列化的核心接口                   |
+| `ReflectiveTypeAdapterFactory` | 反射怎么读写字段（**核心！**）               |
+| `TypeToken`                    | 泛型捕获的原理                         |
+| `JsonReader` / `JsonWriter`    | 流式解析的实现                         |
+## `Gson`
+
+### 准备
+
+还是这个动物的案例，继续序列化和反序列化：
+
+```java
+package top.charles;  
+  
+import lombok.AllArgsConstructor;  
+import lombok.NoArgsConstructor;  
+import lombok.ToString;  
+
+@AllArgsConstructor  
+@NoArgsConstructor // 必须有默认构造器（无参构造）  
+@ToString  
+public class Animal {  
+    private String name;  
+    private int birthYear;  
+}
+```
+
+### 序列化
+
+#### 第一步：`Gson.java`的工作
+
+```java
+Animal a1 = new Animal("Tom", 1938);  
+String json = gson.toJson(a1);
+```
+
+```java
+// Gosn.java
+public String toJson(Object src) {  
+  if (src == null) {  
+    return toJson(JsonNull.INSTANCE);    // <-
+  }  return toJson(src, src.getClass()); // <-
+}
+```
+
+如果对象真的是空，会输出`"null"`
+
+```java
+@Test  
+public void testNullObject(){  
+    Animal a1 = null;  
+    String json1 = gson.toJson(a1);  
+    // togo: return toJson(JsonNull.INSTANCE);
+    System.out.println(json1); // null  
+    System.out.println(json1.equals("null")); // true  
+    System.out.println(json1.length()); // 4  
+}
+```
+
+如果对象不是空则会默认先找到运行时类型，然后再传入一个`StringWriter`：
+
+```java
+// Gosn.java
+// return toJson(src, src.getClass());
+public String toJson(Object src, Type typeOfSrc) {  
+  StringWriter writer = new StringWriter();  
+  toJson(src, typeOfSrc, writer);  // <-
+  return writer.toString();  
+}
+```
+
+`StringWriter` 是 Java 标准库里的一个**字符输出流**，比直接用 `String` 拼接高效（避免了大量不可变字符串的创建）。
+
+```java
+// Gosn.java
+// toJson(src, typeOfSrc, writer);
+public void toJson(Object src, Type typeOfSrc, Appendable writer) throws JsonIOException {  
+  try {  
+    JsonWriter jsonWriter = newJsonWriter(Streams.writerForAppendable(writer));  
+    toJson(src, typeOfSrc, jsonWriter);  // <-
+  } catch (IOException e) {  
+    throw new JsonIOException(e);  
+  }  
+}
+```
+
+`JsonWriter` 是 Gson 自己的流式写入器
+1. **`Appendable` 是宽泛的接口** —— 不止 `StringWriter`，`StringBuilder`、`Writer` 等都实现了它。Gson 对外暴露的是 `Appendable`，调用方可以传任何实现。
+2. **但 Gson 内部需要的是 `JsonWriter`** —— 它提供了 `name()`、`value()`、`beginObject()` 等 JSON 语法方法。
+
+```java
+// Gosn.java
+// toJson(src, typeOfSrc, jsonWriter);
+public void toJson(JsonElement jsonElement, JsonWriter writer) throws JsonIOException {  
+  boolean oldLenient = writer.isLenient();  
+  writer.setLenient(true);  
+  boolean oldHtmlSafe = writer.isHtmlSafe();  
+  writer.setHtmlSafe(htmlSafe);  
+  boolean oldSerializeNulls = writer.getSerializeNulls();  
+  writer.setSerializeNulls(serializeNulls);  
+  try {
+    Streams.write(jsonElement, writer);  // <-
+  } catch (IOException e) {  
+    throw new JsonIOException(e);  
+  } catch (AssertionError e) {  
+    throw new AssertionError("AssertionError (GSON " + GsonBuildConfig.VERSION + "): " + e.getMessage(), e);  
+  } finally {  
+    writer.setLenient(oldLenient);  
+    writer.setHtmlSafe(oldHtmlSafe);  
+    writer.setSerializeNulls(oldSerializeNulls);  
+  }  
+}
+```
+
+1. **保存旧状态**（`oldLenient`、`oldHtmlSafe`、`oldSerializeNulls`）
+2. **临时覆盖成 Gson 实例自己的配置**（`lenient`、`htmlSafe`、`serializeNulls`）
+3. **真正干活**（`Streams.write`）
+4. **finally 恢复旧状态** —— 不管成功还是失败，都不污染外部的 `JsonWriter`
+
+```java
+// Streams.java
+//Streams.write(jsonElement, writer);
+public static void write(JsonElement element, JsonWriter writer) throws IOException {  
+  TypeAdapters.JSON_ELEMENT.write(writer, element);  
+}
+```
+
+#### 第二步：`Stream.java`的工作
+
+
+
+---
+
+## 二、源码阅读策略：跟踪一个案例
+
+**不要从头读到尾**，用"跟踪一个案例"的方式：
+
+1. 写一个最简单的对象（如 `User`）
+2. 在 `gson.toJson()` 入口打断点
+3. 一步步跟进去，看它：
+   - 怎么获取 `TypeAdapter`
+   - 怎么拿到字段列表
+   - 怎么处理每个字段（`@SerializedName`、`transient`、`@Expose`）
+4. 记录每一步的**关键类名和方法名**
+
+> 一次跟踪 30-60 分钟，比读三天文档都有用。
+
+---
+
+## 三、笔记形式：源码路径 + 核心逻辑
+
+```markdown
+## 场景：Xxx
+
+> 背景：xxx
+
+💡 源码位置：`Gson.toJson()` → `getAdapter()` → `ReflectiveTypeAdapterFactory.create()`
+
+核心逻辑：
+1. xxx
+2. xxx
+3. xxx
+
+关键代码片段（截取核心几行，不要大段贴）：
+```
+
+> 以后忘了细节，看一眼源码路径就能快速定位，不用重新搜索。
+
+---
+
+## 四、笔记结构（从外到内）
+
+1. **入口篇**：`Gson.toJson()` / `fromJson()` —— 整体流程骨架
+2. **适配器篇**：`TypeAdapter` 体系 —— 为什么要有适配器？怎么获取？
+3. **反射篇**：`ReflectiveTypeAdapterFactory` —— 怎么读写字段（核心）
+4. **类型篇**：`TypeToken` —— 泛型捕获原理（相对独立，可单独一章）
+5. **流式篇**：`JsonReader` / `JsonWriter` —— 怎么解析/生成 JSON
+
+每个篇章目标：**能用自己的话讲清楚这个模块的职责和核心逻辑**。
+
+---
+
+## 五、费曼检验标准
+
+学完一个模块，问自己：
+
+> "如果现在有人问我 Gson 怎么把 JSON 变成 Java 对象的，我能用 3 句话讲清楚吗？"
+
+**3 句版本参考**：
+
+1. Gson 通过 `TypeToken` 获取目标类型的完整信息（包括泛型）
+2. 根据类型查找或创建对应的 `TypeAdapter`（反射适配器是兜底方案）
+3. `TypeAdapter` 用 `JsonReader` 逐个读取 JSON 令牌，用反射填充 Java 对象字段
+
+---
+
+## 六、Part 1 的亮点，Part 2 继续保持
+
+- ✅ 每个场景都有"为什么需要"的背景
+- ✅ 每个用法标注"本质"
+- ✅ 有"错误示例"和"为什么错"
+- ✅ 最后总结，提炼设计哲学
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Part 2：深度源码与核心类（语法 + 坑）
 
