@@ -1,33 +1,23 @@
 # Gson
 
-* Gson Github：https://github.com/google/gson
-* 王二博客：https://javabetter.cn/gongju/gson.html
-* 第一部分：[gson-intro](gson-intro.md)
+* 简介：Google 出品，API 简洁，支持对象与 JSON 的直接转换。
+    - Gson Github：https://github.com/google/gson
+    - 王二博客：https://javabetter.cn/gongju/gson.html
+* [第一部分：Gson常见使用场景](gson-intro.md)：Gson 忠实还原 JSON，把 Java 与 JSON 的鸿沟暴露给你，提供 `GsonBuilder`（全局）和注解（局部）两把手术刀，但填坑还得靠你自己。
+    - Gson 忠实还原 JSON，把 Java 与 JSON 的鸿沟暴露给你，提供 `GsonBuilder`（全局）和注解（局部）两把手术刀，但填坑还得靠你自己。
+    - **对象转换**：`toJson` / `fromJson` 基本用法，必须有默认构造器
+    - **美观输出**：`setPrettyPrinting()` 只影响序列化
+    - **集合与列表**：List / Map 必须用 `TypeToken` 解决泛型擦除
+    - **null 字段**：默认不输出 null，`serializeNulls()` 可开启
+    - **日期格式**：`setDateFormat("yyyy-MM-dd HH:mm:ss")` 自定义格式
+    - **字段重命名**：`@SerializedName` 指定 JSON 字段名，`alternate` 支持反序列化别名
+    - **字段过滤**：`transient` 完全不序列化；`@Expose` 精准控制双向
+    - **循环引用**：Gson 不自动处理，需要开发者主动切断引用链
+    - **大整数精度**：默认转 double 会丢精度，需自定义 TypeAdapter
+* [第二部分：Gson API解析](gson-syn.md)
 
-Google出品，API简洁，支持对象与JSON的直接转换。
 
-需要引入坐标
 
-```xml
-<dependency>
-    <groupId>com.google.code.gson</groupId>
-    <artifactId>gson</artifactId>
-    <version>2.10.1</version>
-</dependency>
-```
-
-API 超级简单
-
-```java
-Gson gson = new Gson();
-User user = gson.fromJson(jsonString, User.class); // JSON转对象
-String json = gson.toJson(user); // 对象转JSON
-```
-
----
-
-下边是ai的
-非常好，这个结构很清晰！我帮你细化一下三个部分的内容规划：
 
 ---
 
