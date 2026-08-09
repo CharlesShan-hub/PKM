@@ -41,6 +41,8 @@ implementation 'com.google.code.gson:gson:2.10.1'
 
 💡 Gson 不强制要求 getter/setter，直接通过反射读取字段值。但**必须有默认构造器**（无参构造），否则反序列化会失败。
 
+我们定义一个 Java Bean 代表动物。
+
 ```java
 package top.charles;  
   
@@ -48,7 +50,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;  
 import lombok.ToString;  
   
-// @Data // getter/setter 可省略，Gson 通过反射直接访问字段  
+// @Data 
+// getter/setter 可省略，Gson 通过反射直接访问字段  
 @AllArgsConstructor  
 @NoArgsConstructor // 必须有默认构造器（无参构造）  
 @ToString  
@@ -58,26 +61,40 @@ public class Animal {
 }
 ```
 
+接下来通过 `new Gson()` 得到一个 `Gson` 对象：
+
 ```java
 package top.charles;  
   
 import com.google.gson.Gson;  
+import com.google.gson.GsonBuilder;  
 import org.junit.Test;  
   
-public class AnimalTest {  
+public class BaseTest {  
     Gson gson = new Gson();  
+}
+```
+
+通过 `toJson` 进行序列化， `fromJson` 进行反序列化：
+
+```java
+package top.charles;  
+  
+import org.junit.Test;  
+  
+public class AnimalTest extends BaseTest {  
     @Test  
     public void test(){  
         // 对象 → JSON        
         Animal a1 = new Animal("Tom", 1938);  
         String json = gson.toJson(a1);  
-        System.out.println(json); 
-        // {"name":"Tom","birthYear":1938}
+        System.out.println(json);  
+        // {"name":"Tom","birthYear":1938}  
   
         // JSON → 对象  
         Animal a2 = gson.fromJson(json, Animal.class);  
-        System.out.println(a2); 
-        // Animal(name=Tom, birthYear=1938)
+        System.out.println(a2);  
+        // Animal(name=Tom, birthYear=1938)  
     }  
 }
 ```
@@ -91,43 +108,38 @@ public class AnimalTest {
 💡 注意：`setPrettyPrinting()` 只影响**序列化**（`toJson`）的输出格式，不影响**反序列化**（`fromJson`）的行为。`fromJson` 无论 JSON 是紧凑还是美观的，都能正常解析。
 
 ```java
-package top.charles;  
-  
-import com.google.gson.Gson;  
-import com.google.gson.GsonBuilder;  
-import org.junit.Test;  
-  
-public class AnimalTest {  
-    Gson gson = new Gson();  
-    Gson prettyGson = new GsonBuilder()  
-            .setPrettyPrinting()  // 这里！ 
-            .create();  
+// BaseTest
+Gson prettyGson = new GsonBuilder()  
+        .setPrettyPrinting()  // 这里！  
+        .create();  
+```
 
-    @Test  
-    public void testPrettyPrint() {  
-        Animal a1 = new Animal("Tom", 1938);  
-        Animal a2 = new Animal("Jerry", 1940);  
-        List<Animal> list = Arrays.asList(a1, a2);  
-  
-        // 默认：紧凑输出  
-        String compactJson = gson.toJson(list);  
-        System.out.println(compactJson);  
-        // [{"name":"Tom","birthYear":1938},{"name":"Jerry","birthYear":1940}]  
-  
-        // 美化：格式化输出  
-        String prettyJson = prettyGson.toJson(list);  
-        System.out.println(prettyJson);  
-        // [  
-        //   {  
-        //     "name": "Tom",  
-        //     "birthYear": 1938  
-        //   },  
-        //   {  
-        //     "name": "Jerry",  
-        //     "birthYear": 1940  
-        //   }  
-        // ]  
-    }  
+```java
+// AnimalTest
+@Test  
+public void testPrettyPrint() {  
+    Animal a1 = new Animal("Tom", 1938);  
+    Animal a2 = new Animal("Jerry", 1940);  
+    List<Animal> list = Arrays.asList(a1, a2);  
+
+    // 默认：紧凑输出  
+    String compactJson = gson.toJson(list);  
+    System.out.println(compactJson);  
+    // [{"name":"Tom","birthYear":1938},{"name":"Jerry","birthYear":1940}]  
+
+    // 美化：格式化输出  
+    String prettyJson = prettyGson.toJson(list);  
+    System.out.println(prettyJson);  
+    // [  
+    //   {  
+    //     "name": "Tom",  
+    //     "birthYear": 1938  
+    //   },  
+    //   {  
+    //     "name": "Jerry",  
+    //     "birthYear": 1940  
+    //   }  
+    // ]  
 }
 ```
 
@@ -140,6 +152,7 @@ public class AnimalTest {
  `List`类如何进行转换：
  
 ```java
+// AnimalTest
 @Test  
 public void testList(){  
     // List -> JSON  
@@ -172,6 +185,7 @@ public void testList(){
 `Map`类如何进行转换：
 
 ```java
+// AnimalTest
 @Test  
 public void testMap(){  
     // Map -> JSON  
@@ -244,53 +258,50 @@ import lombok.ToString;
   
 import java.util.List;  
   
+@AllArgsConstructor  
+@NoArgsConstructor  
+@ToString  
 public class Zoo {  
     private List<Animal> animals;  
 }
 ```
 
 ```java
-package top.charles;  
-  
-import com.google.gson.Gson;  
-import com.google.gson.GsonBuilder;  
-import org.junit.Test;  
-  
-import java.util.Arrays;  
-  
-public class ZooTest {  
-    Gson gson = new Gson();  
-    Gson prettyGson = new GsonBuilder()  
-            .setPrettyPrinting()  
-            .create();  
-  
-    @Test  
-    public void test() {  
-        // 对象 → JSON  
-        Zoo z1 = new Zoo(Arrays.asList(  
-            new Animal("Tom", 1940),  
-            new Animal("Jerry", 1940))  
-        );  
-        String json = prettyGson.toJson(z1);  
-        System.out.println(json);  
-        // {  
-        //   "animals": [  
-        //     {  
-        //       "name": "Tom",  
-        //       "birthYear": 1940  
-        //     },  
-        //     {  
-        //       "name": "Jerry",  
-        //       "birthYear": 1940  
-        //     }  
-        //   ]  
-        // }  
-  
-        // JSON → 对象  
-        Zoo z2 = gson.fromJson(json, Zoo.class);  
-        System.out.println(z2);  
-        // Zoo(animals=[Animal(name=Tom, birthYear=1940), Animal(name=Jerry, birthYear=1940)])  
-    }  
+package top.charles;
+
+import org.junit.Test;
+
+import java.util.Arrays;
+
+public class ZooTest extends BaseTest {
+
+    @Test
+    public void test() {
+        // 对象 → JSON
+        Zoo z1 = new Zoo(Arrays.asList(
+                new Animal("Tom", 1940),
+                new Animal("Jerry", 1940)
+        ));
+        String json = prettyGson.toJson(z1);
+        System.out.println(json);
+        // {
+        //   "animals": [
+        //     {
+        //       "name": "Tom",
+        //       "birthYear": 1940
+        //     },
+        //     {
+        //       "name": "Jerry",
+        //       "birthYear": 1940
+        //     }
+        //   ]
+        // }
+
+        // JSON → 对象
+        Zoo z2 = gson.fromJson(json, Zoo.class);
+        System.out.println(z2);
+        // Zoo(animals=[Animal(name=Tom, birthYear=1940), Animal(name=Jerry, birthYear=1940)])
+    }
 }
 ```
 
@@ -301,12 +312,15 @@ public class ZooTest {
 💡 Gson 序列化某字段为`null`，不会加入到json中，反序列化遇到json没有的字段默认填充`null`；如果json需要指定`null`，需要用`serializeNulls()`。
 
 ```java
-Gson gson = new Gson();
+// BaseTest
 Gson gsonWithNull = new GsonBuilder()
         .serializeNulls()   // 多了这一行
         .setPrettyPrinting()
         .create();
+```
 
+```java
+// AnimalTest.java
 @Test
 public void testNull(){
     Animal a1 = new Animal(null, 1940);
@@ -342,6 +356,14 @@ public void testNull(){
 💡 Gson 默认日期格式是 `"Jun 8, 2021, 10:00:00 AM"`，不是我们常用的 `yyyy-MM-dd HH:mm:ss`。需要手动指定。
 
 ```java
+// BaseTest
+Gson prettyDataGson = new GsonBuilder()  
+        .setDateFormat("yyyy-MM-dd HH:mm:ss")  
+        .setPrettyPrinting()  
+        .create();
+```
+
+```java
 package top.charles;  
   
 import lombok.AllArgsConstructor;  
@@ -360,61 +382,47 @@ public class Tourist {
 ```
 
 ```java
-package top.charles;  
-  
-import com.google.gson.Gson;  
-import com.google.gson.GsonBuilder;  
-import org.junit.Test;  
-  
-import java.util.Date;  
-  
-public class TouristTest {  
-  
-    @Test  
-    public void testDefault() {  
-        Gson prettyGson = new GsonBuilder()  
-                .setPrettyPrinting()  
-                .create();  
-    
-        Tourist user = new Tourist("Dimo", new Date());  
-        String json = prettyGson.toJson(user);  
-    
-        System.out.println(json);  
-        // {  
-        //   "name": "Dimo",  
-        //   "birthday": "Aug 6, 2026, 2:03:41 PM"  
-        // }  
-        // 默认格式，不是我们常用的  
+package top.charles;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.junit.Test;
+
+import java.util.Date;
+
+public class TouristTest extends BaseTest {
+    @Test
+    public void testDefault() {
+        Tourist user = new Tourist("Dimo", new Date());
+        String json = prettyGson.toJson(user);
+
+        System.out.println(json);
+        // {
+        //   "name": "Dimo",
+        //   "birthday": "Aug 6, 2026, 2:03:41 PM"
+        // }
+        // 默认格式，不是我们常用的
     }
-  
-    @Test  
-    public void testCustomFormat() {  
-        Gson prettyGson = new GsonBuilder()  
-                .setDateFormat("yyyy-MM-dd HH:mm:ss")  
-                .setPrettyPrinting()  
-                .create();  
-    
-        Tourist user = new Tourist("Guardian Dog", new Date());  
-        String json = prettyGson.toJson(user);  
-    
-        System.out.println(json);  
-        // {  
-        //   "name": "Guardian Dog",  
-        //   "birthday": "2026-08-06 14:03:41"  
-        // }  
-    }  
-    
-    @Test  
-    public void testDeserialize() {  
-        Gson gson = new GsonBuilder()  
-                .setDateFormat("yyyy-MM-dd HH:mm:ss")  
-                .create();  
-    
-        String json = "{\"name\":\"Elsa\",\"age\":30,\"birthday\":\"2025-03-21 14:30:00\"}";  
-    
-        Tourist user = gson.fromJson(json, Tourist.class);  
-        System.out.println(user);  
-        // Tourist(name=Elsa, birthday=Fri Mar 21 14:30:00 CST 2025)  
+
+    @Test
+    public void testCustomFormat() {
+        Tourist user = new Tourist("Guardian Dog", new Date());
+        String json = prettyDataGson.toJson(user);
+
+        System.out.println(json);
+        // {
+        //   "name": "Guardian Dog",
+        //   "birthday": "2026-08-06 14:03:41"
+        // }
+    }
+
+    @Test
+    public void testDeserialize() {
+        String json = "{\"name\":\"Elsa\",\"age\":30,\"birthday\":\"2025-03-21 14:30:00\"}";
+
+        Tourist user = prettyDataGson.fromJson(json, Tourist.class);
+        System.out.println(user);
+        // Tourist(name=Elsa, birthday=Fri Mar 21 14:30:00 CST 2025)
     }
 }
 ```
@@ -436,54 +444,47 @@ import lombok.ToString;
   
 @AllArgsConstructor  
 @NoArgsConstructor  
-@ToString  
+@ToString
 public class Employee {  
     @SerializedName(
         value = "ename", 
         alternate = {"employee_name"}
     )  
-    private String name;  
+    protected String name;  
     
     @SerializedName("sal")
-    private double salary;
+    protected double salary;
 }
 ```
 
 ```java
-package top.charles;  
-  
-import com.google.gson.Gson;  
-import com.google.gson.GsonBuilder;  
-import org.junit.Test;  
-  
-public class EmployeeTest {  
-  
-    Gson gson = new Gson();  
-    Gson prettyGson = new GsonBuilder()  
-            .setPrettyPrinting()  
-            .create();  
-  
-    @Test  
-    public void testSerialize() {  
-        Employee employee = new Employee("Jack", 10000.5);  
-        String json = prettyGson.toJson(employee);  
-  
-        System.out.println(json);  
-        // {  
-        //   "ename": "Jack",  
-        //   "sal": 10000.5  
-        // }  
-        // ↑ name 变成 ename，salary 变成 sal    
-    }  
-  
-    @Test  
-    public void testDeserializeWithAlternate() {  
-        String json = "{\"employee_name\":\"Tom\",\"sal\":8000.5}";  
-  
-        Employee employee = gson.fromJson(json, Employee.class);  
-        System.out.println(employee);  
-        // Employee(name=Tom, salary=8000.5)  
-    }  
+package top.charles;
+
+import org.junit.Test;
+
+public class EmployeeTest extends BaseTest {
+
+    @Test
+    public void testSerialize() {
+        Employee employee = new Employee("Jack", 10000.5);
+        String json = prettyGson.toJson(employee);
+
+        System.out.println(json);
+        // {
+        //   "ename": "Jack",
+        //   "sal": 10000.5
+        // }
+        // ↑ name 变成 ename，salary 变成 sal
+    }
+
+    @Test
+    public void testDeserializeWithAlternate() {
+        String json = "{\"employee_name\":\"Tom\",\"sal\":8000.5}";
+
+        Employee employee = gson.fromJson(json, Employee.class);
+        System.out.println(employee);
+        // Employee(name=Tom, salary=8000.5)
+    }
 }
 ```
 
@@ -498,13 +499,15 @@ package top.charles;
   
 import lombok.AllArgsConstructor;  
 import lombok.NoArgsConstructor;  
-import lombok.ToString;  
-  
+import lombok.ToString;
+import lombok.Getter;
+
 import java.util.List;  
   
 @AllArgsConstructor  
 @NoArgsConstructor  
-@ToString  
+@ToString
+@Getter
 public class Manager extends Employee {  
   
     private List<Employee> employees;  
@@ -540,13 +543,7 @@ import org.junit.Test;
   
 import java.util.Arrays;  
   
-public class ManagerTest {  
-  
-    Gson gson = new Gson();  
-    Gson prettyGson = new GsonBuilder()  
-            .setPrettyPrinting()  
-            .create();  
-  
+public class ManagerTest extends BaseTest{  
     @Test  
     public void testManager() {  
         // 创建经理：自己工资 10000，手下 张三 5000、李四 6000   
@@ -586,12 +583,14 @@ public class ManagerTest {
 }
 ```
 
+💡 反序列化后 `totalExpense` 字段实际仍是 `0.0`，只是 `toString()` 调用了 `getTotalExpense()` 才显示 21000。
+
 > 🏢 **背景**：1943年，动物园生意越来越火，查尔斯先生（老板）请了一位**会计**来帮忙算账。老板要把自己的账本发给会计，会计填好花费后再发回来，老板自己算利润 —— 因为只有老板才知道自己到底有多少钱。
 >
 > 这中间就涉及到**双向控制**：
 >
 > - **总额（total）**：老板发给会计，会计也知道总数，双方都参与
-> - **花费（cost）**：会计填写的，从 JSON 读进来；老板不会把自己的花费发给别人看，所以不序列化出去
+> - **花费（cost）**：会计填写的，从 JSON 读进来；老板不负责算账，所以发给会计的不用包含这个字段
 > - **利润（profit）**：老板自己算的（总额 - 花费），只有老板知道；会计不需要知道，所以不从 JSON 读
 >
 > 流程：
@@ -626,10 +625,8 @@ public class Boss {
     @Expose(serialize = true, deserialize = false)  
     private double profit;  
   
-    public Boss(double total, double cost) {  
+    public Boss(double total) {
         this.total = total;  
-        this.cost = cost;  
-        this.profit = total - cost;  
     }  
     // 这个一定要写
     public double getProfit() {  
@@ -640,30 +637,31 @@ public class Boss {
 ```
 
 ```java
+// BaseTest
+Gson exposeGson = new GsonBuilder()  
+        .excludeFieldsWithoutExposeAnnotation()  
+        .create();
+```
+
+```java
 package top.charles;  
-  
-import com.google.gson.Gson;  
-import com.google.gson.GsonBuilder;  
+
 import org.junit.Test;  
   
-public class BossTest {  
-  
-    Gson gson = new GsonBuilder()  
-            .excludeFieldsWithoutExposeAnnotation()  
-            .create();  
-  
+public class BossTest extends BaseTest{  
+
     @Test  
     public void testBoss() {  
         // 序列化：cost 不输出，profit 输出  
-        Boss boss = new Boss(100000.0, 40000.0);  
-        String json = gson.toJson(boss);  
+        Boss boss = new Boss(100000.0);  
+        String json = exposeGson.toJson(boss);  
         System.out.println(json);  
-        // {"total":100000.0,"profit":60000.0}  
+        // {"total":100000.0,"profit":0.0} 这是老板还不知道自己赚了多少
   
         // 会计传来花费  
         String fromAccountant = "{\"total\":100000.0,\"cost\":80000.0,\"profit\":99999.0}";  
   
-        Boss boss2 = gson.fromJson(fromAccountant, Boss.class);  
+        Boss boss2 = exposeGson.fromJson(fromAccountant, Boss.class);  
         System.out.println(boss2);  
         // Boss(total=100000.0, cost=80000.0, profit=20000.0)  
     }  
@@ -675,24 +673,26 @@ public class BossTest {
 > 🏢 **背景**：1944年，动物园规模扩大，查尔斯先生按**条块划分**管理 —— 张经理负责"动物管理"业务线，同时兼任"员工培训"的讲师；小李经理负责"员工培训"业务线，同时在"动物管理"担任顾问。**从行政级别讲，张经理是领导；但从业务线讲，小李是培训这块的负责人** —— 两人互相挂职，档案里互相包含对方 —— 形成**循环引用**。直接序列化会**栈溢出**！
 
 ```java
-// 张经理：动物管理线负责人，兼任培训讲师
-Manager zhang = new Manager("张经理", 10000.0, Arrays.asList(
-    new Employee("张三", 5000.0),
-    new Employee("李四", 6000.0)
-));
-
-// 小李经理：培训线负责人，兼任动物管理顾问
-Manager li = new Manager("小李经理", 8000.0, Arrays.asList(
-    new Employee("王五", 4000.0)
-));
-
-// 条块划分：互相挂职，往对方的员工列表里加
-zhang.getEmployees().add(li);   // 张经理手下有小李（培训线）
-li.getEmployees().add(zhang);   // 小李手下有张经理（动物管理线）
-
-// ❌ 直接序列化
-String json = gson.toJson(zhang);
-// StackOverflowError：张经理 -> 小李 -> 张经理 -> 小李 ... 无限递归
+// EmployeeTest
+@Test  
+public void testLoop(){  
+    // 张经理：动物管理线负责人，兼任培训讲师  
+    Manager zhang = new Manager("张经理", 10000.0, new ArrayList<>(Arrays.asList(  
+            new Employee("张三", 5000.0),  
+            new Employee("李四", 6000.0)  
+    )));  
+    // 小李经理：培训线负责人，兼任动物管理顾问  
+    Manager li = new Manager("小李经理", 8000.0, new ArrayList<>(Arrays.asList(  
+            new Employee("王五", 4000.0)  
+    )));  
+    // 条块划分：互相挂职，往对方的员工列表里加  
+    zhang.getEmployees().add(li);   // 张经理手下有小李（培训线）  
+    li.getEmployees().add(zhang);   // 小李手下有张经理（动物管理线）  
+  
+    // ❌ 直接序列化  
+    // String json = gson.toJson(zhang);  
+    // StackOverflowError：张经理 -> 小李 -> 张经理 -> 小李 ... 无限递归  
+}
 ```
 
 这个问题其实没有满分的解决答案，下面是一些常见的思路
@@ -729,41 +729,45 @@ String json = gson.toJson(zhang);
 
 ## 场景：大整数精度
 
-> 💰 **背景**：1945年，动物园开放了募捐，一位富豪捐了一笔巨款。财务要用 `long` 来记录这笔捐款，但 Gson 序列化时默认把数字变成 `double`，**精度丢失**！
+> 💰 **背景**：1945年，动物园开放了募捐，一位富豪捐了一笔巨款。财务要用 `long` 来记录这笔捐款。
 
-Gson 默认行为：
+💡 **Gson 对 `long` 的序列化是精确的**，不会转成 `double`。真正丢精度的是**反序列化到 `Object` / `Double` / 无类型泛型**时，数字会被读成 `double`。
 
 ```java
 @Test
 public void testBigNumber() {
-    long donation = 9007199254740993L;  // 超过 2^53
+    long donation = 90071992547409933L;  // 超过 2^53
+
+    // ✅ 序列化：精确
     String json = gson.toJson(donation);
     System.out.println(json);
-    // 9007199254740992  ← 精度丢了！最后一位 3 变成了 2
+    // 90071992547409933
+
+    // ✅ 反序列化到 Long：精确
+    Long l = gson.fromJson(json, Long.class);
+    System.out.println(l);
+    // 90071992547409933
+
+    // ❌ 反序列化到 Double：丢精度
+    Double d = gson.fromJson(json, Double.class);
+    System.out.println(d.longValue());
+    // 90071992547409936  ← 值变了
+
+    // ❌ 反序列化到 Object：默认变成 Double，同样丢
+    Object obj = gson.fromJson(json, Object.class);
+    System.out.println(obj.getClass());  // class java.lang.Double
 }
 ```
 
-为什么？因为 Gson 内部默认把数字当作 `double` 处理，而 `double` 只能精确表示 2^53 以内的整数。
-
-**解决办法**：注册自定义 `TypeAdapter`：
-
-```java
-Gson gson = new GsonBuilder()
-    .registerTypeAdapter(Long.class, new JsonSerializer<Long>() {
-        @Override
-        public JsonElement serialize(Long value, Type type, JsonSerializationContext context) {
-            return new JsonPrimitive(value.toString());  // 转成字符串
-        }
-    })
-    .create();
-```
-
-或者更简单：如果字段类型是 `long`/`Long`，Gson 其实会正确序列化。问题主要出在**反序列化时**：
+如果字段本身是 `long`/`Long`，反序列化也安全：
 
 ```java
 String json = "{\"donation\":9007199254740993}";
-// 如果字段是 long，Gson 能正确处理
+Donation d = gson.fromJson(json, Donation.class);  // donation 字段是 long
+// d.donation == 9007199254740993L  ← 精确
 ```
+
+**结论**：不要给 `Long` 注册转字符串的 `TypeAdapter`——那会让序列化输出变成 `"90071992547409933"`（字符串），类型不标准。只要目标类型明确是 `long`/`Long`，Gson 就不会丢精度。只有反序列化成 `Object`、`Double` 或 `Map<String, Object>` 这类“无类型”场景，才需要自定义 `TypeAdapter` 处理大整数。
 
 ## 本章总结
 
