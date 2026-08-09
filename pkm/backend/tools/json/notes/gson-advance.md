@@ -5,6 +5,25 @@
 
 ---
 
+## 3.1 压力测试
+
+按照官方文档：反序列化的字符串可支持 25MB，已序列化包含 140 万个对象的数据集，反序列化了包含 87,000 个对象的集合。（下面是[原文](https://google.github.io/gson/UserGuide.html)） 
+
+* 该台机配备了双 Opteron 处理器、8GB 内存，操作系统为 64 位版本的 Ubuntu。在测试过程中，我们还同时运行了其他应用程序。您可以通过使用类 `PerformanceTest` 来重新运行这些测试。
+- Strings: Deserialized strings of over 25MB without any problems (see `disabled_testStringDeserializationPerformance` method in `PerformanceTest`)  
+    字符串：反序列化的字符串大小超过 25MB，但没有任何问题（参见 `PerformanceTest` 中的 `disabled_testStringDeserializationPerformance` 方法）
+- Large collections:
+    - 已序列化包含 140 万个对象的数据集（详情请参阅 `PerformanceTest` 中的 `disabled_testLargeCollectionSerialization` 方法）
+    - 已反序列化了包含 87,000 个对象的集合（详情请参阅 `disabled_testLargeCollectionDeserialization` 中的 `PerformanceTest` ）
+- Gson 1.4 版本将字节数组和集合的反序列化限制从 80KB 提高到了超过 11MB。
+
+
+
+
+
+
+
+
 ### 3.1 自定义 `TypeAdapter` / `JsonSerializer` / `JsonDeserializer`
 
 #### 三者区别

@@ -140,6 +140,22 @@ public static void write(JsonElement element, JsonWriter writer) throws IOExcept
 
 ---
 
+1. **`Gson` + `GsonBuilder`**：先看入口，理解 Gson 实例里装了什么
+    
+2. **`TypeAdapter` + `TypeAdapterFactory`**：核心机制，理解了这两个，Gson 的 80% 就懂了
+    
+3. **`JsonReader` + `JsonWriter`**：底层 IO，看 Gson 如何流式处理 JSON
+    
+4. **`ReflectiveTypeAdapterFactory`**：Gson 最“魔法”的部分，反射 + 缓存
+    
+5. **`TypeToken`**：理解 Gson 如何处理泛型
+    
+6. **`Excluder` + `FieldNamingStrategy`**：配置相关的细节
+    
+7. **`JsonSerializer` / `JsonDeserializer`**：了解历史遗留接口，便于维护旧代码
+
+---
+
 ## 二、源码阅读策略：跟踪一个案例
 
 **不要从头读到尾**，用"跟踪一个案例"的方式：
