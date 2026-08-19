@@ -26,3 +26,4 @@ desktop.ini
 # 特定目录内的同步排除文件
 **/extension.nosync
 
+/pkm/standard/snmp/assets

@@ -5,9 +5,12 @@
 本专题从技术背景，到标准解读，最后到代码实现，完整地解析 SNMP 的前世今生。
 
 **有用链接：**
-*   博客：[什么是SNMP](https://support.huawei.com/enterprise/zh/doc/EDOC1100087025/5d668861)
-*   学习资料：[di-mgt.com.au - A Guide to ASN.1](https://di-mgt.com.au/guidumpasn1.html)
-*   MIB资源：[GitHub - lextudio/sharpsnmppro-mib](https://github.com/lextudio/sharpsnmppro-mib) (所有经典MIB库)
+* 博客：[什么是SNMP](https://support.huawei.com/enterprise/zh/doc/EDOC1100087025/5d668861)
+* 学习资料：[di-mgt.com.au - A Guide to ASN.1](https://di-mgt.com.au/guidumpasn1.html)
+* MIB资源：[GitHub - lextudio/sharpsnmppro-mib](https://github.com/lextudio/sharpsnmppro-mib) (所有经典MIB库)
+* 书籍：深入理解Net-Snmp (实战) (张春强)
+* 书籍：Essential SNMP, Second Edition (Douglas R Mauro Douglas, Kevin Schmidt)
+* 书籍：SNMP Mastery (Michael W Lucas)
 
 ## Learning Roadmap
 
