@@ -2,19 +2,26 @@
 ## Chapter 1 - A Tutorial Introduction
 
 Let us begin with a quick introduction in C. Our aim is to show the essential elements of the language in real programs, but without getting bogged down in details, rules, and exceptions. At this point, we are not trying to be complete or even precise (save that the examples are meant to be correct). We want to get you as quickly as possible to the point where you can write useful programs, and to do that we have to concentrate on the basics: variables and constants, arithmetic, control flow, functions, and the rudiments of input and output. We are intentionally leaving out of this chapter features of C that are important for writing bigger programs. These include pointers, structures, most of C's rich set of operators, several controlflow statements, and the standard library. 
+让我们从对C语言的快速入门开始。我们的目标是在真实的程序中展示该语言的基本要素，同时避免陷入细节、规则和例外情况的泥沼。在此，我们并不试图做到全面甚至精确（除了确保示例是正确的之外）。我们希望能尽快让您达到可以编写实用程序的程度，为此我们必须集中精力于基础内容：变量与常量、算术运算、控制流、函数，以及输入输出的基本知识。本章有意略过了C语言中对于编写较大程序很重要的特性，包括指针、结构、C语言丰富的运算符中的大部分、几种控制流语句以及标准库。
 
 This approach and its drawbacks. Most notable is that the complete story on any particular feature is not found here, and the tutorial, by being brief, may also be misleading. And because the examples do not use the full power of C, they are not as concise and elegant as they might be. We have tried to minimize these effects, but be warned. Another drawback is that later chapters will necessarily repeat some of this chapter. We hope that the repetition will help you more than it annoys. 
+这种方法的优点及其不足之处。最值得注意的是，任何特定特性的完整说明都不在这里，而且教程由于篇幅简短，也可能产生误导。此外，因为示例并未使用C语言的全部功能，所以它们可能不够简洁和优雅。我们已尽力减少这些影响，但请务必注意。另一个不足之处是，后面的章节必然会重复本章的一些内容。我们希望这种重复对您有所帮助，而不是令您厌烦。
 
 In any case, experienced programmers should be able to extrapolate from the material in this chapter to their own programming needs. Beginners should supplement it by writing small, similar programs of their own. Both groups can use it as a framework on which to hang the more detailed descriptions that begin in Chapter 2. 
+无论如何，有经验的程序员应该能够从本章的内容中推演出满足自身编程需求的方法。初学者则应通过编写自己的小型类似程序来加以补充。这两类读者都可以将其作为框架，用以承载从第2章开始的更详细的描述。
 
 ## 1.1 Getting Started
 
 The only way to learn a new programming language is by writing programs in it. The first program to write is the same for all languages: 
+学习一门新编程语言的唯一方法就是用该语言编写程序。要编写的第一个程序，在所有语言中都是一样的：
 
 This is a big hurdle; to leap over it you have to be able to create the program text somewhere, compile it successfully, load it, run it, and find out where your output went. With these mechanical details mastered, everything else is comparatively easy. 
+这是一个很大的障碍；要跨越它，您必须能够在某处创建程序文本、成功编译、加载、运行，并找到输出的去向。一旦掌握了这些机械性的细节，其他一切就相对容易了。
+
+In C, the program to print''hello, world" is：
+在C语言中，打印“hello, world”的程序是：
 
 ```c
-In C, the program to print ``hello, world" is
 #include <stdio.h>
 main()
 {
@@ -22,13 +29,19 @@ main()
 } 
 ```
 
-Just how to run this program depends on the system you are using. As a specific example, on the UNIX operating system you must create the program in a file whose name ends in ``.c'', such as hello.c, then compile it with the command 
+Just how to run this program depends on the system you are using. As a specific example, on the UNIX operating system you must create the program in a file whose name ends in''.c'', such as hello.c, then compile it with the command 
+运行这个程序的具体方式取决于您所使用的系统。举一个具体的例子，在UNIX操作系统上，您必须将程序创建在一个以“.c”结尾的文件中，例如 `hello.c`，然后用以下命令进行编译：
 
-```txt
+```bash
 cc hello.c 
 ```
 
 If you haven't botched anything, such as omitting a character or misspelling something, the compilation will proceed silently, and make an executable file called a.out. If you run a.out by typing the command 
+如果您没有出任何差错，比如遗漏了某个字符或拼写错误，编译过程将会安静地进行，并生成一个名为 `a.out` 的可执行文件。如果您通过键入以下命令来运行 `a.out`：
+
+```bash
+./a.out
+```
 
 it will print 
 
@@ -37,8 +50,10 @@ hello, world
 ```
 
 On other systems, the rules will be different; check with a local expert. 
+在其他系统上，规则会有所不同；请咨询当地的专家。
 
-Now, for some explanations about the program itself. A C program, whatever its size, consists of functions and variables. A function contains statements that specify the computing operations to be done, and variables store values used during the computation. C functions are like the subroutines and functions in Fortran or the procedures and functions of Pascal. Our example is a function named main. Normally you are at liberty to give functions whatever names you like, but ``main'' is special - your program begins executing at the beginning of main. This means that every program must have a main somewhere. 
+Now, for some explanations about the program itself. A C program, whatever its size, consists of functions and variables. A function contains statements that specify the computing operations to be done, and variables store values used during the computation. C functions are like the subroutines and functions in Fortran or the procedures and functions of Pascal. Our example is a function named main. Normally you are at liberty to give functions whatever names you like, but''main'' is special - your program begins executing at the beginning of main. This means that every program must have a main somewhere. 
+现在，对程序本身做一些解释。C语言程序，无论其规模大小，都由函数和变量组成。函数包含用于指定要执行的计算操作的语句，而变量则存储计算过程中使用的值。C语言中的函数类似于Fortran中的子例程和函数，或Pascal中的过程和函数。我们的示例是一个名为`main`的函数。通常，您可以随意为函数起任何名字，但`main`是特殊的——您的程序是从`main`函数的开头开始执行的。这意味着每个程序都必须在某个地方有一个`main`函数。
 
 main will usually call other functions to help perform its job, some that you wrote, and others from libraries that are provided for you. The first line of the program, 
 
@@ -47,8 +62,12 @@ main will usually call other functions to help perform its job, some that you wr
 ```
 
 tells the compiler to include information about the standard input/output library; the line appears at the beginning of many C source files. The standard library is described in Chapter 7 and Appendix B. 
+`main` 通常会调用其他函数来帮助完成其工作，有些是您自己编写的，有些则是从为您提供的库中调用的。程序的第一行，
 
 One method of communicating data between functions is for the calling function to provide a list of values, called arguments, to the function it calls. The parentheses after the function name surround the argument list. In this example, main is defined to be a function that expects no arguments, which is indicated by the empty list ( ). 
+告诉编译器包含关于标准输入输出库的信息；这一行出现在许多C源文件的开头。标准库在第7章和附录B中描述。
+
+函数之间通信的一种方法是，调用函数向被调用函数提供一个值列表，这些值称为参数。函数名后面的括号包围着参数列表。在这个例子中，`main` 被定义为一个不需要任何参数的函数，这由空列表 `( )` 表示。
 
 ```c
 #include <stdio.h> include information about standard
@@ -96,7 +115,7 @@ to produce identical output.
 
 Notice that \n represents only a single character. An escape sequence like \n provides a general and extensible mechanism for representing hard-to-type or invisible characters. Among the others that C provides are \t for tab, \b for backspace, \" for the double quote and \\ for the backslash itself. There is a complete list in Section 2.3 
 
-Exercise 1-1. Run the ``hello, world'' program on your system. Experiment with leaving out parts of the program, to see what error messages you get. 
+Exercise 1-1. Run the''hello, world'' program on your system. Experiment with leaving out parts of the program, to see what error messages you get. 
 
 Exercise 1-2. Experiment to find out what happens when prints's argument string contains \c, where c is some character not listed above. 
 
@@ -123,7 +142,7 @@ The next program uses the formula C=(5/9)( F-32) to print the following table of
 300 148 
 ```
 
-The program itself still consists of the definition of a single function named main. It is longer than the one that printed ``hello, world'', but not complicated. It introduces several new ideas, including comments, declarations, variables, arithmetic expressions, loops , and formatted output. 
+The program itself still consists of the definition of a single function named main. It is longer than the one that printed''hello, world'', but not complicated. It introduces several new ideas, including comments, declarations, variables, arithmetic expressions, loops , and formatted output. 
 
 ```c
 #include <stdio.h>
@@ -338,7 +357,7 @@ Exercise 1-5. Modify the temperature conversion program to print the table in re
 
 ## 1.4 Symbolic Constants
 
-A final observation before we leave temperature conversion forever. It's bad practice to bury ``magic numbers'' like 300 and 20 in a program; they convey little information to someone who might have to read the program later, and they are hard to change in a systematic way. One way to deal with magic numbers is to give them meaningful names. A #define line defines a symbolic name or symbolic constant to be a particular string of characters: 
+A final observation before we leave temperature conversion forever. It's bad practice to bury''magic numbers'' like 300 and 20 in a program; they convey little information to someone who might have to read the program later, and they are hard to change in a systematic way. One way to deal with magic numbers is to give them meaningful names. A #define line defines a symbolic name or symbolic constant to be a particular string of characters: 
 
 ## #define name replacement list
 
@@ -402,12 +421,12 @@ main()
     }
 }
 
-The relational operator != means ``not equal to''. 
+The relational operator != means''not equal to''. 
 ```
 
 What appears to be a character on the keyboard or screen is of course, like everything else, stored internally just as a bit pattern. The type char is specifically meant for storing such character data, but any integer type can be used. We used int for a subtle but important reason. 
 
-The problem is distinguishing the end of input from valid data. The solution is that getchar returns a distinctive value when there is no more input, a value that cannot be confused with any real character. This value is called EOF, for ``end of file''. We must declare c to be a type big enough to hold any value that getchar returns. We can't use char since c must be big enough to hold EOF in addition to any possible char. Therefore we use int. 
+The problem is distinguishing the end of input from valid data. The solution is that getchar returns a distinctive value when there is no more input, a value that cannot be confused with any real character. This value is called EOF, for''end of file''. We must declare c to be a type big enough to hold any value that getchar returns. We can't use char since c must be big enough to hold EOF in addition to any possible char. Therefore we use int. 
 
 EOF is an integer defined in <stdio.h>, but the specific numeric value doesn't matter as long as it is not the same as any char value. By using the symbolic constant, we are assured that nothing in the program depends on the specific numeric value. 
 
@@ -516,7 +535,7 @@ main()
 
 The body of the while now consists of an if, which in turn controls the increment ++nl. The if statement tests the parenthesized condition, and if the condition is true, executes the statement (or group of statements in braces) that follows. We have again indented to show what is controlled by what. 
 
-The double equals sign == is the C notation for ``is equal to'' (like Pascal's single = or Fortran's .EQ.). This symbol is used to distinguish the equality test from the single = that C uses for assignment. A word of caution: newcomers to C occasionally write = when they mean ==. As we will see in Chapter 2, the result is usually a legal expression, so you will get no warning. 
+The double equals sign == is the C notation for''is equal to'' (like Pascal's single = or Fortran's .EQ.). This symbol is used to distinguish the equality test from the single = that C uses for assignment. A word of caution: newcomers to C occasionally write = when they mean ==. As we will see in Chapter 2, the result is usually a legal expression, so you will get no warning. 
 
 A character written between single quotes represents an integer value equal to the numerical value of the character in the machine's character set. This is called a character constant, although it is just another way to write a small integer. So, for example, 'A' is a character constant; in the ASCII character set its value is 65, the internal representation of the character A. Of course, 'A' is to be preferred over 65: its meaning is obvious, and it is independent of a particular character set. 
 
@@ -560,7 +579,7 @@ main()
 } 
 ```
 
-Every time the program encounters the first character of a word, it counts one more word. The variable state records whether the program is currently in a word or not; initially it is ``not in a word'', which is assigned the value OUT. We prefer the symbolic constants IN and OUT to the literal values 1 and 0 because they make the program more readable. In a program as tiny as this, it makes little difference, but in larger programs, the increase in clarity is well worth the modest extra effort to write it this way from the beginning. You'll also find that it's easier to make extensive changes in programs where magic numbers appear only as symbolic constants. 
+Every time the program encounters the first character of a word, it counts one more word. The variable state records whether the program is currently in a word or not; initially it is''not in a word'', which is assigned the value OUT. We prefer the symbolic constants IN and OUT to the literal values 1 and 0 because they make the program more readable. In a program as tiny as this, it makes little difference, but in larger programs, the increase in clarity is well worth the modest extra effort to write it this way from the beginning. You'll also find that it's easier to make extensive changes in programs where magic numbers appear only as symbolic constants. 
 
 The line 
 
@@ -580,7 +599,7 @@ The operator || means OR, so the line
 if (c == ' ' || c == '\n' || c = '\t') 
 ```
 
-says ``if c is a blank or c is a newline or c is a tab''. (Recall that the escape sequence \t is a visible representation of the tab character.) There is a corresponding operator && for AND; its precedence is just higher than ||. Expressions connected by && or || are evaluated left to right, and it is guaranteed that evaluation will stop as soon as the truth or falsehood is known. If c is a blank, there is no need to test whether it is a newline or tab, so these tests are not made. This isn't particularly important here, but is significant in more complicated situations, as we will soon see. 
+says''if c is a blank or c is a newline or c is a tab''. (Recall that the escape sequence \t is a visible representation of the tab character.) There is a corresponding operator && for AND; its precedence is just higher than ||. Expressions connected by && or || are evaluated left to right, and it is guaranteed that evaluation will stop as soon as the truth or falsehood is known. If c is a blank, there is no need to test whether it is a newline or tab, so these tests are not made. This isn't particularly important here, but is significant in more complicated situations, as we will soon see. 
 
 The example also shows an else, which specifies an alternative action if the condition part of an if statement is false. The general form is 
 
@@ -761,7 +780,7 @@ The value that power computes is returned to main by the return: statement. Any 
 
 ## return expression;
 
-A function need not return a value; a return statement with no expression causes control, but no useful value, to be returned to the caller, as does ``falling off the end'' of a function by reaching the terminating right brace. And the calling function can ignore a value returned by a function. 
+A function need not return a value; a return statement with no expression causes control, but no useful value, to be returned to the caller, as does''falling off the end'' of a function by reaching the terminating right brace. And the calling function can ignore a value returned by a function. 
 
 You may have noticed that there is a return statement at the end of main. Since main is a function like any other, it may return a value to its caller, which is in effect the environment in which the program was executed. Typically, a return value of zero implies normal termination; non-zero values signal unusual or erroneous termination conditions. In the interests of simplicity, we have omitted return statements from our main functions up to this point, but we will include them hereafter, as a reminder that programs should return status to their environment. 
 
@@ -805,7 +824,7 @@ Exercise 1.15. Rewrite the temperature conversion program of Section 1.2 to use 
 
 ## 1.8 Arguments - Call by Value
 
-One aspect of C functions may be unfamiliar to programmers who are used to some other languages, particulary Fortran. In C, all function arguments are passed ``by value.'' This means that the called function is given the values of its arguments in temporary variables rather than the originals. This leads to some different properties than are seen with ``call by reference'' languages like Fortran or with var parameters in Pascal, in which the called routine has access to the original argument, not a local copy. 
+One aspect of C functions may be unfamiliar to programmers who are used to some other languages, particulary Fortran. In C, all function arguments are passed''by value.'' This means that the called function is given the values of its arguments in temporary variables rather than the originals. This leads to some different properties than are seen with''call by reference'' languages like Fortran or with var parameters in Pascal, in which the called routine has access to the original argument, not a local copy. 
 
 Call by value is an asset, however, not a liability. It usually leads to more compact programs with fewer extraneous variables, because parameters can be treated as conveniently initialized local variables in the called routine. For example, here is a version of power that makes use of this property. 
 
@@ -1005,7 +1024,7 @@ If the program is in several source files, and a variable is defined in file1 an
 
 Since the specialized versions of getline and copy have no arguments, logic would suggest that their prototypes at the beginning of the file should be getline() and copy(). But for compatibility with older C programs the standard takes an empty list as an old-style declaration, and turns off all argument list checking; the word void must be used for an explicitly empty list. We will discuss this further in Chapter 4. 
 
-You should note that we are using the words definition and declaration carefully when we refer to external variables in this section.``Definition'' refers to the place where the variable is created or assigned storage; ``declaration'' refers to places where the nature of the variable is stated but no storage is allocated. 
+You should note that we are using the words definition and declaration carefully when we refer to external variables in this section.``Definition'' refers to the place where the variable is created or assigned storage;''declaration'' refers to places where the nature of the variable is stated but no storage is allocated. 
 
 By the way, there is a tendency to make everything in sight an extern variable because it appears to simplify communications - argument lists are short and variables are always there when you want them. But external variables are always there even when you don't want them. Relying too heavily on external variables is fraught with peril since it leads to programs whose data connections are not all obvious - variables can be changed in unexpected and even inadvertent ways, and the program is hard to modify. The second version of the longest-line program is inferior to the first, partly for these reasons, and partly because it destroys the generality of two useful functions by writing into them the names of the variables they manipulate. 
 
@@ -1015,7 +1034,7 @@ Exercise 1-20. Write a program detab that replaces tabs in the input with the pr
 
 Exercise 1-21. Write a program entab that replaces strings of blanks by the minimum number of tabs and blanks to achieve the same spacing. Use the same tab stops as for detab. When either a tab or a single blank would suffice to reach a tab stop, which should be given preference? 
 
-Exercise 1-22. Write a program to ``fold'' long input lines into two or more shorter lines after the last non-blank character that occurs before the n-th column of input. Make sure your program does something intelligent with very long lines, and if there are no blanks or tabs before the specified column. 
+Exercise 1-22. Write a program to''fold'' long input lines into two or more shorter lines after the last non-blank character that occurs before the n-th column of input. Make sure your program does something intelligent with very long lines, and if there are no blanks or tabs before the specified column. 
 
 Exercise 1-23. Write a program to remove all comments from a C program. Don't forget to handle quoted strings and character constants properly. C comments don't nest. 
 
