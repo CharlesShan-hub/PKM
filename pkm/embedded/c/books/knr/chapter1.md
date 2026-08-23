@@ -70,35 +70,40 @@ One method of communicating data between functions is for the calling function t
 函数之间通信的一种方法是，调用函数向被调用函数提供一个值列表，这些值称为参数。函数名后面的括号包围着参数列表。在这个例子中，`main` 被定义为一个不需要任何参数的函数，这由空列表 `( )` 表示。
 
 ```c
-#include <stdio.h> include information about standard
-library
-main() define a function called main
-that received no argument values
+#include <stdio.h> //include information about standard library
+main() //define a function called main that received no argument values
 {
-    printf("hello, world\n"); statements of main are enclosed in braces
-    main calls library function printf
-    to print this sequence of characters
-    \n represents the newline character
-
-The first C program 
+    printf("hello, world\n"); 
+    // statements of main are enclosed in braces
+    //main calls library function printf
+    //to print this sequence of characters
+    //\n represents the newline character
+}
+//The first C program 
 ```
 
 The statements of a function are enclosed in braces { }. The function main contains only one statement, 
+函数的语句用花括号 `{ }` 括起来。函数 `main` 只包含一条语句，
 
-printf("hello, world\n"); 
+`printf("hello, world\n"); `
 
 A function is called by naming it, followed by a parenthesized list of arguments, so this calls the function printf with the argument "hello, world\n". printf is a library function that prints output, in this case the string of characters between the quotes. 
+通过指定函数名并后跟括号括起来的参数列表来调用函数，因此这里以参数 `"hello, world\n"` 调用 `printf` 函数。`printf` 是一个用于打印输出的库函数，在本例中它打印引号之间的字符串。
 
 A sequence of characters in double quotes, like "hello, world\n", is called a character string or string constant. For the moment our only use of character strings will be as arguments for printf and other functions. 
+双引号中的字符序列，如`"hello, world\n"`，称为字符串或字符串常量。目前我们对字符串的唯一用途是作为`printf`和其他函数的参数。
 
 The sequence \n in the string is C notation for the newline character, which when printed advances the output to the left margin on the next line. If you leave out the \n (a worthwhile experiment), you will find that there is no line advance after the output is printed. You must use \n to include a newline character in the printf argument; if you try something like 
+字符串中的`\n`序列是C语言中表示换行符的记号，打印时会将输出位置移到下一行的左边界。如果省略`\n`（这是一个值得尝试的实验），你会发现打印输出后没有换行。必须在`printf`的参数中使用`\n`来包含换行符；如果你尝试类似
 
-```txt
+
+```c
 printf("hello, world");
-the C compiler will produce an error message. 
+// the C compiler will produce an error message. 
 ```
 
 printf never supplies a newline character automatically, so several calls may be used to build up an output line in stages. Our first program could just as well have been written 
+`printf`从不自动提供换行符，因此可以使用多次调用来分阶段构建一行输出。我们的第一个程序也可以写成
 
 ```c
 #include <stdio.h>
@@ -114,14 +119,18 @@ to produce identical output.
 ```
 
 Notice that \n represents only a single character. An escape sequence like \n provides a general and extensible mechanism for representing hard-to-type or invisible characters. Among the others that C provides are \t for tab, \b for backspace, \" for the double quote and \\ for the backslash itself. There is a complete list in Section 2.3 
+注意，`\n`只代表一个字符。像`\n`这样的转义序列提供了一种通用且可扩展的机制，用于表示难以输入或不可见的字符。C语言提供的其他转义序列包括`\t`（制表符）、`\b`（退格符）、`\"`（双引号）和`\\`（反斜杠本身）。完整列表见第2.3节。
 
 Exercise 1-1. Run the''hello, world'' program on your system. Experiment with leaving out parts of the program, to see what error messages you get. 
+练习1-1. 在您的系统上运行“hello, world”程序。尝试去掉程序中的某些部分，看看会得到什么错误信息。
 
 Exercise 1-2. Experiment to find out what happens when prints's argument string contains \c, where c is some character not listed above. 
+练习1-2. 实验当`printf`的参数字符串中包含`\c`（其中`c`是上面未列出的某个字符）时，会发生什么情况。
 
 ## 1.2 Variables and Arithmetic Expressions
 
 The next program uses the formula C=(5/9)( F-32) to print the following table of Fahrenheit temperatures and their centigrade or Celsius equivalents: 
+下一个程序使用公式 C=(5/9)(F-32) 来打印华氏温度及其对应的摄氏温度对照表：
 
 ```txt
 1 -17  
@@ -143,6 +152,7 @@ The next program uses the formula C=(5/9)( F-32) to print the following table of
 ```
 
 The program itself still consists of the definition of a single function named main. It is longer than the one that printed''hello, world'', but not complicated. It introduces several new ideas, including comments, declarations, variables, arithmetic expressions, loops , and formatted output. 
+程序本身仍然只包含一个名为`main`的函数的定义。它比那个打印“hello, world”的程序要长一些，但并不复杂。它引入了几个新概念，包括注释、声明、变量、算术表达式、循环和格式化输出。
 
 ```c
 #include <stdio.h>
@@ -160,9 +170,9 @@ main()
 
     fahr = lower;
     while (fahr <= upper) {
-    celsius = 5 * (fahr - 32) / 9;
-    printf("%d\t%d\n", fahr, celsius);
-    fahr = fahr + step;
+        celsius = 5 * (fahr - 32) / 9;
+        printf("%d\t%d\n", fahr, celsius);
+        fahr = fahr + step;
     }
 }
 
@@ -172,7 +182,8 @@ The two lines
     for fahr = 0, 20, ..., 300 */ 
 ```
 
-are a comment, which in this case explains briefly what the program does. Any characters between /* and */ are ignored by the compiler; they may be used freely to make a program easier to understand. Comments may appear anywhere where a blank, tab or newline can. 
+are a comment, which in this case explains briefly what the program does. Any characters between `/*` and `*/` are ignored by the compiler; they may be used freely to make a program easier to understand. Comments may appear anywhere where a blank, tab or newline can. 
+是注释，在本例中简要说明了程序的功能。`/*`和`*/`之间的任何字符都会被编译器忽略；它们可以自由使用，以使程序更易于理解。注释可以出现在任何可以出现空格、制表符或换行符的地方。
 
 In C, all variables must be declared before they are used, usually at the beginning of the function before any executable statements. A declaration announces the properties of variables; it consists of a name and a list of variables, such as 
 
