@@ -11,6 +11,7 @@
 
 * [入门指南](notes/ru-men-zhi-nan.md)：认识rust和cargo
 * [猜数字案例](notes/bian-xie-cai-shu-zi-you-xi.md)：进阶版hello world
+* [通用编程概念](notes/tong-yong-bian-cheng-gai-nian.md)：变量、基本类型、函数、注释和控制流
 
 
 

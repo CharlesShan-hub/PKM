@@ -1,5 +1,6 @@
 # 设计模式
 
+* 
 * [单例模式](singleton-pattern.md)
 * [模板模式](template-pattern.md)
 

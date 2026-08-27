@@ -1,12 +1,14 @@
 # 通用编程概念
 
-https://rustwiki.org/zh-CN/book/ch03-00-common-programming-concepts.html
+> https://rustwiki.org/zh-CN/book/ch03-00-common-programming-concepts.html
+> 变量、基本类型、函数、注释和控制流
 
 ## [**3.1.** 变量和可变性](https://rustwiki.org/zh-CN/book/ch03-01-variables-and-mutability.html)
 
 ### 可变性
 
-rust 特点：“变量不可变”。如何记住呢，可以这样理解，生成一个变量用的是`let`，本来也没说可以变。可以想象一个稳定的真理世界，里边都是不变的永恒的东西，这样就觉得很安全吧。如果要定义一个东西确实可以变，那就再加上 mut。
+1. rust 引入了可变变量与不可变变量。这一听可能会比较难理解，但其实很多bug都是某一个变量被修改了导致的，很多变量也是不希望修改的。rust就是把所有的变量默认不可变，然后确实要变的加上mut。
+2. 为什么要用不可变变量而不是常量呢，因为常量编译的时候是全局的替换，他已经不是一个变量了。而不可变变量更像java的final字段，一开始没有赋值，赋值后不可变。
 
 不可变变量
 
@@ -20,7 +22,7 @@ let x = 5;
 let mut x = 5;
 ```
 
-常量：常量只能设置为常量表达式，而不能是函数调用的结果或是只能在运行时计算得到的值。
+常量：常量只能设置为常量表达式，而**不能是函数调用的结果**或是只能在运行时计算得到的值。
 
 ```rust
 const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
@@ -28,7 +30,6 @@ const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
 
 ### 遮蔽
 
-{% hint style="info" %}
 rust 特点：“变量重复声明”。如何记住呢（我的理解）：
 
 * 对于 c，一个作用域中我们不能两次声明变量 x。我们的内存空间就很稳定，但是程序写的不方便，没用的东西没办法及时丢掉。
