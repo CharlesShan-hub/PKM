@@ -2,7 +2,7 @@
 ## Chapter 1 - A Tutorial Introduction
 
 Let us begin with a quick introduction in C. Our aim is to show the essential elements of the language in real programs, but without getting bogged down in details, rules, and exceptions. At this point, we are not trying to be complete or even precise (save that the examples are meant to be correct). We want to get you as quickly as possible to the point where you can write useful programs, and to do that we have to concentrate on the basics: variables and constants, arithmetic, control flow, functions, and the rudiments of input and output. We are intentionally leaving out of this chapter features of C that are important for writing bigger programs. These include pointers, structures, most of C's rich set of operators, several controlflow statements, and the standard library. 
-让我们从对C语言的快速入门开始。我们的目标是在真实的程序中展示该语言的基本要素，同时避免陷入细节、规则和例外情况的泥沼。在此，我们并不试图做到全面甚至精确（除了确保示例是正确的之外）。我们希望能尽快让您达到可以编写实用程序的程度，为此我们必须集中精力于基础内容：变量与常量、算术运算、控制流、函数，以及输入输出的基本知识。本章有意略过了C语言中对于编写较大程序很重要的特性，包括指针、结构、C语言丰富的运算符中的大部分、几种控制流语句以及标准库。
+让我们从对C语言的快速入门开始。我们的目标是在真实的程序中展示该语言的基本要素，同时避免陷入细节、规则和例外情况的泥沼。在此，我们并不试图做到全面甚至精确（除了确保示例是正确的之外）。我们希望能尽快让您达到可以编写实用程序的程度，为此我们必须集中精力于基础内容：**变量与常量、算术运算、控制流、函数，以及输入输出的基本知识**。本章有意略过了C语言中对于编写较大程序很重要的特性，包括**指针、结构、C语言丰富的运算符中的大部分、几种控制流语句以及标准库**。
 
 This approach and its drawbacks. Most notable is that the complete story on any particular feature is not found here, and the tutorial, by being brief, may also be misleading. And because the examples do not use the full power of C, they are not as concise and elegant as they might be. We have tried to minimize these effects, but be warned. Another drawback is that later chapters will necessarily repeat some of this chapter. We hope that the repetition will help you more than it annoys. 
 这种方法的优点及其不足之处。最值得注意的是，任何特定特性的完整说明都不在这里，而且教程由于篇幅简短，也可能产生误导。此外，因为示例并未使用C语言的全部功能，所以它们可能不够简洁和优雅。我们已尽力减少这些影响，但请务必注意。另一个不足之处是，后面的章节必然会重复本章的一些内容。我们希望这种重复对您有所帮助，而不是令您厌烦。
@@ -56,13 +56,14 @@ Now, for some explanations about the program itself. A C program, whatever its s
 现在，对程序本身做一些解释。C语言程序，无论其规模大小，都由函数和变量组成。函数包含用于指定要执行的计算操作的语句，而变量则存储计算过程中使用的值。C语言中的函数类似于Fortran中的子例程和函数，或Pascal中的过程和函数。我们的示例是一个名为`main`的函数。通常，您可以随意为函数起任何名字，但`main`是特殊的——您的程序是从`main`函数的开头开始执行的。这意味着每个程序都必须在某个地方有一个`main`函数。
 
 main will usually call other functions to help perform its job, some that you wrote, and others from libraries that are provided for you. The first line of the program, 
+`main` 通常会调用其他函数来帮助完成其工作，有些是您自己编写的，有些则是从为您提供的库中调用的。程序的第一行，
 
 ```c
 #include <stdio.h> 
 ```
 
 tells the compiler to include information about the standard input/output library; the line appears at the beginning of many C source files. The standard library is described in Chapter 7 and Appendix B. 
-`main` 通常会调用其他函数来帮助完成其工作，有些是您自己编写的，有些则是从为您提供的库中调用的。程序的第一行，
+
 
 One method of communicating data between functions is for the calling function to provide a list of values, called arguments, to the function it calls. The parentheses after the function name surround the argument list. In this example, main is defined to be a function that expects no arguments, which is indicated by the empty list ( ). 
 告诉编译器包含关于标准输入输出库的信息；这一行出现在许多C源文件的开头。标准库在第7章和附录B中描述。
