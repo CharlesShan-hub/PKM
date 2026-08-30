@@ -147,7 +147,7 @@ public class GetDataServlet extends GenericServlet {
 1. http://localhost:8080/web01/set
 2. http://localhost:8080/web01/get
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749001722511-1d7c8c6c-6a2d-4c6e-86f8-f3dc3e9ab025.png)
+![1749001722511-1d7c8c6c-6a2d-4c6e-86f8-f3dc3e9ab025.png](../assets/1749001722511-1d7c8c6c-6a2d-4c6e-86f8-f3dc3e9ab025.png)
 
 ### 获取上下文初始化参数
 
@@ -207,7 +207,7 @@ public class ContextParamServlet extends GenericServlet {
 
 运行结果：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749002412486-299e2586-d02f-4d61-826f-625baf9ac62a.png)
+![1749002412486-299e2586-d02f-4d61-826f-625baf9ac62a.png](../assets/1749002412486-299e2586-d02f-4d61-826f-625baf9ac62a.png)
 
 ### 访问应用资源
 
@@ -271,7 +271,7 @@ public class AccessAppResourceServlet extends GenericServlet {
 
 运行结果：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749005709545-f3790b0e-7044-4d10-8eb9-0620219ff28c.png)
+![1749005709545-f3790b0e-7044-4d10-8eb9-0620219ff28c.png](../assets/1749005709545-f3790b0e-7044-4d10-8eb9-0620219ff28c.png)
 
 ### 日志记录
 
@@ -346,7 +346,7 @@ public class LogServlet extends GenericServlet {
 
 在控制台上查看日志（Tomcat 独立部署时，日志会输出到`****logs/localhost.YYYY-MM-DD.log****`**和**`****catalina.out****`）：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749008736910-c2087620-42c4-4f17-8f37-5a1830a66393.png)
+![1749008736910-c2087620-42c4-4f17-8f37-5a1830a66393.png](../assets/1749008736910-c2087620-42c4-4f17-8f37-5a1830a66393.png)
 
 ---
 

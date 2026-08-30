@@ -6,7 +6,7 @@
 
 三层架构是一种常见的软件架构模式。它将应用程序划分为三个逻辑层次，每层有明确的职责：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749727730298-3fbf26a7-40a4-4ee2-bd8b-6ed01adec552.png)
+![1749727730298-3fbf26a7-40a4-4ee2-bd8b-6ed01adec552.png](../assets/1749727730298-3fbf26a7-40a4-4ee2-bd8b-6ed01adec552.png)
 
 ### 表示层(Presentation Layer)
 
@@ -125,9 +125,9 @@ select * from t_act;
 select * from t_tran;
 ```
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749784541016-ede604cb-55e0-4f99-91e5-32348f433dbb.png)
+![1749784541016-ede604cb-55e0-4f99-91e5-32348f433dbb.png](../assets/1749784541016-ede604cb-55e0-4f99-91e5-32348f433dbb.png)
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749784579080-9a5840d0-832b-4e40-acb1-0f76ccea624b.png)
+![1749784579080-9a5840d0-832b-4e40-acb1-0f76ccea624b.png](../assets/1749784579080-9a5840d0-832b-4e40-acb1-0f76ccea624b.png)
 
 ### DeepSeek 生成前端页面
 
@@ -321,7 +321,7 @@ select * from t_tran;
 </html>
 ```
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749783989569-ad3bf2f5-40df-464e-83d9-d586d28d6872.png)
+![1749783989569-ad3bf2f5-40df-464e-83d9-d586d28d6872.png](../assets/1749783989569-ad3bf2f5-40df-464e-83d9-d586d28d6872.png)
 
 #### 转账成功页面
 
@@ -464,7 +464,7 @@ select * from t_tran;
 </html>
 ```
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749784155028-338b8c19-eb43-44e3-92bb-d191969038ee.png)
+![1749784155028-338b8c19-eb43-44e3-92bb-d191969038ee.png](../assets/1749784155028-338b8c19-eb43-44e3-92bb-d191969038ee.png)
 
 #### 转账失败页面
 
@@ -550,7 +550,7 @@ select * from t_tran;
 </html>
 ```
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749784033465-30698f73-5f79-4f1c-b10a-a73eddd95401.png)
+![1749784033465-30698f73-5f79-4f1c-b10a-a73eddd95401.png](../assets/1749784033465-30698f73-5f79-4f1c-b10a-a73eddd95401.png)
 
 ### 项目搭建及准备工作
 
@@ -592,7 +592,7 @@ public class IndexServlet extends HttpServlet {
 
 14. 配置欢迎页，达到的效果是访问 `http://localhost:8080/bank`时，显示转账页面。
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749885780415-e9e517b9-c41d-4b2c-a9fd-3f59aeff30e1.png)
+![1749885780415-e9e517b9-c41d-4b2c-a9fd-3f59aeff30e1.png](../assets/1749885780415-e9e517b9-c41d-4b2c-a9fd-3f59aeff30e1.png)
 
 ### 添加全局异常处理及日志记录
 
@@ -1452,18 +1452,18 @@ public class AccountController extends HttpServlet {
 
 所有页面添加：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749862638029-eadc2ab5-486f-4494-9c71-f6d21c84b873.png)
+![1749862638029-eadc2ab5-486f-4494-9c71-f6d21c84b873.png](../assets/1749862638029-eadc2ab5-486f-4494-9c71-f6d21c84b873.png)
 
 #### index.html
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749862710376-fce5be45-58a5-4add-80c8-03b46b40525c.png)
+![1749862710376-fce5be45-58a5-4add-80c8-03b46b40525c.png](../assets/1749862710376-fce5be45-58a5-4add-80c8-03b46b40525c.png)
 
 提醒：表单提交方式为 post 方式。
 
 #### success.html
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749864719488-37300995-d632-40ec-9510-b1282d2d0e5f.png)
+![1749864719488-37300995-d632-40ec-9510-b1282d2d0e5f.png](../assets/1749864719488-37300995-d632-40ec-9510-b1282d2d0e5f.png)
 
 #### error.html
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749883647968-f34a7f78-715e-43e6-9aa9-39df94b335b3.png)
+![1749883647968-f34a7f78-715e-43e6-9aa9-39df94b335b3.png](../assets/1749883647968-f34a7f78-715e-43e6-9aa9-39df94b335b3.png)
 
 ### 测试
 
@@ -1475,7 +1475,7 @@ public class AccountController extends HttpServlet {
 
 1. 在更新转出账户和转入账户之间模拟异常，你会发现数据库中的钱丢了。
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749883851146-f69089c0-c49a-49ae-aff3-e701ab3cfc40.png)
+![1749883851146-f69089c0-c49a-49ae-aff3-e701ab3cfc40.png](../assets/1749883851146-f69089c0-c49a-49ae-aff3-e701ab3cfc40.png)
 
 2. 什么原因导致钱丢了？
     1. 在 service 中多次使用 dao，而目前 dao 中任意一个方法只要执行一次就会开启一个新的连接对象，开启一个新的事务。导致 service 方法从开始执行到最终结束，是多个事务，而不是一个事务。
@@ -1570,9 +1570,9 @@ public class DbUtils {
 
 所有 DAO 中的方法结束时，不能关闭 Connection 对象：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749866466555-a6ab166c-7ef5-41b1-8c8e-746839a22dc8.png)
+![1749866466555-a6ab166c-7ef5-41b1-8c8e-746839a22dc8.png](../assets/1749866466555-a6ab166c-7ef5-41b1-8c8e-746839a22dc8.png)
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749866476191-24d4d8f3-11c7-4607-b3a9-839adeb2d038.png)
+![1749866476191-24d4d8f3-11c7-4607-b3a9-839adeb2d038.png](../assets/1749866476191-24d4d8f3-11c7-4607-b3a9-839adeb2d038.png)
 
 再次进行测试，你会发现，发生异常之后，数据安全了，事务得到了控制，如果不发生异常，则可以正常完成转账。
 

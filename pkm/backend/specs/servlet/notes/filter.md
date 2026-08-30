@@ -34,7 +34,7 @@
     - **拦截处理**：每次请求触发`doFilter()`方法。  
     - **销毁**：容器关闭时调用`destroy()`方法。
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749200766259-74ea61ae-3dc5-42d4-a118-d3d90c79eff9.png)
+![1749200766259-74ea61ae-3dc5-42d4-a118-d3d90c79eff9.png](../assets/1749200766259-74ea61ae-3dc5-42d4-a118-d3d90c79eff9.png)
 
 ---
 
@@ -152,11 +152,11 @@ public class CommonCodeFilter implements Filter {
 
 [http://localhost:8080/web01/filter/target1](http://localhost:8080/web01/filter/target1)
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749202075597-8428a0e4-0b67-4d60-b6a3-6ee46b087109.png)
+![1749202075597-8428a0e4-0b67-4d60-b6a3-6ee46b087109.png](../assets/1749202075597-8428a0e4-0b67-4d60-b6a3-6ee46b087109.png)
 
 [http://localhost:8080/web01/filter/target2](http://localhost:8080/web01/filter/target2)
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749202087372-86918720-1ae7-42c1-81ea-df8dfb4340d3.png)
+![1749202087372-86918720-1ae7-42c1-81ea-df8dfb4340d3.png](../assets/1749202087372-86918720-1ae7-42c1-81ea-df8dfb4340d3.png)
 
 可以看到过滤器起作用了。
 

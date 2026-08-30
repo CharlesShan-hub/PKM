@@ -98,7 +98,7 @@ public class BServlet extends HttpServlet {
 
 启动服务器，打开浏览器，输入地址：http://localhost:8080/web01/a，测试结果：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749180177611-1d19f677-4e2b-41db-b109-cf37490f589e.png)
+![1749180177611-1d19f677-4e2b-41db-b109-cf37490f589e.png](../assets/1749180177611-1d19f677-4e2b-41db-b109-cf37490f589e.png)
 
 6. 重定向时无法重定向到 `WEB-INF`目录下受保护的资源，例如 `WEB-INF`目录下有一个文件：`a.html`，编写以下代码会出现 404 错误：
 
@@ -173,7 +173,7 @@ public class BServlet extends HttpServlet {
 
 浏览器地址栏上输入：`http://localhost:8080/web01/a`
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749180945867-2f7f9bb4-c72c-4699-8467-ec51231c5507.png)
+![1749180945867-2f7f9bb4-c72c-4699-8467-ec51231c5507.png](../assets/1749180945867-2f7f9bb4-c72c-4699-8467-ec51231c5507.png)
 
 2. 转发时路径不需要写项目名。
 3. 转发调用的是 request 对象的方法。

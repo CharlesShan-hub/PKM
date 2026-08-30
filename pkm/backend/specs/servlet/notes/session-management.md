@@ -6,7 +6,7 @@
 
 部门管理系统现在任何人都可以访问，只要知道请求路径，假设知道部门列表页面的请求路径 `http://localhost:8080/dept/list`
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749450392879-651f3ccc-912e-447f-9bd5-ec503377281f.png)
+![1749450392879-651f3ccc-912e-447f-9bd5-ec503377281f.png](../assets/1749450392879-651f3ccc-912e-447f-9bd5-ec503377281f.png)
 
 如果知道删除部门的请求路径 `http://localhost:8080/dept/delete?deptno=20`，这个部门将会删除。
 
@@ -32,7 +32,7 @@
 
 `t_user`表：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749453368431-dc296051-f4eb-4207-a9b4-29f1a8e81252.png)
+![1749453368431-dc296051-f4eb-4207-a9b4-29f1a8e81252.png](../assets/1749453368431-dc296051-f4eb-4207-a9b4-29f1a8e81252.png)
 
 ```sql
 DROP TABLE IF EXISTS `t_user`;
@@ -160,7 +160,7 @@ public class Argon2PasswordUtil {
 
 提示：如果需要使用 Argon2 加密算法，需要引入相关的 java jar 包，如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749454867679-ad1eccf2-bbaa-4018-b2e0-a12022b4df1a.png)
+![1749454867679-ad1eccf2-bbaa-4018-b2e0-a12022b4df1a.png](../assets/1749454867679-ad1eccf2-bbaa-4018-b2e0-a12022b4df1a.png)
 
 将这个 jar 包拷贝到 `WEB-INF/lib`目录下，并且将其添加到 classpath 当中。
 
@@ -307,11 +307,11 @@ public class LoginServlet extends HttpServlet {
 
 当登录失败时，页面显示的效果如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749515601938-27efefc2-7ea2-4efb-ad54-49c353d91b82.png)
+![1749515601938-27efefc2-7ea2-4efb-ad54-49c353d91b82.png](../assets/1749515601938-27efefc2-7ea2-4efb-ad54-49c353d91b82.png)
 
 当登录成功时，会跳转到部门列表页面：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749515657512-aabcfec2-b91d-4f2f-bba3-66ecea8ffa91.png)
+![1749515657512-aabcfec2-b91d-4f2f-bba3-66ecea8ffa91.png](../assets/1749515657512-aabcfec2-b91d-4f2f-bba3-66ecea8ffa91.png)
 
 到此为止，登录功能基本的逻辑已经实现了。
 
@@ -384,21 +384,21 @@ HttpSession session = request.getSession(false);
 
 **请求头：**
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749521891896-01187993-9e7b-43bf-aa47-467a2fe794e0.png)
+![1749521891896-01187993-9e7b-43bf-aa47-467a2fe794e0.png](../assets/1749521891896-01187993-9e7b-43bf-aa47-467a2fe794e0.png)
 
 响应头：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749521935384-77267fb4-55f9-43aa-aab0-07110bf82933.png)
+![1749521935384-77267fb4-55f9-43aa-aab0-07110bf82933.png](../assets/1749521935384-77267fb4-55f9-43aa-aab0-07110bf82933.png)
 
 **第二次发送请求时，客户端会携带 sessionId，因为客户端中已经存在 sessionId 了，服务器不会再生成新的 session 对象，进而不会生成新的 sessionId，因此响应报文中不应该存在 sessionId**
 
 **请求头：**
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749521974147-43eb3b46-c1e8-4573-ad40-dd27c2180e6c.png)
+![1749521974147-43eb3b46-c1e8-4573-ad40-dd27c2180e6c.png](../assets/1749521974147-43eb3b46-c1e8-4573-ad40-dd27c2180e6c.png)
 
 **响应头：**
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749521983614-28d4f20a-93af-483e-abf3-899fdc248481.png)
+![1749521983614-28d4f20a-93af-483e-abf3-899fdc248481.png](../assets/1749521983614-28d4f20a-93af-483e-abf3-899fdc248481.png)
 
 ### **session 的主要用途**
 
@@ -445,7 +445,7 @@ session 一直停留在服务器中的问题：
 
 在 Tomcat 服务器中，默认情况下 session 的超时时间设置的是 30 分钟，在 `CATALINA_HOME/confi/web.xml`中有默认配置，如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749521047119-4cc75f0b-4e60-4757-93df-6699ce0e8eb7.png)
+![1749521047119-4cc75f0b-4e60-4757-93df-6699ce0e8eb7.png](../assets/1749521047119-4cc75f0b-4e60-4757-93df-6699ce0e8eb7.png)
 
 这是一个全局的配置，我们也可以在自己项目的 web.xml 文件中进行局部配置，局部优先生效。
 
@@ -502,7 +502,7 @@ public class SessionPersistenceListener implements HttpSessionListener {
 
 `LoginServlet`代码修改如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749522198381-d6ab2758-6d6b-4bd4-b6bd-204bc48bd7b2.png)
+![1749522198381-d6ab2758-6d6b-4bd4-b6bd-204bc48bd7b2.png](../assets/1749522198381-d6ab2758-6d6b-4bd4-b6bd-204bc48bd7b2.png)
 
 ---
 
@@ -561,7 +561,7 @@ public class CheckLoginFilter implements Filter {
 
 在 `CATALINA_HOME/conf/web.xml`文件中对欢迎页进行了全局配置，如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749524091859-be8f6d06-1f98-4ac9-b074-f9cc5132e215.png)
+![1749524091859-be8f6d06-1f98-4ac9-b074-f9cc5132e215.png](../assets/1749524091859-be8f6d06-1f98-4ac9-b074-f9cc5132e215.png)
 
 因此默认情况下，这几个页面被当做欢迎页。
 
@@ -640,7 +640,7 @@ public class CheckLoginFilter implements Filter {
 
 效果如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749525110958-94f1914a-070c-4cac-a5ad-8f7c872080b4.png)
+![1749525110958-94f1914a-070c-4cac-a5ad-8f7c872080b4.png](../assets/1749525110958-94f1914a-070c-4cac-a5ad-8f7c872080b4.png)
 
 用户登录成功后，将用户名存储到 session 作用域中了，因此在 html 页面中使用 `${session.username}`取出当前登录的用户名，替换掉页面中的 `管理员`：
 
@@ -650,7 +650,7 @@ public class CheckLoginFilter implements Filter {
 
 最终效果如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749525457096-16dd2be4-c0ee-465a-aae7-a01bfb818c32.png)
+![1749525457096-16dd2be4-c0ee-465a-aae7-a01bfb818c32.png](../assets/1749525457096-16dd2be4-c0ee-465a-aae7-a01bfb818c32.png)
 
 ---
 
@@ -893,7 +893,7 @@ public class LoginServlet extends HttpServlet {
 
 在 `LoginServlet`中添加的代码是：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749689769680-72e0f8df-7e65-41a3-adea-4bb11ad98430.png)
+![1749689769680-72e0f8df-7e65-41a3-adea-4bb11ad98430.png](../assets/1749689769680-72e0f8df-7e65-41a3-adea-4bb11ad98430.png)
 
 ```java
 package com.jkweilai.dept.filters;
@@ -944,7 +944,7 @@ public class CheckLoginFilter implements Filter {
 
 `CheckLoginFilter`过滤器中添加的代码如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749690017973-06ecca62-c95f-4396-bc1d-824f27a6ab59.png)
+![1749690017973-06ecca62-c95f-4396-bc1d-824f27a6ab59.png](../assets/1749690017973-06ecca62-c95f-4396-bc1d-824f27a6ab59.png)
 
 `IndexServlet`程序修改如下：
 
@@ -1089,7 +1089,7 @@ String userAgent = request.getHeader("User-Agent");
 String fingerprint = DigestUtils.sha256Hex(ip + userAgent + "salt");
 ```
 
-以上代码需要这个 jar 包：![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749699237786-870af075-9760-4644-aa7b-0543bbf1100a.png)，添加到 WEB-INF/lib 目录下，并且添加到 classpath 中。
+以上代码需要这个 jar 包：![1749699237786-870af075-9760-4644-aa7b-0543bbf1100a.png](../assets/1749699237786-870af075-9760-4644-aa7b-0543bbf1100a.png)，添加到 WEB-INF/lib 目录下，并且添加到 classpath 中。
 
 **Apache Commons Codec 是一个用于编码和解码的Java库，提供常用的编码器如Base64、Hex、URL等**
 

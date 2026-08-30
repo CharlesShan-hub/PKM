@@ -75,19 +75,19 @@ public class LifecycleServlet implements Servlet {
 
 启动服务器发送第一次请求：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748921304328-aa2f9970-a54a-4095-9f16-dc942e9eab28.png)
+![1748921304328-aa2f9970-a54a-4095-9f16-dc942e9eab28.png](../assets/1748921304328-aa2f9970-a54a-4095-9f16-dc942e9eab28.png)
 
 发送第二次请求：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748921328623-e24233f5-fa17-4a9e-bb73-5f004ed085c0.png)
+![1748921328623-e24233f5-fa17-4a9e-bb73-5f004ed085c0.png](../assets/1748921328623-e24233f5-fa17-4a9e-bb73-5f004ed085c0.png)
 
 发送第三次请求：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748921357434-87553243-2a57-406c-bed5-88263892fa38.png)
+![1748921357434-87553243-2a57-406c-bed5-88263892fa38.png](../assets/1748921357434-87553243-2a57-406c-bed5-88263892fa38.png)
 
 最后关闭 Tomcat 服务器：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748921453106-d37e4ac4-f5d5-4f5a-ab40-e2e487f0bf4b.png)
+![1748921453106-d37e4ac4-f5d5-4f5a-ab40-e2e487f0bf4b.png](../assets/1748921453106-d37e4ac4-f5d5-4f5a-ab40-e2e487f0bf4b.png)
 
 ---
 
@@ -159,6 +159,6 @@ destroy 方法只会被调用一次，该方法没有任何参数。该方法被
 
 启动服务器，查看控制台输出：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748931153917-fa192a4b-c8f4-44cb-9fca-cc1387db3b8d.png)
+![1748931153917-fa192a4b-c8f4-44cb-9fca-cc1387db3b8d.png](../assets/1748931153917-fa192a4b-c8f4-44cb-9fca-cc1387db3b8d.png)
 
 可以看到，服务器启动的时候会调用 `LifecycleServlet`的无参数构造方法，完成 Servlet 对象的实例化。

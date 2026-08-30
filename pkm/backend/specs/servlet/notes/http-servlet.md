@@ -320,7 +320,7 @@ public class MyHttpServlet extends HttpServlet {
 
 启动服务器，打开浏览器，在地址栏直接输入 URL，这种方式就是 get 请求：http://localhost:8080/web01/myhttp
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749020566918-59cc66f1-6574-4f10-8b94-9940c56aea93.png)
+![1749020566918-59cc66f1-6574-4f10-8b94-9940c56aea93.png](../assets/1749020566918-59cc66f1-6574-4f10-8b94-9940c56aea93.png)
 
 因此，要避免 405 错误，前后端处理方式要一致。
 

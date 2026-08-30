@@ -95,7 +95,7 @@ public class GenericServlet {
 
 参考 `Jakarta EE 10`的 API 帮助文档。
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748942339581-080b5545-db57-4cdd-86a7-6c37b0817f5d.png)
+![1748942339581-080b5545-db57-4cdd-86a7-6c37b0817f5d.png](../assets/1748942339581-080b5545-db57-4cdd-86a7-6c37b0817f5d.png)
 
 ### 获取 Servlet 初始化参数
 
@@ -165,7 +165,7 @@ public class FileUploadServlet extends GenericServlet {
 
 执行结果如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748942936246-2c844ed4-5ce9-4bd5-9579-02e5eeb39296.png)
+![1748942936246-2c844ed4-5ce9-4bd5-9579-02e5eeb39296.png](../assets/1748942936246-2c844ed4-5ce9-4bd5-9579-02e5eeb39296.png)
 
 当然，我们也可以不获取 `ServletConfig`对象，直接调用 `Servlet`对象的 `getInitParameterNames()`和 `getInitParameter(name)`也是可以的，这是因为我们编写 Servlet 继承了 `GenericServlet`，在该类中提供了这两个方法，作为子类 Servlet 当然可以直接调用，请再次查看 GenericServlet 源码：
 
@@ -245,7 +245,7 @@ out.println("<h1>" + servletName + "</h1>");
 
 运行结果如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748949233575-eb3fed25-4c5f-48d0-b450-4431fc78a1de.png)
+![1748949233575-eb3fed25-4c5f-48d0-b450-4431fc78a1de.png](../assets/1748949233575-eb3fed25-4c5f-48d0-b450-4431fc78a1de.png)
 
 同样，在 `GenericServlet`中也提供了这样一个方法，可以在不获取 `ServletConfig`对象时直接获取 ServletName，代码如下：
 
@@ -274,7 +274,7 @@ out.print("<h1>ServletContext = " + application + "</h1>");
 
 执行结果如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748949548947-5b9c0e12-620f-426d-9952-e892e443f504.png)
+![1748949548947-5b9c0e12-620f-426d-9952-e892e443f504.png](../assets/1748949548947-5b9c0e12-620f-426d-9952-e892e443f504.png)
 
 同样，在 `GenericServlet`类也提供了这样一个方法，因此在不获取 ServletConfig 对象的前提下，直接获取 ServletContext 对象也是可以的，代码如下：
 

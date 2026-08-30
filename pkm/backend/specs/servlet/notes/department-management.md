@@ -285,7 +285,7 @@ public class DeptListServlet extends HttpServlet {
 
 执行结果如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749023316765-9d58231e-7472-4bf6-ac18-69146a386a84.png)
+![1749023316765-9d58231e-7472-4bf6-ac18-69146a386a84.png](../assets/1749023316765-9d58231e-7472-4bf6-ac18-69146a386a84.png)
 
 ****Java 15 新特性：文本块****
 
@@ -312,7 +312,7 @@ String json = """
 
 在 DeptListServlet 类中找到查看按钮所在位置：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749023870252-a4318cce-18c7-437b-bc94-a3b8611079af.png)
+![1749023870252-a4318cce-18c7-437b-bc94-a3b8611079af.png](../assets/1749023870252-a4318cce-18c7-437b-bc94-a3b8611079af.png)
 
 在 href 属性上添加请求路径，并且携带部门编号，代码修改为：
 
@@ -324,7 +324,7 @@ out.print("        <a href='" + contextPath + "/detail?deptno=" + deptno + "' cl
 
 启动服务器测试，点击查看按钮，出现以下 404 错误是正常的，因为 Servlet 还没写，重点看浏览器地址栏上的请求地址是否正确：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749024200525-c31167fb-324d-4127-a04c-99205d151a68.png)
+![1749024200525-c31167fb-324d-4127-a04c-99205d151a68.png](../assets/1749024200525-c31167fb-324d-4127-a04c-99205d151a68.png)
 
 ### 显示部门详细信息
 
@@ -508,7 +508,7 @@ public class DeptDetailServlet extends HttpServlet {
 
 运行结果：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749025994506-ce2e7413-c23b-4e83-a7f1-138b7001af4b.png)
+![1749025994506-ce2e7413-c23b-4e83-a7f1-138b7001af4b.png](../assets/1749025994506-ce2e7413-c23b-4e83-a7f1-138b7001af4b.png)
 
 ****重点内容：****
 
@@ -536,7 +536,7 @@ String value = request.getParameter("name");
 
 DeptListServlet 中找到删除按钮：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749026829298-97cab244-2f26-4ada-a673-98d9b5520328.png)
+![1749026829298-97cab244-2f26-4ada-a673-98d9b5520328.png](../assets/1749026829298-97cab244-2f26-4ada-a673-98d9b5520328.png)
 
 添加删除的请求路径：
 
@@ -815,7 +815,7 @@ public class DeptEditServlet extends HttpServlet {
 
 运行效果如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749028828789-378c8320-abbc-4ccc-a406-7a71841cb4f0.png)
+![1749028828789-378c8320-abbc-4ccc-a406-7a71841cb4f0.png](../assets/1749028828789-378c8320-abbc-4ccc-a406-7a71841cb4f0.png)
 
 ---
 
@@ -825,7 +825,7 @@ public class DeptEditServlet extends HttpServlet {
 
 在修改页面 （DeptEditServlet），点击保存更改，发送请求，提交 form 表单。部门编号不支持修改。
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749031578308-0ec990fd-98d4-42d3-b417-457aa3d12e62.png)
+![1749031578308-0ec990fd-98d4-42d3-b417-457aa3d12e62.png](../assets/1749031578308-0ec990fd-98d4-42d3-b417-457aa3d12e62.png)
 
 修改后的代码如下：
 
@@ -932,7 +932,7 @@ get 请求数据在请求行上提交，格式：uri?name=value&name=value
 
 如果 get 请求提交中文数据，在 Tomcat7 及之前的版本中通过 `request.getParameter("name")`取数据时也会出现中文乱码问题。怎么解决 get 请求乱码问题呢？修改 `conf/server.xml`配置文件：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749035321888-761af397-ea18-40e2-8d7d-ad2d560b9f2b.png)
+![1749035321888-761af397-ea18-40e2-8d7d-ad2d560b9f2b.png](../assets/1749035321888-761af397-ea18-40e2-8d7d-ad2d560b9f2b.png)
 
 在以上 `<Connector>` 标签中添加 `URIEncoding="UTF-8"`属性。
 
@@ -940,7 +940,7 @@ Tomcat8 之后的版本中 `URIEncoding`属性的默认值就是 UTF-8，因此 
 
 怎么能够知道 `<Connector>`标签都支持哪些属性呢？可以参照 Tomcat 内部帮助文档：`CATALINA_HOME/webapps/docs/config/http.html`
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749035530854-627f9e3c-57df-491f-845a-a3915d8c9303.png)
+![1749035530854-627f9e3c-57df-491f-845a-a3915d8c9303.png](../assets/1749035530854-627f9e3c-57df-491f-845a-a3915d8c9303.png)
 
 ---
 
@@ -950,21 +950,21 @@ Tomcat8 之后的版本中 `URIEncoding`属性的默认值就是 UTF-8，因此 
 
 在部门列表页面点击添加部门按钮：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749035831501-cdecc603-bfa8-427a-b449-8a5ecc9b44a0.png)
+![1749035831501-cdecc603-bfa8-427a-b449-8a5ecc9b44a0.png](../assets/1749035831501-cdecc603-bfa8-427a-b449-8a5ecc9b44a0.png)
 
 在 DeptListServlet 中找到这个按钮，设置超链接地址为：http://localhost:8080/dept/add.html
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749036126696-3b601ee6-7e01-4673-b287-2f216206ba47.png)
+![1749036126696-3b601ee6-7e01-4673-b287-2f216206ba47.png](../assets/1749036126696-3b601ee6-7e01-4673-b287-2f216206ba47.png)
 
 大家可能在想，为什么跳转到添加部门页面不需要经过 Servlet？这是因为添加部门页面是一个纯静态页面。不需要动态网页技术。
 
 在项目的根下创建 `add.html`文件，将之前的 add.html 文件中的代码拷贝粘贴进来。测试效果如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749036189624-492b40a9-cbea-46b8-a865-b47d21a9f8d2.png)
+![1749036189624-492b40a9-cbea-46b8-a865-b47d21a9f8d2.png](../assets/1749036189624-492b40a9-cbea-46b8-a865-b47d21a9f8d2.png)
 
 将表单中的部门编号删除，因为部门编号可以在后台 Java 程序中动态生成。最终效果如下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749036252161-b674a181-7428-41ec-9b0e-df55fc3f01dc.png)
+![1749036252161-b674a181-7428-41ec-9b0e-df55fc3f01dc.png](../assets/1749036252161-b674a181-7428-41ec-9b0e-df55fc3f01dc.png)
 
 ### 设置 form 表单
 

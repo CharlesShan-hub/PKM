@@ -87,4 +87,4 @@ public class MyServletContextListener implements ServletContextListener {
 
 启动和关闭服务器，观察控制台输出结果：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749198649363-2c3d4952-dc36-4095-b5c7-a44987fc0a60.png)
+![1749198649363-2c3d4952-dc36-4095-b5c7-a44987fc0a60.png](../assets/1749198649363-2c3d4952-dc36-4095-b5c7-a44987fc0a60.png)

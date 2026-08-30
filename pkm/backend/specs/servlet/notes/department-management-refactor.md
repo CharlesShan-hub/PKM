@@ -10,7 +10,7 @@ Servlet 负责核心业务的处理，将处理完成的数据收集起来。交
 
 ### 引入 Thymeleaf 的相关 jar 
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749434490407-733b42d4-ff64-4ced-8851-cacbc09b7aa4.png)
+![1749434490407-733b42d4-ff64-4ced-8851-cacbc09b7aa4.png](../assets/1749434490407-733b42d4-ff64-4ced-8851-cacbc09b7aa4.png)
 
 然后将 `thymeleaf jar`放到 `classpath`中。
 
@@ -67,7 +67,7 @@ public class ThymeleafInitializer implements ServletContextListener {
 
 ### 创建 `templates`目录
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749434618247-f3ab0447-1156-4579-91ad-c941846f8fa0.png)
+![1749434618247-f3ab0447-1156-4579-91ad-c941846f8fa0.png](../assets/1749434618247-f3ab0447-1156-4579-91ad-c941846f8fa0.png)
 
 ### Thymeleaf 整合 logback
 
@@ -332,15 +332,15 @@ Thymeleaf 的模板页面`**WEB-INF/templates/list.html**`来负责数据展示�
 
 ## 跳转到添加部门页面
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749438317444-86cda57f-d450-4685-88af-cb5eaf3efee7.png)
+![1749438317444-86cda57f-d450-4685-88af-cb5eaf3efee7.png](../assets/1749438317444-86cda57f-d450-4685-88af-cb5eaf3efee7.png)
 
 在 `list.html`页面中找到上图的**添加部门**按钮。将请求路径修改为 `th:href="@{/view(template=add)}"`
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749439109756-9e78e023-5dd9-40d5-b668-2a4ce8caad25.png)
+![1749439109756-9e78e023-5dd9-40d5-b668-2a4ce8caad25.png](../assets/1749439109756-9e78e023-5dd9-40d5-b668-2a4ce8caad25.png)
 
 该请求路径通过执行 `ThymeleafViewServlet` 来跳转到 `WEB-INF/templates/add.html`页面，因为 `add.html`页面中也需要使用 thymleaf 语法动态设置请求路径，因此需要将之前的 `add.html`移动到 `WEB-INF/templates`目录下：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749438758834-763e7e48-dc3f-4077-82b5-32d5f8fca6d6.png)
+![1749438758834-763e7e48-dc3f-4077-82b5-32d5f8fca6d6.png](../assets/1749438758834-763e7e48-dc3f-4077-82b5-32d5f8fca6d6.png)
 
 ---
 
@@ -543,7 +543,7 @@ public class DeptDetailServlet extends HttpServlet {
 
 只需要将 `list.html`页面中 **删除** 按钮发送的请求路径：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1749440444195-f8aa1c6f-3eb9-431a-9ba9-10fa8540d60d.png)
+![1749440444195-f8aa1c6f-3eb9-431a-9ba9-10fa8540d60d.png](../assets/1749440444195-f8aa1c6f-3eb9-431a-9ba9-10fa8540d60d.png)
 
 其它代码不需要修改。
 

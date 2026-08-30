@@ -1,33 +1,39 @@
 # 关于 Tomcat 标准输出流乱码问题
 
-**当前环境信息如下：**
+## 当前环境信息
 
-1. win10 简体中文环境
-2. Tomcat 版本： 10.1.48
-3. IDEA 版本：2025.2.2
-4. JDK 版本：21
+- **操作系统**：Windows 10 简体中文
+- **Tomcat 版本**：10.1.48
+- **IDEA 版本**：2025.2.2
+- **JDK 版本**：21
 
+## 已做配置
 
+1. IDEA 中所有字符编码相关配置均已设为 **UTF-8**
+2. Tomcat 的 `config/logging.properties` 文件中，字符编码也已设为 **UTF-8**
 
-**前提是：**
+## 问题描述
 
-1. IDEA 工具所有涉及到字符编码配置方面都已经配置了 UTF-8
-2. Tomcat 服务器的 config/logging.properties 中的字符编码方式也都配置了 UTF-8
+在上述配置下，Servlet 中使用 `System.out.println()` 打印中文时，控制台输出仍然出现乱码。
 
+## 根本原因
 
+**Tomcat 容器的标准输出流（System.out）编码与 IDEA 控制台显示编码不一致。**
 
-**问题是：**在这种情况下，在 Servlet 中使用 `System.out.println()`打印中文时仍然会出现乱码。
+具体来说：
+- Tomcat 的 `System.out` 默认使用 **GBK** 编码输出
+- IDEA 控制台期望接收 **UTF-8** 编码的文本
+- 编码不匹配导致中文显示为乱码
 
+验证方式：在 Servlet 中调用 `System.out.charset()`，返回结果为 `GBK`。
 
+## 解决方案
 
-**什么原因？**
+在 Tomcat 的 **VM options** 中添加以下配置：
 
-+ **根本原因：Tomcat容器的标准输出流(System.out)编码与IDEA控制台显示编码不一致。**
-+ **具体来说：Tomcat的System.out默认使用GBK编码输出，IDEA控制台期望接收UTF-8编码的文本，编码不匹配导致中文显示为乱码。**
-+ **在**`**Servlet**`**程序中可以通过**`****System.out.charset()****`****方法******来获取 Tomcat 容器的标准输出流的字符编码方式，结果是 GBK。**
+```bash
+-Dstdout.encoding=UTF-8
+```
 
-
-
-**怎么解决？在 Tomcat 服务器的 **`**VM options**`**配置中添加这个配置：****-Dstdout.encoding=UTF-8**
-
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1762937114583-cb3378ea-1d25-4a48-a6d3-d45eec9c0167.png)
+配置位置参考下图：
+![VM options 配置示例](../assets/1762937114583-cb3378ea-1d25-4a48-a6d3-d45eec9c0167.png)
