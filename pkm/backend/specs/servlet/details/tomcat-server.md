@@ -4,6 +4,8 @@
 
 ## Web 服务器 & 应用服务器
 
+> 一句话：webserver只实现了Jakarta规范的Servlet+JSP，应用服务器实现了全部规范。所以很多应用服务器内嵌tomcat。
+
 ### Web Server
 
 **Web 服务器**是专门用于处理 HTTP 请求的软件，主要功能是存储、处理和传递网页给客户端（通常是浏览器）。
@@ -42,7 +44,7 @@
 
 * **Web 服务器**​ = 只实现了 Jakarta EE 中的 Servlet + JSP 规范。
 * **应用服务器**​ = 实现了完整的 Jakarta EE 规范。
-* **现代趋势**：随着微服务架构的流行，轻量级的 Web 服务器（如 Tomcat）结合 Spring Boot 等框架的使用越来越普遍，传统重量级应用服务器的使用在减少。
+* **现代趋势**：随着微服务架构的流行，轻量级的 **Web 服务器**（如 Tomcat）**结合 Spring Boot** 等框架的使用越来越普遍，传统重量级应用服务器的使用在减少。
 
 ---
 
@@ -122,27 +124,26 @@ services:
 ```powershell
 # 停止并删除：容器 + 网络 + 匿名卷
 docker-compose down -v
-  
+
 # 删除当前容器（防止残留）
-docker rm -f my-tomcat 2>$null
-  
+docker rm -f my-tomcat
+
 # 删除镜像（强制重新下载）
 docker rmi -f tomcat:10.1-jdk17
-  
+
 # 清理本地卷目录（重新同步）
-Remove-Item -Recurse -Force conf, webapps, logs -ErrorAction SilentlyContinue
-New-Item -ItemType Directory -Force conf, webapps, logs | Out-Null
-  
+rm -rf conf webapps logs
+mkdir -p conf webapps logs
+
 # 用临时容器把默认 conf 同步到本地
 docker run -d --name temp-config tomcat:10.1-jdk17
-Start-Sleep -Seconds 3
+sleep 3
 docker cp temp-config:/usr/local/tomcat/conf/. ./conf/
-docker stop temp-config
-docker rm temp-config
-  
+docker rm -f temp-config
+
 # 启动（会使用 ./conf ./webapps ./logs 这三个挂载）
 docker-compose up -d
-Start-Sleep -Seconds 5
+sleep 3
 docker-compose ps
 ```
 

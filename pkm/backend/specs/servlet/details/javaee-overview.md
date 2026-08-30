@@ -15,19 +15,19 @@ JavaEE（Java Platform, Enterprise Edition）是Sun Microsystems（后被Oracle�
 
 JavaEE包含以下关键规范（不同版本略有增减）：
 
-| **分类** | **规范** | **用途** |
-| :---: | --- | --- |
-| **Web层** | Servlet | 处理HTTP请求/响应 |
-| | JSP (JavaServer Pages) | 动态页面生成（现多被模板引擎替代） |
-| | JSF (JavaServer Faces) | 组件化Web框架 |
-| **业务层** | EJB (Enterprise JavaBeans) | 分布式业务逻辑（如事务管理） |
-| | CDI (Contexts and Dependency Injection) | 依赖注入和上下文管理 |
-| **数据层** | JPA (Java Persistence API) | 对象关系映射（ORM） |
-| | JTA (Java Transaction API) | 分布式事务管理 |
-| **消息/集成** | JMS (Java Message Service) | 异步消息队列（如ActiveMQ、RabbitMQ集成） |
-| **安全** | JAAS (Java Authentication and Authorization Service) | 认证和授权 |
-| **其他** | JAX-RS (Java API for RESTful Services) | RESTful Web服务（如Jersey、RESTEasy） |
-| | JAX-WS (Java API for XML Web Services) | SOAP Web服务 |
+|  **分类**   | **规范**                                               | **用途**                          |
+| :-------: | ---------------------------------------------------- | ------------------------------- |
+| **Web层**  | **Servlet**（要会）                                      | 处理HTTP请求/响应                     |
+|           | JSP (JavaServer Pages)                               | 动态页面生成（现多被模板引擎替代）               |
+|           | JSF (JavaServer Faces)                               | 组件化Web框架                        |
+|  **业务层**  | EJB (Enterprise JavaBeans)                           | 分布式业务逻辑（如事务管理）                  |
+|           | CDI (Contexts and Dependency Injection)              | 依赖注入和上下文管理                      |
+|  **数据层**  | **JPA** (Java Persistence API)（要会）                   | 对象关系映射（ORM）                     |
+|           | JTA (Java Transaction API)                           | 分布式事务管理                         |
+| **消息/集成** | **JMS** (Java Message Service)（要会）                   | 异步消息队列（如ActiveMQ、RabbitMQ集成）    |
+|  **安全**   | JAAS (Java Authentication and Authorization Service) | 认证和授权                           |
+|  **其他**   | JAX-RS (Java API for RESTful Services)               | RESTful Web服务（如Jersey、RESTEasy） |
+|           | JAX-WS (Java API for XML Web Services)               | SOAP Web服务                      |
 因此：Servlet 属于 JavaEE 规范。
 
 ---
@@ -44,7 +44,7 @@ JavaEE包含以下关键规范（不同版本略有增减）：
 | 维护方     | Oracle             | Eclipse基金会           |
 | 版本      | 最终版本JavaEE 8（2017） | 持续更新（如Jakarta EE 10） |
 | 包名      | `javax.*`          | `jakarta.*`          |
-| 新特性     | 停止更新               | 新增云原生支持              |
+| 新特性     | 停止更新               | **新增云原生支持**          |
 
 ---
 
