@@ -187,16 +187,21 @@ are a comment, which in this case explains briefly what the program does. Any ch
 是注释，在本例中简要说明了程序的功能。`/*`和`*/`之间的任何字符都会被编译器忽略；它们可以自由使用，以使程序更易于理解。注释可以出现在任何可以出现空格、制表符或换行符的地方。
 
 In C, all variables must be declared before they are used, usually at the beginning of the function before any executable statements. A declaration announces the properties of variables; it consists of a name and a list of variables, such as 
+在C语言中，所有变量在使用之前都必须先声明，通常是在函数的开头、任何可执行语句之前。声明用于说明变量的属性；它由一个类型名和一个变量列表组成，例如：
 
 The type int means that the variables listed are integers; by contrast with float, which means floating point, i.e., numbers that may have a fractional part. The range of both int and float depends on the machine you are using; 16-bits ints, which lie between -32768 and +32767, are common, as are 32-bit ints. A float number is typically a 32-bit quantity, with at least six significant digits and magnitude generally between about 10<sup>-38</sup> and 10<sup>38</sup>. 
+类型 `int` 表示所列出的变量是整型；与之相对的是 `float`，表示浮点数，即可能带有小数部分的数。`int` 和 `float` 的取值范围都取决于你所使用的机器；16位的 `int` 型通常介于 -32768 到 +32767 之间，32位的 `int` 型也很常见。`float` 型数通常是一个32位的量，至少具有6位有效数字，其数量级一般在大约 10⁻³⁸ 到 10³⁸ 之间。
 
 C provides several other data types besides int and float, including: 
+C语言除了 `int` 和 `float` 之外，还提供了其他几种数据类型，包括：
 
 <table><tr><td>char</td><td>character - a single byte</td></tr><tr><td>short</td><td>short integer</td></tr><tr><td>long</td><td>long integer</td></tr><tr><td>double</td><td>double-precision floating point</td></tr></table>
 
 The size of these objects is also machine-dependent. There are also arrays, structures and unions of these basic types, pointers to them, and functions that return them, all of which we will meet in due course. 
+这些对象的大小也是依赖于机器的。此外，还有这些基本类型的数组、结构体和联合体，指向它们的指针，以及返回它们的函数，所有这些我们都会在适当的时候介绍到。
 
 Computation in the temperature conversion program begins with the assignment statements 
+温度转换程序中的计算从赋值语句开始。
 
 ```txt
 lower = 0;
@@ -205,8 +210,10 @@ step = 20;
 ```
 
 which set the variables to their initial values. Individual statements are terminated by semicolons. 
+这些赋值语句将变量设置为它们的初始值。每条单独的语句以分号结束。
 
 Each line of the table is computed the same way, so we use a loop that repeats once per output line; this is the purpose of the while loop 
+表格中的每一行都以相同的方式计算，因此我们使用一个循环，每输出一行就重复执行一次；这就是 `while` 循环的用途。
 
 ```hcl
 while (fahr <= upper) {
@@ -215,8 +222,10 @@ while (fahr <= upper) {
 ```
 
 The while loop operates as follows: The condition in parentheses is tested. If it is true (fahr is less than or equal to upper), the body of the loop (the three statements enclosed in braces) is executed. Then the condition is re-tested, and if true, the body is executed again. When the test becomes false (fahr exceeds upper) the loop ends, and execution continues at the statement that follows the loop. There are no further statements in this program, so it terminates. 
+`while` 循环的操作方式如下：首先测试圆括号中的条件。如果条件为真（即 `fahr` 小于或等于 `upper`），则执行循环体（花括号中的三条语句）。然后再次测试条件，如果仍为真，则再次执行循环体。当测试结果为假时（即 `fahr` 超过 `upper`），循环结束，程序继续执行循环之后的下一条语句。在此程序中，后面没有其他语句，因此程序终止。
 
 The body of a while can be one or more statements enclosed in braces, as in the temperature converter, or a single statement without braces, as in 
+`while` 循环的循环体可以是用花括号括起来的一条或多条语句（如温度转换程序中的那样），也可以是单独一条不带花括号的语句（如下例所示）：
 
 ```txt
 while (i < j)
@@ -224,16 +233,20 @@ while (i < j)
 ```
 
 In either case, we will always indent the statements controlled by the while by one tab stop (which we have shown as four spaces) so you can see at a glance which statements are inside the loop. The indentation emphasizes the logical structure of the program. Although C compilers do not care about how a program looks, proper indentation and spacing are critical in making programs easy for people to read. We recommend writing only one statement per line, and using blanks around operators to clarify grouping. The position of braces is less important, although people hold passionate beliefs. We have chosen one of several popular styles. Pick a style that suits you, then use it consistently. 
+无论采用哪种方式，我们都会将 `while` 控制的语句缩进一个制表位（我们在这里用四个空格表示），这样你一眼就能看出哪些语句属于循环内部。缩进能够突出程序的逻辑结构。虽然C编译器并不关心程序的外观，但恰当的缩进和间距对于编写易于阅读的程序至关重要。我们建议每行只写一条语句，并在运算符周围使用空格来明确分组。花括号的位置虽然不那么重要，但人们对此有着强烈的个人偏好。我们在这里选用了一种较为流行的风格。你可以选择一种适合你自己的风格，然后始终如一地使用它。
 
 Most of the work gets done in the body of the loop. The Celsius temperature is computed and assigned to the variable celsius by the statement 
+循环体内部完成了大部分工作。摄氏温度通过以下语句计算并赋值给变量 `celsius`：
 
 $$
 \text { celsius } = 5 * (\text { fahr - 32 }) / 9;
 $$
 
 The reason for multiplying by 5 and dividing by 9 instead of just multiplying by 5/9 is that in C, as in many other languages, integer division truncates: any fractional part is discarded. Since 5 and 9 are integers. 5/9 would be truncated to zero and so all the Celsius temperatures would be reported as zero. 
+之所以先乘以5再除以9，而不是直接乘以5/9，是因为在C语言（以及许多其他语言）中，整数除法会截断：任何小数部分都会被丢弃。由于5和9都是整数，5/9的结果会被截断为0，这样所有摄氏温度都会被报告为0。
 
 This example also shows a bit more of how printf works. printf is a general-purpose output formatting function, which we will describe in detail in Chapter 7. Its first argument is a string of characters to be printed, with each % indicating where one of the other (second, third, ...) arguments is to be substituted, and in what form it is to be printed. For instance, %d specifies an integer argument, so the statement 
+这个例子还展示了 `printf` 更多的用法。`printf` 是一个通用的输出格式化函数，我们将在第7章中详细描述。它的第一个参数是一个待打印的字符串，其中的每个 `%` 表示其他（第二个、第三个……）参数中的一个将在何处被替换，以及以何种形式打印。例如，`%d` 指定一个整型参数，因此语句：
 
 $$
 \text { printf } (" \% d \backslash t \% d \backslash n", f a h r, c e l s i u s);

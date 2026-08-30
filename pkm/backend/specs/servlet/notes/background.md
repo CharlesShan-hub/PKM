@@ -1,7 +1,7 @@
 # Background
 
 1. Servlet 是 Spring MVC 的核心。
-2. Servlet 是 Server Appet 的简称，可以认为是服务器端的小java程序。
+2. Servlet 是 Server Applet 的简称，可以认为是服务器端的小java程序。
 3. 模板技术：早期使用 JSP（目前基本已被弃用），现多采用 Thymeleaf 作为替代。
 4. Servlet 是 [BS架构](../details/bs-cs-architecture.md)（浏览器/服务器）的技术。
 5. 从浏览器访问URL到服务器响应并最终渲染页面的完整[通信流程](../details/bs-communication-principle.md)（B/S通信原理），包括：URL结构、DNS解析、HTTP请求/响应、浏览器渲染等关键环节。
