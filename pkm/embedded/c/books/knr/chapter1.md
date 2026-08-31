@@ -63,11 +63,9 @@ main will usually call other functions to help perform its job, some that you wr
 ```
 
 tells the compiler to include information about the standard input/output library; the line appears at the beginning of many C source files. The standard library is described in Chapter 7 and Appendix B. 
-
-
-One method of communicating data between functions is for the calling function to provide a list of values, called arguments, to the function it calls. The parentheses after the function name surround the argument list. In this example, main is defined to be a function that expects no arguments, which is indicated by the empty list ( ). 
 告诉编译器包含关于标准输入输出库的信息；这一行出现在许多C源文件的开头。标准库在第7章和附录B中描述。
 
+One method of communicating data between functions is for the calling function to provide a list of values, called arguments, to the function it calls. The parentheses after the function name surround the argument list. In this example, main is defined to be a function that expects no arguments, which is indicated by the empty list ( ). 
 函数之间通信的一种方法是，调用函数向被调用函数提供一个值列表，这些值称为参数。函数名后面的括号包围着参数列表。在这个例子中，`main` 被定义为一个不需要任何参数的函数，这由空列表 `( )` 表示。
 
 ```c
@@ -86,7 +84,9 @@ main() //define a function called main that received no argument values
 The statements of a function are enclosed in braces { }. The function main contains only one statement, 
 函数的语句用花括号 `{ }` 括起来。函数 `main` 只包含一条语句，
 
-`printf("hello, world\n"); `
+```c
+printf("hello, world\n");
+```
 
 A function is called by naming it, followed by a parenthesized list of arguments, so this calls the function printf with the argument "hello, world\n". printf is a library function that prints output, in this case the string of characters between the quotes. 
 通过指定函数名并后跟括号括起来的参数列表来调用函数，因此这里以参数 `"hello, world\n"` 调用 `printf` 函数。`printf` 是一个用于打印输出的库函数，在本例中它打印引号之间的字符串。
@@ -253,12 +253,16 @@ $$
 $$
 
 causes the values of the two integers fahr and celsius to be printed, with a tab (\t) between them. 
+使两个整数 `fahr` 和 `celsius` 的值被打印出来，并在它们之间带有一个制表符（`\t`）。
 
 Each % construction in the first argument of printf is paired with the corresponding second argument, third argument, etc.; they must match up properly by number and type, or you will get wrong answers. 
+`printf` 的第一个参数中的每个 `%` 构造都与相应的第二个参数、第三个参数等配对；它们在数量和类型上必须正确匹配，否则会得到错误的结果。
 
 By the way, printf is not part of the C language; there is no input or output defined in C itself. printf is just a useful function from the standard library of functions that are normally accessible to C programs. The behaviour of printf is defined in the ANSI standard, however, so its properties should be the same with any compiler and library that conforms to the standard. 
+顺便说一句，`printf` 并不是 C 语言的一部分；C 语言本身并没有定义任何输入或输出。`printf` 只是标准函数库中一个有用的函数，这些函数通常可供 C 程序使用。然而，`printf` 的行为在 ANSI 标准中有所定义，因此其属性在任何符合标准的编译器和库中都应该是相同的。
 
 In order to concentrate on C itself, we don't talk much about input and output until chapter 7. In particular, we will defer formatted input until then. If you have to input numbers, read the discussion of the function scanf in Section 7.4. scanf is like printf, except that it reads input instead of writing output. 
+为了集中精力讨论C语言本身，我们在第7章之前不会过多讨论输入和输出。特别是，我们将把格式化输入的讨论推迟到那时。如果您需要输入数字，请阅读第7.4节中关于`scanf`函数的讨论。`scanf`与`printf`类似，不同之处在于它读取输入而不是写入输出。
 
 There are a couple of problems with the temperature conversion program. The simpler one is that the output isn't very pretty because the numbers are not right-justified. That's easy to fix; if we augment each %d in the printf statement with a width, the numbers printed will be right-justified in their fields. For instance, we might say 
 
