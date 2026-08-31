@@ -265,12 +265,14 @@ In order to concentrate on C itself, we don't talk much about input and output u
 为了集中精力讨论C语言本身，我们在第7章之前不会过多讨论输入和输出。特别是，我们将把格式化输入的讨论推迟到那时。如果您需要输入数字，请阅读第7.4节中关于`scanf`函数的讨论。`scanf`与`printf`类似，不同之处在于它读取输入而不是写入输出。
 
 There are a couple of problems with the temperature conversion program. The simpler one is that the output isn't very pretty because the numbers are not right-justified. That's easy to fix; if we augment each %d in the printf statement with a width, the numbers printed will be right-justified in their fields. For instance, we might say 
+温度转换程序存在几个问题。较简单的一个是输出不够美观，因为数字没有右对齐。这很容易修复；如果在`printf`语句中的每个`%d`上加上宽度指定，打印出的数字就会在其字段内右对齐。例如，我们可以写成
 
 ```javascript
 printf("%3d %6d\n", fahr, celsius); 
 ```
 
 to print the first number of each line in a field three digits wide, and the second in a field six digits wide, like this: 
+将每行的第一个数字打印在宽度为3的字段中，第二个数字打印在宽度为6的字段中，如下所示：
 
 ```txt
 0 -17
@@ -283,6 +285,7 @@ to print the first number of each line in a field three digits wide, and the sec
 ```
 
 The more serious problem is that because we have used integer arithmetic, the Celsius temperatures are not very accurate; for instance, 0 F is actually about -17.8 C, not -17. To get more accurate answers, we should use floating-point arithmetic instead of integer. This requires some changes in the program. Here is the second version: 
+更严重的问题是，由于我们使用了整数算术，摄氏温度不够精确；例如，0华氏度实际上大约为-17.8摄氏度，而不是-17。为了得到更精确的答案，我们应该使用浮点算术而不是整数。这需要对程序进行一些修改。这是第二个版本：
 
 ```c
 #include <stdio.h>
@@ -308,12 +311,15 @@ main()
 ```
 
 This is much the same as before, except that fahr and celsius are declared to be float and the formula for conversion is written in a more natural way. We were unable to use 5/9 in the previous version because integer division would truncate it to zero. A decimal point in a constant indicates that it is floating point, however, so 5.0/9.0 is not truncated because it is the ratio of two floating-point values. 
+这与之前大体相同，不同之处在于`fahr`和`celsius`被声明为`float`类型，并且转换公式以更自然的方式书写。我们在之前的版本中无法使用`5/9`，因为整数除法会将其截断为零。然而，常量中的小数点表示它是浮点数，因此`5.0/9.0`不会被截断，因为它是两个浮点值的比值。
 
 If an arithmetic operator has integer operands, an integer operation is performed. If an arithmetic operator has one floating-point operand and one integer operand, however, the integer will be converted to floating point before the operation is done. If we had written (fahr-32), the 32 would be automatically converted to floating point. Nevertheless, writing floating-point constants with explicit decimal points even when they have integral values emphasizes their floating-point nature for human readers. 
+如果算术运算符的操作数都是整数，则执行整数运算。但是，如果算术运算符有一个浮点操作数和一个整数操作数，则在运算之前会将整数转换为浮点数。如果我们写成`(fahr-32)`，`32`会被自动转换为浮点数。尽管如此，即使浮点常量具有整数值，也显式地写出小数点，这有助于向人类读者强调它们的浮点性质。
 
 The detailed rules for when integers are converted to floating point are in Chapter 2. For now, notice that the assignment 
+整数何时转换为浮点数的详细规则在第2章中。现在，请注意该赋值语句。
 
-```txt
+```c
 fahr = lower;
 and the test
 while (fahr <= upper)
@@ -321,8 +327,9 @@ also work in the natural way - the int is converted to float before the operatio
 ```
 
 The printf conversion specification %3.0f says that a floating-point number (here fahr) is to be printed at least three characters wide, with no decimal point and no fraction digits. %6.1f describes another number (celsius) that is to be printed at least six characters wide, with 1 digit after the decimal point. The output looks like this: 
+`printf`的转换规范`%3.0f`表示一个浮点数（此处为`fahr`）至少要打印三个字符宽，不带小数点和小数部分。`%6.1f`描述另一个数字（`celsius`），它至少要打印六个字符宽，小数点后带1位数字。输出如下所示：
 
-```txt
+```c
 0 -17.8
 20 -6.7
 40 4.4
@@ -330,18 +337,23 @@ The printf conversion specification %3.0f says that a floating-point number (her
 ```
 
 Width and precision may be omitted from a specification: %6f says that the number is to be at least six characters wide; %.2f specifies two characters after the decimal point, but the width is not constrained; and %f merely says to print the number as floating point. 
+宽度和精度可以在规范中省略：`%6f`表示数字至少为六个字符宽；`%.2f`指定小数点后两位，但宽度不受限制；而`%f`仅表示以浮点数形式打印该数字。
 
 <table><tr><td>%d</td><td>print as decimal integer</td></tr><tr><td>%6d</td><td>print as decimal integer, at least 6 characters wide</td></tr><tr><td>%f</td><td>print as floating point</td></tr><tr><td>%6f</td><td>print as floating point, at least 6 characters wide</td></tr><tr><td>%.2f</td><td>print as floating point, 2 characters after decimal point</td></tr><tr><td>%6.2f</td><td>print as floating point, at least 6 wide and 2 after decimal point</td></tr></table>
 
-Among others, printf also recognizes %o for octal, %x for hexadecimal, %c for character, %s for character string and %% for itself. 
+Among others, printf also recognizes `%o` for octal, `%x` for hexadecimal, `%c` for character, `%s` for character string and `%%` for itself. 
+`printf`还识别`%o`用于八进制，`%x`用于十六进制，`%c`用于字符，`%s`用于字符串，以及`%%`用于输出百分号本身。
 
 Exercise 1-3. Modify the temperature conversion program to print a heading above the table. 
+练习1-3. 修改温度转换程序，在表格上方打印一个表头。
 
 Exercise 1-4. Write a program to print the corresponding Celsius to Fahrenheit table. 
+练习1-4. 编写一个程序，打印相应的摄氏温度转华氏温度对照表。
 
 ## 1.3 The for statement
 
 There are plenty of different ways to write a program for a particular task. Let's try a variation on the temperature converter. 
+针对特定任务，编写程序的方式有很多种。让我们尝试对温度转换程序做一个变体。
 
 ```c
 #include <stdio.h>
@@ -357,40 +369,50 @@ main()
 ```
 
 This produces the same answers, but it certainly looks different. One major change is the elimination of most of the variables; only fahr remains, and we have made it an int. The lower and upper limits and the step size appear only as constants in the for statement, itself a new construction, and the expression that computes the Celsius temperature now appears as the third argument of printf instead of a separate assignment statement. 
+这会得出相同的答案，但看起来确实不同。一个主要的变化是消除了大部分变量；只剩下`fahr`，并且我们将其声明为`int`类型。下限、上限和步长仅以常量的形式出现在`for`语句中，而`for`语句本身是一个新结构；计算摄氏温度的表达式现在作为`printf`的第三个参数出现，而不是单独的赋值语句。
 
 This last change is an instance of a general rule - in any context where it is permissible to use the value of some type, you can use a more complicated expression of that type. Since the third argument of printf must be a floating-point value to match the %6.1f, any floatingpoint expression can occur here. 
+这最后一项改变是一个通用规则的实例——在任何允许使用某类型值的上下文中，都可以使用该类型的更复杂的表达式。由于`printf`的第三个参数必须是一个浮点值以匹配`%6.1f`，因此这里可以出现任何浮点表达式。
 
 The for statement is a loop, a generalization of the while. If you compare it to the earlier while, its operation should be clear. Within the parentheses, there are three parts, separated by semicolons. The first part, the initialization 
+`for`语句是一种循环，是`while`的推广。如果你将其与之前的`while`进行比较，它的操作应该很清楚。在括号内，有三个部分，由分号分隔。第一部分是初始化部分。
 
-```txt
+```c
 fahr = 0 
 ```
 
 is done once, before the loop proper is entered. The second part is the test or condition that controls the loop: 
+在进入循环体之前执行一次。第二部分是控制循环的测试或条件：
 
-```txt
+```c
 fahr <= 300 
 ```
 
 This condition is evaluated; if it is true, the body of the loop (here a single ptintf) is executed. Then the increment step 
+对该条件进行求值；如果为真，则执行循环体（此处为单个`printf`）。然后执行增量步长
 
-```txt
+```c
 fahr = fahr + 20 
 ```
 
 is executed, and the condition re-evaluated. The loop terminates if the condition has become false. As with the while, the body of the loop can be a single statement or a group of statements enclosed in braces. The initialization, condition and increment can be any expressions. 
+被执行，然后条件被重新求值。如果条件变为假，则循环终止。与`while`一样，循环体可以是单个语句，也可以是用花括号括起来的语句组。初始化、条件和增量可以是任何表达式。
 
 The choice between while and for is arbitrary, based on which seems clearer. The for is usually appropriate for loops in which the initialization and increment are single statements and logically related, since it is more compact than while and it keeps the loop control statements together in one place. 
+在`while`和`for`之间进行选择是随意的，主要基于哪个看起来更清晰。`for`通常适用于初始化和增量是单个语句且在逻辑上相关的循环，因为它比`while`更紧凑，并且将循环控制语句集中在一处。
 
 Exercise 1-5. Modify the temperature conversion program to print the table in reverse order, that is, from 300 degrees to 0. 
+练习1-5. 修改温度转换程序，以逆序打印表格，即从300度到0度。
 
 ## 1.4 Symbolic Constants
 
 A final observation before we leave temperature conversion forever. It's bad practice to bury''magic numbers'' like 300 and 20 in a program; they convey little information to someone who might have to read the program later, and they are hard to change in a systematic way. One way to deal with magic numbers is to give them meaningful names. A #define line defines a symbolic name or symbolic constant to be a particular string of characters: 
+在我们永远告别温度转换之前，最后提一点。在程序中埋藏像300和20这样的“魔数”是不良实践；它们对以后可能需要阅读程序的人传达的信息很少，而且难以系统地进行更改。处理魔数的一种方法是为它们赋予有意义的名称。`#define`行将一个符号名称或符号常量定义为一个特定的字符串：
 
 ## #define name replacement list
 
 Thereafter, any occurrence of name (not in quotes and not part of another name) will be replaced by the corresponding replacement text. The name has the same form as a variable name: a sequence of letters and digits that begins with a letter. The replacement text can be any sequence of characters; it is not limited to numbers. 
+此后，任何出现的`name`（不在引号内，也不是另一个名称的一部分）都将被相应的替换文本所替换。该名称的形式与变量名相同：以字母开头的字母和数字序列。替换文本可以是任何字符序列；它不仅限于数字。
 
 ```c
 #include <stdio.h>
@@ -410,12 +432,15 @@ main()
 ```
 
 The quantities LOWER, UPPER and STEP are symbolic constants, not variables, so they do not appear in declarations. Symbolic constant names are conventionally written in upper case so they can ber readily distinguished from lower case variable names. Notice that there is no semicolon at the end of a #define line. 
+`LOWER`、`UPPER`和`STEP`是符号常量，而不是变量，因此它们不会出现在声明中。符号常量名称通常用大写字母书写，以便于与小写变量名区分开来。注意`#define`行的末尾没有分号。
 
 ## 1.5 Character Input and Output
 
 We are going to consider a family of related programs for processing character data. You will find that many programs are just expanded versions of the prototypes that we discuss here. 
+我们将考虑一系列用于处理字符数据的相关程序。你会发现许多程序只是我们在此讨论的原型程序的扩展版本。
 
 The model of input and output supported by the standard library is very simple. Text input or output, regardless of where it originates or where it goes to, is dealt with as streams of characters. A text stream is a sequence of characters divided into lines; each line consists of zero or more characters followed by a newline character. It is the responsibility of the library to make each input or output stream confirm this model; the C programmer using the library need not worry about how lines are represented outside the program. 
+标准库所支持的输入输出模型非常简单。文本输入或输出，无论其来源或去向何处，都被作为字符流来处理。文本流是一个被划分为若干行的字符序列；每行由零个或多个字符后跟一个换行符组成。使每个输入或输出流符合这一模型是库的责任；使用该库的C程序员无需担心程序外部如何表示行。
 
 The standard library provides several functions for reading or writing one character at a time, of which getchar and putchar are the simplest. Each time it is called, getchar reads the next input character from a text stream and returns that as its value. That is, after 
 
