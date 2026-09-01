@@ -68,6 +68,7 @@ commit;
 
 1. 在WEBAPPs下边创建目录 `dept`。`dept`就是项目名，该项目主要完成部门的维护。
 2. 在 dept目录下新建 index.html、list.html、add.html、edit.html、detail.html
+3. 注意！跳转的目录要用绝对路径，比如`<form action="/dept/list.html" method="get">`，可以看到这个是`/`开头的！
 
 以下页面是 AI 生成
 

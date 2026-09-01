@@ -4,10 +4,11 @@
 
 ## BS 系统涉及的角色与协议
 
-> 我的理解：简单来讲就是每一波开发人员彼此通过协议连接从而实现解耦合。
+> 我的理解：简单来讲就是每一波开发人员彼此通过协议连接从而实现解耦合。比如tomcat和webapp开发者解耦合，webapp可以跑在别的服务器上，只要遵循tomcat就行。
 
 详细图
-
+1. 请求`index/html`，是请求静态资源，一个网页
+2. 请求`DeptDeleteServlet`，是请求java程序，java程序可以去访问数据库
 ![1748698438324-7379061b-2b64-4a15-b633-8be0a994a1d3.png](../assets/1748698438324-7379061b-2b64-4a15-b633-8be0a994a1d3.png)
 
 简略图
@@ -24,8 +25,8 @@
 3 个协议
 
 + 浏览器和 Web 服务器之间的通信协议 HTTP。
-+ Web 服务器和 Web 应用之间都必须遵循 Servlet 规范。这样 Web 服务器和 Web 应用才可以解耦合。****（怎么理解解耦合：Web 应用开发完成后不一定非要部署到 Tomcat 中，可以部署到任何一个实现了 Servlet 规范的容器中）****
-+ Web 应用中的 Java 程序和数据库服务器之间必须遵循 JDBC 规范。这样 Java 程序和具体的数据库产品就解耦合了。****（怎么理解解耦合：Java 程序不一定非要连接 MySQL 数据库，不改任何代码的前提下，还可以连接 Oracle 数据库）****
++ Web 服务器和 Web 应用之间都必须遵循 Servlet 规范。这样 Web 服务器和 Web 应用才可以解耦合。**（怎么理解解耦合：Web 应用开发完成后不一定非要部署到 Tomcat 中，可以部署到任何一个实现了 Servlet 规范的容器中）**
++ Web 应用中的 Java 程序和数据库服务器之间必须遵循 JDBC 规范。这样 Java 程序和具体的数据库产品就解耦合了。**（怎么理解解耦合：Java 程序不一定非要连接 MySQL 数据库，不改任何代码的前提下，还可以连接 Oracle 数据库）**
 
 Servlet定义的具体内容
 
@@ -39,7 +40,7 @@ Servlet定义的具体内容
 
 我们来模拟一下 Servlet 接口，更好的理解 Servlet 的本质及实现原理。
 
-首先创建两个 `Servlet` 实现类
+这个就是最核心的，服务器和webapp开发者共同的知识：任何的handler都有service函数
 
 ```java
 package jakarta.servlet;
@@ -49,6 +50,8 @@ public interface Servlet{
     void service();
 }
 ```
+
+webapp开发者，创建两个 `Servlet` 实现类：
 
 ```java
 package com.jkweilai.servlet;
@@ -102,6 +105,7 @@ public class Bootstrap{
             String servletClassName = bundle.getString(url);
             Class clazz = Class.forName(servletClassName);
             Servlet servlet = (Servlet)clazz.newInstance();
+            // 服务器开发者确定这个类一定会实现service
             servlet.service();
         }
     }
