@@ -36,7 +36,7 @@
 
 ## 添加 Artifact（构件）
 
-Artifact 是构件的意思，通常指代** 可部署的输出文件**。
+Artifact 是构件的意思，通常指代 **可部署的输出文件** 。
 
 ![](../assets/1748914057428-fbd16feb-2246-4004-b23b-bb6abf369172.png)
 
@@ -49,6 +49,22 @@ Artifact 是构件的意思，通常指代** 可部署的输出文件**。
 注意，这个 jar 包只是起到一个编译阶段的作用（只是让我们在 IDEA 中编写的 Servlet 程序能够正常编译），因此这个 jar 包不需要放到 `WEB-INF/lib`目录中。因为 `WEB-INF/lib`目录下的 jar 包是在运行阶段起作用的，Tomcat 服务器运行时 `servlet-api.jar` 已经在 `CATALINA_HOME/lib`目录下了。
 
 在 `web01`模块下随意创建一个目录，例如 `lib`，然后将 `servlet-api.jar`拷贝到该目录下，然后 右键-->Add as Library...
+
+如果找不到这个jar包，我提供一个下载的命令
+
+```bash
+curl -O https://repo1.maven.org/maven2/jakarta/servlet/jakarta.servlet-api/6.0.0/jakarta.servlet-api-6.0.0.jar
+```
+
+推荐下载到src同级别的lib（自己创建）下面
+
+```bash
+charles@192 lib % pwd
+/Users/charles/workspace/project/learn-servlet/web_porjects/web01/lib
+charles@192 lib % ls
+jakarta.servlet-api-6.0.0.jar
+```
+
 
 ![](../assets/1748914910543-fc6dcee0-621d-4a91-aa78-2d623a5ec4e7.png)
 

@@ -4,17 +4,9 @@
 
 * [background](notes/background.md)：概念介绍（Servlet、Thymeleaf、JavaEE、url/urn/uri、JavaEE、tomcat、http）
 * [hello-world](notes/hello-world.md)：tomcat安装、静态网页案例、servlet原理、servlet hello world
+* [servlet-advance](notes/servlet-advance.md)
 
 
-* [servlet-lifecycle](notes/servlet-lifecycle.md)
-* [generic-servlet](notes/generic-servlet.md)
-* [servlet-config](notes/servlet-config.md)
-* [servlet-context](notes/servlet-context.md)
-* [http-servlet](notes/http-servlet.md)
-* [department-management](notes/department-management.md)
-* [forward-and-redirect](notes/forward-and-redirect.md)
-* [listener](notes/listener.md)
-* [filter](notes/filter.md)
 * [thymeleaf](notes/thymeleaf.md)
 * [department-management-refactor](notes/department-management-refactor.md)
 * [session-management](notes/session-management.md)
