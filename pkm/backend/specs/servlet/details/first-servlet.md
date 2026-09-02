@@ -2,25 +2,35 @@
 
 ---
 
-## 创建项目的标准目录
+> 本章按照网课为基础，按照本地环境和目录进行调整
 
-在任意位置创建一个目录 `web01`，作为项目的根目录。然后在该目录下按照以下目录结构创建：
+## 初始化
 
-```plain
-web01
-    |-------WEB-INF
-               |-------classes
+* servlet我们使用的本地的docker的：[tomcat-docker](tomcat-docker.md)
+* 代码仓库： https://github.com/CharlesShan-hub/learn-servlet
+* 目录结构：我们在webapps文件夹下，创建hello文件夹。
+
+```bash
+> pwd
+D:\project\work\learn-servlet\webapps\hello
+> tree
+D:.
+└───WEB-INF
+    ├───classes
+    │   └───com
+    │       └───jkweilai
+    │           └───servlet
+    └───src
+        └───com
+            └───jkweilai
+                └───servlet
 ```
-
-![](../assets/1748836276684-d803e6f4-99f6-4fc8-a3c9-aa068c136d22.png)
 
 ---
 
 ## 编写 Servlet
 
-在任意位置创建 `HelloServlet.java`。
-
-![](../assets/1748836351532-1d762a67-85fb-4eb3-8fef-56acde86de6c.png)
+在`hello\WEB-INF\src\com\jkweilai\servlet`创建 `HelloServlet.java`。
 
 任何 `Servlet`都必须实现 `jakarta.servlet.Servlet`接口，该接口中有哪些方法呢？参考帮助文档：
 
@@ -39,37 +49,73 @@ import jakarta.servlet.ServletConfig;
 import java.io.PrintWriter;
 import java.io.IOException;
 
-public class HelloServlet implements Servlet{
+public class LoginServlet1 implements Servlet{
 
-    public void init(ServletConfig config) throws ServletException{}
+    public void init(ServletConfig config) throws ServletException{}
 
-    public void service(ServletRequest request,ServletResponse response)
-        throws ServletException, IOException{
-        // 向控制台打印
-        System.out.println("Hello Servlet!");
-        // 向浏览器上响应HTML
-        PrintWriter out = response.getWriter();
-        out.print("<h1>Hello Servlet!</h1>");
-    }
+    // servlet的核心方法，每一次请求都会调用这个方法
+    public void service(ServletRequest request,ServletResponse response) throws ServletException, IOException{
+        // 向控制台打印
+        System.out.println("Hello Servlet!");
+        // 解决中文乱码需要设置响应头，在获取响应流之前才有效
+        response.setContentType("text/html;charset=UTF-8");
 
-    public void destroy(){}
+        // 向浏览器上响应HTML：响应对象 response
+        PrintWriter out = response.getWriter();
+        out.print("<h1>Hello Servlet 01!</h1>");
+        out.println("<h1>你好！！！</h1>");
+    }
 
-    public String getServletInfo(){
-        return "";
-    }
+    public void destroy(){}
 
-    public ServletConfig getServletConfig(){
-        return null;
-    }
+    public String getServletInfo(){
+        return "";
+    }
 
+    public ServletConfig getServletConfig(){
+        return null;
+    }
+  
 }
 ```
 
+但其实ai给了我一个更简洁的，也就是用httpservlet而不是单纯的servlet：
+```java
+package com.jkweilai.servlet;
+  
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+  
+import java.io.IOException;
+import java.io.PrintWriter;
+  
+public class LoginServlet2 extends HttpServlet {
+  
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+       resp.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>Hello, Servlet 02!</h1>");
+        out.println("</body></html>");
+    }
+  
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        doGet(req, resp);
+    }
+}
+```
 ---
 
-## 编译 Servlet
+## 手动编译 Servlet（建议跳过）
 
-配置环境变量 CLASSPATH：
+如果用本地的java编译，需要配置环境变量 CLASSPATH：
 
 ![](../assets/1748851199928-24bbe6f8-3ca5-436c-a219-db299087ac4e.png)
 
@@ -85,13 +131,27 @@ public class HelloServlet implements Servlet{
 
 ![](../assets/1748851646239-23c3bf7b-d3c3-4580-9c74-571389271ba2.png)
 
----
-
-## 编译后拷贝到 classes 目录
+编译后拷贝到 classes 目录
 
 将以上编译之后的结果拷贝到 `WEB-INF/classes`目录下：
 
 ![](../assets/1748851963150-40b6f755-d0be-45f3-a817-11af3dafa2af.png)
+
+---
+## docker内部java编译（我的方法）
+
+我的方法：编译器就在我的docker里面，直接用下面的命令运行更好！不用手动拷贝了
+
+```bash
+docker exec my-tomcat bash -c "mkdir -p /usr/local/tomcat/webapps/hello/WEB-INF/classes && javac -encoding UTF-8 -cp /usr/local/tomcat/lib/servlet-api.jar -d /usr/local/tomcat/webapps/hello/WEB-INF/classes /usr/local/tomcat/webapps/hello/WEB-INF/src/com/jkweilai/servlet/LoginServlet1.java"
+
+docker exec my-tomcat bash -c "mkdir -p /usr/local/tomcat/webapps/hello/WEB-INF/classes && javac -encoding UTF-8 -cp /usr/local/tomcat/lib/servlet-api.jar -d /usr/local/tomcat/webapps/hello/WEB-INF/classes /usr/local/tomcat/webapps/hello/WEB-INF/src/com/jkweilai/servlet/LoginServlet2.java"
+
+# 最后重启一下
+docker-compose restart
+```
+
+这样也不需要复制了，多好。
 
 ---
 
@@ -104,20 +164,33 @@ Tomcat 服务器 webapps 目录下自带了几个项目，这些项目当中都�
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
-                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-  version="6.0"
-  metadata-complete="true">
-
-  <servlet>
-      <servlet-name>firstServlet</servlet-name>
-      <servlet-class>com.jkweilai.servlet.HelloServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>firstServlet</servlet-name>
-      <url-pattern>/hello</url-pattern>
-  </servlet-mapping>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+  <!--servlet配置信息-->
+  <servlet>
+    <!--servlet的名字随便写一个，但是要保证和servlet mapping中的servlet名字一致。-->
+    <servlet-name>loginServlet1</servlet-name>
+    <!--这里必须填写Servlet类的全限定类名-->
+    <servlet-class>com.jkweilai.servlet.LoginServlet1</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>loginServlet2</servlet-name>
+    <servlet-class>com.jkweilai.servlet.LoginServlet2</servlet-class>
+  </servlet>
+  <!--servlet映射信息-->
+  <servlet-mapping>
+    <servlet-name>loginServlet1</servlet-name>
+    <!--请求路径必须以 / 开始，不要添加项目名。-->
+    <url-pattern>/login1</url-pattern>
+    <!--支持编写多个-->
+    <url-pattern>/a/b/c</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>loginServlet2</servlet-name>
+    <url-pattern>/login2</url-pattern>
+  </servlet-mapping>
   
 </web-app>
 ```
@@ -126,14 +199,6 @@ Tomcat 服务器 webapps 目录下自带了几个项目，这些项目当中都�
 
 `metadata-complete="true"`：容器忽略所有注解，只使用 web.xml 配置
 `metadata-complete="false"`**(默认值)：容器会扫描注解**
-
----
-
-## 部署项目到 Tomcat
-
-将 `web01`目录拷贝到 `CATALINA_HOME/webapps`目录下，如下：
-
-![](../assets/1748852918795-fe55d6b3-11a6-4624-a5fa-2d900c205fce.png)
 
 ---
 
@@ -162,9 +227,9 @@ Tomcat 服务器 webapps 目录下自带了几个项目，这些项目当中都�
     <title>首页</title>
 </head>
 <body>
-  <a href="http://localhost:8080/web01/hello">hello1</a>
+  <a href="http://localhost:8080/hello/login">登录</a>
   <!--http://ip:port 可以省略。前端编写的路径目前都以 / 开头，并且一定要添加项目名。-->
-  <a href="/web01/hello">hello1</a>
+  <a href="/hello/login">登录</a>
 </body>
 </html>
 ```
@@ -256,105 +321,3 @@ response.setContentType("text/html;charset=UTF-8");
 
 + **前者**：设置Servlet输出流的字符编码方式，影响`PrintWriter`如何将Java字符串转换为字节序列，是服务器端的行为，发生在内容发送到客户端之前，会自动设置`Content-Type`响应头的charset部分，例如：`Content-Type: text/html;charset=UTF-8`这是最根本的编码设置，决定了数据在传输时的实际编码。
 + **后者**：是HTML文档内部的编码声明，浏览器在解析HTML时会参考这个提示，当HTTP响应头没有指定charset时，浏览器会查找meta标签，如果HTTP头已指定charset，meta标签通常会被忽略。
-
----
-
-## 简单版本总结
-
-
-首先是创建目录
-
-```plain
-web01
-    |-------WEB-INF
-        |-------classes
-        |-------web.xml
-```
-
-在任意位置编写实现类，需要实现五个方法
-
-```java
-package com.jkweilai.servlet;
-
-import jakarta.servlet.Servlet;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
-import jakarta.servlet.ServletConfig;
-import java.io.PrintWriter;
-import java.io.IOException;
-
-public class HelloServlet implements Servlet{
-
-    public void init(ServletConfig config) throws ServletException{}
-
-    public void service(ServletRequest request,ServletResponse response)
-        throws ServletException, IOException{
-        // 向控制台打印
-        System.out.println("Hello Servlet!");
-        
-        // 向浏览器上响应HTML
-        response.setContentType("text/html"); // 设置响应的内容类型，这个对解决响应时的中文乱码问题没有作用。
-        response.setCharacterEncoding("UTF-8"); // 设置响应时采用的字符编码方式。这个是解决响应时中文乱码问题的关键。
-        
-        PrintWriter out = response.getWriter();
-        out.print("<h1>Hello Servlet!</h1>");
-        out.print("<h1>你好，服务器端的小程序！</h1>");
-    }
-
-    public void destroy(){}
-
-    public String getServletInfo(){
-        return "";
-    }
-
-    public ServletConfig getServletConfig(){
-        return null;
-    }
-
-}
-```
-
-编译需要确保 javac 能找到 `servlet-api.jar`，然后把生成的 `.class` 文件放到指定位置。我把项目放在了：`/opt/homebrew/Cellar/tomcat/11.0.21/libexec/webapps/dept/WEB-INF`
-然后把源文件也放在这里的src目录下。我的Mac上边的 javac 命令如下：
-
-```bash
-javac \
--cp "/opt/homebrew/Cellar/tomcat/11.0.21/libexec/lib/servlet-api.jar" \
--d WEB-INF/classes \
-src/com/jkweilai/servlet/HelloServlet.java
-```
-
-```plain
-web01
-    |---WEB-INF
-        |---classes
-            |---com (要注意一定要带着包粘贴)
-                |---jkweilai
-                    |---HelloServlet
-```
-
-编写 web.xml
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
-                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-  version="6.0"
-  metadata-complete="true">
-
-  <servlet>
-      <servlet-name>firstServlet</servlet-name>
-      <servlet-class>com.jkweilai.servlet.HelloServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>firstServlet</servlet-name>
-      <url-pattern>/hello</url-pattern>
-  </servlet-mapping>
-  
-</web-app>
-```
-
-最后把编写好的 web01 放到 WEBAPPs 下边。
