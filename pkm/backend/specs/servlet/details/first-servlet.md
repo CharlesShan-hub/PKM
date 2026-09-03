@@ -32,9 +32,25 @@ D:.
 
 在`hello\WEB-INF\src\com\jkweilai\servlet`创建 `HelloServlet.java`。
 
-任何 `Servlet`都必须实现 `jakarta.servlet.Servlet`接口，该接口中有哪些方法呢？参考帮助文档：
+任何 `Servlet`都必须实现 `jakarta.servlet.Servlet`接口，该接口中有哪些方法呢？看源码：
 
-![](../assets/1748836574181-7a44e911-ae3f-4929-8f87-32fee8d27e76.png)
+```java
+package jakarta.servlet;  
+  
+import java.io.IOException;  
+  
+public interface Servlet {  
+    void init(ServletConfig var1) throws ServletException;  
+  
+    ServletConfig getServletConfig();  
+  
+    void service(ServletRequest var1, ServletResponse var2) throws ServletException, IOException;  
+  
+    String getServletInfo();  
+  
+    void destroy();  
+}
+```
 
 编写 `HelloServlet`实现该接口中所有方法：
 
