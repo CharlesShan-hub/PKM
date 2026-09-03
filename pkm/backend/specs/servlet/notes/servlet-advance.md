@@ -1,6 +1,6 @@
 # Servlet Advance
 
-* [servlet-lifecycle](notes/servlet-lifecycle.md)
+* [servlet-lifecycle](notes/servlet-lifecycle.md)：
 * [generic-servlet](notes/generic-servlet.md)
 * [servlet-config](notes/servlet-config.md)
 * [servlet-context](notes/servlet-context.md)

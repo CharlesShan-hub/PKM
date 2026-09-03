@@ -7,5 +7,5 @@
 5. Servlet是一个接口，web项目中javaweb服务器实现接口，后端开发人员使用接口，从而实现了解耦合。可以参考一个简单模拟：[servlet-deep-dive](servlet-deep-dive.md)。
 6. 我们编写Servlet需要遵守的规定：[servlet-dir](../details/servlet-dir.md)
 7. Hello World：[first-servlet](../details/first-servlet.md)
-8. java程序里边可以使用jdbc访问数据库：[database-connection](database-connection.md)
+8. java程序里边可以使用jdbc访问数据库：[database-connection](../details/database-connection.md)
 9. 使用IDEA编写servlet：[servlet-with-idea](../details/servlet-with-idea.md)

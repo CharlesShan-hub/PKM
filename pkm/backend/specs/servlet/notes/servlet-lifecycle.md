@@ -24,7 +24,8 @@ import jakarta.servlet.*;
 import java.io.IOException;
 
 public class LifecycleServlet implements Servlet {
-
+    
+    // 额外添加的无参构造器，不是必须的
     public LifecycleServlet() {
         System.out.println("LifecycleServlet's default constructor called");
     }
@@ -36,6 +37,10 @@ public class LifecycleServlet implements Servlet {
 
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+        // 注意！tomcat的默认编码方式是平台的，比如gbk。但是idea默认是utf-8
+        // 建议启动的时候，手动指定标准输出流实用utf-8
+        // 运行的配置里面：VM-Options里面添加：-Dstdoust encoding=UTF-8
+        // 
         System.out.println("LifecycleServlet's service called");
     }
 
@@ -93,10 +98,19 @@ public class LifecycleServlet implements Servlet {
 
 ## 根据测试总结生命周期
 
-1. 默认情况下，在服务器启动的时候并不会创建 Servlet 对象。当用户发送第一次请求时，Servlet 对象才会被创建。
+1. 默认情况下，**在服务器启动的时候并不会创建 Servlet 对象**。当用户发送第一次请求时，Servlet 对象才会被创建。
 2. 当用户发送第一次请求时，Tomcat 会调用 Servlet 类的无参数构造方法完成实例化，对象创建完毕后，Tomcat 服务器会调用一次 Servlet 对象的 init 方法完成 Servlet 初始化。初始化完成后，Tomcat 会调用 Servlet 对象的 service 方法处理用户的请求。
+    ```bash
+    # 第一次点击
+    LifecycleServlet's default constructor called
+    LifecycleServlet's init called
+    LifecycleServlet's service called
+    
+    # 后面的每一次点击
+    LifecycleServlet's service called
+    ```
 3. 服务器关闭的时候销毁 Servlet 对象，销毁 Servlet 对象之前会调用一次 `destroy`方法。
-4. 在服务器运行期间，同一个类型的 Servlet 对象只会被实例化一次。也就是说 Servlet 对象是单例的。另外 Tomcat 服务器是支持多线程的。因此 Servlet 是在** 单实例多线程 **的环境下运行的。
+4. 在服务器运行期间，同一个类型的 Servlet 对象只会被实例化一次。也就是说 Servlet 对象是单例的。另外 Tomcat 服务器是支持多线程的。因此 Servlet 是在**单实例多线程** 的环境下运行的。
 
 ---
 

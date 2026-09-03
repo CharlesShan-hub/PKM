@@ -2,7 +2,7 @@
 
 > 框架：servlet，模板技术：JSP（没人用了），Thymeleaf（改成这个了）
 
-* [background](notes/background.md)：概念介绍（Servlet、Thymeleaf、JavaEE、url/urn/uri、JavaEE、tomcat、http）
+* [background](notes/background.md)：概念介绍（Servlet、Thymeleaf、JavaEE、url/urn/uri、JavaEE、tomcat、http、url编解码）
 * [hello-world](notes/hello-world.md)：tomcat安装、静态网页案例、servlet原理、servlet hello world
 * [servlet-advance](notes/servlet-advance.md)
 
