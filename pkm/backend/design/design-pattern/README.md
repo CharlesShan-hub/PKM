@@ -1,8 +1,8 @@
 # 设计模式
 
-* 
-* [单例模式](singleton-pattern.md)
-* [模板模式](template-pattern.md)
+* [单例模式](singleton-pattern.md)：我的理解是，通过构造器私有化，技术上的确保全局只有一个对象
+* [模板模式](template-pattern.md)：我的理解是，父类规定流程预留钩子函数，子类实现具体环节
+* [适配器模式（与缺省适配器）](adaptor.md)：我的理解是，通过接口规定调用方式，不同子类的实现利用不同的api完成，屏蔽掉不同api的差异。（缺省适配器：设计抽象类完成一部分的接口函数，让子类可以更自由的只实现部分函数）
 
 
 老资源：[设计模式](../../languages/javase/notes/stage2/设计模式.md)
