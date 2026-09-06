@@ -4,19 +4,20 @@
 
 ## ServletContext 是什么
 
-1. ServletContext 是 Servlet 规范中的一员。全接口名为：jakarta.servlet.ServletContext。
-2. ServletContext 被称为 Servlet 上下文对象。所有 Servlet 共享的一个对象。ServletContext 类型的变量名一般叫做：application
-3. Web 服务器提供了 ServletContext 接口的实现，但我们不需要关心底层的具体实现，我们仍然是面向 ServletContext 接口调用即可。
-4. ServletContext 对象在 Web 服务器启动时创建，对于整个 web 应用来说 ServletContext 对象只有一个，在 Web 服务器关闭的时候 ServletContext 对象才会被销毁。
+1. ServletContext 全接口名为：`jakarta.servlet.ServletContext`。
+2. ServletContext 被称为 Servlet 上下文对象。**所有 Servlet 共享的一个对象**。
+3. ServletContext 类型的变量名一般叫做：application
+4. Web 服务器提供了 ServletContext 的实现，但我们只需面向 ServletContext 接口调用。
+5. ServletContext 对象在 Web 服务器启动时创建，对于整个 web 应用来说 ServletContext 对象只有一个，在 Web 服务器关闭的时候 ServletContext 对象才会被销毁。
 
 ---
 
 ## ServletContext 的主要作用
 
-1. ****应用范围的数据共享******：在整个Web应用中共享数据**
-2. ****获取应用初始化参数******：读取web.xml中配置的上下文参数**
-3. ****访问应用资源******：获取Web应用内的文件资源路径**
-4. ****日志记录******：提供应用级的日志记录功能**
+1. 应用范围的数据共享：在整个Web应用中共享数据
+2. 获取应用初始化参数：读取`web.xml`中配置的上下文参数
+3. 访问应用资源：获取Web应用内的文件资源路径
+4. 日志记录：提供应用级的日志记录功能
 
 ---
 
@@ -68,7 +69,7 @@ void log(String message, Throwable throwable);
 
 ### 应用范围的数据共享
 
-放在应用域中的数据所有 Servlet 共享，所有线程共享，注意线程安全问题，如果是热点数据，共享数据，少量数据，并且低频变更，建议存储到应用域中。
+放在应用域中的数据所有 Servlet 共享，所有线程共享，**注意线程安全问题**，如果是热点数据，共享数据，少量数据，并且低频变更，建议存储到应用域中。
 
 相关的方法包括以下三个：
 
@@ -81,11 +82,11 @@ Object getAttribute(String name);
 void removeAttribute(String name);
 ```
 
-先简单测试一下这几个方法的使用。****具体的应用场景等学完监听器之后再看****。
+先简单测试一下这几个方法的使用。**具体的应用场景等学完监听器之后再看**。
 
 编写两个 Servlet：SetDataServlet、GetDataServlet。
 
-在 SetDataServlet 中向应用域中绑定数据。在 GetDataServlet 中从应用域中读取绑定的数据。
+在 SetDataServlet 中向应用域中绑定数据。在 GetDataServlet 中从应用域中读取绑定的数据。在 RemoveDataServlet 中从应用域中删除数据。
 
 ```java
 package com.jkweilai.servlet;
@@ -122,6 +123,22 @@ public class GetDataServlet extends GenericServlet {
 
 ```
 
+```java
+package com.jkweilai.servlet;  
+  
+import jakarta.servlet.*;  
+  
+import java.io.IOException;  
+  
+public class RemoveDataServlet extends GenericServlet {  
+    @Override  
+    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {  
+        ServletContext application = this.getServletContext();  
+        application.removeAttribute("applicationData");  
+    }
+}
+```
+
 ```xml
 <servlet>
     <servlet-name>setData</servlet-name>
@@ -140,20 +157,30 @@ public class GetDataServlet extends GenericServlet {
     <servlet-name>getData</servlet-name>
     <url-pattern>/get</url-pattern>
 </servlet-mapping>
+
+<servlet>  
+    <servlet-name>removeData</servlet-name>  
+    <servlet-class>com.jkweilai.servlet.RemoveDataServlet</servlet-class>  
+</servlet>  
+<servlet-mapping>  
+    <servlet-name>removeData</servlet-name>  
+    <url-pattern>/remove</url-pattern>  
+</servlet-mapping>
 ```
 
-测试，发送两个请求：
+测试，发送三个请求：
 
-1. http://localhost:8080/web01/set
-2. http://localhost:8080/web01/get
+1. http://localhost:8080/web01/set （设置）
+2. http://localhost:8080/web01/get （就看到显示：application-data字样，如下图）
+3. http://localhost:8080/web01/remove （删除该字段）
 
 ![1749001722511-1d7c8c6c-6a2d-4c6e-86f8-f3dc3e9ab025.png](../assets/1749001722511-1d7c8c6c-6a2d-4c6e-86f8-f3dc3e9ab025.png)
 
 ### 获取上下文初始化参数
 
-`<init-param>`属于 Servlet 初始化参数，局部的。如果这个配置是某一个 Servlet 使用，可以使用这种方式。
+`<init-param>`属于 Servlet 初始化参数，**局部的**。如果这个配置是某一个 Servlet 使用，可以使用这种方式。
 
-`<context-param>`属于应用上下文初始化参数，全局的。如果这个配置是所有 Servlet 共享的，可以使用这种方式。
+`<context-param>`属于应用上下文初始化参数，**全局的**。如果这个配置是所有 Servlet 共享的，可以使用这种方式。
 
 上下文初始化参数在 web.xml 文件中配置如下：
 
@@ -352,6 +379,6 @@ public class LogServlet extends GenericServlet {
 
 ## Servlet、ServletConfig、ServletContext 关系
 
-1. **一个Web应用只有一个**`**ServletContext**`**（全局共享）**
-2. **每个**`**Servlet**`**有自己独立的**`**ServletConfig**`**（存放私有配置）**
-3. `**Servlet**`**本身是处理请求的核心组件，它能通过**`**ServletConfig**`**获取**`**ServletContext**`**。**
+1. **一个Web应用只有一个**`ServletContext`**（全局共享）**
+2. **每个**`Servlet`**有自己独立的**`ServletConfig`**（存放私有配置）**
+3. `Servlet`**本身是处理请求的核心组件，它能通过**`ServletConfig`**获取**`ServletContext`**。**

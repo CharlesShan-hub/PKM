@@ -27,6 +27,77 @@ public class MyServlet extends GenericServlet {
 
 ---
 
+## GenericServlet 的使用
+
+有了 `GenericServlet`，编写 `Servlet`类时可以不再直接实现 `Servlet`接口。
+
+编写 `WelcomServlet`继承 `GenericServlet`这个抽象类，如果你只需要处理用户的请求，则只需要重写 `service`方法即可。代码如下：
+
+```java
+package com.jkweilai.servlet;
+
+import jakarta.servlet.GenericServlet;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+
+import java.io.IOException;
+
+public class WelcomeServlet extends GenericServlet {
+    @Override
+    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().print("<h1>欢迎学习 GenericServlet</h1>");
+    }
+}
+
+```
+
+编写 `web.xml`配置：
+
+```xml
+<servlet>
+    <servlet-name>welServlet</servlet-name>
+    <servlet-class>com.jkweilai.servlet.WelcomeServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>welServlet</servlet-name>
+    <url-pattern>/wel</url-pattern>
+</servlet-mapping>
+```
+
+或者如果不想写这个 `web.xml` 也可以使用注解，就是：`WelcomeServlet`改一改
+
+```java
+package com.jkweilai.servlet;  
+  
+import jakarta.servlet.GenericServlet;  
+import jakarta.servlet.ServletException;  
+import jakarta.servlet.ServletRequest;  
+import jakarta.servlet.ServletResponse;  
+import jakarta.servlet.annotation.WebServlet;  
+  
+import java.io.IOException;  
+  
+@WebServlet("/wel")  
+public class WelcomeServlet extends GenericServlet {  
+    @Override  
+    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {  
+        servletResponse.setContentType("text/html;charset=UTF-8");  
+        servletResponse.getWriter().print("<h1>欢迎学习 GenericServlet</h1>");  
+    }
+}
+```
+
+启动服务器，打开浏览器，输入 URL：http://localhost:8080/web01/wel
+
+![1748937624855-09f37e67-5dc8-4227-8d77-872897bd0019.png](../assets/1748937624855-09f37e67-5dc8-4227-8d77-872897bd0019.png)
+
+可以看到，编写 Servlet 类更加的方便了。只需要继承 `GenericServlet`，重写 `service`方法即可。
+
+
+---
+
 ## GenericServlet 源码剖析
 
 GenericServlet 源码如下：
@@ -129,49 +200,25 @@ public abstract class GenericServlet implements Servlet, ServletConfig, java.io.
 
 ```
 
----
-
-## GenericServlet 的使用
-
-有了 `GenericServlet`，编写 `Servlet`类时可以不再直接实现 `Servlet`接口。
-
-编写 `WelcomServlet`继承 `GenericServlet`这个****抽象类****，如果你只需要处理用户的请求，则只需要重写 `service`方法即可。代码如下：
+1. `GenericServlet`的`init`方法：让用户重写无参数的`init()`方法，保护了父类的保存配置的逻辑
 
 ```java
-package com.jkweilai.servlet;
+private transient ServletConfig config;
 
-import jakarta.servlet.GenericServlet;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
-
-import java.io.IOException;
-
-public class WelcomeServlet extends GenericServlet {
-    @Override
-    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().print("<h1>欢迎学习 GenericServlet</h1>");
-    }
+public void init(ServletConfig config) throws ServletException {
+    this.config = config;
+    this.init();
 }
-
+    
+public void init() throws ServletException {}
 ```
 
-编写 `web.xml`配置：
+2. 不仅仅实现了`Servlet`，也是实现了`ServletConfig`，更方便用户调用，不需要先拿到config在使用方法，可以直接使用config的方法。比如下面的函数：
 
-```xml
-<servlet>
-    <servlet-name>welServlet</servlet-name>
-    <servlet-class>com.jkweilai.servlet.WelcomeServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>welServlet</servlet-name>
-    <url-pattern>/wel</url-pattern>
-</servlet-mapping>
+```java
+@Override
+public String getInitParameter(String name) {
+    return getServletConfig().getInitParameter(name);
+}
 ```
 
-启动服务器，打开浏览器，输入 URL：http://localhost:8080/web01/wel
-
-![1748937624855-09f37e67-5dc8-4227-8d77-872897bd0019.png](../assets/1748937624855-09f37e67-5dc8-4227-8d77-872897bd0019.png)
-
-可以看到，编写 Servlet 类更加的方便了。只需要继承 `GenericServlet`，重写 `service`方法即可。

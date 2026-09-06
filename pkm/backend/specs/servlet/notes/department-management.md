@@ -3,13 +3,14 @@
 在项目的开发过程中会融入新知识点的讲解，请务必注意新知识点的吸收。
 
 > 前端内容：[static-website-development](../details/static-website-development.md)
+> 数据库内容：[database-connection](../details/database-connection.md)
 
 ---
 
 ## 环境搭建
 
 1. 使用之前的静态网站页面：index.html、list.html、add.html、edit.html、detail.html。完成部门信息的 CRUD 操作。
-2. 使用学习 mysql 时的表：dept
+2. 使用学习 mysql 时的表：dept 
 3. IDEA 中创建 dept 项目模块，创建 web 目录，添加 web 支持，创建构件。
 4. 创建 `WEB-INF/lib`目录，添加 mysql 驱动 jar 包。
 5. 创建 lib 目录，添加 servlet-api.jar 包，并将其添加到 classpath。
@@ -18,7 +19,7 @@
 JDBC 工具类使用之前的：
 
 ```java
-package com.jkweilai.dept.utils;
+package com.jkweilai.servlet;
 
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -80,7 +81,7 @@ public class DbUtils {
 driver=com.mysql.cj.jdbc.Driver
 url=jdbc:mysql://localhost:3306/servlet
 user=root
-password=123456
+password=
 ```
 
 ---
@@ -90,9 +91,9 @@ password=123456
 编写 `DeptListServlet`，连接数据库，动态打印表格的 tr。
 
 ```java
-package com.jkweilai.dept.servlets;
-
-import com.jkweilai.dept.utils.DbUtils;
+package com.jkweilai.servlet;  
+  
+import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -287,9 +288,9 @@ public class DeptListServlet extends HttpServlet {
 
 ![1749023316765-9d58231e-7472-4bf6-ac18-69146a386a84.png](../assets/1749023316765-9d58231e-7472-4bf6-ac18-69146a386a84.png)
 
-****Java 15 新特性：文本块****
+**Java 15 新特性：文本块**
 
-Java 15 正式引入了文本块（Text Blocks），使用 三个双引号 """ 作为定界符（而非反向单引号），用于简化多行字符串的编写：
+Java 15 正式引入了文本块（Text Blocks），使用 三个双引号 `"""` 作为定界符（而非反向单引号），用于简化多行字符串的编写：
 
 ```java
 String json = """
@@ -320,7 +321,7 @@ String json = """
 out.print("        <a href='" + contextPath + "/detail?deptno=" + deptno + "' class='action-btn view-btn'>查看</a>");
 ```
 
-****说明：****`****contextPath****`****是通过****`****String contextPath = request.getContextPath();****`****获取的。前端发送请求时以****`****/****`****开头，添加项目名，项目名不要写死****`****/dept****`****，应该通过这行代码动态获取。****
+**说明：**`contextPath`是通过`String contextPath = request.getContextPath();`获取的。前端发送请求时以`/`开头，添加项目名，项目名不要写死`/dept`，应该通过这行代码动态获取。****
 
 启动服务器测试，点击查看按钮，出现以下 404 错误是正常的，因为 Servlet 还没写，重点看浏览器地址栏上的请求地址是否正确：
 
@@ -331,9 +332,8 @@ out.print("        <a href='" + contextPath + "/detail?deptno=" + deptno + "' cl
 编写 `DeptDetailServlet`，重写 `doGet`方法，连接数据库，根据部门编号查询部门信息，动态打印详情页：
 
 ```java
-package com.jkweilai.dept.servlets;
-
-import com.jkweilai.dept.utils.DbUtils;
+package com.jkweilai.servlet;  
+  
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -549,9 +549,8 @@ out.print("        <a href='javascript:void(0)' class='action-btn delete-btn' on
 编写 DeptDeleteServlet，获取部门编号，连接数据库，根据部门编号删除数据。删除成功后再跳转到部门列表页面。
 
 ```java
-package com.jkweilai.dept.servlets;
+package com.jkweilai.servlet;
 
-import com.jkweilai.dept.utils.DbUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -590,7 +589,7 @@ public class DeptDeleteServlet extends HttpServlet {
 
 删除之后，需要展示一个全新的列表，因此需要让浏览器重新发一次全新的 `/dept/list`请求，只有浏览器发送这个请求，Tomcat 才会执行 DeptListServlet，再查一次数据库，展示新的列表，在 JavaWeb 开发中如何使用 Java 代码让浏览器自动再发一次全新的请求呢？使用重定向机制。代码如下：
 
-****重点内容：****
+**重点内容：**
 
 ```java
 response.sendRedirect("/dept/list");
@@ -621,9 +620,8 @@ out.print("        <a href='" + contextPath + "/edit?deptno=" + deptno + "' clas
 编写 DeptEditServlet，获取部门编号，根据部门编号查询部门信息，动态展示修改页面：
 
 ```java
-package com.jkweilai.dept.servlets;
+package com.jkweilai.servlet;
 
-import com.jkweilai.dept.utils.DbUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -861,9 +859,8 @@ out.print("</div>");
 编写 DeptUpdateServlet，获取表单提交的数据，更新数据库，更新成功后重定向到列表页面：
 
 ```java
-package com.jkweilai.dept.servlets;
+package com.jkweilai.servlet;
 
-import com.jkweilai.dept.utils.DbUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -993,9 +990,8 @@ Tomcat8 之后的版本中 `URIEncoding`属性的默认值就是 UTF-8，因此 
 注意：部门编号生成算法：当前最大部门编号 + 1。另外要注意多线程并发的问题，使用线程同步机制保证安全。
 
 ```java
-package com.jkweilai.dept.servlets;
+package com.jkweilai.servlet;
 
-import com.jkweilai.dept.utils.DbUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
