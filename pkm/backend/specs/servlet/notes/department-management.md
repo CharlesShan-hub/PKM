@@ -14,66 +14,10 @@
 3. IDEA 中创建 dept 项目模块，创建 web 目录，添加 web 支持，创建构件。
 4. 创建 `WEB-INF/lib`目录，添加 mysql 驱动 jar 包。
 5. 创建 lib 目录，添加 servlet-api.jar 包，并将其添加到 classpath。
-6. 将构件部署到 Tomcat 服务器。
+6. 一定注意在out（构建输出目录）里边也需要手动创建 lib 目录，然后手动把 mysql-connector-j-8.0.33.jar 放进去（这个是运行时的库）。
+7. 将构件部署到 Tomcat 服务器。
 
-JDBC 工具类使用之前的：
-
-```java
-package com.jkweilai.servlet;
-
-import java.sql.*;
-import java.util.ResourceBundle;
-
-public class DbUtils {
-    private static String url;
-    private static String user;
-    private static String password;
-
-    static {
-        // 读取属性资源文件
-        ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
-        String driver = bundle.getString("driver");
-        url = bundle.getString("url");
-        user = bundle.getString("user");
-        password = bundle.getString("password");
-        // 注册驱动
-        try {
-            Class.forName(driver);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static Connection getConnection() throws SQLException {
-        Connection conn = DriverManager.getConnection(url, user, password);
-        return conn;
-    }
-
-    public static void close(Connection conn, Statement stmt, ResultSet rs){
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        if (stmt != null) {
-            try {
-                stmt.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-}
-```
+JDBC 工具类使用之前的[DbUtils-java.md](../assets/DbUtils-java.md.md)
 
 在 src 目录下新建 jdbc.properties 文件，提供以下配置：
 
@@ -88,209 +32,13 @@ password=
 
 ## 部门列表
 
-编写 `DeptListServlet`，连接数据库，动态打印表格的 tr。
-
-```java
-package com.jkweilai.servlet;  
-  
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
-@WebServlet("/list")
-public class DeptListServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.print("""
-                <!DOCTYPE html>
-                <html lang="zh-CN">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>部门管理系统 - 部门列表</title>
-                    <style>
-                        * {
-                            margin: 0;
-                            padding: 0;
-                            box-sizing: border-box;
-                            font-family: 'Arial', sans-serif;
-                        }
-                        body {
-                            background-color: #f5f5f5;
-                        }
-                        .container {
-                            max-width: 1200px;
-                            margin: 0 auto;
-                            padding: 20px;
-                        }
-                        .header {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            margin-bottom: 30px;
-                        }
-                        .header h1 {
-                            color: #333;
-                            font-size: 24px;
-                        }
-                        .add-btn {
-                            padding: 10px 20px;
-                            background-color: #4a90e2;
-                            color: white;
-                            border: none;
-                            border-radius: 4px;
-                            cursor: pointer;
-                            text-decoration: none;
-                            font-size: 14px;
-                            transition: background-color 0.3s;
-                        }
-                        .add-btn:hover {
-                            background-color: #3a7bc8;
-                        }
-                        .department-table {
-                            width: 100%;
-                            border-collapse: collapse;
-                            background-color: white;
-                            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                            border-radius: 4px;
-                            overflow: hidden;
-                        }
-                        .department-table th, .department-table td {
-                            padding: 15px;
-                            text-align: left;
-                            border-bottom: 1px solid #eee;
-                        }
-                        .department-table th {
-                            background-color: #f8f9fa;
-                            font-weight: 600;
-                            color: #555;
-                        }
-                        .department-table tr:hover {
-                            background-color: #f8f9fa;
-                        }
-                        .action-btn {
-                            padding: 6px 12px;
-                            margin-right: 5px;
-                            border: none;
-                            border-radius: 4px;
-                            cursor: pointer;
-                            font-size: 13px;
-                            transition: all 0.3s;
-                            text-decoration: none;
-                            display: inline-block;
-                        }
-                        .view-btn {
-                            background-color: #5cb85c;
-                            color: white;
-                        }
-                        .view-btn:hover {
-                            background-color: #4cae4c;
-                        }
-                        .edit-btn {
-                            background-color: #f0ad4e;
-                            color: white;
-                        }
-                        .edit-btn:hover {
-                            background-color: #eea236;
-                        }
-                        .delete-btn {
-                            background-color: #d9534f;
-                            color: white;
-                        }
-                        .delete-btn:hover {
-                            background-color: #d43f3a;
-                        }
-                        .logout {
-                            text-align: right;
-                            margin-top: 20px;
-                        }
-                        .logout a {
-                            color: #777;
-                            text-decoration: none;
-                            font-size: 14px;
-                        }
-                        .logout a:hover {
-                            color: #333;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="container">
-                        <div class="header">
-                            <h1>部门列表</h1>
-                            <a href="" class="add-btn">添加部门</a>
-                        </div>
-                        <table class="department-table">
-                            <thead>
-                                <tr>
-                                    <th>部门编号</th>
-                                    <th>部门名称</th>
-                                    <th>部门地理位置</th>
-                                    <th>操作</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                """);
-        // 连接数据库，动态打印表格的行tr
-        Connection conn = null;
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        try {
-            conn = DbUtils.getConnection();
-            String sql = "select deptno,dname,loc from dept";
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            while(rs.next()){
-                String deptno = rs.getString("deptno");
-                String dname = rs.getString("dname");
-                String loc = rs.getString("loc");
-                out.print("<tr>");
-                out.print("    <td>" + deptno + "</td>");
-                out.print("    <td>" + dname + "</td>");
-                out.print("    <td>" + loc + "</td>");
-                out.print("    <td>");
-                out.print("        <a href='' class='action-btn view-btn'>查看</a>");
-                out.print("        <a href='' class='action-btn edit-btn'>修改</a>");
-                out.print("        <a href='' class='action-btn delete-btn' onclick=''>删除</a>");
-                out.print("    </td>");
-                out.print("</tr>");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            DbUtils.close(conn, pst, rs);
-        }
-        out.print("""
-                </tbody>
-                        </table>
-                        <div class="logout">
-                            <a href="">退出登录</a>
-                        </div>
-                    </div>
-                </body>
-                </html>
-                """);
-    }
-}
-```
+编写 [DeptListServlet-java.md](../assets/DeptListServlet-java.md.md)，连接数据库，动态打印表格的 tr。
 
 执行结果如下：
 
-![1749023316765-9d58231e-7472-4bf6-ac18-69146a386a84.png](../assets/1749023316765-9d58231e-7472-4bf6-ac18-69146a386a84.png)
+![dept-list](../assets/dept-list.png)
 
-**Java 15 新特性：文本块**
-
-Java 15 正式引入了文本块（Text Blocks），使用 三个双引号 `"""` 作为定界符（而非反向单引号），用于简化多行字符串的编写：
+其中，Java 15 正式引入了文本块（Text Blocks），使用 三个双引号 `"""` 作为定界符（而非反向单引号），用于简化多行字符串的编写：
 
 ```java
 String json = """
@@ -300,6 +48,10 @@ String json = """
     }
 """;
 ```
+
+---
+## 插入
+
 
 ---
 
