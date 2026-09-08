@@ -52,6 +52,12 @@ String json = """
 ---
 ## 插入
 
+我们会发现有越来越多的类似的方法，我们可以把对于数据库的访问，抽取成DAO（Data Access Object），专门用于操作数据库。然后entity是代表数据库的一行，也就是一个实体：
+* `com.jkweilai.servlet.dao.DeptDao.java`：[DeptDao-java.md](../details/DeptDao-java.md.md)
+* `com.jkweilai.servlet.dao.DeptDaoImpl.java`：[DeptDaoImpl-java.md](../details/DeptDaoImpl-java.md.md)
+* `com.jkweilai.servlet.entity.Dept.java`：[Dept-java.md](../details/Dept-java.md.md)
+
+然后插入的的servlet就可以很好写了：[DeptInsertServlet-java.md](../details/DeptInsertServlet-java.md.md)
 
 ---
 
