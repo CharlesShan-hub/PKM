@@ -6,7 +6,7 @@
 
 ## 关于 request 域
 
-之前已经接触了一个域对象，叫做应用域：application，对应的接口是：jakarta.servlet.ServletContext，应用域的范围较大，是服务器级别的，整个 webapp 中只有一个应用域对象。
+之前已经接触了一个域对象，叫做应用域：application，对应的接口是：`jakarta.servlet.ServletContext`，应用域的范围较大，是服务器级别的，整个 webapp 中只有一个应用域对象。
 
 域对象普遍都有以下三个方法：
 
@@ -39,10 +39,10 @@ response.sendRedirect("/dept/list");
 2. 重定向时路径以 `/`开始，需要添加项目名。
 3. 重定向代码执行时，原理是：response 对象将 `/dept/list`响应给浏览器，浏览器自发的再向服务器发送一次全新的请求，请求路径为：`http://ip:port/dept/list`
 4. 重定向是两次请求，怎么理解这个两次请求呢？借用我们之前的一个场景：用户保存部门，保存部门之后重定向到列表页面。
-    1. 点击保存时发送了** 第一次 **请求：`http://ip:port/dept/save`，执行 `DeptSaveServlet`
+    1. 点击保存时发送了 第一次 **请求：`http://ip:port/dept/save`，执行 `DeptSaveServlet`
     2. 执行保存逻辑后，`DeptSaveServlet` 执行了重定向的代码：`response.sendRedirect("/dept/list");`
-    3. `response` 对象将 `/dept/list`路径响应给浏览器，浏览器又自发的向服务器发送** 第二次 **请求：`http://ip:port/dept/list`
-    4. 因此，用户只是点击了 ****一次****** **保存操作，但浏览器一共是发送了****两次****请求。
+    3. `response` 对象将 `/dept/list`路径响应给浏览器，浏览器又自发的向服务器发送 第二次 **请求：`http://ip:port/dept/list`
+    4. 因此，用户只是点击了 **一次** **保存操作，但浏览器一共是发送了****两次****请求。
     5. 并且浏览器地址栏上的地址最终会显示第二次请求的路径，因此重定向会导致浏览器地址栏上的地址发生改变。（也就是说，发送的是 `/dept/save` 路径，显示的是`/dept/list`路径。）
 5. 怎么测试重定向是两次请求呢？
     1. 可以使用 request 域来测试，因为 request 域只能保留同一次请求中的数据，如果是两次请求，request 域是无法共享数据的。测试两次请求的代码如下：

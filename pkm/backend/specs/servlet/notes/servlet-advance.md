@@ -10,7 +10,8 @@
     * `setAttribute`（或者get/remove）在程序中操控全局共享的缓存。
     * `getContextPath`获取根目录，`getRealPath`获取到某一文件夹的绝对路径。
 * [http-servlet](notes/http-servlet.md)：HttpServlet是GenericServlet的利用模板方法设计模式的子类。子类只需要重写`doGet`或者`doPost`这种方法就好了。其中405错误是get或者post等没实现，但是访问了导致的。
-* [department-management](notes/department-management.md)：项目实践
-* [forward-and-redirect](notes/forward-and-redirect.md)
+* [department-management](notes/department-management.md)：项目实践（DAO负责操作数据库，servlet实现每一个api）
+* [forward-and-redirect](notes/forward-and-redirect.md):重定向（重新发一次请求，request内的配置不共享，application共享，不能访问WEB-INF），转发（服务器内不跳转，浏览器不用重新发请求，服务器的request域是一个，可以访问WEB-INF）
+* [default-servlet](../details/default-servlet.md):默认Servlet（静态资源还有404都是这个做兜底的），自己写不要把`\`作为路径，因为这是默认的静态资源路径
 * [listener](notes/listener.md)
 * [filter](notes/filter.md)
