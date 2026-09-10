@@ -13,5 +13,5 @@
 * [department-management](notes/department-management.md)：项目实践（DAO负责操作数据库，servlet实现每一个api）
 * [forward-and-redirect](notes/forward-and-redirect.md):重定向（重新发一次请求，request内的配置不共享，application共享，不能访问WEB-INF），转发（服务器内不跳转，浏览器不用重新发请求，服务器的request域是一个，可以访问WEB-INF）
 * [default-servlet](../details/default-servlet.md):默认Servlet（静态资源还有404都是这个做兜底的），自己写不要把`\`作为路径，因为这是默认的静态资源路径
-* [listener](notes/listener.md)
-* [filter](notes/filter.md)
+* [listener](notes/listener.md)：三个域各自有很多监听器
+* [filter](notes/filter.md)：过滤器（从请求到访问的目标中间的过滤，比如日志，权限，编码等等）

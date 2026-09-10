@@ -8,15 +8,15 @@ Servlet 监听器是 Servlet 规范中的一部分，主要用于监听 Web 应�
 
 Servlet 规范定义了以下几种监听器接口：
 
-1. **ServletContext 监听器**
+1. 应用域：**ServletContext 监听器**
     - `ServletContextListener`：监听 Web 应用的启动和关闭
     - `ServletContextAttributeListener`：监听应用范围内属性的添加、移除和替换
-2. **HttpSession 监听器**
+2. 会话域：**HttpSession 监听器**
     - `HttpSessionListener`：监听会话的创建和销毁
     - `HttpSessionAttributeListener`：监听会话范围内属性的添加、移除和替换
     - `HttpSessionActivationListener`：监听会话的激活和钝化(集群环境)
     - `HttpSessionBindingListener`：监听对象绑定到会话或从会话解绑
-3. **ServletRequest 监听器**
+3. 请求域：**ServletRequest 监听器**
     - `ServletRequestListener`：监听请求的初始化和销毁
     - `ServletRequestAttributeListener`：监听请求范围内属性的添加、移除和替换
 
