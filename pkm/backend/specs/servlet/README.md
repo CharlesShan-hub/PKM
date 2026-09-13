@@ -4,7 +4,7 @@
 
 * [background](notes/background.md)：概念介绍（Servlet、Thymeleaf、JavaEE、url/urn/uri、JavaEE、tomcat、http、url编解码）
 * [hello-world](notes/hello-world.md)：tomcat安装、静态网页案例、servlet原理、servlet hello world
-* [servlet-advance](notes/servlet-advance.md)
+* [servlet-advance](notes/servlet-advance.md)：sevlet的生命周期、GenericServlet、ServletConfig、ServletContent、HttpServlet、重定向与转发、监听器、过滤器
 
 
 * [thymeleaf](notes/thymeleaf.md)

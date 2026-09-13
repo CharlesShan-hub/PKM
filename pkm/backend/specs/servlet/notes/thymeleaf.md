@@ -6,40 +6,40 @@
 
 1. **代码耦合性高，难以维护**
 
-**前端代码（HTML/CSS/JS）与后端Java逻辑混杂在同一个Servlet中，违反**关注点分离（SoC）**原则。修改前端时需要重新编译Servlet，调试困难；团队协作时前后端开发者互相干扰。**
+   前端代码（HTML/CSS/JS）与后端Java逻辑混杂在同一个Servlet中，违反关注点分离（SoC）原则。修改前端时需要重新编译Servlet，调试困难；团队协作时前后端开发者互相干扰。
 
 2. **开发效率低**
 
-**Java字符串拼接HTML（如**`out.println("<div>...</div>")`**）极其繁琐且易错。**
+   Java字符串拼接HTML（如`out.println("<div>...</div>")`）极其繁琐且易错。
 
 3. **安全性风险**
 
-**XSS漏洞**：手动拼接HTML容易遗漏转义导致 XSS 攻击。
+   **XSS漏洞**：手动拼接HTML容易遗漏转义导致 XSS 攻击。
 
-**XSS（Cross-Site Scripting）**是一种攻击方式，黑客通过注入恶意脚本（通常是JavaScript）到网页中，使其在其他用户的浏览器里执行。**后果**：窃取用户Cookie、篡改页面内容、重定向到恶意网站等。
+   **XSS（Cross-Site Scripting）**是一种攻击方式，黑客通过注入恶意脚本（通常是JavaScript）到网页中，使其在其他用户的浏览器里执行。**后果**：窃取用户Cookie、篡改页面内容、重定向到恶意网站等。
 
-假设有一个Servlet，接收用户输入的`name`并显示在页面上：
+   假设有一个Servlet，接收用户输入的`name`并显示在页面上：
 
-```java
-String userName = request.getParameter("name"); // 用户输入
-out.println("<div>Welcome, " + userName + "!</div>");
-```
+   ```java
+   String userName = request.getParameter("name"); // 用户输入
+   out.println("<div>Welcome, " + userName + "!</div>");
+   ```
 
-如果用户输入的是：
+   如果用户输入的是：
 
-```java
-<script>alert('XSS Attack!');</script>
-```
+   ```java
+   <script>alert('XSS Attack!');</script>
+   ```
 
-最终生成的HTML会是：
+   最终生成的HTML会是：
 
-```java
-<div>Welcome, <script>alert('XSS Attack!');</script>!</div>
-```
+   ```java
+   <div>Welcome, <script>alert('XSS Attack!');</script>!</div>
+   ```
 
-浏览器会执行这段脚本，弹出一个警告框（实际攻击可能是窃取Cookie或跳转到恶意网站）。如何解决这个问题，可以手动转义。
+   浏览器会执行这段脚本，弹出一个警告框（实际攻击可能是窃取Cookie或跳转到恶意网站）。如何解决这个问题，可以手动转义。
 
-但手动转义容易遗漏，因此现代框架（如JSP、Thymeleaf、React、Vue）默认会自动转义。
+   但手动转义容易遗漏，因此现代框架（如JSP、Thymeleaf、React、Vue）默认会自动转义。
 
 4. **可测试性差**：前端逻辑与后端深度耦合，无法独立测试。
 
