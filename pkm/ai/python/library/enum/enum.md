@@ -255,7 +255,7 @@ if archer == CharacterType.ARCHER:
 	print("这是射手角色") # 会执行
 ```
 
-[[../dataclasses]] 和enum的`__repr__`会冲突，所以不可以直接对继承了enum的类使用dataclass
+[dataclasses](../dataclasses.md) 和enum的`__repr__`会冲突，所以不可以直接对继承了enum的类使用dataclass
 
 ```python
 @dataclass  # ❌ 不要这样做！
@@ -324,7 +324,7 @@ print(restored_fruit)  # 输出: Fruit.apple
 ---
 ## Enum Classes
 
-![[assets/enum-drawing|1000]]
+![[assets/enum-drawing.excalidraw|1000]]
 
 ### ReprEnum
 

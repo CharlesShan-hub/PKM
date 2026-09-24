@@ -2,7 +2,7 @@
 
 ## Roadmap
 
-![[../assets/linear-system-drawing|1000]]
+![[../assets/linear-system-drawing.excalidraw|1000]]
 
 1. 系统：有输入，有输出。比如输入一段语言，系统进行语音辨识，输出对应的问题。
 2. 线性系统：线性可加性。也就是常见的$f(k_1x_1+k_2x_2) = k_1f(x_1)+k_2f(x_2)$。

@@ -68,4 +68,4 @@ class Person implements Serializable {
 }
 ```
 
-👉 [[ObjectInputStream]]
+👉 [ObjectInputStream](ObjectInputStream.md)

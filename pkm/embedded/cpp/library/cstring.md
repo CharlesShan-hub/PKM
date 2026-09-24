@@ -1,3 +1,3 @@
 # cstring
 
-[[../../c/library/string|string]]
+[string](../../c/library/string.md)

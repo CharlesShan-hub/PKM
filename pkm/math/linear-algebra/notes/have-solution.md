@@ -2,7 +2,7 @@
 
 ## RoadMap
 
-![[../assets/have-solution-drawing|1000]]
+![[../assets/have-solution-drawing.excalidraw|1000]]
 
 其实并没有真正的去解方程，我们只是一直在“换句话说”。从单纯的解方程角度，变换到“线性组合”和“生成空间”
 

@@ -2,7 +2,7 @@
 
 ## Syntax
 
-![[../assets/markdown-syntex-drawing|1000]]
+![[../assets/markdown-syntex-drawing.excalidraw|1000]]
 
 允许我擅自把 markdown 的语法按照一个文档从无到有，从有到好的构建需求分成了四类：
 

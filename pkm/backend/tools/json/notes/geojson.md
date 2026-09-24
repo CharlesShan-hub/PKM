@@ -9,7 +9,7 @@
 *  [GeoJSON格式在线验证](http://geojson.io/)
 * [百度百科](https://baike.baidu.com/item/GeoJson/12011566?fr=aladdin)
 
-![[../assets/geojson.png]]
+![geojson.png](../assets/geojson.png)
 
  GeoJSON 是用于描达地理空间信息的数据格式。GeoJSON不是一种新的格式，其语法规范是符合 JS0N 格式的，只不过对其名称进行了规范，专门用于表示地理信息。
 
@@ -403,7 +403,7 @@
 * GeoJSON是一种开放的标准格式，用于表示简单的地理特征沿着非空间属性。它基于JSON格式。
 * 这些特征包括点（因此是地址和位置）、[线串](https://en.wikipedia.org/wiki/Polygonal\_chain)（因此是街道、高速公路和边界）、[多边形](https://en.wikipedia.org/wiki/Polygon)（国家、省、大片土地）以及这些类型的多部分集合。
 * 点
-	 ![[../assets/image (5).png]]
+	 ![image (5).png](../assets/image (5).png)
 	```json
 	{
 	    "type": "Point", 
@@ -411,7 +411,7 @@
 	}
 	```
 * 线
-	 ![[../assets/image (6).png]]
+	 ![image (6).png](../assets/image (6).png)
 	```json
 	{
 	    "type": "LineString", 
@@ -423,7 +423,7 @@
 	}
 	```
 * 多边形
-	![[../assets/image (8).png]]
+	![image (8).png](../assets/image (8).png)
 	```json
 	{
 	    "type": "Polygon", 
@@ -439,7 +439,7 @@
 	}
 	```
 * 多边形
-	 ![[../assets/image (9).png]]
+	 ![image (9).png](../assets/image (9).png)
 	```json
 	{
 	    "type": "Polygon", 
@@ -461,7 +461,7 @@
 	}
 	```
 * 多点
-	 ![[../assets/image (10).png]]
+	 ![image (10).png](../assets/image (10).png)
 	```json
 	{
 	    "type": "MultiPoint", 
@@ -474,7 +474,7 @@
 	}
 	```
 * 多线
-	 ![[../assets/image (11).png]]
+	 ![image (11).png](../assets/image (11).png)
 	```json
 	{
 	    "type": "MultiLineString", 
@@ -494,7 +494,7 @@
 	}
 	```
 * 多体
-	 ![[../assets/image (12).png]]
+	 ![image (12).png](../assets/image (12).png)
 	```json
 	{
 	    "type": "MultiPolygon", 
@@ -520,7 +520,7 @@
 	}
 	```
 * 多体
-	 ![[../assets/image (13).png]]
+	 ![image (13).png](../assets/image (13).png)
 	```json
 	{
 	    "type": "MultiPolygon", 
@@ -553,7 +553,7 @@
 	}
 	```
 * 集合
-	 ![[../assets/image (14).png]]
+	 ![image (14).png](../assets/image (14).png)
 	```json
 	{
 	    "type": "GeometryCollection",

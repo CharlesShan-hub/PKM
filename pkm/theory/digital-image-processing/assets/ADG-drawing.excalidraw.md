@@ -12,46 +12,46 @@ tags: [excalidraw]
 ## Text Elements
 Image Basic ^kFebd2xM
 
-[[../notes/image-basic]] ^oq3mmV9L
+[image-basic](../notes/image-basic.md) ^oq3mmV9L
 
 Color Space ^D9RA5BjP
 
-[[../notes/color-space]] ^CeuFyQVW
+[color-space](../notes/color-space.md) ^CeuFyQVW
 
 Image Feature ^Fpgfy1K0
 
-[[../notes/image-feature]] ^jC1uN5EJ
+[image-feature](../notes/image-feature.md) ^jC1uN5EJ
 
 Pixel Transform ^CABKCCHp
 
-[[../notes/pixel-transform]] ^1S4vMVvP
+[pixel-transform](../notes/pixel-transform.md) ^1S4vMVvP
 
 Space Transform ^tGQ94aI6
 
-[[../notes/space-transform]] ^UddPiofh
+[space-transform](../notes/space-transform.md) ^UddPiofh
 
 Frequceial Transform ^CWujusvm
 
-[[../notes/frequceial-transform]] ^j5BhrT5W
+[frequceial-transform](../notes/frequceial-transform.md) ^j5BhrT5W
 
 Image Compression ^vuqdiRFD
 
-[[../notes/image-compression]] ^T4yanBcn
+[image-compression](../notes/image-compression.md) ^T4yanBcn
 
 ## Element Links
-oq3mmV9L: [[../notes/image-basic]]
+oq3mmV9L: [image-basic](../notes/image-basic.md)
 
-CeuFyQVW: [[../notes/color-space]]
+CeuFyQVW: [color-space](../notes/color-space.md)
 
-jC1uN5EJ: [[../notes/image-feature]]
+jC1uN5EJ: [image-feature](../notes/image-feature.md)
 
-1S4vMVvP: [[../notes/pixel-transform]]
+1S4vMVvP: [pixel-transform](../notes/pixel-transform.md)
 
-UddPiofh: [[../notes/space-transform]]
+UddPiofh: [space-transform](../notes/space-transform.md)
 
-j5BhrT5W: [[../notes/frequceial-transform]]
+j5BhrT5W: [frequceial-transform](../notes/frequceial-transform.md)
 
-T4yanBcn: [[../notes/image-compression]]
+T4yanBcn: [image-compression](../notes/image-compression.md)
 
 %%
 ## Drawing

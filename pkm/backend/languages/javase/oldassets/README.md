@@ -45,7 +45,7 @@
     * 28：（可跳过）Dos：dir 、cd（切换盘）
     * 29：（可跳过）Dos：tree 、cls 
     * 30：（可跳过）Dos：exit 、 md 、 rd 、 del 、 type 、 copy、 echo、 move
-    * 31~32：（可跳过）[[../notes/stage1/第二章作业|第二章作业]]
+    * 31~32：（可跳过）[第二章作业](../notes/stage1/第二章作业.md)
     * 33：（可跳过）内容梳理
 * 第 3 章：[02-variable-and-datatype](../notes/01-basic/02-variable-and-datatype.md)，[package](../notes/01-basic/package.md)，[coding](../notes/05-io/coding.md)
 	* 34：（可跳过）变量原理：类型、名称、值
@@ -59,7 +59,7 @@
 	* 42：（可跳过）浮点类型：float 、 double
 	* 43：浮点数细节：字面量默认是 double
 	* 44：浮点数细节： 0.3 陷阱，不要对小数做相等判断
-	* 45：JavaAPI文档：[[../notes/01-basic/package|package]]
+	* 45：JavaAPI文档：[package](../notes/01-basic/package.md)
 	* 46：（可跳过）char 可以放汉字，一些 sublime 快捷键
 	* 47：字符型细节：ascii 码，char 就是数字 可以直接运算
 	* 48：字符类型的本质：还是char 就是数字，[coding](../notes/05-io/coding.md)
@@ -68,7 +68,7 @@
 	* 51：（重点）自动类型转换
 	* 52～56：强制类型转换+练习
 	* 57～58：基础数据类型与字符串相互转换，包装类
-	* 59～60：[[../notes/stage1/第三章作业|第三章作业]]
+	* 59～60：[第三章作业](../notes/stage1/第三章作业.md)
 	* 61：（可跳过）章末总结
 * 第 4 章：[operator](../notes/01-basic/operator.md)，[keyboard-input](../notes/01-basic/keyboard-input.md)
 	* 62：（可跳过）运算符简介
@@ -86,7 +86,7 @@
 	* 80：运算符优先级（不用特别的背）
 	* 81~83：（可跳过）标识符规则和规范：[[notes/javase/stage1/标识符规则与规范|标识符规则与规范]]
 	* 84：（可跳过）关键字、保留字
-	* 85：（重要）键盘输入：[[../notes/01-basic/keyboard-input|keyboard-input]]
+	* 85：（重要）键盘输入：[keyboard-input](../notes/01-basic/keyboard-input.md)
 	* 86：（重要）进制：[[notes/javase/stage1/进制|进制]]
 	* 87～89：（可跳过）二、八、十六进制转十进制
 	* 90～92：（可跳过）十进制转二、八、十六进制
@@ -95,7 +95,7 @@
 	* 97：位运算思考题
 	* 98：原码、补码、反码
 	* 99～100：（重点）位运算详解
-	* 101：[[../notes/stage1/第四章作业|第四章作业]]
+	* 101：[第四章作业](../notes/stage1/第四章作业.md)
 	* 102：第三章总结
 * 第 5 章：[branch-control](../notes/01-basic/branch-control.md)
 	* 103：顺序控制
@@ -114,9 +114,9 @@
 	* 137~142：（重点）break，标签
 	* 143~145：（重点）continue，标签
 	* 146：return
-	* 147~152：[[../notes/stage1/第五章作业|第五章作业]]
+	* 147~152：[第五章作业](../notes/stage1/第五章作业.md)
 	* 153：总结
-* 第 6 章：[array](../notes/01-basic/array.md)，[[../notes/stage1/排序|排序]]，[[../notes/stage1/查找|查找]]
+* 第 6 章：[array](../notes/01-basic/array.md)，[排序](../notes/stage1/排序.md)，[查找](../notes/stage1/查找.md)
 	* 154：（可跳过）感慨
 	* 155：（可跳过）数组的必要性
 	* 156：（可跳过）数组的快速入门
@@ -139,7 +139,7 @@
 	* 180：（可跳过）二维数组练习
 	* 181：（重点）杨辉三角
 	* 182~183：二维数组细节
-	* 184~188：[[../notes/stage1/第六章作业|第六章作业]]
+	* 184~188：[第六章作业](../notes/stage1/第六章作业.md)
 	* 189：内容梳理
 * 第 7 章：[class-and-object-introduce](../notes/02-oop/class-and-object-introduce.md) ，[attributes-and-methods](../notes/02-oop/attributes-and-methods.md)，[recursion](../notes/01-basic/recursion.md)，[this](../notes/02-oop/this.md)
 	* 190：（可跳过）鼓励
@@ -177,9 +177,9 @@
 	* 239~243：构造器
 	* 244：（重点）对象创建流程解析
 	* 245~250：this
-	* 251~261：[[../notes/stage1/第七章作业|第七章作业]]
+	* 251~261：[第七章作业](../notes/stage1/第七章作业.md)
 	* 262：内容梳理
-* 第 8 章：[package](../notes/01-basic/package.md)，[Access Modifiers](../notes/02-oop/access-modifiers.md)，[encapsulation](../notes/02-oop/encapsulation.md)，[extends](../notes/02-oop/extends.md)，[super](../notes/02-oop/super.md)，[polymorphism](../notes/02-oop/polymorphism.md)，[Object](../notes/02-oop/Object.md)，[[../notes/stage1/断点调试]]
+* 第 8 章：[package](../notes/01-basic/package.md)，[Access Modifiers](../notes/02-oop/access-modifiers.md)，[encapsulation](../notes/02-oop/encapsulation.md)，[extends](../notes/02-oop/extends.md)，[super](../notes/02-oop/super.md)，[polymorphism](../notes/02-oop/polymorphism.md)，[Object](../notes/02-oop/Object.md)，[断点调试](../notes/stage1/断点调试.md)
 	* 263~271：IDEA软件
 	* 272~277：包
 	* 278~279：（重点）访问修饰符
@@ -208,7 +208,7 @@
 	* 326：Object.finalize()
 	* 327~333：断点调试
 	* 334~341：零钱通程序
-	* 342~359：[[../notes/stage1/第八章作业|第八章作业]]
+	* 342~359：[第八章作业](../notes/stage1/第八章作业.md)
 * 第 9 章：（房屋出租系统）
 	* 360：加油打气
 	* 361：需求
@@ -222,7 +222,7 @@
 	* 369：退出确认
 	* 370：房屋查找
 	* 371：查找
-	* 372：总结，[[../notes/stage1/第九章作业|第九章作业]]
+	* 372：总结，[第九章作业](../notes/stage1/第九章作业.md)
 * 第 10 章：[static](../notes/02-oop/static.md)，[code-block](../notes/03-oop-advanced/code-block.md)，[design partten](../../../design/design-pattern/README.md)，[final](../notes/03-oop-advanced/final.md)，[abstract](../notes/03-oop-advanced/abstract.md)，[interface](../notes/03-oop-advanced/interface.md)，[inner-class](../notes/03-oop-advanced/inner-class.md)
 	* 373~374：类变量的引出
 	* 375：类变量内存布局
@@ -235,7 +235,7 @@
 	* 397~401：（重点）抽象类
 	* 402~411：（重点）接口
 	* 412~424：（重点，难点）四种内部类
-* 第 11 章：[enum](../../../../ai/python/library/enum/enum.md)，[[../notes/06-java-advanced/annotation]]
+* 第 11 章：[enum](../../../../ai/python/library/enum/enum.md)，[annotation](../notes/06-java-advanced/annotation.md)
 	* 423：枚举引出
 	* 424：自定义类实现枚举
 	* 425：enum 关键字实现枚举
@@ -243,7 +243,7 @@
 	* 427~431：enum 案例
 	* 432~434：注解
 	* 435：（了解就行）元注解
-	* 436~442：[[../notes/stage2/第十一章作业|第十一章作业]] 以及内容梳理
+	* 436~442：[第十一章作业](../notes/stage2/第十一章作业.md) 以及内容梳理
 * 第 12 章：[exception](../../../../ai/python/notes/exception.md)
 	* 443~444：异常处理入门
 	* 445：（重点）异常体系图
@@ -251,8 +251,8 @@
 	* 453：throws
 	* 454：自定义异常
 	* 455：throw 和 throws 对比
-	* 456~458：[[../notes/stage2/第十二章作业|第十二章作业]]
-* 第 13 章：[WrapperClass](../notes/04-utils/WrapperClass.md)，[String](../notes/04-utils/String.md)，[Math](../notes/04-utils/Math.md)，[Arrays](../notes/01-basic/Arrays.md)，[BigIntegerBigDecimal](../notes/04-utils/BigIntegerBigDecimal.md)，[[../notes/04-utils/date|date]]
+	* 456~458：[第十二章作业](../notes/stage2/第十二章作业.md)
+* 第 13 章：[WrapperClass](../notes/04-utils/WrapperClass.md)，[String](../notes/04-utils/String.md)，[Math](../notes/04-utils/Math.md)，[Arrays](../notes/01-basic/Arrays.md)，[BigIntegerBigDecimal](../notes/04-utils/BigIntegerBigDecimal.md)，[date](../notes/04-utils/date.md)
 	* 459~464：包装类
 	* 465~473：（重要）String
 	* 474~477：（重要）StringBuffer
@@ -262,8 +262,8 @@
 	* 485：System
 	* 486：大数表示
 	* 487~492：日期
-	* 493~497：[[../notes/stage2/第十三章作业|第十三章作业]]
-* 第 14 章：[[../notes/stage2/集合|集合]]
+	* 493~497：[第十三章作业](../notes/stage2/第十三章作业.md)
+* 第 14 章：[集合](../notes/stage2/集合.md)
 	* 498~499：（背下来）集合的框架图
 	* 500：Collection 接口
 	* 501~503：迭代器（iterator）与增强 for 的方式遍历Collection
@@ -286,14 +286,14 @@
 	* 543：TreeSet
 	* 544：TreeMap
 	* 545~546：Collections 工具类
-	* 547~552：[[../notes/stage2/第十四章练习|第十四章练习]]
+	* 547~552：[第十四章练习](../notes/stage2/第十四章练习.md)
 * 第 15 章：[generic](../notes/03-oop-advanced/generic.md)
 	* 553~554：泛型的引出
 	* 555~559：泛型类型说明
 	* 560~562：自定义泛型
 	* 562~563：自定义泛型方法
 	* 564：泛型的继承和通配符
-	* 565～566：[[../notes/stage2/第十五章作业|第十五章作业]]+JUnit
+	* 565～566：[第十五章作业](../notes/stage2/第十五章作业.md)+JUnit
 * 第 16 章：（坦克大战项目第一部分）[Swing](../notes/06-java-advanced/Swing.md)
 * 第 17 章：[multiy-threading](../notes/06-java-advanced/multiy-threading.md)
 	* 589~580：线程与进程的一些概念
@@ -325,11 +325,11 @@
 	* 638~640：Properties
 	* 641~643：作业
 * 第 20 章：（坦克大战项目第三部分）
-* 第 21 章：[[../notes/05-io/network|network]]
+* 第 21 章：[network](../notes/05-io/network.md)
 	* 661~665：网络相关概念；IP；域名，端口号，TCP/IP协议栈，TCP、UDP
 	* 666：INetAddress类
 	* 667~670：TCP编程实践
-* 动力节点补充：[[../notes/06-java-advanced/jvm]]，[[../notes/powerpoint/principle]]，[[../notes/powerpoint/uml]]，[[../notes/powerpoint/re]]，[[../notes/powerpoint/uuid]]，[[../notes/04-utils/System|System]]，[reflect](../notes/06-java-advanced/reflect.md)，[[../notes/03-oop-advanced/lambda]]，[stream](../notes/03-oop-advanced/stream.md)
+* 动力节点补充：[jvm](../notes/06-java-advanced/jvm.md)，[principle](../notes/powerpoint/principle.md)，[uml](../notes/powerpoint/uml.md)，[re](../notes/powerpoint/re.md)，[uuid](../notes/powerpoint/uuid.md)，[System](../notes/04-utils/System.md)，[reflect](../notes/06-java-advanced/reflect.md)，[lambda](../notes/03-oop-advanced/lambda.md)，[stream](../notes/03-oop-advanced/stream.md)
 
 ### MySQL
 
@@ -340,18 +340,18 @@
 
 > 按照动力节点往年视频学习（百度网盘）
 
-* [[../../../database/jdbc/hsp-jdbc]]
+* [hsp-jdbc](../../../specs/jdbc/notes/hsp-jdbc.md)
 
 ### JavaWeb
 
-* [[../../../specs/servlet/notes/servlet-old]]
+* [servlet-old](../../../specs/servlet/notes/servlet-old.md)
 
 ### JavaWeb（黑马）
 
 > 主要根据 [【# 全网首发AI+JavaWeb开发入门，Tlias教学管理系统项目】](https://www.bilibili.com/video/BV1yGydYEE3H)进行学习记录
 > 第一部分：前端Web基础（2天）：HTML、CSS、JS、Vue、Ajax/Axios
 
-* 第一部分：前端Web基础（2天）：[[../../../../frontend/frontend-trio/frontend-trio|java-h5c3]]
+* 第一部分：前端Web基础（2天）：[java-h5c3](../../../../frontend/frontend-trio/frontend-trio.md)
 	1. Web开发-导学视频  👌
 	2. Web前端开发初识  👌
 	3. HTML-CSS-入门程序  👌
@@ -382,7 +382,7 @@
 	28. Vue-常用指令-v-model与v-on    👌
 	29. Ajax-入门 👌
 	30. Ajax-案例 👌
-* 第二部分：后端Web基础（4天）：[[../../../package/maven/README|README]]
+* 第二部分：后端Web基础（4天）：[README](../../../package/maven/README.md)
 	31. Maven-课程介绍  👌
 	32. Maven-概述-介绍&安装  👌
 	33. Maven-IDEA集成  👌
@@ -563,10 +563,10 @@
 
 ### Springboot
 
-1. [[../../../javaweb/springboot/old-notes/introduction|introduction]]
-2. [[../../../javaweb/springboot/old-notes/hello-world|hello-world]]
+1. [introduction](../../../javaweb/springboot/old-notes/introduction.md)
+2. [hello-world](../../../javaweb/springboot/old-notes/hello-world.md)
 3. 
-4. [[../../../javaweb/springboot/old-notes/config|config]]
+4. [config](../../../javaweb/springboot/old-notes/config.md)
 
 
 ## 后续内容

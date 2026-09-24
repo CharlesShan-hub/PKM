@@ -2,7 +2,7 @@
 
 ## Overview
 
-![[assets/ADG-drawing|1000]]
+![[assets/ADG-drawing.excalidraw|1000]]
 
 ## Book Links
 

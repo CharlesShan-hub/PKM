@@ -10,7 +10,7 @@
 
 ## 结束键盘输入
 
-文件、流和键盘输入：[[../library/stdio|👉 stdio]]
+文件、流和键盘输入：[👉 stdio](../library/stdio.md)
 
 文件结尾
 

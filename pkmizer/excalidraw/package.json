@@ -1,0 +1,11 @@
+{
+  "name": "pkmizer-excalidraw",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Excalidraw .excalidraw.md to SVG renderer for pkmizer export",
+  "dependencies": {
+    "@aldinokemal2104/excalidraw-to-svg": "^1.1.1",
+    "lz-string": "^1.5.0"
+  }
+}

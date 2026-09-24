@@ -3,7 +3,7 @@
 
 ## Overview
 
-![[../assets/stdio-drawing|1000]]
+![[../assets/stdio-drawing.excalidraw|1000]]
 
 ---
 ## Functions
@@ -39,7 +39,7 @@ int main(void)
 
 一图胜千言
 
-![[../assets/printf.png]]
+![printf.png](../assets/printf.png)
 printf format specifications quick reference[2]
 
 转换说明[3]

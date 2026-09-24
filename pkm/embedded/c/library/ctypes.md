@@ -3,7 +3,7 @@
 
 ## Overview
 
-![[../assets/ctypes-drawing|1000]]
+![[../assets/ctypes-drawing.excalidraw|1000]]
 
 ***
 

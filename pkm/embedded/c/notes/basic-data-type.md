@@ -2,7 +2,7 @@
 ---
 ## Overview
 
-![[../assets/datatype-drawing|1000]]
+![[../assets/datatype-drawing.excalidraw|1000]]
 ***
 
 ## 1. Integer
@@ -172,7 +172,7 @@
 ### 3.1. Auto Type Casting
 
 1. **升级**（promotion），即从较小类型转换为较大类型。在不同类型的数进行运算时，会遵循将较小的类型转换到更大的类型的原则。
-	![[../assets/auto-type-casting-drawing|1000]]
+	![[../assets/auto-type-casting-drawing.excalidraw|1000]]
 2. **降级**（demotion），即从较大类型转换为较小类型，通常发生在赋值语句中，有可能会发生阶段比如，浮点数到整数会丢掉小数部分，大的整数到小的整数会直接取模。
 
 ### 3.2. Forced Type Casting

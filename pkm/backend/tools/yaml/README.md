@@ -4,22 +4,22 @@
 
 * 为什么需要 yaml，它比 json 好在哪里
 * yaml 的应用场景已经有哪些了
-* yaml 的语法：[[notes/yaml-syntex|👉 简单过一遍yaml语法]]
+* yaml 的语法：[👉 简单过一遍yaml语法](notes/yaml-syntex.md)
 
 下面是一些收集到的链接
 
 * Yaml 官网 & 各个语言沟通 yaml 的方案：[https://yaml.org/](https://yaml.org/)
 * Yaml官网 1.2.2 语法：[https://yaml.org/spec/1.2.2/](https://yaml.org/spec/1.2.2/)
-	* [[notes/spec-1-2-2-introduction|简介]]：讲述了YAML的语言特点，发展目标，发展历程以及帮助文档结构安排。
-	* [[notes/spec-1-2-2-overview|概述]]：介绍了yaml的大部分语法，并给出了案例。
-	* [[notes/spec-1-2-2-view|视图]]：YAML处理器的内部工作原理，以及如何将yaml不同视图进行转换。
-	* [[notes/spec-1-2-2-syntex|语法]]
-	* [[notes/spec-1-2-2-character|字符]]
-	* [[notes/spec-1-2-2-structural|结构]]
-	* [[notes/spec-1-2-2-flow-style|流风格]]
-	* [[notes/spec-1-2-2-block-style|块风格]]
-	* [[notes/spec-1-2-2-document-stream|文件流]]
-	* [[notes/spec-1-2-2-recommended|建议]]
+	* [简介](notes/spec-1-2-2-introduction.md)：讲述了YAML的语言特点，发展目标，发展历程以及帮助文档结构安排。
+	* [概述](notes/spec-1-2-2-overview.md)：介绍了yaml的大部分语法，并给出了案例。
+	* [视图](notes/spec-1-2-2-view.md)：YAML处理器的内部工作原理，以及如何将yaml不同视图进行转换。
+	* [语法](notes/spec-1-2-2-syntex.md)
+	* [字符](notes/spec-1-2-2-character.md)
+	* [结构](notes/spec-1-2-2-structural.md)
+	* [流风格](notes/spec-1-2-2-flow-style.md)
+	* [块风格](notes/spec-1-2-2-block-style.md)
+	* [文件流](notes/spec-1-2-2-document-stream.md)
+	* [建议](notes/spec-1-2-2-recommended.md)
 * wiki：[https://en.wikipedia.org/wiki/YAML](https://en.wikipedia.org/wiki/YAML)
 * yaml 在线工具：[https://onlineyamltools.com/](https://onlineyamltools.com/)
 

@@ -2,13 +2,13 @@
 
 ---
 
-![[../assets/advanced-data-type-drawing|1000]]
+![[../assets/advanced-data-type-drawing.excalidraw|1000]]
 
 --- 
 
 ## struct
 
-[[../details/struct-pascal-c|👉 struct：Pascal vs C]]
+[👉 struct：Pascal vs C](../details/struct-pascal-c.md)
 
 1. 声明
 	1. 先定义结构再声明变量
@@ -480,7 +480,7 @@ typedef+结构(上边结构里边)
 
 `int a[2][3];`
 
-![[../assets/nested-array-drawing|1000]]
+![[../assets/nested-array-drawing.excalidraw|1000]]
 
 * 数组明后边的\[]和函数名后边的()具有相同优先级，他们优先级高于\*
 

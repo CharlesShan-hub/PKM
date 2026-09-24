@@ -1,6 +1,6 @@
 # ObjectInputStream
 
-👉 接[[ObjectOutputStream]]
+👉 接[ObjectOutputStream](ObjectOutputStream.md)
 
 • ObjectInputStream是Java对象反序列化的输入流，用于从字节流读取对象
 • 继承体系：

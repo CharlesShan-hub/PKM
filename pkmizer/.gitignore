@@ -14,6 +14,10 @@ venv/
 # pixi
 .pixi/
 
+# Node
+node_modules/
+excalidraw/node_modules/
+
 # IDE
 .idea/
 .vscode/

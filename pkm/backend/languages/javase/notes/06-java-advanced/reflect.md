@@ -1022,7 +1022,7 @@ public class ReflectTest15 {
 3. 作用：
     1. 保护程序的安全。
     2. 防止类加载重复。
-    ![[resources/双亲委派.png]]
+    ![双亲委派.png](../powerpoint/resources/双亲委派.png)
 
 ---
 

@@ -10,7 +10,7 @@ tags: [excalidraw]
 # Excalidraw Data
 
 ## Text Elements
-[[../notes/background]] ^d3ozHv82
+[background](../notes/background.md) ^d3ozHv82
 
 Background ^oN0uVR0X
 
@@ -18,82 +18,82 @@ Basic Data Types ^5Sl7TGuF
 
 Advanced Data Types ^h5WeXQQi
 
-[[../notes/basic-data-type]] ^3Gk0FwR7
+[basic-data-type](../notes/basic-data-type.md) ^3Gk0FwR7
 
-[[../notes/advanced-data-type]] ^XUirNapg
+[advanced-data-type](../notes/advanced-data-type.md) ^XUirNapg
 
 Arguments ^RCvppH45
 
-[[../notes/arguments]] ^pAvrkDeZ
+[arguments](../notes/arguments.md) ^pAvrkDeZ
 
 Function ^W4qo2zN5
 
-[[../notes/function]] ^NUIKZX3n
+[function](../notes/function.md) ^NUIKZX3n
 
 Bit Operation ^P5KvY9Uq
 
-[[../notes/bit-operation]] ^CWPej78M
+[bit-operation](../notes/bit-operation.md) ^CWPej78M
 
 IO Flow ^HqkEkYyI
 
-[[../notes/io-flow]] ^FSHNpzFX
+[io-flow](../notes/io-flow.md) ^FSHNpzFX
 
 Array ^pEeliGO0
 
-[[../notes/array]] ^Y985ZBRG
+[array](../notes/array.md) ^Y985ZBRG
 
 Pointer ^xbNxqtDm
 
-[[../notes/pointer]] ^BJg68OGL
+[pointer](../notes/pointer.md) ^BJg68OGL
 
 Abstract Data Types ^KY4Jr62W
 
-[[../notes/adt]] ^15VCdZVN
+[adt](../notes/adt.md) ^15VCdZVN
 
 String ^XAN60WhT
 
-[[../notes/string]] ^aBCI4WwU
+[string](../notes/string.md) ^aBCI4WwU
 
 Storage ^L9YdHNXs
 
-[[../notes/storage]] ^mpUgzgyC
+[storage](../notes/storage.md) ^mpUgzgyC
 
 Preprocessor Directives ^qujMGzOL
 
-[[../notes/preprocessor-directives]] ^wjjqfR94
+[preprocessor-directives](../notes/preprocessor-directives.md) ^wjjqfR94
 
 Compile ^c8xnTZzL
 
-[[../notes/compile]] ^MSniIRSm
+[compile](../notes/compile.md) ^MSniIRSm
 
 ## Element Links
-d3ozHv82: [[../notes/background]]
+d3ozHv82: [background](../notes/background.md)
 
-3Gk0FwR7: [[../notes/basic-data-type]]
+3Gk0FwR7: [basic-data-type](../notes/basic-data-type.md)
 
-XUirNapg: [[../notes/advanced-data-type]]
+XUirNapg: [advanced-data-type](../notes/advanced-data-type.md)
 
-pAvrkDeZ: [[../notes/arguments]]
+pAvrkDeZ: [arguments](../notes/arguments.md)
 
-NUIKZX3n: [[../notes/function]]
+NUIKZX3n: [function](../notes/function.md)
 
-CWPej78M: [[../notes/bit-operation]]
+CWPej78M: [bit-operation](../notes/bit-operation.md)
 
-FSHNpzFX: [[../notes/io-flow]]
+FSHNpzFX: [io-flow](../notes/io-flow.md)
 
-Y985ZBRG: [[../notes/array]]
+Y985ZBRG: [array](../notes/array.md)
 
-BJg68OGL: [[../notes/pointer]]
+BJg68OGL: [pointer](../notes/pointer.md)
 
-15VCdZVN: [[../notes/adt]]
+15VCdZVN: [adt](../notes/adt.md)
 
-aBCI4WwU: [[../notes/string]]
+aBCI4WwU: [string](../notes/string.md)
 
-mpUgzgyC: [[../notes/storage]]
+mpUgzgyC: [storage](../notes/storage.md)
 
-wjjqfR94: [[../notes/preprocessor-directives]]
+wjjqfR94: [preprocessor-directives](../notes/preprocessor-directives.md)
 
-MSniIRSm: [[../notes/compile]]
+MSniIRSm: [compile](../notes/compile.md)
 
 %%
 ## Drawing

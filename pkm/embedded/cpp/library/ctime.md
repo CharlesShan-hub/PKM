@@ -1,3 +1,3 @@
 # ctime
 
-[[../../c/library/time|time]]
+[time](../../c/library/time.md)

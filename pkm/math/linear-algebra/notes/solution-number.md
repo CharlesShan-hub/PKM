@@ -2,7 +2,7 @@
 
 ## RoadMap
 
-![[../assets/solution-number-drawing|1000]]
+![[../assets/solution-number-drawing.excalidraw|1000]]
 
 继续进行“换句话说”。从单纯的解方程角度，变换到“独立性”和“秩”
 

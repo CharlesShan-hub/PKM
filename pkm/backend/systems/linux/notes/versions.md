@@ -1,6 +1,6 @@
 # Linux版本演化
 
-![[../assets/OS_kernel_timeline.jpg]](https://raw.githubusercontent.com/EG-tech/digipres-posters/master/OS_kernel_timeline.jpg)
+![OS_kernel_timeline.jpg](../assets/OS_kernel_timeline.jpg)(https://raw.githubusercontent.com/EG-tech/digipres-posters/master/OS_kernel_timeline.jpg)
 
 ubuntu下载地址: https://cdimage.ubuntu.com/noble/daily-live/current/
 

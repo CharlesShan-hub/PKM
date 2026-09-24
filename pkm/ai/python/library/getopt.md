@@ -42,7 +42,7 @@ sys.argv: ['/Users/kimshan/Public/project/playground/exp/getopt/basic.py', '-a',
    - 自Python 3.14起，支持可选参数(::)扩展
    - 错误处理方式不同，Python版本会抛出异常
 
-对应c语言的getopt [[../../../embedded/c/library/unistd]]，python版的可以实现类似的效果
+对应c语言的getopt [unistd](../../../embedded/c/library/unistd.md)，python版的可以实现类似的效果
 
 ```python
 #!/usr/bin/env python3

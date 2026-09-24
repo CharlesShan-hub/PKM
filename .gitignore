@@ -23,6 +23,11 @@ desktop.ini
 ~$*
 *.log
 
+# 导出测试目录
+/out-test/
+/_out-test/
+/_out-test2/
+
 # 特定目录内的同步排除文件
 **/extension.nosync
 

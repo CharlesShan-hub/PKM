@@ -5,7 +5,7 @@
 1. checkout：在某一个文件夹下，右键选择checkout可以下载一个工程。详见[introduction](introduction.md)
 2. commit：在某个文件夹下的项目修改了需要提交上去，右键选择SVN提交
 	![update](../assets/update01.png)
-	![[update02](../assets/update02.png)]
+	![update02](../assets/update02.png)
 3. update：就是把服务器的更新拉下来。
 
 以上三个命令可以在右键菜单找到。

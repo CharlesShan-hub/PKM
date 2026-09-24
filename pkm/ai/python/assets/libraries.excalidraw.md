@@ -158,7 +158,7 @@ hmac ^zDKLctqZ
 
 secrets ^wepiSKVr
 
-[[../library/enum/enum]] ^SoMMyHcU
+[enum](../library/enum/enum.md) ^SoMMyHcU
 
 %%
 ## Drawing

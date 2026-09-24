@@ -31,7 +31,7 @@
 ---
 ## Schema
 
-* [[notes/json-schema|json-schema]]
+* [json-schema](notes/json-schema.md)
 
 
 ---

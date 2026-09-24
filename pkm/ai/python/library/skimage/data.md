@@ -9,7 +9,7 @@ image = Image.fromarray(data.astronaut())
 image.show()
 ```
 
-![[assets/astronaut.jpg|256]]
+![astronaut.jpg](assets/astronaut.jpg){: width=256}
 
 skimage.data模块有很多demo 图片python
 

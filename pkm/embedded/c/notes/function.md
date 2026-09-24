@@ -29,7 +29,7 @@ int imax(int n, int m)
 * 参数
   * 形参
   * 实参
-  * 形参不固定的情况 [[../library/stdarg|👉 stdarg]]
+  * 形参不固定的情况 [👉 stdarg](../library/stdarg.md)
 
 ## 递归
 

@@ -26,7 +26,7 @@ json 不允许注释，单行多行都不行！
 空格，空行，换行符，制表符都被解释成空白。
 {% endhint %}
 
-![[../assets/image (18).png]]
+![image (18).png](../assets/image (18).png)
 
 ## string：字符串
 
@@ -40,7 +40,7 @@ json 不允许注释，单行多行都不行！
 {'a': 123} 错误，不能用单引号
 ```
 
-![[../assets/image (16).png]]
+![image (16).png](../assets/image (16).png)
 
 ## number：数值
 
@@ -62,7 +62,7 @@ json 不允许注释，单行多行都不行！
 }
 ```
 
-![[../assets/image (17).png]]
+![image (17).png](../assets/image (17).png)
 
 ## value：值
 
@@ -81,7 +81,7 @@ json有六种值：空白，数字，字符串，数组，对象，真，假
 }
 ```
 
-![[../assets/image (19).png]]
+![image (19).png](../assets/image (19).png)
 
 ## object：对象
 
@@ -98,7 +98,7 @@ json有六种值：空白，数字，字符串，数组，对象，真，假
 {1:2} 错误，键须是字符串
 ```
 
-![[../assets/image (21).png]]
+![image (21).png](../assets/image (21).png)
 
 ## array： 数组
 
@@ -106,4 +106,4 @@ json有六种值：空白，数字，字符串，数组，对象，真，假
 可以是空，也可以包含任意个值。
 {% endhint %}
 
-![[../assets/image (20).png]]
+![image (20).png](../assets/image (20).png)

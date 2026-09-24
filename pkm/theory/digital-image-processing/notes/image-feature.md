@@ -4,7 +4,7 @@
 ---
 ## Overview
 
-![[../assets/image-feature-drawing|1000]]
+![[../assets/image-feature-drawing.excalidraw|1000]]
 
 ***
 ## Color
@@ -83,10 +83,10 @@ $$
 ***
 ## Texture
 
-![[../assets/image (37).png]]
+![image (37).png](../assets/image (37).png)
 <img src="../../.gitbook/assets/image (37).png" alt="数字图像处理—图像纹理特征[1]" data-size="original">播客中的图片\[1]
 
-![[../assets/image (38).png]]
+![image (38).png](../assets/image (38).png)
 <img src="../../.gitbook/assets/image (38).png" alt="综述[2]" data-size="original">综述总结\[2]
 
 [https://github.com/cgreen259/Texture-Toolbox](https://github.com/cgreen259/Texture-Toolbox)
@@ -121,8 +121,8 @@ $$
 
 <summary>书中的描述与例子[4]</summary>
 
-![[../assets/image (41).png]]
-![[../assets/image (42).png]]
+![image (41).png](../assets/image (41).png)
+![image (42).png](../assets/image (42).png)
 <img src="../../.gitbook/assets/image (41).png" alt="" data-size="original"><img src="../../.gitbook/assets/image (42).png" alt="" data-size="original">
 
 </details>
@@ -131,7 +131,7 @@ $$
 
 计算梯度幅度的直方图。不同的纹理的图片对应的梯度幅度直方图比较稳定，因为取的幅度，所以不受方向影响。
 
-![[../assets/image (97).png]]
+![image (97).png](../assets/image (97).png)
 <figure><img src="../../.gitbook/assets/image (97).png" alt="" width="563"><figcaption><p>[6]</p></figcaption></figure>
 
 论文\[6]的计算方法：
@@ -145,14 +145,14 @@ $$
 
 一般采用 0,45,90,135 四个角度的方向来计算距离为 n 的灰度共生矩阵。下面是方向为0，距离 n 为 1 的案例：
 
-![[../assets/image (98).png]]
+![image (98).png](../assets/image (98).png)
 <figure><img src="../../.gitbook/assets/image (98).png" alt=""><figcaption><p>一图胜千言[7]</p></figcaption></figure>
 
 另外灰度共生矩阵（GLDM）可以进一步计算的到很多统计量。
 
 论文中提出了 14 种：角二阶矩（能量）​、对比度、熵、相关性、均匀性、逆差矩、和平均、和方差、和熵、差方差（变异差异）​、差熵、局部平稳性、相关信息测度1、相关信息测度2。
 
-![[../assets/image (99).png]]
+![image (99).png](../assets/image (99).png)
 <figure><img src="../../.gitbook/assets/image (99).png" alt="" width="563"><figcaption></figcaption></figure>
 
 <details>
@@ -247,7 +247,7 @@ plt.show()
 
 具体内容可以看网页\[8]\[9]。
 
-![[../assets/image (30).png]]
+![image (30).png](../assets/image (30).png)
 <figure><img src="../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -353,18 +353,18 @@ $$
 
 根据顺时针方向读出8个二进制值。每个位置有自己的权重。求出这个 3 x 3 的块的值。（下图 为 25）
 
-![[../assets/image (105).png]]
+![image (105).png](../assets/image (105).png)
 <figure><img src="../../.gitbook/assets/image (105).png" alt=""><figcaption><p>[10]</p></figcaption></figure>
 
 因为人类视觉系统对纹理的感知与平均灰度（亮度）无关，而局部二值模式方法注重像素灰度的变化，所以它符合人类视觉对图像纹理的感知特点。LBP计算过程如图5-6所示。
 
-![[../assets/image (101).png]]
+![image (101).png](../assets/image (101).png)
 <figure><img src="../../.gitbook/assets/image (101).png" alt="" width="563"><figcaption></figcaption></figure>
 
-![[../assets/image (102).png]]
+![image (102).png](../assets/image (102).png)
 <figure><img src="../../.gitbook/assets/image (102).png" alt=""><figcaption></figcaption></figure>
 
-![[../assets/image (104).png]]
+![image (104).png](../assets/image (104).png)
 <figure><img src="../../.gitbook/assets/image (104).png" alt=""><figcaption></figcaption></figure>
 
 <details>
@@ -542,7 +542,7 @@ plt.show()
 
 我的理解是，其实有了很多的备选的边界，然后精髓是把图像的 xy 轴当成实轴虚轴，进行傅里叶变换，取前几项进行近似（这样就平滑了）
 
-![[../assets/image (28).png]]
+![image (28).png](../assets/image (28).png)
 <figure><img src="../../.gitbook/assets/image (28).png" alt="" width="188"><figcaption></figcaption></figure>
 
 <details>
@@ -642,7 +642,7 @@ SUSAN算法：
    3. 当核心在角点时 , USAN 区域最小
 3. 可以通过计算每 1 个像素的 USAN 值，并与设定的门限值进行比较， 如果该像素的 USAN 值小于门限 值，则该点可以认为是 1 个边缘点
 
-![[../assets/image (29).png]]
+![image (29).png](../assets/image (29).png)
 <figure><img src="../../.gitbook/assets/image (29).png" alt=""><figcaption><p>[14] <a href="https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045">https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045</a></p></figcaption></figure>
 
 ***

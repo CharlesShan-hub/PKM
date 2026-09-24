@@ -2,7 +2,7 @@
 
 ## RoadMap
 
-![[../assets/solve-equation-drawing|1000]]
+![[../assets/solve-equation-drawing.excalidraw|1000]]
 
 ## Reference
 

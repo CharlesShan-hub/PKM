@@ -225,7 +225,7 @@ public class CPUNumber {
 
 ### 六种状态
 
-![[../../assets/threading-drawing|1000]]
+![[../../assets/threading-drawing.excalidraw|1000]]
 
 * 新建状态（NEW）
 * 就绪状态（RUNNABLE）

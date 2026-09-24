@@ -2,7 +2,7 @@
 
 ## Roadmap
 
-![[../assets/linear-equation-drawing|1000]]
+![[../assets/linear-equation-drawing.excalidraw|1000]]
 
 ## Reference
 

@@ -4,15 +4,15 @@
 
 * What is Vector\[1]
 
-![[../assets/vector-drawing|1000]]
+![[../assets/vector-drawing.excalidraw|1000]]
 
 * What is Matrix\[2]
 
-![[../assets/matrix-drawing|1000]]
+![[../assets/matrix-drawing.excalidraw|1000]]
 
 * Matrix-vector Product\[3]
 
-![[../assets/product-drawing|1000]]
+![[../assets/product-drawing.excalidraw|1000]]
 
 
 ## Reference
