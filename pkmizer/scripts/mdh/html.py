@@ -4,6 +4,7 @@
 
 import html as html_lib
 import re
+import textwrap
 from pathlib import Path
 from typing import List
 
@@ -24,6 +25,48 @@ LEXER_ALIASES = {
     'yml': 'yaml', 'md': 'markdown', 'latex': 'tex', 'c++': 'cpp', 'c#': 'csharp',
     'text': '', 'txt': '', 'plain': '', 'mermaid': '',
 }
+
+
+def _lift_indented_fences(md_text: str) -> str:
+    """
+    把列表项内缩进的围栏代码块提升为顶格围栏
+
+    python-markdown 的 fenced_code 不识别列表内缩进（Tab/空格）的围栏，
+    缩进围栏会退化成普通文本，块内 # 开头的行还会被误解析为标题
+    （如 `\t#include <stdio.h>` 变成 <h1>）。Typora 笔记里这种写法很常见，
+    转换前把缩进围栏块统一 dedent 为顶格，交给 fenced_code 正常处理。
+
+    Args:
+        md_text: 原始 Markdown 文本
+
+    Returns:
+        str: 处理后的文本（顶格围栏不变；未闭合的缩进围栏保持原样）
+    """
+    lines = md_text.split('\n')
+    out, i, n = [], 0, len(lines)
+    while i < n:
+        line = lines[i]
+        m = re.match(r'^([ \t]+)([`~]{3,})', line)
+        if not m:
+            out.append(line)
+            i += 1
+            continue
+        fence_ch = m.group(2)[0]
+        open_len = len(m.group(2))
+        j = i + 1
+        while j < n:
+            cm = re.match(r'^[ \t]*([`~]{3,})\s*$', lines[j])
+            if cm and cm.group(1)[0] == fence_ch and len(cm.group(1)) >= open_len:
+                break
+            j += 1
+        if j >= n:
+            out.append(line)
+            i += 1
+            continue
+        block = '\n'.join(lines[i:j + 1]).expandtabs(4)
+        out.append(textwrap.dedent(block))
+        i = j + 1
+    return '\n'.join(out)
 
 
 def highlight_code_blocks(body: str) -> str:
@@ -119,7 +162,8 @@ def convert_to_html(md_content: str, title: str, themes_rel: str, themes: List[s
     """
     # toc 扩展同时负责给标题生成 id（供页面内锚点跳转）
     md = md_lib.Markdown(extensions=['extra', 'toc'])
-    body = md.convert(md_content)
+    # 先提升列表内缩进围栏（python-markdown 不识别缩进围栏，#include 等会被误当标题）
+    body = md.convert(_lift_indented_fences(md_content))
 
     # 代码块语法高亮（PyGments 静态着色）+ 补齐 Typora 语义类（md-fencescode / lang）
     body = highlight_code_blocks(body)
