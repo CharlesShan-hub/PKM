@@ -181,14 +181,8 @@ def replace_image_references(input_dir, output_dir, url_to_filename):
     # 计算assets目录相对于markdown文件的路径
     assets_relative_path = os.path.relpath(assets_dir, input_path)
     
-    # 调试：打印原始相对路径
-    print(f"调试[replace] - assets_relative_path原始值: {repr(assets_relative_path)}")
-    print(f"调试[replace] - assets_relative_path长度: {len(assets_relative_path)}")
-    
     # 清理路径中的特殊字符
     assets_relative_path = ''.join(c for c in assets_relative_path if ord(c) >= 32)
-    
-    print(f"调试[replace] - assets_relative_path清理后: {assets_relative_path}")
     
     for md_file in input_path.rglob("*.md"):
         try:
@@ -259,11 +253,6 @@ def run(input_dir=None, output_dir=None):
     
     # 计算assets目录相对于markdown文件的路径
     assets_relative_path = os.path.relpath(assets_dir, input_path)
-    
-    # 调试：打印原始相对路径
-    print(f"调试 - assets_relative_path原始值: {repr(assets_relative_path)}")
-    print(f"调试 - assets_relative_path长度: {len(assets_relative_path)}")
-    print(f"调试 - assets_relative_path字符: {[ord(c) for c in assets_relative_path]}")
     
     # 清理路径中的特殊字符
     assets_relative_path = ''.join(c for c in assets_relative_path if ord(c) >= 32)
