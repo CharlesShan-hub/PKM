@@ -28,6 +28,9 @@ desktop.ini
 /_out-test/
 /_out-test2/
 
+# 仓库备份目录（gh 备份裸仓库等）
+/_gh-backup/
+
 # 特定目录内的同步排除文件
 **/extension.nosync
 

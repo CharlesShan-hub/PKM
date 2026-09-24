@@ -1,0 +1,7 @@
+# PKMizer 导出命令
+input := "d:\\project\\PKM\\pkm"
+output := "D:\\project\\CharlesShan-hub.github.io\\pkm"
+
+# 一键导出 Markdown 站点，just to-html [输出目录]
+to-html out="":
+    pixi run python scripts/markdown_to_html.py "{{input}}" "{{ if out == '' { output } else { out } }}"

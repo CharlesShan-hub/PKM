@@ -1,8 +1,12 @@
 """
 页面组装：HTML 模板、Markdown 渲染 + 组件拼接、代码块语法高亮、保存
+
+UI 组件（主题切换 / 文件树 / TOC / 图片放大）已外置为站点根 ui.css / ui.js，
+页面只注入两个外部引用与一个 window.PKM 配置对象，不再重复内联脚本。
 """
 
 import html as html_lib
+import json
 import re
 import textwrap
 from pathlib import Path
@@ -11,10 +15,6 @@ from typing import List
 import markdown as md_lib
 
 from .content import fix_internal_links
-from .lightbox_ui import build_lightbox_script
-from .nav_ui import build_nav_panel
-from .theme_ui import build_theme_script
-from .toc_ui import build_toc_panel
 
 # 代码块正则：<pre><code ...>...</code></pre>（fenced_code 扩展的产物）
 CODE_BLOCK_RE = re.compile(r'<pre><code(?P<attrs>[^>]*?)>(?P<code>.*?)</code></pre>', re.DOTALL)
@@ -134,21 +134,24 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>__PKM_TITLE__</title>
 __PKM_THEME_LINK__
+__PKM_UI_CSS__
 </head>
 <body class="done">
 __PKM_CONTENT__
-__PKM_NAV__
-__PKM_TOC__
-__PKM_THEME_SELECT__
-__PKM_THEME_SCRIPT__
-__PKM_LIGHTBOX__
+__PKM_CONFIG__
+__PKM_UI_SCRIPT__
 </body>
 </html>"""
 
 
+def _sibling_rel(rel: str, filename: str) -> str:
+    """由 site-tree.json 的相对路径推导同目录兄弟文件路径（ui.css / ui.js）。"""
+    return re.sub(r'[^/]+$', filename, rel)
+
+
 def convert_to_html(md_content: str, title: str, themes_rel: str, themes: List[str], site_tree_rel: str) -> str:
     """
-    将 Markdown 内容转换为完整的 HTML 页面（含主题切换控件、全局文件树）
+    将 Markdown 内容转换为完整的 HTML 页面（UI 组件外置于 ui.css / ui.js）
 
     Args:
         md_content: 过滤 frontmatter 后的 Markdown 正文
@@ -174,32 +177,29 @@ def convert_to_html(md_content: str, title: str, themes_rel: str, themes: List[s
     html_out = HTML_TEMPLATE
     html_out = html_out.replace('__PKM_TITLE__', html_lib.escape(title))
     html_out = html_out.replace('__PKM_CONTENT__', body)
-    html_out = html_out.replace('__PKM_NAV__', build_nav_panel(site_tree_rel))
-    html_out = html_out.replace('__PKM_TOC__', build_toc_panel())
+
+    ui_css_rel = _sibling_rel(site_tree_rel, 'ui.css')
+    ui_js_rel = _sibling_rel(site_tree_rel, 'ui.js')
+    html_out = html_out.replace('__PKM_UI_CSS__', f'<link rel="stylesheet" href="{ui_css_rel}">')
 
     if themes:
         default_theme = themes[0]
-        theme_link = f'<link id="theme-css" rel="stylesheet" href="{themes_rel}/{default_theme}.css">'
-        # 半透明圆形按钮（悬浮/点击时不透明），内置不透明 SVG 主题图标；菜单项由 JS 动态填充
-        theme_select = (
-            '<button id="theme-btn" type="button" aria-label="切换主题" title="切换主题">'
-            '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">'
-            '<path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.5-.8 1.5-1.5S13 18 13.5 18H15a3 3 0 0 0 3-3c0-4.5-3.6-12-6-12z"/>'
-            '<circle cx="7.5" cy="10.5" r="1.2"/>'
-            '<circle cx="12" cy="7.5" r="1.2"/>'
-            '<circle cx="16.5" cy="10.5" r="1.2"/>'
-            '</svg>'
-            '</button>'
-            '<div id="theme-menu"></div>'
-        )
-        theme_script = build_theme_script(themes_rel, themes, default_theme)
+        # themesBase 统一带尾斜杠，供 ui.js 直接拼接主题文件名（如 themes/github.css）
+        themes_base = themes_rel.rstrip('/') + '/' if themes_rel else 'themes/'
+        theme_link = f'<link id="theme-css" rel="stylesheet" href="{themes_base}{default_theme}.css">'
+        config = json.dumps({
+            'themes': themes,
+            'themesBase': themes_base,
+            'defaultTheme': default_theme,
+            'siteTree': site_tree_rel,
+        }, ensure_ascii=False)
     else:
-        theme_link, theme_select, theme_script = '', '', ''
+        theme_link = ''
+        config = json.dumps({'siteTree': site_tree_rel}, ensure_ascii=False)
 
     html_out = html_out.replace('__PKM_THEME_LINK__', theme_link)
-    html_out = html_out.replace('__PKM_THEME_SELECT__', theme_select)
-    html_out = html_out.replace('__PKM_THEME_SCRIPT__', theme_script)
-    html_out = html_out.replace('__PKM_LIGHTBOX__', build_lightbox_script())
+    html_out = html_out.replace('__PKM_CONFIG__', f'<script>window.PKM = {config};</script>')
+    html_out = html_out.replace('__PKM_UI_SCRIPT__', f'<script src="{ui_js_rel}"></script>')
 
     return html_out
 

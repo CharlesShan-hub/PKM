@@ -1,0 +1,60 @@
+name: Deploy PKM Site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PKM repo
+        uses: actions/checkout@v4
+
+      - name: Setup pixi
+        uses: prefix-dev/setup-pixi@v6
+        with:
+          pixi-version: latest
+          cache: true
+          manifests: pkmizer/pixi.toml
+
+      - name: Install excalidraw dependencies
+        run: |
+          cd pkmizer/excalidraw
+          yarn install --frozen-lockfile --prefer-offline
+
+      - name: Export site
+        run: |
+          cd pkmizer
+          pixi run python scripts/markdown_to_html.py "../pkm" ../_site
+
+      - name: Checkout site repo
+        uses: actions/checkout@v4
+        with:
+          repository: CharlesShan-hub/CharlesShan-hub.github.io
+          token: ${{ secrets.SITE_REPO_TOKEN }}
+          path: _site_repo
+
+      - name: Sync export into pkm/ (keep assets/)
+        run: |
+          rsync -a --delete --exclude 'assets/' _site/ _site_repo/pkm/
+
+      - name: Commit and push
+        env:
+          SITE_REPO_TOKEN: ${{ secrets.SITE_REPO_TOKEN }}
+        run: |
+          cd _site_repo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${SITE_REPO_TOKEN}@github.com/CharlesShan-hub/CharlesShan-hub.github.io.git"
+          git add pkm/
+          if git diff --cached --quiet; then
+            echo "No site changes, skip push"
+          else
+            git commit -m "deploy: sync pkm site from PKM repo"
+            git push origin master
+          fi
