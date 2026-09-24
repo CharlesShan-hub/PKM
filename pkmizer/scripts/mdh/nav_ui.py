@@ -37,7 +37,9 @@ def build_nav_panel(site_tree_rel: str) -> str:
 #nav-panel {{
   position: fixed; top: 0; left: 0; bottom: 0; z-index: 999;
   width: 260px; transform: translateX(-100%);
-  transition: transform .25s ease;
+  visibility: hidden;
+  /* 收回时 transform 动画结束后再隐藏，避免移出后边缘残留 1px 竖线 */
+  transition: transform .25s ease, visibility 0s .25s;
   background: var(--nav-bg, rgba(255,255,255,.95));
   color: var(--nav-fg, #555);
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
@@ -45,7 +47,11 @@ def build_nav_panel(site_tree_rel: str) -> str:
   display: flex; flex-direction: column;
   font-size: 13px; font-family: Arial, sans-serif;
 }}
-#nav-panel.open {{ transform: translateX(0); }}
+#nav-panel.open {{
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform .25s ease, visibility 0s;
+}}
 #nav-panel .nav-head {{
   padding: 14px 16px 10px; font-size: 14px; font-weight: 600;
   color: var(--nav-fg, #555);
@@ -91,7 +97,7 @@ def build_nav_panel(site_tree_rel: str) -> str:
 </svg>
 </button>
 <div id="nav-panel">
-<div class="nav-head">文件树</div>
+<div class="nav-head">&nbsp;</div>
 <ul class="nav-tree"><li class="nav-empty">加载中...</li></ul>
 </div>
 <script>

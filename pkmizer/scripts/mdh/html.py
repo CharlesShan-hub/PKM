@@ -10,8 +10,10 @@ from typing import List
 import markdown as md_lib
 
 from .content import fix_internal_links
+from .lightbox_ui import build_lightbox_script
 from .nav_ui import build_nav_panel
 from .theme_ui import build_theme_script
+from .toc_ui import build_toc_panel
 
 # 代码块正则：<pre><code ...>...</code></pre>（fenced_code 扩展的产物）
 CODE_BLOCK_RE = re.compile(r'<pre><code(?P<attrs>[^>]*?)>(?P<code>.*?)</code></pre>', re.DOTALL)
@@ -93,8 +95,10 @@ __PKM_THEME_LINK__
 <body class="done">
 __PKM_CONTENT__
 __PKM_NAV__
+__PKM_TOC__
 __PKM_THEME_SELECT__
 __PKM_THEME_SCRIPT__
+__PKM_LIGHTBOX__
 </body>
 </html>"""
 
@@ -127,6 +131,7 @@ def convert_to_html(md_content: str, title: str, themes_rel: str, themes: List[s
     html_out = html_out.replace('__PKM_TITLE__', html_lib.escape(title))
     html_out = html_out.replace('__PKM_CONTENT__', body)
     html_out = html_out.replace('__PKM_NAV__', build_nav_panel(site_tree_rel))
+    html_out = html_out.replace('__PKM_TOC__', build_toc_panel())
 
     if themes:
         default_theme = themes[0]
@@ -150,6 +155,7 @@ def convert_to_html(md_content: str, title: str, themes_rel: str, themes: List[s
     html_out = html_out.replace('__PKM_THEME_LINK__', theme_link)
     html_out = html_out.replace('__PKM_THEME_SELECT__', theme_select)
     html_out = html_out.replace('__PKM_THEME_SCRIPT__', theme_script)
+    html_out = html_out.replace('__PKM_LIGHTBOX__', build_lightbox_script())
 
     return html_out
 
